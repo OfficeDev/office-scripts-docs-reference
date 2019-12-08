@@ -1,0 +1,180 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ChartTitleFormat:class'
+    summary: |-
+      Provides access to the office art formatting for chart title.
+
+      \[Api set: ExcelApi 1.1\]
+    name: Excel.ChartTitleFormat
+    fullName: Excel.ChartTitleFormat
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ChartTitleFormat#border:member'
+      - 'excel-scripts!Excel.ChartTitleFormat#context:member'
+      - 'excel-scripts!Excel.ChartTitleFormat#fill:member'
+      - 'excel-scripts!Excel.ChartTitleFormat#font:member'
+      - 'excel-scripts!Excel.ChartTitleFormat#load:member(1)'
+      - 'excel-scripts!Excel.ChartTitleFormat#load:member(2)'
+      - 'excel-scripts!Excel.ChartTitleFormat#set:member(1)'
+      - 'excel-scripts!Excel.ChartTitleFormat#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#border:member'
+    summary: |-
+      Represents the border format of chart title, which includes color, linestyle, and weight. Read-only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: border
+    fullName: border
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly border: Excel.ChartBorder;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartBorder:class'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#fill:member'
+    summary: |-
+      Represents the fill format of an object, which includes background formatting information. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: fill
+    fullName: fill
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly fill: Excel.ChartFill;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartFill:class'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#font:member'
+    summary: |-
+      Represents the font attributes (font name, font size, color, etc.) for an object. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: Excel.ChartFont;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartFont:class'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartTitleFormat;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartTitleFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ChartTitleFormat;
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartTitleFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ChartTitleFormat): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ChartTitleFormat:class'
+  - uid: 'excel-scripts!Excel.ChartTitleFormat#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ChartTitleFormat object is an API object, the `toJSON` method returns a
+      plain JavaScript object (typed as `Excel.Interfaces.ChartTitleFormatData`<!-- -->) that contains shallow copies of
+      any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ChartTitleFormatData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ChartTitleFormatData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.ChartBorder:class'
+    name: Excel.ChartBorder
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ChartFill:class'
+    name: Excel.ChartFill
+  - uid: 'excel-scripts!Excel.ChartFont:class'
+    name: Excel.ChartFont
+  - uid: 'excel-scripts!Excel.ChartTitleFormat:class'
+    name: Excel.ChartTitleFormat
+  - uid: 'excel-scripts!Excel.Interfaces.ChartTitleFormatData:interface'
+    name: Excel.Interfaces.ChartTitleFormatData

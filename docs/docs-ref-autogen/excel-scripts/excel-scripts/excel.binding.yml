@@ -1,0 +1,229 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Binding:class'
+    summary: |-
+      Represents an Office.js binding that is defined in the workbook.
+
+      \[Api set: ExcelApi 1.1\]
+    name: Excel.Binding
+    fullName: Excel.Binding
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Binding#context:member'
+      - 'excel-scripts!Excel.Binding#delete:member(1)'
+      - 'excel-scripts!Excel.Binding#getRange:member(1)'
+      - 'excel-scripts!Excel.Binding#getTable:member(1)'
+      - 'excel-scripts!Excel.Binding#getText:member(1)'
+      - 'excel-scripts!Excel.Binding#id:member'
+      - 'excel-scripts!Excel.Binding#load:member(1)'
+      - 'excel-scripts!Excel.Binding#load:member(2)'
+      - 'excel-scripts!Excel.Binding#toJSON:member(1)'
+      - 'excel-scripts!Excel.Binding#type:member'
+  - uid: 'excel-scripts!Excel.Binding#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.Binding#delete:member(1)'
+    summary: |-
+      Deletes the binding.
+
+      \[Api set: ExcelApi 1.3\]
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel-scripts!Excel.Binding#getRange:member(1)'
+    summary: |-
+      Returns the range represented by the binding. Will throw an error if binding is not of the correct type.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getRange()
+    fullName: getRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.Binding#getTable:member(1)'
+    summary: |-
+      Returns the table represented by the binding. Will throw an error if binding is not of the correct type.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getTable()
+    fullName: getTable()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTable(): Excel.Table;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Table:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.Binding#getText:member(1)'
+    summary: |-
+      Returns the text represented by the binding. Will throw an error if binding is not of the correct type.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getText()
+    fullName: getText()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getText(): ClientResult<string>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Binding#getText~0:complex'
+        description: ''
+  - uid: 'excel-scripts!Excel.Binding#id:member'
+    summary: |-
+      Represents binding identifier. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Binding#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.Binding;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Binding:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.Binding#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.Binding;
+      return:
+        type:
+          - 'excel-scripts!Excel.Binding:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.Binding#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.Binding object is an API object, the `toJSON` method returns a plain
+      JavaScript object (typed as `Excel.Interfaces.BindingData`<!-- -->) that contains shallow copies of any loaded
+      child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.BindingData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.BindingData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.Binding#type:member'
+    summary: |-
+      Returns the type of the binding. See Excel.BindingType for details. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: type
+    fullName: type
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly type: Excel.BindingType | "Range" | "Table" | "Text";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Binding#type~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.Range:class'
+    name: Excel.Range
+  - uid: 'excel-scripts!Excel.Table:class'
+    name: Excel.Table
+  - uid: 'excel-scripts!Excel.Binding#getText~0:complex'
+    name: ClientResult<string>
+    fullName: Excel.ClientResult<string>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <string>
+        fullName: <string>
+  - uid: 'excel-scripts!Excel.Binding:class'
+    name: Excel.Binding
+  - uid: 'excel-scripts!Excel.Interfaces.BindingData:interface'
+    name: Excel.Interfaces.BindingData
+  - uid: 'excel-scripts!Excel.Binding#type~0:complex'
+    name: Excel.BindingType | "Range" | "Table" | "Text"
+    fullName: Excel.BindingType | "Range" | "Table" | "Text"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.BindingType:enum'
+        name: Excel.BindingType
+        fullName: Excel.BindingType
+      - name: ' | "Range" | "Table" | "Text"'
+        fullName: ' | "Range" | "Table" | "Text"'

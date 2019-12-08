@@ -1,0 +1,200 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder:class'
+    summary: |-
+      Represents the border of an object.
+
+      \[Api set: ExcelApi 1.6\]
+    name: Excel.ConditionalRangeBorder
+    fullName: Excel.ConditionalRangeBorder
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ConditionalRangeBorder#color:member'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#context:member'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#load:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#load:member(2)'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#set:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#sideIndex:member'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#style:member'
+      - 'excel-scripts!Excel.ConditionalRangeBorder#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#color:member'
+    summary: >-
+      HTML color code representing the color of the border line, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML
+      color (e.g. "orange").
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ConditionalRangeBorder;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeBorder:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ConditionalRangeBorder;
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeBorder:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ConditionalRangeBorder): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ConditionalRangeBorder:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#sideIndex:member'
+    summary: >-
+      Constant value that indicates the specific side of the border. See Excel.ConditionalRangeBorderIndex for details.
+      Read-only.
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: sideIndex
+    fullName: sideIndex
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly sideIndex: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight";'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeBorder#sideIndex~0:complex'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#style:member'
+    summary: >-
+      One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for
+      details.
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: >-
+        style: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" |
+        "Dot";
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeBorder#style~0:complex'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ConditionalRangeBorder object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalRangeBorderData`<!-- -->) that contains
+      shallow copies of any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ConditionalRangeBorderData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder:class'
+    name: Excel.ConditionalRangeBorder
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#sideIndex~0:complex'
+    name: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"
+    fullName: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ConditionalRangeBorderIndex:enum'
+        name: Excel.ConditionalRangeBorderIndex
+        fullName: Excel.ConditionalRangeBorderIndex
+      - name: ' | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"'
+        fullName: ' | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"'
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorder#style~0:complex'
+    name: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"
+    fullName: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ConditionalRangeBorderLineStyle:enum'
+        name: Excel.ConditionalRangeBorderLineStyle
+        fullName: Excel.ConditionalRangeBorderLineStyle
+      - name: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"'
+        fullName: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"'
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData:interface'
+    name: Excel.Interfaces.ConditionalRangeBorderData

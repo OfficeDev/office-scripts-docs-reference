@@ -1,0 +1,558 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData:interface'
+    summary: An interface describing the data returned by calling `range.toJSON()`<!-- -->.
+    name: Excel.Interfaces.RangeData
+    fullName: Excel.Interfaces.RangeData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.RangeData#address:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#addressLocal:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#cellCount:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#columnCount:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#columnHidden:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#columnIndex:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#conditionalFormats:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#dataValidation:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#format:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#formulas:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#formulasLocal:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#formulasR1C1:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#height:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#hidden:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#hyperlink:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#isEntireColumn:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#isEntireRow:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#left:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#linkedDataTypeState:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#numberFormat:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#numberFormatLocal:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#rowCount:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#rowHidden:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#rowIndex:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#style:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#text:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#top:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#values:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#valueTypes:member'
+      - 'excel-scripts!Excel.Interfaces.RangeData#width:member'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#address:member'
+    summary: >-
+      Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. "Sheet1!A1:B4").
+      Read-only.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: address
+    fullName: address
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'address?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#addressLocal:member'
+    summary: |-
+      Represents range reference for the specified range in the language of the user. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: addressLocal
+    fullName: addressLocal
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'addressLocal?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#cellCount:member'
+    summary: |-
+      Number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: cellCount
+    fullName: cellCount
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'cellCount?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#columnCount:member'
+    summary: |-
+      Represents the total number of columns in the range. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: columnCount
+    fullName: columnCount
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'columnCount?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#columnHidden:member'
+    summary: |-
+      Represents if all columns of the current range are hidden.
+
+      \[Api set: ExcelApi 1.2\]
+    name: columnHidden
+    fullName: columnHidden
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'columnHidden?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#columnIndex:member'
+    summary: |-
+      Represents the column number of the first cell in the range. Zero-indexed. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: columnIndex
+    fullName: columnIndex
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'columnIndex?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#conditionalFormats:member'
+    summary: |-
+      Collection of ConditionalFormats that intersect the range. Read-only.
+
+      \[Api set: ExcelApi 1.6\]
+    name: conditionalFormats
+    fullName: conditionalFormats
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'conditionalFormats?: Excel.Interfaces.ConditionalFormatData[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeData#conditionalFormats~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#dataValidation:member'
+    summary: |-
+      Returns a data validation object.
+
+      \[Api set: ExcelApi 1.8\]
+    name: dataValidation
+    fullName: dataValidation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'dataValidation?: Excel.Interfaces.DataValidationData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.DataValidationData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#format:member'
+    summary: >-
+      Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties.
+      Read-only.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'format?: Excel.Interfaces.RangeFormatData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#formulas:member'
+    summary: >-
+      Represents the formula in A1-style notation. When setting formulas to a range, the value argument can be either a
+      single value (a string) or a two-dimensional array. If the argument is a single value, it will be applied to all
+      cells in the range.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: formulas
+    fullName: formulas
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'formulas?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#formulasLocal:member'
+    summary: >-
+      Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the
+      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. When setting formulas to a range, the
+      value argument can be either a single value (a string) or a two-dimensional array. If the argument is a single
+      value, it will be applied to all cells in the range.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: formulasLocal
+    fullName: formulasLocal
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'formulasLocal?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#formulasR1C1:member'
+    summary: >-
+      Represents the formula in R1C1-style notation. When setting formulas to a range, the value argument can be either
+      a single value (a string) or a two-dimensional array. If the argument is a single value, it will be applied to all
+      cells in the range.
+
+
+      \[Api set: ExcelApi 1.2\]
+    name: formulasR1C1
+    fullName: formulasR1C1
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'formulasR1C1?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#height:member'
+    summary: |-
+      Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: height
+    fullName: height
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'height?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#hidden:member'
+    summary: |-
+      Represents if all cells of the current range are hidden. Read-only.
+
+      \[Api set: ExcelApi 1.2\]
+    name: hidden
+    fullName: hidden
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'hidden?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#hyperlink:member'
+    summary: |-
+      Represents the hyperlink for the current range.
+
+      \[Api set: ExcelApi 1.7\]
+    name: hyperlink
+    fullName: hyperlink
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'hyperlink?: Excel.RangeHyperlink;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeHyperlink:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#isEntireColumn:member'
+    summary: |-
+      Represents if the current range is an entire column. Read-only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: isEntireColumn
+    fullName: isEntireColumn
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'isEntireColumn?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#isEntireRow:member'
+    summary: |-
+      Represents if the current range is an entire row. Read-only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: isEntireRow
+    fullName: isEntireRow
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'isEntireRow?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#left:member'
+    summary: >-
+      Returns the distance in points, for 100% zoom, from left edge of the worksheet to left edge of the range.
+      Read-only.
+
+
+      \[Api set: ExcelApi 1.10\]
+    name: left
+    fullName: left
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'left?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#linkedDataTypeState:member'
+    summary: |-
+      Represents the data type state of each cell. Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: linkedDataTypeState
+    fullName: linkedDataTypeState
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'linkedDataTypeState?: Excel.LinkedDataTypeState[][];'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeData#linkedDataTypeState~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#numberFormat:member'
+    summary: >-
+      Represents Excel's number format code for the given range. When setting number format to a range, the value
+      argument can be either a single value (string) or a two-dimensional array. If the argument is a single value, it
+      will be applied to all cells in the range.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: numberFormat
+    fullName: numberFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'numberFormat?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#numberFormatLocal:member'
+    summary: >-
+      Represents Excel's number format code for the given range, based on the language settings of the user.​ When
+      setting number format local to a range, the value argument can be either a single value (string) or a
+      two-dimensional array. If the argument is a single value, it will be applied to all cells in the range.​ Excel
+      does not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any
+      returned text uses the locally-formatted strings based on the language specified in the system settings.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: numberFormatLocal
+    fullName: numberFormatLocal
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'numberFormatLocal?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#rowCount:member'
+    summary: |-
+      Returns the total number of rows in the range. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: rowCount
+    fullName: rowCount
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rowCount?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#rowHidden:member'
+    summary: |-
+      Represents if all rows of the current range are hidden.
+
+      \[Api set: ExcelApi 1.2\]
+    name: rowHidden
+    fullName: rowHidden
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rowHidden?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#rowIndex:member'
+    summary: |-
+      Returns the row number of the first cell in the range. Zero-indexed. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: rowIndex
+    fullName: rowIndex
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rowIndex?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#style:member'
+    summary: >-
+      Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
+      custom styles, the style name will be returned. For built-in styles, a string representing a value in the
+      BuiltInStyle enum will be returned.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'style?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#text:member'
+    summary: >-
+      Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
+      that happens in Excel UI will not affect the text value returned by the API. Read-only.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: text
+    fullName: text
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'text?: string[][];'
+      return:
+        type:
+          - 'string[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#top:member'
+    summary: |-
+      Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: top
+    fullName: top
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'top?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#values:member'
+    summary: >-
+      Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
+      Cells that contain an error will return the error string. When setting values to a range, the value argument can
+      be either a single value (string, number or boolean) or a two-dimensional array. If the argument is a single
+      value, it will be applied to all cells in the range.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: values
+    fullName: values
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'values?: any[][];'
+      return:
+        type:
+          - 'any[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#valueTypes:member'
+    summary: |-
+      Represents the type of data of each cell. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: valueTypes
+    fullName: valueTypes
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'valueTypes?: Excel.RangeValueType[][];'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeData#valueTypes~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#width:member'
+    summary: |-
+      Returns the distance in points, for 100% zoom, from left edge of the range to right edge of the range. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: width
+    fullName: width
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'width?: number;'
+      return:
+        type:
+          - number
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#conditionalFormats~0:complex'
+    name: 'Excel.Interfaces.ConditionalFormatData[]'
+    fullName: 'Excel.Interfaces.ConditionalFormatData[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Interfaces.ConditionalFormatData:interface'
+        name: Excel.Interfaces.ConditionalFormatData
+        fullName: Excel.Interfaces.ConditionalFormatData
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.Interfaces.DataValidationData:interface'
+    name: Excel.Interfaces.DataValidationData
+  - uid: 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
+    name: Excel.Interfaces.RangeFormatData
+  - uid: 'excel-scripts!Excel.RangeHyperlink:interface'
+    name: Excel.RangeHyperlink
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#linkedDataTypeState~0:complex'
+    name: 'Excel.LinkedDataTypeState[][]'
+    fullName: 'Excel.LinkedDataTypeState[][]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.LinkedDataTypeState:enum'
+        name: Excel.LinkedDataTypeState
+        fullName: Excel.LinkedDataTypeState
+      - name: '[][]'
+        fullName: '[][]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeData#valueTypes~0:complex'
+    name: 'Excel.RangeValueType[][]'
+    fullName: 'Excel.RangeValueType[][]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.RangeValueType:enum'
+        name: Excel.RangeValueType
+        fullName: Excel.RangeValueType
+      - name: '[][]'
+        fullName: '[][]'

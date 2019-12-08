@@ -1,0 +1,219 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection:class'
+    summary: |-
+      Represents a collection of RowColumnPivotHierarchy items associated with the PivotTable.
+
+      \[Api set: ExcelApi 1.8\]
+    name: Excel.RowColumnPivotHierarchyCollection
+    fullName: Excel.RowColumnPivotHierarchyCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#context:member'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#items:member'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#remove:member(1)'
+      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
+    summary: >-
+      Adds the PivotHierarchy to the current axis. If the hierarchy is present elsewhere on the row, column, or filter
+      axis, it will be removed from that location.
+
+
+      \[Api set: ExcelApi 1.8\]
+    name: add(pivotHierarchy)
+    fullName: add(pivotHierarchy)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(pivotHierarchy: Excel.PivotHierarchy): Excel.RowColumnPivotHierarchy;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+        description: ''
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type:
+            - 'excel-scripts!Excel.PivotHierarchy:class'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
+    summary: |-
+      Gets the number of pivot hierarchies in the collection.
+
+      \[Api set: ExcelApi 1.8\]
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
+    summary: |-
+      Gets a RowColumnPivotHierarchy by its name or id.
+
+      \[Api set: ExcelApi 1.8\]
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): Excel.RowColumnPivotHierarchy;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the RowColumnPivotHierarchy to be retrieved.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
+    summary: |-
+      Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, will return a null object.
+
+      \[Api set: ExcelApi 1.8\]
+    name: getItemOrNullObject(name)
+    fullName: getItemOrNullObject(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(name: string): Excel.RowColumnPivotHierarchy;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the RowColumnPivotHierarchy to be retrieved.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.RowColumnPivotHierarchy[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#items~0:complex'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.RowColumnPivotHierarchyCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#remove:member(1)'
+    summary: |-
+      Removes the PivotHierarchy from the current axis.
+
+      \[Api set: ExcelApi 1.8\]
+    name: remove(rowColumnPivotHierarchy)
+    fullName: remove(rowColumnPivotHierarchy)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'remove(rowColumnPivotHierarchy: Excel.RowColumnPivotHierarchy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: rowColumnPivotHierarchy
+          description: ''
+          type:
+            - 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original `Excel.RowColumnPivotHierarchyCollection` object is an API object, the
+      `toJSON` method returns a plain JavaScript object (typed as
+      `Excel.Interfaces.RowColumnPivotHierarchyCollectionData`<!-- -->) that contains an "items" array with shallow
+      copies of any loaded properties from the collection's items.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.RowColumnPivotHierarchyCollectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RowColumnPivotHierarchyCollectionData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+    name: Excel.RowColumnPivotHierarchy
+  - uid: 'excel-scripts!Excel.PivotHierarchy:class'
+    name: Excel.PivotHierarchy
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#items~0:complex'
+    name: 'Excel.RowColumnPivotHierarchy[]'
+    fullName: 'Excel.RowColumnPivotHierarchy[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
+        name: Excel.RowColumnPivotHierarchy
+        fullName: Excel.RowColumnPivotHierarchy
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection:class'
+    name: Excel.RowColumnPivotHierarchyCollection
+  - uid: 'excel-scripts!Excel.Interfaces.RowColumnPivotHierarchyCollectionData:interface'
+    name: Excel.Interfaces.RowColumnPivotHierarchyCollectionData

@@ -1,0 +1,148 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData:interface'
+    summary: An interface describing the data returned by calling `pivotLayout.toJSON()`<!-- -->.
+    name: Excel.Interfaces.PivotLayoutData
+    fullName: Excel.Interfaces.PivotLayoutData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#autoFormat:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#enableFieldList:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#layoutType:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#preserveFormatting:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#showColumnGrandTotals:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#showRowGrandTotals:member'
+      - 'excel-scripts!Excel.Interfaces.PivotLayoutData#subtotalLocation:member'
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#autoFormat:member'
+    summary: |-
+      Specifies whether formatting will be automatically formatted when it’s refreshed or when fields are moved
+
+      \[Api set: ExcelApi 1.9\]
+    name: autoFormat
+    fullName: autoFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'autoFormat?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#enableFieldList:member'
+    summary: |-
+      Specifies whether the field list can be shown in the UI.
+
+      \[Api set: ExcelApi 1.10\]
+    name: enableFieldList
+    fullName: enableFieldList
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'enableFieldList?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#layoutType:member'
+    summary: >-
+      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
+      will be null.
+
+
+      \[Api set: ExcelApi 1.8\]
+    name: layoutType
+    fullName: layoutType
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'layoutType?: Excel.PivotLayoutType | "Compact" | "Tabular" | "Outline";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.PivotLayoutData#layoutType~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#preserveFormatting:member'
+    summary: >-
+      Specifies whether formatting is preserved when the report is refreshed or recalculated by operations such as
+      pivoting, sorting, or changing page field items.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: preserveFormatting
+    fullName: preserveFormatting
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'preserveFormatting?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#showColumnGrandTotals:member'
+    summary: |-
+      Specifies whether the PivotTable report shows grand totals for columns.
+
+      \[Api set: ExcelApi 1.8\]
+    name: showColumnGrandTotals
+    fullName: showColumnGrandTotals
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showColumnGrandTotals?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#showRowGrandTotals:member'
+    summary: |-
+      Specifies whether the PivotTable report shows grand totals for rows.
+
+      \[Api set: ExcelApi 1.8\]
+    name: showRowGrandTotals
+    fullName: showRowGrandTotals
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showRowGrandTotals?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#subtotalLocation:member'
+    summary: >-
+      This property indicates the SubtotalLocationType of all fields on the PivotTable. If fields have different states,
+      this will be null.
+
+
+      \[Api set: ExcelApi 1.8\]
+    name: subtotalLocation
+    fullName: subtotalLocation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'subtotalLocation?: Excel.SubtotalLocationType | "AtTop" | "AtBottom" | "Off";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.PivotLayoutData#subtotalLocation~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#layoutType~0:complex'
+    name: Excel.PivotLayoutType | "Compact" | "Tabular" | "Outline"
+    fullName: Excel.PivotLayoutType | "Compact" | "Tabular" | "Outline"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PivotLayoutType:enum'
+        name: Excel.PivotLayoutType
+        fullName: Excel.PivotLayoutType
+      - name: ' | "Compact" | "Tabular" | "Outline"'
+        fullName: ' | "Compact" | "Tabular" | "Outline"'
+  - uid: 'excel-scripts!Excel.Interfaces.PivotLayoutData#subtotalLocation~0:complex'
+    name: Excel.SubtotalLocationType | "AtTop" | "AtBottom" | "Off"
+    fullName: Excel.SubtotalLocationType | "AtTop" | "AtBottom" | "Off"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.SubtotalLocationType:enum'
+        name: Excel.SubtotalLocationType
+        fullName: Excel.SubtotalLocationType
+      - name: ' | "AtTop" | "AtBottom" | "Off"'
+        fullName: ' | "AtTop" | "AtBottom" | "Off"'

@@ -1,0 +1,161 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill:class'
+    summary: |-
+      Represents the background of a conditional range object.
+
+      \[Api set: ExcelApi 1.6\]
+    name: Excel.ConditionalRangeFill
+    fullName: Excel.ConditionalRangeFill
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ConditionalRangeFill#clear:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeFill#color:member'
+      - 'excel-scripts!Excel.ConditionalRangeFill#context:member'
+      - 'excel-scripts!Excel.ConditionalRangeFill#load:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeFill#load:member(2)'
+      - 'excel-scripts!Excel.ConditionalRangeFill#set:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeFill#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#clear:member(1)'
+    summary: |-
+      Resets the fill.
+
+      \[Api set: ExcelApi 1.6\]
+    name: clear()
+    fullName: clear()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#color:member'
+    summary: >-
+      HTML color code representing the color of the fill, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML color
+      (e.g. "orange").
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ConditionalRangeFill;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFill:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ConditionalRangeFill;
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFill:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ConditionalRangeFill): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ConditionalRangeFill:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ConditionalRangeFill object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalRangeFillData`<!-- -->) that contains
+      shallow copies of any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ConditionalRangeFillData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ConditionalRangeFillData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill:class'
+    name: Excel.ConditionalRangeFill
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeFillData:interface'
+    name: Excel.Interfaces.ConditionalRangeFillData

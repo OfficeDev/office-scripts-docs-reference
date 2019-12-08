@@ -1,0 +1,196 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat:class'
+    summary: |-
+      A format object encapsulating the conditional formats range's font, fill, borders, and other properties.
+
+      \[Api set: ExcelApi 1.6\]
+    name: Excel.ConditionalRangeFormat
+    fullName: Excel.ConditionalRangeFormat
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ConditionalRangeFormat#borders:member'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#context:member'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#fill:member'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#font:member'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#load:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#load:member(2)'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#numberFormat:member'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#set:member(1)'
+      - 'excel-scripts!Excel.ConditionalRangeFormat#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#borders:member'
+    summary: |-
+      Collection of border objects that apply to the overall conditional format range. Read-only.
+
+      \[Api set: ExcelApi 1.6\]
+    name: borders
+    fullName: borders
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly borders: Excel.ConditionalRangeBorderCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeBorderCollection:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#fill:member'
+    summary: |-
+      Returns the fill object defined on the overall conditional format range. Read-only.
+
+      \[Api set: ExcelApi 1.6\]
+    name: fill
+    fullName: fill
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly fill: Excel.ConditionalRangeFill;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFill:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#font:member'
+    summary: |-
+      Returns the font object defined on the overall conditional format range. Read-only.
+
+      \[Api set: ExcelApi 1.6\]
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: Excel.ConditionalRangeFont;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFont:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ConditionalRangeFormat;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ConditionalRangeFormat;
+      return:
+        type:
+          - 'excel-scripts!Excel.ConditionalRangeFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#numberFormat:member'
+    summary: |-
+      Represents Excel's number format code for the given range. Cleared if null is passed in.
+
+      \[Api set: ExcelApi 1.6\]
+    name: numberFormat
+    fullName: numberFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'numberFormat: any;'
+      return:
+        type:
+          - any
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ConditionalRangeFormat): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ConditionalRangeFormat:class'
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ConditionalRangeFormat object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalRangeFormatData`<!-- -->) that contains
+      shallow copies of any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ConditionalRangeFormatData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ConditionalRangeFormatData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.ConditionalRangeBorderCollection:class'
+    name: Excel.ConditionalRangeBorderCollection
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ConditionalRangeFill:class'
+    name: Excel.ConditionalRangeFill
+  - uid: 'excel-scripts!Excel.ConditionalRangeFont:class'
+    name: Excel.ConditionalRangeFont
+  - uid: 'excel-scripts!Excel.ConditionalRangeFormat:class'
+    name: Excel.ConditionalRangeFormat
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeFormatData:interface'
+    name: Excel.Interfaces.ConditionalRangeFormatData

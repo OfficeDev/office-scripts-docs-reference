@@ -1,0 +1,169 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.TableScopedCollection:class'
+    summary: >-
+      Represents a scoped collection of tables. For each table its top-left corner is considered its anchor location and
+      the tables are sorted top to bottom and then left to right.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: Excel.TableScopedCollection
+    fullName: Excel.TableScopedCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.TableScopedCollection#context:member'
+      - 'excel-scripts!Excel.TableScopedCollection#getCount:member(1)'
+      - 'excel-scripts!Excel.TableScopedCollection#getFirst:member(1)'
+      - 'excel-scripts!Excel.TableScopedCollection#getItem:member(1)'
+      - 'excel-scripts!Excel.TableScopedCollection#items:member'
+      - 'excel-scripts!Excel.TableScopedCollection#load:member(1)'
+      - 'excel-scripts!Excel.TableScopedCollection#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.TableScopedCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.TableScopedCollection#getCount:member(1)'
+    summary: |-
+      Gets the number of tables in the collection.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.TableScopedCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel-scripts!Excel.TableScopedCollection#getFirst:member(1)'
+    summary: >-
+      Gets the first table in the collection. The tables in the collection are sorted top to bottom and left to right,
+      such that top left table is the first table in the collection.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: getFirst()
+    fullName: getFirst()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFirst(): Excel.Table;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Table:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.TableScopedCollection#getItem:member(1)'
+    summary: |-
+      Gets a table by Name or ID.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): Excel.Table;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Table:class'
+        description: ''
+      parameters:
+        - id: key
+          description: Name or ID of the table to be retrieved.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.TableScopedCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.Table[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.TableScopedCollection#items~0:complex'
+  - uid: 'excel-scripts!Excel.TableScopedCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.TableScopedCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.TableScopedCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.TableScopedCollection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original `Excel.TableScopedCollection` object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.TableScopedCollectionData`<!-- -->) that contains an
+      "items" array with shallow copies of any loaded properties from the collection's items.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.TableScopedCollectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.TableScopedCollectionData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.TableScopedCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.Table:class'
+    name: Excel.Table
+  - uid: 'excel-scripts!Excel.TableScopedCollection#items~0:complex'
+    name: 'Excel.Table[]'
+    fullName: 'Excel.Table[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Table:class'
+        name: Excel.Table
+        fullName: Excel.Table
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.TableScopedCollection:class'
+    name: Excel.TableScopedCollection
+  - uid: 'excel-scripts!Excel.Interfaces.TableScopedCollectionData:interface'
+    name: Excel.Interfaces.TableScopedCollectionData

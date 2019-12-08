@@ -1,0 +1,86 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData:interface'
+    summary: An interface describing the data returned by calling `conditionalRangeBorder.toJSON()`<!-- -->.
+    name: Excel.Interfaces.ConditionalRangeBorderData
+    fullName: Excel.Interfaces.ConditionalRangeBorderData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#color:member'
+      - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#sideIndex:member'
+      - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#style:member'
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#color:member'
+    summary: >-
+      HTML color code representing the color of the border line, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML
+      color (e.g. "orange").
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#sideIndex:member'
+    summary: >-
+      Constant value that indicates the specific side of the border. See Excel.ConditionalRangeBorderIndex for details.
+      Read-only.
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: sideIndex
+    fullName: sideIndex
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'sideIndex?: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#sideIndex~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#style:member'
+    summary: >-
+      One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for
+      details.
+
+
+      \[Api set: ExcelApi 1.6\]
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: >-
+        style?: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" |
+        "Dot";
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#style~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#sideIndex~0:complex'
+    name: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"
+    fullName: Excel.ConditionalRangeBorderIndex | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ConditionalRangeBorderIndex:enum'
+        name: Excel.ConditionalRangeBorderIndex
+        fullName: Excel.ConditionalRangeBorderIndex
+      - name: ' | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"'
+        fullName: ' | "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight"'
+  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeBorderData#style~0:complex'
+    name: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"
+    fullName: Excel.ConditionalRangeBorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ConditionalRangeBorderLineStyle:enum'
+        name: Excel.ConditionalRangeBorderLineStyle
+        fullName: Excel.ConditionalRangeBorderLineStyle
+      - name: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"'
+        fullName: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot"'

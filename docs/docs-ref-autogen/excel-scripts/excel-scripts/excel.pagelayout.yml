@@ -1,0 +1,789 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.PageLayout:class'
+    summary: >-
+      Represents layout and print settings that are not dependent any printer-specific implementation. These settings
+      include margins, orientation, page numbering, title rows, and print area.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: Excel.PageLayout
+    fullName: Excel.PageLayout
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.PageLayout#blackAndWhite:member'
+      - 'excel-scripts!Excel.PageLayout#bottomMargin:member'
+      - 'excel-scripts!Excel.PageLayout#centerHorizontally:member'
+      - 'excel-scripts!Excel.PageLayout#centerVertically:member'
+      - 'excel-scripts!Excel.PageLayout#context:member'
+      - 'excel-scripts!Excel.PageLayout#draftMode:member'
+      - 'excel-scripts!Excel.PageLayout#firstPageNumber:member'
+      - 'excel-scripts!Excel.PageLayout#footerMargin:member'
+      - 'excel-scripts!Excel.PageLayout#getPrintArea:member(1)'
+      - 'excel-scripts!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
+      - 'excel-scripts!Excel.PageLayout#getPrintTitleColumns:member(1)'
+      - 'excel-scripts!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
+      - 'excel-scripts!Excel.PageLayout#getPrintTitleRows:member(1)'
+      - 'excel-scripts!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
+      - 'excel-scripts!Excel.PageLayout#headerMargin:member'
+      - 'excel-scripts!Excel.PageLayout#headersFooters:member'
+      - 'excel-scripts!Excel.PageLayout#leftMargin:member'
+      - 'excel-scripts!Excel.PageLayout#load:member(1)'
+      - 'excel-scripts!Excel.PageLayout#load:member(2)'
+      - 'excel-scripts!Excel.PageLayout#orientation:member'
+      - 'excel-scripts!Excel.PageLayout#paperSize:member'
+      - 'excel-scripts!Excel.PageLayout#printComments:member'
+      - 'excel-scripts!Excel.PageLayout#printErrors:member'
+      - 'excel-scripts!Excel.PageLayout#printGridlines:member'
+      - 'excel-scripts!Excel.PageLayout#printHeadings:member'
+      - 'excel-scripts!Excel.PageLayout#printOrder:member'
+      - 'excel-scripts!Excel.PageLayout#rightMargin:member'
+      - 'excel-scripts!Excel.PageLayout#set:member(1)'
+      - 'excel-scripts!Excel.PageLayout#setPrintArea:member(1)'
+      - 'excel-scripts!Excel.PageLayout#setPrintMargins:member(1)'
+      - 'excel-scripts!Excel.PageLayout#setPrintMargins:member(2)'
+      - 'excel-scripts!Excel.PageLayout#setPrintTitleColumns:member(1)'
+      - 'excel-scripts!Excel.PageLayout#setPrintTitleRows:member(1)'
+      - 'excel-scripts!Excel.PageLayout#toJSON:member(1)'
+      - 'excel-scripts!Excel.PageLayout#topMargin:member'
+      - 'excel-scripts!Excel.PageLayout#zoom:member'
+  - uid: 'excel-scripts!Excel.PageLayout#blackAndWhite:member'
+    summary: |-
+      Gets or sets the worksheet's black and white print option.
+
+      \[Api set: ExcelApi 1.9\]
+    name: blackAndWhite
+    fullName: blackAndWhite
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'blackAndWhite: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#bottomMargin:member'
+    summary: |-
+      Gets or sets the worksheet's bottom page margin to use for printing in points.
+
+      \[Api set: ExcelApi 1.9\]
+    name: bottomMargin
+    fullName: bottomMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'bottomMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#centerHorizontally:member'
+    summary: >-
+      Gets or sets the worksheet's center horizontally flag. This flag determines whether the worksheet will be centered
+      horizontally when it's printed.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: centerHorizontally
+    fullName: centerHorizontally
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'centerHorizontally: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#centerVertically:member'
+    summary: >-
+      Gets or sets the worksheet's center vertically flag. This flag determines whether the worksheet will be centered
+      vertically when it's printed.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: centerVertically
+    fullName: centerVertically
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'centerVertically: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.PageLayout#draftMode:member'
+    summary: |-
+      Gets or sets the worksheet's draft mode option. If true the sheet will be printed without graphics.
+
+      \[Api set: ExcelApi 1.9\]
+    name: draftMode
+    fullName: draftMode
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'draftMode: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#firstPageNumber:member'
+    summary: |-
+      Gets or sets the worksheet's first page number to print. Null value represents "auto" page numbering.
+
+      \[Api set: ExcelApi 1.9\]
+    name: firstPageNumber
+    fullName: firstPageNumber
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'firstPageNumber: number | "";'
+      return:
+        type:
+          - number | ""
+  - uid: 'excel-scripts!Excel.PageLayout#footerMargin:member'
+    summary: |-
+      Gets or sets the worksheet's footer margin, in points, for use when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: footerMargin
+    fullName: footerMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'footerMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintArea:member(1)'
+    summary: >-
+      Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
+      worksheet. If there is no print area, an ItemNotFound error will be thrown.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintArea()
+    fullName: getPrintArea()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintArea(): Excel.RangeAreas;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeAreas:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
+    summary: >-
+      Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
+      worksheet. If there is no print area, a null object will be returned.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintAreaOrNullObject()
+    fullName: getPrintAreaOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintAreaOrNullObject(): Excel.RangeAreas;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeAreas:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintTitleColumns:member(1)'
+    summary: |-
+      Gets the range object representing the title columns.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintTitleColumns()
+    fullName: getPrintTitleColumns()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleColumns(): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
+    summary: |-
+      Gets the range object representing the title columns. If not set, this will return a null object.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintTitleColumnsOrNullObject()
+    fullName: getPrintTitleColumnsOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleColumnsOrNullObject(): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintTitleRows:member(1)'
+    summary: |-
+      Gets the range object representing the title rows.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintTitleRows()
+    fullName: getPrintTitleRows()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleRows(): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
+    summary: |-
+      Gets the range object representing the title rows. If not set, this will return a null object.
+
+      \[Api set: ExcelApi 1.9\]
+    name: getPrintTitleRowsOrNullObject()
+    fullName: getPrintTitleRowsOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleRowsOrNullObject(): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#headerMargin:member'
+    summary: |-
+      Gets or sets the worksheet's header margin, in points, for use when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: headerMargin
+    fullName: headerMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'headerMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#headersFooters:member'
+    summary: |-
+      Header and footer configuration for the worksheet.
+
+      \[Api set: ExcelApi 1.9\]
+    name: headersFooters
+    fullName: headersFooters
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly headersFooters: Excel.HeaderFooterGroup;'
+      return:
+        type:
+          - 'excel-scripts!Excel.HeaderFooterGroup:class'
+  - uid: 'excel-scripts!Excel.PageLayout#leftMargin:member'
+    summary: |-
+      Gets or sets the worksheet's left margin, in points, for use when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: leftMargin
+    fullName: leftMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'leftMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.PageLayout;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.PageLayout#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.PageLayout;
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.PageLayout#orientation:member'
+    summary: |-
+      Gets or sets the worksheet's orientation of the page.
+
+      \[Api set: ExcelApi 1.9\]
+    name: orientation
+    fullName: orientation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'orientation: Excel.PageOrientation | "Portrait" | "Landscape";'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout#orientation~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#paperSize:member'
+    summary: |-
+      Gets or sets the worksheet's paper size of the page.
+
+      \[Api set: ExcelApi 1.9\]
+    name: paperSize
+    fullName: paperSize
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: >-
+        paperSize: Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" |
+        "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" |
+        "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" |
+        "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" |
+        "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" |
+        "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman";
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout#paperSize~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#printComments:member'
+    summary: |-
+      Gets or sets whether the worksheet's comments should be displayed when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: printComments
+    fullName: printComments
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'printComments: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace";'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout#printComments~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#printErrors:member'
+    summary: |-
+      Gets or sets the worksheet's print errors option.
+
+      \[Api set: ExcelApi 1.9\]
+    name: printErrors
+    fullName: printErrors
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'printErrors: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable";'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout#printErrors~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#printGridlines:member'
+    summary: |-
+      Gets or sets the worksheet's print gridlines flag. This flag determines whether gridlines will be printed or not.
+
+      \[Api set: ExcelApi 1.9\]
+    name: printGridlines
+    fullName: printGridlines
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'printGridlines: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#printHeadings:member'
+    summary: |-
+      Gets or sets the worksheet's print headings flag. This flag determines whether headings will be printed or not.
+
+      \[Api set: ExcelApi 1.9\]
+    name: printHeadings
+    fullName: printHeadings
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'printHeadings: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.PageLayout#printOrder:member'
+    summary: >-
+      Gets or sets the worksheet's page print order option. This specifies the order to use for processing the page
+      number printed.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: printOrder
+    fullName: printOrder
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'printOrder: Excel.PrintOrder | "DownThenOver" | "OverThenDown";'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout#printOrder~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#rightMargin:member'
+    summary: |-
+      Gets or sets the worksheet's right margin, in points, for use when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: rightMargin
+    fullName: rightMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rightMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.PageLayout): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.PageLayout:class'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintArea:member(1)'
+    summary: |-
+      Sets the worksheet's print area.
+
+      \[Api set: ExcelApi 1.9\]
+    name: setPrintArea(printArea)
+    fullName: setPrintArea(printArea)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPrintArea(printArea: Range | RangeAreas | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: printArea
+          description: 'The range, or RangeAreas of the content to print.'
+          type:
+            - 'excel-scripts!Excel.PageLayout#setPrintArea~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintMargins:member(1)'
+    summary: |-
+      Sets the worksheet's page margins with units.
+
+      \[Api set: ExcelApi 1.9\]
+    name: 'setPrintMargins(unit, marginOptions)'
+    fullName: 'setPrintMargins(unit, marginOptions)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPrintMargins(unit: Excel.PrintMarginUnit, marginOptions: Excel.PageLayoutMarginOptions): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: unit
+          description: Measurement unit for the margins provided.
+          type:
+            - 'excel-scripts!Excel.PrintMarginUnit:enum'
+        - id: marginOptions
+          description: 'Margin values to set, margins not provided will remain unchanged.'
+          type:
+            - 'excel-scripts!Excel.PageLayoutMarginOptions:interface'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintMargins:member(2)'
+    summary: |-
+      Sets the worksheet's page margins with units.
+
+      \[Api set: ExcelApi 1.9\]
+    name: 'setPrintMargins(unitStringString, marginOptions)'
+    fullName: 'setPrintMargins(unitStringString, marginOptions)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: >-
+        setPrintMargins(unitStringString: "Points" | "Inches" | "Centimeters", marginOptions:
+        Excel.PageLayoutMarginOptions): void;
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: unitStringString
+          description: Measurement unit for the margins provided.
+          type:
+            - '"Points" | "Inches" | "Centimeters"'
+        - id: marginOptions
+          description: 'Margin values to set, margins not provided will remain unchanged.'
+          type:
+            - 'excel-scripts!Excel.PageLayoutMarginOptions:interface'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintTitleColumns:member(1)'
+    summary: |-
+      Sets the columns that contain the cells to be repeated at the left of each page of the worksheet for printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: setPrintTitleColumns(printTitleColumns)
+    fullName: setPrintTitleColumns(printTitleColumns)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPrintTitleColumns(printTitleColumns: Range | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: printTitleColumns
+          description: 'The columns to be repeated to the left of each page, range must span the entire column to be valid.'
+          type:
+            - 'excel-scripts!Excel.PageLayout#setPrintTitleColumns~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintTitleRows:member(1)'
+    summary: |-
+      Sets the rows that contain the cells to be repeated at the top of each page of the worksheet for printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: setPrintTitleRows(printTitleRows)
+    fullName: setPrintTitleRows(printTitleRows)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPrintTitleRows(printTitleRows: Range | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: printTitleRows
+          description: 'The rows to be repeated at the top of each page, range must span the entire row to be valid.'
+          type:
+            - 'excel-scripts!Excel.PageLayout#setPrintTitleRows~0:complex'
+  - uid: 'excel-scripts!Excel.PageLayout#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.PageLayout object is an API object, the `toJSON` method returns a plain
+      JavaScript object (typed as `Excel.Interfaces.PageLayoutData`<!-- -->) that contains shallow copies of any loaded
+      child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.PageLayoutData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.PageLayoutData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.PageLayout#topMargin:member'
+    summary: |-
+      Gets or sets the worksheet's top margin, in points, for use when printing.
+
+      \[Api set: ExcelApi 1.9\]
+    name: topMargin
+    fullName: topMargin
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'topMargin: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.PageLayout#zoom:member'
+    summary: >-
+      Gets or sets the worksheet's print zoom options. The `PageLayoutZoomOptions` object must be set as a JSON object
+      (use `x.zoom = {...}` instead of `x.zoom.scale = ...`<!-- -->).
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: zoom
+    fullName: zoom
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'zoom: Excel.PageLayoutZoomOptions;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayoutZoomOptions:interface'
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.RangeAreas:class'
+    name: Excel.RangeAreas
+  - uid: 'excel-scripts!Excel.Range:class'
+    name: Excel.Range
+  - uid: 'excel-scripts!Excel.HeaderFooterGroup:class'
+    name: Excel.HeaderFooterGroup
+  - uid: 'excel-scripts!Excel.PageLayout:class'
+    name: Excel.PageLayout
+  - uid: 'excel-scripts!Excel.PageLayout#orientation~0:complex'
+    name: Excel.PageOrientation | "Portrait" | "Landscape"
+    fullName: Excel.PageOrientation | "Portrait" | "Landscape"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PageOrientation:enum'
+        name: Excel.PageOrientation
+        fullName: Excel.PageOrientation
+      - name: ' | "Portrait" | "Landscape"'
+        fullName: ' | "Portrait" | "Landscape"'
+  - uid: 'excel-scripts!Excel.PageLayout#paperSize~0:complex'
+    name: >-
+      Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" |
+      "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" |
+      "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" |
+      "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" |
+      "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" |
+      "FanfoldLegalGerman"
+    fullName: >-
+      Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" |
+      "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" |
+      "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" |
+      "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" |
+      "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" |
+      "FanfoldLegalGerman"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PaperType:enum'
+        name: Excel.PaperType
+        fullName: Excel.PaperType
+      - name: ' | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman"'
+        fullName: ' | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman"'
+  - uid: 'excel-scripts!Excel.PageLayout#printComments~0:complex'
+    name: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace"
+    fullName: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PrintComments:enum'
+        name: Excel.PrintComments
+        fullName: Excel.PrintComments
+      - name: ' | "NoComments" | "EndSheet" | "InPlace"'
+        fullName: ' | "NoComments" | "EndSheet" | "InPlace"'
+  - uid: 'excel-scripts!Excel.PageLayout#printErrors~0:complex'
+    name: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"
+    fullName: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PrintErrorType:enum'
+        name: Excel.PrintErrorType
+        fullName: Excel.PrintErrorType
+      - name: ' | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"'
+        fullName: ' | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"'
+  - uid: 'excel-scripts!Excel.PageLayout#printOrder~0:complex'
+    name: Excel.PrintOrder | "DownThenOver" | "OverThenDown"
+    fullName: Excel.PrintOrder | "DownThenOver" | "OverThenDown"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.PrintOrder:enum'
+        name: Excel.PrintOrder
+        fullName: Excel.PrintOrder
+      - name: ' | "DownThenOver" | "OverThenDown"'
+        fullName: ' | "DownThenOver" | "OverThenDown"'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintArea~0:complex'
+    name: Range | RangeAreas | string
+    fullName: Excel.Range | Excel.RangeAreas | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | '
+        fullName: ' | '
+      - uid: 'excel-scripts!Excel.RangeAreas:class'
+        name: RangeAreas
+        fullName: Excel.RangeAreas
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.PrintMarginUnit:enum'
+    name: Excel.PrintMarginUnit
+  - uid: 'excel-scripts!Excel.PageLayoutMarginOptions:interface'
+    name: Excel.PageLayoutMarginOptions
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintTitleColumns~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.PageLayout#setPrintTitleRows~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.Interfaces.PageLayoutData:interface'
+    name: Excel.Interfaces.PageLayoutData
+  - uid: 'excel-scripts!Excel.PageLayoutZoomOptions:interface'
+    name: Excel.PageLayoutZoomOptions

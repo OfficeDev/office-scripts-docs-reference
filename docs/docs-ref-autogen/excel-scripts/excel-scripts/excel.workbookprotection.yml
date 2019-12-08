@@ -1,0 +1,167 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.WorkbookProtection:class'
+    summary: |-
+      Represents the protection of a workbook object.
+
+      \[Api set: ExcelApi 1.7\]
+    name: Excel.WorkbookProtection
+    fullName: Excel.WorkbookProtection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.WorkbookProtection#context:member'
+      - 'excel-scripts!Excel.WorkbookProtection#load:member(1)'
+      - 'excel-scripts!Excel.WorkbookProtection#load:member(2)'
+      - 'excel-scripts!Excel.WorkbookProtection#protect:member(1)'
+      - 'excel-scripts!Excel.WorkbookProtection#protected:member'
+      - 'excel-scripts!Excel.WorkbookProtection#toJSON:member(1)'
+      - 'excel-scripts!Excel.WorkbookProtection#unprotect:member(1)'
+  - uid: 'excel-scripts!Excel.WorkbookProtection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.WorkbookProtection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.WorkbookProtection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorkbookProtection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.WorkbookProtection#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.WorkbookProtection;
+      return:
+        type:
+          - 'excel-scripts!Excel.WorkbookProtection:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.WorkbookProtection#protect:member(1)'
+    summary: |-
+      Protects a workbook. Fails if the workbook has been protected.
+
+      \[Api set: ExcelApi 1.7\]
+    name: protect(password)
+    fullName: protect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'protect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: password
+          description: workbook protection password.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.WorkbookProtection#protected:member'
+    summary: |-
+      Indicates if the workbook is protected. Read-Only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: protected
+    fullName: protected
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly protected: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.WorkbookProtection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.WorkbookProtection object is an API object, the `toJSON` method returns
+      a plain JavaScript object (typed as `Excel.Interfaces.WorkbookProtectionData`<!-- -->) that contains shallow
+      copies of any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.WorkbookProtectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.WorkbookProtectionData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.WorkbookProtection#unprotect:member(1)'
+    summary: |-
+      Unprotects a workbook.
+
+      \[Api set: ExcelApi 1.7\]
+    name: unprotect(password)
+    fullName: unprotect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unprotect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: password
+          description: workbook protection password.
+          type:
+            - string
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.WorkbookProtection:class'
+    name: Excel.WorkbookProtection
+  - uid: 'excel-scripts!Excel.Interfaces.WorkbookProtectionData:interface'
+    name: Excel.Interfaces.WorkbookProtectionData

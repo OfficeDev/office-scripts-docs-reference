@@ -1,0 +1,1064 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Worksheet:class'
+    summary: >-
+      An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc. To learn more about the worksheet
+      object model, read [Work with worksheets using the Excel JavaScript
+      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-worksheets)<!-- -->.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: Excel.Worksheet
+    fullName: Excel.Worksheet
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Worksheet#activate:member(1)'
+      - 'excel-scripts!Excel.Worksheet#autoFilter:member'
+      - 'excel-scripts!Excel.Worksheet#calculate:member(1)'
+      - 'excel-scripts!Excel.Worksheet#charts:member'
+      - 'excel-scripts!Excel.Worksheet#comments:member'
+      - 'excel-scripts!Excel.Worksheet#context:member'
+      - 'excel-scripts!Excel.Worksheet#copy:member(1)'
+      - 'excel-scripts!Excel.Worksheet#copy:member(2)'
+      - 'excel-scripts!Excel.Worksheet#delete:member(1)'
+      - 'excel-scripts!Excel.Worksheet#enableCalculation:member'
+      - 'excel-scripts!Excel.Worksheet#findAll:member(1)'
+      - 'excel-scripts!Excel.Worksheet#findAllOrNullObject:member(1)'
+      - 'excel-scripts!Excel.Worksheet#freezePanes:member'
+      - 'excel-scripts!Excel.Worksheet#getCell:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getNext:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getNextOrNullObject:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getPrevious:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getPreviousOrNullObject:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getRange:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getRangeByIndexes:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getRanges:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getUsedRange:member(1)'
+      - 'excel-scripts!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
+      - 'excel-scripts!Excel.Worksheet#horizontalPageBreaks:member'
+      - 'excel-scripts!Excel.Worksheet#id:member'
+      - 'excel-scripts!Excel.Worksheet#load:member(1)'
+      - 'excel-scripts!Excel.Worksheet#load:member(2)'
+      - 'excel-scripts!Excel.Worksheet#name:member'
+      - 'excel-scripts!Excel.Worksheet#names:member'
+      - 'excel-scripts!Excel.Worksheet#pageLayout:member'
+      - 'excel-scripts!Excel.Worksheet#pivotTables:member'
+      - 'excel-scripts!Excel.Worksheet#position:member'
+      - 'excel-scripts!Excel.Worksheet#protection:member'
+      - 'excel-scripts!Excel.Worksheet#replaceAll:member(1)'
+      - 'excel-scripts!Excel.Worksheet#set:member(1)'
+      - 'excel-scripts!Excel.Worksheet#shapes:member'
+      - 'excel-scripts!Excel.Worksheet#showGridlines:member'
+      - 'excel-scripts!Excel.Worksheet#showHeadings:member'
+      - 'excel-scripts!Excel.Worksheet#showOutlineLevels:member(1)'
+      - 'excel-scripts!Excel.Worksheet#slicers:member'
+      - 'excel-scripts!Excel.Worksheet#standardHeight:member'
+      - 'excel-scripts!Excel.Worksheet#standardWidth:member'
+      - 'excel-scripts!Excel.Worksheet#tabColor:member'
+      - 'excel-scripts!Excel.Worksheet#tables:member'
+      - 'excel-scripts!Excel.Worksheet#toJSON:member(1)'
+      - 'excel-scripts!Excel.Worksheet#verticalPageBreaks:member'
+      - 'excel-scripts!Excel.Worksheet#visibility:member'
+  - uid: 'excel-scripts!Excel.Worksheet#activate:member(1)'
+    summary: |-
+      Activate the worksheet in the Excel UI.
+
+      \[Api set: ExcelApi 1.1\]
+    name: activate()
+    fullName: activate()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'activate(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel-scripts!Excel.Worksheet#autoFilter:member'
+    summary: |-
+      Represents the AutoFilter object of the worksheet. Read-Only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: autoFilter
+    fullName: autoFilter
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly autoFilter: Excel.AutoFilter;'
+      return:
+        type:
+          - 'excel-scripts!Excel.AutoFilter:class'
+  - uid: 'excel-scripts!Excel.Worksheet#calculate:member(1)'
+    summary: |-
+      Calculates all cells on a worksheet.
+
+      \[Api set: ExcelApi 1.6\]
+    name: calculate(markAllDirty)
+    fullName: calculate(markAllDirty)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'calculate(markAllDirty: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: markAllDirty
+          description: 'True, to mark all as dirty.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#charts:member'
+    summary: |-
+      Returns a collection of charts that are part of the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: charts
+    fullName: charts
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly charts: Excel.ChartCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#comments:member'
+    summary: |-
+      Returns a collection of all the Comments objects on the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: comments
+    fullName: comments
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly comments: Excel.CommentCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.Worksheet#copy:member(1)'
+    summary: |-
+      Copies a worksheet and places it at the specified position.
+
+      \[Api set: ExcelApi 1.7\]
+    name: 'copy(positionType, relativeTo)'
+    fullName: 'copy(positionType, relativeTo)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'copy(positionType?: Excel.WorksheetPositionType, relativeTo?: Excel.Worksheet): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: The newly created worksheet.
+      parameters:
+        - id: positionType
+          description: >-
+            The location in the workbook to place the newly created worksheet. The default value is "None", which
+            inserts the worksheet at the beginning of the worksheet.
+          type:
+            - 'excel-scripts!Excel.WorksheetPositionType:enum'
+        - id: relativeTo
+          description: >-
+            The existing worksheet which determines the newly created worksheet's position. This is only needed if
+            `positionType` is "Before" or "After".
+          type:
+            - 'excel-scripts!Excel.Worksheet:class'
+  - uid: 'excel-scripts!Excel.Worksheet#copy:member(2)'
+    summary: |-
+      Copies a worksheet and places it at the specified position.
+
+      \[Api set: ExcelApi 1.7\]
+    name: 'copy(positionTypeStringString, relativeTo)'
+    fullName: 'copy(positionTypeStringString, relativeTo)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: >-
+        copy(positionTypeStringString?: "None" | "Before" | "After" | "Beginning" | "End", relativeTo?:
+        Excel.Worksheet): Excel.Worksheet;
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: The newly created worksheet.
+      parameters:
+        - id: positionTypeStringString
+          description: >-
+            The location in the workbook to place the newly created worksheet. The default value is "None", which
+            inserts the worksheet at the beginning of the worksheet.
+          type:
+            - '"None" | "Before" | "After" | "Beginning" | "End"'
+        - id: relativeTo
+          description: >-
+            The existing worksheet which determines the newly created worksheet's position. This is only needed if
+            `positionType` is "Before" or "After".
+          type:
+            - 'excel-scripts!Excel.Worksheet:class'
+  - uid: 'excel-scripts!Excel.Worksheet#delete:member(1)'
+    summary: >-
+      Deletes the worksheet from the workbook. Note that if the worksheet's visibility is set to "VeryHidden", the
+      delete operation will fail with an `InvalidOperation` exception. You should first change its visibility to hidden
+      or visible before deleting it.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel-scripts!Excel.Worksheet#enableCalculation:member'
+    summary: >-
+      Gets or sets the enableCalculation property of the worksheet. True if Excel recalculates the worksheet when
+      necessary. False if Excel doesn't recalculate the sheet.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: enableCalculation
+    fullName: enableCalculation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'enableCalculation: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#findAll:member(1)'
+    summary: >-
+      Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
+      comprising one or more rectangular ranges.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: 'findAll(text, criteria)'
+    fullName: 'findAll(text, criteria)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'findAll(text: string, criteria: Excel.WorksheetSearchCriteria): Excel.RangeAreas;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeAreas:class'
+        description: >-
+          A RangeArea object, comprising one or more rectangular ranges, that matches the search criteria. If no cells
+          meet this criteria, an ItemNotFound error will be thrown.
+      parameters:
+        - id: text
+          description: The string to find.
+          type:
+            - string
+        - id: criteria
+          description: >-
+            Additional search criteria, including whether the search needs to match the entire cell or be case
+            sensitive.
+          type:
+            - 'excel-scripts!Excel.WorksheetSearchCriteria:interface'
+  - uid: 'excel-scripts!Excel.Worksheet#findAllOrNullObject:member(1)'
+    summary: >-
+      Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
+      comprising one or more rectangular ranges.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: 'findAllOrNullObject(text, criteria)'
+    fullName: 'findAllOrNullObject(text, criteria)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'findAllOrNullObject(text: string, criteria: Excel.WorksheetSearchCriteria): Excel.RangeAreas;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeAreas:class'
+        description: >-
+          A RangeArea object, comprising one or more rectangular ranges, that matches the search criteria. If there are
+          no matches, this function will return a null object.
+      parameters:
+        - id: text
+          description: The string to find.
+          type:
+            - string
+        - id: criteria
+          description: >-
+            Additional search criteria, including whether the search needs to match the entire cell or be case
+            sensitive.
+          type:
+            - 'excel-scripts!Excel.WorksheetSearchCriteria:interface'
+  - uid: 'excel-scripts!Excel.Worksheet#freezePanes:member'
+    summary: |-
+      Gets an object that can be used to manipulate frozen panes on the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: freezePanes
+    fullName: freezePanes
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly freezePanes: Excel.WorksheetFreezePanes;'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorksheetFreezePanes:class'
+  - uid: 'excel-scripts!Excel.Worksheet#getCell:member(1)'
+    summary: >-
+      Gets the range object containing the single cell based on row and column numbers. The cell can be outside the
+      bounds of its parent range, so long as it stays within the worksheet grid.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: 'getCell(row, column)'
+    fullName: 'getCell(row, column)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCell(row: number, column: number): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: row
+          description: The row number of the cell to be retrieved. Zero-indexed.
+          type:
+            - number
+        - id: column
+          description: the column number of the cell to be retrieved. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel-scripts!Excel.Worksheet#getNext:member(1)'
+    summary: >-
+      Gets the worksheet that follows this one. If there are no worksheets following this one, this method will throw an
+      error.
+
+
+      \[Api set: ExcelApi 1.5\]
+    name: getNext(visibleOnly)
+    fullName: getNext(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNext(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#getNextOrNullObject:member(1)'
+    summary: >-
+      Gets the worksheet that follows this one. If there are no worksheets following this one, this method will return a
+      null object.
+
+
+      \[Api set: ExcelApi 1.5\]
+    name: getNextOrNullObject(visibleOnly)
+    fullName: getNextOrNullObject(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNextOrNullObject(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#getPrevious:member(1)'
+    summary: |-
+      Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.
+
+      \[Api set: ExcelApi 1.5\]
+    name: getPrevious(visibleOnly)
+    fullName: getPrevious(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrevious(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#getPreviousOrNullObject:member(1)'
+    summary: >-
+      Gets the worksheet that precedes this one. If there are no previous worksheets, this method will return a null
+      objet.
+
+
+      \[Api set: ExcelApi 1.5\]
+    name: getPreviousOrNullObject(visibleOnly)
+    fullName: getPreviousOrNullObject(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPreviousOrNullObject(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#getRange:member(1)'
+    summary: |-
+      Gets the range object, representing a single rectangular block of cells, specified by the address or name.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getRange(address)
+    fullName: getRange(address)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(address?: string): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: address
+          description: >-
+            Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified,
+            the entire worksheet range is returned.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.Worksheet#getRangeByIndexes:member(1)'
+    summary: >-
+      Gets the range object beginning at a particular row index and column index, and spanning a certain number of rows
+      and columns.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
+    fullName: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRangeByIndexes(startRow: number, startColumn: number, rowCount: number, columnCount: number): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: startRow
+          description: Start row (zero-indexed).
+          type:
+            - number
+        - id: startColumn
+          description: Start column (zero-indexed).
+          type:
+            - number
+        - id: rowCount
+          description: Number of rows to include in the range.
+          type:
+            - number
+        - id: columnCount
+          description: Number of columns to include in the range.
+          type:
+            - number
+  - uid: 'excel-scripts!Excel.Worksheet#getRanges:member(1)'
+    summary: >-
+      Gets the RangeAreas object, representing one or more blocks of rectangular ranges, specified by the address or
+      name.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: getRanges(address)
+    fullName: getRanges(address)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRanges(address?: string): Excel.RangeAreas;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RangeAreas:class'
+        description: ''
+      parameters:
+        - id: address
+          description: >-
+            Optional. A string containing the comma-separated addresses or names of the individual ranges. For example,
+            "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.Worksheet#getUsedRange:member(1)'
+    summary: >-
+      The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
+      If the entire worksheet is blank, this function will return the top left cell (i.e. it will \*not\* throw an
+      error).
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: getUsedRange(valuesOnly)
+    fullName: getUsedRange(valuesOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getUsedRange(valuesOnly?: boolean): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: valuesOnly
+          description: >-
+            Optional. If true, considers only cells with values as used cells (ignoring formatting). \[Api set: ExcelApi
+            1.2\]
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
+    summary: >-
+      The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
+      If the entire worksheet is blank, this function will return a null object.
+
+
+      \[Api set: ExcelApi 1.4\]
+    name: getUsedRangeOrNullObject(valuesOnly)
+    fullName: getUsedRangeOrNullObject(valuesOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getUsedRangeOrNullObject(valuesOnly?: boolean): Excel.Range;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: valuesOnly
+          description: Optional. Considers only cells with values as used cells.
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#horizontalPageBreaks:member'
+    summary: |-
+      Gets the horizontal page break collection for the worksheet. This collection only contains manual page breaks.
+
+      \[Api set: ExcelApi 1.9\]
+    name: horizontalPageBreaks
+    fullName: horizontalPageBreaks
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly horizontalPageBreaks: Excel.PageBreakCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageBreakCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#id:member'
+    summary: >-
+      Returns a value that uniquely identifies the worksheet in a given workbook. The value of the identifier remains
+      the same even when the worksheet is renamed or moved. Read-only.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Worksheet#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.Worksheet#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.Worksheet;
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.Worksheet#name:member'
+    summary: |-
+      The display name of the worksheet.
+
+      \[Api set: ExcelApi 1.1\]
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Worksheet#names:member'
+    summary: |-
+      Collection of names scoped to the current worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.4\]
+    name: names
+    fullName: names
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly names: Excel.NamedItemCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.NamedItemCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#pageLayout:member'
+    summary: |-
+      Gets the PageLayout object of the worksheet.
+
+      \[Api set: ExcelApi 1.9\]
+    name: pageLayout
+    fullName: pageLayout
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly pageLayout: Excel.PageLayout;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageLayout:class'
+  - uid: 'excel-scripts!Excel.Worksheet#pivotTables:member'
+    summary: |-
+      Collection of PivotTables that are part of the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.3\]
+    name: pivotTables
+    fullName: pivotTables
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly pivotTables: Excel.PivotTableCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PivotTableCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#position:member'
+    summary: |-
+      The zero-based position of the worksheet within the workbook.
+
+      \[Api set: ExcelApi 1.1\]
+    name: position
+    fullName: position
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'position: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Worksheet#protection:member'
+    summary: |-
+      Returns sheet protection object for a worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.2\]
+    name: protection
+    fullName: protection
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly protection: Excel.WorksheetProtection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorksheetProtection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#replaceAll:member(1)'
+    summary: |-
+      Finds and replaces the given string based on the criteria specified within the current worksheet.
+
+      \[Api set: ExcelApi 1.9\]
+    name: 'replaceAll(text, replacement, criteria)'
+    fullName: 'replaceAll(text, replacement, criteria)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'replaceAll(text: string, replacement: string, criteria: Excel.ReplaceCriteria): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet#replaceAll~0:complex'
+        description: The number of replacements performed.
+      parameters:
+        - id: text
+          description: String to find.
+          type:
+            - string
+        - id: replacement
+          description: String to replace the original with.
+          type:
+            - string
+        - id: criteria
+          description: Additional Replace Criteria.
+          type:
+            - 'excel-scripts!Excel.ReplaceCriteria:interface'
+  - uid: 'excel-scripts!Excel.Worksheet#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.Worksheet): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.Worksheet:class'
+  - uid: 'excel-scripts!Excel.Worksheet#shapes:member'
+    summary: |-
+      Returns the collection of all the Shape objects on the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: shapes
+    fullName: shapes
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly shapes: Excel.ShapeCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ShapeCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#showGridlines:member'
+    summary: |-
+      Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
+
+      \[Api set: ExcelApi 1.8\]
+    name: showGridlines
+    fullName: showGridlines
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showGridlines: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#showHeadings:member'
+    summary: |-
+      Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
+
+      \[Api set: ExcelApi 1.8\]
+    name: showHeadings
+    fullName: showHeadings
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showHeadings: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Worksheet#showOutlineLevels:member(1)'
+    summary: >-
+      Shows row or column groups by their outline levels. Outlines group and summarize a list of data in the worksheet.
+      The `rowLevels` and `columnLevels` parameters specify how many levels of the outline will be displayed. The
+      acceptable argument range is between 0 and 8. A value of 0 does not change the current display. A value greater
+      than the current number of levels displays all the levels.
+
+
+      \[Api set: ExcelApi 1.10\]
+    name: 'showOutlineLevels(rowLevels, columnLevels)'
+    fullName: 'showOutlineLevels(rowLevels, columnLevels)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'showOutlineLevels(rowLevels: number, columnLevels: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: rowLevels
+          description: The number of row levels of an outline to display.
+          type:
+            - number
+        - id: columnLevels
+          description: The number of column levels of an outline to display.
+          type:
+            - number
+  - uid: 'excel-scripts!Excel.Worksheet#slicers:member'
+    summary: |-
+      Returns a collection of slicers that are part of the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: slicers
+    fullName: slicers
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly slicers: Excel.SlicerCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.SlicerCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#standardHeight:member'
+    summary: |-
+      Returns the standard (default) height of all the rows in the worksheet, in points. Read-only.
+
+      \[Api set: ExcelApi 1.7\]
+    name: standardHeight
+    fullName: standardHeight
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly standardHeight: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Worksheet#standardWidth:member'
+    summary: >-
+      Returns or sets the standard (default) width of all the columns in the worksheet. One unit of column width is
+      equal to the width of one character in the Normal style. For proportional fonts, the width of the character 0
+      (zero) is used.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: standardWidth
+    fullName: standardWidth
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'standardWidth: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Worksheet#tabColor:member'
+    summary: >-
+      Gets or sets the worksheet tab color. When retrieving the tab color, if the worksheet is invisible, the value will
+      be null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
+      Otherwise, the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string
+      to set an "auto" color, or a real color otherwise.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: tabColor
+    fullName: tabColor
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'tabColor: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Worksheet#tables:member'
+    summary: |-
+      Collection of tables that are part of the worksheet. Read-only.
+
+      \[Api set: ExcelApi 1.1\]
+    name: tables
+    fullName: tables
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly tables: Excel.TableCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.TableCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.Worksheet object is an API object, the `toJSON` method returns a plain
+      JavaScript object (typed as `Excel.Interfaces.WorksheetData`<!-- -->) that contains shallow copies of any loaded
+      child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.WorksheetData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.WorksheetData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.Worksheet#verticalPageBreaks:member'
+    summary: |-
+      Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
+
+      \[Api set: ExcelApi 1.9\]
+    name: verticalPageBreaks
+    fullName: verticalPageBreaks
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly verticalPageBreaks: Excel.PageBreakCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.PageBreakCollection:class'
+  - uid: 'excel-scripts!Excel.Worksheet#visibility:member'
+    summary: |-
+      The Visibility of the worksheet.
+
+      \[Api set: ExcelApi 1.1 for reading visibility; 1.2 for setting it.\]
+    name: visibility
+    fullName: visibility
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'visibility: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet#visibility~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.AutoFilter:class'
+    name: Excel.AutoFilter
+  - uid: 'excel-scripts!Excel.ChartCollection:class'
+    name: Excel.ChartCollection
+  - uid: 'excel-scripts!Excel.CommentCollection:class'
+    name: Excel.CommentCollection
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.Worksheet:class'
+    name: Excel.Worksheet
+  - uid: 'excel-scripts!Excel.WorksheetPositionType:enum'
+    name: Excel.WorksheetPositionType
+  - uid: 'excel-scripts!Excel.RangeAreas:class'
+    name: Excel.RangeAreas
+  - uid: 'excel-scripts!Excel.WorksheetSearchCriteria:interface'
+    name: Excel.WorksheetSearchCriteria
+  - uid: 'excel-scripts!Excel.WorksheetFreezePanes:class'
+    name: Excel.WorksheetFreezePanes
+  - uid: 'excel-scripts!Excel.Range:class'
+    name: Excel.Range
+  - uid: 'excel-scripts!Excel.PageBreakCollection:class'
+    name: Excel.PageBreakCollection
+  - uid: 'excel-scripts!Excel.NamedItemCollection:class'
+    name: Excel.NamedItemCollection
+  - uid: 'excel-scripts!Excel.PageLayout:class'
+    name: Excel.PageLayout
+  - uid: 'excel-scripts!Excel.PivotTableCollection:class'
+    name: Excel.PivotTableCollection
+  - uid: 'excel-scripts!Excel.WorksheetProtection:class'
+    name: Excel.WorksheetProtection
+  - uid: 'excel-scripts!Excel.Worksheet#replaceAll~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.ReplaceCriteria:interface'
+    name: Excel.ReplaceCriteria
+  - uid: 'excel-scripts!Excel.ShapeCollection:class'
+    name: Excel.ShapeCollection
+  - uid: 'excel-scripts!Excel.SlicerCollection:class'
+    name: Excel.SlicerCollection
+  - uid: 'excel-scripts!Excel.TableCollection:class'
+    name: Excel.TableCollection
+  - uid: 'excel-scripts!Excel.Interfaces.WorksheetData:interface'
+    name: Excel.Interfaces.WorksheetData
+  - uid: 'excel-scripts!Excel.Worksheet#visibility~0:complex'
+    name: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden"
+    fullName: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.SheetVisibility:enum'
+        name: Excel.SheetVisibility
+        fullName: Excel.SheetVisibility
+      - name: ' | "Visible" | "Hidden" | "VeryHidden"'
+        fullName: ' | "Visible" | "Hidden" | "VeryHidden"'
