@@ -44,7 +44,7 @@ tryCatch(async () => {
     console.log("\nStarting postprocessor script...");
 
     const docsSource = path.resolve("../yaml");
-    const docsDestination = path.resolve("../../docs/docs-ref-autogen");
+    const docsDestination = path.resolve("../../docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
     // delete everything except the 'overview' folder from the /docs folder
@@ -166,6 +166,6 @@ function scrubAndWriteToc(versionFolder: string): Toc {
     const tocPath = versionFolder + "/toc.yml";
     let latestToc = fixToc(tocPath);
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    fsx.copySync("../../docs/docs-ref-autogen/overview/overview.md", versionFolder + "/overview.md");
+    fsx.copySync("../../docs-ref-autogen/overview/overview.md", versionFolder + "/overview.md");
     return latestToc;
 }
