@@ -44,12 +44,12 @@ tryCatch(async () => {
     console.log("\nStarting postprocessor script...");
 
     const docsSource = path.resolve("../yaml");
-    const docsDestination = path.resolve("../../docs-ref-autogen");
+    const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the 'overview' folder from the /docs folder
+    // delete everything except the 'office-scripts' folder from the /docs folder
     fsx.readdirSync(docsDestination)
-        .filter(filename => filename !== "overview" && filename !== "images")
+        .filter(filename => filename !== "office-scripts" && filename !== "images")
         .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
 
     console.log(`Copying docs output files to: ${docsDestination}`);
@@ -92,7 +92,7 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "overview.md"
+        "href": "office-scripts/overview.md"
     }] as any;
 
     // create folders for Excel subcategories
@@ -166,6 +166,6 @@ function scrubAndWriteToc(versionFolder: string): Toc {
     const tocPath = versionFolder + "/toc.yml";
     let latestToc = fixToc(tocPath);
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    fsx.copySync("../../docs-ref-autogen/overview/overview.md", versionFolder + "/overview.md");
+    fsx.copySync("../../docs/docs-ref-autogen/office-scripts/overview.md", versionFolder + "/overview.md");
     return latestToc;
 }
