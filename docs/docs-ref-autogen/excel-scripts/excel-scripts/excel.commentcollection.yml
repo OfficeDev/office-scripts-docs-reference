@@ -1,10 +1,7 @@
 ### YamlMime:UniversalReference
 items:
   - uid: 'excel-scripts!Excel.CommentCollection:class'
-    summary: |-
-      Represents a collection of comment objects that are part of the workbook.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Represents a collection of comment objects that are part of the workbook.
     name: Excel.CommentCollection
     fullName: Excel.CommentCollection
     langs:
@@ -27,9 +24,6 @@ items:
     summary: >-
       Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
       provided range is larger than one cell.
-
-
-      \[Api set: ExcelApi 1.10\]
     name: 'add(cellAddress, content, contentType)'
     fullName: 'add(cellAddress, content, contentType)'
     langs:
@@ -54,24 +48,19 @@ items:
         - id: content
           description: >-
             The comment's content. This can be either a string or CommentRichContent object. Strings are used for plain
-            text. CommentRichContent objects allow for other comment features, such as mentions. \[Api set: ExcelApi
-            1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+            text. CommentRichContent objects allow for other comment features, such as mentions.
           type:
             - 'excel-scripts!Excel.CommentCollection#add~1:complex'
         - id: contentType
           description: >-
             Optional. The type of content contained within the comment. The default value is enum
-            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
-            Enum ContentType.Mention\]
+            `ContentType.Plain`<!-- -->.
           type:
             - 'excel-scripts!Excel.ContentType:enum'
   - uid: 'excel-scripts!Excel.CommentCollection#add:member(2)'
     summary: >-
       Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
       provided range is larger than one cell.
-
-
-      \[Api set: ExcelApi 1.10\]
     name: 'add(cellAddress, content, contentTypeStringString)'
     fullName: 'add(cellAddress, content, contentTypeStringString)'
     langs:
@@ -96,15 +85,13 @@ items:
         - id: content
           description: >-
             The comment's content. This can be either a string or CommentRichContent object. Strings are used for plain
-            text. CommentRichContent objects allow for other comment features, such as mentions. \[Api set: ExcelApi
-            1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+            text. CommentRichContent objects allow for other comment features, such as mentions.
           type:
             - 'excel-scripts!Excel.CommentCollection#add~3:complex'
         - id: contentTypeStringString
           description: >-
             Optional. The type of content contained within the comment. The default value is enum
-            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
-            Enum ContentType.Mention\]
+            `ContentType.Plain`<!-- -->.
           type:
             - '"Plain" | "Mention"'
   - uid: 'excel-scripts!Excel.CommentCollection#context:member'
@@ -122,10 +109,7 @@ items:
         type:
           - 'excel-scripts!Excel.RequestContext:class'
   - uid: 'excel-scripts!Excel.CommentCollection#getCount:member(1)'
-    summary: |-
-      Gets the number of comments in the collection.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Gets the number of comments in the collection.
     name: getCount()
     fullName: getCount()
     langs:
@@ -138,10 +122,7 @@ items:
           - 'excel-scripts!Excel.CommentCollection#getCount~0:complex'
         description: ''
   - uid: 'excel-scripts!Excel.CommentCollection#getItem:member(1)'
-    summary: |-
-      Gets a comment from the collection based on its ID. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Gets a comment from the collection based on its ID. Read-only.
     name: getItem(commentId)
     fullName: getItem(commentId)
     langs:
@@ -159,10 +140,7 @@ items:
           type:
             - string
   - uid: 'excel-scripts!Excel.CommentCollection#getItemAt:member(1)'
-    summary: |-
-      Gets a comment from the collection based on its position.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Gets a comment from the collection based on its position.
     name: getItemAt(index)
     fullName: getItemAt(index)
     langs:
@@ -180,10 +158,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.CommentCollection#getItemByCell:member(1)'
-    summary: |-
-      Gets the comment from the specified cell.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Gets the comment from the specified cell.
     name: getItemByCell(cellAddress)
     fullName: getItemByCell(cellAddress)
     langs:
@@ -204,10 +179,7 @@ items:
           type:
             - 'excel-scripts!Excel.CommentCollection#getItemByCell~0:complex'
   - uid: 'excel-scripts!Excel.CommentCollection#getItemByReplyId:member(1)'
-    summary: |-
-      Gets the comment to which the given reply is connected.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Gets the comment to which the given reply is connected.
     name: getItemByReplyId(replyId)
     fullName: getItemByReplyId(replyId)
     langs:

@@ -5,9 +5,6 @@ items:
       Represents a defined name for a range of cells or value. Names can be primitive named objects (as seen in the type
       below), range object, or a reference to a range. This object can be used to obtain range object associated with
       names.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: Excel.NamedItem
     fullName: Excel.NamedItem
     langs:
@@ -34,10 +31,7 @@ items:
       - 'excel-scripts!Excel.NamedItem#worksheet:member'
       - 'excel-scripts!Excel.NamedItem#worksheetOrNullObject:member'
   - uid: 'excel-scripts!Excel.NamedItem#arrayValues:member'
-    summary: |-
-      Returns an object containing values and types of the named item. Read-only.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Returns an object containing values and types of the named item. Read-only.
     name: arrayValues
     fullName: arrayValues
     langs:
@@ -49,10 +43,7 @@ items:
         type:
           - 'excel-scripts!Excel.NamedItemArrayValues:class'
   - uid: 'excel-scripts!Excel.NamedItem#comment:member'
-    summary: |-
-      Represents the comment associated with this name.
-
-      \[Api set: ExcelApi 1.4\]
+    summary: Represents the comment associated with this name.
     name: comment
     fullName: comment
     langs:
@@ -78,10 +69,7 @@ items:
         type:
           - 'excel-scripts!Excel.RequestContext:class'
   - uid: 'excel-scripts!Excel.NamedItem#delete:member(1)'
-    summary: |-
-      Deletes the given name.
-
-      \[Api set: ExcelApi 1.4\]
+    summary: Deletes the given name.
     name: delete()
     fullName: delete()
     langs:
@@ -94,10 +82,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.NamedItem#formula:member'
-    summary: |-
-      Gets or sets the formula of the named item. Formula always starts with a '=' sign.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Gets or sets the formula of the named item. Formula always starts with a '=' sign.
     name: formula
     fullName: formula
     langs:
@@ -112,9 +97,6 @@ items:
     summary: >-
       Returns the range object that is associated with the name. Throws an error if the named item's type is not a
       range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getRange()
     fullName: getRange()
     langs:
@@ -130,9 +112,6 @@ items:
     summary: >-
       Returns the range object that is associated with the name. Returns a null object if the named item's type is not a
       range.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: getRangeOrNullObject()
     fullName: getRangeOrNullObject()
     langs:
@@ -195,10 +174,7 @@ items:
                           expand?: string;
                       }
   - uid: 'excel-scripts!Excel.NamedItem#name:member'
-    summary: |-
-      The name of the object. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: The name of the object. Read-only.
     name: name
     fullName: name
     langs:
@@ -213,9 +189,6 @@ items:
     summary: >-
       Indicates whether the name is scoped to the workbook or to a specific worksheet. Possible values are: Worksheet,
       Workbook. Read-only.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: scope
     fullName: scope
     langs:
@@ -263,10 +236,7 @@ items:
           - 'excel-scripts!Excel.Interfaces.NamedItemData:interface'
         description: ''
   - uid: 'excel-scripts!Excel.NamedItem#type:member'
-    summary: |-
-      Indicates the type of the value returned by the name's formula. See Excel.NamedItemType for details. Read-only.
-
-      \[Api set: ExcelApi 1.1 for String,Integer,Double,Boolean,Range,Error; 1.7 for Array\]
+    summary: Indicates the type of the value returned by the name's formula. See Excel.NamedItemType for details. Read-only.
     name: type
     fullName: type
     langs:
@@ -278,10 +248,7 @@ items:
         type:
           - 'excel-scripts!Excel.NamedItem#type~0:complex'
   - uid: 'excel-scripts!Excel.NamedItem#value:member'
-    summary: |-
-      Represents the value computed by the name's formula. For a named range, will return the range address. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Represents the value computed by the name''s formula. For a named range, will return the range address. Read-only.'
     name: value
     fullName: value
     langs:
@@ -293,10 +260,7 @@ items:
         type:
           - any
   - uid: 'excel-scripts!Excel.NamedItem#visible:member'
-    summary: |-
-      Specifies whether the object is visible or not.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Specifies whether the object is visible or not.
     name: visible
     fullName: visible
     langs:
@@ -311,9 +275,6 @@ items:
     summary: >-
       Returns the worksheet on which the named item is scoped to. Throws an error if the item is scoped to the workbook
       instead.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: worksheet
     fullName: worksheet
     langs:
@@ -328,9 +289,6 @@ items:
     summary: >-
       Returns the worksheet on which the named item is scoped to. Returns a null object if the item is scoped to the
       workbook instead.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: worksheetOrNullObject
     fullName: worksheetOrNullObject
     langs:

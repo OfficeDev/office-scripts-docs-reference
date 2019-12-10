@@ -5,9 +5,6 @@ items:
       An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc. To learn more about the worksheet
       object model, read [Work with worksheets using the Excel JavaScript
       API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-worksheets)<!-- -->.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: Excel.Worksheet
     fullName: Excel.Worksheet
     langs:
@@ -63,10 +60,7 @@ items:
       - 'excel-scripts!Excel.Worksheet#verticalPageBreaks:member'
       - 'excel-scripts!Excel.Worksheet#visibility:member'
   - uid: 'excel-scripts!Excel.Worksheet#activate:member(1)'
-    summary: |-
-      Activate the worksheet in the Excel UI.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Activate the worksheet in the Excel UI.
     name: activate()
     fullName: activate()
     langs:
@@ -79,10 +73,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.Worksheet#autoFilter:member'
-    summary: |-
-      Represents the AutoFilter object of the worksheet. Read-Only.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Represents the AutoFilter object of the worksheet. Read-Only.
     name: autoFilter
     fullName: autoFilter
     langs:
@@ -94,10 +85,7 @@ items:
         type:
           - 'excel-scripts!Excel.AutoFilter:class'
   - uid: 'excel-scripts!Excel.Worksheet#calculate:member(1)'
-    summary: |-
-      Calculates all cells on a worksheet.
-
-      \[Api set: ExcelApi 1.6\]
+    summary: Calculates all cells on a worksheet.
     name: calculate(markAllDirty)
     fullName: calculate(markAllDirty)
     langs:
@@ -115,10 +103,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Worksheet#charts:member'
-    summary: |-
-      Returns a collection of charts that are part of the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Returns a collection of charts that are part of the worksheet. Read-only.
     name: charts
     fullName: charts
     langs:
@@ -130,10 +115,7 @@ items:
         type:
           - 'excel-scripts!Excel.ChartCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#comments:member'
-    summary: |-
-      Returns a collection of all the Comments objects on the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Returns a collection of all the Comments objects on the worksheet. Read-only.
     name: comments
     fullName: comments
     langs:
@@ -159,10 +141,7 @@ items:
         type:
           - 'excel-scripts!Excel.RequestContext:class'
   - uid: 'excel-scripts!Excel.Worksheet#copy:member(1)'
-    summary: |-
-      Copies a worksheet and places it at the specified position.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Copies a worksheet and places it at the specified position.
     name: 'copy(positionType, relativeTo)'
     fullName: 'copy(positionType, relativeTo)'
     langs:
@@ -188,10 +167,7 @@ items:
           type:
             - 'excel-scripts!Excel.Worksheet:class'
   - uid: 'excel-scripts!Excel.Worksheet#copy:member(2)'
-    summary: |-
-      Copies a worksheet and places it at the specified position.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Copies a worksheet and places it at the specified position.
     name: 'copy(positionTypeStringString, relativeTo)'
     fullName: 'copy(positionTypeStringString, relativeTo)'
     langs:
@@ -223,9 +199,6 @@ items:
       Deletes the worksheet from the workbook. Note that if the worksheet's visibility is set to "VeryHidden", the
       delete operation will fail with an `InvalidOperation` exception. You should first change its visibility to hidden
       or visible before deleting it.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: delete()
     fullName: delete()
     langs:
@@ -241,9 +214,6 @@ items:
     summary: >-
       Gets or sets the enableCalculation property of the worksheet. True if Excel recalculates the worksheet when
       necessary. False if Excel doesn't recalculate the sheet.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: enableCalculation
     fullName: enableCalculation
     langs:
@@ -258,9 +228,6 @@ items:
     summary: >-
       Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
       comprising one or more rectangular ranges.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'findAll(text, criteria)'
     fullName: 'findAll(text, criteria)'
     langs:
@@ -289,9 +256,6 @@ items:
     summary: >-
       Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
       comprising one or more rectangular ranges.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'findAllOrNullObject(text, criteria)'
     fullName: 'findAllOrNullObject(text, criteria)'
     langs:
@@ -317,10 +281,7 @@ items:
           type:
             - 'excel-scripts!Excel.WorksheetSearchCriteria:interface'
   - uid: 'excel-scripts!Excel.Worksheet#freezePanes:member'
-    summary: |-
-      Gets an object that can be used to manipulate frozen panes on the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Gets an object that can be used to manipulate frozen panes on the worksheet. Read-only.
     name: freezePanes
     fullName: freezePanes
     langs:
@@ -335,9 +296,6 @@ items:
     summary: >-
       Gets the range object containing the single cell based on row and column numbers. The cell can be outside the
       bounds of its parent range, so long as it stays within the worksheet grid.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: 'getCell(row, column)'
     fullName: 'getCell(row, column)'
     langs:
@@ -362,9 +320,6 @@ items:
     summary: >-
       Gets the worksheet that follows this one. If there are no worksheets following this one, this method will throw an
       error.
-
-
-      \[Api set: ExcelApi 1.5\]
     name: getNext(visibleOnly)
     fullName: getNext(visibleOnly)
     langs:
@@ -385,9 +340,6 @@ items:
     summary: >-
       Gets the worksheet that follows this one. If there are no worksheets following this one, this method will return a
       null object.
-
-
-      \[Api set: ExcelApi 1.5\]
     name: getNextOrNullObject(visibleOnly)
     fullName: getNextOrNullObject(visibleOnly)
     langs:
@@ -405,10 +357,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Worksheet#getPrevious:member(1)'
-    summary: |-
-      Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.
-
-      \[Api set: ExcelApi 1.5\]
+    summary: 'Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.'
     name: getPrevious(visibleOnly)
     fullName: getPrevious(visibleOnly)
     langs:
@@ -429,9 +378,6 @@ items:
     summary: >-
       Gets the worksheet that precedes this one. If there are no previous worksheets, this method will return a null
       objet.
-
-
-      \[Api set: ExcelApi 1.5\]
     name: getPreviousOrNullObject(visibleOnly)
     fullName: getPreviousOrNullObject(visibleOnly)
     langs:
@@ -449,10 +395,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Worksheet#getRange:member(1)'
-    summary: |-
-      Gets the range object, representing a single rectangular block of cells, specified by the address or name.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Gets the range object, representing a single rectangular block of cells, specified by the address or name.'
     name: getRange(address)
     fullName: getRange(address)
     langs:
@@ -475,9 +418,6 @@ items:
     summary: >-
       Gets the range object beginning at a particular row index and column index, and spanning a certain number of rows
       and columns.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
     fullName: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
     langs:
@@ -510,9 +450,6 @@ items:
     summary: >-
       Gets the RangeAreas object, representing one or more blocks of rectangular ranges, specified by the address or
       name.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: getRanges(address)
     fullName: getRanges(address)
     langs:
@@ -536,9 +473,6 @@ items:
       The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
       If the entire worksheet is blank, this function will return the top left cell (i.e. it will \*not\* throw an
       error).
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getUsedRange(valuesOnly)
     fullName: getUsedRange(valuesOnly)
     langs:
@@ -552,18 +486,13 @@ items:
         description: ''
       parameters:
         - id: valuesOnly
-          description: >-
-            Optional. If true, considers only cells with values as used cells (ignoring formatting). \[Api set: ExcelApi
-            1.2\]
+          description: 'Optional. If true, considers only cells with values as used cells (ignoring formatting).'
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
     summary: >-
       The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
       If the entire worksheet is blank, this function will return a null object.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: getUsedRangeOrNullObject(valuesOnly)
     fullName: getUsedRangeOrNullObject(valuesOnly)
     langs:
@@ -581,10 +510,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Worksheet#horizontalPageBreaks:member'
-    summary: |-
-      Gets the horizontal page break collection for the worksheet. This collection only contains manual page breaks.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Gets the horizontal page break collection for the worksheet. This collection only contains manual page breaks.
     name: horizontalPageBreaks
     fullName: horizontalPageBreaks
     langs:
@@ -599,9 +525,6 @@ items:
     summary: >-
       Returns a value that uniquely identifies the worksheet in a given workbook. The value of the identifier remains
       the same even when the worksheet is renamed or moved. Read-only.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: id
     fullName: id
     langs:
@@ -663,10 +586,7 @@ items:
                           expand?: string;
                       }
   - uid: 'excel-scripts!Excel.Worksheet#name:member'
-    summary: |-
-      The display name of the worksheet.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: The display name of the worksheet.
     name: name
     fullName: name
     langs:
@@ -678,10 +598,7 @@ items:
         type:
           - string
   - uid: 'excel-scripts!Excel.Worksheet#names:member'
-    summary: |-
-      Collection of names scoped to the current worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.4\]
+    summary: Collection of names scoped to the current worksheet. Read-only.
     name: names
     fullName: names
     langs:
@@ -693,10 +610,7 @@ items:
         type:
           - 'excel-scripts!Excel.NamedItemCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#pageLayout:member'
-    summary: |-
-      Gets the PageLayout object of the worksheet.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Gets the PageLayout object of the worksheet.
     name: pageLayout
     fullName: pageLayout
     langs:
@@ -708,10 +622,7 @@ items:
         type:
           - 'excel-scripts!Excel.PageLayout:class'
   - uid: 'excel-scripts!Excel.Worksheet#pivotTables:member'
-    summary: |-
-      Collection of PivotTables that are part of the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.3\]
+    summary: Collection of PivotTables that are part of the worksheet. Read-only.
     name: pivotTables
     fullName: pivotTables
     langs:
@@ -723,10 +634,7 @@ items:
         type:
           - 'excel-scripts!Excel.PivotTableCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#position:member'
-    summary: |-
-      The zero-based position of the worksheet within the workbook.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: The zero-based position of the worksheet within the workbook.
     name: position
     fullName: position
     langs:
@@ -738,10 +646,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Worksheet#protection:member'
-    summary: |-
-      Returns sheet protection object for a worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Returns sheet protection object for a worksheet. Read-only.
     name: protection
     fullName: protection
     langs:
@@ -753,10 +658,7 @@ items:
         type:
           - 'excel-scripts!Excel.WorksheetProtection:class'
   - uid: 'excel-scripts!Excel.Worksheet#replaceAll:member(1)'
-    summary: |-
-      Finds and replaces the given string based on the criteria specified within the current worksheet.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Finds and replaces the given string based on the criteria specified within the current worksheet.
     name: 'replaceAll(text, replacement, criteria)'
     fullName: 'replaceAll(text, replacement, criteria)'
     langs:
@@ -800,10 +702,7 @@ items:
           type:
             - 'excel-scripts!Excel.Worksheet:class'
   - uid: 'excel-scripts!Excel.Worksheet#shapes:member'
-    summary: |-
-      Returns the collection of all the Shape objects on the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Returns the collection of all the Shape objects on the worksheet. Read-only.
     name: shapes
     fullName: shapes
     langs:
@@ -815,10 +714,7 @@ items:
         type:
           - 'excel-scripts!Excel.ShapeCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#showGridlines:member'
-    summary: |-
-      Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
-
-      \[Api set: ExcelApi 1.8\]
+    summary: Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
     name: showGridlines
     fullName: showGridlines
     langs:
@@ -830,10 +726,7 @@ items:
         type:
           - boolean
   - uid: 'excel-scripts!Excel.Worksheet#showHeadings:member'
-    summary: |-
-      Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
-
-      \[Api set: ExcelApi 1.8\]
+    summary: Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
     name: showHeadings
     fullName: showHeadings
     langs:
@@ -850,9 +743,6 @@ items:
       The `rowLevels` and `columnLevels` parameters specify how many levels of the outline will be displayed. The
       acceptable argument range is between 0 and 8. A value of 0 does not change the current display. A value greater
       than the current number of levels displays all the levels.
-
-
-      \[Api set: ExcelApi 1.10\]
     name: 'showOutlineLevels(rowLevels, columnLevels)'
     fullName: 'showOutlineLevels(rowLevels, columnLevels)'
     langs:
@@ -874,10 +764,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.Worksheet#slicers:member'
-    summary: |-
-      Returns a collection of slicers that are part of the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Returns a collection of slicers that are part of the worksheet. Read-only.
     name: slicers
     fullName: slicers
     langs:
@@ -889,10 +776,7 @@ items:
         type:
           - 'excel-scripts!Excel.SlicerCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#standardHeight:member'
-    summary: |-
-      Returns the standard (default) height of all the rows in the worksheet, in points. Read-only.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points. Read-only.'
     name: standardHeight
     fullName: standardHeight
     langs:
@@ -908,9 +792,6 @@ items:
       Returns or sets the standard (default) width of all the columns in the worksheet. One unit of column width is
       equal to the width of one character in the Normal style. For proportional fonts, the width of the character 0
       (zero) is used.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: standardWidth
     fullName: standardWidth
     langs:
@@ -927,9 +808,6 @@ items:
       be null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
       Otherwise, the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string
       to set an "auto" color, or a real color otherwise.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: tabColor
     fullName: tabColor
     langs:
@@ -941,10 +819,7 @@ items:
         type:
           - string
   - uid: 'excel-scripts!Excel.Worksheet#tables:member'
-    summary: |-
-      Collection of tables that are part of the worksheet. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Collection of tables that are part of the worksheet. Read-only.
     name: tables
     fullName: tables
     langs:
@@ -974,10 +849,7 @@ items:
           - 'excel-scripts!Excel.Interfaces.WorksheetData:interface'
         description: ''
   - uid: 'excel-scripts!Excel.Worksheet#verticalPageBreaks:member'
-    summary: |-
-      Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
     name: verticalPageBreaks
     fullName: verticalPageBreaks
     langs:
@@ -989,10 +861,7 @@ items:
         type:
           - 'excel-scripts!Excel.PageBreakCollection:class'
   - uid: 'excel-scripts!Excel.Worksheet#visibility:member'
-    summary: |-
-      The Visibility of the worksheet.
-
-      \[Api set: ExcelApi 1.1 for reading visibility; 1.2 for setting it.\]
+    summary: The Visibility of the worksheet.
     name: visibility
     fullName: visibility
     langs:
