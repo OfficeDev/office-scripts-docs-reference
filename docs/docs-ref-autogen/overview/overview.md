@@ -10,4 +10,4 @@ The Office Scripts API lets you automate common tasks in Excel on the web. Use t
 
 ## See also
 
-- [About Office Scripts-ins](/office/dev/scripts/overview/overview)
+- [About Office Scripts](/office/dev/scripts/overview/overview)
