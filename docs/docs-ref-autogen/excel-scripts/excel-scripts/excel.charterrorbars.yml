@@ -1,0 +1,226 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ChartErrorBars:class'
+    summary: |-
+      This object represents the attributes for a chart's error bars.
+
+      \[Api set: ExcelApi 1.9\]
+    name: Excel.ChartErrorBars
+    fullName: Excel.ChartErrorBars
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ChartErrorBars#context:member'
+      - 'excel-scripts!Excel.ChartErrorBars#endStyleCap:member'
+      - 'excel-scripts!Excel.ChartErrorBars#format:member'
+      - 'excel-scripts!Excel.ChartErrorBars#include:member'
+      - 'excel-scripts!Excel.ChartErrorBars#load:member(1)'
+      - 'excel-scripts!Excel.ChartErrorBars#load:member(2)'
+      - 'excel-scripts!Excel.ChartErrorBars#set:member(1)'
+      - 'excel-scripts!Excel.ChartErrorBars#toJSON:member(1)'
+      - 'excel-scripts!Excel.ChartErrorBars#type:member'
+      - 'excel-scripts!Excel.ChartErrorBars#visible:member'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#endStyleCap:member'
+    summary: |-
+      Specifies whether or not the error bars have an end style cap.
+
+      \[Api set: ExcelApi 1.9\]
+    name: endStyleCap
+    fullName: endStyleCap
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'endStyleCap: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.ChartErrorBars#format:member'
+    summary: |-
+      Specifies the formatting type of the error bars.
+
+      \[Api set: ExcelApi 1.9\]
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly format: Excel.ChartErrorBarsFormat;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartErrorBarsFormat:class'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#include:member'
+    summary: |-
+      Specifies which parts of the error bars to include.
+
+      \[Api set: ExcelApi 1.9\]
+    name: include
+    fullName: include
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'include: Excel.ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues";'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartErrorBars#include~0:complex'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartErrorBars;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartErrorBars:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ChartErrorBars;
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartErrorBars:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ChartErrorBars#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ChartErrorBars): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ChartErrorBars:class'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ChartErrorBars object is an API object, the `toJSON` method returns a
+      plain JavaScript object (typed as `Excel.Interfaces.ChartErrorBarsData`<!-- -->) that contains shallow copies of
+      any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ChartErrorBarsData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ChartErrorBarsData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.ChartErrorBars#type:member'
+    summary: |-
+      The type of range marked by the error bars.
+
+      \[Api set: ExcelApi 1.9\]
+    name: type
+    fullName: type
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'type: Excel.ChartErrorBarsType | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom";'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartErrorBars#type~0:complex'
+  - uid: 'excel-scripts!Excel.ChartErrorBars#visible:member'
+    summary: |-
+      Specifies whether or not the error bars are displayed.
+
+      \[Api set: ExcelApi 1.9\]
+    name: visible
+    fullName: visible
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'visible: boolean;'
+      return:
+        type:
+          - boolean
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ChartErrorBarsFormat:class'
+    name: Excel.ChartErrorBarsFormat
+  - uid: 'excel-scripts!Excel.ChartErrorBars#include~0:complex'
+    name: Excel.ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues"
+    fullName: Excel.ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ChartErrorBarsInclude:enum'
+        name: Excel.ChartErrorBarsInclude
+        fullName: Excel.ChartErrorBarsInclude
+      - name: ' | "Both" | "MinusValues" | "PlusValues"'
+        fullName: ' | "Both" | "MinusValues" | "PlusValues"'
+  - uid: 'excel-scripts!Excel.ChartErrorBars:class'
+    name: Excel.ChartErrorBars
+  - uid: 'excel-scripts!Excel.Interfaces.ChartErrorBarsData:interface'
+    name: Excel.Interfaces.ChartErrorBarsData
+  - uid: 'excel-scripts!Excel.ChartErrorBars#type~0:complex'
+    name: Excel.ChartErrorBarsType | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"
+    fullName: Excel.ChartErrorBarsType | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ChartErrorBarsType:enum'
+        name: Excel.ChartErrorBarsType
+        fullName: Excel.ChartErrorBarsType
+      - name: ' | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"'
+        fullName: ' | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"'

@@ -1,0 +1,139 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData:interface'
+    summary: An interface describing the data returned by calling `headerFooterGroup.toJSON()`<!-- -->.
+    name: Excel.Interfaces.HeaderFooterGroupData
+    fullName: Excel.Interfaces.HeaderFooterGroupData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#defaultForAllPages:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#evenPages:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#firstPage:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#oddPages:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#state:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#useSheetMargins:member'
+      - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#useSheetScale:member'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#defaultForAllPages:member'
+    summary: |-
+      The general header/footer, used for all pages unless even/odd or first page is specified.
+
+      \[Api set: ExcelApi 1.9\]
+    name: defaultForAllPages
+    fullName: defaultForAllPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'defaultForAllPages?: Excel.Interfaces.HeaderFooterData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#evenPages:member'
+    summary: |-
+      The header/footer to use for even pages, odd header/footer needs to be specified for odd pages.
+
+      \[Api set: ExcelApi 1.9\]
+    name: evenPages
+    fullName: evenPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'evenPages?: Excel.Interfaces.HeaderFooterData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#firstPage:member'
+    summary: |-
+      The first page header/footer, for all other pages general or even/odd is used.
+
+      \[Api set: ExcelApi 1.9\]
+    name: firstPage
+    fullName: firstPage
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'firstPage?: Excel.Interfaces.HeaderFooterData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#oddPages:member'
+    summary: |-
+      The header/footer to use for odd pages, even header/footer needs to be specified for even pages.
+
+      \[Api set: ExcelApi 1.9\]
+    name: oddPages
+    fullName: oddPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'oddPages?: Excel.Interfaces.HeaderFooterData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#state:member'
+    summary: |-
+      Gets or sets the state of which headers/footers are set. See Excel.HeaderFooterState for details.
+
+      \[Api set: ExcelApi 1.9\]
+    name: state
+    fullName: state
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'state?: Excel.HeaderFooterState | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#state~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#useSheetMargins:member'
+    summary: >-
+      Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options
+      for the worksheet.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: useSheetMargins
+    fullName: useSheetMargins
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'useSheetMargins?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#useSheetScale:member'
+    summary: >-
+      Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page
+      layout options for the worksheet.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: useSheetScale
+    fullName: useSheetScale
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'useSheetScale?: boolean;'
+      return:
+        type:
+          - boolean
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
+    name: Excel.Interfaces.HeaderFooterData
+  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData#state~0:complex'
+    name: Excel.HeaderFooterState | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"
+    fullName: Excel.HeaderFooterState | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.HeaderFooterState:enum'
+        name: Excel.HeaderFooterState
+        fullName: Excel.HeaderFooterState
+      - name: ' | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"'
+        fullName: ' | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"'

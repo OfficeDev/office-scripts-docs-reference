@@ -1,0 +1,262 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.WorksheetCollection:class'
+    summary: |-
+      Represents a collection of worksheet objects that are part of the workbook.
+
+      \[Api set: ExcelApi 1.1\]
+    name: Excel.WorksheetCollection
+    fullName: Excel.WorksheetCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.WorksheetCollection#add:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#context:member'
+      - 'excel-scripts!Excel.WorksheetCollection#getActiveWorksheet:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#getCount:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#getFirst:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#getItem:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#getItemOrNullObject:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#getLast:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#items:member'
+      - 'excel-scripts!Excel.WorksheetCollection#load:member(1)'
+      - 'excel-scripts!Excel.WorksheetCollection#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.WorksheetCollection#add:member(1)'
+    summary: >-
+      Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish
+      to activate the newly added worksheet, call ".activate() on it.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: add(name)
+    fullName: add(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(name?: string): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: name
+          description: >-
+            Optional. The name of the worksheet to be added. If specified, name should be unqiue. If not specified,
+            Excel determines the name of the new worksheet.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.WorksheetCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getActiveWorksheet:member(1)'
+    summary: |-
+      Gets the currently active worksheet in the workbook.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getActiveWorksheet()
+    fullName: getActiveWorksheet()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveWorksheet(): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getCount:member(1)'
+    summary: |-
+      Gets the number of worksheets in the collection.
+
+      \[Api set: ExcelApi 1.4\]
+    name: getCount(visibleOnly)
+    fullName: getCount(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(visibleOnly?: boolean): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorksheetCollection#getCount~0:complex'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getFirst:member(1)'
+    summary: |-
+      Gets the first worksheet in the collection.
+
+      \[Api set: ExcelApi 1.5\]
+    name: getFirst(visibleOnly)
+    fullName: getFirst(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFirst(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getItem:member(1)'
+    summary: |-
+      Gets a worksheet object using its Name or ID.
+
+      \[Api set: ExcelApi 1.1\]
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: key
+          description: The Name or ID of the worksheet.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getItemOrNullObject:member(1)'
+    summary: |-
+      Gets a worksheet object using its Name or ID. If the worksheet does not exist, will return a null object.
+
+      \[Api set: ExcelApi 1.4\]
+    name: getItemOrNullObject(key)
+    fullName: getItemOrNullObject(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(key: string): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: key
+          description: The Name or ID of the worksheet.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getLast:member(1)'
+    summary: |-
+      Gets the last worksheet in the collection.
+
+      \[Api set: ExcelApi 1.5\]
+    name: getLast(visibleOnly)
+    fullName: getLast(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLast(visibleOnly?: boolean): Excel.Worksheet;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Worksheet:class'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel-scripts!Excel.WorksheetCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.Worksheet[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorksheetCollection#items~0:complex'
+  - uid: 'excel-scripts!Excel.WorksheetCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.WorksheetCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.WorksheetCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.WorksheetCollection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original `Excel.WorksheetCollection` object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.WorksheetCollectionData`<!-- -->) that contains an
+      "items" array with shallow copies of any loaded properties from the collection's items.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.WorksheetCollectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.WorksheetCollectionData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.Worksheet:class'
+    name: Excel.Worksheet
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.WorksheetCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.WorksheetCollection#items~0:complex'
+    name: 'Excel.Worksheet[]'
+    fullName: 'Excel.Worksheet[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Worksheet:class'
+        name: Excel.Worksheet
+        fullName: Excel.Worksheet
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.WorksheetCollection:class'
+    name: Excel.WorksheetCollection
+  - uid: 'excel-scripts!Excel.Interfaces.WorksheetCollectionData:interface'
+    name: Excel.Interfaces.WorksheetCollectionData

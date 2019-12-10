@@ -1,0 +1,107 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData:interface'
+    summary: 'An interface for updating data on the RangeBorder object, for use in `rangeBorder.set({ ... })`<!-- -->.'
+    name: Excel.Interfaces.RangeBorderUpdateData
+    fullName: Excel.Interfaces.RangeBorderUpdateData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#color:member'
+      - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#style:member'
+      - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#tintAndShade:member'
+      - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#weight:member'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#color:member'
+    summary: >-
+      HTML color code representing the color of the border line, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML
+      color (e.g. "orange").
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#style:member'
+    summary: >-
+      One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for
+      details.
+
+
+      \[Api set: ExcelApi 1.1\]
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: >-
+        style?: Excel.BorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" |
+        "SlantDashDot";
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#style~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#tintAndShade:member'
+    summary: >-
+      Returns or sets a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and
+      1 (brightest), with 0 for the original color. A null value indicates that the border doesn't have uniform
+      tintAndShade setting.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: tintAndShade
+    fullName: tintAndShade
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'tintAndShade?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#weight:member'
+    summary: |-
+      Specifies the weight of the border around a range. See Excel.BorderWeight for details.
+
+      \[Api set: ExcelApi 1.1\]
+    name: weight
+    fullName: weight
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'weight?: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick";'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#weight~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#style~0:complex'
+    name: >-
+      Excel.BorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" |
+      "SlantDashDot"
+    fullName: >-
+      Excel.BorderLineStyle | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" |
+      "SlantDashDot"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.BorderLineStyle:enum'
+        name: Excel.BorderLineStyle
+        fullName: Excel.BorderLineStyle
+      - name: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot"'
+        fullName: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot"'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderUpdateData#weight~0:complex'
+    name: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"
+    fullName: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.BorderWeight:enum'
+        name: Excel.BorderWeight
+        fullName: Excel.BorderWeight
+      - name: ' | "Hairline" | "Thin" | "Medium" | "Thick"'
+        fullName: ' | "Hairline" | "Thin" | "Medium" | "Thick"'

@@ -1,0 +1,219 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData:interface'
+    summary: An interface describing the data returned by calling `rangeAreas.toJSON()`<!-- -->.
+    name: Excel.Interfaces.RangeAreasData
+    fullName: Excel.Interfaces.RangeAreasData
+    langs:
+      - typeScript
+    type: interface
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#address:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#addressLocal:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#areaCount:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#areas:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#cellCount:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#conditionalFormats:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#dataValidation:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#format:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#isEntireColumn:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#isEntireRow:member'
+      - 'excel-scripts!Excel.Interfaces.RangeAreasData#style:member'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#address:member'
+    summary: >-
+      Returns the RageAreas reference in A1-style. Address value will contain the worksheet name for each rectangular
+      block of cells (e.g. "Sheet1!A1:B4, Sheet1!D1:D4"). Read-only.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: address
+    fullName: address
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'address?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#addressLocal:member'
+    summary: |-
+      Returns the RageAreas reference in the user locale. Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: addressLocal
+    fullName: addressLocal
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'addressLocal?: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#areaCount:member'
+    summary: |-
+      Returns the number of rectangular ranges that comprise this RangeAreas object.
+
+      \[Api set: ExcelApi 1.9\]
+    name: areaCount
+    fullName: areaCount
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'areaCount?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#areas:member'
+    summary: |-
+      Returns a collection of rectangular ranges that comprise this RangeAreas object.
+
+      \[Api set: ExcelApi 1.9\]
+    name: areas
+    fullName: areas
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'areas?: Excel.Interfaces.RangeData[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeAreasData#areas~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#cellCount:member'
+    summary: >-
+      Returns the number of cells in the RangeAreas object, summing up the cell counts of all of the individual
+      rectangular ranges. Returns -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: cellCount
+    fullName: cellCount
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'cellCount?: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#conditionalFormats:member'
+    summary: |-
+      Returns a collection of ConditionalFormats that intersect with any cells in this RangeAreas object. Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: conditionalFormats
+    fullName: conditionalFormats
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'conditionalFormats?: Excel.Interfaces.ConditionalFormatData[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeAreasData#conditionalFormats~0:complex'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#dataValidation:member'
+    summary: |-
+      Returns a dataValidation object for all ranges in the RangeAreas.
+
+      \[Api set: ExcelApi 1.9\]
+    name: dataValidation
+    fullName: dataValidation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'dataValidation?: Excel.Interfaces.DataValidationData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.DataValidationData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#format:member'
+    summary: >-
+      Returns a rangeFormat object, encapsulating the the font, fill, borders, alignment, and other properties for all
+      ranges in the RangeAreas object. Read-only.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'format?: Excel.Interfaces.RangeFormatData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#isEntireColumn:member'
+    summary: |-
+      Indicates whether all the ranges on this RangeAreas object represent entire columns (e.g., "A:C, Q:Z"). Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: isEntireColumn
+    fullName: isEntireColumn
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'isEntireColumn?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#isEntireRow:member'
+    summary: |-
+      Indicates whether all the ranges on this RangeAreas object represent entire rows (e.g., "1:3, 5:7"). Read-only.
+
+      \[Api set: ExcelApi 1.9\]
+    name: isEntireRow
+    fullName: isEntireRow
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'isEntireRow?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#style:member'
+    summary: >-
+      Represents the style for all ranges in this RangeAreas object. If the styles of the cells are inconsistent, null
+      will be returned. For custom styles, the style name will be returned. For built-in styles, a string representing a
+      value in the BuiltInStyle enum will be returned.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'style?: string;'
+      return:
+        type:
+          - string
+references:
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#areas~0:complex'
+    name: 'Excel.Interfaces.RangeData[]'
+    fullName: 'Excel.Interfaces.RangeData[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Interfaces.RangeData:interface'
+        name: Excel.Interfaces.RangeData
+        fullName: Excel.Interfaces.RangeData
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData#conditionalFormats~0:complex'
+    name: 'Excel.Interfaces.ConditionalFormatData[]'
+    fullName: 'Excel.Interfaces.ConditionalFormatData[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Interfaces.ConditionalFormatData:interface'
+        name: Excel.Interfaces.ConditionalFormatData
+        fullName: Excel.Interfaces.ConditionalFormatData
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.Interfaces.DataValidationData:interface'
+    name: Excel.Interfaces.DataValidationData
+  - uid: 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
+    name: Excel.Interfaces.RangeFormatData

@@ -1,0 +1,75 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.SettableRowProperties:interface'
+    summary: |-
+      Represents the input parameter of setRowProperties.
+
+      \[Api set: ExcelApi 1.9\]
+    name: Excel.SettableRowProperties
+    fullName: Excel.SettableRowProperties
+    langs:
+      - typeScript
+    type: interface
+    extends:
+      - 'excel-scripts!Excel.SettableCellProperties:interface'
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.SettableRowProperties#format:member'
+      - 'excel-scripts!Excel.SettableRowProperties#rowHidden:member'
+  - uid: 'excel-scripts!Excel.SettableRowProperties#format:member'
+    summary: |-
+      Represents the `format` property.
+
+      \[Api set: ExcelApi 1.9\]
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: |-
+        format?: Excel.CellPropertiesFormat & {
+                    rowHeight?: number;
+                };
+      return:
+        type:
+          - 'excel-scripts!Excel.SettableRowProperties#format~0:complex'
+  - uid: 'excel-scripts!Excel.SettableRowProperties#rowHidden:member'
+    summary: |-
+      Represents the `rowHidden` property.
+
+      \[Api set: ExcelApi 1.9\]
+    name: rowHidden
+    fullName: rowHidden
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rowHidden?: boolean;'
+      return:
+        type:
+          - boolean
+references:
+  - uid: 'excel-scripts!Excel.SettableCellProperties:interface'
+    name: SettableCellProperties
+  - uid: 'excel-scripts!Excel.SettableRowProperties#format~0:complex'
+    name: |-
+      Excel.CellPropertiesFormat & {
+                  rowHeight?: number;
+              }
+    fullName: |-
+      Excel.CellPropertiesFormat & {
+                  rowHeight?: number;
+              }
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CellPropertiesFormat:interface'
+        name: Excel.CellPropertiesFormat
+        fullName: Excel.CellPropertiesFormat
+      - name: |2-
+           & {
+                      rowHeight?: number;
+                  }
+        fullName: |2-
+           & {
+                      rowHeight?: number;
+                  }

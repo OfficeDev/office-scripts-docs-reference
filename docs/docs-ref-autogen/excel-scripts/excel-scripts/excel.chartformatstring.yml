@@ -1,0 +1,146 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ChartFormatString:class'
+    summary: >-
+      Represents the substring in chart related objects that contains text, like ChartTitle object, ChartAxisTitle
+      object, etc.
+
+
+      \[Api set: ExcelApi 1.7\]
+    name: Excel.ChartFormatString
+    fullName: Excel.ChartFormatString
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ChartFormatString#context:member'
+      - 'excel-scripts!Excel.ChartFormatString#font:member'
+      - 'excel-scripts!Excel.ChartFormatString#load:member(1)'
+      - 'excel-scripts!Excel.ChartFormatString#load:member(2)'
+      - 'excel-scripts!Excel.ChartFormatString#set:member(1)'
+      - 'excel-scripts!Excel.ChartFormatString#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.ChartFormatString#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ChartFormatString#font:member'
+    summary: |-
+      Represents the font attributes, such as font name, font size, color, etc. of chart characters object.
+
+      \[Api set: ExcelApi 1.7\]
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: Excel.ChartFont;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartFont:class'
+  - uid: 'excel-scripts!Excel.ChartFormatString#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartFormatString;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartFormatString:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ChartFormatString#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ChartFormatString;
+      return:
+        type:
+          - 'excel-scripts!Excel.ChartFormatString:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ChartFormatString#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ChartFormatString): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ChartFormatString:class'
+  - uid: 'excel-scripts!Excel.ChartFormatString#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ChartFormatString object is an API object, the `toJSON` method returns a
+      plain JavaScript object (typed as `Excel.Interfaces.ChartFormatStringData`<!-- -->) that contains shallow copies
+      of any loaded child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ChartFormatStringData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ChartFormatStringData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ChartFont:class'
+    name: Excel.ChartFont
+  - uid: 'excel-scripts!Excel.ChartFormatString:class'
+    name: Excel.ChartFormatString
+  - uid: 'excel-scripts!Excel.Interfaces.ChartFormatStringData:interface'
+    name: Excel.Interfaces.ChartFormatStringData

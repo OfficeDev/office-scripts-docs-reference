@@ -1,0 +1,350 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.CommentCollection:class'
+    summary: |-
+      Represents a collection of comment objects that are part of the workbook.
+
+      \[Api set: ExcelApi 1.10\]
+    name: Excel.CommentCollection
+    fullName: Excel.CommentCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.CommentCollection#add:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#add:member(2)'
+      - 'excel-scripts!Excel.CommentCollection#context:member'
+      - 'excel-scripts!Excel.CommentCollection#getCount:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#getItem:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#getItemAt:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#getItemByCell:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#getItemByReplyId:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#items:member'
+      - 'excel-scripts!Excel.CommentCollection#load:member(1)'
+      - 'excel-scripts!Excel.CommentCollection#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.CommentCollection#add:member(1)'
+    summary: >-
+      Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
+      provided range is larger than one cell.
+
+
+      \[Api set: ExcelApi 1.10\]
+    name: 'add(cellAddress, content, contentType)'
+    fullName: 'add(cellAddress, content, contentType)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: >-
+        add(cellAddress: Range | string, content: CommentRichContent | string, contentType?: Excel.ContentType):
+        Excel.Comment;
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: cellAddress
+          description: >-
+            The cell to which the comment is added. This can be a Range object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
+          type:
+            - 'excel-scripts!Excel.CommentCollection#add~0:complex'
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or CommentRichContent object. Strings are used for plain
+            text. CommentRichContent objects allow for other comment features, such as mentions. \[Api set: ExcelApi
+            1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+          type:
+            - 'excel-scripts!Excel.CommentCollection#add~1:complex'
+        - id: contentType
+          description: >-
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
+            Enum ContentType.Mention\]
+          type:
+            - 'excel-scripts!Excel.ContentType:enum'
+  - uid: 'excel-scripts!Excel.CommentCollection#add:member(2)'
+    summary: >-
+      Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
+      provided range is larger than one cell.
+
+
+      \[Api set: ExcelApi 1.10\]
+    name: 'add(cellAddress, content, contentTypeStringString)'
+    fullName: 'add(cellAddress, content, contentTypeStringString)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: >-
+        add(cellAddress: Range | string, content: CommentRichContent | string, contentTypeStringString?: "Plain" |
+        "Mention"): Excel.Comment;
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: cellAddress
+          description: >-
+            The cell to which the comment is added. This can be a Range object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
+          type:
+            - 'excel-scripts!Excel.CommentCollection#add~2:complex'
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or CommentRichContent object. Strings are used for plain
+            text. CommentRichContent objects allow for other comment features, such as mentions. \[Api set: ExcelApi
+            1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+          type:
+            - 'excel-scripts!Excel.CommentCollection#add~3:complex'
+        - id: contentTypeStringString
+          description: >-
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
+            Enum ContentType.Mention\]
+          type:
+            - '"Plain" | "Mention"'
+  - uid: 'excel-scripts!Excel.CommentCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.CommentCollection#getCount:member(1)'
+    summary: |-
+      Gets the number of comments in the collection.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel-scripts!Excel.CommentCollection#getItem:member(1)'
+    summary: |-
+      Gets a comment from the collection based on its ID. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItem(commentId)
+    fullName: getItem(commentId)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(commentId: string): Excel.Comment;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: commentId
+          description: The identifier for the comment.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.CommentCollection#getItemAt:member(1)'
+    summary: |-
+      Gets a comment from the collection based on its position.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Excel.Comment;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel-scripts!Excel.CommentCollection#getItemByCell:member(1)'
+    summary: |-
+      Gets the comment from the specified cell.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItemByCell(cellAddress)
+    fullName: getItemByCell(cellAddress)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemByCell(cellAddress: Range | string): Excel.Comment;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: cellAddress
+          description: >-
+            The cell which the comment is on. This can be a Range object or a string. If it's a string, it must contain
+            the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is
+            larger than one cell.
+          type:
+            - 'excel-scripts!Excel.CommentCollection#getItemByCell~0:complex'
+  - uid: 'excel-scripts!Excel.CommentCollection#getItemByReplyId:member(1)'
+    summary: |-
+      Gets the comment to which the given reply is connected.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItemByReplyId(replyId)
+    fullName: getItemByReplyId(replyId)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemByReplyId(replyId: string): Excel.Comment;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Comment:class'
+        description: ''
+      parameters:
+        - id: replyId
+          description: The identifier of comment reply.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.CommentCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.Comment[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentCollection#items~0:complex'
+  - uid: 'excel-scripts!Excel.CommentCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.CommentCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.CommentCollection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original `Excel.CommentCollection` object is an API object, the `toJSON` method returns
+      a plain JavaScript object (typed as `Excel.Interfaces.CommentCollectionData`<!-- -->) that contains an "items"
+      array with shallow copies of any loaded properties from the collection's items.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.CommentCollectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.CommentCollectionData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.Comment:class'
+    name: Excel.Comment
+  - uid: 'excel-scripts!Excel.CommentCollection#add~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.CommentCollection#add~1:complex'
+    name: CommentRichContent | string
+    fullName: Excel.CommentRichContent | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CommentRichContent:interface'
+        name: CommentRichContent
+        fullName: Excel.CommentRichContent
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.ContentType:enum'
+    name: Excel.ContentType
+  - uid: 'excel-scripts!Excel.CommentCollection#add~2:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.CommentCollection#add~3:complex'
+    name: CommentRichContent | string
+    fullName: Excel.CommentRichContent | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CommentRichContent:interface'
+        name: CommentRichContent
+        fullName: Excel.CommentRichContent
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.CommentCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.CommentCollection#getItemByCell~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Range:class'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.CommentCollection#items~0:complex'
+    name: 'Excel.Comment[]'
+    fullName: 'Excel.Comment[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.Comment:class'
+        name: Excel.Comment
+        fullName: Excel.Comment
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.CommentCollection:class'
+    name: Excel.CommentCollection
+  - uid: 'excel-scripts!Excel.Interfaces.CommentCollectionData:interface'
+    name: Excel.Interfaces.CommentCollectionData

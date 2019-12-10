@@ -1,0 +1,252 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.CommentReplyCollection:class'
+    summary: |-
+      Represents a collection of comment reply objects that are part of the comment.
+
+      \[Api set: ExcelApi 1.10\]
+    name: Excel.CommentReplyCollection
+    fullName: Excel.CommentReplyCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.CommentReplyCollection#add:member(1)'
+      - 'excel-scripts!Excel.CommentReplyCollection#add:member(2)'
+      - 'excel-scripts!Excel.CommentReplyCollection#context:member'
+      - 'excel-scripts!Excel.CommentReplyCollection#getCount:member(1)'
+      - 'excel-scripts!Excel.CommentReplyCollection#getItem:member(1)'
+      - 'excel-scripts!Excel.CommentReplyCollection#getItemAt:member(1)'
+      - 'excel-scripts!Excel.CommentReplyCollection#items:member'
+      - 'excel-scripts!Excel.CommentReplyCollection#load:member(1)'
+      - 'excel-scripts!Excel.CommentReplyCollection#toJSON:member(1)'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#add:member(1)'
+    summary: |-
+      Creates a comment reply for comment.
+
+      \[Api set: ExcelApi 1.10\]
+    name: 'add(content, contentType)'
+    fullName: 'add(content, contentType)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(content: CommentRichContent | string, contentType?: Excel.ContentType): Excel.CommentReply;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReply:class'
+        description: ''
+      parameters:
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or Interface CommentRichContent (e.g. for comments with
+            mentions). \[Api set: ExcelApi 1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+          type:
+            - 'excel-scripts!Excel.CommentReplyCollection#add~0:complex'
+        - id: contentType
+          description: >-
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
+            Enum ContentType.Mention\]
+          type:
+            - 'excel-scripts!Excel.ContentType:enum'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#add:member(2)'
+    summary: |-
+      Creates a comment reply for comment.
+
+      \[Api set: ExcelApi 1.10\]
+    name: 'add(content, contentTypeStringString)'
+    fullName: 'add(content, contentTypeStringString)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(content: CommentRichContent | string, contentTypeStringString?: "Plain" | "Mention"): Excel.CommentReply;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReply:class'
+        description: ''
+      parameters:
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or Interface CommentRichContent (e.g. for comments with
+            mentions). \[Api set: ExcelApi 1.10 for string, ExcelApiOnline 1.1 for CommentRichContent object\]
+          type:
+            - 'excel-scripts!Excel.CommentReplyCollection#add~1:complex'
+        - id: contentTypeStringString
+          description: >-
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->. \[Api set: ExcelApi 1.10 for Enum ContentType.Plain, ExcelApiOnline 1.1 for
+            Enum ContentType.Mention\]
+          type:
+            - '"Plain" | "Mention"'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#getCount:member(1)'
+    summary: |-
+      Gets the number of comment replies in the collection.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReplyCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#getItem:member(1)'
+    summary: |-
+      Returns a comment reply identified by its ID. Read-only.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItem(commentReplyId)
+    fullName: getItem(commentReplyId)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(commentReplyId: string): Excel.CommentReply;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReply:class'
+        description: ''
+      parameters:
+        - id: commentReplyId
+          description: The identifier for the comment reply.
+          type:
+            - string
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#getItemAt:member(1)'
+    summary: |-
+      Gets a comment reply based on its position in the collection.
+
+      \[Api set: ExcelApi 1.10\]
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Excel.CommentReply;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReply:class'
+        description: ''
+      parameters:
+        - id: index
+          description: The index value of the comment reply to be retrieved. The collection uses zero-based indexing.
+          type:
+            - number
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.CommentReply[];'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReplyCollection#items~0:complex'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.CommentReplyCollection;'
+      return:
+        type:
+          - 'excel-scripts!Excel.CommentReplyCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original `Excel.CommentReplyCollection` object is an API object, the `toJSON` method
+      returns a plain JavaScript object (typed as `Excel.Interfaces.CommentReplyCollectionData`<!-- -->) that contains
+      an "items" array with shallow copies of any loaded properties from the collection's items.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.CommentReplyCollectionData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.CommentReplyCollectionData:interface'
+        description: ''
+references:
+  - uid: 'excel-scripts!Excel.CommentReply:class'
+    name: Excel.CommentReply
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#add~0:complex'
+    name: CommentRichContent | string
+    fullName: Excel.CommentRichContent | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CommentRichContent:interface'
+        name: CommentRichContent
+        fullName: Excel.CommentRichContent
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.ContentType:enum'
+    name: Excel.ContentType
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#add~1:complex'
+    name: CommentRichContent | string
+    fullName: Excel.CommentRichContent | string
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CommentRichContent:interface'
+        name: CommentRichContent
+        fullName: Excel.CommentRichContent
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel-scripts!Excel.CommentReplyCollection#items~0:complex'
+    name: 'Excel.CommentReply[]'
+    fullName: 'Excel.CommentReply[]'
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.CommentReply:class'
+        name: Excel.CommentReply
+        fullName: Excel.CommentReply
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel-scripts!Excel.CommentReplyCollection:class'
+    name: Excel.CommentReplyCollection
+  - uid: 'excel-scripts!Excel.Interfaces.CommentReplyCollectionData:interface'
+    name: Excel.Interfaces.CommentReplyCollectionData

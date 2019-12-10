@@ -1,0 +1,250 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel-scripts!Excel.ShapeFont:class'
+    summary: |-
+      Represents the font attributes, such as font name, font size, and color, for a shape's TextRange object.
+
+      \[Api set: ExcelApi 1.9\]
+    name: Excel.ShapeFont
+    fullName: Excel.ShapeFont
+    langs:
+      - typeScript
+    type: class
+    package: excel-scripts!
+    children:
+      - 'excel-scripts!Excel.ShapeFont#bold:member'
+      - 'excel-scripts!Excel.ShapeFont#color:member'
+      - 'excel-scripts!Excel.ShapeFont#context:member'
+      - 'excel-scripts!Excel.ShapeFont#italic:member'
+      - 'excel-scripts!Excel.ShapeFont#load:member(1)'
+      - 'excel-scripts!Excel.ShapeFont#load:member(2)'
+      - 'excel-scripts!Excel.ShapeFont#name:member'
+      - 'excel-scripts!Excel.ShapeFont#set:member(1)'
+      - 'excel-scripts!Excel.ShapeFont#size:member'
+      - 'excel-scripts!Excel.ShapeFont#toJSON:member(1)'
+      - 'excel-scripts!Excel.ShapeFont#underline:member'
+  - uid: 'excel-scripts!Excel.ShapeFont#bold:member'
+    summary: |-
+      Represents the bold status of font. Returns null the TextRange includes both bold and non-bold text fragments.
+
+      \[Api set: ExcelApi 1.9\]
+    name: bold
+    fullName: bold
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'bold: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.ShapeFont#color:member'
+    summary: >-
+      The HTML color code representation of the text color (e.g. "\#FF0000" represents red). Returns null if the
+      TextRange includes text fragments with different colors.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.ShapeFont#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel-scripts!Excel.RequestContext:class'
+  - uid: 'excel-scripts!Excel.ShapeFont#italic:member'
+    summary: >-
+      Represents the italic status of font. Returns null if the TextRange includes both italic and non-italic text
+      fragments.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: italic
+    fullName: italic
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'italic: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel-scripts!Excel.ShapeFont#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ShapeFont;'
+      return:
+        type:
+          - 'excel-scripts!Excel.ShapeFont:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel-scripts!Excel.ShapeFont#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ShapeFont;
+      return:
+        type:
+          - 'excel-scripts!Excel.ShapeFont:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel-scripts!Excel.ShapeFont#name:member'
+    summary: >-
+      Represents font name (e.g. "Calibri"). If the text is Complex Script or East Asian language, this is the
+      corresponding font name; otherwise it is the Latin font name.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel-scripts!Excel.ShapeFont#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ShapeFont): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel-scripts!Excel.ShapeFont:class'
+  - uid: 'excel-scripts!Excel.ShapeFont#size:member'
+    summary: >-
+      Represents font size in points (e.g. 11). Returns null if the TextRange includes text fragments with different
+      font sizes.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: size
+    fullName: size
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'size: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel-scripts!Excel.ShapeFont#toJSON:member(1)'
+    summary: >-
+      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
+      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
+      passed to it.) Whereas the original Excel.ShapeFont object is an API object, the `toJSON` method returns a plain
+      JavaScript object (typed as `Excel.Interfaces.ShapeFontData`<!-- -->) that contains shallow copies of any loaded
+      child properties from the original object.
+    name: toJSON()
+    fullName: toJSON()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'toJSON(): Excel.Interfaces.ShapeFontData;'
+      return:
+        type:
+          - 'excel-scripts!Excel.Interfaces.ShapeFontData:interface'
+        description: ''
+  - uid: 'excel-scripts!Excel.ShapeFont#underline:member'
+    summary: >-
+      Type of underline applied to the font. Returns null if the TextRange includes text fragments with different
+      underline styles. See Excel.ShapeFontUnderlineStyle for details.
+
+
+      \[Api set: ExcelApi 1.9\]
+    name: underline
+    fullName: underline
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: >-
+        underline: Excel.ShapeFontUnderlineStyle | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" |
+        "Dash" | "DashHeavy" | "DashLong" | "DashLongHeavy" | "DotDash" | "DotDashHeavy" | "DotDotDash" |
+        "DotDotDashHeavy" | "Wavy" | "WavyHeavy" | "WavyDouble";
+      return:
+        type:
+          - 'excel-scripts!Excel.ShapeFont#underline~0:complex'
+references:
+  - uid: 'excel-scripts!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel-scripts!Excel.ShapeFont:class'
+    name: Excel.ShapeFont
+  - uid: 'excel-scripts!Excel.Interfaces.ShapeFontData:interface'
+    name: Excel.Interfaces.ShapeFontData
+  - uid: 'excel-scripts!Excel.ShapeFont#underline~0:complex'
+    name: >-
+      Excel.ShapeFontUnderlineStyle | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" | "Dash" |
+      "DashHeavy" | "DashLong" | "DashLongHeavy" | "DotDash" | "DotDashHeavy" | "DotDotDash" | "DotDotDashHeavy" |
+      "Wavy" | "WavyHeavy" | "WavyDouble"
+    fullName: >-
+      Excel.ShapeFontUnderlineStyle | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" | "Dash" |
+      "DashHeavy" | "DashLong" | "DashLongHeavy" | "DotDash" | "DotDashHeavy" | "DotDotDash" | "DotDotDashHeavy" |
+      "Wavy" | "WavyHeavy" | "WavyDouble"
+    spec.typeScript:
+      - uid: 'excel-scripts!Excel.ShapeFontUnderlineStyle:enum'
+        name: Excel.ShapeFontUnderlineStyle
+        fullName: Excel.ShapeFontUnderlineStyle
+      - name: ' | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" | "Dash" | "DashHeavy" | "DashLong" | "DashLongHeavy" | "DotDash" | "DotDashHeavy" | "DotDotDash" | "DotDotDashHeavy" | "Wavy" | "WavyHeavy" | "WavyDouble"'
+        fullName: ' | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" | "Dash" | "DashHeavy" | "DashLong" | "DashLongHeavy" | "DotDash" | "DotDashHeavy" | "DotDotDash" | "DotDotDashHeavy" | "Wavy" | "WavyHeavy" | "WavyDouble"'
