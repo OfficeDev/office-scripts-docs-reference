@@ -1,10 +1,7 @@
 ### YamlMime:UniversalReference
 items:
   - uid: 'excel-scripts!Excel.Application:class'
-    summary: |-
-      Represents the Excel application that manages the workbook.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Represents the Excel application that manages the workbook.
     name: Excel.Application
     fullName: Excel.Application
     langs:
@@ -26,10 +23,7 @@ items:
       - 'excel-scripts!Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)'
       - 'excel-scripts!Excel.Application#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.Application#calculate:member(1)'
-    summary: |-
-      Recalculate all currently opened workbooks in Excel.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Recalculate all currently opened workbooks in Excel.
     name: calculate(calculationType)
     fullName: calculate(calculationType)
     langs:
@@ -47,10 +41,7 @@ items:
           type:
             - 'excel-scripts!Excel.CalculationType:enum'
   - uid: 'excel-scripts!Excel.Application#calculate:member(2)'
-    summary: |-
-      Recalculate all currently opened workbooks in Excel.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Recalculate all currently opened workbooks in Excel.
     name: calculate(calculationTypeStringString)
     fullName: calculate(calculationTypeStringString)
     langs:
@@ -68,10 +59,7 @@ items:
           type:
             - '"Recalculate" | "Full" | "FullRebuild"'
   - uid: 'excel-scripts!Excel.Application#calculationEngineVersion:member'
-    summary: |-
-      Returns the Excel calculation engine version used for the last full recalculation. Read-only.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Returns the Excel calculation engine version used for the last full recalculation. Read-only.
     name: calculationEngineVersion
     fullName: calculationEngineVersion
     langs:
@@ -88,9 +76,6 @@ items:
       values are: `Automatic`<!-- -->, where Excel controls recalculation; `AutomaticExceptTables`<!-- -->, where Excel
       controls recalculation but ignores changes in tables; `Manual`<!-- -->, where calculation is done when the user
       requests it.
-
-
-      \[Api set: ExcelApi 1.1 for get, 1.8 for set\]
     name: calculationMode
     fullName: calculationMode
     langs:
@@ -102,10 +87,7 @@ items:
         type:
           - 'excel-scripts!Excel.Application#calculationMode~0:complex'
   - uid: 'excel-scripts!Excel.Application#calculationState:member'
-    summary: |-
-      Returns the calculation state of the application. See Excel.CalculationState for details. Read-only.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Returns the calculation state of the application. See Excel.CalculationState for details. Read-only.
     name: calculationState
     fullName: calculationState
     langs:
@@ -134,9 +116,6 @@ items:
     summary: >-
       Returns the Iterative Calculation settings. In Excel on Windows and Mac, the settings will apply to the Excel
       Application. In Excel on the web and other platforms, the settings will apply to the active workbook.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: iterativeCalculation
     fullName: iterativeCalculation
     langs:
@@ -219,9 +198,6 @@ items:
     summary: >-
       Suspends calculation until the next "context.sync()" is called. Once set, it is the developer's responsibility to
       re-calc the workbook, to ensure that any dependencies are propagated.
-
-
-      \[Api set: ExcelApi 1.6\]
     name: suspendApiCalculationUntilNextSync()
     fullName: suspendApiCalculationUntilNextSync()
     langs:
@@ -234,10 +210,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)'
-    summary: |-
-      Suspends sceen updating until the next "context.sync()" is called.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Suspends sceen updating until the next "context.sync()" is called.
     name: suspendScreenUpdatingUntilNextSync()
     fullName: suspendScreenUpdatingUntilNextSync()
     langs:

@@ -7,9 +7,6 @@ items:
       API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-ranges) and [Work with ranges using the
       Excel JavaScript API
       (advanced)](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-ranges-advanced)<!-- -->.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: Excel.Range
     fullName: Excel.Range
     langs:
@@ -126,9 +123,6 @@ items:
     summary: >-
       Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. "Sheet1!A1:B4").
       Read-only.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: address
     fullName: address
     langs:
@@ -140,10 +134,7 @@ items:
         type:
           - string
   - uid: 'excel-scripts!Excel.Range#addressLocal:member'
-    summary: |-
-      Represents range reference for the specified range in the language of the user. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Represents range reference for the specified range in the language of the user. Read-only.
     name: addressLocal
     fullName: addressLocal
     langs:
@@ -164,9 +155,6 @@ items:
       For more information, read [Use AutoFill and Flash
       Fill](https://support.office.com/article/video-use-autofill-and-flash-fill-2e79a709-c814-4b27-8bc2-c4dc84d49464)<!--
       -->.
-
-
-      \[Api set: ExcelApi 1.9, ExcelApi Preview for null `destinationRange`<!-- -->\]
     name: 'autoFill(destinationRange, autoFillType)'
     fullName: 'autoFill(destinationRange, autoFillType)'
     langs:
@@ -201,9 +189,6 @@ items:
       For more information, read [Use AutoFill and Flash
       Fill](https://support.office.com/article/video-use-autofill-and-flash-fill-2e79a709-c814-4b27-8bc2-c4dc84d49464)<!--
       -->.
-
-
-      \[Api set: ExcelApi 1.9, ExcelApi Preview for null `destinationRange`<!-- -->\]
     name: 'autoFill(destinationRange, autoFillTypeStringString)'
     fullName: 'autoFill(destinationRange, autoFillTypeStringString)'
     langs:
@@ -234,10 +219,7 @@ items:
               "FillDefault" | "FillCopy" | "FillSeries" | "FillFormats" | "FillValues" | "FillDays" | "FillWeekdays" |
               "FillMonths" | "FillYears" | "LinearTrend" | "GrowthTrend" | "FlashFill"
   - uid: 'excel-scripts!Excel.Range#calculate:member(1)'
-    summary: |-
-      Calculates a range of cells on a worksheet.
-
-      \[Api set: ExcelApi 1.6\]
+    summary: Calculates a range of cells on a worksheet.
     name: calculate()
     fullName: calculate()
     langs:
@@ -250,10 +232,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.Range#cellCount:member'
-    summary: |-
-      Number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.'
     name: cellCount
     fullName: cellCount
     langs:
@@ -265,10 +244,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#clear:member(1)'
-    summary: |-
-      Clear range values, format, fill, border, etc.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Clear range values, format, fill, border, etc.'
     name: clear(applyTo)
     fullName: clear(applyTo)
     langs:
@@ -286,10 +262,7 @@ items:
           type:
             - 'excel-scripts!Excel.ClearApplyTo:enum'
   - uid: 'excel-scripts!Excel.Range#clear:member(2)'
-    summary: |-
-      Clear range values, format, fill, border, etc.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Clear range values, format, fill, border, etc.'
     name: clear(applyToStringString)
     fullName: clear(applyToStringString)
     langs:
@@ -307,10 +280,7 @@ items:
           type:
             - '"All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"'
   - uid: 'excel-scripts!Excel.Range#columnCount:member'
-    summary: |-
-      Represents the total number of columns in the range. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Represents the total number of columns in the range. Read-only.
     name: columnCount
     fullName: columnCount
     langs:
@@ -322,10 +292,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#columnHidden:member'
-    summary: |-
-      Represents if all columns of the current range are hidden.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Represents if all columns of the current range are hidden.
     name: columnHidden
     fullName: columnHidden
     langs:
@@ -337,10 +304,7 @@ items:
         type:
           - boolean
   - uid: 'excel-scripts!Excel.Range#columnIndex:member'
-    summary: |-
-      Represents the column number of the first cell in the range. Zero-indexed. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Represents the column number of the first cell in the range. Zero-indexed. Read-only.
     name: columnIndex
     fullName: columnIndex
     langs:
@@ -352,10 +316,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#conditionalFormats:member'
-    summary: |-
-      Collection of ConditionalFormats that intersect the range. Read-only.
-
-      \[Api set: ExcelApi 1.6\]
+    summary: Collection of ConditionalFormats that intersect the range. Read-only.
     name: conditionalFormats
     fullName: conditionalFormats
     langs:
@@ -381,10 +342,7 @@ items:
         type:
           - 'excel-scripts!Excel.RequestContext:class'
   - uid: 'excel-scripts!Excel.Range#convertDataTypeToText:member(1)'
-    summary: |-
-      Converts the range cells with datatypes into text.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Converts the range cells with datatypes into text.
     name: convertDataTypeToText()
     fullName: convertDataTypeToText()
     langs:
@@ -397,10 +355,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.Range#convertToLinkedDataType:member(1)'
-    summary: |-
-      Converts the range cells into linked datatype in the worksheet.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Converts the range cells into linked datatype in the worksheet.
     name: 'convertToLinkedDataType(serviceID, languageCulture)'
     fullName: 'convertToLinkedDataType(serviceID, languageCulture)'
     langs:
@@ -426,9 +381,6 @@ items:
       Copies cell data or formatting from the source range or RangeAreas to the current range. The destination range can
       be a different size than the source range or RangeAreas. The destination will be expanded automatically if it is
       smaller than the source.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'copyFrom(sourceRange, copyType, skipBlanks, transpose)'
     fullName: 'copyFrom(sourceRange, copyType, skipBlanks, transpose)'
     langs:
@@ -466,9 +418,6 @@ items:
       Copies cell data or formatting from the source range or RangeAreas to the current range. The destination range can
       be a different size than the source range or RangeAreas. The destination will be expanded automatically if it is
       smaller than the source.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
     fullName: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
     langs:
@@ -502,10 +451,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Range#dataValidation:member'
-    summary: |-
-      Returns a data validation object.
-
-      \[Api set: ExcelApi 1.8\]
+    summary: Returns a data validation object.
     name: dataValidation
     fullName: dataValidation
     langs:
@@ -517,10 +463,7 @@ items:
         type:
           - 'excel-scripts!Excel.DataValidation:class'
   - uid: 'excel-scripts!Excel.Range#delete:member(1)'
-    summary: |-
-      Deletes the cells associated with the range.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Deletes the cells associated with the range.
     name: delete(shift)
     fullName: delete(shift)
     langs:
@@ -538,10 +481,7 @@ items:
           type:
             - 'excel-scripts!Excel.DeleteShiftDirection:enum'
   - uid: 'excel-scripts!Excel.Range#delete:member(2)'
-    summary: |-
-      Deletes the cells associated with the range.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Deletes the cells associated with the range.
     name: delete(shiftStringString)
     fullName: delete(shiftStringString)
     langs:
@@ -562,9 +502,6 @@ items:
     summary: >-
       Finds the given string based on the criteria specified. If the current range is larger than a single cell, then
       the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'find(text, criteria)'
     fullName: 'find(text, criteria)'
     langs:
@@ -592,9 +529,6 @@ items:
       Finds the given string based on the criteria specified. If the current range is larger than a single cell, then
       the search will be limited to that range, else the search will cover the entire sheet starting after that cell. If
       there are no matches, this function will return a null object.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'findOrNullObject(text, criteria)'
     fullName: 'findOrNullObject(text, criteria)'
     langs:
@@ -621,9 +555,6 @@ items:
     summary: >-
       Does FlashFill to current range.Flash Fill will automatically fills data when it senses a pattern, so the range
       must be single column range and have data around in order to find pattern.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: flashFill()
     fullName: flashFill()
     langs:
@@ -639,9 +570,6 @@ items:
     summary: >-
       Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties.
       Read-only.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: format
     fullName: format
     langs:
@@ -657,9 +585,6 @@ items:
       Represents the formula in A1-style notation. When setting formulas to a range, the value argument can be either a
       single value (a string) or a two-dimensional array. If the argument is a single value, it will be applied to all
       cells in the range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: formulas
     fullName: formulas
     langs:
@@ -676,9 +601,6 @@ items:
       English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. When setting formulas to a range, the
       value argument can be either a single value (a string) or a two-dimensional array. If the argument is a single
       value, it will be applied to all cells in the range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: formulasLocal
     fullName: formulasLocal
     langs:
@@ -694,9 +616,6 @@ items:
       Represents the formula in R1C1-style notation. When setting formulas to a range, the value argument can be either
       a single value (a string) or a two-dimensional array. If the argument is a single value, it will be applied to all
       cells in the range.
-
-
-      \[Api set: ExcelApi 1.2\]
     name: formulasR1C1
     fullName: formulasR1C1
     langs:
@@ -711,9 +630,6 @@ items:
     summary: >-
       Gets a Range object with the same top-left cell as the current Range object, but with the specified numbers of
       rows and columns.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: 'getAbsoluteResizedRange(numRows, numColumns)'
     fullName: 'getAbsoluteResizedRange(numRows, numColumns)'
     langs:
@@ -738,9 +654,6 @@ items:
     summary: >-
       Gets the smallest range object that encompasses the given ranges. For example, the GetBoundingRect of "B2:C5" and
       "D10:E15" is "B2:E15".
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getBoundingRect(anotherRange)
     fullName: getBoundingRect(anotherRange)
     langs:
@@ -762,9 +675,6 @@ items:
       Gets the range object containing the single cell based on row and column numbers. The cell can be outside the
       bounds of its parent range, so long as it stays within the worksheet grid. The returned cell is located relative
       to the top left cell of the range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: 'getCell(row, column)'
     fullName: 'getCell(row, column)'
     langs:
@@ -786,10 +696,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.Range#getCellProperties:member(1)'
-    summary: |-
-      Returns a 2D array, encapsulating the data for each cell's font, fill, borders, alignment, and other properties.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: 'Returns a 2D array, encapsulating the data for each cell''s font, fill, borders, alignment, and other properties.'
     name: getCellProperties(cellPropertiesLoadOptions)
     fullName: getCellProperties(cellPropertiesLoadOptions)
     langs:
@@ -807,10 +714,7 @@ items:
           type:
             - 'excel-scripts!Excel.CellPropertiesLoadOptions:interface'
   - uid: 'excel-scripts!Excel.Range#getColumn:member(1)'
-    summary: |-
-      Gets a column contained in the range.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Gets a column contained in the range.
     name: getColumn(column)
     fullName: getColumn(column)
     langs:
@@ -832,9 +736,6 @@ items:
       Returns a single-dimensional array, encapsulating the data for each column's font, fill, borders, alignment, and
       other properties. For properties that are not consistent across each cell within a given column, null will be
       returned.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: getColumnProperties(columnPropertiesLoadOptions)
     fullName: getColumnProperties(columnPropertiesLoadOptions)
     langs:
@@ -852,10 +753,7 @@ items:
           type:
             - 'excel-scripts!Excel.ColumnPropertiesLoadOptions:interface'
   - uid: 'excel-scripts!Excel.Range#getColumnsAfter:member(1)'
-    summary: |-
-      Gets a certain number of columns to the right of the current Range object.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Gets a certain number of columns to the right of the current Range object.
     name: getColumnsAfter(count)
     fullName: getColumnsAfter(count)
     langs:
@@ -876,10 +774,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.Range#getColumnsBefore:member(1)'
-    summary: |-
-      Gets a certain number of columns to the left of the current Range object.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Gets a certain number of columns to the left of the current Range object.
     name: getColumnsBefore(count)
     fullName: getColumnsBefore(count)
     langs:
@@ -903,9 +798,6 @@ items:
     summary: >-
       Gets an object that represents the entire column of the range (for example, if the current range represents cells
       "B4:E11", its `getEntireColumn` is a range that represents columns "B:E").
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getEntireColumn()
     fullName: getEntireColumn()
     langs:
@@ -921,9 +813,6 @@ items:
     summary: >-
       Gets an object that represents the entire row of the range (for example, if the current range represents cells
       "B4:E11", its `GetEntireRow` is a range that represents rows "4:11").
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getEntireRow()
     fullName: getEntireRow()
     langs:
@@ -936,10 +825,7 @@ items:
           - 'excel-scripts!Excel.Range:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#getImage:member(1)'
-    summary: |-
-      Renders the range as a base64-encoded png image.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Renders the range as a base64-encoded png image.
     name: getImage()
     fullName: getImage()
     langs:
@@ -952,10 +838,7 @@ items:
           - 'excel-scripts!Excel.Range#getImage~0:complex'
         description: ''
   - uid: 'excel-scripts!Excel.Range#getIntersection:member(1)'
-    summary: |-
-      Gets the range object that represents the rectangular intersection of the given ranges.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Gets the range object that represents the rectangular intersection of the given ranges.
     name: getIntersection(anotherRange)
     fullName: getIntersection(anotherRange)
     langs:
@@ -976,9 +859,6 @@ items:
     summary: >-
       Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is
       found, will return a null object.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: getIntersectionOrNullObject(anotherRange)
     fullName: getIntersectionOrNullObject(anotherRange)
     langs:
@@ -996,10 +876,7 @@ items:
           type:
             - 'excel-scripts!Excel.Range#getIntersectionOrNullObject~0:complex'
   - uid: 'excel-scripts!Excel.Range#getLastCell:member(1)'
-    summary: |-
-      Gets the last cell within the range. For example, the last cell of "B2:D5" is "D5".
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Gets the last cell within the range. For example, the last cell of "B2:D5" is "D5".'
     name: getLastCell()
     fullName: getLastCell()
     langs:
@@ -1012,10 +889,7 @@ items:
           - 'excel-scripts!Excel.Range:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#getLastColumn:member(1)'
-    summary: |-
-      Gets the last column within the range. For example, the last column of "B2:D5" is "D2:D5".
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Gets the last column within the range. For example, the last column of "B2:D5" is "D2:D5".'
     name: getLastColumn()
     fullName: getLastColumn()
     langs:
@@ -1028,10 +902,7 @@ items:
           - 'excel-scripts!Excel.Range:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#getLastRow:member(1)'
-    summary: |-
-      Gets the last row within the range. For example, the last row of "B2:D5" is "B5:D5".
-
-      \[Api set: ExcelApi 1.1\]
+    summary: 'Gets the last row within the range. For example, the last row of "B2:D5" is "B5:D5".'
     name: getLastRow()
     fullName: getLastRow()
     langs:
@@ -1048,9 +919,6 @@ items:
       Gets an object which represents a range that's offset from the specified range. The dimension of the returned
       range will match this range. If the resulting range is forced outside the bounds of the worksheet grid, an error
       will be thrown.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: 'getOffsetRange(rowOffset, columnOffset)'
     fullName: 'getOffsetRange(rowOffset, columnOffset)'
     langs:
@@ -1079,9 +947,6 @@ items:
     summary: >-
       Gets a Range object similar to the current Range object, but with its bottom-right corner expanded (or contracted)
       by some number of rows and columns.
-
-
-      \[Api set: ExcelApi 1.2\]
     name: 'getResizedRange(deltaRows, deltaColumns)'
     fullName: 'getResizedRange(deltaRows, deltaColumns)'
     langs:
@@ -1107,10 +972,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.Range#getRow:member(1)'
-    summary: |-
-      Gets a row contained in the range.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Gets a row contained in the range.
     name: getRow(row)
     fullName: getRow(row)
     langs:
@@ -1132,9 +994,6 @@ items:
       Returns a single-dimensional array, encapsulating the data for each row's font, fill, borders, alignment, and
       other properties. For properties that are not consistent across each cell within a given row, null will be
       returned.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: getRowProperties(rowPropertiesLoadOptions)
     fullName: getRowProperties(rowPropertiesLoadOptions)
     langs:
@@ -1152,10 +1011,7 @@ items:
           type:
             - 'excel-scripts!Excel.RowPropertiesLoadOptions:interface'
   - uid: 'excel-scripts!Excel.Range#getRowsAbove:member(1)'
-    summary: |-
-      Gets a certain number of rows above the current Range object.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Gets a certain number of rows above the current Range object.
     name: getRowsAbove(count)
     fullName: getRowsAbove(count)
     langs:
@@ -1176,10 +1032,7 @@ items:
           type:
             - number
   - uid: 'excel-scripts!Excel.Range#getRowsBelow:member(1)'
-    summary: |-
-      Gets a certain number of rows below the current Range object.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Gets a certain number of rows below the current Range object.
     name: getRowsBelow(count)
     fullName: getRowsBelow(count)
     langs:
@@ -1203,9 +1056,6 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more rectangular ranges, that represents all the cells that match
       the specified type and value. If no special cells are found, an ItemNotFound error will be thrown.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'getSpecialCells(cellType, cellValueType)'
     fullName: 'getSpecialCells(cellType, cellValueType)'
     langs:
@@ -1233,9 +1083,6 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more rectangular ranges, that represents all the cells that match
       the specified type and value. If no special cells are found, an ItemNotFound error will be thrown.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'getSpecialCells(cellTypeStringString, cellValueType)'
     fullName: 'getSpecialCells(cellTypeStringString, cellValueType)'
     langs:
@@ -1273,9 +1120,6 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more ranges, that represents all the cells that match the specified
       type and value. If no special cells are found, a null object will be returned.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'getSpecialCellsOrNullObject(cellType, cellValueType)'
     fullName: 'getSpecialCellsOrNullObject(cellType, cellValueType)'
     langs:
@@ -1305,9 +1149,6 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more ranges, that represents all the cells that match the specified
       type and value. If no special cells are found, a null object will be returned.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
     fullName: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
     langs:
@@ -1345,9 +1186,6 @@ items:
     summary: >-
       Returns a Range object that represents the surrounding region for the top-left cell in this range. A surrounding
       region is a range bounded by any combination of blank rows and blank columns relative to this range.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: getSurroundingRegion()
     fullName: getSurroundingRegion()
     langs:
@@ -1360,10 +1198,7 @@ items:
           - 'excel-scripts!Excel.Range:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#getTables:member(1)'
-    summary: |-
-      Gets a scoped collection of tables that overlap with the range.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Gets a scoped collection of tables that overlap with the range.
     name: getTables(fullyContained)
     fullName: getTables(fullyContained)
     langs:
@@ -1384,9 +1219,6 @@ items:
     summary: >-
       Returns the used range of the given range object. If there are no used cells within the range, this function will
       throw an ItemNotFound error.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: getUsedRange(valuesOnly)
     fullName: getUsedRange(valuesOnly)
     langs:
@@ -1400,16 +1232,13 @@ items:
         description: ''
       parameters:
         - id: valuesOnly
-          description: 'Considers only cells with values as used cells. \[Api set: ExcelApi 1.2\]'
+          description: Considers only cells with values as used cells.
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Range#getUsedRangeOrNullObject:member(1)'
     summary: >-
       Returns the used range of the given range object. If there are no used cells within the range, this function will
       return a null object.
-
-
-      \[Api set: ExcelApi 1.4\]
     name: getUsedRangeOrNullObject(valuesOnly)
     fullName: getUsedRangeOrNullObject(valuesOnly)
     langs:
@@ -1427,10 +1256,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Range#getVisibleView:member(1)'
-    summary: |-
-      Represents the visible rows of the current range.
-
-      \[Api set: ExcelApi 1.3\]
+    summary: Represents the visible rows of the current range.
     name: getVisibleView()
     fullName: getVisibleView()
     langs:
@@ -1443,10 +1269,7 @@ items:
           - 'excel-scripts!Excel.RangeView:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#group:member(1)'
-    summary: |-
-      Groups columns and rows for an outline.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Groups columns and rows for an outline.
     name: group(groupOption)
     fullName: group(groupOption)
     langs:
@@ -1467,10 +1290,7 @@ items:
           type:
             - 'excel-scripts!Excel.GroupOption:enum'
   - uid: 'excel-scripts!Excel.Range#group:member(2)'
-    summary: |-
-      Groups columns and rows for an outline.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Groups columns and rows for an outline.
     name: group(groupOptionStringString)
     fullName: group(groupOptionStringString)
     langs:
@@ -1491,10 +1311,7 @@ items:
           type:
             - '"ByRows" | "ByColumns"'
   - uid: 'excel-scripts!Excel.Range#height:member'
-    summary: |-
-      Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: 'Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range. Read-only.'
     name: height
     fullName: height
     langs:
@@ -1506,10 +1323,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#hidden:member'
-    summary: |-
-      Represents if all cells of the current range are hidden. Read-only.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Represents if all cells of the current range are hidden. Read-only.
     name: hidden
     fullName: hidden
     langs:
@@ -1521,10 +1335,7 @@ items:
         type:
           - boolean
   - uid: 'excel-scripts!Excel.Range#hideGroupDetails:member(1)'
-    summary: |-
-      Hide details of the row or column group.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Hide details of the row or column group.
     name: hideGroupDetails(groupOption)
     fullName: hideGroupDetails(groupOption)
     langs:
@@ -1542,10 +1353,7 @@ items:
           type:
             - 'excel-scripts!Excel.GroupOption:enum'
   - uid: 'excel-scripts!Excel.Range#hideGroupDetails:member(2)'
-    summary: |-
-      Hide details of the row or column group.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Hide details of the row or column group.
     name: hideGroupDetails(groupOptionStringString)
     fullName: hideGroupDetails(groupOptionStringString)
     langs:
@@ -1563,10 +1371,7 @@ items:
           type:
             - '"ByRows" | "ByColumns"'
   - uid: 'excel-scripts!Excel.Range#hyperlink:member'
-    summary: |-
-      Represents the hyperlink for the current range.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Represents the hyperlink for the current range.
     name: hyperlink
     fullName: hyperlink
     langs:
@@ -1581,9 +1386,6 @@ items:
     summary: >-
       Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make
       space. Returns a new Range object at the now blank space.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: insert(shift)
     fullName: insert(shift)
     langs:
@@ -1604,9 +1406,6 @@ items:
     summary: >-
       Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make
       space. Returns a new Range object at the now blank space.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: insert(shiftStringString)
     fullName: insert(shiftStringString)
     langs:
@@ -1624,10 +1423,7 @@ items:
           type:
             - '"Down" | "Right"'
   - uid: 'excel-scripts!Excel.Range#isEntireColumn:member'
-    summary: |-
-      Represents if the current range is an entire column. Read-only.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Represents if the current range is an entire column. Read-only.
     name: isEntireColumn
     fullName: isEntireColumn
     langs:
@@ -1639,10 +1435,7 @@ items:
         type:
           - boolean
   - uid: 'excel-scripts!Excel.Range#isEntireRow:member'
-    summary: |-
-      Represents if the current range is an entire row. Read-only.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Represents if the current range is an entire row. Read-only.
     name: isEntireRow
     fullName: isEntireRow
     langs:
@@ -1657,9 +1450,6 @@ items:
     summary: >-
       Returns the distance in points, for 100% zoom, from left edge of the worksheet to left edge of the range.
       Read-only.
-
-
-      \[Api set: ExcelApi 1.10\]
     name: left
     fullName: left
     langs:
@@ -1671,10 +1461,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#linkedDataTypeState:member'
-    summary: |-
-      Represents the data type state of each cell. Read-only.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Represents the data type state of each cell. Read-only.
     name: linkedDataTypeState
     fullName: linkedDataTypeState
     langs:
@@ -1736,10 +1523,7 @@ items:
                           expand?: string;
                       }
   - uid: 'excel-scripts!Excel.Range#merge:member(1)'
-    summary: |-
-      Merge the range cells into one region in the worksheet.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Merge the range cells into one region in the worksheet.
     name: merge(across)
     fullName: merge(across)
     langs:
@@ -1763,9 +1547,6 @@ items:
       Moves cell values, formatting, and formulas from current range to the destination range, replacing the old
       information in those cells. The destination range will be expanded automatically if it is smaller than the current
       range. Any cells in the destination range that are outside of the original range's area are not changed.
-
-
-      \[Api set: ExcelApiOnline 1.1\]
     name: moveTo(destinationRange)
     fullName: moveTo(destinationRange)
     langs:
@@ -1787,9 +1568,6 @@ items:
       Represents Excel's number format code for the given range. When setting number format to a range, the value
       argument can be either a single value (string) or a two-dimensional array. If the argument is a single value, it
       will be applied to all cells in the range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: numberFormat
     fullName: numberFormat
     langs:
@@ -1807,9 +1585,6 @@ items:
       two-dimensional array. If the argument is a single value, it will be applied to all cells in the range.​ Excel
       does not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any
       returned text uses the locally-formatted strings based on the language specified in the system settings.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: numberFormatLocal
     fullName: numberFormatLocal
     langs:
@@ -1821,10 +1596,7 @@ items:
         type:
           - 'any[][]'
   - uid: 'excel-scripts!Excel.Range#removeDuplicates:member(1)'
-    summary: |-
-      Removes duplicate values from the range specified by the columns.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Removes duplicate values from the range specified by the columns.
     name: 'removeDuplicates(columns, includesHeader)'
     fullName: 'removeDuplicates(columns, includesHeader)'
     langs:
@@ -1848,10 +1620,7 @@ items:
           type:
             - boolean
   - uid: 'excel-scripts!Excel.Range#replaceAll:member(1)'
-    summary: |-
-      Finds and replaces the given string based on the criteria specified within the current range.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Finds and replaces the given string based on the criteria specified within the current range.
     name: 'replaceAll(text, replacement, criteria)'
     fullName: 'replaceAll(text, replacement, criteria)'
     langs:
@@ -1877,10 +1646,7 @@ items:
           type:
             - 'excel-scripts!Excel.ReplaceCriteria:interface'
   - uid: 'excel-scripts!Excel.Range#rowCount:member'
-    summary: |-
-      Returns the total number of rows in the range. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Returns the total number of rows in the range. Read-only.
     name: rowCount
     fullName: rowCount
     langs:
@@ -1892,10 +1658,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#rowHidden:member'
-    summary: |-
-      Represents if all rows of the current range are hidden.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Represents if all rows of the current range are hidden.
     name: rowHidden
     fullName: rowHidden
     langs:
@@ -1907,10 +1670,7 @@ items:
         type:
           - boolean
   - uid: 'excel-scripts!Excel.Range#rowIndex:member'
-    summary: |-
-      Returns the row number of the first cell in the range. Zero-indexed. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Returns the row number of the first cell in the range. Zero-indexed. Read-only.
     name: rowIndex
     fullName: rowIndex
     langs:
@@ -1922,10 +1682,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#select:member(1)'
-    summary: |-
-      Selects the specified range in the Excel UI.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Selects the specified range in the Excel UI.
     name: select()
     fullName: select()
     langs:
@@ -1959,9 +1716,6 @@ items:
     summary: >-
       Updates the range based on a 2D array of cell properties , encapsulating things like font, fill, borders,
       alignment, and so forth.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: setCellProperties(cellPropertiesData)
     fullName: setCellProperties(cellPropertiesData)
     langs:
@@ -1982,9 +1736,6 @@ items:
     summary: >-
       Updates the range based on a single-dimensional array of column properties, encapsulating things like font, fill,
       borders, alignment, and so forth.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: setColumnProperties(columnPropertiesData)
     fullName: setColumnProperties(columnPropertiesData)
     langs:
@@ -2002,10 +1753,7 @@ items:
           type:
             - 'excel-scripts!Excel.Range#setColumnProperties~0:complex'
   - uid: 'excel-scripts!Excel.Range#setDirty:member(1)'
-    summary: |-
-      Set a range to be recalculated when the next recalculation occurs.
-
-      \[Api set: ExcelApi 1.9\]
+    summary: Set a range to be recalculated when the next recalculation occurs.
     name: setDirty()
     fullName: setDirty()
     langs:
@@ -2021,9 +1769,6 @@ items:
     summary: >-
       Updates the range based on a single-dimensional array of row properties, encapsulating things like font, fill,
       borders, alignment, and so forth.
-
-
-      \[Api set: ExcelApi 1.9\]
     name: setRowProperties(rowPropertiesData)
     fullName: setRowProperties(rowPropertiesData)
     langs:
@@ -2041,10 +1786,7 @@ items:
           type:
             - 'excel-scripts!Excel.Range#setRowProperties~0:complex'
   - uid: 'excel-scripts!Excel.Range#showCard:member(1)'
-    summary: |-
-      Displays the card for an active cell if it has rich value content.
-
-      \[Api set: ExcelApi 1.7\]
+    summary: Displays the card for an active cell if it has rich value content.
     name: showCard()
     fullName: showCard()
     langs:
@@ -2057,10 +1799,7 @@ items:
           - void
         description: ''
   - uid: 'excel-scripts!Excel.Range#showGroupDetails:member(1)'
-    summary: |-
-      Show details of the row or column group.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Show details of the row or column group.
     name: showGroupDetails(groupOption)
     fullName: showGroupDetails(groupOption)
     langs:
@@ -2078,10 +1817,7 @@ items:
           type:
             - 'excel-scripts!Excel.GroupOption:enum'
   - uid: 'excel-scripts!Excel.Range#showGroupDetails:member(2)'
-    summary: |-
-      Show details of the row or column group.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Show details of the row or column group.
     name: showGroupDetails(groupOptionStringString)
     fullName: showGroupDetails(groupOptionStringString)
     langs:
@@ -2099,10 +1835,7 @@ items:
           type:
             - '"ByRows" | "ByColumns"'
   - uid: 'excel-scripts!Excel.Range#sort:member'
-    summary: |-
-      Represents the range sort of the current range. Read-only.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Represents the range sort of the current range. Read-only.
     name: sort
     fullName: sort
     langs:
@@ -2118,9 +1851,6 @@ items:
       Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
       custom styles, the style name will be returned. For built-in styles, a string representing a value in the
       BuiltInStyle enum will be returned.
-
-
-      \[Api set: ExcelApi 1.7\]
     name: style
     fullName: style
     langs:
@@ -2135,9 +1865,6 @@ items:
     summary: >-
       Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
       that happens in Excel UI will not affect the text value returned by the API. Read-only.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: text
     fullName: text
     langs:
@@ -2167,10 +1894,7 @@ items:
           - 'excel-scripts!Excel.Interfaces.RangeData:interface'
         description: ''
   - uid: 'excel-scripts!Excel.Range#top:member'
-    summary: |-
-      Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: 'Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range. Read-only.'
     name: top
     fullName: top
     langs:
@@ -2200,10 +1924,7 @@ items:
           - 'excel-scripts!Excel.Range:class'
         description: ''
   - uid: 'excel-scripts!Excel.Range#ungroup:member(1)'
-    summary: |-
-      Ungroups columns and rows for an outline.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Ungroups columns and rows for an outline.
     name: ungroup(groupOption)
     fullName: ungroup(groupOption)
     langs:
@@ -2221,10 +1942,7 @@ items:
           type:
             - 'excel-scripts!Excel.GroupOption:enum'
   - uid: 'excel-scripts!Excel.Range#ungroup:member(2)'
-    summary: |-
-      Ungroups columns and rows for an outline.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: Ungroups columns and rows for an outline.
     name: ungroup(groupOptionStringString)
     fullName: ungroup(groupOptionStringString)
     langs:
@@ -2242,10 +1960,7 @@ items:
           type:
             - '"ByRows" | "ByColumns"'
   - uid: 'excel-scripts!Excel.Range#unmerge:member(1)'
-    summary: |-
-      Unmerge the range cells into separate cells.
-
-      \[Api set: ExcelApi 1.2\]
+    summary: Unmerge the range cells into separate cells.
     name: unmerge()
     fullName: unmerge()
     langs:
@@ -2280,9 +1995,6 @@ items:
       Cells that contain an error will return the error string. When setting values to a range, the value argument can
       be either a single value (string, number or boolean) or a two-dimensional array. If the argument is a single
       value, it will be applied to all cells in the range.
-
-
-      \[Api set: ExcelApi 1.1\]
     name: values
     fullName: values
     langs:
@@ -2294,10 +2006,7 @@ items:
         type:
           - 'any[][]'
   - uid: 'excel-scripts!Excel.Range#valueTypes:member'
-    summary: |-
-      Represents the type of data of each cell. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: Represents the type of data of each cell. Read-only.
     name: valueTypes
     fullName: valueTypes
     langs:
@@ -2309,10 +2018,7 @@ items:
         type:
           - 'excel-scripts!Excel.Range#valueTypes~0:complex'
   - uid: 'excel-scripts!Excel.Range#width:member'
-    summary: |-
-      Returns the distance in points, for 100% zoom, from left edge of the range to right edge of the range. Read-only.
-
-      \[Api set: ExcelApi 1.10\]
+    summary: 'Returns the distance in points, for 100% zoom, from left edge of the range to right edge of the range. Read-only.'
     name: width
     fullName: width
     langs:
@@ -2324,10 +2030,7 @@ items:
         type:
           - number
   - uid: 'excel-scripts!Excel.Range#worksheet:member'
-    summary: |-
-      The worksheet containing the current range. Read-only.
-
-      \[Api set: ExcelApi 1.1\]
+    summary: The worksheet containing the current range. Read-only.
     name: worksheet
     fullName: worksheet
     langs:
