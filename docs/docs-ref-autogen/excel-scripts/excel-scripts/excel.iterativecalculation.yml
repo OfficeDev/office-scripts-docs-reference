@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.IterativeCalculation#maxChange:member'
       - 'excel-scripts!Excel.IterativeCalculation#maxIteration:member'
       - 'excel-scripts!Excel.IterativeCalculation#set:member(1)'
-      - 'excel-scripts!Excel.IterativeCalculation#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.IterativeCalculation#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -135,28 +134,8 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.IterativeCalculation:class'
-  - uid: 'excel-scripts!Excel.IterativeCalculation#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.IterativeCalculation object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.IterativeCalculationData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.IterativeCalculationData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.IterativeCalculationData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
   - uid: 'excel-scripts!Excel.IterativeCalculation:class'
     name: Excel.IterativeCalculation
-  - uid: 'excel-scripts!Excel.Interfaces.IterativeCalculationData:interface'
-    name: Excel.Interfaces.IterativeCalculationData

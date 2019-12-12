@@ -38,7 +38,6 @@ items:
       - 'excel-scripts!Excel.Table#showTotals:member'
       - 'excel-scripts!Excel.Table#sort:member'
       - 'excel-scripts!Excel.Table#style:member'
-      - 'excel-scripts!Excel.Table#toJSON:member(1)'
       - 'excel-scripts!Excel.Table#worksheet:member'
   - uid: 'excel-scripts!Excel.Table#autoFilter:member'
     summary: Represents the AutoFilter object of the table. Read-Only.
@@ -420,24 +419,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel-scripts!Excel.Table#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Table object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.TableData`<!-- -->) that contains shallow copies of any loaded child
-      properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Table#worksheet:member'
     summary: The worksheet containing the current table. Read-only.
     name: worksheet
@@ -465,7 +446,5 @@ references:
     name: Excel.TableRowCollection
   - uid: 'excel-scripts!Excel.TableSort:class'
     name: Excel.TableSort
-  - uid: 'excel-scripts!Excel.Interfaces.TableData:interface'
-    name: Excel.Interfaces.TableData
   - uid: 'excel-scripts!Excel.Worksheet:class'
     name: Excel.Worksheet

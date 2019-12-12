@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartFormatString#load:member(1)'
       - 'excel-scripts!Excel.ChartFormatString#load:member(2)'
       - 'excel-scripts!Excel.ChartFormatString#set:member(1)'
-      - 'excel-scripts!Excel.ChartFormatString#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ChartFormatString#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -111,24 +110,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartFormatString:class'
-  - uid: 'excel-scripts!Excel.ChartFormatString#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartFormatString object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartFormatStringData`<!-- -->) that contains shallow copies
-      of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartFormatStringData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartFormatStringData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -136,5 +117,3 @@ references:
     name: Excel.ChartFont
   - uid: 'excel-scripts!Excel.ChartFormatString:class'
     name: Excel.ChartFormatString
-  - uid: 'excel-scripts!Excel.Interfaces.ChartFormatStringData:interface'
-    name: Excel.Interfaces.ChartFormatStringData

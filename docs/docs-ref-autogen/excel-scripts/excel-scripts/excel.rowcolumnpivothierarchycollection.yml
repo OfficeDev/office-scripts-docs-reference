@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#items:member'
       - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
       - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#remove:member(1)'
-      - 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
     summary: >-
       Adds the PivotHierarchy to the current axis. If the hierarchy is present elsewhere on the row, column, or filter
@@ -151,25 +150,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
-  - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.RowColumnPivotHierarchyCollection` object is an API object, the
-      `toJSON` method returns a plain JavaScript object (typed as
-      `Excel.Interfaces.RowColumnPivotHierarchyCollectionData`<!-- -->) that contains an "items" array with shallow
-      copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RowColumnPivotHierarchyCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RowColumnPivotHierarchyCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RowColumnPivotHierarchy:class'
     name: Excel.RowColumnPivotHierarchy
@@ -197,5 +177,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.RowColumnPivotHierarchyCollection:class'
     name: Excel.RowColumnPivotHierarchyCollection
-  - uid: 'excel-scripts!Excel.Interfaces.RowColumnPivotHierarchyCollectionData:interface'
-    name: Excel.Interfaces.RowColumnPivotHierarchyCollectionData

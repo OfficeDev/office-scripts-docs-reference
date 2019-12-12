@@ -44,7 +44,6 @@ items:
       - 'excel-scripts!Excel.PageLayout#setPrintMargins:member(2)'
       - 'excel-scripts!Excel.PageLayout#setPrintTitleColumns:member(1)'
       - 'excel-scripts!Excel.PageLayout#setPrintTitleRows:member(1)'
-      - 'excel-scripts!Excel.PageLayout#toJSON:member(1)'
       - 'excel-scripts!Excel.PageLayout#topMargin:member'
       - 'excel-scripts!Excel.PageLayout#zoom:member'
   - uid: 'excel-scripts!Excel.PageLayout#blackAndWhite:member'
@@ -539,24 +538,6 @@ items:
           description: 'The rows to be repeated at the top of each page, range must span the entire row to be valid.'
           type:
             - 'excel-scripts!Excel.PageLayout#setPrintTitleRows~0:complex'
-  - uid: 'excel-scripts!Excel.PageLayout#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.PageLayout object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.PageLayoutData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PageLayoutData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PageLayoutData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.PageLayout#topMargin:member'
     summary: 'Gets or sets the worksheet''s top margin, in points, for use when printing.'
     name: topMargin
@@ -687,7 +668,5 @@ references:
         fullName: Excel.Range
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel-scripts!Excel.Interfaces.PageLayoutData:interface'
-    name: Excel.Interfaces.PageLayoutData
   - uid: 'excel-scripts!Excel.PageLayoutZoomOptions:interface'
     name: Excel.PageLayoutZoomOptions

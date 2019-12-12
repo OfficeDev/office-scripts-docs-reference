@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.TableStyleCollection#items:member'
       - 'excel-scripts!Excel.TableStyleCollection#load:member(1)'
       - 'excel-scripts!Excel.TableStyleCollection#setDefault:member(1)'
-      - 'excel-scripts!Excel.TableStyleCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.TableStyleCollection#add:member(1)'
     summary: Creates a blank TableStyle with the specified name.
     name: 'add(name, makeUniqueName)'
@@ -169,24 +168,6 @@ items:
           description: The TableStyle object or name of the TableStyle object that should be the new default.
           type:
             - 'excel-scripts!Excel.TableStyleCollection#setDefault~0:complex'
-  - uid: 'excel-scripts!Excel.TableStyleCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.TableStyleCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.TableStyleCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableStyleCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableStyleCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.TableStyle:class'
     name: Excel.TableStyle
@@ -221,5 +202,3 @@ references:
         fullName: Excel.TableStyle
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel-scripts!Excel.Interfaces.TableStyleCollectionData:interface'
-    name: Excel.Interfaces.TableStyleCollectionData

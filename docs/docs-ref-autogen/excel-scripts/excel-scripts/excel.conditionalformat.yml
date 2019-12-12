@@ -37,7 +37,6 @@ items:
       - 'excel-scripts!Excel.ConditionalFormat#stopIfTrue:member'
       - 'excel-scripts!Excel.ConditionalFormat#textComparison:member'
       - 'excel-scripts!Excel.ConditionalFormat#textComparisonOrNullObject:member'
-      - 'excel-scripts!Excel.ConditionalFormat#toJSON:member(1)'
       - 'excel-scripts!Excel.ConditionalFormat#topBottom:member'
       - 'excel-scripts!Excel.ConditionalFormat#topBottomOrNullObject:member'
       - 'excel-scripts!Excel.ConditionalFormat#type:member'
@@ -402,24 +401,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.TextConditionalFormat:class'
-  - uid: 'excel-scripts!Excel.ConditionalFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ConditionalFormat object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ConditionalFormatData`<!-- -->) that contains shallow copies
-      of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ConditionalFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ConditionalFormatData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ConditionalFormat#topBottom:member'
     summary: >-
       Returns the Top/Bottom conditional format properties if the current conditional format is an TopBottom type. For
@@ -485,8 +466,6 @@ references:
     name: Excel.PresetCriteriaConditionalFormat
   - uid: 'excel-scripts!Excel.TextConditionalFormat:class'
     name: Excel.TextConditionalFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ConditionalFormatData:interface'
-    name: Excel.Interfaces.ConditionalFormatData
   - uid: 'excel-scripts!Excel.TopBottomConditionalFormat:class'
     name: Excel.TopBottomConditionalFormat
   - uid: 'excel-scripts!Excel.ConditionalFormat#type~0:complex'

@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.FilterPivotHierarchyCollection#items:member'
       - 'excel-scripts!Excel.FilterPivotHierarchyCollection#load:member(1)'
       - 'excel-scripts!Excel.FilterPivotHierarchyCollection#remove:member(1)'
-      - 'excel-scripts!Excel.FilterPivotHierarchyCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.FilterPivotHierarchyCollection#add:member(1)'
     summary: >-
       Adds the PivotHierarchy to the current axis. If the hierarchy is present elsewhere on the row, column, or filter
@@ -151,24 +150,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.FilterPivotHierarchy:class'
-  - uid: 'excel-scripts!Excel.FilterPivotHierarchyCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.FilterPivotHierarchyCollection` object is an API object, the `toJSON`
-      method returns a plain JavaScript object (typed as `Excel.Interfaces.FilterPivotHierarchyCollectionData`<!-- -->)
-      that contains an "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.FilterPivotHierarchyCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.FilterPivotHierarchyCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.FilterPivotHierarchy:class'
     name: Excel.FilterPivotHierarchy
@@ -196,5 +177,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.FilterPivotHierarchyCollection:class'
     name: Excel.FilterPivotHierarchyCollection
-  - uid: 'excel-scripts!Excel.Interfaces.FilterPivotHierarchyCollectionData:interface'
-    name: Excel.Interfaces.FilterPivotHierarchyCollectionData

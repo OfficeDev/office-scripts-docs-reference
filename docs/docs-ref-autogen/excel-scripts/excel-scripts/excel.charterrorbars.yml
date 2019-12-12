@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartErrorBars#load:member(1)'
       - 'excel-scripts!Excel.ChartErrorBars#load:member(2)'
       - 'excel-scripts!Excel.ChartErrorBars#set:member(1)'
-      - 'excel-scripts!Excel.ChartErrorBars#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartErrorBars#type:member'
       - 'excel-scripts!Excel.ChartErrorBars#visible:member'
   - uid: 'excel-scripts!Excel.ChartErrorBars#context:member'
@@ -137,24 +136,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartErrorBars:class'
-  - uid: 'excel-scripts!Excel.ChartErrorBars#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartErrorBars object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartErrorBarsData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartErrorBarsData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartErrorBarsData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartErrorBars#type:member'
     summary: The type of range marked by the error bars.
     name: type
@@ -195,8 +176,6 @@ references:
         fullName: ' | "Both" | "MinusValues" | "PlusValues"'
   - uid: 'excel-scripts!Excel.ChartErrorBars:class'
     name: Excel.ChartErrorBars
-  - uid: 'excel-scripts!Excel.Interfaces.ChartErrorBarsData:interface'
-    name: Excel.Interfaces.ChartErrorBarsData
   - uid: 'excel-scripts!Excel.ChartErrorBars#type~0:complex'
     name: Excel.ChartErrorBarsType | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"
     fullName: Excel.ChartErrorBarsType | "FixedValue" | "Percent" | "StDev" | "StError" | "Custom"

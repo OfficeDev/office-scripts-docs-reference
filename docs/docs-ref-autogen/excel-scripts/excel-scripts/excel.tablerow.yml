@@ -22,7 +22,6 @@ items:
       - 'excel-scripts!Excel.TableRow#load:member(1)'
       - 'excel-scripts!Excel.TableRow#load:member(2)'
       - 'excel-scripts!Excel.TableRow#set:member(1)'
-      - 'excel-scripts!Excel.TableRow#toJSON:member(1)'
       - 'excel-scripts!Excel.TableRow#values:member'
   - uid: 'excel-scripts!Excel.TableRow#context:member'
     summary: >-
@@ -144,24 +143,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.TableRow:class'
-  - uid: 'excel-scripts!Excel.TableRow#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.TableRow object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.TableRowData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableRowData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableRowData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.TableRow#values:member'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
@@ -183,5 +164,3 @@ references:
     name: Excel.Range
   - uid: 'excel-scripts!Excel.TableRow:class'
     name: Excel.TableRow
-  - uid: 'excel-scripts!Excel.Interfaces.TableRowData:interface'
-    name: Excel.Interfaces.TableRowData

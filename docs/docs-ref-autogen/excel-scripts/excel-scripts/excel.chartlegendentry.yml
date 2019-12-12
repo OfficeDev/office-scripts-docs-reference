@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartLegendEntry#load:member(1)'
       - 'excel-scripts!Excel.ChartLegendEntry#load:member(2)'
       - 'excel-scripts!Excel.ChartLegendEntry#set:member(1)'
-      - 'excel-scripts!Excel.ChartLegendEntry#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartLegendEntry#top:member'
       - 'excel-scripts!Excel.ChartLegendEntry#visible:member'
       - 'excel-scripts!Excel.ChartLegendEntry#width:member'
@@ -138,24 +137,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartLegendEntry:class'
-  - uid: 'excel-scripts!Excel.ChartLegendEntry#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartLegendEntry object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartLegendEntryData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartLegendEntryData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartLegendEntryData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartLegendEntry#top:member'
     summary: Represents the top of a chart legendEntry.
     name: top
@@ -197,5 +178,3 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.ChartLegendEntry:class'
     name: Excel.ChartLegendEntry
-  - uid: 'excel-scripts!Excel.Interfaces.ChartLegendEntryData:interface'
-    name: Excel.Interfaces.ChartLegendEntryData

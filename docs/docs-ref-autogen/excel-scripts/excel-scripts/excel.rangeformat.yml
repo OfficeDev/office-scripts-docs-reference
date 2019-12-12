@@ -28,7 +28,6 @@ items:
       - 'excel-scripts!Excel.RangeFormat#set:member(1)'
       - 'excel-scripts!Excel.RangeFormat#shrinkToFit:member'
       - 'excel-scripts!Excel.RangeFormat#textOrientation:member'
-      - 'excel-scripts!Excel.RangeFormat#toJSON:member(1)'
       - 'excel-scripts!Excel.RangeFormat#useStandardHeight:member'
       - 'excel-scripts!Excel.RangeFormat#useStandardWidth:member'
       - 'excel-scripts!Excel.RangeFormat#verticalAlignment:member'
@@ -319,24 +318,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.RangeFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeFormat object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeFormatData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RangeFormat#useStandardHeight:member'
     summary: >-
       Determines if the row height of the Range object equals the standard height of the sheet. Returns True if the row
@@ -428,8 +409,6 @@ references:
         fullName: Excel.ReadingOrder
       - name: ' | "Context" | "LeftToRight" | "RightToLeft"'
         fullName: ' | "Context" | "LeftToRight" | "RightToLeft"'
-  - uid: 'excel-scripts!Excel.Interfaces.RangeFormatData:interface'
-    name: Excel.Interfaces.RangeFormatData
   - uid: 'excel-scripts!Excel.RangeFormat#verticalAlignment~0:complex'
     name: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"
     fullName: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"

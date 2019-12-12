@@ -49,7 +49,6 @@ items:
       - 'excel-scripts!Excel.Workbook#tables:member'
       - 'excel-scripts!Excel.Workbook#tableStyles:member'
       - 'excel-scripts!Excel.Workbook#timelineStyles:member'
-      - 'excel-scripts!Excel.Workbook#toJSON:member(1)'
       - 'excel-scripts!Excel.Workbook#usePrecisionAsDisplayed:member'
       - 'excel-scripts!Excel.Workbook#worksheets:member'
   - uid: 'excel-scripts!Excel.Workbook#application:member'
@@ -552,24 +551,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.TimelineStyleCollection:class'
-  - uid: 'excel-scripts!Excel.Workbook#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Workbook object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.WorkbookData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.WorkbookData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.WorkbookData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Workbook#usePrecisionAsDisplayed:member'
     summary: >-
       True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
@@ -654,7 +635,5 @@ references:
     name: Excel.TableStyleCollection
   - uid: 'excel-scripts!Excel.TimelineStyleCollection:class'
     name: Excel.TimelineStyleCollection
-  - uid: 'excel-scripts!Excel.Interfaces.WorkbookData:interface'
-    name: Excel.Interfaces.WorkbookData
   - uid: 'excel-scripts!Excel.WorksheetCollection:class'
     name: Excel.WorksheetCollection

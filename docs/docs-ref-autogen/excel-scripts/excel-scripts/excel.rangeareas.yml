@@ -47,7 +47,6 @@ items:
       - 'excel-scripts!Excel.RangeAreas#set:member(1)'
       - 'excel-scripts!Excel.RangeAreas#setDirty:member(1)'
       - 'excel-scripts!Excel.RangeAreas#style:member'
-      - 'excel-scripts!Excel.RangeAreas#toJSON:member(1)'
       - 'excel-scripts!Excel.RangeAreas#track:member(1)'
       - 'excel-scripts!Excel.RangeAreas#untrack:member(1)'
       - 'excel-scripts!Excel.RangeAreas#worksheet:member'
@@ -732,24 +731,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel-scripts!Excel.RangeAreas#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeAreas object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeAreasData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeAreasData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeAreasData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RangeAreas#track:member(1)'
     summary: >-
       Track the object for automatic adjustment based on surrounding changes in the document. This call is a shorthand
@@ -876,7 +857,5 @@ references:
     name: Excel.SpecialCellValueType
   - uid: 'excel-scripts!Excel.TableScopedCollection:class'
     name: Excel.TableScopedCollection
-  - uid: 'excel-scripts!Excel.Interfaces.RangeAreasData:interface'
-    name: Excel.Interfaces.RangeAreasData
   - uid: 'excel-scripts!Excel.Worksheet:class'
     name: Excel.Worksheet

@@ -19,7 +19,6 @@ items:
       - 'excel-scripts!Excel.TableSort#matchCase:member'
       - 'excel-scripts!Excel.TableSort#method:member'
       - 'excel-scripts!Excel.TableSort#reapply:member(1)'
-      - 'excel-scripts!Excel.TableSort#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.TableSort#apply:member(1)'
     summary: Perform a sort operation.
     name: 'apply(fields, matchCase, method)'
@@ -200,24 +199,6 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel-scripts!Excel.TableSort#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.TableSort object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.TableSortData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableSortData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableSortData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.TableSort#apply~0:complex'
     name: 'Excel.SortField[]'
@@ -261,5 +242,3 @@ references:
         fullName: Excel.SortMethod
       - name: ' | "PinYin" | "StrokeCount"'
         fullName: ' | "PinYin" | "StrokeCount"'
-  - uid: 'excel-scripts!Excel.Interfaces.TableSortData:interface'
-    name: Excel.Interfaces.TableSortData

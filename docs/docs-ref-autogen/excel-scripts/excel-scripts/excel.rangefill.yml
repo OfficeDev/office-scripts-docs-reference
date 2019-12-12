@@ -19,7 +19,6 @@ items:
       - 'excel-scripts!Excel.RangeFill#patternTintAndShade:member'
       - 'excel-scripts!Excel.RangeFill#set:member(1)'
       - 'excel-scripts!Excel.RangeFill#tintAndShade:member'
-      - 'excel-scripts!Excel.RangeFill#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.RangeFill#clear:member(1)'
     summary: Resets the range background.
     name: clear()
@@ -190,24 +189,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.RangeFill#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeFill object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeFillData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeFillData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeFillData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -228,5 +209,3 @@ references:
         fullName: Excel.FillPattern
       - name: ' | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up" | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross" | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"'
         fullName: ' | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up" | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross" | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"'
-  - uid: 'excel-scripts!Excel.Interfaces.RangeFillData:interface'
-    name: Excel.Interfaces.RangeFillData

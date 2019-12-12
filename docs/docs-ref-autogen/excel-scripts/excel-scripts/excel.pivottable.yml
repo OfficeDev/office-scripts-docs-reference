@@ -26,7 +26,6 @@ items:
       - 'excel-scripts!Excel.PivotTable#refresh:member(1)'
       - 'excel-scripts!Excel.PivotTable#rowHierarchies:member'
       - 'excel-scripts!Excel.PivotTable#set:member(1)'
-      - 'excel-scripts!Excel.PivotTable#toJSON:member(1)'
       - 'excel-scripts!Excel.PivotTable#useCustomSortLists:member'
       - 'excel-scripts!Excel.PivotTable#worksheet:member'
   - uid: 'excel-scripts!Excel.PivotTable#columnHierarchies:member'
@@ -245,24 +244,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.PivotTable:class'
-  - uid: 'excel-scripts!Excel.PivotTable#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.PivotTable object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.PivotTableData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PivotTableData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PivotTableData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.PivotTable#useCustomSortLists:member'
     summary: Specifies whether the PivotTable uses custom lists when sorting.
     name: useCustomSortLists
@@ -302,7 +283,5 @@ references:
     name: Excel.PivotLayout
   - uid: 'excel-scripts!Excel.PivotTable:class'
     name: Excel.PivotTable
-  - uid: 'excel-scripts!Excel.Interfaces.PivotTableData:interface'
-    name: Excel.Interfaces.PivotTableData
   - uid: 'excel-scripts!Excel.Worksheet:class'
     name: Excel.Worksheet

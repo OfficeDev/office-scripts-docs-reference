@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.ConditionalRangeFill#load:member(1)'
       - 'excel-scripts!Excel.ConditionalRangeFill#load:member(2)'
       - 'excel-scripts!Excel.ConditionalRangeFill#set:member(1)'
-      - 'excel-scripts!Excel.ConditionalRangeFill#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ConditionalRangeFill#clear:member(1)'
     summary: Resets the fill.
     name: clear()
@@ -125,28 +124,8 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ConditionalRangeFill:class'
-  - uid: 'excel-scripts!Excel.ConditionalRangeFill#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ConditionalRangeFill object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalRangeFillData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ConditionalRangeFillData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ConditionalRangeFillData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
   - uid: 'excel-scripts!Excel.ConditionalRangeFill:class'
     name: Excel.ConditionalRangeFill
-  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeFillData:interface'
-    name: Excel.Interfaces.ConditionalRangeFillData

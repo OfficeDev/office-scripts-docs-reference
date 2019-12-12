@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.ChartBinOptions#load:member(2)'
       - 'excel-scripts!Excel.ChartBinOptions#overflowValue:member'
       - 'excel-scripts!Excel.ChartBinOptions#set:member(1)'
-      - 'excel-scripts!Excel.ChartBinOptions#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartBinOptions#type:member'
       - 'excel-scripts!Excel.ChartBinOptions#underflowValue:member'
       - 'excel-scripts!Excel.ChartBinOptions#width:member'
@@ -151,24 +150,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartBinOptions:class'
-  - uid: 'excel-scripts!Excel.ChartBinOptions#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartBinOptions object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartBinOptionsData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartBinOptionsData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartBinOptionsData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartBinOptions#type:member'
     summary: Returns or sets the bin's type for a histogram chart or pareto chart. Read/Write.
     name: type
@@ -210,8 +191,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.ChartBinOptions:class'
     name: Excel.ChartBinOptions
-  - uid: 'excel-scripts!Excel.Interfaces.ChartBinOptionsData:interface'
-    name: Excel.Interfaces.ChartBinOptionsData
   - uid: 'excel-scripts!Excel.ChartBinOptions#type~0:complex'
     name: Excel.ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount"
     fullName: Excel.ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount"

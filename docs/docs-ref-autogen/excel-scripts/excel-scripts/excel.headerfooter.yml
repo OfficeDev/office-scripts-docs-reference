@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.HeaderFooter#rightFooter:member'
       - 'excel-scripts!Excel.HeaderFooter#rightHeader:member'
       - 'excel-scripts!Excel.HeaderFooter#set:member(1)'
-      - 'excel-scripts!Excel.HeaderFooter#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.HeaderFooter#centerFooter:member'
     summary: >-
       Gets or sets the center footer of the worksheet. To apply font formatting or insert a variable value, use format
@@ -185,28 +184,8 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.HeaderFooter:class'
-  - uid: 'excel-scripts!Excel.HeaderFooter#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.HeaderFooter object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.HeaderFooterData`<!-- -->) that contains shallow copies of any
-      loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.HeaderFooterData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
   - uid: 'excel-scripts!Excel.HeaderFooter:class'
     name: Excel.HeaderFooter
-  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterData:interface'
-    name: Excel.Interfaces.HeaderFooterData
