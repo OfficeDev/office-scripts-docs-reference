@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.TableScopedCollection#getItem:member(1)'
       - 'excel-scripts!Excel.TableScopedCollection#items:member'
       - 'excel-scripts!Excel.TableScopedCollection#load:member(1)'
-      - 'excel-scripts!Excel.TableScopedCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.TableScopedCollection#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -110,24 +109,6 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel-scripts!Excel.TableScopedCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.TableScopedCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.TableScopedCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableScopedCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableScopedCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -153,5 +134,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.TableScopedCollection:class'
     name: Excel.TableScopedCollection
-  - uid: 'excel-scripts!Excel.Interfaces.TableScopedCollectionData:interface'
-    name: Excel.Interfaces.TableScopedCollectionData

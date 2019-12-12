@@ -24,7 +24,6 @@ items:
       - 'excel-scripts!Excel.ChartTrendline#set:member(1)'
       - 'excel-scripts!Excel.ChartTrendline#showEquation:member'
       - 'excel-scripts!Excel.ChartTrendline#showRSquared:member'
-      - 'excel-scripts!Excel.ChartTrendline#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartTrendline#type:member'
   - uid: 'excel-scripts!Excel.ChartTrendline#backwardPeriod:member'
     summary: Represents the number of periods that the trendline extends backward.
@@ -245,24 +244,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel-scripts!Excel.ChartTrendline#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartTrendline object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartTrendlineData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartTrendlineData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartTrendlineData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartTrendline#type:member'
     summary: Represents the type of a chart trendline.
     name: type
@@ -286,8 +267,6 @@ references:
     name: Excel.ChartTrendlineLabel
   - uid: 'excel-scripts!Excel.ChartTrendline:class'
     name: Excel.ChartTrendline
-  - uid: 'excel-scripts!Excel.Interfaces.ChartTrendlineData:interface'
-    name: Excel.Interfaces.ChartTrendlineData
   - uid: 'excel-scripts!Excel.ChartTrendline#type~0:complex'
     name: Excel.ChartTrendlineType | "Linear" | "Exponential" | "Logarithmic" | "MovingAverage" | "Polynomial" | "Power"
     fullName: Excel.ChartTrendlineType | "Linear" | "Exponential" | "Logarithmic" | "MovingAverage" | "Polynomial" | "Power"

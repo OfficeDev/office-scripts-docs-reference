@@ -21,7 +21,6 @@ items:
       - 'excel-scripts!Excel.Application#set:member(1)'
       - 'excel-scripts!Excel.Application#suspendApiCalculationUntilNextSync:member(1)'
       - 'excel-scripts!Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)'
-      - 'excel-scripts!Excel.Application#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.Application#calculate:member(1)'
     summary: Recalculate all currently opened workbooks in Excel.
     name: calculate(calculationType)
@@ -222,24 +221,6 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel-scripts!Excel.Application#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Application object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ApplicationData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ApplicationData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ApplicationData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.CalculationType:enum'
     name: Excel.CalculationType
@@ -267,5 +248,3 @@ references:
     name: Excel.IterativeCalculation
   - uid: 'excel-scripts!Excel.Application:class'
     name: Excel.Application
-  - uid: 'excel-scripts!Excel.Interfaces.ApplicationData:interface'
-    name: Excel.Interfaces.ApplicationData

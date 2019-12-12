@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.PageBreak#load:member(1)'
       - 'excel-scripts!Excel.PageBreak#load:member(2)'
       - 'excel-scripts!Excel.PageBreak#rowIndex:member'
-      - 'excel-scripts!Excel.PageBreak#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.PageBreak#columnIndex:member'
     summary: Represents the column index for the page break
     name: columnIndex
@@ -130,24 +129,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.PageBreak#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.PageBreak object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.PageBreakData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PageBreakData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PageBreakData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -155,5 +136,3 @@ references:
     name: Excel.Range
   - uid: 'excel-scripts!Excel.PageBreak:class'
     name: Excel.PageBreak
-  - uid: 'excel-scripts!Excel.Interfaces.PageBreakData:interface'
-    name: Excel.Interfaces.PageBreakData

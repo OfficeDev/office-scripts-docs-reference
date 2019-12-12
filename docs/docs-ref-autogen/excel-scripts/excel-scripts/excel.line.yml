@@ -32,7 +32,6 @@ items:
       - 'excel-scripts!Excel.Line#load:member(2)'
       - 'excel-scripts!Excel.Line#set:member(1)'
       - 'excel-scripts!Excel.Line#shape:member'
-      - 'excel-scripts!Excel.Line#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.Line#beginArrowheadLength:member'
     summary: Represents the length of the arrowhead at the beginning of the specified line.
     name: beginArrowheadLength
@@ -373,24 +372,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.Shape:class'
-  - uid: 'excel-scripts!Excel.Line#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Line object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.LineData`<!-- -->) that contains shallow copies of any loaded child
-      properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.LineData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.LineData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.Line#beginArrowheadLength~0:complex'
     name: Excel.ArrowheadLength | "Short" | "Medium" | "Long"
@@ -461,5 +442,3 @@ references:
         fullName: ' | "Narrow" | "Medium" | "Wide"'
   - uid: 'excel-scripts!Excel.Line:class'
     name: Excel.Line
-  - uid: 'excel-scripts!Excel.Interfaces.LineData:interface'
-    name: Excel.Interfaces.LineData

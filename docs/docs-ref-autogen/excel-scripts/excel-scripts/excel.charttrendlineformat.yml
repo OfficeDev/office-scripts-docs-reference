@@ -14,7 +14,6 @@ items:
       - 'excel-scripts!Excel.ChartTrendlineFormat#load:member(1)'
       - 'excel-scripts!Excel.ChartTrendlineFormat#load:member(2)'
       - 'excel-scripts!Excel.ChartTrendlineFormat#set:member(1)'
-      - 'excel-scripts!Excel.ChartTrendlineFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ChartTrendlineFormat#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -109,24 +108,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartTrendlineFormat:class'
-  - uid: 'excel-scripts!Excel.ChartTrendlineFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartTrendlineFormat object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ChartTrendlineFormatData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartTrendlineFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartTrendlineFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -134,5 +115,3 @@ references:
     name: Excel.ChartLineFormat
   - uid: 'excel-scripts!Excel.ChartTrendlineFormat:class'
     name: Excel.ChartTrendlineFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ChartTrendlineFormatData:interface'
-    name: Excel.Interfaces.ChartTrendlineFormatData

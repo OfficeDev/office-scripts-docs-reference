@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartLineFormat#load:member(1)'
       - 'excel-scripts!Excel.ChartLineFormat#load:member(2)'
       - 'excel-scripts!Excel.ChartLineFormat#set:member(1)'
-      - 'excel-scripts!Excel.ChartLineFormat#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartLineFormat#weight:member'
   - uid: 'excel-scripts!Excel.ChartLineFormat#clear:member(1)'
     summary: Clear the line format of a chart element.
@@ -139,24 +138,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartLineFormat:class'
-  - uid: 'excel-scripts!Excel.ChartLineFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartLineFormat object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartLineFormatData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartLineFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartLineFormatData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartLineFormat#weight:member'
     summary: 'Represents weight of the line, in points.'
     name: weight
@@ -187,5 +168,3 @@ references:
         fullName: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Grey25" | "Grey50" | "Grey75" | "Automatic" | "RoundDot"'
   - uid: 'excel-scripts!Excel.ChartLineFormat:class'
     name: Excel.ChartLineFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ChartLineFormatData:interface'
-    name: Excel.Interfaces.ChartLineFormatData

@@ -22,7 +22,6 @@ items:
       - 'excel-scripts!Excel.TableColumn#load:member(2)'
       - 'excel-scripts!Excel.TableColumn#name:member'
       - 'excel-scripts!Excel.TableColumn#set:member(1)'
-      - 'excel-scripts!Excel.TableColumn#toJSON:member(1)'
       - 'excel-scripts!Excel.TableColumn#values:member'
   - uid: 'excel-scripts!Excel.TableColumn#context:member'
     summary: >-
@@ -219,24 +218,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.TableColumn:class'
-  - uid: 'excel-scripts!Excel.TableColumn#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.TableColumn object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.TableColumnData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableColumnData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableColumnData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.TableColumn#values:member'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
@@ -260,5 +241,3 @@ references:
     name: Excel.Range
   - uid: 'excel-scripts!Excel.TableColumn:class'
     name: Excel.TableColumn
-  - uid: 'excel-scripts!Excel.Interfaces.TableColumnData:interface'
-    name: Excel.Interfaces.TableColumnData

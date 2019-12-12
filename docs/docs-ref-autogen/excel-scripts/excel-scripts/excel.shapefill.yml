@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ShapeFill#load:member(2)'
       - 'excel-scripts!Excel.ShapeFill#set:member(1)'
       - 'excel-scripts!Excel.ShapeFill#setSolidColor:member(1)'
-      - 'excel-scripts!Excel.ShapeFill#toJSON:member(1)'
       - 'excel-scripts!Excel.ShapeFill#transparency:member'
       - 'excel-scripts!Excel.ShapeFill#type:member'
   - uid: 'excel-scripts!Excel.ShapeFill#clear:member(1)'
@@ -148,24 +147,6 @@ items:
             named HTML color (e.g. "orange").
           type:
             - string
-  - uid: 'excel-scripts!Excel.ShapeFill#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ShapeFill object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ShapeFillData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ShapeFillData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ShapeFillData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ShapeFill#transparency:member'
     summary: >-
       Returns or sets the transparency percentage of the fill as a value from 0.0 (opaque) through 1.0 (clear). Returns
@@ -200,8 +181,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.ShapeFill:class'
     name: Excel.ShapeFill
-  - uid: 'excel-scripts!Excel.Interfaces.ShapeFillData:interface'
-    name: Excel.Interfaces.ShapeFillData
   - uid: 'excel-scripts!Excel.ShapeFill#type~0:complex'
     name: Excel.ShapeFillType | "NoFill" | "Solid" | "Gradient" | "Pattern" | "PictureAndTexture" | "Mixed"
     fullName: Excel.ShapeFillType | "NoFill" | "Solid" | "Gradient" | "Pattern" | "PictureAndTexture" | "Mixed"

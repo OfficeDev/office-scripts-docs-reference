@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.SlicerStyleCollection#items:member'
       - 'excel-scripts!Excel.SlicerStyleCollection#load:member(1)'
       - 'excel-scripts!Excel.SlicerStyleCollection#setDefault:member(1)'
-      - 'excel-scripts!Excel.SlicerStyleCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.SlicerStyleCollection#add:member(1)'
     summary: Creates a blank SlicerStyle with the specified name.
     name: 'add(name, makeUniqueName)'
@@ -169,24 +168,6 @@ items:
           description: The SlicerStyle object or name of the SlicerStyle object that should be the new default.
           type:
             - 'excel-scripts!Excel.SlicerStyleCollection#setDefault~0:complex'
-  - uid: 'excel-scripts!Excel.SlicerStyleCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.SlicerStyleCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.SlicerStyleCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.SlicerStyleCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.SlicerStyleCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.SlicerStyle:class'
     name: Excel.SlicerStyle
@@ -221,5 +202,3 @@ references:
         fullName: Excel.SlicerStyle
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel-scripts!Excel.Interfaces.SlicerStyleCollectionData:interface'
-    name: Excel.Interfaces.SlicerStyleCollectionData

@@ -108,7 +108,6 @@ items:
       - 'excel-scripts!Excel.Range#sort:member'
       - 'excel-scripts!Excel.Range#style:member'
       - 'excel-scripts!Excel.Range#text:member'
-      - 'excel-scripts!Excel.Range#toJSON:member(1)'
       - 'excel-scripts!Excel.Range#top:member'
       - 'excel-scripts!Excel.Range#track:member(1)'
       - 'excel-scripts!Excel.Range#ungroup:member(1)'
@@ -1875,24 +1874,6 @@ items:
       return:
         type:
           - 'string[][]'
-  - uid: 'excel-scripts!Excel.Range#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Range object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeData`<!-- -->) that contains shallow copies of any loaded child
-      properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Range#top:member'
     summary: 'Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range. Read-only.'
     name: top
@@ -2268,8 +2249,6 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.RangeSort:class'
     name: Excel.RangeSort
-  - uid: 'excel-scripts!Excel.Interfaces.RangeData:interface'
-    name: Excel.Interfaces.RangeData
   - uid: 'excel-scripts!Excel.Range#valueTypes~0:complex'
     name: 'Excel.RangeValueType[][]'
     fullName: 'Excel.RangeValueType[][]'

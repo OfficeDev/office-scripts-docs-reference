@@ -22,7 +22,6 @@ items:
       - 'excel-scripts!Excel.RangeFont#subscript:member'
       - 'excel-scripts!Excel.RangeFont#superscript:member'
       - 'excel-scripts!Excel.RangeFont#tintAndShade:member'
-      - 'excel-scripts!Excel.RangeFont#toJSON:member(1)'
       - 'excel-scripts!Excel.RangeFont#underline:member'
   - uid: 'excel-scripts!Excel.RangeFont#bold:member'
     summary: Represents the bold status of font.
@@ -225,24 +224,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.RangeFont#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeFont object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeFontData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeFontData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeFontData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RangeFont#underline:member'
     summary: Type of underline applied to the font. See Excel.RangeUnderlineStyle for details.
     name: underline
@@ -260,8 +241,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.RangeFont:class'
     name: Excel.RangeFont
-  - uid: 'excel-scripts!Excel.Interfaces.RangeFontData:interface'
-    name: Excel.Interfaces.RangeFontData
   - uid: 'excel-scripts!Excel.RangeFont#underline~0:complex'
     name: Excel.RangeUnderlineStyle | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"
     fullName: Excel.RangeUnderlineStyle | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"

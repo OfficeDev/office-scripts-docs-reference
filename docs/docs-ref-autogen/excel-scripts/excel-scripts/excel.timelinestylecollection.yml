@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.TimelineStyleCollection#items:member'
       - 'excel-scripts!Excel.TimelineStyleCollection#load:member(1)'
       - 'excel-scripts!Excel.TimelineStyleCollection#setDefault:member(1)'
-      - 'excel-scripts!Excel.TimelineStyleCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.TimelineStyleCollection#add:member(1)'
     summary: Creates a blank TimelineStyle with the specified name.
     name: 'add(name, makeUniqueName)'
@@ -169,24 +168,6 @@ items:
           description: The TimelineStyle object or name of the TimelineStyle object that should be the new default.
           type:
             - 'excel-scripts!Excel.TimelineStyleCollection#setDefault~0:complex'
-  - uid: 'excel-scripts!Excel.TimelineStyleCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.TimelineStyleCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.TimelineStyleCollectionData`<!-- -->) that contains
-      an "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TimelineStyleCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TimelineStyleCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.TimelineStyle:class'
     name: Excel.TimelineStyle
@@ -221,5 +202,3 @@ references:
         fullName: Excel.TimelineStyle
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel-scripts!Excel.Interfaces.TimelineStyleCollectionData:interface'
-    name: Excel.Interfaces.TimelineStyleCollectionData

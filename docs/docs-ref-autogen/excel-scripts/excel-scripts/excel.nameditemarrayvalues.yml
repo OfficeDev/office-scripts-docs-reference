@@ -12,7 +12,6 @@ items:
       - 'excel-scripts!Excel.NamedItemArrayValues#context:member'
       - 'excel-scripts!Excel.NamedItemArrayValues#load:member(1)'
       - 'excel-scripts!Excel.NamedItemArrayValues#load:member(2)'
-      - 'excel-scripts!Excel.NamedItemArrayValues#toJSON:member(1)'
       - 'excel-scripts!Excel.NamedItemArrayValues#types:member'
       - 'excel-scripts!Excel.NamedItemArrayValues#values:member'
   - uid: 'excel-scripts!Excel.NamedItemArrayValues#context:member'
@@ -79,24 +78,6 @@ items:
                           select?: string;
                           expand?: string;
                       }
-  - uid: 'excel-scripts!Excel.NamedItemArrayValues#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.NamedItemArrayValues object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.NamedItemArrayValuesData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.NamedItemArrayValuesData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.NamedItemArrayValuesData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.NamedItemArrayValues#types:member'
     summary: Represents the types for each item in the named item array
     name: types
@@ -126,8 +107,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.NamedItemArrayValues:class'
     name: Excel.NamedItemArrayValues
-  - uid: 'excel-scripts!Excel.Interfaces.NamedItemArrayValuesData:interface'
-    name: Excel.Interfaces.NamedItemArrayValuesData
   - uid: 'excel-scripts!Excel.NamedItemArrayValues#types~0:complex'
     name: 'Excel.RangeValueType[][]'
     fullName: 'Excel.RangeValueType[][]'

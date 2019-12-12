@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.ColorScaleConditionalFormat#load:member(2)'
       - 'excel-scripts!Excel.ColorScaleConditionalFormat#set:member(1)'
       - 'excel-scripts!Excel.ColorScaleConditionalFormat#threeColorScale:member'
-      - 'excel-scripts!Excel.ColorScaleConditionalFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ColorScaleConditionalFormat#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -124,24 +123,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel-scripts!Excel.ColorScaleConditionalFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ColorScaleConditionalFormat object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ColorScaleConditionalFormatData`<!-- -->) that
-      contains shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ColorScaleConditionalFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ColorScaleConditionalFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -149,5 +130,3 @@ references:
     name: Excel.ConditionalColorScaleCriteria
   - uid: 'excel-scripts!Excel.ColorScaleConditionalFormat:class'
     name: Excel.ColorScaleConditionalFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ColorScaleConditionalFormatData:interface'
-    name: Excel.Interfaces.ColorScaleConditionalFormatData

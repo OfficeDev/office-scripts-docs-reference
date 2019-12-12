@@ -23,7 +23,6 @@ items:
       - 'excel-scripts!Excel.BindingCollection#getItemOrNullObject:member(1)'
       - 'excel-scripts!Excel.BindingCollection#items:member'
       - 'excel-scripts!Excel.BindingCollection#load:member(1)'
-      - 'excel-scripts!Excel.BindingCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.BindingCollection#add:member(1)'
     summary: Add a new binding to a particular Range.
     name: 'add(range, bindingType, id)'
@@ -309,24 +308,6 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel-scripts!Excel.BindingCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.BindingCollection` object is an API object, the `toJSON` method returns
-      a plain JavaScript object (typed as `Excel.Interfaces.BindingCollectionData`<!-- -->) that contains an "items"
-      array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.BindingCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.BindingCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.Binding:class'
     name: Excel.Binding
@@ -372,5 +353,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.BindingCollection:class'
     name: Excel.BindingCollection
-  - uid: 'excel-scripts!Excel.Interfaces.BindingCollectionData:interface'
-    name: Excel.Interfaces.BindingCollectionData

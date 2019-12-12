@@ -24,7 +24,6 @@ items:
       - 'excel-scripts!Excel.TextFrame#rightMargin:member'
       - 'excel-scripts!Excel.TextFrame#set:member(1)'
       - 'excel-scripts!Excel.TextFrame#textRange:member'
-      - 'excel-scripts!Excel.TextFrame#toJSON:member(1)'
       - 'excel-scripts!Excel.TextFrame#topMargin:member'
       - 'excel-scripts!Excel.TextFrame#verticalAlignment:member'
       - 'excel-scripts!Excel.TextFrame#verticalOverflow:member'
@@ -255,24 +254,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.TextRange:class'
-  - uid: 'excel-scripts!Excel.TextFrame#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.TextFrame object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.TextFrameData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TextFrameData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TextFrameData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.TextFrame#topMargin:member'
     summary: 'Represents the top margin, in points, of the text frame.'
     name: topMargin
@@ -369,8 +350,6 @@ references:
         fullName: ' | "LeftToRight" | "RightToLeft"'
   - uid: 'excel-scripts!Excel.TextRange:class'
     name: Excel.TextRange
-  - uid: 'excel-scripts!Excel.Interfaces.TextFrameData:interface'
-    name: Excel.Interfaces.TextFrameData
   - uid: 'excel-scripts!Excel.TextFrame#verticalAlignment~0:complex'
     name: Excel.ShapeTextVerticalAlignment | "Top" | "Middle" | "Bottom" | "Justified" | "Distributed"
     fullName: Excel.ShapeTextVerticalAlignment | "Top" | "Middle" | "Bottom" | "Justified" | "Distributed"

@@ -22,7 +22,6 @@ items:
       - 'excel-scripts!Excel.TableRowCollection#getItemAt:member(1)'
       - 'excel-scripts!Excel.TableRowCollection#items:member'
       - 'excel-scripts!Excel.TableRowCollection#load:member(1)'
-      - 'excel-scripts!Excel.TableRowCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.TableRowCollection#add:member(1)'
     summary: >-
       Adds one or more rows to the table. The return object will be the top of the newly added row(s).
@@ -150,24 +149,6 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel-scripts!Excel.TableRowCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.TableRowCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.TableRowCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.TableRowCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.TableRowCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.TableRow:class'
     name: Excel.TableRow
@@ -207,5 +188,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.TableRowCollection:class'
     name: Excel.TableRowCollection
-  - uid: 'excel-scripts!Excel.Interfaces.TableRowCollectionData:interface'
-    name: Excel.Interfaces.TableRowCollectionData

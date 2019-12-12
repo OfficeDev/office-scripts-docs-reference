@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.ShapeGroup#load:member(2)'
       - 'excel-scripts!Excel.ShapeGroup#shape:member'
       - 'excel-scripts!Excel.ShapeGroup#shapes:member'
-      - 'excel-scripts!Excel.ShapeGroup#toJSON:member(1)'
       - 'excel-scripts!Excel.ShapeGroup#ungroup:member(1)'
   - uid: 'excel-scripts!Excel.ShapeGroup#context:member'
     summary: >-
@@ -119,24 +118,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.GroupShapeCollection:class'
-  - uid: 'excel-scripts!Excel.ShapeGroup#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ShapeGroup object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ShapeGroupData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ShapeGroupData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ShapeGroupData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ShapeGroup#ungroup:member(1)'
     summary: Ungroups any grouped shapes in the specified shape group.
     name: ungroup()
@@ -159,5 +140,3 @@ references:
     name: Excel.Shape
   - uid: 'excel-scripts!Excel.GroupShapeCollection:class'
     name: Excel.GroupShapeCollection
-  - uid: 'excel-scripts!Excel.Interfaces.ShapeGroupData:interface'
-    name: Excel.Interfaces.ShapeGroupData

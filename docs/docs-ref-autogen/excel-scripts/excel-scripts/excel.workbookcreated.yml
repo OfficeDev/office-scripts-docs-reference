@@ -14,7 +14,6 @@ items:
       - 'excel-scripts!Excel.WorkbookCreated#context:member'
       - 'excel-scripts!Excel.WorkbookCreated#load:member(1)'
       - 'excel-scripts!Excel.WorkbookCreated#load:member(2)'
-      - 'excel-scripts!Excel.WorkbookCreated#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.WorkbookCreated#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -79,28 +78,8 @@ items:
                           select?: string;
                           expand?: string;
                       }
-  - uid: 'excel-scripts!Excel.WorkbookCreated#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.WorkbookCreated object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.WorkbookCreatedData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.WorkbookCreatedData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.WorkbookCreatedData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
   - uid: 'excel-scripts!Excel.WorkbookCreated:class'
     name: Excel.WorkbookCreated
-  - uid: 'excel-scripts!Excel.Interfaces.WorkbookCreatedData:interface'
-    name: Excel.Interfaces.WorkbookCreatedData

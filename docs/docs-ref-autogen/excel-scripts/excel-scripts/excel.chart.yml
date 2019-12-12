@@ -43,7 +43,6 @@ items:
       - 'excel-scripts!Excel.Chart#showDataLabelsOverMaximum:member'
       - 'excel-scripts!Excel.Chart#style:member'
       - 'excel-scripts!Excel.Chart#title:member'
-      - 'excel-scripts!Excel.Chart#toJSON:member(1)'
       - 'excel-scripts!Excel.Chart#top:member'
       - 'excel-scripts!Excel.Chart#width:member'
       - 'excel-scripts!Excel.Chart#worksheet:member'
@@ -566,24 +565,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.ChartTitle:class'
-  - uid: 'excel-scripts!Excel.Chart#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Chart object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ChartData`<!-- -->) that contains shallow copies of any loaded child
-      properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Chart#top:member'
     summary: >-
       Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the
@@ -740,7 +721,5 @@ references:
         fullName: ' | string'
   - uid: 'excel-scripts!Excel.ChartTitle:class'
     name: Excel.ChartTitle
-  - uid: 'excel-scripts!Excel.Interfaces.ChartData:interface'
-    name: Excel.Interfaces.ChartData
   - uid: 'excel-scripts!Excel.Worksheet:class'
     name: Excel.Worksheet
