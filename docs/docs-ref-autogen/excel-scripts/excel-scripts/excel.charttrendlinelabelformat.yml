@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartTrendlineLabelFormat#load:member(1)'
       - 'excel-scripts!Excel.ChartTrendlineLabelFormat#load:member(2)'
       - 'excel-scripts!Excel.ChartTrendlineLabelFormat#set:member(1)'
-      - 'excel-scripts!Excel.ChartTrendlineLabelFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ChartTrendlineLabelFormat#border:member'
     summary: 'Represents the border format, which includes color, linestyle, and weight.'
     name: border
@@ -135,24 +134,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartTrendlineLabelFormat:class'
-  - uid: 'excel-scripts!Excel.ChartTrendlineLabelFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartTrendlineLabelFormat object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ChartTrendlineLabelFormatData`<!-- -->) that
-      contains shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartTrendlineLabelFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartTrendlineLabelFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.ChartBorder:class'
     name: Excel.ChartBorder
@@ -164,5 +145,3 @@ references:
     name: Excel.ChartFont
   - uid: 'excel-scripts!Excel.ChartTrendlineLabelFormat:class'
     name: Excel.ChartTrendlineLabelFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ChartTrendlineLabelFormatData:interface'
-    name: Excel.Interfaces.ChartTrendlineLabelFormatData

@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.HeaderFooterGroup#oddPages:member'
       - 'excel-scripts!Excel.HeaderFooterGroup#set:member(1)'
       - 'excel-scripts!Excel.HeaderFooterGroup#state:member'
-      - 'excel-scripts!Excel.HeaderFooterGroup#toJSON:member(1)'
       - 'excel-scripts!Excel.HeaderFooterGroup#useSheetMargins:member'
       - 'excel-scripts!Excel.HeaderFooterGroup#useSheetScale:member'
   - uid: 'excel-scripts!Excel.HeaderFooterGroup#context:member'
@@ -162,24 +161,6 @@ items:
       return:
         type:
           - 'excel-scripts!Excel.HeaderFooterGroup#state~0:complex'
-  - uid: 'excel-scripts!Excel.HeaderFooterGroup#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.HeaderFooterGroup object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.HeaderFooterGroupData`<!-- -->) that contains shallow copies
-      of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.HeaderFooterGroupData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.HeaderFooterGroup#useSheetMargins:member'
     summary: >-
       Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options
@@ -224,5 +205,3 @@ references:
         fullName: Excel.HeaderFooterState
       - name: ' | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"'
         fullName: ' | "Default" | "FirstAndDefault" | "OddAndEven" | "FirstOddAndEven"'
-  - uid: 'excel-scripts!Excel.Interfaces.HeaderFooterGroupData:interface'
-    name: Excel.Interfaces.HeaderFooterGroupData

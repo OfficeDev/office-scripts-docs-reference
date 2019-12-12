@@ -27,7 +27,6 @@ items:
       - 'excel-scripts!Excel.ChartDataLabels#showSeriesName:member'
       - 'excel-scripts!Excel.ChartDataLabels#showValue:member'
       - 'excel-scripts!Excel.ChartDataLabels#textOrientation:member'
-      - 'excel-scripts!Excel.ChartDataLabels#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartDataLabels#verticalAlignment:member'
   - uid: 'excel-scripts!Excel.ChartDataLabels#autoText:member'
     summary: Represents whether data labels automatically generate appropriate text based on context.
@@ -291,24 +290,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.ChartDataLabels#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartDataLabels object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartDataLabelsData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartDataLabelsData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartDataLabelsData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartDataLabels#verticalAlignment:member'
     summary: >-
       Represents the vertical alignment of chart data label. See Excel.ChartTextVerticalAlignment for details. This
@@ -352,8 +333,6 @@ references:
         fullName: Excel.ChartDataLabelPosition
       - name: ' | "Invalid" | "None" | "Center" | "InsideEnd" | "InsideBase" | "OutsideEnd" | "Left" | "Right" | "Top" | "Bottom" | "BestFit" | "Callout"'
         fullName: ' | "Invalid" | "None" | "Center" | "InsideEnd" | "InsideBase" | "OutsideEnd" | "Left" | "Right" | "Top" | "Bottom" | "BestFit" | "Callout"'
-  - uid: 'excel-scripts!Excel.Interfaces.ChartDataLabelsData:interface'
-    name: Excel.Interfaces.ChartDataLabelsData
   - uid: 'excel-scripts!Excel.ChartDataLabels#verticalAlignment~0:complex'
     name: Excel.ChartTextVerticalAlignment | "Center" | "Bottom" | "Top" | "Justify" | "Distributed"
     fullName: Excel.ChartTextVerticalAlignment | "Center" | "Bottom" | "Top" | "Justify" | "Distributed"

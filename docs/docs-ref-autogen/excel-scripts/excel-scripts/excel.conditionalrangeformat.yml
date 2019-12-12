@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.ConditionalRangeFormat#load:member(2)'
       - 'excel-scripts!Excel.ConditionalRangeFormat#numberFormat:member'
       - 'excel-scripts!Excel.ConditionalRangeFormat#set:member(1)'
-      - 'excel-scripts!Excel.ConditionalRangeFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ConditionalRangeFormat#borders:member'
     summary: Collection of border objects that apply to the overall conditional format range. Read-only.
     name: borders
@@ -148,24 +147,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ConditionalRangeFormat:class'
-  - uid: 'excel-scripts!Excel.ConditionalRangeFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ConditionalRangeFormat object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalRangeFormatData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ConditionalRangeFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ConditionalRangeFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.ConditionalRangeBorderCollection:class'
     name: Excel.ConditionalRangeBorderCollection
@@ -177,5 +158,3 @@ references:
     name: Excel.ConditionalRangeFont
   - uid: 'excel-scripts!Excel.ConditionalRangeFormat:class'
     name: Excel.ConditionalRangeFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ConditionalRangeFormatData:interface'
-    name: Excel.Interfaces.ConditionalRangeFormatData

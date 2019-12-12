@@ -24,7 +24,6 @@ items:
       - 'excel-scripts!Excel.RangeView#rows:member'
       - 'excel-scripts!Excel.RangeView#set:member(1)'
       - 'excel-scripts!Excel.RangeView#text:member'
-      - 'excel-scripts!Excel.RangeView#toJSON:member(1)'
       - 'excel-scripts!Excel.RangeView#values:member'
       - 'excel-scripts!Excel.RangeView#valueTypes:member'
   - uid: 'excel-scripts!Excel.RangeView#cellAddresses:member'
@@ -246,24 +245,6 @@ items:
       return:
         type:
           - 'string[][]'
-  - uid: 'excel-scripts!Excel.RangeView#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeView object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeViewData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeViewData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeViewData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RangeView#values:member'
     summary: >-
       Represents the raw values of the specified range view. The data returned could be of type string, number, or a
@@ -299,8 +280,6 @@ references:
     name: Excel.RangeView
   - uid: 'excel-scripts!Excel.RangeViewCollection:class'
     name: Excel.RangeViewCollection
-  - uid: 'excel-scripts!Excel.Interfaces.RangeViewData:interface'
-    name: Excel.Interfaces.RangeViewData
   - uid: 'excel-scripts!Excel.RangeView#valueTypes~0:complex'
     name: 'Excel.RangeValueType[][]'
     fullName: 'Excel.RangeValueType[][]'

@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.PageBreakCollection#items:member'
       - 'excel-scripts!Excel.PageBreakCollection#load:member(1)'
       - 'excel-scripts!Excel.PageBreakCollection#removePageBreaks:member(1)'
-      - 'excel-scripts!Excel.PageBreakCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.PageBreakCollection#add:member(1)'
     summary: Adds a page break before the top-left cell of the range specified.
     name: add(pageBreakRange)
@@ -124,24 +123,6 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel-scripts!Excel.PageBreakCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.PageBreakCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.PageBreakCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PageBreakCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PageBreakCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.PageBreak:class'
     name: Excel.PageBreak
@@ -176,5 +157,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.PageBreakCollection:class'
     name: Excel.PageBreakCollection
-  - uid: 'excel-scripts!Excel.Interfaces.PageBreakCollectionData:interface'
-    name: Excel.Interfaces.PageBreakCollectionData

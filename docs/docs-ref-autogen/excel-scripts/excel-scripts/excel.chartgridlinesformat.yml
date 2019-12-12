@@ -14,7 +14,6 @@ items:
       - 'excel-scripts!Excel.ChartGridlinesFormat#load:member(1)'
       - 'excel-scripts!Excel.ChartGridlinesFormat#load:member(2)'
       - 'excel-scripts!Excel.ChartGridlinesFormat#set:member(1)'
-      - 'excel-scripts!Excel.ChartGridlinesFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ChartGridlinesFormat#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -109,24 +108,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartGridlinesFormat:class'
-  - uid: 'excel-scripts!Excel.ChartGridlinesFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartGridlinesFormat object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.ChartGridlinesFormatData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartGridlinesFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartGridlinesFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -134,5 +115,3 @@ references:
     name: Excel.ChartLineFormat
   - uid: 'excel-scripts!Excel.ChartGridlinesFormat:class'
     name: Excel.ChartGridlinesFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ChartGridlinesFormatData:interface'
-    name: Excel.Interfaces.ChartGridlinesFormatData

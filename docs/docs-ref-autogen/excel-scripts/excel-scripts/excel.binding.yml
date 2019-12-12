@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.Binding#id:member'
       - 'excel-scripts!Excel.Binding#load:member(1)'
       - 'excel-scripts!Excel.Binding#load:member(2)'
-      - 'excel-scripts!Excel.Binding#toJSON:member(1)'
       - 'excel-scripts!Excel.Binding#type:member'
   - uid: 'excel-scripts!Excel.Binding#context:member'
     summary: >-
@@ -147,24 +146,6 @@ items:
                           select?: string;
                           expand?: string;
                       }
-  - uid: 'excel-scripts!Excel.Binding#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Binding object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.BindingData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.BindingData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.BindingData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Binding#type:member'
     summary: Returns the type of the binding. See Excel.BindingType for details. Read-only.
     name: type
@@ -195,8 +176,6 @@ references:
         fullName: <string>
   - uid: 'excel-scripts!Excel.Binding:class'
     name: Excel.Binding
-  - uid: 'excel-scripts!Excel.Interfaces.BindingData:interface'
-    name: Excel.Interfaces.BindingData
   - uid: 'excel-scripts!Excel.Binding#type~0:complex'
     name: Excel.BindingType | "Range" | "Table" | "Text"
     fullName: Excel.BindingType | "Range" | "Table" | "Text"

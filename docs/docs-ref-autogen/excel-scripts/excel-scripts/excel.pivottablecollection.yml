@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.PivotTableCollection#items:member'
       - 'excel-scripts!Excel.PivotTableCollection#load:member(1)'
       - 'excel-scripts!Excel.PivotTableCollection#refreshAll:member(1)'
-      - 'excel-scripts!Excel.PivotTableCollection#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.PivotTableCollection#add:member(1)'
     summary: Add a Pivottable based on the specified source data and insert it at the top left cell of the destination range.
     name: 'add(name, source, destination)'
@@ -156,24 +155,6 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel-scripts!Excel.PivotTableCollection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original `Excel.PivotTableCollection` object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.PivotTableCollectionData`<!-- -->) that contains an
-      "items" array with shallow copies of any loaded properties from the collection's items.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PivotTableCollectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PivotTableCollectionData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.PivotTable:class'
     name: Excel.PivotTable
@@ -220,5 +201,3 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.PivotTableCollection:class'
     name: Excel.PivotTableCollection
-  - uid: 'excel-scripts!Excel.Interfaces.PivotTableCollectionData:interface'
-    name: Excel.Interfaces.PivotTableCollectionData

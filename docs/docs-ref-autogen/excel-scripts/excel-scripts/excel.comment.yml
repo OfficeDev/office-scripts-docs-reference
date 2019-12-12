@@ -23,7 +23,6 @@ items:
       - 'excel-scripts!Excel.Comment#replies:member'
       - 'excel-scripts!Excel.Comment#richContent:member'
       - 'excel-scripts!Excel.Comment#set:member(1)'
-      - 'excel-scripts!Excel.Comment#toJSON:member(1)'
       - 'excel-scripts!Excel.Comment#updateMentions:member(1)'
   - uid: 'excel-scripts!Excel.Comment#authorEmail:member'
     summary: Gets the email of the comment's author.
@@ -233,24 +232,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.Comment:class'
-  - uid: 'excel-scripts!Excel.Comment#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.Comment object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.CommentData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.CommentData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.CommentData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.Comment#updateMentions:member(1)'
     summary: Updates the comment content with a specially formatted string and a list of mentions.
     name: updateMentions(contentWithMentions)
@@ -291,7 +272,5 @@ references:
         fullName: '[]'
   - uid: 'excel-scripts!Excel.CommentReplyCollection:class'
     name: Excel.CommentReplyCollection
-  - uid: 'excel-scripts!Excel.Interfaces.CommentData:interface'
-    name: Excel.Interfaces.CommentData
   - uid: 'excel-scripts!Excel.CommentRichContent:interface'
     name: Excel.CommentRichContent

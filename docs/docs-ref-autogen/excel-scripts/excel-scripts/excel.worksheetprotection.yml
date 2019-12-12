@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.WorksheetProtection#options:member'
       - 'excel-scripts!Excel.WorksheetProtection#protect:member(1)'
       - 'excel-scripts!Excel.WorksheetProtection#protected:member'
-      - 'excel-scripts!Excel.WorksheetProtection#toJSON:member(1)'
       - 'excel-scripts!Excel.WorksheetProtection#unprotect:member(1)'
   - uid: 'excel-scripts!Excel.WorksheetProtection#context:member'
     summary: >-
@@ -127,24 +126,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel-scripts!Excel.WorksheetProtection#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.WorksheetProtection object is an API object, the `toJSON` method returns
-      a plain JavaScript object (typed as `Excel.Interfaces.WorksheetProtectionData`<!-- -->) that contains shallow
-      copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.WorksheetProtectionData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.WorksheetProtectionData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.WorksheetProtection#unprotect:member(1)'
     summary: Unprotects a worksheet.
     name: unprotect(password)
@@ -170,5 +151,3 @@ references:
     name: Excel.WorksheetProtection
   - uid: 'excel-scripts!Excel.WorksheetProtectionOptions:interface'
     name: Excel.WorksheetProtectionOptions
-  - uid: 'excel-scripts!Excel.Interfaces.WorksheetProtectionData:interface'
-    name: Excel.Interfaces.WorksheetProtectionData

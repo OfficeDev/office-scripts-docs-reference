@@ -20,7 +20,6 @@ items:
       - 'excel-scripts!Excel.ChartLegend#position:member'
       - 'excel-scripts!Excel.ChartLegend#set:member(1)'
       - 'excel-scripts!Excel.ChartLegend#showShadow:member'
-      - 'excel-scripts!Excel.ChartLegend#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartLegend#top:member'
       - 'excel-scripts!Excel.ChartLegend#visible:member'
       - 'excel-scripts!Excel.ChartLegend#width:member'
@@ -190,24 +189,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel-scripts!Excel.ChartLegend#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartLegend object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ChartLegendData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartLegendData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartLegendData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartLegend#top:member'
     summary: Represents the top of a chart legend.
     name: top
@@ -262,5 +243,3 @@ references:
         fullName: Excel.ChartLegendPosition
       - name: ' | "Invalid" | "Top" | "Bottom" | "Left" | "Right" | "Corner" | "Custom"'
         fullName: ' | "Invalid" | "Top" | "Bottom" | "Left" | "Right" | "Corner" | "Custom"'
-  - uid: 'excel-scripts!Excel.Interfaces.ChartLegendData:interface'
-    name: Excel.Interfaces.ChartLegendData

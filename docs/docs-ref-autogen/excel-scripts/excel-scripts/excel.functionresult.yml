@@ -13,7 +13,6 @@ items:
       - 'excel-scripts!Excel.FunctionResult#error:member'
       - 'excel-scripts!Excel.FunctionResult#load:member(1)'
       - 'excel-scripts!Excel.FunctionResult#load:member(2)'
-      - 'excel-scripts!Excel.FunctionResult#toJSON:member(1)'
       - 'excel-scripts!Excel.FunctionResult#value:member'
   - uid: 'excel-scripts!Excel.FunctionResult#context:member'
     summary: >-
@@ -93,24 +92,6 @@ items:
                           select?: string;
                           expand?: string;
                       }
-  - uid: 'excel-scripts!Excel.FunctionResult#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original FunctionResult<T> object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Interfaces.FunctionResultData<T>`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Interfaces.FunctionResultData<T>;'
-      return:
-        type:
-          - 'excel-scripts!Excel.FunctionResult#toJSON~0:complex'
-        description: ''
   - uid: 'excel-scripts!Excel.FunctionResult#value:member'
     summary: >-
       The value of function evaluation. The value field will be populated only if no error has occurred (i.e., the Error
@@ -144,14 +125,5 @@ references:
       - uid: 'excel-scripts!Excel.FunctionResult:class'
         name: FunctionResult
         fullName: Excel.FunctionResult
-      - name: <T>
-        fullName: <T>
-  - uid: 'excel-scripts!Excel.FunctionResult#toJSON~0:complex'
-    name: Interfaces.FunctionResultData<T>
-    fullName: Excel.Interfaces.FunctionResultData<T>
-    spec.typeScript:
-      - uid: 'excel-scripts!Excel.Interfaces.FunctionResultData:interface'
-        name: Interfaces.FunctionResultData
-        fullName: Excel.Interfaces.FunctionResultData
       - name: <T>
         fullName: <T>

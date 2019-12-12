@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.PivotItem#load:member(2)'
       - 'excel-scripts!Excel.PivotItem#name:member'
       - 'excel-scripts!Excel.PivotItem#set:member(1)'
-      - 'excel-scripts!Excel.PivotItem#toJSON:member(1)'
       - 'excel-scripts!Excel.PivotItem#visible:member'
   - uid: 'excel-scripts!Excel.PivotItem#context:member'
     summary: >-
@@ -136,24 +135,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.PivotItem:class'
-  - uid: 'excel-scripts!Excel.PivotItem#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.PivotItem object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.PivotItemData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.PivotItemData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.PivotItemData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.PivotItem#visible:member'
     summary: Determines whether the PivotItem is visible or not.
     name: visible
@@ -171,5 +152,3 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.PivotItem:class'
     name: Excel.PivotItem
-  - uid: 'excel-scripts!Excel.Interfaces.PivotItemData:interface'
-    name: Excel.Interfaces.PivotItemData

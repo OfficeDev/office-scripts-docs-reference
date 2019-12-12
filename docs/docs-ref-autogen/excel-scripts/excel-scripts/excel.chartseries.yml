@@ -59,7 +59,6 @@ items:
       - 'excel-scripts!Excel.ChartSeries#smooth:member'
       - 'excel-scripts!Excel.ChartSeries#splitType:member'
       - 'excel-scripts!Excel.ChartSeries#splitValue:member'
-      - 'excel-scripts!Excel.ChartSeries#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartSeries#trendlines:member'
       - 'excel-scripts!Excel.ChartSeries#varyByCategories:member'
       - 'excel-scripts!Excel.ChartSeries#xErrorBars:member'
@@ -751,24 +750,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.ChartSeries#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartSeries object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ChartSeriesData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartSeriesData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartSeriesData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartSeries#trendlines:member'
     summary: Represents a collection of trendlines in the series. Read-only.
     name: trendlines
@@ -951,8 +932,6 @@ references:
         fullName: Excel.ChartSplitType
       - name: ' | "SplitByPosition" | "SplitByValue" | "SplitByPercentValue" | "SplitByCustomSplit"'
         fullName: ' | "SplitByPosition" | "SplitByValue" | "SplitByPercentValue" | "SplitByCustomSplit"'
-  - uid: 'excel-scripts!Excel.Interfaces.ChartSeriesData:interface'
-    name: Excel.Interfaces.ChartSeriesData
   - uid: 'excel-scripts!Excel.ChartTrendlineCollection:class'
     name: Excel.ChartTrendlineCollection
   - uid: 'excel-scripts!Excel.ChartErrorBars:class'

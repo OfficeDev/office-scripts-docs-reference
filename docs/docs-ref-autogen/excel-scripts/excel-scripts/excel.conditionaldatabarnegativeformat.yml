@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#matchPositiveBorderColor:member'
       - 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#matchPositiveFillColor:member'
       - 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#set:member(1)'
-      - 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#borderColor:member'
     summary: >-
       HTML color code representing the color of the border line, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML
@@ -152,28 +151,8 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ConditionalDataBarNegativeFormat:class'
-  - uid: 'excel-scripts!Excel.ConditionalDataBarNegativeFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ConditionalDataBarNegativeFormat object is an API object, the `toJSON`
-      method returns a plain JavaScript object (typed as `Excel.Interfaces.ConditionalDataBarNegativeFormatData`<!--
-      -->) that contains shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ConditionalDataBarNegativeFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ConditionalDataBarNegativeFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
   - uid: 'excel-scripts!Excel.ConditionalDataBarNegativeFormat:class'
     name: Excel.ConditionalDataBarNegativeFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ConditionalDataBarNegativeFormatData:interface'
-    name: Excel.Interfaces.ConditionalDataBarNegativeFormatData

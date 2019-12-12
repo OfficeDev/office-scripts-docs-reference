@@ -17,7 +17,6 @@ items:
       - 'excel-scripts!Excel.RangeBorder#sideIndex:member'
       - 'excel-scripts!Excel.RangeBorder#style:member'
       - 'excel-scripts!Excel.RangeBorder#tintAndShade:member'
-      - 'excel-scripts!Excel.RangeBorder#toJSON:member(1)'
       - 'excel-scripts!Excel.RangeBorder#weight:member'
   - uid: 'excel-scripts!Excel.RangeBorder#color:member'
     summary: >-
@@ -160,24 +159,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.RangeBorder#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RangeBorder object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.RangeBorderData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RangeBorderData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RangeBorderData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RangeBorder#weight:member'
     summary: Specifies the weight of the border around a range. See Excel.BorderWeight for details.
     name: weight
@@ -221,8 +202,6 @@ references:
         fullName: Excel.BorderLineStyle
       - name: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot"'
         fullName: ' | "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot"'
-  - uid: 'excel-scripts!Excel.Interfaces.RangeBorderData:interface'
-    name: Excel.Interfaces.RangeBorderData
   - uid: 'excel-scripts!Excel.RangeBorder#weight~0:complex'
     name: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"
     fullName: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"

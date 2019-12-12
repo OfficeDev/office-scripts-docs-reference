@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.ShapeFont#name:member'
       - 'excel-scripts!Excel.ShapeFont#set:member(1)'
       - 'excel-scripts!Excel.ShapeFont#size:member'
-      - 'excel-scripts!Excel.ShapeFont#toJSON:member(1)'
       - 'excel-scripts!Excel.ShapeFont#underline:member'
   - uid: 'excel-scripts!Excel.ShapeFont#bold:member'
     summary: Represents the bold status of font. Returns null the TextRange includes both bold and non-bold text fragments.
@@ -170,24 +169,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.ShapeFont#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ShapeFont object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.ShapeFontData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ShapeFontData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ShapeFontData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ShapeFont#underline:member'
     summary: >-
       Type of underline applied to the font. Returns null if the TextRange includes text fragments with different
@@ -210,8 +191,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.ShapeFont:class'
     name: Excel.ShapeFont
-  - uid: 'excel-scripts!Excel.Interfaces.ShapeFontData:interface'
-    name: Excel.Interfaces.ShapeFontData
   - uid: 'excel-scripts!Excel.ShapeFont#underline~0:complex'
     name: >-
       Excel.ShapeFontUnderlineStyle | "None" | "Single" | "Double" | "Heavy" | "Dotted" | "DottedHeavy" | "Dash" |

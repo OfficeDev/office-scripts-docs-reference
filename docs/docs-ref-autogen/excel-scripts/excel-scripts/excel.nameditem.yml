@@ -24,7 +24,6 @@ items:
       - 'excel-scripts!Excel.NamedItem#name:member'
       - 'excel-scripts!Excel.NamedItem#scope:member'
       - 'excel-scripts!Excel.NamedItem#set:member(1)'
-      - 'excel-scripts!Excel.NamedItem#toJSON:member(1)'
       - 'excel-scripts!Excel.NamedItem#type:member'
       - 'excel-scripts!Excel.NamedItem#value:member'
       - 'excel-scripts!Excel.NamedItem#visible:member'
@@ -217,24 +216,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.NamedItem:class'
-  - uid: 'excel-scripts!Excel.NamedItem#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.NamedItem object is an API object, the `toJSON` method returns a plain
-      JavaScript object (typed as `Excel.Interfaces.NamedItemData`<!-- -->) that contains shallow copies of any loaded
-      child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.NamedItemData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.NamedItemData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.NamedItem#type:member'
     summary: Indicates the type of the value returned by the name's formula. See Excel.NamedItemType for details. Read-only.
     name: type
@@ -317,8 +298,6 @@ references:
         fullName: Excel.NamedItemScope
       - name: ' | "Worksheet" | "Workbook"'
         fullName: ' | "Worksheet" | "Workbook"'
-  - uid: 'excel-scripts!Excel.Interfaces.NamedItemData:interface'
-    name: Excel.Interfaces.NamedItemData
   - uid: 'excel-scripts!Excel.NamedItem#type~0:complex'
     name: Excel.NamedItemType | "String" | "Integer" | "Double" | "Boolean" | "Range" | "Error" | "Array"
     fullName: Excel.NamedItemType | "String" | "Integer" | "Double" | "Boolean" | "Range" | "Error" | "Array"

@@ -15,7 +15,6 @@ items:
       - 'excel-scripts!Excel.CustomProperty#load:member(1)'
       - 'excel-scripts!Excel.CustomProperty#load:member(2)'
       - 'excel-scripts!Excel.CustomProperty#set:member(1)'
-      - 'excel-scripts!Excel.CustomProperty#toJSON:member(1)'
       - 'excel-scripts!Excel.CustomProperty#type:member'
       - 'excel-scripts!Excel.CustomProperty#value:member'
   - uid: 'excel-scripts!Excel.CustomProperty#context:member'
@@ -125,24 +124,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.CustomProperty:class'
-  - uid: 'excel-scripts!Excel.CustomProperty#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.CustomProperty object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.CustomPropertyData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.CustomPropertyData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.CustomPropertyData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.CustomProperty#type:member'
     summary: Gets the value type of the custom property. Read only.
     name: type
@@ -172,8 +153,6 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.CustomProperty:class'
     name: Excel.CustomProperty
-  - uid: 'excel-scripts!Excel.Interfaces.CustomPropertyData:interface'
-    name: Excel.Interfaces.CustomPropertyData
   - uid: 'excel-scripts!Excel.CustomProperty#type~0:complex'
     name: Excel.DocumentPropertyType | "Number" | "Boolean" | "Date" | "String" | "Float"
     fullName: Excel.DocumentPropertyType | "Number" | "Boolean" | "Date" | "String" | "Float"

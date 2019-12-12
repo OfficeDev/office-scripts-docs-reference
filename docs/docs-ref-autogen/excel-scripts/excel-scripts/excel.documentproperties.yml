@@ -25,7 +25,6 @@ items:
       - 'excel-scripts!Excel.DocumentProperties#set:member(1)'
       - 'excel-scripts!Excel.DocumentProperties#subject:member'
       - 'excel-scripts!Excel.DocumentProperties#title:member'
-      - 'excel-scripts!Excel.DocumentProperties#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.DocumentProperties#author:member'
     summary: Gets or sets the author of the workbook.
     name: author
@@ -252,24 +251,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel-scripts!Excel.DocumentProperties#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.DocumentProperties object is an API object, the `toJSON` method returns
-      a plain JavaScript object (typed as `Excel.Interfaces.DocumentPropertiesData`<!-- -->) that contains shallow
-      copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.DocumentPropertiesData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.DocumentPropertiesData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.RequestContext:class'
     name: RequestContext
@@ -279,5 +260,3 @@ references:
     name: Excel.CustomPropertyCollection
   - uid: 'excel-scripts!Excel.DocumentProperties:class'
     name: Excel.DocumentProperties
-  - uid: 'excel-scripts!Excel.Interfaces.DocumentPropertiesData:interface'
-    name: Excel.Interfaces.DocumentPropertiesData

@@ -18,7 +18,6 @@ items:
       - 'excel-scripts!Excel.ChartAreaFormat#load:member(2)'
       - 'excel-scripts!Excel.ChartAreaFormat#roundedCorners:member'
       - 'excel-scripts!Excel.ChartAreaFormat#set:member(1)'
-      - 'excel-scripts!Excel.ChartAreaFormat#toJSON:member(1)'
   - uid: 'excel-scripts!Excel.ChartAreaFormat#border:member'
     summary: 'Represents the border format of chart area, which includes color, linestyle, and weight. Read-only.'
     name: border
@@ -166,24 +165,6 @@ items:
           description: ''
           type:
             - 'excel-scripts!Excel.ChartAreaFormat:class'
-  - uid: 'excel-scripts!Excel.ChartAreaFormat#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartAreaFormat object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartAreaFormatData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartAreaFormatData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartAreaFormatData:interface'
-        description: ''
 references:
   - uid: 'excel-scripts!Excel.ChartBorder:class'
     name: Excel.ChartBorder
@@ -214,5 +195,3 @@ references:
     name: Excel.ChartFont
   - uid: 'excel-scripts!Excel.ChartAreaFormat:class'
     name: Excel.ChartAreaFormat
-  - uid: 'excel-scripts!Excel.Interfaces.ChartAreaFormatData:interface'
-    name: Excel.Interfaces.ChartAreaFormatData

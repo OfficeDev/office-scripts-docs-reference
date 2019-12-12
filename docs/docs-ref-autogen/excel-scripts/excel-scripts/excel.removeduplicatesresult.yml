@@ -13,7 +13,6 @@ items:
       - 'excel-scripts!Excel.RemoveDuplicatesResult#load:member(1)'
       - 'excel-scripts!Excel.RemoveDuplicatesResult#load:member(2)'
       - 'excel-scripts!Excel.RemoveDuplicatesResult#removed:member'
-      - 'excel-scripts!Excel.RemoveDuplicatesResult#toJSON:member(1)'
       - 'excel-scripts!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
   - uid: 'excel-scripts!Excel.RemoveDuplicatesResult#context:member'
     summary: >-
@@ -91,24 +90,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel-scripts!Excel.RemoveDuplicatesResult#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.RemoveDuplicatesResult object is an API object, the `toJSON` method
-      returns a plain JavaScript object (typed as `Excel.Interfaces.RemoveDuplicatesResultData`<!-- -->) that contains
-      shallow copies of any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.RemoveDuplicatesResultData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.RemoveDuplicatesResultData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
     summary: Number of remaining unique rows present in the resulting range.
     name: uniqueRemaining
@@ -126,5 +107,3 @@ references:
     name: RequestContext
   - uid: 'excel-scripts!Excel.RemoveDuplicatesResult:class'
     name: Excel.RemoveDuplicatesResult
-  - uid: 'excel-scripts!Excel.Interfaces.RemoveDuplicatesResultData:interface'
-    name: Excel.Interfaces.RemoveDuplicatesResultData

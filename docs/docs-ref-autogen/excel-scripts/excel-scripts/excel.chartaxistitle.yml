@@ -16,7 +16,6 @@ items:
       - 'excel-scripts!Excel.ChartAxisTitle#set:member(1)'
       - 'excel-scripts!Excel.ChartAxisTitle#setFormula:member(1)'
       - 'excel-scripts!Excel.ChartAxisTitle#text:member'
-      - 'excel-scripts!Excel.ChartAxisTitle#toJSON:member(1)'
       - 'excel-scripts!Excel.ChartAxisTitle#visible:member'
   - uid: 'excel-scripts!Excel.ChartAxisTitle#context:member'
     summary: >-
@@ -142,24 +141,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel-scripts!Excel.ChartAxisTitle#toJSON:member(1)'
-    summary: >-
-      Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
-      `JSON.stringify()`<!-- -->. (`JSON.stringify`<!-- -->, in turn, calls the `toJSON` method of the object that is
-      passed to it.) Whereas the original Excel.ChartAxisTitle object is an API object, the `toJSON` method returns a
-      plain JavaScript object (typed as `Excel.Interfaces.ChartAxisTitleData`<!-- -->) that contains shallow copies of
-      any loaded child properties from the original object.
-    name: toJSON()
-    fullName: toJSON()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'toJSON(): Excel.Interfaces.ChartAxisTitleData;'
-      return:
-        type:
-          - 'excel-scripts!Excel.Interfaces.ChartAxisTitleData:interface'
-        description: ''
   - uid: 'excel-scripts!Excel.ChartAxisTitle#visible:member'
     summary: A boolean that specifies the visibility of an axis title.
     name: visible
@@ -179,5 +160,3 @@ references:
     name: Excel.ChartAxisTitleFormat
   - uid: 'excel-scripts!Excel.ChartAxisTitle:class'
     name: Excel.ChartAxisTitle
-  - uid: 'excel-scripts!Excel.Interfaces.ChartAxisTitleData:interface'
-    name: Excel.Interfaces.ChartAxisTitleData
