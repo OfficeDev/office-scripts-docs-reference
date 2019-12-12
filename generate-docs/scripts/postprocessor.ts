@@ -92,7 +92,7 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "overview.md"
+        "href": "../overview.md"
     }] as any;
 
     // create folders for Excel subcategories
