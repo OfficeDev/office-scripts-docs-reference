@@ -23,6 +23,6 @@ For more information about the Office Scripts object model, visit [Scripting fun
 
 ## See also
 
-- [About Office Scripts](/office/dev/scripts/overview/overview)
+- [About Office Scripts](/office/dev/scripts/overview/excel)
 - [Record, edit, and create Office Scripts in Excel on the web](/office/dev/scripts/tutorials/excel-office-scripts-tutorial)
 - [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
