@@ -1,0 +1,117 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartTrendlineFormat:class'
+    summary: Represents the format properties for chart trendline.
+    name: Excel.ChartTrendlineFormat
+    fullName: Excel.ChartTrendlineFormat
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.ChartTrendlineFormat#context:member'
+      - 'excel!Excel.ChartTrendlineFormat#line:member'
+      - 'excel!Excel.ChartTrendlineFormat#load:member(1)'
+      - 'excel!Excel.ChartTrendlineFormat#load:member(2)'
+      - 'excel!Excel.ChartTrendlineFormat#set:member(1)'
+  - uid: 'excel!Excel.ChartTrendlineFormat#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.ChartTrendlineFormat#line:member'
+    summary: Represents chart line formatting. Read-only.
+    name: line
+    fullName: line
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly line: Excel.ChartLineFormat;'
+      return:
+        type:
+          - 'excel!Excel.ChartLineFormat:class'
+  - uid: 'excel!Excel.ChartTrendlineFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartTrendlineFormat;'
+      return:
+        type:
+          - 'excel!Excel.ChartTrendlineFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ChartTrendlineFormat#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ChartTrendlineFormat;
+      return:
+        type:
+          - 'excel!Excel.ChartTrendlineFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.ChartTrendlineFormat#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ChartTrendlineFormat): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel!Excel.ChartTrendlineFormat:class'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel!Excel.ChartLineFormat:class'
+    name: Excel.ChartLineFormat
+  - uid: 'excel!Excel.ChartTrendlineFormat:class'
+    name: Excel.ChartTrendlineFormat

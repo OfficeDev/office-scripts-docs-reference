@@ -14,22 +14,22 @@ tryCatch(async () => {
     // const urlToCopyOfficeJsFrom = await promptFromList({
     //     message: `What is the source of the Office-js TypeScript definition file that should be used to generate the Excel Script docs?`,
     //     choices: [
-    //         { name: "Local file [generate-docs\\script-inputs\\excel-scripts.d.ts]", value: "" }
+    //         { name: "Local file [generate-docs\\script-inputs\\excel.d.ts]", value: "" }
     //     ]
     // });
 
     console.log("\nStarting preprocessor script...");
 
-    const localReleaseDtsPath = "../script-inputs/excel-scripts.d.ts";
+    const localReleaseDtsPath = "../script-inputs/excel.d.ts";
     // if (urlToCopyOfficeJsFrom.length > 0) {
     //     fsx.writeFileSync(localReleaseDtsPath, await fetchAndThrowOnError(urlToCopyOfficeJsFrom, "text"));
     // }
 
     let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
 
-    console.log("\ncreate file: excel-scripts.d.ts (preview)");
+    console.log("\ncreate file: excel.d.ts (preview)");
     fsx.writeFileSync(
-        '../api-extractor-inputs-excel-scripts/excel-scripts.d.ts',
+        '../api-extractor-inputs-excel/excel.d.ts',
         handleLiteralParameterOverloads(excelSpecificCleanup(releaseDefinitions))
     );
 
