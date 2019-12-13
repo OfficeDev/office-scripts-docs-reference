@@ -1,0 +1,117 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.RangeCollection:class'
+    name: Excel.RangeCollection
+    fullName: Excel.RangeCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.RangeCollection#context:member'
+      - 'excel!Excel.RangeCollection#getCount:member(1)'
+      - 'excel!Excel.RangeCollection#getItemAt:member(1)'
+      - 'excel!Excel.RangeCollection#items:member'
+      - 'excel!Excel.RangeCollection#load:member(1)'
+  - uid: 'excel!Excel.RangeCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.RangeCollection#getCount:member(1)'
+    summary: Returns the number of ranges in the RangeCollection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel!Excel.RangeCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel!Excel.RangeCollection#getItemAt:member(1)'
+    summary: Returns the range object based on its position in the RangeCollection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Excel.Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:class'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the range object to be retrieved. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel!Excel.RangeCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.Range[];'
+      return:
+        type:
+          - 'excel!Excel.RangeCollection#items~0:complex'
+  - uid: 'excel!Excel.RangeCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.RangeCollection;'
+      return:
+        type:
+          - 'excel!Excel.RangeCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel!Excel.RangeCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel!Excel.Range:class'
+    name: Excel.Range
+  - uid: 'excel!Excel.RangeCollection#items~0:complex'
+    name: 'Excel.Range[]'
+    fullName: 'Excel.Range[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:class'
+        name: Excel.Range
+        fullName: Excel.Range
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.RangeCollection:class'
+    name: Excel.RangeCollection

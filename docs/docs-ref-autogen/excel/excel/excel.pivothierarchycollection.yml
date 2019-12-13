@@ -1,0 +1,137 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.PivotHierarchyCollection:class'
+    summary: Represents a collection of all the PivotHierarchies that are part of the PivotTable.
+    name: Excel.PivotHierarchyCollection
+    fullName: Excel.PivotHierarchyCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.PivotHierarchyCollection#context:member'
+      - 'excel!Excel.PivotHierarchyCollection#getCount:member(1)'
+      - 'excel!Excel.PivotHierarchyCollection#getItem:member(1)'
+      - 'excel!Excel.PivotHierarchyCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.PivotHierarchyCollection#items:member'
+      - 'excel!Excel.PivotHierarchyCollection#load:member(1)'
+  - uid: 'excel!Excel.PivotHierarchyCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.PivotHierarchyCollection#getCount:member(1)'
+    summary: Gets the number of pivot hierarchies in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchyCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel!Excel.PivotHierarchyCollection#getItem:member(1)'
+    summary: Gets a PivotHierarchy by its name or id.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): Excel.PivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchy:class'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the PivotHierarchy to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.PivotHierarchyCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, will return a null object.'
+    name: getItemOrNullObject(name)
+    fullName: getItemOrNullObject(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(name: string): Excel.PivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchy:class'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the PivotHierarchy to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.PivotHierarchyCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.PivotHierarchy[];'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchyCollection#items~0:complex'
+  - uid: 'excel!Excel.PivotHierarchyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.PivotHierarchyCollection;'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchyCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel!Excel.PivotHierarchyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel!Excel.PivotHierarchy:class'
+    name: Excel.PivotHierarchy
+  - uid: 'excel!Excel.PivotHierarchyCollection#items~0:complex'
+    name: 'Excel.PivotHierarchy[]'
+    fullName: 'Excel.PivotHierarchy[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.PivotHierarchy:class'
+        name: Excel.PivotHierarchy
+        fullName: Excel.PivotHierarchy
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.PivotHierarchyCollection:class'
+    name: Excel.PivotHierarchyCollection

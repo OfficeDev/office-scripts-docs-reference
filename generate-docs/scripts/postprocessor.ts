@@ -63,7 +63,7 @@ tryCatch(async () => {
     });
 
     // fix all the individual TOC files
-    scrubAndWriteToc(path.resolve(`${docsDestination}/excel-scripts`));
+    scrubAndWriteToc(path.resolve(`${docsDestination}/excel`));
 
     console.log("\nPostprocessor script complete!\n");
 
@@ -96,7 +96,7 @@ function fixToc(tocPath: string): Toc {
     }] as any;
 
     // create folders for Excel subcategories
-    let excelEnumFilter = generateEnumList(fsx.readFileSync("../api-extractor-inputs-excel-scripts/excel-scripts.d.ts").toString());
+    let excelEnumFilter = generateEnumList(fsx.readFileSync("../api-extractor-inputs-excel/excel.d.ts").toString());
     let excelIconSetFilter : string [] = ["FiveArrowsGraySet", "FiveArrowsSet", "FiveBoxesSet", "FiveQuartersSet", "FiveRatingSet", "FourArrowsGraySet", "FourArrowsSet", "FourRatingSet", "FourRedToBlackSet", "FourTrafficLightsSet", "IconCollections", "ThreeArrowsGraySet", "ThreeArrowsSet", "ThreeFlagsSet",  "ThreeSignsSet", "ThreeStarsSet",  "ThreeSymbols2Set", "ThreeSymbolsSet", "ThreeTrafficLights1Set", "ThreeTrafficLights2Set", "ThreeTrianglesSet"];
     let excelFilter: string[] = ["Interfaces"];
     excelFilter = excelFilter.concat(excelEnumFilter).concat(excelIconSetFilter);

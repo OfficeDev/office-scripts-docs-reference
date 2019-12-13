@@ -1,0 +1,176 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CustomPropertyCollection:class'
+    summary: Contains the collection of customProperty objects.
+    name: Excel.CustomPropertyCollection
+    fullName: Excel.CustomPropertyCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.CustomPropertyCollection#add:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#context:member'
+      - 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#items:member'
+      - 'excel!Excel.CustomPropertyCollection#load:member(1)'
+  - uid: 'excel!Excel.CustomPropertyCollection#add:member(1)'
+    summary: Creates a new or sets an existing custom property.
+    name: 'add(key, value)'
+    fullName: 'add(key, value)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(key: string, value: any): Excel.CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:class'
+        description: ''
+      parameters:
+        - id: key
+          description: 'Required. The custom property''s key, which is case-insensitive.'
+          type:
+            - string
+        - id: value
+          description: Required. The custom property's value.
+          type:
+            - any
+  - uid: 'excel!Excel.CustomPropertyCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+    summary: Deletes all custom properties in this collection.
+    name: deleteAll()
+    fullName: deleteAll()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'deleteAll(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
+    summary: Gets the count of custom properties.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
+    summary: 'Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.'
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): Excel.CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:class'
+        description: ''
+      parameters:
+        - id: key
+          description: The key that identifies the custom property object.
+          type:
+            - string
+  - uid: 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
+    summary: >-
+      Gets a custom property object by its key, which is case-insensitive. Returns a null object if the custom property
+      does not exist.
+    name: getItemOrNullObject(key)
+    fullName: getItemOrNullObject(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(key: string): Excel.CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:class'
+        description: ''
+      parameters:
+        - id: key
+          description: Required. The key that identifies the custom property object.
+          type:
+            - string
+  - uid: 'excel!Excel.CustomPropertyCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.CustomProperty[];'
+      return:
+        type:
+          - 'excel!Excel.CustomPropertyCollection#items~0:complex'
+  - uid: 'excel!Excel.CustomPropertyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.CustomPropertyCollection;'
+      return:
+        type:
+          - 'excel!Excel.CustomPropertyCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.CustomProperty:class'
+    name: Excel.CustomProperty
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel!Excel.CustomPropertyCollection#items~0:complex'
+    name: 'Excel.CustomProperty[]'
+    fullName: 'Excel.CustomProperty[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.CustomProperty:class'
+        name: Excel.CustomProperty
+        fullName: Excel.CustomProperty
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.CustomPropertyCollection:class'
+    name: Excel.CustomPropertyCollection

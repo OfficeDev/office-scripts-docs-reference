@@ -17,12 +17,12 @@ The following list breaks down the basics of the Office Scripts object model. Th
 - A [Range](/javascript/api/office-scripts/excel-scripts/excel.range) represents a group of contiguous cells.
 - [Ranges](/javascript/api/office-scripts/excel-scripts/excel.range) are used to create and place [Tables](/javascript/api/office-scripts/excel-scripts/excel.table), [Charts](/javascript/api/office-scripts/excel-scripts/excel.chart), [Shapes](/javascript/api/office-scripts/excel-scripts/excel.shape), and other data visualization or organization objects.
 - A [Worksheet](/javascript/api/office-scripts/excel-scripts/excel.worksheet) contains collections of those data objects (such as a [ChartCollection](/javascript/api/office-scripts/excel-scripts/excel.chartcollection)) that are present in the individual sheet.
-- [Workbooks](/javascript/api/office-scripts/excel-scripts/excelworkbook). contain collections of some of those data objects (such as a [TableCollection](/javascript/api/office-scripts/excel-scripts/excel.tablecollection)) for the entire [Workbook](/javascript/api/office-scripts/excel-scripts/excel.workbook).
+- [Workbooks](/javascript/api/office-scripts/excel-scripts/excel.workbook). contain collections of some of those data objects (such as a [TableCollection](/javascript/api/office-scripts/excel-scripts/excel.tablecollection)) for the entire [Workbook](/javascript/api/office-scripts/excel-scripts/excel.workbook).
 
 For more information about the Office Scripts object model, visit [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
 
 ## See also
 
-- [About Office Scripts](/office/dev/scripts/overview/overview)
-- [Record, edit, and create Office Scripts in Excel on the web](/office/dev/scripts/tutorials/excel-office-scripts-tutorial)
+- [About Office Scripts](/office/dev/scripts/overview/excel)
+- [Record, edit, and create Office Scripts in Excel on the web](/office/dev/scripts/tutorials/excel-tutorial)
 - [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
