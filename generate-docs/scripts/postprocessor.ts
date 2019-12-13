@@ -47,9 +47,9 @@ tryCatch(async () => {
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the 'office-scripts' folder from the /docs folder
+    // delete everything except the overview file from the /docs folder
     fsx.readdirSync(docsDestination)
-        .filter(filename => filename !== "office-scripts" && filename !== "images")
+        .filter(filename => filename !== "overview.md")
         .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
 
     console.log(`Copying docs output files to: ${docsDestination}`);
@@ -92,7 +92,7 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "../office-scripts/overview.md"
+        "href": "../overview.md"
     }] as any;
 
     // create folders for Excel subcategories
@@ -166,6 +166,5 @@ function scrubAndWriteToc(versionFolder: string): Toc {
     const tocPath = versionFolder + "/toc.yml";
     let latestToc = fixToc(tocPath);
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    fsx.copySync("../../docs/docs-ref-autogen/office-scripts/overview.md", versionFolder + "/overview.md");
     return latestToc;
 }
