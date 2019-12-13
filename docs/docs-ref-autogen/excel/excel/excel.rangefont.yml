@@ -1,0 +1,252 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.RangeFont:class'
+    summary: 'This object represents the font attributes (font name, font size, color, etc.) for an object.'
+    name: Excel.RangeFont
+    fullName: Excel.RangeFont
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.RangeFont#bold:member'
+      - 'excel!Excel.RangeFont#color:member'
+      - 'excel!Excel.RangeFont#context:member'
+      - 'excel!Excel.RangeFont#italic:member'
+      - 'excel!Excel.RangeFont#load:member(1)'
+      - 'excel!Excel.RangeFont#load:member(2)'
+      - 'excel!Excel.RangeFont#name:member'
+      - 'excel!Excel.RangeFont#set:member(1)'
+      - 'excel!Excel.RangeFont#size:member'
+      - 'excel!Excel.RangeFont#strikethrough:member'
+      - 'excel!Excel.RangeFont#subscript:member'
+      - 'excel!Excel.RangeFont#superscript:member'
+      - 'excel!Excel.RangeFont#tintAndShade:member'
+      - 'excel!Excel.RangeFont#underline:member'
+  - uid: 'excel!Excel.RangeFont#bold:member'
+    summary: Represents the bold status of font.
+    name: bold
+    fullName: bold
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'bold: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.RangeFont#color:member'
+    summary: 'HTML color code representation of the text color. E.g. \#FF0000 represents Red.'
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.RangeFont#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.RangeFont#italic:member'
+    summary: Represents the italic status of the font.
+    name: italic
+    fullName: italic
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'italic: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.RangeFont#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.RangeFont;'
+      return:
+        type:
+          - 'excel!Excel.RangeFont:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.RangeFont#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.RangeFont;
+      return:
+        type:
+          - 'excel!Excel.RangeFont:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.RangeFont#name:member'
+    summary: Font name (e.g. "Calibri")
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.RangeFont#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.RangeFont): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel!Excel.RangeFont:class'
+  - uid: 'excel!Excel.RangeFont#size:member'
+    summary: Font size.
+    name: size
+    fullName: size
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'size: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.RangeFont#strikethrough:member'
+    summary: >-
+      Represents the strikethrough status of font. A null value indicates that the entire range doesn't have uniform
+      Strikethrough setting.
+    name: strikethrough
+    fullName: strikethrough
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'strikethrough: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.RangeFont#subscript:member'
+    summary: >-
+      Represents the Subscript status of font. Returns True if all the fonts of the range are Subscript. Returns False
+      if all the fonts of the range are Superscript or normal (neither Superscript, nor Subscript). Returns Null
+      otherwise.
+    name: subscript
+    fullName: subscript
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'subscript: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.RangeFont#superscript:member'
+    summary: >-
+      Represents the Superscript status of font. Returns True if all the fonts of the range are Superscript. Returns
+      False if all the fonts of the range are Subscript or normal (neither Superscript, nor Subscript). Returns Null
+      otherwise.
+    name: superscript
+    fullName: superscript
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'superscript: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.RangeFont#tintAndShade:member'
+    summary: >-
+      Returns or sets a double that lightens or darkens a color for Range Font, the value is between -1 (darkest) and 1
+      (brightest), with 0 for the original color. A null value indicates that the entire range doesn't have uniform font
+      tintAndShade setting.
+    name: tintAndShade
+    fullName: tintAndShade
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'tintAndShade: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.RangeFont#underline:member'
+    summary: Type of underline applied to the font. See Excel.RangeUnderlineStyle for details.
+    name: underline
+    fullName: underline
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'underline: Excel.RangeUnderlineStyle | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant";'
+      return:
+        type:
+          - 'excel!Excel.RangeFont#underline~0:complex'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+  - uid: 'excel!Excel.RangeFont:class'
+    name: Excel.RangeFont
+  - uid: 'excel!Excel.RangeFont#underline~0:complex'
+    name: Excel.RangeUnderlineStyle | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"
+    fullName: Excel.RangeUnderlineStyle | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"
+    spec.typeScript:
+      - uid: 'excel!Excel.RangeUnderlineStyle:enum'
+        name: Excel.RangeUnderlineStyle
+        fullName: Excel.RangeUnderlineStyle
+      - name: ' | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"'
+        fullName: ' | "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant"'
