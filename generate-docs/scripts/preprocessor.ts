@@ -85,8 +85,10 @@ tryCatch(async () => {
         }
     }
 
-    console.log("\nWriting snippets to: " + path.resolve("../json/snippets.yaml"));
-    fsx.writeFileSync("../json/snippets.yaml", yaml.safeDump(
+    let snippetDestination = path.resolve("../json/excel/snippets.yaml")
+    console.log("\nWriting snippets to: " + snippetDestination);
+    fsx.createFileSync(snippetDestination);
+    fsx.writeFileSync(snippetDestination, yaml.safeDump(
         snippets,
         {sortKeys: <any>((a: string, b: string) => {
             if (a < b) {

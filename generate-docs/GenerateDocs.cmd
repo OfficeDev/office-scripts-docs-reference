@@ -30,7 +30,7 @@ pushd api-extractor-inputs-excel
 call ..\node_modules\.bin\api-extractor run
 popd
 
-call .\node_modules\.bin\api-documenter yaml --input-folder .\json\excel --output-folder .\yaml\excel
+call .\node_modules\.bin\api-documenter yaml --input-folder .\json\excel --output-folder .\yaml\excel --office 2> nul
 
 pushd scripts
 call node postprocessor.js
