@@ -285,8 +285,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const title = sheet.charts.getItemAt(0).title;
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let title = sheet.charts.getItemAt(0).title;
               title.textOrientation = -45;
 
               await context.sync();

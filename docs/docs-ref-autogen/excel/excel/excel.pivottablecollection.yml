@@ -36,8 +36,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const rangeToAnalyze = context.workbook.worksheets.getItem("Data").getRange("A1:E21");
-              const rangeToPlacePivot = context.workbook.worksheets.getItem("Pivot").getRange("A2");
+              let rangeToAnalyze = context.workbook.worksheets.getItem("Data").getRange("A1:E21");
+              let rangeToPlacePivot = context.workbook.worksheets.getItem("Pivot").getRange("A2");
               context.workbook.worksheets.getItem("Pivot").pivotTables.add("Farm Sales", rangeToAnalyze, rangeToPlacePivot);
 
               await context.sync();

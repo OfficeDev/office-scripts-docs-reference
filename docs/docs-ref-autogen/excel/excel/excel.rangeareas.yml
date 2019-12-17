@@ -332,11 +332,11 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
 
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const usedRange = sheet.getUsedRange();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let usedRange = sheet.getUsedRange();
 
               // Find the ranges with formulas.
-              const formulaRanges = usedRange.getSpecialCells("Formulas");
+              let formulaRanges = usedRange.getSpecialCells("Formulas");
               formulaRanges.format.fill.color = "lightgreen";
 
               await context.sync();

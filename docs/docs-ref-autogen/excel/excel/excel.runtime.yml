@@ -51,7 +51,7 @@ items:
               await context.sync();
 
               // check if events are enabled and toggle accordingly
-              const eventBoolean = !context.runtime.enableEvents
+              let eventBoolean = !context.runtime.enableEvents
               context.runtime.enableEvents = eventBoolean;
               if (eventBoolean) {
                   console.log("Events are currently on.");

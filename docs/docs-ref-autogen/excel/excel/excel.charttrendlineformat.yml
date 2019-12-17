@@ -47,7 +47,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               let seriesCollection = sheet.charts.getItemAt(0).series; 
 
@@ -64,7 +64,7 @@ items:
           ```
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               let seriesCollection = sheet.charts.getItemAt(0).series; 
               let trendline = seriesCollection.getItemAt(0).trendlines.getItem(0);

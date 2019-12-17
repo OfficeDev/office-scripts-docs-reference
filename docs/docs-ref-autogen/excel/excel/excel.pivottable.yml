@@ -47,10 +47,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");       
+              let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");       
 
               // check if the PivotTable already has a column
-              const column = pivotTable.columnHierarchies.getItemOrNullObject("Farm");
+              let column = pivotTable.columnHierarchies.getItemOrNullObject("Farm");
               column.load("id");
               await context.sync();
 
@@ -97,7 +97,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+              let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
               pivotTable.dataHierarchies.add(pivotTable.hierarchies.getItem("Crates Sold at Farm"));
               pivotTable.dataHierarchies.add(pivotTable.hierarchies.getItem("Crates Sold Wholesale"));
 
@@ -160,9 +160,9 @@ items:
           ```typescript
           async function filter(functionType: Excel.AggregationFunction) {
               async function main(context: Excel.RequestContext) {
-                  const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
-                  const filters = pivotTable.filterHierarchies;
-                  const filter = filters.getItemOrNullObject("Classification");
+                  let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+                  let filters = pivotTable.filterHierarchies;
+                  let filter = filters.getItemOrNullObject("Classification");
                   filter.load();
                   await context.sync();
 
@@ -217,7 +217,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+              let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
               pivotTable.layout.load("layoutType");
               await context.sync();
 

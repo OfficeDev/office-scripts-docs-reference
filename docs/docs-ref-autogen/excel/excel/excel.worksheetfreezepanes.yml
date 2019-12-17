@@ -51,7 +51,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               // Freeze the specified range in top-and-left-most pane of the worksheet.
               sheet.freezePanes.freezeAt(sheet.getRange("H2:K5"));
@@ -83,7 +83,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               // Freeze the first two columns in the worksheet.
               sheet.freezePanes.freezeColumns(2);
@@ -115,7 +115,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               // Freeze the top two rows in the worksheet.
               sheet.freezePanes.freezeRows(2);
@@ -164,8 +164,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const frozenRange = sheet.freezePanes.getLocationOrNullObject();
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let frozenRange = sheet.freezePanes.getLocationOrNullObject();
               frozenRange.load("address");
 
               await context.sync();
@@ -220,7 +220,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
               sheet.freezePanes.unfreeze();
 
               await context.sync();

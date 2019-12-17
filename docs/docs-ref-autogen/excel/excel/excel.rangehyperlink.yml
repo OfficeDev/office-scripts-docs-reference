@@ -32,7 +32,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Orders");
+              let sheet = context.workbook.worksheets.getItem("Orders");
 
               let productsRange = sheet.getRange("A3:A5");
               productsRange.load("values");
@@ -75,7 +75,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Orders");
+              let sheet = context.workbook.worksheets.getItem("Orders");
 
               let productsRange = sheet.getRange("A9:A11");
               productsRange.load("values");
@@ -118,7 +118,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Orders");
+              let sheet = context.workbook.worksheets.getItem("Orders");
 
               let productsRange = sheet.getRange("A3:A5");
               productsRange.load("values");
@@ -161,7 +161,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Orders");
+              let sheet = context.workbook.worksheets.getItem("Orders");
 
               let productsRange = sheet.getRange("A3:A5");
               productsRange.load("values");

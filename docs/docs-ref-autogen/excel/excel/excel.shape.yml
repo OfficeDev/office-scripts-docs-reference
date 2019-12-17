@@ -142,9 +142,9 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
               context.workbook.worksheets.getItemOrNullObject("Shapes").delete();
-              const sheet = context.workbook.worksheets.add("Shapes");
+              let sheet = context.workbook.worksheets.add("Shapes");
 
-              const shapes = sheet.shapes;
+              let shapes = sheet.shapes;
 
               // load all the shapes in the collection without loading their properties
               shapes.load("items/$none");
@@ -173,8 +173,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.smileyFace);
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.smileyFace);
               shape.left = 300;
               shape.top = 100;
               shape.height = 100;
@@ -264,12 +264,12 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Image");
-              const result = shape.getAsImage(Excel.PictureFormat.png);
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Image");
+              let result = shape.getAsImage(Excel.PictureFormat.png);
               await context.sync();
 
-              const imageString = result.value;
+              let imageString = result.value;
               // Your add-in would save this string as a .png file.
               console.log("The image's base64-encoded string: " + imageString);
           }
@@ -319,9 +319,9 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
+              let sheet = context.workbook.worksheets.getItem("Shapes");
 
-              const shapeGroup = sheet.shapes.getItem("Group").group;
+              let shapeGroup = sheet.shapes.getItem("Group").group;
               shapeGroup.ungroup();
               console.log("Shapes ungrouped");
 
@@ -385,8 +385,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Square")
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Square")
               shape.incrementLeft(-25);
               await context.sync();
           }
@@ -420,8 +420,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Image");
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Image");
               shape.incrementRotation(180);
               await context.sync();
           }
@@ -452,8 +452,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Pentagon")
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Pentagon")
               shape.incrementTop(25);
               await context.sync();
           }
@@ -513,8 +513,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.getItem("StraightLine").line;
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
               line.beginArrowheadLength = Excel.ArrowheadLength.long;
               line.beginArrowheadWidth = Excel.ArrowheadWidth.wide;
               line.beginArrowheadStyle = Excel.ArrowheadStyle.oval;
@@ -607,8 +607,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Octagon")
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Octagon")
               shape.lockAspectRatio = true;
               shape.scaleHeight(1.25, Excel.ShapeScaleType.currentSize);
               await context.sync();
@@ -669,8 +669,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.triangle);
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.triangle);
               shape.left = 100;
               shape.top = 300;
               shape.height = 150;
@@ -702,8 +702,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Octagon")
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Octagon")
               shape.lockAspectRatio = true;
               shape.scaleHeight(1.25, Excel.ShapeScaleType.currentSize);
               await context.sync();
@@ -866,8 +866,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.getItem("Octagon")
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Octagon")
               shape.setZOrder(Excel.ShapeZOrder.sendBackward);
               await context.sync();
           }

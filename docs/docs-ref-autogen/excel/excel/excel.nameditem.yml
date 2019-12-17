@@ -86,8 +86,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const totalName = sheet.names.getItemOrNullObject("TotalAmount");
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let totalName = sheet.names.getItemOrNullObject("TotalAmount");
               totalName.load();
               await context.sync();
 
@@ -122,10 +122,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               // Get the named item
-              const myNamedItem = sheet.names.getItemOrNullObject("MyRange");
+              let myNamedItem = sheet.names.getItemOrNullObject("MyRange");
               myNamedItem.load("name, formula");
               await context.sync();
 

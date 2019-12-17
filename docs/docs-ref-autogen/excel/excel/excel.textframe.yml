@@ -88,8 +88,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const textbox = shapes.getItem("Textbox");
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let textbox = shapes.getItem("Textbox");
               textbox.textFrame.deleteText();
               await context.sync();
           }

@@ -91,7 +91,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.centerHorizontally = true;
               farmSheet.pageLayout.centerVertically = true;
               await context.sync();
@@ -118,7 +118,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.centerHorizontally = true;
               farmSheet.pageLayout.centerVertically = true;
               await context.sync();
@@ -361,7 +361,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.orientation = Excel.PageOrientation.landscape;
               await context.sync();
           }
@@ -495,7 +495,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.setPrintArea("A1:D41");
               await context.sync();
           }
@@ -588,7 +588,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.setPrintTitleRows("$1:$1");
               await context.sync();
           }
@@ -631,7 +631,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.pageLayout.zoom = { scale: 200 };
               await context.sync();
           }

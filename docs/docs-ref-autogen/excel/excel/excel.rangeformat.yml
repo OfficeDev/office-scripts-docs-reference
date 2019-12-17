@@ -325,8 +325,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B2:E2");
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:E2");
 
               // Set textOrientation to either an integer between -90 and 90
               // or to 180 for vertically-oriented text.

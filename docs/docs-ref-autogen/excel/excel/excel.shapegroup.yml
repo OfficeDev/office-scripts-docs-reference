@@ -137,9 +137,9 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
+              let sheet = context.workbook.worksheets.getItem("Shapes");
 
-              const shapeGroup = sheet.shapes.getItem("Group").group;
+              let shapeGroup = sheet.shapes.getItem("Group").group;
               shapeGroup.ungroup();
               console.log("Shapes ungrouped");
 

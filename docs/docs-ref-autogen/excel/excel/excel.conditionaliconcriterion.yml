@@ -46,11 +46,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B8:E13");
-              const conditionalFormat = range.conditionalFormats
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats
                   .add(Excel.ConditionalFormatType.iconSet);
-              const iconSetCF = conditionalFormat.iconSet;
+              let iconSetCF = conditionalFormat.iconSet;
               iconSetCF.style = Excel.IconSet.threeTriangles;
 
               /*
@@ -103,11 +103,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B8:E13");
-              const conditionalFormat = range.conditionalFormats
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats
                   .add(Excel.ConditionalFormatType.iconSet);
-              const iconSetCF = conditionalFormat.iconSet;
+              let iconSetCF = conditionalFormat.iconSet;
               iconSetCF.style = Excel.IconSet.threeTriangles;
 
               /*
@@ -143,9 +143,9 @@ items:
           ```
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B16:D18");
-              const conditionalFormat = range.conditionalFormats
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B16:D18");
+              let conditionalFormat = range.conditionalFormats
                   .add(Excel.ConditionalFormatType.containsText);
               conditionalFormat.textComparison.format.font.color = "red";
               conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -172,11 +172,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B8:E13");
-              const conditionalFormat = range.conditionalFormats
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats
                   .add(Excel.ConditionalFormatType.iconSet);
-              const iconSetCF = conditionalFormat.iconSet;
+              let iconSetCF = conditionalFormat.iconSet;
               iconSetCF.style = Excel.IconSet.threeTriangles;
 
               /*

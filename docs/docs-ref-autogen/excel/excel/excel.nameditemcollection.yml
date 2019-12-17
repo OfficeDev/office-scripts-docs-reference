@@ -38,11 +38,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const headerRange = sheet.getRange("A1:D1");
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let headerRange = sheet.getRange("A1:D1");
 
               sheet.names.add("ExpensesHeader", headerRange);
-              const namedItems = sheet.names.load("name, type");
+              let namedItems = sheet.names.load("name, type");
 
               await context.sync();
           }

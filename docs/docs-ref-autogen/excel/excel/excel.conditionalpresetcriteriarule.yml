@@ -34,9 +34,9 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B2:M5");
-              const conditionalFormat = range.conditionalFormats
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:M5");
+              let conditionalFormat = range.conditionalFormats
                   .add(Excel.ConditionalFormatType.presetCriteria);
               conditionalFormat.preset.format.font.color = "white";
               conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };

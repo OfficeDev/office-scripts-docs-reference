@@ -53,21 +53,21 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
               $("#display-xml").text("");
-              const contosoNamespace = "http://schemas.contoso.com/review/1.0";
-              const customXmlParts = context.workbook.customXmlParts;
-              const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
-              const numberOfPartsInNamespace = filteredXmlParts.getCount();
+              let contosoNamespace = "http://schemas.contoso.com/review/1.0";
+              let customXmlParts = context.workbook.customXmlParts;
+              let filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+              let numberOfPartsInNamespace = filteredXmlParts.getCount();
 
               await context.sync();
 
               if (numberOfPartsInNamespace.value == 1) {
-                  const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
-                  const xmlBlob = onlyXmlPartInNamespace.getXml();
+                  let onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+                  let xmlBlob = onlyXmlPartInNamespace.getXml();
 
                   await context.sync();
 
                   // Make it a bit more readable.
-                  const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+                  let readableXml = xmlBlob.value.replace(/></g, ">\n<");
 
                   $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
                       ${readableXml}`);
@@ -118,13 +118,13 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const settings = context.workbook.settings;
-              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              let settings = context.workbook.settings;
+              let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
               await context.sync();
 
               if (xmlPartIDSetting.value) {   
                   let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
-                  const xmlBlob = customXmlPart.getXml();
+                  let xmlBlob = customXmlPart.getXml();
                   customXmlPart.delete();
                   customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
 
@@ -136,8 +136,8 @@ items:
                       // Delete the unneeded setting too.
                       xmlPartIDSetting.delete();            
                   } else {
-                      const readableXml = addLineBreaksToXML(xmlBlob.value);
-                      const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                      let readableXml = addLineBreaksToXML(xmlBlob.value);
+                      let strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
                       $("#display-xml").text(strangeMessage);
                   }
 
@@ -170,21 +170,21 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
               $("#display-xml").text("");
-              const contosoNamespace = "http://schemas.contoso.com/review/1.0";
-              const customXmlParts = context.workbook.customXmlParts;
-              const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
-              const numberOfPartsInNamespace = filteredXmlParts.getCount();
+              let contosoNamespace = "http://schemas.contoso.com/review/1.0";
+              let customXmlParts = context.workbook.customXmlParts;
+              let filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+              let numberOfPartsInNamespace = filteredXmlParts.getCount();
 
               await context.sync();
 
               if (numberOfPartsInNamespace.value == 1) {
-                  const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
-                  const xmlBlob = onlyXmlPartInNamespace.getXml();
+                  let onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+                  let xmlBlob = onlyXmlPartInNamespace.getXml();
 
                   await context.sync();
 
                   // Make it a bit more readable.
-                  const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+                  let readableXml = xmlBlob.value.replace(/></g, ">\n<");
 
                   $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
                       ${readableXml}`);

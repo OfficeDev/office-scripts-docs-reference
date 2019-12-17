@@ -171,8 +171,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-            const sheet = context.workbook.worksheets.getActiveWorksheet();
-            const sumCell = sheet.getRange("P4");
+            let sheet = context.workbook.worksheets.getActiveWorksheet();
+            let sumCell = sheet.getRange("P4");
             
             // Copy everything. The formulas will be contextually updated based on their new locations.
             sumCell.autoFill("P4:P7", Excel.AutoFillType.fillCopy);
@@ -414,7 +414,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
               sheet.getRange("F2").values = [["Copied Formula"]];
               sheet.getRange("F2").format.autofitColumns();
 
@@ -549,13 +549,13 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const table = sheet.tables.getItem("ExpensesTable");
-              const searchRange = table.getRange();
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let table = sheet.tables.getItem("ExpensesTable");
+              let searchRange = table.getRange();
 
               // NOTE: If no match is found, an ItemNotFound error
               // is thrown when Range.find is evaluated.
-              const foundRange = searchRange.find($("#searchText").text(), {
+              let foundRange = searchRange.find($("#searchText").text(), {
                   completeMatch: isCompleteMatchToggle,
                   matchCase: isMatchCaseToggle,
                   searchDirection: searchDirectionToggle
@@ -601,10 +601,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const table = sheet.tables.getItem("ExpensesTable");
-              const searchRange = table.getRange();
-              const foundRange = searchRange.findOrNullObject($("#searchText").text(), {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let table = sheet.tables.getItem("ExpensesTable");
+              let searchRange = table.getRange();
+              let foundRange = searchRange.findOrNullObject($("#searchText").text(), {
                   completeMatch: isCompleteMatchToggle,
                   matchCase: isMatchCaseToggle,
                   searchDirection: searchDirectionToggle
@@ -794,10 +794,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const cell = context.workbook.getActiveCell();
+              let cell = context.workbook.getActiveCell();
 
               // Define the cell properties to get by setting the matching LoadOptions to true.
-              const propertiesToGet = cell.getCellProperties({
+              let propertiesToGet = cell.getCellProperties({
                   address: true,
                   format: {
                       fill: {
@@ -812,7 +812,7 @@ items:
 
               // Sync to get the data from the workbook.
               await context.sync();
-              const cellProperties = propertiesToGet.value[0][0];
+              let cellProperties = propertiesToGet.value[0][0];
               console.log(
                   `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
           }
@@ -985,24 +985,24 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const salesTable = sheet.tables.getItem("SalesTable");
-              const dataRange = salesTable.getDataBodyRange();
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = salesTable.getDataBodyRange();
 
               // We want the most recent quarter that has data, so
               // exclude quarters without data and get the last of
               // the remaining columns.
-              const usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
-              const currentQuarterRange = usedDataRange.getLastColumn();
+              let usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
+              let currentQuarterRange = usedDataRange.getLastColumn();
 
               // Asian and European teams have separate contests.
-              const asianSalesRange = sheet.getRange("A2:E4");
-              const europeanSalesRange = sheet.getRange("A5:E7");
+              let asianSalesRange = sheet.getRange("A2:E4");
+              let europeanSalesRange = sheet.getRange("A5:E7");
 
               // The data for each chart is the intersection of the
               // current quarter column and the rows for the continent.
-              const asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
-              const europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+              let asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+              let europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
 
               // Must sync before you can test the output of *OrNullObject
               // method/property.
@@ -1243,11 +1243,11 @@ items:
           ```javascript
           async function main(context: Excel.RequestContext) {
 
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const usedRange = sheet.getUsedRange();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let usedRange = sheet.getUsedRange();
 
               // Find the ranges with either text or logical (boolean) values.
-              const formulaRanges = usedRange.getSpecialCells("Constants", "LogicalText");
+              let formulaRanges = usedRange.getSpecialCells("Constants", "LogicalText");
               formulaRanges.format.fill.color = "orange";
 
               return context.sync();
@@ -1422,24 +1422,24 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const salesTable = sheet.tables.getItem("SalesTable");
-              const dataRange = salesTable.getDataBodyRange();
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = salesTable.getDataBodyRange();
 
               // We want the most recent quarter that has data, so
               // exclude quarters without data and get the last of
               // the remaining columns.
-              const usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
-              const currentQuarterRange = usedDataRange.getLastColumn();
+              let usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
+              let currentQuarterRange = usedDataRange.getLastColumn();
 
               // Asian and European teams have separate contests.
-              const asianSalesRange = sheet.getRange("A2:E4");
-              const europeanSalesRange = sheet.getRange("A5:E7");
+              let asianSalesRange = sheet.getRange("A2:E4");
+              let europeanSalesRange = sheet.getRange("A5:E7");
 
               // The data for each chart is the intersection of the
               // current quarter column and the rows for the continent.
-              const asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
-              const europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+              let asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+              let europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
 
               // Must sync before you can test the output of *OrNullObject
               // method/property.
@@ -1502,12 +1502,12 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const salesTable = sheet.tables.getItem("SalesTable");
-              const dataRange = salesTable.getDataBodyRange();
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = salesTable.getDataBodyRange();
 
               // Pass true so only cells with values count as used
-              const usedDataRange = dataRange.getUsedRangeOrNullObject(
+              let usedDataRange = dataRange.getUsedRangeOrNullObject(
                   true /* valuesOnly */
               );
 
@@ -1518,7 +1518,7 @@ items:
                   console.log("Need Data to Make Chart");
                   console.log("To create a meaningful chart, press 'Fill the table' (or add names to the Product column and numbers to some of the other cells). Then press 'Try to create chart' again.");
               } else {
-                  const chart = sheet.charts.add(
+                  let chart = sheet.charts.add(
                       Excel.ChartType.columnClustered,
                       dataRange,
                       "Columns"
@@ -1571,7 +1571,7 @@ items:
 
           ```typescript
           Excel.run(async (context) => {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
               
               // Group the larger, main level. Note that the outline controls
               // will be on row 10, meaning 4-9 will collapse and expand.
@@ -1692,7 +1692,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Orders");
+              let sheet = context.workbook.worksheets.getItem("Orders");
 
               let productsRange = sheet.getRange("A3:A5");
               productsRange.load("values");
@@ -1948,10 +1948,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const range = sheet.getRange("B2:D11");
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:D11");
 
-              const deleteResult = range.removeDuplicates([0],true);    
+              let deleteResult = range.removeDuplicates([0],true);    
               deleteResult.load();    
               await context.sync();
 
@@ -2064,9 +2064,9 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
-              const range = sheet.getRange("B2:E2");
+              let range = sheet.getRange("B2:E2");
               range.set({
                   format: {
                       fill: {
@@ -2084,15 +2084,15 @@ items:
           ```
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
-              const sourceRange = sheet.getRange("B2:E2");
+              let sourceRange = sheet.getRange("B2:E2");
               sourceRange.load("format/fill/color, format/font/name, format/font/color");
               await context.sync();
 
               // Set properties based on the loaded and synced 
               // source range.
-              const targetRange = sheet.getRange("B7:E7");
+              let targetRange = sheet.getRange("B7:E7");
               targetRange.set(sourceRange); 
               targetRange.format.autofitColumns();
               await context.sync();
@@ -2124,11 +2124,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
 
               // Creating the SettableCellProperties objects to use for the range.
               // In your add-in, these should be created once, outside the function.
-              const topHeaderProps: Excel.SettableCellProperties = {
+              let topHeaderProps: Excel.SettableCellProperties = {
                   // The style property takes a string matching the name of an Excel style.
                   // Built-in style names are listed in the `BuiltInStyle` enum.
                   // Note that a style will overwrite any formatting,
@@ -2136,7 +2136,7 @@ items:
                   style: "Heading1"
               };
 
-              const headerProps: Excel.SettableCellProperties = {
+              let headerProps: Excel.SettableCellProperties = {
                   // Any subproperties of format that are not set will not be changed when these cell properties are set.
                   format: {
                       fill: {
@@ -2149,7 +2149,7 @@ items:
                   }
               };
 
-              const nonApplicableProps: Excel.SettableCellProperties = {
+              let nonApplicableProps: Excel.SettableCellProperties = {
                   format: {
                       fill: {
                           pattern: Excel.FillPattern.gray25
@@ -2161,7 +2161,7 @@ items:
                   }
               };
 
-              const matchupScoreProps: Excel.SettableCellProperties = {
+              let matchupScoreProps: Excel.SettableCellProperties = {
                   format: {
                       borders: {
                           bottom: {
@@ -2180,7 +2180,7 @@ items:
                   }
               };
 
-              const range = sheet.getRange("A1:E5");
+              let range = sheet.getRange("A1:E5");
 
               // You can use empty JSON objects to avoid changing a cell's properties.
               range.setCellProperties([
@@ -2321,11 +2321,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const range = sheet.getRange("A1:E5");
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let range = sheet.getRange("A1:E5");
 
               // Find the column header that provides the sort criteria.
-              const header = range.find(criteria, {});
+              let header = range.find(criteria, {});
               header.load("columnIndex");
               await context.sync();
 
@@ -2439,7 +2439,7 @@ items:
 
           ```typescript
           Excel.run(async (context) => {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
               
               // This removes two levels of groups from the "A1-R10" range.
               // Any groups at the same level on the same dimension will be removed by a single call.

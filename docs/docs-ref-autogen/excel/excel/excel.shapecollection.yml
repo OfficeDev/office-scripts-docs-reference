@@ -41,8 +41,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.hexagon);
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.hexagon);
               shape.left = 5;
               shape.top = 5;
               shape.height = 175;
@@ -157,12 +157,12 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const square = sheet.shapes.getItem("Square");
-              const pentagon = sheet.shapes.getItem("Pentagon");
-              const octagon = sheet.shapes.getItem("Octagon");
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let square = sheet.shapes.getItem("Square");
+              let pentagon = sheet.shapes.getItem("Pentagon");
+              let octagon = sheet.shapes.getItem("Octagon");
 
-              const shapeGroup = sheet.shapes.addGroup([square, pentagon, octagon]);
+              let shapeGroup = sheet.shapes.addGroup([square, pentagon, octagon]);
               shapeGroup.name = "Group";
               console.log("Shapes grouped");
 
@@ -194,15 +194,15 @@ items:
           #### Examples
 
           ```javascript
-          const myFile = <HTMLInputElement>document.getElementById("selectedFile");
-          const reader = new FileReader();
+          let myFile = <HTMLInputElement>document.getElementById("selectedFile");
+          let reader = new FileReader();
 
           reader.onload = (event) => {
               Excel.run((context) => {
-                  const startIndex = reader.result.toString().indexOf("base64,");
-                  const mybase64 = reader.result.toString().substr(startIndex + 7);
-                  const sheet = context.workbook.worksheets.getItem("Shapes");
-                  const image = sheet.shapes.addImage(mybase64);
+                  let startIndex = reader.result.toString().indexOf("base64,");
+                  let mybase64 = reader.result.toString().substr(startIndex + 7);
+                  let sheet = context.workbook.worksheets.getItem("Shapes");
+                  let image = sheet.shapes.addImage(mybase64);
                   image.name = "Image";
                   return context.sync();
               });
@@ -237,8 +237,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.addLine(200, 50, 300, 150, Excel.ConnectorType.straight);
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.addLine(200, 50, 300, 150, Excel.ConnectorType.straight);
               line.name = "StraightLine";
               await context.sync();
           }
@@ -321,8 +321,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const textbox = shapes.addTextBox("A box with text");
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let textbox = shapes.addTextBox("A box with text");
               textbox.left = 100;
               textbox.top = 100;
               textbox.height = 20;

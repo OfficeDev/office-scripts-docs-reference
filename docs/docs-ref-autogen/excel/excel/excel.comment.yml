@@ -67,8 +67,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Comments");
-              const comment = sheet.comments.getItemAt(0);
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let comment = sheet.comments.getItemAt(0);
               comment.content = "PLEASE add headers here.";
               await context.sync();
           }
@@ -194,7 +194,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const comment = context.workbook.comments.getItemByCell("Comments!A2");
+              let comment = context.workbook.comments.getItemByCell("Comments!A2");
               comment.load(["authorEmail", "authorName", "creationDate"]);
               await context.sync();
 

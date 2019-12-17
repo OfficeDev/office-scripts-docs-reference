@@ -184,13 +184,13 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-            const sheet = context.workbook.worksheets.getItem("Sample");
-            const seriesCollection = sheet.charts.getItemAt(0).series;
+            let sheet = context.workbook.worksheets.getItem("Sample");
+            let seriesCollection = sheet.charts.getItemAt(0).series;
             seriesCollection.load("count");
             await context.sync();
 
             if (seriesCollection.count > 0) {
-              const series = seriesCollection.getItemAt(0);
+              let series = seriesCollection.getItemAt(0);
 
               // Delete the first series.
               series.delete();
@@ -814,7 +814,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-            const sheet = context.workbook.worksheets.getItem("Sample");
+            let sheet = context.workbook.worksheets.getItem("Sample");
 
             let seriesCollection = sheet.charts.getItemAt(0);
             let rangeSelection = sheet.getRange("C2:C7");

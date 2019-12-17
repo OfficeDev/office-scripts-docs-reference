@@ -104,7 +104,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const settings = context.workbook.settings;
+              let settings = context.workbook.settings;
               let needsReview = settings.getItem("NeedsReview");
               needsReview.delete();
               needsReview = settings.getItemOrNullObject("NeedsReview");

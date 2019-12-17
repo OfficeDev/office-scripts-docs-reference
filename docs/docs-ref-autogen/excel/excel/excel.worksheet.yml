@@ -90,8 +90,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const farmData = sheet.getUsedRange();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let farmData = sheet.getUsedRange();
 
               // This filter will only show the rows with the top 25% of values in column 3.
               sheet.autoFilter.apply(farmData, 3, { criterion1: "25", filterOn: Excel.FilterOn.topPercent });
@@ -310,8 +310,8 @@ items:
           ```typescript
 
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
-              const foundRanges = sheet.findAllOrNullObject("Complete", {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let foundRanges = sheet.findAllOrNullObject("Complete", {
                   completeMatch: true,
                   matchCase: false
               });
@@ -394,15 +394,15 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheets = context.workbook.worksheets;
+              let sheets = context.workbook.worksheets;
 
               // We don't want to include the default worksheet that was created
               // when the workbook was created, so our "firstSheet" will be the one
               // after the literal first. Note chaining of navigation methods.
-              const firstSheet = sheets.getFirst().getNext();
-              const lastSheet = sheets.getLast();
-              const firstTaxRateRange = firstSheet.getRange("B2");
-              const lastTaxRateRange = lastSheet.getRange("B2");
+              let firstSheet = sheets.getFirst().getNext();
+              let lastSheet = sheets.getLast();
+              let firstTaxRateRange = firstSheet.getRange("B2");
+              let lastTaxRateRange = lastSheet.getRange("B2");
 
               firstSheet.load("name");
               lastSheet.load("name");
@@ -462,11 +462,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheets = context.workbook.worksheets;
-              const currentSheet = sheets.getActiveWorksheet();
-              const previousYearSheet = currentSheet.getPrevious();
-              const currentTaxDueRange = currentSheet.getRange("C2");
-              const previousTaxDueRange = previousYearSheet.getRange("C2");
+              let sheets = context.workbook.worksheets;
+              let currentSheet = sheets.getActiveWorksheet();
+              let previousYearSheet = currentSheet.getPrevious();
+              let currentTaxDueRange = currentSheet.getRange("C2");
+              let previousTaxDueRange = previousYearSheet.getRange("C2");
 
               currentSheet.load("name");
               previousYearSheet.load("name");
@@ -581,8 +581,8 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
 
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const specifiedRanges = sheet.getRanges("D3:D5, G3:G5");
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let specifiedRanges = sheet.getRanges("D3:D5, G3:G5");
               specifiedRanges.format.fill.color = "pink";
 
               await context.sync();
@@ -858,7 +858,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
               sheet.showGridlines = true;
 
               await context.sync();
@@ -899,7 +899,7 @@ items:
 
           ```typescript
           Excel.run(async (context) => {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
 
               // This collapses the entire outline.
               sheet.showOutlineLevels(1, 1);
@@ -908,7 +908,7 @@ items:
           ```
           ```typescript
           Excel.run(async (context) => {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
 
               // This shows the top 3 outline levels; collapsing any additional sublevels.
               sheet.showOutlineLevels(3, 3);
@@ -943,8 +943,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Pivot");
-              const slicer = sheet.slicers.add(
+              let sheet = context.workbook.worksheets.getItem("Pivot");
+              let slicer = sheet.slicers.add(
                   "Farm Sales", /* The slicer data source. For PivotTables, this can be the PivotTable object reference or name. */
                   "Type" /* The field in the data source to filter by. For PivotTables, this can be a PivotField object reference or ID. */
               );
@@ -1002,7 +1002,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const activeSheet = context.workbook.worksheets.getActiveWorksheet();
+              let activeSheet = context.workbook.worksheets.getActiveWorksheet();
               activeSheet.tabColor = "#FF0000";
 
               await context.sync();

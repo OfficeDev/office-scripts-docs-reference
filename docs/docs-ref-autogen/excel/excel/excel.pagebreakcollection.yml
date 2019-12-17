@@ -34,7 +34,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const farmSheet = context.workbook.worksheets.getItem("Print");
+              let farmSheet = context.workbook.worksheets.getItem("Print");
               farmSheet.horizontalPageBreaks.add("A21:E21");
               await context.sync();
           }

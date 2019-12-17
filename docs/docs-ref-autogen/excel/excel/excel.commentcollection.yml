@@ -42,7 +42,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Comments");
+              let sheet = context.workbook.worksheets.getItem("Comments");
 
               // Note that an InvalidArgument error will be thrown if multiple cells passed to `comment.add`.
               sheet.comments.add("A2", "TODO: add data.");

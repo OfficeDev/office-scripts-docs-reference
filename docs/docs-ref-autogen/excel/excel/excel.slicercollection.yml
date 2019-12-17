@@ -38,8 +38,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Pivot");
-              const slicer = sheet.slicers.add(
+              let sheet = context.workbook.worksheets.getItem("Pivot");
+              let slicer = sheet.slicers.add(
                   "Farm Sales", /* The slicer data source. For PivotTables, this can be the PivotTable object reference or name. */
                   "Type" /* The field in the data source to filter by. For PivotTables, this can be a PivotField object reference or ID. */
               );
@@ -114,7 +114,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+              let slicer = context.workbook.slicers.getItem("Fruit Slicer");
               slicer.caption = "Fruit Types";
               slicer.left = 395;
               slicer.top = 15;

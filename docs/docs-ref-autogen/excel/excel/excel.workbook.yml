@@ -312,7 +312,7 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
 
-              const selectedRanges = context.workbook.getSelectedRanges();
+              let selectedRanges = context.workbook.getSelectedRanges();
               selectedRanges.format.fill.color = "lightblue";
 
               await context.sync();

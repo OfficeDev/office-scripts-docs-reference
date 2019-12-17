@@ -50,13 +50,13 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const settings = context.workbook.settings;
-              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              let settings = context.workbook.settings;
+              let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
               await context.sync();
 
               if (xmlPartIDSetting.value) {   
                   let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
-                  const xmlBlob = customXmlPart.getXml();
+                  let xmlBlob = customXmlPart.getXml();
                   customXmlPart.delete();
                   customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
 
@@ -68,8 +68,8 @@ items:
                       // Delete the unneeded setting too.
                       xmlPartIDSetting.delete();            
                   } else {
-                      const readableXml = addLineBreaksToXML(xmlBlob.value);
-                      const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                      let readableXml = addLineBreaksToXML(xmlBlob.value);
+                      let strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
                       $("#display-xml").text(strangeMessage);
                   }
 
@@ -98,18 +98,18 @@ items:
           async function main(context: Excel.RequestContext) {
               // You must have the xmlns attribute to populate the 
               // CustomXml.namespaceUri property.
-              const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
-              const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+              let originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+              let customXmlPart = context.workbook.customXmlParts.add(originalXml);
               customXmlPart.load("id");
-              const xmlBlob = customXmlPart.getXml();
+              let xmlBlob = customXmlPart.getXml();
 
               await context.sync();
 
-              const readableXml = addLineBreaksToXML(xmlBlob.value);
+              let readableXml = addLineBreaksToXML(xmlBlob.value);
               $("#display-xml").text(readableXml);
 
               // Store the XML part's ID in a setting.
-              const settings = context.workbook.settings;
+              let settings = context.workbook.settings;
               settings.add("ContosoReviewXmlPartId", customXmlPart.id);
 
               await context.sync();
@@ -136,18 +136,18 @@ items:
           async function main(context: Excel.RequestContext) {
               // You must have the xmlns attribute to populate the 
               // CustomXml.namespaceUri property.
-              const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
-              const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+              let originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+              let customXmlPart = context.workbook.customXmlParts.add(originalXml);
               customXmlPart.load("id");
-              const xmlBlob = customXmlPart.getXml();
+              let xmlBlob = customXmlPart.getXml();
 
               await context.sync();
 
-              const readableXml = addLineBreaksToXML(xmlBlob.value);
+              let readableXml = addLineBreaksToXML(xmlBlob.value);
               $("#display-xml").text(readableXml);
 
               // Store the XML part's ID in a setting.
-              const settings = context.workbook.settings;
+              let settings = context.workbook.settings;
               settings.add("ContosoReviewXmlPartId", customXmlPart.id);
 
               await context.sync();
@@ -234,20 +234,20 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const settings = context.workbook.settings;
-              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              let settings = context.workbook.settings;
+              let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
               await context.sync();
 
               if (xmlPartIDSetting.value) {   
-                  const customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+                  let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
 
                   // The setXml method does a whole-for-whole replacement 
                   // of the entire XML.
                   customXmlPart.setXml("<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>John</Reviewer><Reviewer>Hitomi</Reviewer></Reviewers>");
-                  const xmlBlob = customXmlPart.getXml();
+                  let xmlBlob = customXmlPart.getXml();
                   await context.sync();
 
-                  const readableXml = addLineBreaksToXML(xmlBlob.value);
+                  let readableXml = addLineBreaksToXML(xmlBlob.value);
                   $("#display-xml").text(readableXml);
                   await context.sync();
               }

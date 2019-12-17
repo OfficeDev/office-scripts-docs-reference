@@ -32,8 +32,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Comments");
-              const mention = {
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let mention = {
                   email: "kakri@contoso.com",
                   id: 0,
                   name: "Kate Kristensen"
@@ -41,7 +41,7 @@ items:
 
               // This will tag the mention's name using the '@' syntax.
               // They will be notified via email.
-              const commentBody = {
+              let commentBody = {
                   mentions: [mention],
                   richContent: '<at id="0">' + mention.name + "</at> -  Can you take a look?"
               };

@@ -227,11 +227,11 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const rowCount = 500;
-              const columnCount = 20;
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let rowCount = 500;
+              let columnCount = 20;
 
-              const startTime = Date.now();
+              let startTime = Date.now();
               console.log("Starting...");
 
               if (pauseScreenPainting) {

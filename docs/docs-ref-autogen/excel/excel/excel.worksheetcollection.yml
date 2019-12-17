@@ -105,15 +105,15 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheets = context.workbook.worksheets;
+              let sheets = context.workbook.worksheets;
 
               // We don't want to include the default worksheet that was created
               // when the workbook was created, so our "firstSheet" will be the one
               // after the literal first. Note chaining of navigation methods.
-              const firstSheet = sheets.getFirst().getNext();
-              const lastSheet = sheets.getLast();
-              const firstTaxRateRange = firstSheet.getRange("B2");
-              const lastTaxRateRange = lastSheet.getRange("B2");
+              let firstSheet = sheets.getFirst().getNext();
+              let lastSheet = sheets.getLast();
+              let firstTaxRateRange = firstSheet.getRange("B2");
+              let lastTaxRateRange = lastSheet.getRange("B2");
 
               firstSheet.load("name");
               lastSheet.load("name");
@@ -189,15 +189,15 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheets = context.workbook.worksheets;
+              let sheets = context.workbook.worksheets;
 
               // We don't want to include the default worksheet that was created
               // when the workbook was created, so our "firstSheet" will be the one
               // after the literal first. Note chaining of navigation methods.
-              const firstSheet = sheets.getFirst().getNext();
-              const lastSheet = sheets.getLast();
-              const firstTaxRateRange = firstSheet.getRange("B2");
-              const lastTaxRateRange = lastSheet.getRange("B2");
+              let firstSheet = sheets.getFirst().getNext();
+              let lastSheet = sheets.getLast();
+              let firstTaxRateRange = firstSheet.getRange("B2");
+              let lastTaxRateRange = lastSheet.getRange("B2");
 
               firstSheet.load("name");
               lastSheet.load("name");

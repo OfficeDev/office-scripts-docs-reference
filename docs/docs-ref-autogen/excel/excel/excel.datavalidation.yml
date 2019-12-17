@@ -71,8 +71,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Decision");
-              const commentsRange = 
+              let sheet = context.workbook.worksheets.getItem("Decision");
+              let commentsRange = 
                   sheet.tables.getItem("NameOptionsTable").columns.getItem("Comments").getDataBodyRange();
 
               // When you are developing, it is a good practice to
@@ -209,8 +209,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Decision");
-              const rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
+              let sheet = context.workbook.worksheets.getItem("Decision");
+              let rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
 
               // When you are developing, it is a good practice to
               // clear the dataValidation object with each run of your code.
@@ -259,15 +259,15 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Decision");
-              const nameRange = 
+              let sheet = context.workbook.worksheets.getItem("Decision");
+              let nameRange = 
                   sheet.tables.getItem("NameOptionsTable").columns.getItem("Baby Name").getDataBodyRange();
 
               // When you are developing, it is a good practice to
               // clear the dataValidation object with each run of your code.
               nameRange.dataValidation.clear();
 
-              const nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
+              let nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
 
               let approvedListRule = {
                   list: {

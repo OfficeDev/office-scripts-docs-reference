@@ -48,8 +48,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Shapes");
-              const image = sheet.shapes.getItem("Image").image;
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let image = sheet.shapes.getItem("Image").image;
               image.load("format");
               await context.sync();
 

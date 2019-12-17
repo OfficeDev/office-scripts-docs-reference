@@ -152,7 +152,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               let chart = sheet.charts.getItemAt(0);
               let categoryAxis = chart.axes.categoryAxis;
@@ -603,7 +603,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
               let chart = sheet.charts.getItemAt(0);
               let axis = chart.axes.valueAxis;
 

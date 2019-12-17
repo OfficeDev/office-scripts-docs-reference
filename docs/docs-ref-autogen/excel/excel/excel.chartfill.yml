@@ -59,7 +59,7 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Sample");
+              let sheet = context.workbook.worksheets.getItem("Sample");
 
               let pointsCollection = sheet.charts.getItemAt(0).series.getItemAt(0).points;
               let point = pointsCollection.getItemAt(2);

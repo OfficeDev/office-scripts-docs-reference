@@ -34,10 +34,10 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const cell = context.workbook.getActiveCell();
+              let cell = context.workbook.getActiveCell();
 
               // Define the cell properties to get by setting the matching LoadOptions to true.
-              const propertiesToGet = cell.getCellProperties({
+              let propertiesToGet = cell.getCellProperties({
                   address: true,
                   format: {
                       fill: {
@@ -52,7 +52,7 @@ items:
 
               // Sync to get the data from the workbook.
               await context.sync();
-              const cellProperties = propertiesToGet.value[0][0];
+              let cellProperties = propertiesToGet.value[0][0];
               console.log(
                   `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
           }

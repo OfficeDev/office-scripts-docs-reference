@@ -1,11 +1,11 @@
 'Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const rowCount = 500;
-        const columnCount = 20;
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let rowCount = 500;
+        let columnCount = 20;
 
-        const startTime = Date.now();
+        let startTime = Date.now();
         console.log("Starting...");
 
         if (pauseScreenPainting) {
@@ -29,8 +29,8 @@
 'Excel.AutoFilter#apply:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const farmData = sheet.getUsedRange();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let farmData = sheet.getUsedRange();
 
         // This filter will only show the rows with the top 25% of values in column 3.
         sheet.autoFilter.apply(farmData, 3, { criterion1: "25", filterOn: Excel.FilterOn.topPercent });
@@ -39,11 +39,11 @@
 'Excel.CellPropertiesFill#color:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // Creating the SettableCellProperties objects to use for the range.
         // In your add-in, these should be created once, outside the function.
-        const topHeaderProps: Excel.SettableCellProperties = {
+        let topHeaderProps: Excel.SettableCellProperties = {
             // The style property takes a string matching the name of an Excel style.
             // Built-in style names are listed in the `BuiltInStyle` enum.
             // Note that a style will overwrite any formatting,
@@ -51,7 +51,7 @@
             style: "Heading1"
         };
 
-        const headerProps: Excel.SettableCellProperties = {
+        let headerProps: Excel.SettableCellProperties = {
             // Any subproperties of format that are not set will not be changed when these cell properties are set.
             format: {
                 fill: {
@@ -64,7 +64,7 @@
             }
         };
 
-        const nonApplicableProps: Excel.SettableCellProperties = {
+        let nonApplicableProps: Excel.SettableCellProperties = {
             format: {
                 fill: {
                     pattern: Excel.FillPattern.gray25
@@ -76,7 +76,7 @@
             }
         };
 
-        const matchupScoreProps: Excel.SettableCellProperties = {
+        let matchupScoreProps: Excel.SettableCellProperties = {
             format: {
                 borders: {
                     bottom: {
@@ -95,7 +95,7 @@
             }
         };
 
-        const range = sheet.getRange("A1:E5");
+        let range = sheet.getRange("A1:E5");
 
         // You can use empty JSON objects to avoid changing a cell's properties.
         range.setCellProperties([
@@ -112,10 +112,10 @@
 'Excel.CellPropertiesFillLoadOptions#color:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const cell = context.workbook.getActiveCell();
+        let cell = context.workbook.getActiveCell();
 
         // Define the cell properties to get by setting the matching LoadOptions to true.
-        const propertiesToGet = cell.getCellProperties({
+        let propertiesToGet = cell.getCellProperties({
             address: true,
             format: {
                 fill: {
@@ -130,18 +130,18 @@
 
         // Sync to get the data from the workbook.
         await context.sync();
-        const cellProperties = propertiesToGet.value[0][0];
+        let cellProperties = propertiesToGet.value[0][0];
         console.log(
             `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
     }
 'Excel.CellPropertiesFont#color:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // Creating the SettableCellProperties objects to use for the range.
         // In your add-in, these should be created once, outside the function.
-        const topHeaderProps: Excel.SettableCellProperties = {
+        let topHeaderProps: Excel.SettableCellProperties = {
             // The style property takes a string matching the name of an Excel style.
             // Built-in style names are listed in the `BuiltInStyle` enum.
             // Note that a style will overwrite any formatting,
@@ -149,7 +149,7 @@
             style: "Heading1"
         };
 
-        const headerProps: Excel.SettableCellProperties = {
+        let headerProps: Excel.SettableCellProperties = {
             // Any subproperties of format that are not set will not be changed when these cell properties are set.
             format: {
                 fill: {
@@ -162,7 +162,7 @@
             }
         };
 
-        const nonApplicableProps: Excel.SettableCellProperties = {
+        let nonApplicableProps: Excel.SettableCellProperties = {
             format: {
                 fill: {
                     pattern: Excel.FillPattern.gray25
@@ -174,7 +174,7 @@
             }
         };
 
-        const matchupScoreProps: Excel.SettableCellProperties = {
+        let matchupScoreProps: Excel.SettableCellProperties = {
             format: {
                 borders: {
                     bottom: {
@@ -193,7 +193,7 @@
             }
         };
 
-        const range = sheet.getRange("A1:E5");
+        let range = sheet.getRange("A1:E5");
 
         // You can use empty JSON objects to avoid changing a cell's properties.
         range.setCellProperties([
@@ -210,10 +210,10 @@
 'Excel.CellPropertiesFontLoadOptions#color:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const cell = context.workbook.getActiveCell();
+        let cell = context.workbook.getActiveCell();
 
         // Define the cell properties to get by setting the matching LoadOptions to true.
-        const propertiesToGet = cell.getCellProperties({
+        let propertiesToGet = cell.getCellProperties({
             address: true,
             format: {
                 fill: {
@@ -228,17 +228,17 @@
 
         // Sync to get the data from the workbook.
         await context.sync();
-        const cellProperties = propertiesToGet.value[0][0];
+        let cellProperties = propertiesToGet.value[0][0];
         console.log(
             `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
     }
 'Excel.CellPropertiesLoadOptions#address:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const cell = context.workbook.getActiveCell();
+        let cell = context.workbook.getActiveCell();
 
         // Define the cell properties to get by setting the matching LoadOptions to true.
-        const propertiesToGet = cell.getCellProperties({
+        let propertiesToGet = cell.getCellProperties({
             address: true,
             format: {
                 fill: {
@@ -253,16 +253,16 @@
 
         // Sync to get the data from the workbook.
         await context.sync();
-        const cellProperties = propertiesToGet.value[0][0];
+        let cellProperties = propertiesToGet.value[0][0];
         console.log(
             `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
     }
 'Excel.CellValueConditionalFormat#format:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B21:E23");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B21:E23");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.cellValue);
         conditionalFormat.cellValue.format.font.color = "red";
         conditionalFormat.cellValue.rule = { formula1: "=0", operator: "LessThan" };
@@ -272,9 +272,9 @@
 'Excel.CellValueConditionalFormat#rule:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B21:E23");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B21:E23");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.cellValue);
         conditionalFormat.cellValue.format.font.color = "red";
         conditionalFormat.cellValue.rule = { formula1: "=0", operator: "LessThan" };
@@ -284,7 +284,7 @@
 'Excel.ChartAxis#displayUnit:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let chart = sheet.charts.getItemAt(0);
         let categoryAxis = chart.axes.categoryAxis;
@@ -300,7 +300,7 @@
 'Excel.ChartAxis#showDisplayUnitLabel:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
         let chart = sheet.charts.getItemAt(0);
         let axis = chart.axes.valueAxis;
 
@@ -312,7 +312,7 @@
 'Excel.ChartFill#setSolidColor:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let pointsCollection = sheet.charts.getItemAt(0).series.getItemAt(0).points;
         let point = pointsCollection.getItemAt(2);
@@ -325,7 +325,7 @@
 'Excel.ChartLegendFormat#font:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let chart = sheet.charts.getItemAt(0);
         chart.legend.visible = true;
@@ -344,13 +344,13 @@
 'Excel.ChartSeries#delete:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      const seriesCollection = sheet.charts.getItemAt(0).series;
+      let sheet = context.workbook.worksheets.getItem("Sample");
+      let seriesCollection = sheet.charts.getItemAt(0).series;
       seriesCollection.load("count");
       await context.sync();
 
       if (seriesCollection.count > 0) {
-        const series = seriesCollection.getItemAt(0);
+        let series = seriesCollection.getItemAt(0);
 
         // Delete the first series.
         series.delete();
@@ -477,7 +477,7 @@
 'Excel.ChartSeries#setValues:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-      const sheet = context.workbook.worksheets.getItem("Sample");
+      let sheet = context.workbook.worksheets.getItem("Sample");
 
       let seriesCollection = sheet.charts.getItemAt(0);
       let rangeSelection = sheet.getRange("C2:C7");
@@ -503,8 +503,8 @@
 'Excel.ChartTitle#textOrientation:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const title = sheet.charts.getItemAt(0).title;
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let title = sheet.charts.getItemAt(0).title;
         title.textOrientation = -45;
 
         await context.sync();
@@ -512,7 +512,7 @@
 'Excel.ChartTrendline#type:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let seriesCollection = sheet.charts.getItemAt(0).series;
 
@@ -527,7 +527,7 @@
 'Excel.ChartTrendlineCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let seriesCollection = sheet.charts.getItemAt(0).series;
 
@@ -539,7 +539,7 @@
 'Excel.ChartTrendlineFormat#line:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let seriesCollection = sheet.charts.getItemAt(0).series; 
 
@@ -555,7 +555,7 @@
     }
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         let seriesCollection = sheet.charts.getItemAt(0).series; 
         let trendline = seriesCollection.getItemAt(0).trendlines.getItem(0);
@@ -571,11 +571,11 @@
 'Excel.ColorScaleConditionalFormat#criteria:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.colorScale);
-        const criteria = {
+        let criteria = {
             minimum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.lowestValue, color: "blue" },
             midpoint: { formula: "50", type: Excel.ConditionalFormatColorCriterionType.percent, color: "yellow" },
             maximum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.highestValue, color: "red" }
@@ -587,8 +587,8 @@
 'Excel.Comment#content:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Comments");
-        const comment = sheet.comments.getItemAt(0);
+        let sheet = context.workbook.worksheets.getItem("Comments");
+        let comment = sheet.comments.getItemAt(0);
         comment.content = "PLEASE add headers here.";
         await context.sync();
     }
@@ -601,7 +601,7 @@
 'Excel.Comment#load:member(2)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const comment = context.workbook.comments.getItemByCell("Comments!A2");
+        let comment = context.workbook.comments.getItemByCell("Comments!A2");
         comment.load(["authorEmail", "authorName", "creationDate"]);
         await context.sync();
 
@@ -611,7 +611,7 @@
 'Excel.CommentCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Comments");
+        let sheet = context.workbook.worksheets.getItem("Comments");
 
         // Note that an InvalidArgument error will be thrown if multiple cells passed to `comment.add`.
         sheet.comments.add("A2", "TODO: add data.");
@@ -620,9 +620,9 @@
 'Excel.CommentReply#content:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Comments");
-        const comment = sheet.comments.getItemAt(0);
-        const reply = comment.replies.getItemAt(0);
+        let sheet = context.workbook.worksheets.getItem("Comments");
+        let comment = sheet.comments.getItemAt(0);
+        let reply = comment.replies.getItemAt(0);
         reply.load("content");
         // Sync to load the content of the comment reply.
         await context.sync();
@@ -635,8 +635,8 @@
   - |-
     async function main(context: Excel.RequestContext) {
         // Remove the first comment reply from this worksheet's first comment.
-        const sheet = context.workbook.worksheets.getItem("Comments");
-        const comment = sheet.comments.getItemAt(0);
+        let sheet = context.workbook.worksheets.getItem("Comments");
+        let comment = sheet.comments.getItemAt(0);
         comment.replies.getItemAt(0).delete();
         await context.sync();
     }
@@ -644,16 +644,16 @@
   - |-
     async function main(context: Excel.RequestContext) {
         // Adds a reply to the first comment in this worksheet.
-        const sheet = context.workbook.worksheets.getItem("Comments");
-        const comment = sheet.comments.getItemAt(0);
+        let sheet = context.workbook.worksheets.getItem("Comments");
+        let comment = sheet.comments.getItemAt(0);
         comment.replies.add("Add content to this worksheet.");
         await context.sync();
     }
 'Excel.CommentRichContent#mentions:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Comments");
-        const mention = {
+        let sheet = context.workbook.worksheets.getItem("Comments");
+        let mention = {
             email: "kakri@contoso.com",
             id: 0,
             name: "Kate Kristensen"
@@ -661,7 +661,7 @@
 
         // This will tag the mention's name using the '@' syntax.
         // They will be notified via email.
-        const commentBody = {
+        let commentBody = {
             mentions: [mention],
             richContent: '<at id="0">' + mention.name + "</at> -  Can you take a look?"
         };
@@ -673,9 +673,9 @@
 'Excel.ConditionalCellValueRule#formula1:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B21:E23");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B21:E23");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.cellValue);
         conditionalFormat.cellValue.format.font.color = "red";
         conditionalFormat.cellValue.rule = { formula1: "=0", operator: "LessThan" };
@@ -685,9 +685,9 @@
 'Excel.ConditionalCellValueRule#operator:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B21:E23");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B21:E23");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.cellValue);
         conditionalFormat.cellValue.format.font.color = "red";
         conditionalFormat.cellValue.rule = { formula1: "=0", operator: "LessThan" };
@@ -697,9 +697,9 @@
 'Excel.ConditionalFormat#cellValue:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B21:E23");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B21:E23");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.cellValue);
         conditionalFormat.cellValue.format.font.color = "red";
         conditionalFormat.cellValue.rule = { formula1: "=0", operator: "LessThan" };
@@ -709,11 +709,11 @@
 'Excel.ConditionalFormat#colorScale:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.colorScale);
-        const criteria = {
+        let criteria = {
             minimum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.lowestValue, color: "blue" },
             midpoint: { formula: "50", type: Excel.ConditionalFormatColorCriterionType.percent, color: "yellow" },
             maximum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.highestValue, color: "red" }
@@ -725,9 +725,9 @@
 'Excel.ConditionalFormat#custom:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
         conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
         conditionalFormat.custom.format.font.color = "green";
 
@@ -736,9 +736,9 @@
 'Excel.ConditionalFormat#dataBar:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.dataBar);
         conditionalFormat.dataBar.barDirection = Excel.ConditionalDataBarDirection.leftToRight;
 
@@ -747,8 +747,8 @@
 'Excel.ConditionalFormat#getRange:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const worksheetRange = sheet.getRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let worksheetRange = sheet.getRange();
         worksheetRange.conditionalFormats.load("type");
 
         await context.sync();
@@ -774,11 +774,11 @@
 'Excel.ConditionalFormat#iconSet:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -814,9 +814,9 @@
 'Excel.ConditionalFormat#preset:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.presetCriteria);
         conditionalFormat.preset.format.font.color = "white";
         conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };
@@ -826,9 +826,9 @@
 'Excel.ConditionalFormat#textComparison:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B16:D18");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B16:D18");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.containsText);
         conditionalFormat.textComparison.format.font.color = "red";
         conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -838,8 +838,8 @@
 'Excel.ConditionalFormat#type:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const worksheetRange = sheet.getRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let worksheetRange = sheet.getRange();
         worksheetRange.conditionalFormats.load("type");
 
         await context.sync();
@@ -865,11 +865,11 @@
 'Excel.ConditionalFormatCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.colorScale);
-        const criteria = {
+        let criteria = {
             minimum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.lowestValue, color: "blue" },
             midpoint: { formula: "50", type: Excel.ConditionalFormatColorCriterionType.percent, color: "yellow" },
             maximum: { formula: null, type: Excel.ConditionalFormatColorCriterionType.highestValue, color: "red" }
@@ -881,8 +881,8 @@
 'Excel.ConditionalFormatCollection#clearAll:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange();
         range.conditionalFormats.clearAll();
 
         await context.sync();
@@ -892,8 +892,8 @@
 'Excel.ConditionalFormatCollection#getItemAt:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const worksheetRange = sheet.getRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let worksheetRange = sheet.getRange();
         worksheetRange.conditionalFormats.load("type");
 
         await context.sync();
@@ -919,9 +919,9 @@
 'Excel.ConditionalFormatRule#formula:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
         conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
         conditionalFormat.custom.format.font.color = "green";
 
@@ -930,11 +930,11 @@
 'Excel.ConditionalIconCriterion#formula:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -970,11 +970,11 @@
 'Excel.ConditionalIconCriterion#operator:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -1009,9 +1009,9 @@
     }
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B16:D18");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B16:D18");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.containsText);
         conditionalFormat.textComparison.format.font.color = "red";
         conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -1021,11 +1021,11 @@
 'Excel.ConditionalIconCriterion#type:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -1061,9 +1061,9 @@
 'Excel.ConditionalPresetCriteriaRule#criterion:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.presetCriteria);
         conditionalFormat.preset.format.font.color = "white";
         conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };
@@ -1073,9 +1073,9 @@
 'Excel.ConditionalTextComparisonRule#text:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B16:D18");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B16:D18");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.containsText);
         conditionalFormat.textComparison.format.font.color = "red";
         conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -1085,9 +1085,9 @@
 'Excel.CustomConditionalFormat#format:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
         conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
         conditionalFormat.custom.format.font.color = "green";
 
@@ -1096,13 +1096,13 @@
 'Excel.CustomXmlPart#delete:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
-        const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+        let settings = context.workbook.settings;
+        let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
         await context.sync();
 
         if (xmlPartIDSetting.value) {   
             let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
-            const xmlBlob = customXmlPart.getXml();
+            let xmlBlob = customXmlPart.getXml();
             customXmlPart.delete();
             customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
 
@@ -1114,8 +1114,8 @@
                 // Delete the unneeded setting too.
                 xmlPartIDSetting.delete();            
             } else {
-                const readableXml = addLineBreaksToXML(xmlBlob.value);
-                const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                let readableXml = addLineBreaksToXML(xmlBlob.value);
+                let strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
                 $("#display-xml").text(strangeMessage);
             }
 
@@ -1127,18 +1127,18 @@
     async function main(context: Excel.RequestContext) {
         // You must have the xmlns attribute to populate the 
         // CustomXml.namespaceUri property.
-        const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
-        const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+        let originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+        let customXmlPart = context.workbook.customXmlParts.add(originalXml);
         customXmlPart.load("id");
-        const xmlBlob = customXmlPart.getXml();
+        let xmlBlob = customXmlPart.getXml();
 
         await context.sync();
 
-        const readableXml = addLineBreaksToXML(xmlBlob.value);
+        let readableXml = addLineBreaksToXML(xmlBlob.value);
         $("#display-xml").text(readableXml);
 
         // Store the XML part's ID in a setting.
-        const settings = context.workbook.settings;
+        let settings = context.workbook.settings;
         settings.add("ContosoReviewXmlPartId", customXmlPart.id);
 
         await context.sync();
@@ -1148,18 +1148,18 @@
     async function main(context: Excel.RequestContext) {
         // You must have the xmlns attribute to populate the 
         // CustomXml.namespaceUri property.
-        const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
-        const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+        let originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+        let customXmlPart = context.workbook.customXmlParts.add(originalXml);
         customXmlPart.load("id");
-        const xmlBlob = customXmlPart.getXml();
+        let xmlBlob = customXmlPart.getXml();
 
         await context.sync();
 
-        const readableXml = addLineBreaksToXML(xmlBlob.value);
+        let readableXml = addLineBreaksToXML(xmlBlob.value);
         $("#display-xml").text(readableXml);
 
         // Store the XML part's ID in a setting.
-        const settings = context.workbook.settings;
+        let settings = context.workbook.settings;
         settings.add("ContosoReviewXmlPartId", customXmlPart.id);
 
         await context.sync();
@@ -1167,20 +1167,20 @@
 'Excel.CustomXmlPart#setXml:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
-        const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+        let settings = context.workbook.settings;
+        let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
         await context.sync();
 
         if (xmlPartIDSetting.value) {   
-            const customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+            let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
 
             // The setXml method does a whole-for-whole replacement 
             // of the entire XML.
             customXmlPart.setXml("<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>John</Reviewer><Reviewer>Hitomi</Reviewer></Reviewers>");
-            const xmlBlob = customXmlPart.getXml();
+            let xmlBlob = customXmlPart.getXml();
             await context.sync();
 
-            const readableXml = addLineBreaksToXML(xmlBlob.value);
+            let readableXml = addLineBreaksToXML(xmlBlob.value);
             $("#display-xml").text(readableXml);
             await context.sync();
         }
@@ -1190,18 +1190,18 @@
     async function main(context: Excel.RequestContext) {
         // You must have the xmlns attribute to populate the 
         // CustomXml.namespaceUri property.
-        const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
-        const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+        let originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+        let customXmlPart = context.workbook.customXmlParts.add(originalXml);
         customXmlPart.load("id");
-        const xmlBlob = customXmlPart.getXml();
+        let xmlBlob = customXmlPart.getXml();
 
         await context.sync();
 
-        const readableXml = addLineBreaksToXML(xmlBlob.value);
+        let readableXml = addLineBreaksToXML(xmlBlob.value);
         $("#display-xml").text(readableXml);
 
         // Store the XML part's ID in a setting.
-        const settings = context.workbook.settings;
+        let settings = context.workbook.settings;
         settings.add("ContosoReviewXmlPartId", customXmlPart.id);
 
         await context.sync();
@@ -1210,21 +1210,21 @@
   - |-
     async function main(context: Excel.RequestContext) {
         $("#display-xml").text("");
-        const contosoNamespace = "http://schemas.contoso.com/review/1.0";
-        const customXmlParts = context.workbook.customXmlParts;
-        const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
-        const numberOfPartsInNamespace = filteredXmlParts.getCount();
+        let contosoNamespace = "http://schemas.contoso.com/review/1.0";
+        let customXmlParts = context.workbook.customXmlParts;
+        let filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+        let numberOfPartsInNamespace = filteredXmlParts.getCount();
 
         await context.sync();
 
         if (numberOfPartsInNamespace.value == 1) {
-            const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
-            const xmlBlob = onlyXmlPartInNamespace.getXml();
+            let onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+            let xmlBlob = onlyXmlPartInNamespace.getXml();
 
             await context.sync();
 
             // Make it a bit more readable.
-            const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+            let readableXml = xmlBlob.value.replace(/></g, ">\n<");
 
             $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
                 ${readableXml}`);
@@ -1238,20 +1238,20 @@
 'Excel.CustomXmlPartCollection#getItem:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
-        const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+        let settings = context.workbook.settings;
+        let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
         await context.sync();
 
         if (xmlPartIDSetting.value) {   
-            const customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+            let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
 
             // The setXml method does a whole-for-whole replacement 
             // of the entire XML.
             customXmlPart.setXml("<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>John</Reviewer><Reviewer>Hitomi</Reviewer></Reviewers>");
-            const xmlBlob = customXmlPart.getXml();
+            let xmlBlob = customXmlPart.getXml();
             await context.sync();
 
-            const readableXml = addLineBreaksToXML(xmlBlob.value);
+            let readableXml = addLineBreaksToXML(xmlBlob.value);
             $("#display-xml").text(readableXml);
             await context.sync();
         }
@@ -1260,21 +1260,21 @@
   - |-
     async function main(context: Excel.RequestContext) {
         $("#display-xml").text("");
-        const contosoNamespace = "http://schemas.contoso.com/review/1.0";
-        const customXmlParts = context.workbook.customXmlParts;
-        const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
-        const numberOfPartsInNamespace = filteredXmlParts.getCount();
+        let contosoNamespace = "http://schemas.contoso.com/review/1.0";
+        let customXmlParts = context.workbook.customXmlParts;
+        let filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+        let numberOfPartsInNamespace = filteredXmlParts.getCount();
 
         await context.sync();
 
         if (numberOfPartsInNamespace.value == 1) {
-            const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
-            const xmlBlob = onlyXmlPartInNamespace.getXml();
+            let onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+            let xmlBlob = onlyXmlPartInNamespace.getXml();
 
             await context.sync();
 
             // Make it a bit more readable.
-            const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+            let readableXml = xmlBlob.value.replace(/></g, ">\n<");
 
             $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
                 ${readableXml}`);
@@ -1288,13 +1288,13 @@
 'Excel.CustomXmlPartScopedCollection#getItemOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
-        const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+        let settings = context.workbook.settings;
+        let xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
         await context.sync();
 
         if (xmlPartIDSetting.value) {   
             let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
-            const xmlBlob = customXmlPart.getXml();
+            let xmlBlob = customXmlPart.getXml();
             customXmlPart.delete();
             customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
 
@@ -1306,8 +1306,8 @@
                 // Delete the unneeded setting too.
                 xmlPartIDSetting.delete();            
             } else {
-                const readableXml = addLineBreaksToXML(xmlBlob.value);
-                const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                let readableXml = addLineBreaksToXML(xmlBlob.value);
+                let strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
                 $("#display-xml").text(strangeMessage);
             }
 
@@ -1318,21 +1318,21 @@
   - |-
     async function main(context: Excel.RequestContext) {
         $("#display-xml").text("");
-        const contosoNamespace = "http://schemas.contoso.com/review/1.0";
-        const customXmlParts = context.workbook.customXmlParts;
-        const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
-        const numberOfPartsInNamespace = filteredXmlParts.getCount();
+        let contosoNamespace = "http://schemas.contoso.com/review/1.0";
+        let customXmlParts = context.workbook.customXmlParts;
+        let filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+        let numberOfPartsInNamespace = filteredXmlParts.getCount();
 
         await context.sync();
 
         if (numberOfPartsInNamespace.value == 1) {
-            const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
-            const xmlBlob = onlyXmlPartInNamespace.getXml();
+            let onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+            let xmlBlob = onlyXmlPartInNamespace.getXml();
 
             await context.sync();
 
             // Make it a bit more readable.
-            const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+            let readableXml = xmlBlob.value.replace(/></g, ">\n<");
 
             $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
                 ${readableXml}`);
@@ -1346,9 +1346,9 @@
 'Excel.DataBarConditionalFormat#barDirection:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.dataBar);
         conditionalFormat.dataBar.barDirection = Excel.ConditionalDataBarDirection.leftToRight;
 
@@ -1357,7 +1357,7 @@
 'Excel.DataPivotHierarchy#name:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const dataHierarchies = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales").dataHierarchies
+        let dataHierarchies = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales").dataHierarchies
         dataHierarchies.load("no-properties-needed");
         await context.sync();
 
@@ -1368,9 +1368,9 @@
 'Excel.DataPivotHierarchy#showAs:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
-        const farmDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold at Farm");        
-        const wholesaleDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold Wholesale");
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+        let farmDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold at Farm");        
+        let wholesaleDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold Wholesale");
 
         farmDataHierarchy.load("showAs");
         wholesaleDataHierarchy.load("showAs");
@@ -1391,8 +1391,8 @@
 'Excel.DataValidation#errorAlert:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Decision");
-        const commentsRange = 
+        let sheet = context.workbook.worksheets.getItem("Decision");
+        let commentsRange = 
             sheet.tables.getItem("NameOptionsTable").columns.getItem("Comments").getDataBodyRange();
 
         // When you are developing, it is a good practice to
@@ -1420,8 +1420,8 @@
 'Excel.DataValidation#prompt:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Decision");
-        const rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
+        let sheet = context.workbook.worksheets.getItem("Decision");
+        let rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
 
         // When you are developing, it is a good practice to
         // clear the dataValidation object with each run of your code.
@@ -1453,15 +1453,15 @@
 'Excel.DataValidation#rule:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Decision");
-        const nameRange = 
+        let sheet = context.workbook.worksheets.getItem("Decision");
+        let nameRange = 
             sheet.tables.getItem("NameOptionsTable").columns.getItem("Baby Name").getDataBodyRange();
 
         // When you are developing, it is a good practice to
         // clear the dataValidation object with each run of your code.
         nameRange.dataValidation.clear();
 
-        const nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
+        let nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
 
         let approvedListRule = {
             list: {
@@ -1476,15 +1476,15 @@
 'Excel.DataValidationRule#list:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Decision");
-        const nameRange = 
+        let sheet = context.workbook.worksheets.getItem("Decision");
+        let nameRange = 
             sheet.tables.getItem("NameOptionsTable").columns.getItem("Baby Name").getDataBodyRange();
 
         // When you are developing, it is a good practice to
         // clear the dataValidation object with each run of your code.
         nameRange.dataValidation.clear();
 
-        const nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
+        let nameSourceRange = context.workbook.worksheets.getItem("Names").getRange("A1:A3");
 
         let approvedListRule = {
             list: {
@@ -1499,8 +1499,8 @@
 'Excel.DataValidationRule#wholeNumber:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Decision");
-        const rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
+        let sheet = context.workbook.worksheets.getItem("Decision");
+        let rankingRange = sheet.tables.getItem("NameOptionsTable").columns.getItem("Ranking").getDataBodyRange();
 
         // When you are developing, it is a good practice to
         // clear the dataValidation object with each run of your code.
@@ -1532,11 +1532,11 @@
 'Excel.IconSetConditionalFormat#criteria:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -1572,11 +1572,11 @@
 'Excel.IconSetConditionalFormat#style:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.iconSet);
-        const iconSetCF = conditionalFormat.iconSet;
+        let iconSetCF = conditionalFormat.iconSet;
         iconSetCF.style = Excel.IconSet.threeTriangles;
 
         /*
@@ -1612,8 +1612,8 @@
 'Excel.Image#format:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const image = sheet.shapes.getItem("Image").image;
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let image = sheet.shapes.getItem("Image").image;
         image.load("format");
         await context.sync();
 
@@ -1623,8 +1623,8 @@
 'Excel.Line#connectBeginShape:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.getItem("StraightLine").line;
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.getItem("StraightLine").line;
         line.connectBeginShape(shapes.getItem("Left"), 2);
         line.connectEndShape(shapes.getItem("Right"), 0);
         await context.sync();
@@ -1632,8 +1632,8 @@
 'Excel.Line#connectEndShape:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.getItem("StraightLine").line;
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.getItem("StraightLine").line;
         line.connectBeginShape(shapes.getItem("Left"), 2);
         line.connectEndShape(shapes.getItem("Right"), 0);
         await context.sync();
@@ -1641,8 +1641,8 @@
 'Excel.Line#disconnectBeginShape:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.getItem("StraightLine").line;
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.getItem("StraightLine").line;
         line.disconnectBeginShape();
         line.disconnectEndShape();
         await context.sync();
@@ -1650,8 +1650,8 @@
 'Excel.Line#disconnectEndShape:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.getItem("StraightLine").line;
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.getItem("StraightLine").line;
         line.disconnectBeginShape();
         line.disconnectEndShape();
         await context.sync();
@@ -1659,8 +1659,8 @@
 'Excel.NamedItem#delete:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const totalName = sheet.names.getItemOrNullObject("TotalAmount");
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let totalName = sheet.names.getItemOrNullObject("TotalAmount");
         totalName.load();
         await context.sync();
 
@@ -1678,10 +1678,10 @@
 'Excel.NamedItem#formula:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         // Get the named item
-        const myNamedItem = sheet.names.getItemOrNullObject("MyRange");
+        let myNamedItem = sheet.names.getItemOrNullObject("MyRange");
         myNamedItem.load("name, formula");
         await context.sync();
 
@@ -1699,25 +1699,25 @@
 'Excel.NamedItemCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const headerRange = sheet.getRange("A1:D1");
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let headerRange = sheet.getRange("A1:D1");
 
         sheet.names.add("ExpensesHeader", headerRange);
-        const namedItems = sheet.names.load("name, type");
+        let namedItems = sheet.names.load("name, type");
 
         await context.sync();
     }
 'Excel.PageBreakCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.horizontalPageBreaks.add("A21:E21");
         await context.sync();
     }
 'Excel.PageLayout#centerHorizontally:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.centerHorizontally = true;
         farmSheet.pageLayout.centerVertically = true;
         await context.sync();
@@ -1725,7 +1725,7 @@
 'Excel.PageLayout#centerVertically:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.centerHorizontally = true;
         farmSheet.pageLayout.centerVertically = true;
         await context.sync();
@@ -1733,56 +1733,56 @@
 'Excel.PageLayout#orientation:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.orientation = Excel.PageOrientation.landscape;
         await context.sync();
     }
 'Excel.PageLayout#setPrintArea:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.setPrintArea("A1:D41");
         await context.sync();
     }
 'Excel.PageLayout#setPrintTitleRows:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.setPrintTitleRows("$1:$1");
         await context.sync();
     }
 'Excel.PageLayout#zoom:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const farmSheet = context.workbook.worksheets.getItem("Print");
+        let farmSheet = context.workbook.worksheets.getItem("Print");
         farmSheet.pageLayout.zoom = { scale: 200 };
         await context.sync();
     }
 'Excel.PivotLayout#getDataBodyRange:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
 
         // the layout controls the ranges used by the PivotTable
-        const range = pivotTable.layout.getDataBodyRange();
+        let range = pivotTable.layout.getDataBodyRange();
 
         // get all the data hierarchy totals
-        const grandTotalRange = range.getLastRow();
+        let grandTotalRange = range.getLastRow();
         grandTotalRange.load("address");
         await context.sync();
         
         // use the wholesale and farm sale totals to make a final sum
-        const masterTotalRange = context.workbook.worksheets.getActiveWorksheet().getRange("B27:C27");
+        let masterTotalRange = context.workbook.worksheets.getActiveWorksheet().getRange("B27:C27");
         masterTotalRange.formulas = [["All Crates", "=SUM(" + grandTotalRange.address + ")"]];
         await context.sync();
     }
 'Excel.PivotTable#columnHierarchies:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");       
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");       
 
         // check if the PivotTable already has a column
-        const column = pivotTable.columnHierarchies.getItemOrNullObject("Farm");
+        let column = pivotTable.columnHierarchies.getItemOrNullObject("Farm");
         column.load("id");
         await context.sync();
 
@@ -1798,7 +1798,7 @@
 'Excel.PivotTable#dataHierarchies:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
         pivotTable.dataHierarchies.add(pivotTable.hierarchies.getItem("Crates Sold at Farm"));
         pivotTable.dataHierarchies.add(pivotTable.hierarchies.getItem("Crates Sold Wholesale"));
 
@@ -1815,9 +1815,9 @@
   - |-
     async function filter(functionType: Excel.AggregationFunction) {
         async function main(context: Excel.RequestContext) {
-            const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
-            const filters = pivotTable.filterHierarchies;
-            const filter = filters.getItemOrNullObject("Classification");
+            let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+            let filters = pivotTable.filterHierarchies;
+            let filter = filters.getItemOrNullObject("Classification");
             filter.load();
             await context.sync();
 
@@ -1831,7 +1831,7 @@
 'Excel.PivotTable#layout:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
         pivotTable.layout.load("layoutType");
         await context.sync();
 
@@ -1849,8 +1849,8 @@
 'Excel.PivotTableCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const rangeToAnalyze = context.workbook.worksheets.getItem("Data").getRange("A1:E21");
-        const rangeToPlacePivot = context.workbook.worksheets.getItem("Pivot").getRange("A2");
+        let rangeToAnalyze = context.workbook.worksheets.getItem("Data").getRange("A1:E21");
+        let rangeToPlacePivot = context.workbook.worksheets.getItem("Pivot").getRange("A2");
         context.workbook.worksheets.getItem("Pivot").pivotTables.add("Farm Sales", rangeToAnalyze, rangeToPlacePivot);
 
         await context.sync();
@@ -1858,9 +1858,9 @@
 'Excel.PresetCriteriaConditionalFormat#rule:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:M5");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:M5");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.presetCriteria);
         conditionalFormat.preset.format.font.color = "white";
         conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };
@@ -1869,9 +1869,9 @@
     }
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B8:E13");
-        const conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B8:E13");
+        let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
         conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
         conditionalFormat.custom.format.font.color = "green";
 
@@ -1880,8 +1880,8 @@
 'Excel.Range#autoFill:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-      const sheet = context.workbook.worksheets.getActiveWorksheet();
-      const sumCell = sheet.getRange("P4");
+      let sheet = context.workbook.worksheets.getActiveWorksheet();
+      let sumCell = sheet.getRange("P4");
       
       // Copy everything. The formulas will be contextually updated based on their new locations.
       sumCell.autoFill("P4:P7", Excel.AutoFillType.fillCopy);
@@ -1891,7 +1891,7 @@
 'Excel.Range#copyFrom:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
         sheet.getRange("F2").values = [["Copied Formula"]];
         sheet.getRange("F2").format.autofitColumns();
 
@@ -1903,13 +1903,13 @@
 'Excel.Range#find:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const table = sheet.tables.getItem("ExpensesTable");
-        const searchRange = table.getRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let table = sheet.tables.getItem("ExpensesTable");
+        let searchRange = table.getRange();
 
         // NOTE: If no match is found, an ItemNotFound error
         // is thrown when Range.find is evaluated.
-        const foundRange = searchRange.find($("#searchText").text(), {
+        let foundRange = searchRange.find($("#searchText").text(), {
             completeMatch: isCompleteMatchToggle,
             matchCase: isMatchCaseToggle,
             searchDirection: searchDirectionToggle
@@ -1924,10 +1924,10 @@
 'Excel.Range#findOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const table = sheet.tables.getItem("ExpensesTable");
-        const searchRange = table.getRange();
-        const foundRange = searchRange.findOrNullObject($("#searchText").text(), {
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let table = sheet.tables.getItem("ExpensesTable");
+        let searchRange = table.getRange();
+        let foundRange = searchRange.findOrNullObject($("#searchText").text(), {
             completeMatch: isCompleteMatchToggle,
             matchCase: isMatchCaseToggle,
             searchDirection: searchDirectionToggle
@@ -1945,10 +1945,10 @@
 'Excel.Range#getCellProperties:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const cell = context.workbook.getActiveCell();
+        let cell = context.workbook.getActiveCell();
 
         // Define the cell properties to get by setting the matching LoadOptions to true.
-        const propertiesToGet = cell.getCellProperties({
+        let propertiesToGet = cell.getCellProperties({
             address: true,
             format: {
                 fill: {
@@ -1963,31 +1963,31 @@
 
         // Sync to get the data from the workbook.
         await context.sync();
-        const cellProperties = propertiesToGet.value[0][0];
+        let cellProperties = propertiesToGet.value[0][0];
         console.log(
             `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
     }
 'Excel.Range#getIntersectionOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const salesTable = sheet.tables.getItem("SalesTable");
-        const dataRange = salesTable.getDataBodyRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let salesTable = sheet.tables.getItem("SalesTable");
+        let dataRange = salesTable.getDataBodyRange();
 
         // We want the most recent quarter that has data, so
         // exclude quarters without data and get the last of
         // the remaining columns.
-        const usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
-        const currentQuarterRange = usedDataRange.getLastColumn();
+        let usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
+        let currentQuarterRange = usedDataRange.getLastColumn();
 
         // Asian and European teams have separate contests.
-        const asianSalesRange = sheet.getRange("A2:E4");
-        const europeanSalesRange = sheet.getRange("A5:E7");
+        let asianSalesRange = sheet.getRange("A2:E4");
+        let europeanSalesRange = sheet.getRange("A5:E7");
 
         // The data for each chart is the intersection of the
         // current quarter column and the rows for the continent.
-        const asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
-        const europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+        let asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+        let europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
 
         // Must sync before you can test the output of *OrNullObject
         // method/property.
@@ -2027,11 +2027,11 @@
   - |-
     async function main(context: Excel.RequestContext) {
 
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const usedRange = sheet.getUsedRange();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let usedRange = sheet.getUsedRange();
 
         // Find the ranges with either text or logical (boolean) values.
-        const formulaRanges = usedRange.getSpecialCells("Constants", "LogicalText");
+        let formulaRanges = usedRange.getSpecialCells("Constants", "LogicalText");
         formulaRanges.format.fill.color = "orange";
 
         return context.sync();
@@ -2039,24 +2039,24 @@
 'Excel.Range#getUsedRange:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const salesTable = sheet.tables.getItem("SalesTable");
-        const dataRange = salesTable.getDataBodyRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let salesTable = sheet.tables.getItem("SalesTable");
+        let dataRange = salesTable.getDataBodyRange();
 
         // We want the most recent quarter that has data, so
         // exclude quarters without data and get the last of
         // the remaining columns.
-        const usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
-        const currentQuarterRange = usedDataRange.getLastColumn();
+        let usedDataRange = dataRange.getUsedRange(true /* valuesOnly */);
+        let currentQuarterRange = usedDataRange.getLastColumn();
 
         // Asian and European teams have separate contests.
-        const asianSalesRange = sheet.getRange("A2:E4");
-        const europeanSalesRange = sheet.getRange("A5:E7");
+        let asianSalesRange = sheet.getRange("A2:E4");
+        let europeanSalesRange = sheet.getRange("A5:E7");
 
         // The data for each chart is the intersection of the
         // current quarter column and the rows for the continent.
-        const asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
-        const europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+        let asianContestRange = asianSalesRange.getIntersectionOrNullObject(currentQuarterRange);
+        let europeanContestRange = europeanSalesRange.getIntersectionOrNullObject(currentQuarterRange);
 
         // Must sync before you can test the output of *OrNullObject
         // method/property.
@@ -2095,12 +2095,12 @@
 'Excel.Range#getUsedRangeOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const salesTable = sheet.tables.getItem("SalesTable");
-        const dataRange = salesTable.getDataBodyRange();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let salesTable = sheet.tables.getItem("SalesTable");
+        let dataRange = salesTable.getDataBodyRange();
 
         // Pass true so only cells with values count as used
-        const usedDataRange = dataRange.getUsedRangeOrNullObject(
+        let usedDataRange = dataRange.getUsedRangeOrNullObject(
             true /* valuesOnly */
         );
 
@@ -2111,7 +2111,7 @@
             console.log("Need Data to Make Chart");
             console.log("To create a meaningful chart, press 'Fill the table' (or add names to the Product column and numbers to some of the other cells). Then press 'Try to create chart' again.");
         } else {
-            const chart = sheet.charts.add(
+            let chart = sheet.charts.add(
                 Excel.ChartType.columnClustered,
                 dataRange,
                 "Columns"
@@ -2129,7 +2129,7 @@
 'Excel.Range#group:member(1)':
   - |-
     Excel.run(async (context) => {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
         
         // Group the larger, main level. Note that the outline controls
         // will be on row 10, meaning 4-9 will collapse and expand.
@@ -2144,7 +2144,7 @@
 'Excel.Range#hyperlink:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Orders");
+        let sheet = context.workbook.worksheets.getItem("Orders");
 
         let productsRange = sheet.getRange("A3:A5");
         productsRange.load("values");
@@ -2170,10 +2170,10 @@
 'Excel.Range#removeDuplicates:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:D11");
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:D11");
 
-        const deleteResult = range.removeDuplicates([0],true);    
+        let deleteResult = range.removeDuplicates([0],true);    
         deleteResult.load();    
         await context.sync();
 
@@ -2183,9 +2183,9 @@
 'Excel.Range#set:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
-        const range = sheet.getRange("B2:E2");
+        let range = sheet.getRange("B2:E2");
         range.set({
             format: {
                 fill: {
@@ -2202,15 +2202,15 @@
     }
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
-        const sourceRange = sheet.getRange("B2:E2");
+        let sourceRange = sheet.getRange("B2:E2");
         sourceRange.load("format/fill/color, format/font/name, format/font/color");
         await context.sync();
 
         // Set properties based on the loaded and synced 
         // source range.
-        const targetRange = sheet.getRange("B7:E7");
+        let targetRange = sheet.getRange("B7:E7");
         targetRange.set(sourceRange); 
         targetRange.format.autofitColumns();
         await context.sync();
@@ -2218,11 +2218,11 @@
 'Excel.Range#setCellProperties:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // Creating the SettableCellProperties objects to use for the range.
         // In your add-in, these should be created once, outside the function.
-        const topHeaderProps: Excel.SettableCellProperties = {
+        let topHeaderProps: Excel.SettableCellProperties = {
             // The style property takes a string matching the name of an Excel style.
             // Built-in style names are listed in the `BuiltInStyle` enum.
             // Note that a style will overwrite any formatting,
@@ -2230,7 +2230,7 @@
             style: "Heading1"
         };
 
-        const headerProps: Excel.SettableCellProperties = {
+        let headerProps: Excel.SettableCellProperties = {
             // Any subproperties of format that are not set will not be changed when these cell properties are set.
             format: {
                 fill: {
@@ -2243,7 +2243,7 @@
             }
         };
 
-        const nonApplicableProps: Excel.SettableCellProperties = {
+        let nonApplicableProps: Excel.SettableCellProperties = {
             format: {
                 fill: {
                     pattern: Excel.FillPattern.gray25
@@ -2255,7 +2255,7 @@
             }
         };
 
-        const matchupScoreProps: Excel.SettableCellProperties = {
+        let matchupScoreProps: Excel.SettableCellProperties = {
             format: {
                 borders: {
                     bottom: {
@@ -2274,7 +2274,7 @@
             }
         };
 
-        const range = sheet.getRange("A1:E5");
+        let range = sheet.getRange("A1:E5");
 
         // You can use empty JSON objects to avoid changing a cell's properties.
         range.setCellProperties([
@@ -2291,11 +2291,11 @@
 'Excel.Range#sort:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const range = sheet.getRange("A1:E5");
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let range = sheet.getRange("A1:E5");
 
         // Find the column header that provides the sort criteria.
-        const header = range.find(criteria, {});
+        let header = range.find(criteria, {});
         header.load("columnIndex");
         await context.sync();
 
@@ -2328,7 +2328,7 @@
 'Excel.Range#ungroup:member(1)':
   - |-
     Excel.run(async (context) => {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
         
         // This removes two levels of groups from the "A1-R10" range.
         // Any groups at the same level on the same dimension will be removed by a single call.
@@ -2342,11 +2342,11 @@
   - |-
     async function main(context: Excel.RequestContext) {
 
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const usedRange = sheet.getUsedRange();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let usedRange = sheet.getUsedRange();
 
         // Find the ranges with formulas.
-        const formulaRanges = usedRange.getSpecialCells("Formulas");
+        let formulaRanges = usedRange.getSpecialCells("Formulas");
         formulaRanges.format.fill.color = "lightgreen";
 
         await context.sync();
@@ -2354,8 +2354,8 @@
 'Excel.RangeFormat#textOrientation:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:E2");
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:E2");
 
         // Set textOrientation to either an integer between -90 and 90
         // or to 180 for vertically-oriented text.
@@ -2366,7 +2366,7 @@
 'Excel.RangeHyperlink#address:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Orders");
+        let sheet = context.workbook.worksheets.getItem("Orders");
 
         let productsRange = sheet.getRange("A3:A5");
         productsRange.load("values");
@@ -2392,7 +2392,7 @@
 'Excel.RangeHyperlink#documentReference:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Orders");
+        let sheet = context.workbook.worksheets.getItem("Orders");
 
         let productsRange = sheet.getRange("A9:A11");
         productsRange.load("values");
@@ -2418,7 +2418,7 @@
 'Excel.RangeHyperlink#screenTip:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Orders");
+        let sheet = context.workbook.worksheets.getItem("Orders");
 
         let productsRange = sheet.getRange("A3:A5");
         productsRange.load("values");
@@ -2444,7 +2444,7 @@
 'Excel.RangeHyperlink#textToDisplay:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Orders");
+        let sheet = context.workbook.worksheets.getItem("Orders");
 
         let productsRange = sheet.getRange("A3:A5");
         productsRange.load("values");
@@ -2470,10 +2470,10 @@
 'Excel.RemoveDuplicatesResult#uniqueRemaining:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B2:D11");
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B2:D11");
 
-        const deleteResult = range.removeDuplicates([0],true);    
+        let deleteResult = range.removeDuplicates([0],true);    
         deleteResult.load();    
         await context.sync();
 
@@ -2487,7 +2487,7 @@
         await context.sync();
 
         // check if events are enabled and toggle accordingly
-        const eventBoolean = !context.runtime.enableEvents
+        let eventBoolean = !context.runtime.enableEvents
         context.runtime.enableEvents = eventBoolean;
         if (eventBoolean) {
             console.log("Events are currently on.");
@@ -2500,11 +2500,11 @@
 'Excel.SettableCellProperties#style:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // Creating the SettableCellProperties objects to use for the range.
         // In your add-in, these should be created once, outside the function.
-        const topHeaderProps: Excel.SettableCellProperties = {
+        let topHeaderProps: Excel.SettableCellProperties = {
             // The style property takes a string matching the name of an Excel style.
             // Built-in style names are listed in the `BuiltInStyle` enum.
             // Note that a style will overwrite any formatting,
@@ -2512,7 +2512,7 @@
             style: "Heading1"
         };
 
-        const headerProps: Excel.SettableCellProperties = {
+        let headerProps: Excel.SettableCellProperties = {
             // Any subproperties of format that are not set will not be changed when these cell properties are set.
             format: {
                 fill: {
@@ -2525,7 +2525,7 @@
             }
         };
 
-        const nonApplicableProps: Excel.SettableCellProperties = {
+        let nonApplicableProps: Excel.SettableCellProperties = {
             format: {
                 fill: {
                     pattern: Excel.FillPattern.gray25
@@ -2537,7 +2537,7 @@
             }
         };
 
-        const matchupScoreProps: Excel.SettableCellProperties = {
+        let matchupScoreProps: Excel.SettableCellProperties = {
             format: {
                 borders: {
                     bottom: {
@@ -2556,7 +2556,7 @@
             }
         };
 
-        const range = sheet.getRange("A1:E5");
+        let range = sheet.getRange("A1:E5");
 
         // You can use empty JSON objects to avoid changing a cell's properties.
         range.setCellProperties([
@@ -2573,7 +2573,7 @@
 'Excel.Setting#delete:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
+        let settings = context.workbook.settings;
         let needsReview = settings.getItem("NeedsReview");
         needsReview.delete();
         needsReview = settings.getItemOrNullObject("NeedsReview");
@@ -2591,7 +2591,7 @@
 'Excel.SettingCollection#getItemOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const settings = context.workbook.settings;
+        let settings = context.workbook.settings;
         let needsReview = settings.getItem("NeedsReview");
         needsReview.delete();
         needsReview = settings.getItemOrNullObject("NeedsReview");
@@ -2610,9 +2610,9 @@
   - |-
     async function main(context: Excel.RequestContext) {
         context.workbook.worksheets.getItemOrNullObject("Shapes").delete();
-        const sheet = context.workbook.worksheets.add("Shapes");
+        let sheet = context.workbook.worksheets.add("Shapes");
 
-        const shapes = sheet.shapes;
+        let shapes = sheet.shapes;
 
         // load all the shapes in the collection without loading their properties
         shapes.load("items/$none");
@@ -2624,8 +2624,8 @@
 'Excel.Shape#fill:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.smileyFace);
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.smileyFace);
         shape.left = 300;
         shape.top = 100;
         shape.height = 100;
@@ -2636,21 +2636,21 @@
 'Excel.Shape#getAsImage:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Image");
-        const result = shape.getAsImage(Excel.PictureFormat.png);
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Image");
+        let result = shape.getAsImage(Excel.PictureFormat.png);
         await context.sync();
 
-        const imageString = result.value;
+        let imageString = result.value;
         // Your add-in would save this string as a .png file.
         console.log("The image's base64-encoded string: " + imageString);
     }
 'Excel.Shape#group:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
+        let sheet = context.workbook.worksheets.getItem("Shapes");
 
-        const shapeGroup = sheet.shapes.getItem("Group").group;
+        let shapeGroup = sheet.shapes.getItem("Group").group;
         shapeGroup.ungroup();
         console.log("Shapes ungrouped");
 
@@ -2659,32 +2659,32 @@
 'Excel.Shape#incrementLeft:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Square")
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Square")
         shape.incrementLeft(-25);
         await context.sync();
     }
 'Excel.Shape#incrementRotation:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Image");
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Image");
         shape.incrementRotation(180);
         await context.sync();
     }
 'Excel.Shape#incrementTop:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Pentagon")
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Pentagon")
         shape.incrementTop(25);
         await context.sync();
     }
 'Excel.Shape#line:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.getItem("StraightLine").line;
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.getItem("StraightLine").line;
         line.beginArrowheadLength = Excel.ArrowheadLength.long;
         line.beginArrowheadWidth = Excel.ArrowheadWidth.wide;
         line.beginArrowheadStyle = Excel.ArrowheadStyle.oval;
@@ -2698,8 +2698,8 @@
 'Excel.Shape#lockAspectRatio:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Octagon")
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Octagon")
         shape.lockAspectRatio = true;
         shape.scaleHeight(1.25, Excel.ShapeScaleType.currentSize);
         await context.sync();
@@ -2707,8 +2707,8 @@
 'Excel.Shape#rotation:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.triangle);
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.triangle);
         shape.left = 100;
         shape.top = 300;
         shape.height = 150;
@@ -2720,8 +2720,8 @@
 'Excel.Shape#scaleHeight:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Octagon")
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Octagon")
         shape.lockAspectRatio = true;
         shape.scaleHeight(1.25, Excel.ShapeScaleType.currentSize);
         await context.sync();
@@ -2729,16 +2729,16 @@
 'Excel.Shape#setZOrder:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.getItem("Octagon")
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.getItem("Octagon")
         shape.setZOrder(Excel.ShapeZOrder.sendBackward);
         await context.sync();
     }
 'Excel.ShapeCollection#addGeometricShape:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.hexagon);
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.hexagon);
         shape.left = 5;
         shape.top = 5;
         shape.height = 175;
@@ -2748,12 +2748,12 @@
 'Excel.ShapeCollection#addGroup:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
-        const square = sheet.shapes.getItem("Square");
-        const pentagon = sheet.shapes.getItem("Pentagon");
-        const octagon = sheet.shapes.getItem("Octagon");
+        let sheet = context.workbook.worksheets.getItem("Shapes");
+        let square = sheet.shapes.getItem("Square");
+        let pentagon = sheet.shapes.getItem("Pentagon");
+        let octagon = sheet.shapes.getItem("Octagon");
 
-        const shapeGroup = sheet.shapes.addGroup([square, pentagon, octagon]);
+        let shapeGroup = sheet.shapes.addGroup([square, pentagon, octagon]);
         shapeGroup.name = "Group";
         console.log("Shapes grouped");
 
@@ -2761,15 +2761,15 @@
     }
 'Excel.ShapeCollection#addImage:member(1)':
   - |-
-    const myFile = <HTMLInputElement>document.getElementById("selectedFile");
-    const reader = new FileReader();
+    let myFile = <HTMLInputElement>document.getElementById("selectedFile");
+    let reader = new FileReader();
 
     reader.onload = (event) => {
         Excel.run((context) => {
-            const startIndex = reader.result.toString().indexOf("base64,");
-            const mybase64 = reader.result.toString().substr(startIndex + 7);
-            const sheet = context.workbook.worksheets.getItem("Shapes");
-            const image = sheet.shapes.addImage(mybase64);
+            let startIndex = reader.result.toString().indexOf("base64,");
+            let mybase64 = reader.result.toString().substr(startIndex + 7);
+            let sheet = context.workbook.worksheets.getItem("Shapes");
+            let image = sheet.shapes.addImage(mybase64);
             image.name = "Image";
             return context.sync();
         });
@@ -2780,16 +2780,16 @@
 'Excel.ShapeCollection#addLine:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const line = shapes.addLine(200, 50, 300, 150, Excel.ConnectorType.straight);
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let line = shapes.addLine(200, 50, 300, 150, Excel.ConnectorType.straight);
         line.name = "StraightLine";
         await context.sync();
     }
 'Excel.ShapeCollection#addTextBox:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const textbox = shapes.addTextBox("A box with text");
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let textbox = shapes.addTextBox("A box with text");
         textbox.left = 100;
         textbox.top = 100;
         textbox.height = 20;
@@ -2800,9 +2800,9 @@
 'Excel.ShapeGroup#ungroup:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Shapes");
+        let sheet = context.workbook.worksheets.getItem("Shapes");
 
-        const shapeGroup = sheet.shapes.getItem("Group").group;
+        let shapeGroup = sheet.shapes.getItem("Group").group;
         shapeGroup.ungroup();
         console.log("Shapes ungrouped");
 
@@ -2811,9 +2811,9 @@
 'Excel.ShowAsRule#baseItem:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
-        const farmDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold at Farm");
-        const wholesaleDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold Wholesale");
+        let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+        let farmDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold at Farm");
+        let wholesaleDataHierarchy: Excel.DataPivotHierarchy = pivotTable.dataHierarchies.getItem("Sum of Crates Sold Wholesale");
 
         farmDataHierarchy.load("showAs");
         wholesaleDataHierarchy.load("showAs");
@@ -2837,36 +2837,36 @@
 'Excel.Slicer#clearFilters:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+        let slicer = context.workbook.slicers.getItem("Fruit Slicer");
         slicer.clearFilters();
         await context.sync();
     }
 'Excel.Slicer#delete:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
         sheet.slicers.getItemAt(0).delete();
         await context.sync();
     }
 'Excel.Slicer#selectItems:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+        let slicer = context.workbook.slicers.getItem("Fruit Slicer");
         slicer.selectItems(["Lemon", "Lime", "Orange"]);
         await context.sync();
     }
 'Excel.Slicer#style:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+        let slicer = context.workbook.slicers.getItem("Fruit Slicer");
         slicer.style = "SlicerStyleLight6";
         await context.sync();
     }
 'Excel.SlicerCollection#add:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Pivot");
-        const slicer = sheet.slicers.add(
+        let sheet = context.workbook.worksheets.getItem("Pivot");
+        let slicer = sheet.slicers.add(
             "Farm Sales", /* The slicer data source. For PivotTables, this can be the PivotTable object reference or name. */
             "Type" /* The field in the data source to filter by. For PivotTables, this can be a PivotField object reference or ID. */
         );
@@ -2876,7 +2876,7 @@
 'Excel.SlicerCollection#getItem:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+        let slicer = context.workbook.slicers.getItem("Fruit Slicer");
         slicer.caption = "Fruit Types";
         slicer.left = 395;
         slicer.top = 15;
@@ -3016,9 +3016,9 @@
 'Excel.TextConditionalFormat#format:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B16:D18");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B16:D18");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.containsText);
         conditionalFormat.textComparison.format.font.color = "red";
         conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -3028,9 +3028,9 @@
 'Excel.TextConditionalFormat#rule:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const range = sheet.getRange("B16:D18");
-        const conditionalFormat = range.conditionalFormats
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let range = sheet.getRange("B16:D18");
+        let conditionalFormat = range.conditionalFormats
             .add(Excel.ConditionalFormatType.containsText);
         conditionalFormat.textComparison.format.font.color = "red";
         conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
@@ -3040,8 +3040,8 @@
 'Excel.TextFrame#deleteText:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-        const textbox = shapes.getItem("Textbox");
+        let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+        let textbox = shapes.getItem("Textbox");
         textbox.textFrame.deleteText();
         await context.sync();
     }
@@ -3061,7 +3061,7 @@
   - |-
     async function main(context: Excel.RequestContext) {
 
-        const selectedRanges = context.workbook.getSelectedRanges();
+        let selectedRanges = context.workbook.getSelectedRanges();
         selectedRanges.format.fill.color = "lightblue";
 
         await context.sync();
@@ -3155,8 +3155,8 @@
 'Excel.Worksheet#autoFilter:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const farmData = sheet.getUsedRange();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let farmData = sheet.getUsedRange();
 
         // This filter will only show the rows with the top 25% of values in column 3.
         sheet.autoFilter.apply(farmData, 3, { criterion1: "25", filterOn: Excel.FilterOn.topPercent });
@@ -3180,8 +3180,8 @@
 'Excel.Worksheet#findAllOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const foundRanges = sheet.findAllOrNullObject("Complete", {
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let foundRanges = sheet.findAllOrNullObject("Complete", {
             completeMatch: true,
             matchCase: false
         });
@@ -3197,15 +3197,15 @@
 'Excel.Worksheet#getNext:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheets = context.workbook.worksheets;
+        let sheets = context.workbook.worksheets;
 
         // We don't want to include the default worksheet that was created
         // when the workbook was created, so our "firstSheet" will be the one
         // after the literal first. Note chaining of navigation methods.
-        const firstSheet = sheets.getFirst().getNext();
-        const lastSheet = sheets.getLast();
-        const firstTaxRateRange = firstSheet.getRange("B2");
-        const lastTaxRateRange = lastSheet.getRange("B2");
+        let firstSheet = sheets.getFirst().getNext();
+        let lastSheet = sheets.getLast();
+        let firstTaxRateRange = firstSheet.getRange("B2");
+        let lastTaxRateRange = lastSheet.getRange("B2");
 
         firstSheet.load("name");
         lastSheet.load("name");
@@ -3223,11 +3223,11 @@
 'Excel.Worksheet#getPrevious:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheets = context.workbook.worksheets;
-        const currentSheet = sheets.getActiveWorksheet();
-        const previousYearSheet = currentSheet.getPrevious();
-        const currentTaxDueRange = currentSheet.getRange("C2");
-        const previousTaxDueRange = previousYearSheet.getRange("C2");
+        let sheets = context.workbook.worksheets;
+        let currentSheet = sheets.getActiveWorksheet();
+        let previousYearSheet = currentSheet.getPrevious();
+        let currentTaxDueRange = currentSheet.getRange("C2");
+        let previousTaxDueRange = previousYearSheet.getRange("C2");
 
         currentSheet.load("name");
         previousYearSheet.load("name");
@@ -3246,8 +3246,8 @@
   - |-
     async function main(context: Excel.RequestContext) {
 
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const specifiedRanges = sheet.getRanges("D3:D5, G3:G5");
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let specifiedRanges = sheet.getRanges("D3:D5, G3:G5");
         specifiedRanges.format.fill.color = "pink";
 
         await context.sync();
@@ -3255,7 +3255,7 @@
 'Excel.Worksheet#showGridlines:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
         sheet.showGridlines = true;
 
         await context.sync();
@@ -3263,7 +3263,7 @@
 'Excel.Worksheet#showOutlineLevels:member(1)':
   - |-
     Excel.run(async (context) => {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // This collapses the entire outline.
         sheet.showOutlineLevels(1, 1);
@@ -3271,7 +3271,7 @@
     }
   - |-
     Excel.run(async (context) => {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
 
         // This shows the top 3 outline levels; collapsing any additional sublevels.
         sheet.showOutlineLevels(3, 3);
@@ -3280,8 +3280,8 @@
 'Excel.Worksheet#slicers:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Pivot");
-        const slicer = sheet.slicers.add(
+        let sheet = context.workbook.worksheets.getItem("Pivot");
+        let slicer = sheet.slicers.add(
             "Farm Sales", /* The slicer data source. For PivotTables, this can be the PivotTable object reference or name. */
             "Type" /* The field in the data source to filter by. For PivotTables, this can be a PivotField object reference or ID. */
         );
@@ -3291,7 +3291,7 @@
 'Excel.Worksheet#tabColor:member':
   - |-
     async function main(context: Excel.RequestContext) {
-        const activeSheet = context.workbook.worksheets.getActiveWorksheet();
+        let activeSheet = context.workbook.worksheets.getActiveWorksheet();
         activeSheet.tabColor = "#FF0000";
 
         await context.sync();
@@ -3299,15 +3299,15 @@
 'Excel.WorksheetCollection#getFirst:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheets = context.workbook.worksheets;
+        let sheets = context.workbook.worksheets;
 
         // We don't want to include the default worksheet that was created
         // when the workbook was created, so our "firstSheet" will be the one
         // after the literal first. Note chaining of navigation methods.
-        const firstSheet = sheets.getFirst().getNext();
-        const lastSheet = sheets.getLast();
-        const firstTaxRateRange = firstSheet.getRange("B2");
-        const lastTaxRateRange = lastSheet.getRange("B2");
+        let firstSheet = sheets.getFirst().getNext();
+        let lastSheet = sheets.getLast();
+        let firstTaxRateRange = firstSheet.getRange("B2");
+        let lastTaxRateRange = lastSheet.getRange("B2");
 
         firstSheet.load("name");
         lastSheet.load("name");
@@ -3325,15 +3325,15 @@
 'Excel.WorksheetCollection#getLast:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheets = context.workbook.worksheets;
+        let sheets = context.workbook.worksheets;
 
         // We don't want to include the default worksheet that was created
         // when the workbook was created, so our "firstSheet" will be the one
         // after the literal first. Note chaining of navigation methods.
-        const firstSheet = sheets.getFirst().getNext();
-        const lastSheet = sheets.getLast();
-        const firstTaxRateRange = firstSheet.getRange("B2");
-        const lastTaxRateRange = lastSheet.getRange("B2");
+        let firstSheet = sheets.getFirst().getNext();
+        let lastSheet = sheets.getLast();
+        let firstTaxRateRange = firstSheet.getRange("B2");
+        let lastTaxRateRange = lastSheet.getRange("B2");
 
         firstSheet.load("name");
         lastSheet.load("name");
@@ -3351,7 +3351,7 @@
 'Excel.WorksheetFreezePanes#freezeAt:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         // Freeze the specified range in top-and-left-most pane of the worksheet.
         sheet.freezePanes.freezeAt(sheet.getRange("H2:K5"));
@@ -3361,7 +3361,7 @@
 'Excel.WorksheetFreezePanes#freezeColumns:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         // Freeze the first two columns in the worksheet.
         sheet.freezePanes.freezeColumns(2);
@@ -3371,7 +3371,7 @@
 'Excel.WorksheetFreezePanes#freezeRows:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
 
         // Freeze the top two rows in the worksheet.
         sheet.freezePanes.freezeRows(2);
@@ -3381,8 +3381,8 @@
 'Excel.WorksheetFreezePanes#getLocationOrNullObject:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
-        const frozenRange = sheet.freezePanes.getLocationOrNullObject();
+        let sheet = context.workbook.worksheets.getItem("Sample");
+        let frozenRange = sheet.freezePanes.getLocationOrNullObject();
         frozenRange.load("address");
 
         await context.sync();
@@ -3396,7 +3396,7 @@
 'Excel.WorksheetFreezePanes#unfreeze:member(1)':
   - |-
     async function main(context: Excel.RequestContext) {
-        const sheet = context.workbook.worksheets.getItem("Sample");
+        let sheet = context.workbook.worksheets.getItem("Sample");
         sheet.freezePanes.unfreeze();
 
         await context.sync();

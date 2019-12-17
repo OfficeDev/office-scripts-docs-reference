@@ -67,9 +67,9 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getItem("Comments");
-              const comment = sheet.comments.getItemAt(0);
-              const reply = comment.replies.getItemAt(0);
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let comment = sheet.comments.getItemAt(0);
+              let reply = comment.replies.getItemAt(0);
               reply.load("content");
               // Sync to load the content of the comment reply.
               await context.sync();
@@ -125,8 +125,8 @@ items:
           ```typescript
           async function main(context: Excel.RequestContext) {
               // Remove the first comment reply from this worksheet's first comment.
-              const sheet = context.workbook.worksheets.getItem("Comments");
-              const comment = sheet.comments.getItemAt(0);
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let comment = sheet.comments.getItemAt(0);
               comment.replies.getItemAt(0).delete();
               await context.sync();
           }

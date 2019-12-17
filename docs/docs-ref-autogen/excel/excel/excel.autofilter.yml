@@ -42,8 +42,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const sheet = context.workbook.worksheets.getActiveWorksheet();
-              const farmData = sheet.getUsedRange();
+              let sheet = context.workbook.worksheets.getActiveWorksheet();
+              let farmData = sheet.getUsedRange();
 
               // This filter will only show the rows with the top 25% of values in column 3.
               sheet.autoFilter.apply(farmData, 3, { criterion1: "25", filterOn: Excel.FilterOn.topPercent });

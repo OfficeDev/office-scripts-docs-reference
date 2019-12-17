@@ -113,8 +113,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.getItem("StraightLine").line;
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
               line.connectBeginShape(shapes.getItem("Left"), 2);
               line.connectEndShape(shapes.getItem("Right"), 0);
               await context.sync();
@@ -150,8 +150,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.getItem("StraightLine").line;
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
               line.connectBeginShape(shapes.getItem("Left"), 2);
               line.connectEndShape(shapes.getItem("Right"), 0);
               await context.sync();
@@ -213,8 +213,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.getItem("StraightLine").line;
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
               line.disconnectBeginShape();
               line.disconnectEndShape();
               await context.sync();
@@ -239,8 +239,8 @@ items:
 
           ```typescript
           async function main(context: Excel.RequestContext) {
-              const shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              const line = shapes.getItem("StraightLine").line;
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
               line.disconnectBeginShape();
               line.disconnectEndShape();
               await context.sync();
