@@ -46,10 +46,6 @@ tryCatch(async () => {
         .forEach(filename => fsx.removeSync(scriptInputsPath + '/' + filename));
 
     console.log("\nCreating snippets file...");
-
-    console.log("\nReading from: https://raw.githubusercontent.com/OfficeDev/office-js-snippets/master/snippet-extractor-output/snippets.yaml");
-    fsx.writeFileSync("../script-inputs/script-lab-snippets.yaml", await fetchAndThrowOnError("https://raw.githubusercontent.com/OfficeDev/office-js-snippets/master/snippet-extractor-output/snippets.yaml", "text"));
-
     console.log("\nReading from files: " + path.resolve("../../docs/code-snippets"));
 
     const snippetsSourcePath = path.resolve("../../docs/code-snippets");
@@ -64,26 +60,6 @@ tryCatch(async () => {
 
     // Parse the YAML into an object/hash set.
     let snippets = yaml.load(localCodeSnippetsString);
-    let scriptLabSnippets = yaml.load(fsx.readFileSync(`../script-inputs/script-lab-snippets.yaml`).toString());
-
-    // Convert Script Lab snippets into more Script-friendly format
-    for (const key of Object.keys(scriptLabSnippets)) {
-        let snippetString = scriptLabSnippets[key].toString();
-        snippetString = snippetString.replace(/await Excel\.run\(async \(.*\) \=\> \{/g, "");
-        scriptLabSnippets[key] = snippetString.substring(0, snippetString.lastIndexOf("});"))
-    }
-
-    // If a duplicate key exists, merge the Script Lab example(s) into the item with the existing key.
-    for (const key of Object.keys(scriptLabSnippets)) {
-        if (key.includes("Excel")) {
-            if (snippets[key]) {
-                console.log("Combining local and Script Lab snippets for: " + key);
-                snippets[key] = snippets[key].concat(scriptLabSnippets[key]);
-            } else {
-                snippets[key] = scriptLabSnippets[key];
-            }
-        }
-    }
 
     let snippetDestination = path.resolve("../json/excel/snippets.yaml")
     console.log("\nWriting snippets to: " + snippetDestination);
