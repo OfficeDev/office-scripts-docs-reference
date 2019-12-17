@@ -4,7 +4,6 @@
 import * as path from "path";
 import * as fsx from 'fs-extra';
 import yaml = require('js-yaml');
-import { fetchAndThrowOnError } from './util';
 
 tryCatch(async () => {
     // ----
@@ -29,10 +28,7 @@ tryCatch(async () => {
     let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
 
     console.log("\ncreate file: excel.d.ts (preview)");
-    fsx.writeFileSync(
-        '../api-extractor-inputs-excel/excel.d.ts',
-        handleLiteralParameterOverloads(excelSpecificCleanup(releaseDefinitions))
-    );
+    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', handleLiteralParameterOverloads(releaseDefinitions));
 
     // TODO: Deal with Script Lab snippets
     // ----
@@ -81,12 +77,6 @@ tryCatch(async () => {
 
     process.exit(0);
 });
-
-function excelSpecificCleanup(dtsContent: string) {
-    return dtsContent.replace(/export interface .*Set {\r?\n.*Icon;/gm, `/** [Api set: ExcelApi 1.2] */\n\t$&`)
-        .replace("export interface IconCollections {", "/** [Api set: ExcelApi 1.2] */\n\texport interface IconCollections {")
-        .replace("var icons: IconCollections;", "/** [Api set: ExcelApi 1.2] */\n\tvar icons: IconCollections;");
-}
 
 function cleanUpDts(localDtsPath: string): string {
     console.log(`\nReading from ${path.resolve(localDtsPath)}`);

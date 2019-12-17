@@ -98,7 +98,37 @@ items:
       return:
         type:
           - 'excel!Excel.Worksheet:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheets = context.workbook.worksheets;
+
+              // We don't want to include the default worksheet that was created
+              // when the workbook was created, so our "firstSheet" will be the one
+              // after the literal first. Note chaining of navigation methods.
+              const firstSheet = sheets.getFirst().getNext();
+              const lastSheet = sheets.getLast();
+              const firstTaxRateRange = firstSheet.getRange("B2");
+              const lastTaxRateRange = lastSheet.getRange("B2");
+
+              firstSheet.load("name");
+              lastSheet.load("name");
+              firstTaxRateRange.load("text");
+              lastTaxRateRange.load("text");
+
+              await context.sync();
+
+              let firstYear = firstSheet.name.substr(5, 4);
+              let lastYear = lastSheet.name.substr(5, 4);
+              console.log(`Tax Rate change from ${firstYear} to ${lastYear}`, `Tax rate for ${firstYear}: ${firstTaxRateRange.text[0][0]}\nTax rate for ${lastYear}: ${lastTaxRateRange.text[0][0]}`)
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: visibleOnly
           description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
@@ -152,7 +182,37 @@ items:
       return:
         type:
           - 'excel!Excel.Worksheet:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheets = context.workbook.worksheets;
+
+              // We don't want to include the default worksheet that was created
+              // when the workbook was created, so our "firstSheet" will be the one
+              // after the literal first. Note chaining of navigation methods.
+              const firstSheet = sheets.getFirst().getNext();
+              const lastSheet = sheets.getLast();
+              const firstTaxRateRange = firstSheet.getRange("B2");
+              const lastTaxRateRange = lastSheet.getRange("B2");
+
+              firstSheet.load("name");
+              lastSheet.load("name");
+              firstTaxRateRange.load("text");
+              lastTaxRateRange.load("text");
+
+              await context.sync();
+
+              let firstYear = firstSheet.name.substr(5, 4);
+              let lastYear = lastSheet.name.substr(5, 4);
+              console.log(`Tax Rate change from ${firstYear} to ${lastYear}`, `Tax rate for ${firstYear}: ${firstTaxRateRange.text[0][0]}\nTax rate for ${lastYear}: ${lastTaxRateRange.text[0][0]}`)
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: visibleOnly
           description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'

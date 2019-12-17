@@ -130,7 +130,22 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Shapes");
+
+              const shapeGroup = sheet.shapes.getItem("Group").group;
+              shapeGroup.ungroup();
+              console.log("Shapes ungrouped");
+
+              await context.sync();
+          }
+          ```
 references:
   - uid: 'excel!Excel.RequestContext:class'
     name: RequestContext

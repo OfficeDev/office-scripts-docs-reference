@@ -258,6 +258,26 @@ items:
       return:
         type:
           - 'excel!Excel.ChartTrendline#type~0:complex'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+
+              let seriesCollection = sheet.charts.getItemAt(0).series;
+
+              // Get the trendline for series 1 and load its type property.  
+              let trendline = seriesCollection.getItemAt(0).trendlines.getItem(0);
+              trendline.load("type");
+
+              await context.sync();
+
+              console.log("The trendline type is:" + trendline.type);  
+          }
+          ```
 references:
   - uid: 'excel!Excel.RequestContext:class'
     name: RequestContext

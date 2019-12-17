@@ -41,6 +41,22 @@ items:
       return:
         type:
           - 'excel!Excel.Image#format~0:complex'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Shapes");
+              const image = sheet.shapes.getItem("Image").image;
+              image.load("format");
+              await context.sync();
+
+              console.log("The image's format is: " + image.format);
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Image#id:member'
     summary: Represents the shape identifier for the image object. Read-only.
     name: id

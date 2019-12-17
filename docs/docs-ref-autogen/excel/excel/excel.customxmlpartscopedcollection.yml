@@ -45,7 +45,40 @@ items:
       return:
         type:
           - 'excel!Excel.CustomXmlPartScopedCollection#getCount~0:complex'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              $("#display-xml").text("");
+              const contosoNamespace = "http://schemas.contoso.com/review/1.0";
+              const customXmlParts = context.workbook.customXmlParts;
+              const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+              const numberOfPartsInNamespace = filteredXmlParts.getCount();
+
+              await context.sync();
+
+              if (numberOfPartsInNamespace.value == 1) {
+                  const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+                  const xmlBlob = onlyXmlPartInNamespace.getXml();
+
+                  await context.sync();
+
+                  // Make it a bit more readable.
+                  const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+
+                  $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
+                      ${readableXml}`);
+
+              } else {
+                  console.log(`There are ${numberOfPartsInNamespace.value} XML parts with namespace ${contosoNamespace}. There should be exactly 1.`);
+              }        
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.CustomXmlPartScopedCollection#getItem:member(1)'
     summary: Gets a custom XML part based on its ID.
     name: getItem(id)
@@ -78,7 +111,40 @@ items:
       return:
         type:
           - 'excel!Excel.CustomXmlPart:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const settings = context.workbook.settings;
+              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              await context.sync();
+
+              if (xmlPartIDSetting.value) {   
+                  let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+                  const xmlBlob = customXmlPart.getXml();
+                  customXmlPart.delete();
+                  customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
+
+                  await context.sync();
+
+                  if (customXmlPart.isNullObject) {
+                      $("#display-xml").text(`The XML part with the id ${xmlPartIDSetting.value} has been deleted.`);
+
+                      // Delete the unneeded setting too.
+                      xmlPartIDSetting.delete();            
+                  } else {
+                      const readableXml = addLineBreaksToXML(xmlBlob.value);
+                      const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                      $("#display-xml").text(strangeMessage);
+                  }
+
+                  await context.sync();
+              }
+          }
+          ```
       parameters:
         - id: id
           description: ID of the object to be retrieved.
@@ -96,7 +162,40 @@ items:
       return:
         type:
           - 'excel!Excel.CustomXmlPart:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              $("#display-xml").text("");
+              const contosoNamespace = "http://schemas.contoso.com/review/1.0";
+              const customXmlParts = context.workbook.customXmlParts;
+              const filteredXmlParts = customXmlParts.getByNamespace(contosoNamespace);
+              const numberOfPartsInNamespace = filteredXmlParts.getCount();
+
+              await context.sync();
+
+              if (numberOfPartsInNamespace.value == 1) {
+                  const onlyXmlPartInNamespace = filteredXmlParts.getOnlyItem();
+                  const xmlBlob = onlyXmlPartInNamespace.getXml();
+
+                  await context.sync();
+
+                  // Make it a bit more readable.
+                  const readableXml = xmlBlob.value.replace(/></g, ">\n<");
+
+                  $("#display-xml").text(`The only XML part in the namespace ${contosoNamespace} is:
+                      ${readableXml}`);
+
+              } else {
+                  console.log(`There are ${numberOfPartsInNamespace.value} XML parts with namespace ${contosoNamespace}. There should be exactly 1.`);
+              }        
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.CustomXmlPartScopedCollection#getOnlyItemOrNullObject:member(1)'
     summary: 'If the collection contains exactly one item, this method returns it. Otherwise, this method returns Null.'
     name: getOnlyItemOrNullObject()

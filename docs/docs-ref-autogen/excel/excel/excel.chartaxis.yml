@@ -145,6 +145,27 @@ items:
       return:
         type:
           - 'excel!Excel.ChartAxis#displayUnit~0:complex'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+
+              let chart = sheet.charts.getItemAt(0);
+              let categoryAxis = chart.axes.categoryAxis;
+              let valueAxis = chart.axes.valueAxis;
+
+              // Load to get display unit.
+              valueAxis.load("displayUnit");
+
+              await context.sync();
+
+              console.log("The vertical axis display unit is: " + valueAxis.displayUnit);
+          }
+          ```
   - uid: 'excel!Excel.ChartAxis#format:member'
     summary: 'Represents the formatting of a chart object, which includes line and font formatting. Read-only.'
     name: format
@@ -575,6 +596,23 @@ items:
       return:
         type:
           - boolean
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+              let chart = sheet.charts.getItemAt(0);
+              let axis = chart.axes.valueAxis;
+
+              // Remove display unit.
+              axis.showDisplayUnitLabel = false;
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartAxis#textOrientation:member'
     summary: >-
       Represents the text orientation of the axis tick label. The value should be an integer either from -90 to 90, or

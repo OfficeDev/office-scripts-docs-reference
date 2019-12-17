@@ -79,7 +79,30 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+              const totalName = sheet.names.getItemOrNullObject("TotalAmount");
+              totalName.load();
+              await context.sync();
+
+              if (totalName.value) {
+                  totalName.delete();
+
+                  // Replace the named item (TotalAmount) with the actual formula for TotalAmount to avoid displaying #NAME in the cell.
+                  sheet.getRange("D11").values = [["=SUM(ExpensesTable[AMOUNT])"]];
+              } else {
+                  console.log("No named item created for the formula.");
+              }
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.NamedItem#formula:member'
     summary: Gets or sets the formula of the named item. Formula always starts with a '=' sign.
     name: formula
@@ -92,6 +115,32 @@ items:
       return:
         type:
           - any
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Get the named item
+              const myNamedItem = sheet.names.getItemOrNullObject("MyRange");
+              myNamedItem.load("name, formula");
+              await context.sync();
+
+              if (myNamedItem.isNullObject) {
+                  console.log(`There is no named item. Create it with "Add named item for a range" first.`);
+              } else {                    
+                  // Update named item to point to the second range
+                  myNamedItem.formula = "=Sample!$B$10:$D$14";
+                  sheet.getRange("B10:D14").select();
+                  await context.sync();
+
+                  console.log(`Just updated the named item "${myNamedItem.name}" -- it's now located here: ${myNamedItem.formula}`);
+              }
+          }
+          ```
   - uid: 'excel!Excel.NamedItem#getRange:member(1)'
     summary: >-
       Returns the range object that is associated with the name. Throws an error if the named item's type is not a

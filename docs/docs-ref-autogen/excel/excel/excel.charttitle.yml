@@ -66,7 +66,21 @@ items:
       return:
         type:
           - 'excel!Excel.ChartFormatString:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let chart = sheet.charts.getItemAt(0);
+
+              // Get first seven characters of the title and color them green.
+              chart.title.getSubstring(0, 7).font.color = "Yellow";
+              await context.sync();
+          }
+          ```
       parameters:
         - id: start
           description: Start position of substring to be retrieved. Position start with 0.
@@ -264,6 +278,20 @@ items:
       return:
         type:
           - number
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Sample");
+              const title = sheet.charts.getItemAt(0).title;
+              title.textOrientation = -45;
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartTitle#top:member'
     summary: >-
       Represents the distance, in points, from the top edge of chart title to the top of chart area. Null if chart title

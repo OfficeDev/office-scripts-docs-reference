@@ -91,7 +91,37 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.load("protection/protected");
+
+              await context.sync();
+
+              if (!workbook.protection.protected) {
+                  workbook.protection.protect();
+              }
+          }
+          ```
+          ```typescript
+          let password = await passwordHandler();
+          passwordHelper(password);
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.load("protection/protected");
+
+              await context.sync();
+
+              if (!workbook.protection.protected) {
+                  workbook.protection.protect(password);
+              }
+          }
+          ```
       parameters:
         - id: password
           description: workbook protection password.
@@ -121,7 +151,25 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.protection.unprotect();
+          }
+          ```
+          ```typescript
+          let password = await passwordHandler();
+          passwordHelper(password);
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.protection.unprotect(password);
+          }
+          ```
       parameters:
         - id: password
           description: workbook protection password.

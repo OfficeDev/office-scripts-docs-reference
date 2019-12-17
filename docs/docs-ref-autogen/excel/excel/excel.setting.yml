@@ -46,7 +46,29 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const settings = context.workbook.settings;
+              let needsReview = settings.getItem("NeedsReview");
+              needsReview.delete();
+              needsReview = settings.getItemOrNullObject("NeedsReview");
+
+              await context.sync();
+
+              if (needsReview.isNullObject) {
+                  console.log("The setting has been deleted");
+              } else {
+                  console.log("The setting was not deleted");
+              }
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Setting#key:member'
     summary: Returns the key that represents the id of the Setting. Read-only.
     name: key

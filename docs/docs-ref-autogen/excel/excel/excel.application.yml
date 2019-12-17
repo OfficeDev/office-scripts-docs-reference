@@ -220,7 +220,39 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              const rowCount = 500;
+              const columnCount = 20;
+
+              const startTime = Date.now();
+              console.log("Starting...");
+
+              if (pauseScreenPainting) {
+                  context.application.suspendScreenUpdatingUntilNextSync();
+              }
+
+              for (let i = 0; i < rowCount; i++) {
+                  for (let j = 0; j < columnCount; j++) {
+                      let cell = sheet.getCell(i, j);
+                      cell.values = [[i * j * Math.random()]];
+                      if (untrack) {
+                          cell.untrack();
+                      }
+                  }
+              }
+
+              await context.sync();
+
+              console.log(`Ending. Adding ${rowCount * columnCount} cells took ${Date.now() - startTime} milliseconds`);
+          }
+          ```
 references:
   - uid: 'excel!Excel.CalculationType:enum'
     name: Excel.CalculationType

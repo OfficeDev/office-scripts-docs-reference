@@ -43,7 +43,40 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const settings = context.workbook.settings;
+              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              await context.sync();
+
+              if (xmlPartIDSetting.value) {   
+                  let customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+                  const xmlBlob = customXmlPart.getXml();
+                  customXmlPart.delete();
+                  customXmlPart = context.workbook.customXmlParts.getItemOrNullObject(xmlPartIDSetting.value);
+
+                  await context.sync();
+
+                  if (customXmlPart.isNullObject) {
+                      $("#display-xml").text(`The XML part with the id ${xmlPartIDSetting.value} has been deleted.`);
+
+                      // Delete the unneeded setting too.
+                      xmlPartIDSetting.delete();            
+                  } else {
+                      const readableXml = addLineBreaksToXML(xmlBlob.value);
+                      const strangeMessage = `This is strange. The XML part with the id ${xmlPartIDSetting.value} has not been deleted:\n${readableXml}`
+                      $("#display-xml").text(strangeMessage);
+                  }
+
+                  await context.sync();
+              }
+          }
+          ```
   - uid: 'excel!Excel.CustomXmlPart#getXml:member(1)'
     summary: Gets the custom XML part's full XML content.
     name: getXml()
@@ -56,7 +89,32 @@ items:
       return:
         type:
           - 'excel!Excel.CustomXmlPart#getXml~0:complex'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              // You must have the xmlns attribute to populate the 
+              // CustomXml.namespaceUri property.
+              const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+              const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+              customXmlPart.load("id");
+              const xmlBlob = customXmlPart.getXml();
+
+              await context.sync();
+
+              const readableXml = addLineBreaksToXML(xmlBlob.value);
+              $("#display-xml").text(readableXml);
+
+              // Store the XML part's ID in a setting.
+              const settings = context.workbook.settings;
+              settings.add("ContosoReviewXmlPartId", customXmlPart.id);
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.CustomXmlPart#id:member'
     summary: The custom XML part's ID. Read-only.
     name: id
@@ -69,6 +127,32 @@ items:
       return:
         type:
           - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              // You must have the xmlns attribute to populate the 
+              // CustomXml.namespaceUri property.
+              const originalXml = "<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>Juan</Reviewer><Reviewer>Hong</Reviewer><Reviewer>Sally</Reviewer></Reviewers>";
+              const customXmlPart = context.workbook.customXmlParts.add(originalXml);
+              customXmlPart.load("id");
+              const xmlBlob = customXmlPart.getXml();
+
+              await context.sync();
+
+              const readableXml = addLineBreaksToXML(xmlBlob.value);
+              $("#display-xml").text(readableXml);
+
+              // Store the XML part's ID in a setting.
+              const settings = context.workbook.settings;
+              settings.add("ContosoReviewXmlPartId", customXmlPart.id);
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.CustomXmlPart#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -143,7 +227,32 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const settings = context.workbook.settings;
+              const xmlPartIDSetting = settings.getItemOrNullObject("ContosoReviewXmlPartId").load("value");
+              await context.sync();
+
+              if (xmlPartIDSetting.value) {   
+                  const customXmlPart = context.workbook.customXmlParts.getItem(xmlPartIDSetting.value);
+
+                  // The setXml method does a whole-for-whole replacement 
+                  // of the entire XML.
+                  customXmlPart.setXml("<Reviewers xmlns='http://schemas.contoso.com/review/1.0'><Reviewer>John</Reviewer><Reviewer>Hitomi</Reviewer></Reviewers>");
+                  const xmlBlob = customXmlPart.getXml();
+                  await context.sync();
+
+                  const readableXml = addLineBreaksToXML(xmlBlob.value);
+                  $("#display-xml").text(readableXml);
+                  await context.sync();
+              }
+          }
+          ```
       parameters:
         - id: xml
           description: XML content for the part.

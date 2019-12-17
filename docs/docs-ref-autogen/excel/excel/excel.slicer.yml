@@ -53,7 +53,18 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+              slicer.clearFilters();
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Slicer#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -80,7 +91,18 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getActiveWorksheet();
+              sheet.slicers.getItemAt(0).delete();
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Slicer#getSelectedItems:member(1)'
     summary: Returns an array of selected items' keys. Read-only.
     name: getSelectedItems()
@@ -222,7 +244,18 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+              slicer.selectItems(["Lemon", "Lime", "Orange"]);
+              await context.sync();
+          }
+          ```
       parameters:
         - id: items
           description: Optional. The specified slicer item names to be selected.
@@ -287,6 +320,18 @@ items:
       return:
         type:
           - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const slicer = context.workbook.slicers.getItem("Fruit Slicer");
+              slicer.style = "SlicerStyleLight6";
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Slicer#top:member'
     summary: >-
       Represents the distance, in points, from the top edge of the slicer to the top of the worksheet. Throws an "The

@@ -60,6 +60,19 @@ items:
       return:
         type:
           - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const sheet = context.workbook.worksheets.getItem("Comments");
+              const comment = sheet.comments.getItemAt(0);
+              comment.content = "PLEASE add headers here.";
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Comment#context:member'
     summary: >-
       The request context associated with the object. This connects the add-in's process to the Office host
@@ -100,7 +113,17 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              context.workbook.comments.getItemByCell("Comments!A2").delete();
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.Comment#getLocation:member(1)'
     summary: Gets the cell where this comment is located.
     name: getLocation()
@@ -164,7 +187,21 @@ items:
       return:
         type:
           - 'excel!Excel.Comment:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              const comment = context.workbook.comments.getItemByCell("Comments!A2");
+              comment.load(["authorEmail", "authorName", "creationDate"]);
+              await context.sync();
+
+              console.log(`${comment.creationDate.toDateString()}: ${comment.authorName} (${comment.authorEmail})`);
+              await context.sync();
+          }
+          ```
       parameters:
         - id: propertyNamesAndPaths
           description: >-
