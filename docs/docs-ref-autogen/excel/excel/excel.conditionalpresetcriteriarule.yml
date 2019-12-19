@@ -27,6 +27,23 @@ items:
       return:
         type:
           - 'excel!Excel.ConditionalPresetCriteriaRule#criterion~0:complex'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:M5");
+              let conditionalFormat = range.conditionalFormats
+                  .add(Excel.ConditionalFormatType.presetCriteria);
+              conditionalFormat.preset.format.font.color = "white";
+              conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };
+
+              await context.sync();
+          }
+          ```
 references:
   - uid: 'excel!Excel.ConditionalPresetCriteriaRule#criterion~0:complex'
     name: >-

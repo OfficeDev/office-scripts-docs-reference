@@ -29,7 +29,20 @@ items:
       return:
         type:
           - 'excel!Excel.CommentReply:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              // Adds a reply to the first comment in this worksheet.
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let comment = sheet.comments.getItemAt(0);
+              comment.replies.add("Add content to this worksheet.");
+              await context.sync();
+          }
+          ```
       parameters:
         - id: content
           description: >-

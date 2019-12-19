@@ -44,7 +44,21 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the specified range in top-and-left-most pane of the worksheet.
+              sheet.freezePanes.freezeAt(sheet.getRange("H2:K5"));
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: frozenRange
           description: 'A range that represents the cells to be frozen, or null to remove all frozen panes.'
@@ -62,7 +76,21 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the first two columns in the worksheet.
+              sheet.freezePanes.freezeColumns(2);
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: count
           description: 'Optional number of columns to freeze, or zero to unfreeze all columns'
@@ -80,7 +108,21 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the top two rows in the worksheet.
+              sheet.freezePanes.freezeRows(2);
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: count
           description: 'Optional number of rows to freeze, or zero to unfreeze all rows'
@@ -115,7 +157,26 @@ items:
       return:
         type:
           - 'excel!Excel.Range:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let frozenRange = sheet.freezePanes.getLocationOrNullObject();
+              frozenRange.load("address");
+
+              await context.sync();
+
+              if (frozenRange.isNullObject) {
+                  console.log(`The worksheet does not contain a frozen pane.`);
+              } else {
+                  console.log(`The address of the frozen range (cells that are frozen in the top-and-left-most pane) is "${frozenRange.address}"`);
+              }
+          }
+          ```
   - uid: 'excel!Excel.WorksheetFreezePanes#toJSON:member(1)'
     summary: >-
       Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to
@@ -152,7 +213,19 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              sheet.freezePanes.unfreeze();
+
+              await context.sync();
+          }
+          ```
 references:
   - uid: 'excel!Excel.RequestContext:class'
     name: RequestContext

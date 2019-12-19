@@ -31,7 +31,22 @@ items:
       return:
         type:
           - 'excel!Excel.NamedItem:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let headerRange = sheet.getRange("A1:D1");
+
+              sheet.names.add("ExpensesHeader", headerRange);
+              let namedItems = sheet.names.load("name, type");
+
+              await context.sync();
+          }
+          ```
       parameters:
         - id: name
           description: The name of the named item.

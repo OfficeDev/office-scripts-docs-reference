@@ -31,7 +31,24 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          // Get the current worksheet.
+          let workbook = context.workbook;
+          let worksheets = workbook.worksheets;
+          let selectedSheet = worksheets.getActiveWorksheet();
+
+          // Create a table with the used cells.
+          let usedRange = selectedSheet.getUsedRange();
+          let newTable = selectedSheet.tables.add(usedRange, true);
+
+          // Sort the table using the first column.
+          newTable.sort.apply([{ key: 0, ascending: true }]);
+          ```
       parameters:
         - id: fields
           description: The list of conditions to sort on.
