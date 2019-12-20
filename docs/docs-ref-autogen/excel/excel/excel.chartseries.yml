@@ -177,7 +177,28 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+            let sheet = context.workbook.worksheets.getItem("Sample");
+            let seriesCollection = sheet.charts.getItemAt(0).series;
+            seriesCollection.load("count");
+            await context.sync();
+
+            if (seriesCollection.count > 0) {
+              let series = seriesCollection.getItemAt(0);
+
+              // Delete the first series.
+              series.delete();
+            }
+
+            await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartSeries#doughnutHoleSize:member'
     summary: >-
       Represents the doughnut hole size of a chart series. Only valid on doughnut and doughnutExploded charts. Throws an
@@ -488,6 +509,40 @@ items:
       return:
         type:
           - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = sheet.getRange("A1:E7");
+
+              // Create an XY scatter chart.
+              let chart = sheet.charts.add("XYScatterSmooth", dataRange, "Auto");
+              chart.title.text = "Bicycle Parts Quarterly Sales"; 
+            
+              let series = chart.series;
+              let series0 = series.getItemAt(0);
+              let series1 = series.getItemAt(1);
+              let series2 = series.getItemAt(2);
+              let series3 = series.getItemAt(3);
+
+              // Set markers.
+              series0.markerStyle = "Dash";
+              series0.markerForegroundColor = "black";
+              series1.markerStyle = "Star";
+              series1.markerForegroundColor = "black";
+              series2.markerStyle = "X";
+              series2.markerSize = 12;
+              series3.markerStyle = "Triangle";
+              series3.markerBackgroundColor = "purple";
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartSeries#markerForegroundColor:member'
     summary: Represents markers foreground color of a chart series.
     name: markerForegroundColor
@@ -500,6 +555,40 @@ items:
       return:
         type:
           - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = sheet.getRange("A1:E7");
+
+              // Create an XY scatter chart.
+              let chart = sheet.charts.add("XYScatterSmooth", dataRange, "Auto");
+              chart.title.text = "Bicycle Parts Quarterly Sales"; 
+            
+              let series = chart.series;
+              let series0 = series.getItemAt(0);
+              let series1 = series.getItemAt(1);
+              let series2 = series.getItemAt(2);
+              let series3 = series.getItemAt(3);
+
+              // Set markers.
+              series0.markerStyle = "Dash";
+              series0.markerForegroundColor = "black";
+              series1.markerStyle = "Star";
+              series1.markerForegroundColor = "black";
+              series2.markerStyle = "X";
+              series2.markerSize = 12;
+              series3.markerStyle = "Triangle";
+              series3.markerBackgroundColor = "purple";
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartSeries#markerSize:member'
     summary: Represents marker size of a chart series.
     name: markerSize
@@ -512,6 +601,40 @@ items:
       return:
         type:
           - number
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = sheet.getRange("A1:E7");
+
+              // Create an XY scatter chart.
+              let chart = sheet.charts.add("XYScatterSmooth", dataRange, "Auto");
+              chart.title.text = "Bicycle Parts Quarterly Sales"; 
+            
+              let series = chart.series;
+              let series0 = series.getItemAt(0);
+              let series1 = series.getItemAt(1);
+              let series2 = series.getItemAt(2);
+              let series3 = series.getItemAt(3);
+
+              // Set markers.
+              series0.markerStyle = "Dash";
+              series0.markerForegroundColor = "black";
+              series1.markerStyle = "Star";
+              series1.markerForegroundColor = "black";
+              series2.markerStyle = "X";
+              series2.markerSize = 12;
+              series3.markerStyle = "Triangle";
+              series3.markerBackgroundColor = "purple";
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartSeries#markerStyle:member'
     summary: Represents marker style of a chart series. See Excel.ChartMarkerStyle for details.
     name: markerStyle
@@ -526,6 +649,40 @@ items:
       return:
         type:
           - 'excel!Excel.ChartSeries#markerStyle~0:complex'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let salesTable = sheet.tables.getItem("SalesTable");
+              let dataRange = sheet.getRange("A1:E7");
+
+              // Create an XY scatter chart.
+              let chart = sheet.charts.add("XYScatterSmooth", dataRange, "Auto");
+              chart.title.text = "Bicycle Parts Quarterly Sales"; 
+            
+              let series = chart.series;
+              let series0 = series.getItemAt(0);
+              let series1 = series.getItemAt(1);
+              let series2 = series.getItemAt(2);
+              let series3 = series.getItemAt(3);
+
+              // Set markers.
+              series0.markerStyle = "Dash";
+              series0.markerForegroundColor = "black";
+              series1.markerStyle = "Star";
+              series1.markerForegroundColor = "black";
+              series2.markerStyle = "X";
+              series2.markerSize = 12;
+              series3.markerStyle = "Triangle";
+              series3.markerBackgroundColor = "purple";
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.ChartSeries#name:member'
     summary: Represents the name of a series in a chart.
     name: name
@@ -650,7 +807,27 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+            let sheet = context.workbook.worksheets.getItem("Sample");
+
+            let seriesCollection = sheet.charts.getItemAt(0);
+            let rangeSelection = sheet.getRange("C2:C7");
+            let xRangeSelection = sheet.getRange("A1:A7");
+
+            // Add a series.
+            let newSeries = seriesCollection.series.add("Qtr2");
+            newSeries.setValues(rangeSelection);
+            newSeries.setXAxisValues(xRangeSelection);
+
+            await context.sync();
+          }
+          ```
       parameters:
         - id: sourceData
           description: The Range object corresponding to the source data.

@@ -81,7 +81,19 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let textbox = shapes.getItem("Textbox");
+              textbox.textFrame.deleteText();
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.TextFrame#hasText:member'
     summary: Specifies whether the text frame contains text.
     name: hasText

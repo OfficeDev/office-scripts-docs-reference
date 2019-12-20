@@ -404,6 +404,24 @@ items:
       return:
         type:
           - 'excel!Excel.TableSort:class'
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          // Get the current worksheet.
+          let workbook = context.workbook;
+          let worksheets = workbook.worksheets;
+          let selectedSheet = worksheets.getActiveWorksheet();
+
+          // Create a table with the used cells.
+          let usedRange = selectedSheet.getUsedRange();
+          let newTable = selectedSheet.tables.add(usedRange, true);
+
+          // Sort the table using the first column.
+          newTable.sort.apply([{ key: 0, ascending: true }]);
+          ```
   - uid: 'excel!Excel.Table#style:member'
     summary: >-
       Constant value that represents the Table style. Possible values are: "TableStyleLight1" through

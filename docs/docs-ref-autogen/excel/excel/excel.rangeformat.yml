@@ -51,7 +51,7 @@ items:
         - id: amount
           description: >-
             The number of character spaces by which the current indent is adjusted. This value should be between -250
-            and 250. \*Note\*\*: If the amount would raise the indent level above 250, the indent level stays with 250.
+            and 250. *Note**: If the amount would raise the indent level above 250, the indent level stays with 250.
             Similarly, if the amount would lower the indent level below 0, the indent level stays 0.
           type:
             - number
@@ -318,6 +318,23 @@ items:
       return:
         type:
           - number
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:E2");
+
+              // Set textOrientation to either an integer between -90 and 90
+              // or to 180 for vertically-oriented text.
+              range.format.textOrientation = 90;
+
+              await context.sync();
+          }
+          ```
   - uid: 'excel!Excel.RangeFormat#useStandardHeight:member'
     summary: >-
       Determines if the row height of the Range object equals the standard height of the sheet. Returns True if the row

@@ -187,7 +187,23 @@ items:
       return:
         type:
           - 'excel!Excel.Range:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+
+              let myWorkbook = context.workbook;
+              let activeCell = myWorkbook.getActiveCell();
+              activeCell.load("address");
+
+              await context.sync();
+              
+              console.log("The active cell is " + activeCell.address);
+          }
+          ```
   - uid: 'excel!Excel.Workbook#getActiveChart:member(1)'
     summary: >-
       Gets the currently active chart in the workbook. If there is no active chart, an `ItemNotFound` exception is
@@ -288,7 +304,20 @@ items:
       return:
         type:
           - 'excel!Excel.RangeAreas:class'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+
+              let selectedRanges = context.workbook.getSelectedRanges();
+              selectedRanges.format.fill.color = "lightblue";
+
+              await context.sync();
+          })
+          ```
   - uid: 'excel!Excel.Workbook#isDirty:member'
     summary: >-
       Specifies whether or not changes have been made since the workbook was last saved. You can set this property to
@@ -425,6 +454,37 @@ items:
       return:
         type:
           - 'excel!Excel.DocumentProperties:class'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let titleValue = "Excel document properties API";
+              let subjectValue = "Set and get document properties";
+              let keywordsValue = "Set and get operations";
+              let commentsValue = "This is an Excel document properties API code sample";
+              let categoryValue = "Office Add-ins";
+              let managerValue = "John";
+              let companyValue = "Microsoft";
+
+              let docProperties = context.workbook.properties;
+
+              // Set the writeable document properties.
+              docProperties.title = titleValue;
+              docProperties.subject = subjectValue;
+              docProperties.keywords = keywordsValue;
+              docProperties.comments = commentsValue;
+              docProperties.category = categoryValue;
+              docProperties.manager = managerValue;
+              docProperties.company = companyValue;
+
+              await context.sync();
+
+              console.log("Set the following document properties: title, subject, keywords, comments, category, manager, company.");
+          }
+          ```
   - uid: 'excel!Excel.Workbook#protection:member'
     summary: Returns workbook protection object for a workbook. Read-only.
     name: protection
@@ -515,6 +575,33 @@ items:
       return:
         type:
           - 'excel!Excel.StyleCollection:class'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let styles = context.workbook.styles;
+
+              // Add a new style to the style collection.
+              // Styles is in the Home tab ribbon.
+              styles.add("Diagonal Orientation Style");
+                    
+              let newStyle = styles.getItem("Diagonal Orientation Style");
+              
+              // The "Diagonal Orientation Style" properties.
+              newStyle.textOrientation = 38;
+              newStyle.autoIndent = true;
+              newStyle.includeProtection = true;
+              newStyle.shrinkToFit = true;
+              newStyle.locked = false;
+              
+              await context.sync();
+
+              console.log("Successfully added a new style with diagonal orientation to the Home tab ribbon.");
+          }
+          ```
   - uid: 'excel!Excel.Workbook#tables:member'
     summary: Represents a collection of tables associated with the workbook. Read-only.
     name: tables

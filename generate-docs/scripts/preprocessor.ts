@@ -3,7 +3,7 @@
 // import { promptFromList } from './simple-prompts';
 import * as path from "path";
 import * as fsx from 'fs-extra';
-// import yaml = require('js-yaml');
+import yaml = require('js-yaml');
 
 tryCatch(async () => {
     // ----
@@ -28,77 +28,55 @@ tryCatch(async () => {
     let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
 
     console.log("\ncreate file: excel.d.ts (preview)");
-    fsx.writeFileSync(
-        '../api-extractor-inputs-excel/excel.d.ts',
-        handleLiteralParameterOverloads(excelSpecificCleanup(releaseDefinitions))
-    );
+    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', handleLiteralParameterOverloads(releaseDefinitions));
 
     // TODO: Deal with Script Lab snippets
     // ----
     // Process Snippets
     // ----
-    // console.log("\nRemoving old snippets input files...");
+    console.log("\nRemoving old snippets input files...");
 
-    // const scriptInputsPath = path.resolve("../script-inputs");
-    // fsx.readdirSync(scriptInputsPath)
-    //     .filter(filename => filename.indexOf("snippets") > 0)
-    //     .forEach(filename => fsx.removeSync(scriptInputsPath + '/' + filename));
+    const scriptInputsPath = path.resolve("../script-inputs");
+    fsx.readdirSync(scriptInputsPath)
+        .filter(filename => filename.indexOf("snippets") > 0)
+        .forEach(filename => fsx.removeSync(scriptInputsPath + '/' + filename));
 
-    // console.log("\nCreating snippets file...");
+    console.log("\nCreating snippets file...");
+    console.log("\nReading from files: " + path.resolve("../../docs/code-snippets"));
 
-    // console.log("\nReading from: https://raw.githubusercontent.com/OfficeDev/office-js-snippets/master/snippet-extractor-output/snippets.yaml");
-    // fsx.writeFileSync("../script-inputs/script-lab-snippets.yaml", await fetchAndThrowOnError("https://raw.githubusercontent.com/OfficeDev/office-js-snippets/master/snippet-extractor-output/snippets.yaml", "text"));
+    const snippetsSourcePath = path.resolve("../../docs/code-snippets");
+    let localCodeSnippetsString : string = "";
+    fsx.readdirSync(path.resolve(snippetsSourcePath))
+        .filter(name => name.endsWith('.yaml') || name.endsWith('.yml'))
+        .forEach((filename, index) => {
+            localCodeSnippetsString += fsx.readFileSync(`${snippetsSourcePath}/${filename}`).toString() + "\r\n";
+        });
 
-    // console.log("\nReading from files: " + path.resolve("../../docs/code-snippets"));
-
-    // const snippetsSourcePath = path.resolve("../../docs/code-snippets");
-    // let localCodeSnippetsString : string = "";
-    // fsx.readdirSync(path.resolve(snippetsSourcePath))
-    //     .filter(name => name.endsWith('.yaml') || name.endsWith('.yml'))
-    //     .forEach((filename, index) => {
-    //         localCodeSnippetsString += fsx.readFileSync(`${snippetsSourcePath}/${filename}`).toString() + "\r\n";
-    //     });
-
-    // fsx.writeFileSync("../script-inputs/local-repo-snippets.yaml", localCodeSnippetsString);
+    fsx.writeFileSync("../script-inputs/local-repo-snippets.yaml", localCodeSnippetsString);
 
     // Parse the YAML into an object/hash set.
-    // let snippets: Object = yaml.load(localCodeSnippetsString);
+    let snippets = yaml.load(localCodeSnippetsString);
 
-    // // If a duplicate key exists, merge the Script Lab example(s) into the item with the existing key.
-    // let scriptLabSnippets: Object = yaml.load(fsx.readFileSync(`../script-inputs/script-lab-snippets.yaml`).toString());
-    // for (const key of Object.keys(scriptLabSnippets)) {
-    //     if (snippets[key]) {
-    //         console.log("Combining local and Script Lab snippets for: " + key);
-    //         snippets[key] = snippets[key].concat(scriptLabSnippets[key]);
-    //     } else {
-    //         snippets[key] = scriptLabSnippets[key];
-    //     }
-    // }
-
-    // console.log("\nWriting snippets to: " + path.resolve("../json/snippets.yaml"));
-    // fsx.writeFileSync("../json/snippets.yaml", yaml.safeDump(
-    //     snippets,
-    //     {sortKeys: <any>((a: string, b: string) => {
-    //         if (a < b) {
-    //             return -1;
-    //         } else if (a > b) {
-    //             return 1;
-    //         } else {
-    //             return 0;
-    //         }
-    //     })}
-    // ));
+    let snippetDestination = path.resolve("../json/excel/snippets.yaml")
+    console.log("\nWriting snippets to: " + snippetDestination);
+    fsx.createFileSync(snippetDestination);
+    fsx.writeFileSync(snippetDestination, yaml.safeDump(
+        snippets,
+        {sortKeys: <any>((a: string, b: string) => {
+            if (a < b) {
+                return -1;
+            } else if (a > b) {
+                return 1;
+            } else {
+                return 0;
+            }
+        })}
+    ));
 
     console.log("\nPreprocessor script complete!");
 
     process.exit(0);
 });
-
-function excelSpecificCleanup(dtsContent: string) {
-    return dtsContent.replace(/export interface .*Set {\r?\n.*Icon;/gm, `/** [Api set: ExcelApi 1.2] */\n\t$&`)
-        .replace("export interface IconCollections {", "/** [Api set: ExcelApi 1.2] */\n\texport interface IconCollections {")
-        .replace("var icons: IconCollections;", "/** [Api set: ExcelApi 1.2] */\n\tvar icons: IconCollections;");
-}
 
 function cleanUpDts(localDtsPath: string): string {
     console.log(`\nReading from ${path.resolve(localDtsPath)}`);
