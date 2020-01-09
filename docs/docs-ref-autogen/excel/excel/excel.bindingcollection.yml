@@ -53,13 +53,13 @@ items:
             - string
   - uid: 'excel!Excel.BindingCollection#add:member(2)'
     summary: Add a new binding to a particular Range.
-    name: 'add(range, bindingTypeStringString, id)'
-    fullName: 'add(range, bindingTypeStringString, id)'
+    name: 'add(range, bindingTypeString, id)'
+    fullName: 'add(range, bindingTypeString, id)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'add(range: Range | string, bindingTypeStringString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
+      content: 'add(range: Range | string, bindingTypeString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
       return:
         type:
           - 'excel!Excel.Binding:class'
@@ -71,7 +71,7 @@ items:
             address, including the sheet name
           type:
             - 'excel!Excel.BindingCollection#add~1:complex'
-        - id: bindingTypeStringString
+        - id: bindingTypeString
           description: Type of binding. See Excel.BindingType.
           type:
             - '"Range" | "Table" | "Text"'
@@ -111,13 +111,13 @@ items:
     summary: >-
       Add a new binding based on a named item in the workbook. If the named item references to multiple areas, the
       "InvalidReference" error will be returned.
-    name: 'addFromNamedItem(name, bindingTypeStringString, id)'
-    fullName: 'addFromNamedItem(name, bindingTypeStringString, id)'
+    name: 'addFromNamedItem(name, bindingTypeString, id)'
+    fullName: 'addFromNamedItem(name, bindingTypeString, id)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'addFromNamedItem(name: string, bindingTypeStringString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
+      content: 'addFromNamedItem(name: string, bindingTypeString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
       return:
         type:
           - 'excel!Excel.Binding:class'
@@ -127,7 +127,7 @@ items:
           description: Name from which to create binding.
           type:
             - string
-        - id: bindingTypeStringString
+        - id: bindingTypeString
           description: Type of binding. See Excel.BindingType.
           type:
             - '"Range" | "Table" | "Text"'
@@ -163,19 +163,19 @@ items:
     summary: >-
       Add a new binding based on the current selection. If the selection has multiple areas, the "InvalidReference"
       error will be returned.
-    name: 'addFromSelection(bindingTypeStringString, id)'
-    fullName: 'addFromSelection(bindingTypeStringString, id)'
+    name: 'addFromSelection(bindingTypeString, id)'
+    fullName: 'addFromSelection(bindingTypeString, id)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'addFromSelection(bindingTypeStringString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
+      content: 'addFromSelection(bindingTypeString: "Range" | "Table" | "Text", id: string): Excel.Binding;'
       return:
         type:
           - 'excel!Excel.Binding:class'
         description: ''
       parameters:
-        - id: bindingTypeStringString
+        - id: bindingTypeString
           description: Type of binding. See Excel.BindingType.
           type:
             - '"Range" | "Table" | "Text"'

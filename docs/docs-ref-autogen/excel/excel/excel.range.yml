@@ -203,15 +203,15 @@ items:
       For more information, read [Use AutoFill and Flash
       Fill](https://support.office.com/article/video-use-autofill-and-flash-fill-2e79a709-c814-4b27-8bc2-c4dc84d49464)<!--
       -->.
-    name: 'autoFill(destinationRange, autoFillTypeStringString)'
-    fullName: 'autoFill(destinationRange, autoFillTypeStringString)'
+    name: 'autoFill(destinationRange, autoFillTypeString)'
+    fullName: 'autoFill(destinationRange, autoFillTypeString)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        autoFill(destinationRange?: Range | string, autoFillTypeStringString?: "FillDefault" | "FillCopy" | "FillSeries"
-        | "FillFormats" | "FillValues" | "FillDays" | "FillWeekdays" | "FillMonths" | "FillYears" | "LinearTrend" |
+        autoFill(destinationRange?: Range | string, autoFillTypeString?: "FillDefault" | "FillCopy" | "FillSeries" |
+        "FillFormats" | "FillValues" | "FillDays" | "FillWeekdays" | "FillMonths" | "FillYears" | "LinearTrend" |
         "GrowthTrend" | "FlashFill"): void;
       return:
         type:
@@ -224,7 +224,7 @@ items:
             surrounding cells (which is the behavior when double-clicking the UI’s range fill handle).
           type:
             - 'excel!Excel.Range#autoFill~1:complex'
-        - id: autoFillTypeStringString
+        - id: autoFillTypeString
           description: >-
             The type of autofill. Specifies how the destination range is to be filled, based on the contents of the
             current range. Default is "FillDefault".
@@ -277,19 +277,19 @@ items:
             - 'excel!Excel.ClearApplyTo:enum'
   - uid: 'excel!Excel.Range#clear:member(2)'
     summary: 'Clear range values, format, fill, border, etc.'
-    name: clear(applyToStringString)
-    fullName: clear(applyToStringString)
+    name: clear(applyToString)
+    fullName: clear(applyToString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'clear(applyToStringString?: "All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"): void;'
+      content: 'clear(applyToString?: "All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: applyToStringString
+        - id: applyToString
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
           type:
             - '"All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"'
@@ -448,15 +448,15 @@ items:
       Copies cell data or formatting from the source range or RangeAreas to the current range. The destination range can
       be a different size than the source range or RangeAreas. The destination will be expanded automatically if it is
       smaller than the source.
-    name: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
-    fullName: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
+    name: 'copyFrom(sourceRange, copyTypeString, skipBlanks, transpose)'
+    fullName: 'copyFrom(sourceRange, copyTypeString, skipBlanks, transpose)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        copyFrom(sourceRange: Range | RangeAreas | string, copyTypeStringString?: "All" | "Formulas" | "Values" |
-        "Formats", skipBlanks?: boolean, transpose?: boolean): void;
+        copyFrom(sourceRange: Range | RangeAreas | string, copyTypeString?: "All" | "Formulas" | "Values" | "Formats",
+        skipBlanks?: boolean, transpose?: boolean): void;
       return:
         type:
           - void
@@ -468,7 +468,7 @@ items:
             be able to be created by removing full rows or columns from a rectangular range.
           type:
             - 'excel!Excel.Range#copyFrom~1:complex'
-        - id: copyTypeStringString
+        - id: copyTypeString
           description: The type of cell data or formatting to copy over. Default is "All".
           type:
             - '"All" | "Formulas" | "Values" | "Formats"'
@@ -512,19 +512,19 @@ items:
             - 'excel!Excel.DeleteShiftDirection:enum'
   - uid: 'excel!Excel.Range#delete:member(2)'
     summary: Deletes the cells associated with the range.
-    name: delete(shiftStringString)
-    fullName: delete(shiftStringString)
+    name: delete(shiftString)
+    fullName: delete(shiftString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'delete(shiftStringString: "Up" | "Left"): void;'
+      content: 'delete(shiftString: "Up" | "Left"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: shiftStringString
+        - id: shiftString
           description: Specifies which way to shift the cells. See Excel.DeleteShiftDirection for details.
           type:
             - '"Up" | "Left"'
@@ -1269,24 +1269,23 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more rectangular ranges, that represents all the cells that match
       the specified type and value. If no special cells are found, an ItemNotFound error will be thrown.
-    name: 'getSpecialCells(cellTypeStringString, cellValueType)'
-    fullName: 'getSpecialCells(cellTypeStringString, cellValueType)'
+    name: 'getSpecialCells(cellTypeString, cellValueType)'
+    fullName: 'getSpecialCells(cellTypeString, cellValueType)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getSpecialCells(cellTypeStringString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" |
-        "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" |
-        "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
-        "ErrorsNumberText" | "Logical" | "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" |
-        "NumbersText" | "Text"): Excel.RangeAreas;
+        getSpecialCells(cellTypeString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" | "Formulas" |
+        "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" | "ErrorsLogical" |
+        "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" | "ErrorsNumberText" | "Logical" |
+        "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" | "NumbersText" | "Text"): Excel.RangeAreas;
       return:
         type:
           - 'excel!Excel.RangeAreas:class'
         description: ''
       parameters:
-        - id: cellTypeStringString
+        - id: cellTypeString
           description: The type of cells to include.
           type:
             - >-
@@ -1335,16 +1334,16 @@ items:
     summary: >-
       Gets the RangeAreas object, comprising one or more ranges, that represents all the cells that match the specified
       type and value. If no special cells are found, a null object will be returned.
-    name: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
-    fullName: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
+    name: 'getSpecialCellsOrNullObject(cellTypeString, cellValueType)'
+    fullName: 'getSpecialCellsOrNullObject(cellTypeString, cellValueType)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getSpecialCellsOrNullObject(cellTypeStringString: "ConditionalFormats" | "DataValidations" | "Blanks" |
-        "Constants" | "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" |
-        "Errors" | "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
+        getSpecialCellsOrNullObject(cellTypeString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" |
+        "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" |
+        "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
         "ErrorsNumberText" | "Logical" | "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" |
         "NumbersText" | "Text"): Excel.RangeAreas;
       return:
@@ -1352,7 +1351,7 @@ items:
           - 'excel!Excel.RangeAreas:class'
         description: ''
       parameters:
-        - id: cellTypeStringString
+        - id: cellTypeString
           description: The type of cells to include.
           type:
             - >-
@@ -1594,19 +1593,19 @@ items:
             - 'excel!Excel.GroupOption:enum'
   - uid: 'excel!Excel.Range#group:member(2)'
     summary: Groups columns and rows for an outline.
-    name: group(groupOptionStringString)
-    fullName: group(groupOptionStringString)
+    name: group(groupOptionString)
+    fullName: group(groupOptionString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'group(groupOptionStringString: "ByRows" | "ByColumns"): void;'
+      content: 'group(groupOptionString: "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: groupOptionStringString
+        - id: groupOptionString
           description: >-
             Specifies how the range can be grouped by rows or columns. An `InvalidArgument` error is thrown when the
             group option differs from the range's `isEntireRow` or `isEntireColumn` property (i.e., `range.isEntireRow`
@@ -1657,19 +1656,19 @@ items:
             - 'excel!Excel.GroupOption:enum'
   - uid: 'excel!Excel.Range#hideGroupDetails:member(2)'
     summary: Hide details of the row or column group.
-    name: hideGroupDetails(groupOptionStringString)
-    fullName: hideGroupDetails(groupOptionStringString)
+    name: hideGroupDetails(groupOptionString)
+    fullName: hideGroupDetails(groupOptionString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'hideGroupDetails(groupOptionStringString: "ByRows" | "ByColumns"): void;'
+      content: 'hideGroupDetails(groupOptionString: "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: groupOptionStringString
+        - id: groupOptionString
           description: Specifies whether to hide details of grouped rows or grouped columns.
           type:
             - '"ByRows" | "ByColumns"'
@@ -1740,19 +1739,19 @@ items:
     summary: >-
       Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make
       space. Returns a new Range object at the now blank space.
-    name: insert(shiftStringString)
-    fullName: insert(shiftStringString)
+    name: insert(shiftString)
+    fullName: insert(shiftString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'insert(shiftStringString: "Down" | "Right"): Excel.Range;'
+      content: 'insert(shiftString: "Down" | "Right"): Excel.Range;'
       return:
         type:
           - 'excel!Excel.Range:class'
         description: ''
       parameters:
-        - id: shiftStringString
+        - id: shiftString
           description: Specifies which way to shift the cells. See Excel.InsertShiftDirection for details.
           type:
             - '"Down" | "Right"'
@@ -2286,19 +2285,19 @@ items:
             - 'excel!Excel.GroupOption:enum'
   - uid: 'excel!Excel.Range#showGroupDetails:member(2)'
     summary: Show details of the row or column group.
-    name: showGroupDetails(groupOptionStringString)
-    fullName: showGroupDetails(groupOptionStringString)
+    name: showGroupDetails(groupOptionString)
+    fullName: showGroupDetails(groupOptionString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'showGroupDetails(groupOptionStringString: "ByRows" | "ByColumns"): void;'
+      content: 'showGroupDetails(groupOptionString: "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: groupOptionStringString
+        - id: groupOptionString
           description: Specifies whether to show details of grouped rows or grouped columns.
           type:
             - '"ByRows" | "ByColumns"'
@@ -2457,19 +2456,19 @@ items:
             - 'excel!Excel.GroupOption:enum'
   - uid: 'excel!Excel.Range#ungroup:member(2)'
     summary: Ungroups columns and rows for an outline.
-    name: ungroup(groupOptionStringString)
-    fullName: ungroup(groupOptionStringString)
+    name: ungroup(groupOptionString)
+    fullName: ungroup(groupOptionString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'ungroup(groupOptionStringString: "ByRows" | "ByColumns"): void;'
+      content: 'ungroup(groupOptionString: "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: groupOptionStringString
+        - id: groupOptionString
           description: Specifies how the range can be ungrouped by rows or columns.
           type:
             - '"ByRows" | "ByColumns"'

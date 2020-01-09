@@ -171,21 +171,21 @@ items:
             - 'excel!Excel.PivotLayout#getPivotItems~1:complex'
   - uid: 'excel!Excel.PivotLayout#getPivotItems:member(2)'
     summary: Gets the PivotItems from an axis that make up the value in a specified range within the PivotTable.
-    name: 'getPivotItems(axisStringString, cell)'
-    fullName: 'getPivotItems(axisStringString, cell)'
+    name: 'getPivotItems(axisString, cell)'
+    fullName: 'getPivotItems(axisString, cell)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getPivotItems(axisStringString: "Unknown" | "Row" | "Column" | "Data" | "Filter", cell: Range | string):
+        getPivotItems(axisString: "Unknown" | "Row" | "Column" | "Data" | "Filter", cell: Range | string):
         ClientResult<Excel.PivotItem[]>;
       return:
         type:
           - 'excel!Excel.PivotLayout#getPivotItems~2:complex'
         description: A collection of PivotItems that are used to calculate the values in the specified row.
       parameters:
-        - id: axisStringString
+        - id: axisString
           description: The axis from which to get the PivotItems. Must be either "row" or "column."
           type:
             - '"Unknown" | "Row" | "Column" | "Data" | "Filter"'
@@ -343,13 +343,13 @@ items:
     summary: >-
       Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria
       and context. This behaves identically to applying an autosort from the UI.
-    name: 'setAutoSortOnCell(cell, sortByStringString)'
-    fullName: 'setAutoSortOnCell(cell, sortByStringString)'
+    name: 'setAutoSortOnCell(cell, sortByString)'
+    fullName: 'setAutoSortOnCell(cell, sortByString)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setAutoSortOnCell(cell: Range | string, sortByStringString: "Ascending" | "Descending"): void;'
+      content: 'setAutoSortOnCell(cell: Range | string, sortByString: "Ascending" | "Descending"): void;'
       return:
         type:
           - void
@@ -359,7 +359,7 @@ items:
           description: A single cell to use get the criteria from for applying the autosort.
           type:
             - 'excel!Excel.PivotLayout#setAutoSortOnCell~1:complex'
-        - id: sortByStringString
+        - id: sortByString
           description: The direction of the sort.
           type:
             - '"Ascending" | "Descending"'

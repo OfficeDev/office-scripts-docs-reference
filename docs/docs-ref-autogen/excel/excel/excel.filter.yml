@@ -127,13 +127,13 @@ items:
             - 'excel!Excel.FilterOperator:enum'
   - uid: 'excel!Excel.Filter#applyCustomFilter:member(2)'
     summary: Apply an "Icon" filter to the column for the given criteria strings.
-    name: 'applyCustomFilter(criteria1, criteria2, operStringString)'
-    fullName: 'applyCustomFilter(criteria1, criteria2, operStringString)'
+    name: 'applyCustomFilter(criteria1, criteria2, operString)'
+    fullName: 'applyCustomFilter(criteria1, criteria2, operString)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'applyCustomFilter(criteria1: string, criteria2?: string, operStringString?: "And" | "Or"): void;'
+      content: 'applyCustomFilter(criteria1: string, criteria2?: string, operString?: "And" | "Or"): void;'
       return:
         type:
           - void
@@ -147,7 +147,7 @@ items:
           description: Optional. The second criteria string.
           type:
             - string
-        - id: operStringString
+        - id: operString
           description: Optional. The operator that describes how the two criteria are joined.
           type:
             - '"And" | "Or"'
@@ -171,14 +171,14 @@ items:
             - 'excel!Excel.DynamicFilterCriteria:enum'
   - uid: 'excel!Excel.Filter#applyDynamicFilter:member(2)'
     summary: Apply a "Dynamic" filter to the column.
-    name: applyDynamicFilter(criteriaStringString)
-    fullName: applyDynamicFilter(criteriaStringString)
+    name: applyDynamicFilter(criteriaString)
+    fullName: applyDynamicFilter(criteriaString)
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        applyDynamicFilter(criteriaStringString: "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" |
+        applyDynamicFilter(criteriaString: "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" |
         "AllDatesInPeriodAugust" | "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" |
         "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" |
         "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2"
@@ -191,7 +191,7 @@ items:
           - void
         description: ''
       parameters:
-        - id: criteriaStringString
+        - id: criteriaString
           description: The dynamic criteria to apply.
           type:
             - >-

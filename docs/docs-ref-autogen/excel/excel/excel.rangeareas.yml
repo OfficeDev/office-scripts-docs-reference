@@ -147,19 +147,19 @@ items:
             - 'excel!Excel.ClearApplyTo:enum'
   - uid: 'excel!Excel.RangeAreas#clear:member(2)'
     summary: 'Clears values, format, fill, border, etc on each of the areas that comprise this RangeAreas object.'
-    name: clear(applyToStringString)
-    fullName: clear(applyToStringString)
+    name: clear(applyToString)
+    fullName: clear(applyToString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'clear(applyToStringString?: "All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"): void;'
+      content: 'clear(applyToString?: "All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: applyToStringString
+        - id: applyToString
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details. Default is "All".
           type:
             - '"All" | "Formats" | "Contents" | "Hyperlinks" | "RemoveHyperlinks"'
@@ -266,15 +266,15 @@ items:
       Copies cell data or formatting from the source range or RangeAreas to the current RangeAreas. The destination
       rangeAreas can be a different size than the source range or RangeAreas. The destination will be expanded
       automatically if it is smaller than the source.
-    name: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
-    fullName: 'copyFrom(sourceRange, copyTypeStringString, skipBlanks, transpose)'
+    name: 'copyFrom(sourceRange, copyTypeString, skipBlanks, transpose)'
+    fullName: 'copyFrom(sourceRange, copyTypeString, skipBlanks, transpose)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        copyFrom(sourceRange: Range | RangeAreas | string, copyTypeStringString?: "All" | "Formulas" | "Values" |
-        "Formats", skipBlanks?: boolean, transpose?: boolean): void;
+        copyFrom(sourceRange: Range | RangeAreas | string, copyTypeString?: "All" | "Formulas" | "Values" | "Formats",
+        skipBlanks?: boolean, transpose?: boolean): void;
       return:
         type:
           - void
@@ -286,7 +286,7 @@ items:
             able to be created by removing full rows or columns from a rectangular range.
           type:
             - 'excel!Excel.RangeAreas#copyFrom~1:complex'
-        - id: copyTypeStringString
+        - id: copyTypeString
           description: The type of cell data or formatting to copy over. Default is "All".
           type:
             - '"All" | "Formulas" | "Values" | "Formats"'
@@ -472,24 +472,23 @@ items:
     summary: >-
       Returns a RangeAreas object that represents all the cells that match the specified type and value. Throws an error
       if no special cells are found that match the criteria.
-    name: 'getSpecialCells(cellTypeStringString, cellValueType)'
-    fullName: 'getSpecialCells(cellTypeStringString, cellValueType)'
+    name: 'getSpecialCells(cellTypeString, cellValueType)'
+    fullName: 'getSpecialCells(cellTypeString, cellValueType)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getSpecialCells(cellTypeStringString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" |
-        "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" |
-        "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
-        "ErrorsNumberText" | "Logical" | "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" |
-        "NumbersText" | "Text"): Excel.RangeAreas;
+        getSpecialCells(cellTypeString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" | "Formulas" |
+        "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" | "ErrorsLogical" |
+        "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" | "ErrorsNumberText" | "Logical" |
+        "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" | "NumbersText" | "Text"): Excel.RangeAreas;
       return:
         type:
           - 'excel!Excel.RangeAreas:class'
         description: ''
       parameters:
-        - id: cellTypeStringString
+        - id: cellTypeString
           description: The type of cells to include.
           type:
             - >-
@@ -538,16 +537,16 @@ items:
     summary: >-
       Returns a RangeAreas object that represents all the cells that match the specified type and value. Returns a null
       object if no special cells are found that match the criteria.
-    name: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
-    fullName: 'getSpecialCellsOrNullObject(cellTypeStringString, cellValueType)'
+    name: 'getSpecialCellsOrNullObject(cellTypeString, cellValueType)'
+    fullName: 'getSpecialCellsOrNullObject(cellTypeString, cellValueType)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getSpecialCellsOrNullObject(cellTypeStringString: "ConditionalFormats" | "DataValidations" | "Blanks" |
-        "Constants" | "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" |
-        "Errors" | "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
+        getSpecialCellsOrNullObject(cellTypeString: "ConditionalFormats" | "DataValidations" | "Blanks" | "Constants" |
+        "Formulas" | "SameConditionalFormat" | "SameDataValidation" | "Visible", cellValueType?: "All" | "Errors" |
+        "ErrorsLogical" | "ErrorsNumbers" | "ErrorsText" | "ErrorsLogicalNumber" | "ErrorsLogicalText" |
         "ErrorsNumberText" | "Logical" | "LogicalNumbers" | "LogicalText" | "LogicalNumbersText" | "Numbers" |
         "NumbersText" | "Text"): Excel.RangeAreas;
       return:
@@ -555,7 +554,7 @@ items:
           - 'excel!Excel.RangeAreas:class'
         description: ''
       parameters:
-        - id: cellTypeStringString
+        - id: cellTypeString
           description: The type of cells to include.
           type:
             - >-
