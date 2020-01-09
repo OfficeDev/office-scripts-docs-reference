@@ -73,15 +73,15 @@ items:
     summary: >-
       Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
       provided range is larger than one cell.
-    name: 'add(cellAddress, content, contentTypeStringString)'
-    fullName: 'add(cellAddress, content, contentTypeStringString)'
+    name: 'add(cellAddress, content, contentTypeString)'
+    fullName: 'add(cellAddress, content, contentTypeString)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        add(cellAddress: Range | string, content: CommentRichContent | string, contentTypeStringString?: "Plain" |
-        "Mention"): Excel.Comment;
+        add(cellAddress: Range | string, content: CommentRichContent | string, contentTypeString?: "Plain" | "Mention"):
+        Excel.Comment;
       return:
         type:
           - 'excel!Excel.Comment:class'
@@ -100,7 +100,7 @@ items:
             text. CommentRichContent objects allow for other comment features, such as mentions.
           type:
             - 'excel!Excel.CommentCollection#add~3:complex'
-        - id: contentTypeStringString
+        - id: contentTypeString
           description: >-
             Optional. The type of content contained within the comment. The default value is enum
             `ContentType.Plain`<!-- -->.
