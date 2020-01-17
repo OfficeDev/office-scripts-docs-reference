@@ -284,19 +284,19 @@ items:
       Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
       formats are `Excel.PictureFormat.BMP`<!-- -->, `Excel.PictureFormat.PNG`<!-- -->, `Excel.PictureFormat.JPEG`<!--
       -->, and `Excel.PictureFormat.GIF`<!-- -->.
-    name: getAsImage(formatStringString)
-    fullName: getAsImage(formatStringString)
+    name: getAsImage(formatString)
+    fullName: getAsImage(formatString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'getAsImage(formatStringString: "UNKNOWN" | "BMP" | "JPEG" | "GIF" | "PNG" | "SVG"): ClientResult<string>;'
+      content: 'getAsImage(formatString: "UNKNOWN" | "BMP" | "JPEG" | "GIF" | "PNG" | "SVG"): ClientResult<string>;'
       return:
         type:
           - 'excel!Excel.Shape#getAsImage~1:complex'
         description: ''
       parameters:
-        - id: formatStringString
+        - id: formatString
           description: Specifies the format of the image.
           type:
             - '"UNKNOWN" | "BMP" | "JPEG" | "GIF" | "PNG" | "SVG"'
@@ -731,15 +731,15 @@ items:
       Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the
       shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
       current height.
-    name: 'scaleHeight(scaleFactor, scaleTypeStringString, scaleFrom)'
-    fullName: 'scaleHeight(scaleFactor, scaleTypeStringString, scaleFrom)'
+    name: 'scaleHeight(scaleFactor, scaleTypeString, scaleFrom)'
+    fullName: 'scaleHeight(scaleFactor, scaleTypeString, scaleFrom)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        scaleHeight(scaleFactor: number, scaleTypeStringString: "CurrentSize" | "OriginalSize", scaleFrom?:
-        "ScaleFromTopLeft" | "ScaleFromMiddle" | "ScaleFromBottomRight"): void;
+        scaleHeight(scaleFactor: number, scaleTypeString: "CurrentSize" | "OriginalSize", scaleFrom?: "ScaleFromTopLeft"
+        | "ScaleFromMiddle" | "ScaleFromBottomRight"): void;
       return:
         type:
           - void
@@ -749,7 +749,7 @@ items:
           description: Specifies the ratio between the height of the shape after you resize it and the current or original height.
           type:
             - number
-        - id: scaleTypeStringString
+        - id: scaleTypeString
           description: >-
             Specifies whether the shape is scaled relative to its original or current size. The original size scaling
             option only works for images.
@@ -799,15 +799,15 @@ items:
       Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the
       shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
       current width.
-    name: 'scaleWidth(scaleFactor, scaleTypeStringString, scaleFrom)'
-    fullName: 'scaleWidth(scaleFactor, scaleTypeStringString, scaleFrom)'
+    name: 'scaleWidth(scaleFactor, scaleTypeString, scaleFrom)'
+    fullName: 'scaleWidth(scaleFactor, scaleTypeString, scaleFrom)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        scaleWidth(scaleFactor: number, scaleTypeStringString: "CurrentSize" | "OriginalSize", scaleFrom?:
-        "ScaleFromTopLeft" | "ScaleFromMiddle" | "ScaleFromBottomRight"): void;
+        scaleWidth(scaleFactor: number, scaleTypeString: "CurrentSize" | "OriginalSize", scaleFrom?: "ScaleFromTopLeft"
+        | "ScaleFromMiddle" | "ScaleFromBottomRight"): void;
       return:
         type:
           - void
@@ -817,7 +817,7 @@ items:
           description: Specifies the ratio between the width of the shape after you resize it and the current or original width.
           type:
             - number
-        - id: scaleTypeStringString
+        - id: scaleTypeString
           description: >-
             Specifies whether the shape is scaled relative to its original or current size. The original size scaling
             option only works for images.
@@ -881,19 +881,19 @@ items:
             - 'excel!Excel.ShapeZOrder:enum'
   - uid: 'excel!Excel.Shape#setZOrder:member(2)'
     summary: 'Moves the specified shape up or down the collection''s z-order, which shifts it in front of or behind other shapes.'
-    name: setZOrder(positionStringString)
-    fullName: setZOrder(positionStringString)
+    name: setZOrder(positionString)
+    fullName: setZOrder(positionString)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setZOrder(positionStringString: "BringToFront" | "BringForward" | "SendToBack" | "SendBackward"): void;'
+      content: 'setZOrder(positionString: "BringToFront" | "BringForward" | "SendToBack" | "SendBackward"): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: positionStringString
+        - id: positionString
           description: >-
             Where to move the shape in the z-order stack relative to the other shapes. See Excel.ShapeZOrder for
             details.

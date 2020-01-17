@@ -208,14 +208,14 @@ items:
     summary: >-
       Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions. The aspect ratio
       is preserved as part of the resizing.
-    name: 'getImage(width, height, fittingModeStringString)'
-    fullName: 'getImage(width, height, fittingModeStringString)'
+    name: 'getImage(width, height, fittingModeString)'
+    fullName: 'getImage(width, height, fittingModeString)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        getImage(width?: number, height?: number, fittingModeStringString?: "Fit" | "FitAndCenter" | "Fill"):
+        getImage(width?: number, height?: number, fittingModeString?: "Fit" | "FitAndCenter" | "Fill"):
         ClientResult<string>;
       return:
         type:
@@ -230,7 +230,7 @@ items:
           description: (Optional) The desired height of the resulting image.
           type:
             - number
-        - id: fittingModeStringString
+        - id: fittingModeString
           description: >-
             (Optional) The method used to scale the chart to the specified to the specified dimensions (if both height
             and width are set).
@@ -464,13 +464,13 @@ items:
             - 'excel!Excel.ChartSeriesBy:enum'
   - uid: 'excel!Excel.Chart#setData:member(2)'
     summary: Resets the source data for the chart.
-    name: 'setData(sourceData, seriesByStringString)'
-    fullName: 'setData(sourceData, seriesByStringString)'
+    name: 'setData(sourceData, seriesByString)'
+    fullName: 'setData(sourceData, seriesByString)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setData(sourceData: Range, seriesByStringString?: "Auto" | "Columns" | "Rows"): void;'
+      content: 'setData(sourceData: Range, seriesByString?: "Auto" | "Columns" | "Rows"): void;'
       return:
         type:
           - void
@@ -480,7 +480,7 @@ items:
           description: The range object corresponding to the source data.
           type:
             - 'excel!Excel.Range:class'
-        - id: seriesByStringString
+        - id: seriesByString
           description: >-
             Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto
             (default), Rows, and Columns. See Excel.ChartSeriesBy for details.

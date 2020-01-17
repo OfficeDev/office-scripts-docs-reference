@@ -10,7 +10,7 @@ tryCatch(async () => {
     // Display prompt
     // ----
     console.log('\n\n');
-    // TODO: Add CDN edipoint link
+    // TODO: Add CDN endpoint link
     // const urlToCopyOfficeJsFrom = await promptFromList({
     //     message: `What is the source of the Office-js TypeScript definition file that should be used to generate the Excel Script docs?`,
     //     choices: [
@@ -28,7 +28,7 @@ tryCatch(async () => {
     let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
 
     console.log("\ncreate file: excel.d.ts (preview)");
-    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', handleLiteralParameterOverloads(releaseDefinitions));
+    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', releaseDefinitions);
 
     // TODO: Deal with Script Lab snippets
     // ----
@@ -110,28 +110,29 @@ function applyRegularExpressions (definitionsIn) {
         .replace(/(\s*)(@param)(\s+)(\w+)(\s+)([^\-])/g, `$1$2$3$4$5- $6`);
 }
 
-function handleLiteralParameterOverloads(dtsString: string): string {
-    // rename parameters for string literal overloads
-    const matches = dtsString.match(/([a-zA-Z]+)\??: (\"[a-zA-Z]*\").*:/g);
-    let matchIndex = 0;
-    matches.forEach((match) => {
-        let parameterName = match.substring(0, match.indexOf(": "));
-        matchIndex = dtsString.indexOf(match, matchIndex);
-        parameterName = parameterName.indexOf("?") >= 0 ? parameterName.substring(0, parameterName.length - 1) : parameterName;
-        const parameterString = "@param " + parameterName + " ";
-        const index = dtsString.lastIndexOf(parameterString, matchIndex);
-        if (index < 0) {
-            console.warn("Missing @param for literal parameter: " + match);
-        } else {
-        dtsString = dtsString.substring(0, index)
-         + "@param " + parameterName + "String "
-         + dtsString.substring(index + parameterString.length);
-         matchIndex += match.length;
-        }
-    });
+// TODO: Use once d.ts file is pulled from CDN
+// function handleLiteralParameterOverloads(dtsString: string): string {
+//     // rename parameters for string literal overloads
+//     const matches = dtsString.match(/([a-zA-Z]+)\??: (\"[a-zA-Z]*\").*:/g);
+//     let matchIndex = 0;
+//     matches.forEach((match) => {
+//         let parameterName = match.substring(0, match.indexOf(": "));
+//         matchIndex = dtsString.indexOf(match, matchIndex);
+//         parameterName = parameterName.indexOf("?") >= 0 ? parameterName.substring(0, parameterName.length - 1) : parameterName;
+//         const parameterString = "@param " + parameterName + " ";
+//         const index = dtsString.lastIndexOf(parameterString, matchIndex);
+//         if (index < 0) {
+//             console.warn("Missing @param for literal parameter: " + match);
+//         } else {
+//         dtsString = dtsString.substring(0, index)
+//          + "@param " + parameterName + "String "
+//          + dtsString.substring(index + parameterString.length);
+//          matchIndex += match.length;
+//         }
+//     });
 
-    return dtsString.replace(/([a-zA-Z]+)(\??: \"[a-zA-Z]*\".*:)/g, "$1String$2");
-}
+//     return dtsString.replace(/([a-zA-Z]+)(\??: \"[a-zA-Z]*\".*:)/g, "$1String$2");
+// }
 
 async function tryCatch(call: () => Promise<void>) {
     try {

@@ -57,14 +57,14 @@ items:
             - 'excel!Excel.GeometricShapeType:enum'
   - uid: 'excel!Excel.ShapeCollection#addGeometricShape:member(2)'
     summary: Adds a geometric shape to the worksheet. Returns a Shape object that represents the new shape.
-    name: addGeometricShape(geometricShapeTypeStringString)
-    fullName: addGeometricShape(geometricShapeTypeStringString)
+    name: addGeometricShape(geometricShapeTypeString)
+    fullName: addGeometricShape(geometricShapeTypeString)
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        addGeometricShape(geometricShapeTypeStringString: "LineInverse" | "Triangle" | "RightTriangle" | "Rectangle" |
+        addGeometricShape(geometricShapeTypeString: "LineInverse" | "Triangle" | "RightTriangle" | "Rectangle" |
         "Diamond" | "Parallelogram" | "Trapezoid" | "NonIsoscelesTrapezoid" | "Pentagon" | "Hexagon" | "Heptagon" |
         "Octagon" | "Decagon" | "Dodecagon" | "Star4" | "Star5" | "Star6" | "Star7" | "Star8" | "Star10" | "Star12" |
         "Star16" | "Star24" | "Star32" | "RoundRectangle" | "Round1Rectangle" | "Round2SameRectangle" |
@@ -100,7 +100,7 @@ items:
           - 'excel!Excel.Shape:class'
         description: ''
       parameters:
-        - id: geometricShapeTypeStringString
+        - id: geometricShapeTypeString
           description: Represents the type of the geometric shape. See Excel.GeometricShapeType for details.
           type:
             - >-
@@ -266,15 +266,15 @@ items:
             - 'excel!Excel.ConnectorType:enum'
   - uid: 'excel!Excel.ShapeCollection#addLine:member(2)'
     summary: Adds a line to worksheet. Returns a Shape object that represents the new line.
-    name: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeStringString)'
-    fullName: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeStringString)'
+    name: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeString)'
+    fullName: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeString)'
     langs:
       - typeScript
     type: method
     syntax:
       content: >-
-        addLine(startLeft: number, startTop: number, endLeft: number, endTop: number, connectorTypeStringString?:
-        "Straight" | "Elbow" | "Curve"): Excel.Shape;
+        addLine(startLeft: number, startTop: number, endLeft: number, endTop: number, connectorTypeString?: "Straight" |
+        "Elbow" | "Curve"): Excel.Shape;
       return:
         type:
           - 'excel!Excel.Shape:class'
@@ -296,7 +296,7 @@ items:
           description: 'The distance, in points, from the end of the line to the top of the worksheet.'
           type:
             - number
-        - id: connectorTypeStringString
+        - id: connectorTypeString
           description: Represents the connector type. See Excel.ConnectorType for details.
           type:
             - '"Straight" | "Elbow" | "Curve"'

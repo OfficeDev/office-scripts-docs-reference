@@ -58,13 +58,13 @@ items:
             - 'excel!Excel.ContentType:enum'
   - uid: 'excel!Excel.CommentReplyCollection#add:member(2)'
     summary: Creates a comment reply for comment.
-    name: 'add(content, contentTypeStringString)'
-    fullName: 'add(content, contentTypeStringString)'
+    name: 'add(content, contentTypeString)'
+    fullName: 'add(content, contentTypeString)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'add(content: CommentRichContent | string, contentTypeStringString?: "Plain" | "Mention"): Excel.CommentReply;'
+      content: 'add(content: CommentRichContent | string, contentTypeString?: "Plain" | "Mention"): Excel.CommentReply;'
       return:
         type:
           - 'excel!Excel.CommentReply:class'
@@ -76,7 +76,7 @@ items:
             mentions).
           type:
             - 'excel!Excel.CommentReplyCollection#add~1:complex'
-        - id: contentTypeStringString
+        - id: contentTypeString
           description: >-
             Optional. The type of content contained within the comment. The default value is enum
             `ContentType.Plain`<!-- -->.
