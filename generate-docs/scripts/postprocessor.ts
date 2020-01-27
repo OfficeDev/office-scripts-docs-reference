@@ -107,53 +107,42 @@ function fixToc(tocPath: string): Toc {
             if (packageItem.name !== 'office') {
                 // fix host capitalization
                 let packageName = (packageItem.name.substr(0, 1).toUpperCase() + packageItem.name.substr(1)).replace(/\-/g, ' ');
+                membersToMove.items = packageItem.items;
 
-                if (packageItem.items.length === 1) {
-                    packageItem.items.forEach((namespaceItem, namespaceIndex) => {
-                        membersToMove.items = namespaceItem.items;
+                if (packageName.toLocaleLowerCase().includes('excel')) {
+                    let enumList = membersToMove.items.filter(item => {
+                            return excelEnumFilter.indexOf(item.name) >= 0;
+                        });
+                    let iconSetList = membersToMove.items.filter(item => {
+                            return excelIconSetFilter.indexOf(item.name) >= 0;
+                    });
+                    let primaryList = membersToMove.items.filter(item => {
+                        return excelFilter.indexOf(item.name) < 0;
                     });
 
-                    if (packageName.toLocaleLowerCase().includes('excel')) {
-                        let enumList = membersToMove.items.filter(item => {
-                             return excelEnumFilter.indexOf(item.name) >= 0;
-                         });
-                        let iconSetList = membersToMove.items.filter(item => {
-                              return excelIconSetFilter.indexOf(item.name) >= 0;
-                        });
-                        let primaryList = membersToMove.items.filter(item => {
-                            return excelFilter.indexOf(item.name) < 0;
-                        });
-
-                        let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                        let excelIconSetRoot = {"name": "Icon Sets", "uid": "", "items": iconSetList};
-                        primaryList.unshift(excelIconSetRoot);
-                        primaryList.unshift(excelEnumRoot);
-                        newToc.items[0].items.push({
-                            "name": packageName,
-                            "uid": packageItem.uid,
-                            "items": primaryList as any
-                        });
-                    } else {
-                        if (membersToMove.items) {
-                            newToc.items[0].items.push({
-                                "name": packageName,
-                                "uid": packageItem.uid,
-                                "items": membersToMove.items as any
-                            });
-                        } else {
-                            newToc.items[0].items.push({
-                                "name": packageName,
-                                "uid": packageItem.uid,
-                                "items": [] as any
-                            });
-                        }
-                    }
-                } else {
+                    let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
+                    let excelIconSetRoot = {"name": "Icon Sets", "uid": "", "items": iconSetList};
+                    primaryList.unshift(excelIconSetRoot);
+                    primaryList.unshift(excelEnumRoot);
                     newToc.items[0].items.push({
                         "name": packageName,
                         "uid": packageItem.uid,
-                        "items": packageItem.items
+                        "items": primaryList as any
                     });
+                } else {
+                    if (membersToMove.items) {
+                        newToc.items[0].items.push({
+                            "name": packageName,
+                            "uid": packageItem.uid,
+                            "items": membersToMove.items as any
+                        });
+                    } else {
+                        newToc.items[0].items.push({
+                            "name": packageName,
+                            "uid": packageItem.uid,
+                            "items": [] as any
+                        });
+                    }
                 }
             }
         });
