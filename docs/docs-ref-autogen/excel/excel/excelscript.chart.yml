@@ -1,0 +1,849 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!ExcelScript.Chart:interface'
+    summary: >-
+      Represents a chart object in a workbook. To learn more about the Chart object model, see [Work with charts using
+      the Excel JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-charts)<!-- -->.
+    name: ExcelScript.Chart
+    fullName: ExcelScript.Chart
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!ExcelScript.Chart#activate:member(1)'
+      - 'excel!ExcelScript.Chart#addChartSeries:member(1)'
+      - 'excel!ExcelScript.Chart#delete:member(1)'
+      - 'excel!ExcelScript.Chart#getAxes:member(1)'
+      - 'excel!ExcelScript.Chart#getCategoryLabelLevel:member(1)'
+      - 'excel!ExcelScript.Chart#getChartType:member(1)'
+      - 'excel!ExcelScript.Chart#getDataLabels:member(1)'
+      - 'excel!ExcelScript.Chart#getDisplayBlanksAs:member(1)'
+      - 'excel!ExcelScript.Chart#getFormat:member(1)'
+      - 'excel!ExcelScript.Chart#getHeight:member(1)'
+      - 'excel!ExcelScript.Chart#getId:member(1)'
+      - 'excel!ExcelScript.Chart#getImage:member(1)'
+      - 'excel!ExcelScript.Chart#getLeft:member(1)'
+      - 'excel!ExcelScript.Chart#getLegend:member(1)'
+      - 'excel!ExcelScript.Chart#getName:member(1)'
+      - 'excel!ExcelScript.Chart#getPivotOptions:member(1)'
+      - 'excel!ExcelScript.Chart#getPlotArea:member(1)'
+      - 'excel!ExcelScript.Chart#getPlotBy:member(1)'
+      - 'excel!ExcelScript.Chart#getPlotVisibleOnly:member(1)'
+      - 'excel!ExcelScript.Chart#getSeries:member(1)'
+      - 'excel!ExcelScript.Chart#getSeriesNameLevel:member(1)'
+      - 'excel!ExcelScript.Chart#getShowAllFieldButtons:member(1)'
+      - 'excel!ExcelScript.Chart#getShowDataLabelsOverMaximum:member(1)'
+      - 'excel!ExcelScript.Chart#getStyle:member(1)'
+      - 'excel!ExcelScript.Chart#getTitle:member(1)'
+      - 'excel!ExcelScript.Chart#getTop:member(1)'
+      - 'excel!ExcelScript.Chart#getWidth:member(1)'
+      - 'excel!ExcelScript.Chart#getWorksheet:member(1)'
+      - 'excel!ExcelScript.Chart#setCategoryLabelLevel:member(1)'
+      - 'excel!ExcelScript.Chart#setChartType:member(1)'
+      - 'excel!ExcelScript.Chart#setData:member(1)'
+      - 'excel!ExcelScript.Chart#setDisplayBlanksAs:member(1)'
+      - 'excel!ExcelScript.Chart#setHeight:member(1)'
+      - 'excel!ExcelScript.Chart#setLeft:member(1)'
+      - 'excel!ExcelScript.Chart#setName:member(1)'
+      - 'excel!ExcelScript.Chart#setPlotBy:member(1)'
+      - 'excel!ExcelScript.Chart#setPlotVisibleOnly:member(1)'
+      - 'excel!ExcelScript.Chart#setPosition:member(1)'
+      - 'excel!ExcelScript.Chart#setSeriesNameLevel:member(1)'
+      - 'excel!ExcelScript.Chart#setShowAllFieldButtons:member(1)'
+      - 'excel!ExcelScript.Chart#setShowDataLabelsOverMaximum:member(1)'
+      - 'excel!ExcelScript.Chart#setStyle:member(1)'
+      - 'excel!ExcelScript.Chart#setTop:member(1)'
+      - 'excel!ExcelScript.Chart#setWidth:member(1)'
+  - uid: 'excel!ExcelScript.Chart#activate:member(1)'
+    summary: Activates the chart in the Excel UI.
+    name: activate()
+    fullName: activate()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'activate(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#addChartSeries:member(1)'
+    summary: >-
+      Add a new series to the collection. The new added series is not visible until set values/x axis values/bubble
+      sizes for it (depending on chart type).
+    name: 'addChartSeries(name, index)'
+    fullName: 'addChartSeries(name, index)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'addChartSeries(name?: string, index?: number): ChartSeries;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartSeries:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Optional. Name of the series.
+          type:
+            - string
+        - id: index
+          description: Optional. Index value of the series to be added. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#delete:member(1)'
+    summary: Deletes the chart object.
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getAxes:member(1)'
+    summary: Represents chart axes. Read-only.
+    name: getAxes()
+    fullName: getAxes()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getAxes(): ChartAxes;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartAxes:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getCategoryLabelLevel:member(1)'
+    summary: >-
+      Returns or sets a ChartCategoryLabelLevel enumeration constant referring to the level of where the category labels
+      are being sourced from. Read/Write.
+    name: getCategoryLabelLevel()
+    fullName: getCategoryLabelLevel()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCategoryLabelLevel(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getChartType:member(1)'
+    summary: Represents the type of the chart. See Excel.ChartType for details.
+    name: getChartType()
+    fullName: getChartType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getChartType(): ChartType;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartType:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getDataLabels:member(1)'
+    summary: Represents the datalabels on the chart. Read-only.
+    name: getDataLabels()
+    fullName: getDataLabels()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDataLabels(): ChartDataLabels;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartDataLabels:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getDisplayBlanksAs:member(1)'
+    summary: Returns or sets the way that blank cells are plotted on a chart. Read/Write.
+    name: getDisplayBlanksAs()
+    fullName: getDisplayBlanksAs()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDisplayBlanksAs(): ChartDisplayBlanksAs;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartDisplayBlanksAs:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getFormat:member(1)'
+    summary: Encapsulates the format properties for the chart area. Read-only.
+    name: getFormat()
+    fullName: getFormat()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFormat(): ChartAreaFormat;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartAreaFormat:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getHeight:member(1)'
+    summary: 'Represents the height, in points, of the chart object.'
+    name: getHeight()
+    fullName: getHeight()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getHeight(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getId:member(1)'
+    summary: The unique id of chart. Read-only.
+    name: getId()
+    fullName: getId()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getImage:member(1)'
+    summary: >-
+      Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions. The aspect ratio
+      is preserved as part of the resizing.
+    name: 'getImage(width, height, fittingMode)'
+    fullName: 'getImage(width, height, fittingMode)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        getImage(
+                  width?: number,
+                  height?: number,
+                  fittingMode?: ImageFittingMode
+              ): string;
+      return:
+        type:
+          - string
+        description: ''
+      parameters:
+        - id: width
+          description: (Optional) The desired width of the resulting image.
+          type:
+            - number
+        - id: height
+          description: (Optional) The desired height of the resulting image.
+          type:
+            - number
+        - id: fittingMode
+          description: >-
+            (Optional) The method used to scale the chart to the specified to the specified dimensions (if both height
+            and width are set).
+          type:
+            - 'excel!ExcelScript.ImageFittingMode:enum'
+  - uid: 'excel!ExcelScript.Chart#getLeft:member(1)'
+    summary: 'The distance, in points, from the left side of the chart to the worksheet origin.'
+    name: getLeft()
+    fullName: getLeft()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLeft(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getLegend:member(1)'
+    summary: Represents the legend for the chart. Read-only.
+    name: getLegend()
+    fullName: getLegend()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLegend(): ChartLegend;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartLegend:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getName:member(1)'
+    summary: Represents the name of a chart object.
+    name: getName()
+    fullName: getName()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getPivotOptions:member(1)'
+    summary: Encapsulates the options for a pivot chart. Read-only.
+    name: getPivotOptions()
+    fullName: getPivotOptions()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPivotOptions(): ChartPivotOptions;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartPivotOptions:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getPlotArea:member(1)'
+    summary: Represents the plotArea for the chart.
+    name: getPlotArea()
+    fullName: getPlotArea()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPlotArea(): ChartPlotArea;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartPlotArea:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getPlotBy:member(1)'
+    summary: Returns or sets the way columns or rows are used as data series on the chart. Read/Write.
+    name: getPlotBy()
+    fullName: getPlotBy()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPlotBy(): ChartPlotBy;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartPlotBy:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getPlotVisibleOnly:member(1)'
+    summary: True if only visible cells are plotted. False if both visible and hidden cells are plotted. Read/Write.
+    name: getPlotVisibleOnly()
+    fullName: getPlotVisibleOnly()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPlotVisibleOnly(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getSeries:member(1)'
+    summary: Represents either a single series or collection of series in the chart. Read-only.
+    name: getSeries()
+    fullName: getSeries()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getSeries(): ChartSeries[];'
+      return:
+        type:
+          - 'excel!ExcelScript.Chart#getSeries~0:complex'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getSeriesNameLevel:member(1)'
+    summary: >-
+      Returns or sets a ChartSeriesNameLevel enumeration constant referring to the level of where the series names are
+      being sourced from. Read/Write.
+    name: getSeriesNameLevel()
+    fullName: getSeriesNameLevel()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getSeriesNameLevel(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getShowAllFieldButtons:member(1)'
+    summary: Represents whether to display all field buttons on a PivotChart.
+    name: getShowAllFieldButtons()
+    fullName: getShowAllFieldButtons()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getShowAllFieldButtons(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getShowDataLabelsOverMaximum:member(1)'
+    summary: >-
+      Represents whether to show the data labels when the value is greater than the maximum value on the value axis. If
+      value axis became smaller than the size of data points, you can use this property to set whether to show the data
+      labels. This property applies to 2-D charts only.
+    name: getShowDataLabelsOverMaximum()
+    fullName: getShowDataLabelsOverMaximum()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getShowDataLabelsOverMaximum(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getStyle:member(1)'
+    summary: Returns or sets the chart style for the chart. Read/Write.
+    name: getStyle()
+    fullName: getStyle()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getStyle(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getTitle:member(1)'
+    summary: >-
+      Represents the title of the specified chart, including the text, visibility, position, and formatting of the
+      title. Read-only.
+    name: getTitle()
+    fullName: getTitle()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTitle(): ChartTitle;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartTitle:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getTop:member(1)'
+    summary: >-
+      Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the
+      top of the chart area (on a chart).
+    name: getTop()
+    fullName: getTop()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTop(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getWidth:member(1)'
+    summary: 'Represents the width, in points, of the chart object.'
+    name: getWidth()
+    fullName: getWidth()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getWidth(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#getWorksheet:member(1)'
+    summary: The worksheet containing the current chart. Read-only.
+    name: getWorksheet()
+    fullName: getWorksheet()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getWorksheet(): Worksheet;'
+      return:
+        type:
+          - 'excel!ExcelScript.Worksheet:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Chart#setCategoryLabelLevel:member(1)'
+    summary: >-
+      Returns or sets a ChartCategoryLabelLevel enumeration constant referring to the level of where the category labels
+      are being sourced from. Read/Write.
+    name: setCategoryLabelLevel(categoryLabelLevel)
+    fullName: setCategoryLabelLevel(categoryLabelLevel)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setCategoryLabelLevel(categoryLabelLevel: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: categoryLabelLevel
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setChartType:member(1)'
+    summary: Represents the type of the chart. See Excel.ChartType for details.
+    name: setChartType(chartType)
+    fullName: setChartType(chartType)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setChartType(chartType: ChartType): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: chartType
+          description: ''
+          type:
+            - 'excel!ExcelScript.ChartType:enum'
+  - uid: 'excel!ExcelScript.Chart#setData:member(1)'
+    summary: Resets the source data for the chart.
+    name: 'setData(sourceData, seriesBy)'
+    fullName: 'setData(sourceData, seriesBy)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setData(sourceData: Range, seriesBy?: ChartSeriesBy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: sourceData
+          description: The range object corresponding to the source data.
+          type:
+            - 'excel!ExcelScript.Range:interface'
+        - id: seriesBy
+          description: >-
+            Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto
+            (default), Rows, and Columns. See Excel.ChartSeriesBy for details.
+          type:
+            - 'excel!ExcelScript.ChartSeriesBy:enum'
+  - uid: 'excel!ExcelScript.Chart#setDisplayBlanksAs:member(1)'
+    summary: Returns or sets the way that blank cells are plotted on a chart. Read/Write.
+    name: setDisplayBlanksAs(displayBlanksAs)
+    fullName: setDisplayBlanksAs(displayBlanksAs)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setDisplayBlanksAs(displayBlanksAs: ChartDisplayBlanksAs): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: displayBlanksAs
+          description: ''
+          type:
+            - 'excel!ExcelScript.ChartDisplayBlanksAs:enum'
+  - uid: 'excel!ExcelScript.Chart#setHeight:member(1)'
+    summary: 'Represents the height, in points, of the chart object.'
+    name: setHeight(height)
+    fullName: setHeight(height)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setHeight(height: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: height
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setLeft:member(1)'
+    summary: 'The distance, in points, from the left side of the chart to the worksheet origin.'
+    name: setLeft(left)
+    fullName: setLeft(left)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setLeft(left: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: left
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setName:member(1)'
+    summary: Represents the name of a chart object.
+    name: setName(name)
+    fullName: setName(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setName(name: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: name
+          description: ''
+          type:
+            - string
+  - uid: 'excel!ExcelScript.Chart#setPlotBy:member(1)'
+    summary: Returns or sets the way columns or rows are used as data series on the chart. Read/Write.
+    name: setPlotBy(plotBy)
+    fullName: setPlotBy(plotBy)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPlotBy(plotBy: ChartPlotBy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: plotBy
+          description: ''
+          type:
+            - 'excel!ExcelScript.ChartPlotBy:enum'
+  - uid: 'excel!ExcelScript.Chart#setPlotVisibleOnly:member(1)'
+    summary: True if only visible cells are plotted. False if both visible and hidden cells are plotted. Read/Write.
+    name: setPlotVisibleOnly(plotVisibleOnly)
+    fullName: setPlotVisibleOnly(plotVisibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPlotVisibleOnly(plotVisibleOnly: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: plotVisibleOnly
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.Chart#setPosition:member(1)'
+    summary: Positions the chart relative to cells on the worksheet.
+    name: 'setPosition(startCell, endCell)'
+    fullName: 'setPosition(startCell, endCell)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPosition(startCell: Range | string, endCell?: Range | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: startCell
+          description: >-
+            The start cell. This is where the chart will be moved to. The start cell is the top-left or top-right cell,
+            depending on the user's right-to-left display settings.
+          type:
+            - 'excel!ExcelScript.Chart#setPosition~0:complex'
+        - id: endCell
+          description: >-
+            (Optional) The end cell. If specified, the chart's width and height will be set to fully cover up this
+            cell/range.
+          type:
+            - 'excel!ExcelScript.Chart#setPosition~1:complex'
+  - uid: 'excel!ExcelScript.Chart#setSeriesNameLevel:member(1)'
+    summary: >-
+      Returns or sets a ChartSeriesNameLevel enumeration constant referring to the level of where the series names are
+      being sourced from. Read/Write.
+    name: setSeriesNameLevel(seriesNameLevel)
+    fullName: setSeriesNameLevel(seriesNameLevel)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setSeriesNameLevel(seriesNameLevel: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: seriesNameLevel
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setShowAllFieldButtons:member(1)'
+    summary: Represents whether to display all field buttons on a PivotChart.
+    name: setShowAllFieldButtons(showAllFieldButtons)
+    fullName: setShowAllFieldButtons(showAllFieldButtons)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setShowAllFieldButtons(showAllFieldButtons: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: showAllFieldButtons
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.Chart#setShowDataLabelsOverMaximum:member(1)'
+    summary: >-
+      Represents whether to show the data labels when the value is greater than the maximum value on the value axis. If
+      value axis became smaller than the size of data points, you can use this property to set whether to show the data
+      labels. This property applies to 2-D charts only.
+    name: setShowDataLabelsOverMaximum(showDataLabelsOverMaximum)
+    fullName: setShowDataLabelsOverMaximum(showDataLabelsOverMaximum)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setShowDataLabelsOverMaximum(showDataLabelsOverMaximum: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: showDataLabelsOverMaximum
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.Chart#setStyle:member(1)'
+    summary: Returns or sets the chart style for the chart. Read/Write.
+    name: setStyle(style)
+    fullName: setStyle(style)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setStyle(style: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: style
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setTop:member(1)'
+    summary: >-
+      Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the
+      top of the chart area (on a chart).
+    name: setTop(top)
+    fullName: setTop(top)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setTop(top: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: top
+          description: ''
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Chart#setWidth:member(1)'
+    summary: 'Represents the width, in points, of the chart object.'
+    name: setWidth(width)
+    fullName: setWidth(width)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setWidth(width: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: width
+          description: ''
+          type:
+            - number
+references:
+  - uid: 'excel!ExcelScript.ChartSeries:interface'
+    name: ChartSeries
+    fullName: ExcelScript.ChartSeries
+  - uid: 'excel!ExcelScript.ChartAxes:interface'
+    name: ChartAxes
+    fullName: ExcelScript.ChartAxes
+  - uid: 'excel!ExcelScript.ChartType:enum'
+    name: ChartType
+    fullName: ExcelScript.ChartType
+  - uid: 'excel!ExcelScript.ChartDataLabels:interface'
+    name: ChartDataLabels
+    fullName: ExcelScript.ChartDataLabels
+  - uid: 'excel!ExcelScript.ChartDisplayBlanksAs:enum'
+    name: ChartDisplayBlanksAs
+    fullName: ExcelScript.ChartDisplayBlanksAs
+  - uid: 'excel!ExcelScript.ChartAreaFormat:interface'
+    name: ChartAreaFormat
+    fullName: ExcelScript.ChartAreaFormat
+  - uid: 'excel!ExcelScript.ImageFittingMode:enum'
+    name: ImageFittingMode
+    fullName: ExcelScript.ImageFittingMode
+  - uid: 'excel!ExcelScript.ChartLegend:interface'
+    name: ChartLegend
+    fullName: ExcelScript.ChartLegend
+  - uid: 'excel!ExcelScript.ChartPivotOptions:interface'
+    name: ChartPivotOptions
+    fullName: ExcelScript.ChartPivotOptions
+  - uid: 'excel!ExcelScript.ChartPlotArea:interface'
+    name: ChartPlotArea
+    fullName: ExcelScript.ChartPlotArea
+  - uid: 'excel!ExcelScript.ChartPlotBy:enum'
+    name: ChartPlotBy
+    fullName: ExcelScript.ChartPlotBy
+  - uid: 'excel!ExcelScript.Chart#getSeries~0:complex'
+    name: 'ChartSeries[]'
+    fullName: 'ExcelScript.ChartSeries[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.ChartSeries:interface'
+        name: ChartSeries
+        fullName: ExcelScript.ChartSeries
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!ExcelScript.ChartTitle:interface'
+    name: ChartTitle
+    fullName: ExcelScript.ChartTitle
+  - uid: 'excel!ExcelScript.Worksheet:interface'
+    name: Worksheet
+    fullName: ExcelScript.Worksheet
+  - uid: 'excel!ExcelScript.Range:interface'
+    name: Range
+    fullName: ExcelScript.Range
+  - uid: 'excel!ExcelScript.ChartSeriesBy:enum'
+    name: ChartSeriesBy
+    fullName: ExcelScript.ChartSeriesBy
+  - uid: 'excel!ExcelScript.Chart#setPosition~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!ExcelScript.Chart#setPosition~1:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'

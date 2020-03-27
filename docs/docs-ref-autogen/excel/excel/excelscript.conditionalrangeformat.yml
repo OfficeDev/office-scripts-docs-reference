@@ -1,0 +1,130 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat:interface'
+    summary: 'A format object encapsulating the conditional formats range''s font, fill, borders, and other properties.'
+    name: ExcelScript.ConditionalRangeFormat
+    fullName: ExcelScript.ConditionalRangeFormat
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!ExcelScript.ConditionalRangeFormat#getBorders:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorder:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getFill:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getFont:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getNumberFormat:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#setNumberFormat:member(1)'
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getBorders:member(1)'
+    summary: Collection of border objects that apply to the overall conditional format range. Read-only.
+    name: getBorders()
+    fullName: getBorders()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getBorders(): ConditionalRangeBorder[];'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeFormat#getBorders~0:complex'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorder:member(1)'
+    summary: Gets a border object using its name.
+    name: getConditionalRangeBorder(index)
+    fullName: getConditionalRangeBorder(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        getConditionalRangeBorder(
+                  index: ConditionalRangeBorderIndex
+              ): ConditionalRangeBorder;
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the border object to be retrieved. See Excel.ConditionalRangeBorderIndex for details.
+          type:
+            - 'excel!ExcelScript.ConditionalRangeBorderIndex:enum'
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getFill:member(1)'
+    summary: Returns the fill object defined on the overall conditional format range. Read-only.
+    name: getFill()
+    fullName: getFill()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFill(): ConditionalRangeFill;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeFill:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getFont:member(1)'
+    summary: Returns the font object defined on the overall conditional format range. Read-only.
+    name: getFont()
+    fullName: getFont()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFont(): ConditionalRangeFont;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeFont:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getNumberFormat:member(1)'
+    summary: Represents Excel's number format code for the given range. Cleared if null is passed in.
+    name: getNumberFormat()
+    fullName: getNumberFormat()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNumberFormat(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#setNumberFormat:member(1)'
+    summary: Represents Excel's number format code for the given range. Cleared if null is passed in.
+    name: setNumberFormat(numberFormat)
+    fullName: setNumberFormat(numberFormat)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setNumberFormat(numberFormat: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: numberFormat
+          description: ''
+          type:
+            - string
+references:
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getBorders~0:complex'
+    name: 'ConditionalRangeBorder[]'
+    fullName: 'ExcelScript.ConditionalRangeBorder[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        name: ConditionalRangeBorder
+        fullName: ExcelScript.ConditionalRangeBorder
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!ExcelScript.ConditionalRangeBorder:interface'
+    name: ConditionalRangeBorder
+    fullName: ExcelScript.ConditionalRangeBorder
+  - uid: 'excel!ExcelScript.ConditionalRangeBorderIndex:enum'
+    name: ConditionalRangeBorderIndex
+    fullName: ExcelScript.ConditionalRangeBorderIndex
+  - uid: 'excel!ExcelScript.ConditionalRangeFill:interface'
+    name: ConditionalRangeFill
+    fullName: ExcelScript.ConditionalRangeFill
+  - uid: 'excel!ExcelScript.ConditionalRangeFont:interface'
+    name: ConditionalRangeFont
+    fullName: ExcelScript.ConditionalRangeFont

@@ -1,0 +1,402 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!ExcelScript.PivotLayout:interface'
+    summary: Represents the visual layout of the PivotTable.
+    name: ExcelScript.PivotLayout
+    fullName: ExcelScript.PivotLayout
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!ExcelScript.PivotLayout#getAutoFormat:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getDataBodyRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getFilterAxisRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getLayoutType:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getSubtotalLocation:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setAutoFormat:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setAutoSortOnCell:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setEnableFieldList:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setLayoutType:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setPreserveFormatting:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setShowColumnGrandTotals:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)'
+      - 'excel!ExcelScript.PivotLayout#setSubtotalLocation:member(1)'
+  - uid: 'excel!ExcelScript.PivotLayout#getAutoFormat:member(1)'
+    summary: Specifies whether formatting will be automatically formatted when it’s refreshed or when fields are moved
+    name: getAutoFormat()
+    fullName: getAutoFormat()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getAutoFormat(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
+    summary: Returns the range where the PivotTable's column labels reside.
+    name: getColumnLabelRange()
+    fullName: getColumnLabelRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getColumnLabelRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getDataBodyRange:member(1)'
+    summary: Returns the range where the PivotTable's data values reside.
+    name: getDataBodyRange()
+    fullName: getDataBodyRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDataBodyRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
+    summary: Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
+    name: getDataHierarchy(cell)
+    fullName: getDataHierarchy(cell)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDataHierarchy(cell: Range | string): DataPivotHierarchy;'
+      return:
+        type:
+          - 'excel!ExcelScript.DataPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: cell
+          description: A single cell within the PivotTable data body.
+          type:
+            - 'excel!ExcelScript.PivotLayout#getDataHierarchy~0:complex'
+  - uid: 'excel!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
+    summary: Specifies whether the field list can be shown in the UI.
+    name: getEnableFieldList()
+    fullName: getEnableFieldList()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getEnableFieldList(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getFilterAxisRange:member(1)'
+    summary: Returns the range of the PivotTable's filter area.
+    name: getFilterAxisRange()
+    fullName: getFilterAxisRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFilterAxisRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getLayoutType:member(1)'
+    summary: >-
+      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
+      will be null.
+    name: getLayoutType()
+    fullName: getLayoutType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLayoutType(): PivotLayoutType;'
+      return:
+        type:
+          - 'excel!ExcelScript.PivotLayoutType:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
+    summary: >-
+      Specifies whether formatting is preserved when the report is refreshed or recalculated by operations such as
+      pivoting, sorting, or changing page field items.
+    name: getPreserveFormatting()
+    fullName: getPreserveFormatting()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPreserveFormatting(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getRange:member(1)'
+    summary: 'Returns the range the PivotTable exists on, excluding the filter area.'
+    name: getRange()
+    fullName: getRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
+    summary: Returns the range where the PivotTable's row labels reside.
+    name: getRowLabelRange()
+    fullName: getRowLabelRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRowLabelRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
+    summary: Specifies whether the PivotTable report shows grand totals for columns.
+    name: getShowColumnGrandTotals()
+    fullName: getShowColumnGrandTotals()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getShowColumnGrandTotals(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
+    summary: Specifies whether the PivotTable report shows grand totals for rows.
+    name: getShowRowGrandTotals()
+    fullName: getShowRowGrandTotals()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getShowRowGrandTotals(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getSubtotalLocation:member(1)'
+    summary: >-
+      This property indicates the SubtotalLocationType of all fields on the PivotTable. If fields have different states,
+      this will be null.
+    name: getSubtotalLocation()
+    fullName: getSubtotalLocation()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getSubtotalLocation(): SubtotalLocationType;'
+      return:
+        type:
+          - 'excel!ExcelScript.SubtotalLocationType:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#setAutoFormat:member(1)'
+    summary: Specifies whether formatting will be automatically formatted when it’s refreshed or when fields are moved
+    name: setAutoFormat(autoFormat)
+    fullName: setAutoFormat(autoFormat)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setAutoFormat(autoFormat: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: autoFormat
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.PivotLayout#setAutoSortOnCell:member(1)'
+    summary: >-
+      Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria
+      and context. This behaves identically to applying an autosort from the UI.
+    name: 'setAutoSortOnCell(cell, sortBy)'
+    fullName: 'setAutoSortOnCell(cell, sortBy)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: cell
+          description: A single cell to use get the criteria from for applying the autosort.
+          type:
+            - 'excel!ExcelScript.PivotLayout#setAutoSortOnCell~0:complex'
+        - id: sortBy
+          description: The direction of the sort.
+          type:
+            - 'excel!ExcelScript.SortBy:enum'
+  - uid: 'excel!ExcelScript.PivotLayout#setEnableFieldList:member(1)'
+    summary: Specifies whether the field list can be shown in the UI.
+    name: setEnableFieldList(enableFieldList)
+    fullName: setEnableFieldList(enableFieldList)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setEnableFieldList(enableFieldList: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: enableFieldList
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.PivotLayout#setLayoutType:member(1)'
+    summary: >-
+      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
+      will be null.
+    name: setLayoutType(layoutType)
+    fullName: setLayoutType(layoutType)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setLayoutType(layoutType: PivotLayoutType): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: layoutType
+          description: ''
+          type:
+            - 'excel!ExcelScript.PivotLayoutType:enum'
+  - uid: 'excel!ExcelScript.PivotLayout#setPreserveFormatting:member(1)'
+    summary: >-
+      Specifies whether formatting is preserved when the report is refreshed or recalculated by operations such as
+      pivoting, sorting, or changing page field items.
+    name: setPreserveFormatting(preserveFormatting)
+    fullName: setPreserveFormatting(preserveFormatting)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPreserveFormatting(preserveFormatting: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: preserveFormatting
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.PivotLayout#setShowColumnGrandTotals:member(1)'
+    summary: Specifies whether the PivotTable report shows grand totals for columns.
+    name: setShowColumnGrandTotals(showColumnGrandTotals)
+    fullName: setShowColumnGrandTotals(showColumnGrandTotals)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setShowColumnGrandTotals(showColumnGrandTotals: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: showColumnGrandTotals
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)'
+    summary: Specifies whether the PivotTable report shows grand totals for rows.
+    name: setShowRowGrandTotals(showRowGrandTotals)
+    fullName: setShowRowGrandTotals(showRowGrandTotals)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setShowRowGrandTotals(showRowGrandTotals: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: showRowGrandTotals
+          description: ''
+          type:
+            - boolean
+  - uid: 'excel!ExcelScript.PivotLayout#setSubtotalLocation:member(1)'
+    summary: >-
+      This property indicates the SubtotalLocationType of all fields on the PivotTable. If fields have different states,
+      this will be null.
+    name: setSubtotalLocation(subtotalLocation)
+    fullName: setSubtotalLocation(subtotalLocation)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setSubtotalLocation(subtotalLocation: SubtotalLocationType): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: subtotalLocation
+          description: ''
+          type:
+            - 'excel!ExcelScript.SubtotalLocationType:enum'
+references:
+  - uid: 'excel!ExcelScript.Range:interface'
+    name: Range
+    fullName: ExcelScript.Range
+  - uid: 'excel!ExcelScript.DataPivotHierarchy:interface'
+    name: DataPivotHierarchy
+    fullName: ExcelScript.DataPivotHierarchy
+  - uid: 'excel!ExcelScript.PivotLayout#getDataHierarchy~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!ExcelScript.PivotLayoutType:enum'
+    name: PivotLayoutType
+    fullName: ExcelScript.PivotLayoutType
+  - uid: 'excel!ExcelScript.SubtotalLocationType:enum'
+    name: SubtotalLocationType
+    fullName: ExcelScript.SubtotalLocationType
+  - uid: 'excel!ExcelScript.PivotLayout#setAutoSortOnCell~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!ExcelScript.SortBy:enum'
+    name: SortBy
+    fullName: ExcelScript.SortBy

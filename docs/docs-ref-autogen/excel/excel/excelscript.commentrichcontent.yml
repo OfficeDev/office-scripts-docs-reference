@@ -1,0 +1,49 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!ExcelScript.CommentRichContent:interface'
+    summary: >-
+      Represents the content contained within a comment or comment reply. Rich content incudes the text string and any
+      other objects contained within the comment body, such as mentions.
+    name: ExcelScript.CommentRichContent
+    fullName: ExcelScript.CommentRichContent
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!ExcelScript.CommentRichContent#mentions:member'
+      - 'excel!ExcelScript.CommentRichContent#richContent:member'
+  - uid: 'excel!ExcelScript.CommentRichContent#mentions:member'
+    summary: An array containing all the entities (e.g. people) mentioned within the comment.
+    name: mentions
+    fullName: mentions
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'mentions?: CommentMention[];'
+      return:
+        type:
+          - 'excel!ExcelScript.CommentRichContent#mentions~0:complex'
+  - uid: 'excel!ExcelScript.CommentRichContent#richContent:member'
+    summary: RichContent
+    name: richContent
+    fullName: richContent
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'richContent: string;'
+      return:
+        type:
+          - string
+references:
+  - uid: 'excel!ExcelScript.CommentRichContent#mentions~0:complex'
+    name: 'CommentMention[]'
+    fullName: 'ExcelScript.CommentMention[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.CommentMention:interface'
+        name: CommentMention
+        fullName: ExcelScript.CommentMention
+      - name: '[]'
+        fullName: '[]'

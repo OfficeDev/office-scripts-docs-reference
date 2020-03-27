@@ -20,14 +20,14 @@ tryCatch(async () => {
 
     console.log("\nStarting preprocessor script...");
 
-    const localReleaseDtsPath = "../script-inputs/excel.d.ts";
+    const localReleaseDtsPath = "../script-inputs/excel-sync.d.ts";
     // if (urlToCopyOfficeJsFrom.length > 0) {
     //     fsx.writeFileSync(localReleaseDtsPath, await fetchAndThrowOnError(urlToCopyOfficeJsFrom, "text"));
     // }
 
     let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
 
-    console.log("\ncreate file: excel.d.ts (preview)");
+    console.log("\ncreate file: excel.d.ts (sync)");
     fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', releaseDefinitions);
 
     // TODO: Deal with Script Lab snippets
@@ -45,14 +45,14 @@ tryCatch(async () => {
     console.log("\nReading from files: " + path.resolve("../../docs/code-snippets"));
 
     const snippetsSourcePath = path.resolve("../../docs/code-snippets");
-    let localCodeSnippetsString : string = "";
-    fsx.readdirSync(path.resolve(snippetsSourcePath))
-        .filter(name => name.endsWith('.yaml') || name.endsWith('.yml'))
-        .forEach((filename, index) => {
-            localCodeSnippetsString += fsx.readFileSync(`${snippetsSourcePath}/${filename}`).toString() + "\r\n";
-        });
+    let localCodeSnippetsString : string = fsx.readFileSync(`${snippetsSourcePath}/excel-sync-snippets.yaml`).toString()
+    // fsx.readdirSync(path.resolve(snippetsSourcePath))
+    //     .filter(name => name.endsWith('.yaml') || name.endsWith('.yml'))
+    //     .forEach((filename, index) => {
+    //         localCodeSnippetsString += fsx.readFileSync(`${snippetsSourcePath}/${filename}`).toString() + "\r\n";
+    //     });
 
-    fsx.writeFileSync("../script-inputs/local-repo-snippets.yaml", localCodeSnippetsString);
+    //fsx.writeFileSync("../script-inputs/local-repo-snippets.yaml", localCodeSnippetsString);
 
     // Parse the YAML into an object/hash set.
     let snippets = yaml.load(localCodeSnippetsString);
