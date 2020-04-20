@@ -21,13 +21,14 @@ items:
       - 'excel!ExcelScript.RangeView#getRows:member(1)'
       - 'excel!ExcelScript.RangeView#getText:member(1)'
       - 'excel!ExcelScript.RangeView#getValues:member(1)'
+      - 'excel!ExcelScript.RangeView#getValueTypes:member(1)'
       - 'excel!ExcelScript.RangeView#setFormulas:member(1)'
       - 'excel!ExcelScript.RangeView#setFormulasLocal:member(1)'
       - 'excel!ExcelScript.RangeView#setFormulasR1C1:member(1)'
       - 'excel!ExcelScript.RangeView#setNumberFormat:member(1)'
       - 'excel!ExcelScript.RangeView#setValues:member(1)'
   - uid: 'excel!ExcelScript.RangeView#getCellAddresses:member(1)'
-    summary: Represents the cell addresses of the RangeView. Read-only.
+    summary: Represents the cell addresses of the RangeView.
     name: getCellAddresses()
     fullName: getCellAddresses()
     langs:
@@ -40,7 +41,7 @@ items:
           - 'string[][]'
         description: ''
   - uid: 'excel!ExcelScript.RangeView#getColumnCount:member(1)'
-    summary: Returns the number of visible columns. Read-only.
+    summary: The number of visible columns.
     name: getColumnCount()
     fullName: getColumnCount()
     langs:
@@ -94,7 +95,7 @@ items:
           - 'string[][]'
         description: ''
   - uid: 'excel!ExcelScript.RangeView#getIndex:member(1)'
-    summary: Returns a value that represents the index of the RangeView. Read-only.
+    summary: Returns a value that represents the index of the RangeView.
     name: getIndex()
     fullName: getIndex()
     langs:
@@ -133,7 +134,7 @@ items:
           - 'excel!ExcelScript.Range:interface'
         description: ''
   - uid: 'excel!ExcelScript.RangeView#getRowCount:member(1)'
-    summary: Returns the number of visible rows. Read-only.
+    summary: The number of visible rows.
     name: getRowCount()
     fullName: getRowCount()
     langs:
@@ -146,7 +147,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.RangeView#getRows:member(1)'
-    summary: Represents a collection of range views associated with the range. Read-only.
+    summary: Represents a collection of range views associated with the range.
     name: getRows()
     fullName: getRows()
     langs:
@@ -161,7 +162,7 @@ items:
   - uid: 'excel!ExcelScript.RangeView#getText:member(1)'
     summary: >-
       Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
-      that happens in Excel UI will not affect the text value returned by the API. Read-only.
+      that happens in Excel UI will not affect the text value returned by the API.
     name: getText()
     fullName: getText()
     langs:
@@ -187,6 +188,19 @@ items:
       return:
         type:
           - '(string | number | boolean)[][]'
+        description: ''
+  - uid: 'excel!ExcelScript.RangeView#getValueTypes:member(1)'
+    summary: Represents the type of data of each cell.
+    name: getValueTypes()
+    fullName: getValueTypes()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getValueTypes(): RangeValueType[][];'
+      return:
+        type:
+          - 'excel!ExcelScript.RangeView#getValueTypes~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.RangeView#setFormulas:member(1)'
     summary: Represents the formula in A1-style notation.
@@ -295,3 +309,12 @@ references:
         fullName: ExcelScript.RangeView
       - name: '[]'
         fullName: '[]'
+  - uid: 'excel!ExcelScript.RangeView#getValueTypes~0:complex'
+    name: 'RangeValueType[][]'
+    fullName: 'ExcelScript.RangeValueType[][]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.RangeValueType:enum'
+        name: RangeValueType
+        fullName: ExcelScript.RangeValueType
+      - name: '[][]'
+        fullName: '[][]'

@@ -17,13 +17,16 @@ items:
       - 'excel!ExcelScript.Worksheet#addComment:member(1)'
       - 'excel!ExcelScript.Worksheet#addGeometricShape:member(1)'
       - 'excel!ExcelScript.Worksheet#addGroup:member(1)'
+      - 'excel!ExcelScript.Worksheet#addHorizontalPageBreak:member(1)'
       - 'excel!ExcelScript.Worksheet#addImage:member(1)'
       - 'excel!ExcelScript.Worksheet#addLine:member(1)'
       - 'excel!ExcelScript.Worksheet#addNamedItem:member(1)'
       - 'excel!ExcelScript.Worksheet#addNamedItemFormulaLocal:member(1)'
+      - 'excel!ExcelScript.Worksheet#addPivotTable:member(1)'
       - 'excel!ExcelScript.Worksheet#addSlicer:member(1)'
       - 'excel!ExcelScript.Worksheet#addTable:member(1)'
       - 'excel!ExcelScript.Worksheet#addTextBox:member(1)'
+      - 'excel!ExcelScript.Worksheet#addVerticalPageBreak:member(1)'
       - 'excel!ExcelScript.Worksheet#calculate:member(1)'
       - 'excel!ExcelScript.Worksheet#copy:member(1)'
       - 'excel!ExcelScript.Worksheet#delete:member(1)'
@@ -38,6 +41,7 @@ items:
       - 'excel!ExcelScript.Worksheet#getComments:member(1)'
       - 'excel!ExcelScript.Worksheet#getEnableCalculation:member(1)'
       - 'excel!ExcelScript.Worksheet#getFreezePanes:member(1)'
+      - 'excel!ExcelScript.Worksheet#getHorizontalPageBreaks:member(1)'
       - 'excel!ExcelScript.Worksheet#getId:member(1)'
       - 'excel!ExcelScript.Worksheet#getName:member(1)'
       - 'excel!ExcelScript.Worksheet#getNamedItem:member(1)'
@@ -64,8 +68,11 @@ items:
       - 'excel!ExcelScript.Worksheet#getTable:member(1)'
       - 'excel!ExcelScript.Worksheet#getTables:member(1)'
       - 'excel!ExcelScript.Worksheet#getUsedRange:member(1)'
+      - 'excel!ExcelScript.Worksheet#getVerticalPageBreaks:member(1)'
       - 'excel!ExcelScript.Worksheet#getVisibility:member(1)'
       - 'excel!ExcelScript.Worksheet#refreshAllPivotTables:member(1)'
+      - 'excel!ExcelScript.Worksheet#removeAllHorizontalPageBreaks:member(1)'
+      - 'excel!ExcelScript.Worksheet#removeAllVerticalPageBreaks:member(1)'
       - 'excel!ExcelScript.Worksheet#replaceAll:member(1)'
       - 'excel!ExcelScript.Worksheet#setEnableCalculation:member(1)'
       - 'excel!ExcelScript.Worksheet#setName:member(1)'
@@ -99,10 +106,10 @@ items:
     syntax:
       content: |-
         addChart(
-                  type: ChartType,
-                  sourceData: Range,
-                  seriesBy?: ChartSeriesBy
-              ): Chart;
+                    type: ChartType,
+                    sourceData: Range,
+                    seriesBy?: ChartSeriesBy
+                ): Chart;
       return:
         type:
           - 'excel!ExcelScript.Chart:interface'
@@ -134,10 +141,10 @@ items:
     syntax:
       content: |-
         addComment(
-                  cellAddress: Range | string,
-                  content: CommentRichContent | string,
-                  contentType?: ContentType
-              ): Comment;
+                    cellAddress: Range | string,
+                    content: CommentRichContent | string,
+                    contentType?: ContentType
+                ): Comment;
       return:
         type:
           - 'excel!ExcelScript.Comment:interface'
@@ -200,6 +207,24 @@ items:
           description: An array of shape ID or shape objects.
           type:
             - 'excel!ExcelScript.Worksheet#addGroup~0:complex'
+  - uid: 'excel!ExcelScript.Worksheet#addHorizontalPageBreak:member(1)'
+    summary: Adds a page break before the top-left cell of the range specified.
+    name: addHorizontalPageBreak(pageBreakRange)
+    fullName: addHorizontalPageBreak(pageBreakRange)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'addHorizontalPageBreak(pageBreakRange: Range | string): PageBreak;'
+      return:
+        type:
+          - 'excel!ExcelScript.PageBreak:interface'
+        description: ''
+      parameters:
+        - id: pageBreakRange
+          description: The range immediately after the page break to be added.
+          type:
+            - 'excel!ExcelScript.Worksheet#addHorizontalPageBreak~0:complex'
   - uid: 'excel!ExcelScript.Worksheet#addImage:member(1)'
     summary: >-
       Creates an image from a base64-encoded string and adds it to the worksheet. Returns the Shape object that
@@ -230,12 +255,12 @@ items:
     syntax:
       content: |-
         addLine(
-                  startLeft: number,
-                  startTop: number,
-                  endLeft: number,
-                  endTop: number,
-                  connectorType?: ConnectorType
-              ): Shape;
+                    startLeft: number,
+                    startTop: number,
+                    endLeft: number,
+                    endTop: number,
+                    connectorType?: ConnectorType
+                ): Shape;
       return:
         type:
           - 'excel!ExcelScript.Shape:interface'
@@ -271,10 +296,10 @@ items:
     syntax:
       content: |-
         addNamedItem(
-                  name: string,
-                  reference: Range | string,
-                  comment?: string
-              ): NamedItem;
+                    name: string,
+                    reference: Range | string,
+                    comment?: string
+                ): NamedItem;
       return:
         type:
           - 'excel!ExcelScript.NamedItem:interface'
@@ -302,10 +327,10 @@ items:
     syntax:
       content: |-
         addNamedItemFormulaLocal(
-                  name: string,
-                  formula: string,
-                  comment?: string
-              ): NamedItem;
+                    name: string,
+                    formula: string,
+                    comment?: string
+                ): NamedItem;
       return:
         type:
           - 'excel!ExcelScript.NamedItem:interface'
@@ -323,6 +348,41 @@ items:
           description: Optional. The comment associated with the named item.
           type:
             - string
+  - uid: 'excel!ExcelScript.Worksheet#addPivotTable:member(1)'
+    summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
+    name: 'addPivotTable(name, source, destination)'
+    fullName: 'addPivotTable(name, source, destination)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        addPivotTable(
+                    name: string,
+                    source: Range | string | Table,
+                    destination: Range | string
+                ): PivotTable;
+      return:
+        type:
+          - 'excel!ExcelScript.PivotTable:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: The name of the new PivotTable.
+          type:
+            - string
+        - id: source
+          description: >-
+            The source data for the new PivotTable, this can either be a range (or string address including the
+            worksheet name) or a table.
+          type:
+            - 'excel!ExcelScript.Worksheet#addPivotTable~0:complex'
+        - id: destination
+          description: >-
+            The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet
+            where the resulting report will be placed).
+          type:
+            - 'excel!ExcelScript.Worksheet#addPivotTable~1:complex'
   - uid: 'excel!ExcelScript.Worksheet#addSlicer:member(1)'
     summary: Adds a new slicer to the workbook.
     name: 'addSlicer(slicerSource, sourceField, slicerDestination)'
@@ -333,10 +393,10 @@ items:
     syntax:
       content: |-
         addSlicer(
-                  slicerSource: string | PivotTable | Table,
-                  sourceField: string | PivotField | number | TableColumn,
-                  slicerDestination?: string | Worksheet
-              ): Slicer;
+                    slicerSource: string | PivotTable | Table,
+                    sourceField: string | PivotField | number | TableColumn,
+                    slicerDestination?: string | Worksheet
+                ): Slicer;
       return:
         type:
           - 'excel!ExcelScript.Slicer:interface'
@@ -412,6 +472,24 @@ items:
           description: Represents the text that will be shown in the created text box.
           type:
             - string
+  - uid: 'excel!ExcelScript.Worksheet#addVerticalPageBreak:member(1)'
+    summary: Adds a page break before the top-left cell of the range specified.
+    name: addVerticalPageBreak(pageBreakRange)
+    fullName: addVerticalPageBreak(pageBreakRange)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'addVerticalPageBreak(pageBreakRange: Range | string): PageBreak;'
+      return:
+        type:
+          - 'excel!ExcelScript.PageBreak:interface'
+        description: ''
+      parameters:
+        - id: pageBreakRange
+          description: The range immediately after the page break to be added.
+          type:
+            - 'excel!ExcelScript.Worksheet#addVerticalPageBreak~0:complex'
   - uid: 'excel!ExcelScript.Worksheet#calculate:member(1)'
     summary: Calculates all cells on a worksheet.
     name: calculate(markAllDirty)
@@ -440,9 +518,9 @@ items:
     syntax:
       content: |-
         copy(
-                  positionType?: WorksheetPositionType,
-                  relativeTo?: Worksheet
-              ): Worksheet;
+                    positionType?: WorksheetPositionType,
+                    relativeTo?: Worksheet
+                ): Worksheet;
       return:
         type:
           - 'excel!ExcelScript.Worksheet:interface'
@@ -503,7 +581,7 @@ items:
           type:
             - 'excel!ExcelScript.WorksheetSearchCriteria:interface'
   - uid: 'excel!ExcelScript.Worksheet#getAutoFilter:member(1)'
-    summary: Represents the AutoFilter object of the worksheet. Read-Only.
+    summary: Represents the AutoFilter object of the worksheet.
     name: getAutoFilter()
     fullName: getAutoFilter()
     langs:
@@ -560,7 +638,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getCharts:member(1)'
-    summary: Returns a collection of charts that are part of the worksheet. Read-only.
+    summary: Returns a collection of charts that are part of the worksheet.
     name: getCharts()
     fullName: getCharts()
     langs:
@@ -573,7 +651,7 @@ items:
           - 'excel!ExcelScript.Worksheet#getCharts~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getComment:member(1)'
-    summary: Gets a comment from the collection based on its ID. Read-only.
+    summary: Gets a comment from the collection based on its ID.
     name: getComment(commentId)
     fullName: getComment(commentId)
     langs:
@@ -630,7 +708,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getComments:member(1)'
-    summary: Returns a collection of all the Comments objects on the worksheet. Read-only.
+    summary: Returns a collection of all the Comments objects on the worksheet.
     name: getComments()
     fullName: getComments()
     langs:
@@ -644,7 +722,7 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getEnableCalculation:member(1)'
     summary: >-
-      Gets or sets the enableCalculation property of the worksheet. True if Excel recalculates the worksheet when
+      Determines if Excel should recalculate the worksheet when necessary. True if Excel recalculates the worksheet when
       necessary. False if Excel doesn't recalculate the sheet.
     name: getEnableCalculation()
     fullName: getEnableCalculation()
@@ -658,7 +736,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getFreezePanes:member(1)'
-    summary: Gets an object that can be used to manipulate frozen panes on the worksheet. Read-only.
+    summary: Gets an object that can be used to manipulate frozen panes on the worksheet.
     name: getFreezePanes()
     fullName: getFreezePanes()
     langs:
@@ -670,10 +748,23 @@ items:
         type:
           - 'excel!ExcelScript.WorksheetFreezePanes:interface'
         description: ''
+  - uid: 'excel!ExcelScript.Worksheet#getHorizontalPageBreaks:member(1)'
+    summary: Gets the horizontal page break collection for the worksheet. This collection only contains manual page breaks.
+    name: getHorizontalPageBreaks()
+    fullName: getHorizontalPageBreaks()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getHorizontalPageBreaks(): PageBreak[];'
+      return:
+        type:
+          - 'excel!ExcelScript.Worksheet#getHorizontalPageBreaks~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.Worksheet#getId:member(1)'
     summary: >-
       Returns a value that uniquely identifies the worksheet in a given workbook. The value of the identifier remains
-      the same even when the worksheet is renamed or moved. Read-only.
+      the same even when the worksheet is renamed or moved.
     name: getId()
     fullName: getId()
     langs:
@@ -717,7 +808,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getNames:member(1)'
-    summary: Collection of names scoped to the current worksheet. Read-only.
+    summary: Collection of names scoped to the current worksheet.
     name: getNames()
     fullName: getNames()
     langs:
@@ -781,7 +872,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getPivotTables:member(1)'
-    summary: Collection of PivotTables that are part of the worksheet. Read-only.
+    summary: Collection of PivotTables that are part of the worksheet.
     name: getPivotTables()
     fullName: getPivotTables()
     langs:
@@ -827,7 +918,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.Worksheet#getProtection:member(1)'
-    summary: Returns sheet protection object for a worksheet. Read-only.
+    summary: Returns sheet protection object for a worksheet.
     name: getProtection()
     fullName: getProtection()
     langs:
@@ -871,11 +962,11 @@ items:
     syntax:
       content: |-
         getRangeByIndexes(
-                  startRow: number,
-                  startColumn: number,
-                  rowCount: number,
-                  columnCount: number
-              ): Range;
+                    startRow: number,
+                    startColumn: number,
+                    rowCount: number,
+                    columnCount: number
+                ): Range;
       return:
         type:
           - 'excel!ExcelScript.Range:interface'
@@ -938,7 +1029,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getShapes:member(1)'
-    summary: Returns the collection of all the Shape objects on the worksheet. Read-only.
+    summary: Returns the collection of all the Shape objects on the worksheet.
     name: getShapes()
     fullName: getShapes()
     langs:
@@ -951,7 +1042,7 @@ items:
           - 'excel!ExcelScript.Worksheet#getShapes~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getShowGridlines:member(1)'
-    summary: Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
+    summary: Specifies if gridlines are visible to the user.
     name: getShowGridlines()
     fullName: getShowGridlines()
     langs:
@@ -964,7 +1055,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getShowHeadings:member(1)'
-    summary: Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
+    summary: Specifies if headings are visible to the user.
     name: getShowHeadings()
     fullName: getShowHeadings()
     langs:
@@ -995,7 +1086,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getSlicers:member(1)'
-    summary: Returns a collection of slicers that are part of the worksheet. Read-only.
+    summary: Returns a collection of slicers that are part of the worksheet.
     name: getSlicers()
     fullName: getSlicers()
     langs:
@@ -1008,7 +1099,7 @@ items:
           - 'excel!ExcelScript.Worksheet#getSlicers~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getStandardHeight:member(1)'
-    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points. Read-only.'
+    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points.'
     name: getStandardHeight()
     fullName: getStandardHeight()
     langs:
@@ -1022,9 +1113,9 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getStandardWidth:member(1)'
     summary: >-
-      Returns or sets the standard (default) width of all the columns in the worksheet. One unit of column width is
-      equal to the width of one character in the Normal style. For proportional fonts, the width of the character 0
-      (zero) is used.
+      Specifies the standard (default) width of all the columns in the worksheet. One unit of column width is equal to
+      the width of one character in the Normal style. For proportional fonts, the width of the character 0 (zero) is
+      used.
     name: getStandardWidth()
     fullName: getStandardWidth()
     langs:
@@ -1038,10 +1129,10 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Worksheet#getTabColor:member(1)'
     summary: >-
-      Gets or sets the worksheet tab color. When retrieving the tab color, if the worksheet is invisible, the value will
-      be null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
-      Otherwise, the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string
-      to set an "auto" color, or a real color otherwise.
+      The tab color of the worksheet. When retrieving the tab color, if the worksheet is invisible, the value will be
+      null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned. Otherwise,
+      the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string to set an
+      "auto" color, or a real color otherwise.
     name: getTabColor()
     fullName: getTabColor()
     langs:
@@ -1072,7 +1163,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Worksheet#getTables:member(1)'
-    summary: Collection of tables that are part of the worksheet. Read-only.
+    summary: Collection of tables that are part of the worksheet.
     name: getTables()
     fullName: getTables()
     langs:
@@ -1104,6 +1195,19 @@ items:
           description: Optional. Considers only cells with values as used cells.
           type:
             - boolean
+  - uid: 'excel!ExcelScript.Worksheet#getVerticalPageBreaks:member(1)'
+    summary: Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
+    name: getVerticalPageBreaks()
+    fullName: getVerticalPageBreaks()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getVerticalPageBreaks(): PageBreak[];'
+      return:
+        type:
+          - 'excel!ExcelScript.Worksheet#getVerticalPageBreaks~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.Worksheet#getVisibility:member(1)'
     summary: The Visibility of the worksheet.
     name: getVisibility()
@@ -1130,6 +1234,32 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!ExcelScript.Worksheet#removeAllHorizontalPageBreaks:member(1)'
+    summary: Resets all manual page breaks in the collection.
+    name: removeAllHorizontalPageBreaks()
+    fullName: removeAllHorizontalPageBreaks()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'removeAllHorizontalPageBreaks(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!ExcelScript.Worksheet#removeAllVerticalPageBreaks:member(1)'
+    summary: Resets all manual page breaks in the collection.
+    name: removeAllVerticalPageBreaks()
+    fullName: removeAllVerticalPageBreaks()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'removeAllVerticalPageBreaks(): void;'
+      return:
+        type:
+          - void
+        description: ''
   - uid: 'excel!ExcelScript.Worksheet#replaceAll:member(1)'
     summary: Finds and replaces the given string based on the criteria specified within the current worksheet.
     name: 'replaceAll(text, replacement, criteria)'
@@ -1140,10 +1270,10 @@ items:
     syntax:
       content: |-
         replaceAll(
-                  text: string,
-                  replacement: string,
-                  criteria: ReplaceCriteria
-              ): number;
+                    text: string,
+                    replacement: string,
+                    criteria: ReplaceCriteria
+                ): number;
       return:
         type:
           - number
@@ -1163,7 +1293,7 @@ items:
             - 'excel!ExcelScript.ReplaceCriteria:interface'
   - uid: 'excel!ExcelScript.Worksheet#setEnableCalculation:member(1)'
     summary: >-
-      Gets or sets the enableCalculation property of the worksheet. True if Excel recalculates the worksheet when
+      Determines if Excel should recalculate the worksheet when necessary. True if Excel recalculates the worksheet when
       necessary. False if Excel doesn't recalculate the sheet.
     name: setEnableCalculation(enableCalculation)
     fullName: setEnableCalculation(enableCalculation)
@@ -1218,7 +1348,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Worksheet#setShowGridlines:member(1)'
-    summary: Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
+    summary: Specifies if gridlines are visible to the user.
     name: setShowGridlines(showGridlines)
     fullName: setShowGridlines(showGridlines)
     langs:
@@ -1236,7 +1366,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.Worksheet#setShowHeadings:member(1)'
-    summary: Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
+    summary: Specifies if headings are visible to the user.
     name: setShowHeadings(showHeadings)
     fullName: setShowHeadings(showHeadings)
     langs:
@@ -1255,9 +1385,9 @@ items:
             - boolean
   - uid: 'excel!ExcelScript.Worksheet#setStandardWidth:member(1)'
     summary: >-
-      Returns or sets the standard (default) width of all the columns in the worksheet. One unit of column width is
-      equal to the width of one character in the Normal style. For proportional fonts, the width of the character 0
-      (zero) is used.
+      Specifies the standard (default) width of all the columns in the worksheet. One unit of column width is equal to
+      the width of one character in the Normal style. For proportional fonts, the width of the character 0 (zero) is
+      used.
     name: setStandardWidth(standardWidth)
     fullName: setStandardWidth(standardWidth)
     langs:
@@ -1276,10 +1406,10 @@ items:
             - number
   - uid: 'excel!ExcelScript.Worksheet#setTabColor:member(1)'
     summary: >-
-      Gets or sets the worksheet tab color. When retrieving the tab color, if the worksheet is invisible, the value will
-      be null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
-      Otherwise, the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string
-      to set an "auto" color, or a real color otherwise.
+      The tab color of the worksheet. When retrieving the tab color, if the worksheet is invisible, the value will be
+      null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned. Otherwise,
+      the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string to set an
+      "auto" color, or a real color otherwise.
     name: setTabColor(tabColor)
     fullName: setTabColor(tabColor)
     langs:
@@ -1397,6 +1527,18 @@ references:
         fullName: ExcelScript.Shape
       - name: '>'
         fullName: '>'
+  - uid: 'excel!ExcelScript.PageBreak:interface'
+    name: PageBreak
+    fullName: ExcelScript.PageBreak
+  - uid: 'excel!ExcelScript.Worksheet#addHorizontalPageBreak~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
   - uid: 'excel!ExcelScript.ConnectorType:enum'
     name: ConnectorType
     fullName: ExcelScript.ConnectorType
@@ -1412,6 +1554,34 @@ references:
         fullName: ExcelScript.Range
       - name: ' | string'
         fullName: ' | string'
+  - uid: 'excel!ExcelScript.PivotTable:interface'
+    name: PivotTable
+    fullName: ExcelScript.PivotTable
+  - uid: 'excel!ExcelScript.Worksheet#addPivotTable~0:complex'
+    name: Range | string | Table
+    fullName: ExcelScript.Range | string | ExcelScript.Table
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string | '
+        fullName: ' | string | '
+      - uid: 'excel!ExcelScript.Table:interface'
+        name: Table
+        fullName: ExcelScript.Table
+  - uid: 'excel!ExcelScript.Worksheet#addPivotTable~1:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: |2-
+           | string
+                  
+        fullName: |2-
+           | string
+                  
   - uid: 'excel!ExcelScript.Slicer:interface'
     name: Slicer
     fullName: ExcelScript.Slicer
@@ -1456,6 +1626,15 @@ references:
     name: Table
     fullName: ExcelScript.Table
   - uid: 'excel!ExcelScript.Worksheet#addTable~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!ExcelScript.Worksheet#addVerticalPageBreak~0:complex'
     name: Range | string
     fullName: ExcelScript.Range | string
     spec.typeScript:
@@ -1518,6 +1697,15 @@ references:
   - uid: 'excel!ExcelScript.WorksheetFreezePanes:interface'
     name: WorksheetFreezePanes
     fullName: ExcelScript.WorksheetFreezePanes
+  - uid: 'excel!ExcelScript.Worksheet#getHorizontalPageBreaks~0:complex'
+    name: 'PageBreak[]'
+    fullName: 'ExcelScript.PageBreak[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.PageBreak:interface'
+        name: PageBreak
+        fullName: ExcelScript.PageBreak
+      - name: '[]'
+        fullName: '[]'
   - uid: 'excel!ExcelScript.Worksheet#getNamedItem~0:complex'
     name: NamedItem | undefined
     fullName: ExcelScript.NamedItem | undefined
@@ -1603,6 +1791,15 @@ references:
       - uid: 'excel!ExcelScript.Table:interface'
         name: Table
         fullName: ExcelScript.Table
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!ExcelScript.Worksheet#getVerticalPageBreaks~0:complex'
+    name: 'PageBreak[]'
+    fullName: 'ExcelScript.PageBreak[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.PageBreak:interface'
+        name: PageBreak
+        fullName: ExcelScript.PageBreak
       - name: '[]'
         fullName: '[]'
   - uid: 'excel!ExcelScript.SheetVisibility:enum'

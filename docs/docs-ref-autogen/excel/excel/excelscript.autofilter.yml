@@ -13,6 +13,7 @@ items:
     children:
       - 'excel!ExcelScript.AutoFilter#apply:member(1)'
       - 'excel!ExcelScript.AutoFilter#clearCriteria:member(1)'
+      - 'excel!ExcelScript.AutoFilter#getCriteria:member(1)'
       - 'excel!ExcelScript.AutoFilter#getEnabled:member(1)'
       - 'excel!ExcelScript.AutoFilter#getIsDataFiltered:member(1)'
       - 'excel!ExcelScript.AutoFilter#getRange:member(1)'
@@ -28,10 +29,10 @@ items:
     syntax:
       content: |-
         apply(
-                  range: Range | string,
-                  columnIndex?: number,
-                  criteria?: FilterCriteria
-              ): void;
+                    range: Range | string,
+                    columnIndex?: number,
+                    criteria?: FilterCriteria
+                ): void;
       return:
         type:
           - void
@@ -62,8 +63,21 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!ExcelScript.AutoFilter#getCriteria:member(1)'
+    summary: An array that holds all the filter criteria in the autofiltered range.
+    name: getCriteria()
+    fullName: getCriteria()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCriteria(): FilterCriteria[];'
+      return:
+        type:
+          - 'excel!ExcelScript.AutoFilter#getCriteria~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.AutoFilter#getEnabled:member(1)'
-    summary: Indicates if the AutoFilter is enabled or not. Read-Only.
+    summary: Specifies if the AutoFilter is enabled.
     name: getEnabled()
     fullName: getEnabled()
     langs:
@@ -76,7 +90,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.AutoFilter#getIsDataFiltered:member(1)'
-    summary: Indicates if the AutoFilter has filter criteria. Read-Only.
+    summary: Specifies if the AutoFilter has filter criteria.
     name: getIsDataFiltered()
     fullName: getIsDataFiltered()
     langs:
@@ -142,6 +156,15 @@ references:
   - uid: 'excel!ExcelScript.FilterCriteria:interface'
     name: FilterCriteria
     fullName: ExcelScript.FilterCriteria
+  - uid: 'excel!ExcelScript.AutoFilter#getCriteria~0:complex'
+    name: 'FilterCriteria[]'
+    fullName: 'ExcelScript.FilterCriteria[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.FilterCriteria:interface'
+        name: FilterCriteria
+        fullName: ExcelScript.FilterCriteria
+      - name: '[]'
+        fullName: '[]'
   - uid: 'excel!ExcelScript.Range:interface'
     name: Range
     fullName: ExcelScript.Range

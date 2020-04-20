@@ -9,12 +9,30 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!ExcelScript.IconSetConditionalFormat#getCriteria:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#getReverseIconOrder:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#getShowIconOnly:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#getStyle:member(1)'
+      - 'excel!ExcelScript.IconSetConditionalFormat#setCriteria:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#setReverseIconOrder:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#setShowIconOnly:member(1)'
       - 'excel!ExcelScript.IconSetConditionalFormat#setStyle:member(1)'
+  - uid: 'excel!ExcelScript.IconSetConditionalFormat#getCriteria:member(1)'
+    summary: >-
+      An array of Criteria and IconSets for the rules and potential custom icons for conditional icons. Note that for
+      the first criterion only the custom icon can be modified, while type, formula, and operator will be ignored when
+      set.
+    name: getCriteria()
+    fullName: getCriteria()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCriteria(): ConditionalIconCriterion[];'
+      return:
+        type:
+          - 'excel!ExcelScript.IconSetConditionalFormat#getCriteria~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.IconSetConditionalFormat#getReverseIconOrder:member(1)'
     summary: 'If true, reverses the icon orders for the IconSet. Note that this cannot be set if custom icons are used.'
     name: getReverseIconOrder()
@@ -54,6 +72,27 @@ items:
         type:
           - 'excel!ExcelScript.IconSet:enum'
         description: ''
+  - uid: 'excel!ExcelScript.IconSetConditionalFormat#setCriteria:member(1)'
+    summary: >-
+      An array of Criteria and IconSets for the rules and potential custom icons for conditional icons. Note that for
+      the first criterion only the custom icon can be modified, while type, formula, and operator will be ignored when
+      set.
+    name: setCriteria(criteria)
+    fullName: setCriteria(criteria)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setCriteria(criteria: ConditionalIconCriterion[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: criteria
+          description: ''
+          type:
+            - 'excel!ExcelScript.IconSetConditionalFormat#setCriteria~0:complex'
   - uid: 'excel!ExcelScript.IconSetConditionalFormat#setReverseIconOrder:member(1)'
     summary: 'If true, reverses the icon orders for the IconSet. Note that this cannot be set if custom icons are used.'
     name: setReverseIconOrder(reverseIconOrder)
@@ -109,6 +148,24 @@ items:
           type:
             - 'excel!ExcelScript.IconSet:enum'
 references:
+  - uid: 'excel!ExcelScript.IconSetConditionalFormat#getCriteria~0:complex'
+    name: 'ConditionalIconCriterion[]'
+    fullName: 'ExcelScript.ConditionalIconCriterion[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.ConditionalIconCriterion:interface'
+        name: ConditionalIconCriterion
+        fullName: ExcelScript.ConditionalIconCriterion
+      - name: '[]'
+        fullName: '[]'
   - uid: 'excel!ExcelScript.IconSet:enum'
     name: IconSet
     fullName: ExcelScript.IconSet
+  - uid: 'excel!ExcelScript.IconSetConditionalFormat#setCriteria~0:complex'
+    name: 'ConditionalIconCriterion[]'
+    fullName: 'ExcelScript.ConditionalIconCriterion[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.ConditionalIconCriterion:interface'
+        name: ConditionalIconCriterion
+        fullName: ExcelScript.ConditionalIconCriterion
+      - name: '[]'
+        fullName: '[]'

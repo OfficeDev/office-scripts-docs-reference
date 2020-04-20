@@ -19,14 +19,15 @@ items:
       - 'excel!ExcelScript.Workbook#addCustomXmlPart:member(1)'
       - 'excel!ExcelScript.Workbook#addNamedItem:member(1)'
       - 'excel!ExcelScript.Workbook#addNamedItemFormulaLocal:member(1)'
+      - 'excel!ExcelScript.Workbook#addPivotTable:member(1)'
       - 'excel!ExcelScript.Workbook#addPivotTableStyle:member(1)'
+      - 'excel!ExcelScript.Workbook#addPredefinedCellStyle:member(1)'
       - 'excel!ExcelScript.Workbook#addSetting:member(1)'
       - 'excel!ExcelScript.Workbook#addSlicer:member(1)'
       - 'excel!ExcelScript.Workbook#addSlicerStyle:member(1)'
       - 'excel!ExcelScript.Workbook#addTable:member(1)'
       - 'excel!ExcelScript.Workbook#addTableStyle:member(1)'
       - 'excel!ExcelScript.Workbook#addTimelineStyle:member(1)'
-      - 'excel!ExcelScript.Workbook#addvoid:member(1)'
       - 'excel!ExcelScript.Workbook#addWorksheet:member(1)'
       - 'excel!ExcelScript.Workbook#getActiveCell:member(1)'
       - 'excel!ExcelScript.Workbook#getActiveChart:member(1)'
@@ -58,6 +59,8 @@ items:
       - 'excel!ExcelScript.Workbook#getPivotTables:member(1)'
       - 'excel!ExcelScript.Workbook#getPivotTableStyle:member(1)'
       - 'excel!ExcelScript.Workbook#getPivotTableStyles:member(1)'
+      - 'excel!ExcelScript.Workbook#getPredefinedCellStyle:member(1)'
+      - 'excel!ExcelScript.Workbook#getPredefinedCellStyles:member(1)'
       - 'excel!ExcelScript.Workbook#getPreviouslySaved:member(1)'
       - 'excel!ExcelScript.Workbook#getProperties:member(1)'
       - 'excel!ExcelScript.Workbook#getProtection:member(1)'
@@ -70,8 +73,6 @@ items:
       - 'excel!ExcelScript.Workbook#getSlicers:member(1)'
       - 'excel!ExcelScript.Workbook#getSlicerStyle:member(1)'
       - 'excel!ExcelScript.Workbook#getSlicerStyles:member(1)'
-      - 'excel!ExcelScript.Workbook#getStyle:member(1)'
-      - 'excel!ExcelScript.Workbook#getStyles:member(1)'
       - 'excel!ExcelScript.Workbook#getTable:member(1)'
       - 'excel!ExcelScript.Workbook#getTables:member(1)'
       - 'excel!ExcelScript.Workbook#getTableStyle:member(1)'
@@ -81,6 +82,7 @@ items:
       - 'excel!ExcelScript.Workbook#getUsePrecisionAsDisplayed:member(1)'
       - 'excel!ExcelScript.Workbook#getWorksheet:member(1)'
       - 'excel!ExcelScript.Workbook#getWorksheets:member(1)'
+      - 'excel!ExcelScript.Workbook#refreshAllDataConnections:member(1)'
       - 'excel!ExcelScript.Workbook#refreshAllPivotTables:member(1)'
       - 'excel!ExcelScript.Workbook#setChartDataPointTrack:member(1)'
       - 'excel!ExcelScript.Workbook#setDefaultPivotTableStyle:member(1)'
@@ -99,10 +101,10 @@ items:
     syntax:
       content: |-
         addBinding(
-                  range: Range | string,
-                  bindingType: BindingType,
-                  id: string
-              ): Binding;
+                    range: Range | string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
       return:
         type:
           - 'excel!ExcelScript.Binding:interface'
@@ -134,10 +136,10 @@ items:
     syntax:
       content: |-
         addBindingFromNamedItem(
-                  name: string,
-                  bindingType: BindingType,
-                  id: string
-              ): Binding;
+                    name: string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
       return:
         type:
           - 'excel!ExcelScript.Binding:interface'
@@ -191,10 +193,10 @@ items:
     syntax:
       content: |-
         addComment(
-                  cellAddress: Range | string,
-                  content: CommentRichContent | string,
-                  contentType?: ContentType
-              ): Comment;
+                    cellAddress: Range | string,
+                    content: CommentRichContent | string,
+                    contentType?: ContentType
+                ): Comment;
       return:
         type:
           - 'excel!ExcelScript.Comment:interface'
@@ -247,10 +249,10 @@ items:
     syntax:
       content: |-
         addNamedItem(
-                  name: string,
-                  reference: Range | string,
-                  comment?: string
-              ): NamedItem;
+                    name: string,
+                    reference: Range | string,
+                    comment?: string
+                ): NamedItem;
       return:
         type:
           - 'excel!ExcelScript.NamedItem:interface'
@@ -278,10 +280,10 @@ items:
     syntax:
       content: |-
         addNamedItemFormulaLocal(
-                  name: string,
-                  formula: string,
-                  comment?: string
-              ): NamedItem;
+                    name: string,
+                    formula: string,
+                    comment?: string
+                ): NamedItem;
       return:
         type:
           - 'excel!ExcelScript.NamedItem:interface'
@@ -299,6 +301,41 @@ items:
           description: Optional. The comment associated with the named item.
           type:
             - string
+  - uid: 'excel!ExcelScript.Workbook#addPivotTable:member(1)'
+    summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
+    name: 'addPivotTable(name, source, destination)'
+    fullName: 'addPivotTable(name, source, destination)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        addPivotTable(
+                    name: string,
+                    source: Range | string | Table,
+                    destination: Range | string
+                ): PivotTable;
+      return:
+        type:
+          - 'excel!ExcelScript.PivotTable:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: The name of the new PivotTable.
+          type:
+            - string
+        - id: source
+          description: >-
+            The source data for the new PivotTable, this can either be a range (or string address including the
+            worksheet name) or a table.
+          type:
+            - 'excel!ExcelScript.Workbook#addPivotTable~0:complex'
+        - id: destination
+          description: >-
+            The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet
+            where the resulting report will be placed).
+          type:
+            - 'excel!ExcelScript.Workbook#addPivotTable~1:complex'
   - uid: 'excel!ExcelScript.Workbook#addPivotTableStyle:member(1)'
     summary: Creates a blank PivotTableStyle with the specified name.
     name: 'addPivotTableStyle(name, makeUniqueName)'
@@ -309,9 +346,9 @@ items:
     syntax:
       content: |-
         addPivotTableStyle(
-                  name: string,
-                  makeUniqueName?: boolean
-              ): PivotTableStyle;
+                    name: string,
+                    makeUniqueName?: boolean
+                ): PivotTableStyle;
       return:
         type:
           - 'excel!ExcelScript.PivotTableStyle:interface'
@@ -327,6 +364,24 @@ items:
           description: 'Optional, defaults to false. If true, will append numbers to the name in order to make it unique, if needed.'
           type:
             - boolean
+  - uid: 'excel!ExcelScript.Workbook#addPredefinedCellStyle:member(1)'
+    summary: Adds a new style to the collection.
+    name: addPredefinedCellStyle(name)
+    fullName: addPredefinedCellStyle(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'addPredefinedCellStyle(name: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the style to be added.
+          type:
+            - string
   - uid: 'excel!ExcelScript.Workbook#addSetting:member(1)'
     summary: Sets or adds the specified setting to the workbook.
     name: 'addSetting(key, value)'
@@ -337,9 +392,9 @@ items:
     syntax:
       content: |-
         addSetting(
-                  key: string,
-                  value: string | number | boolean | Date | Array<any> | any
-              ): Setting;
+                    key: string,
+                    value: string | number | boolean | Date | Array<any> | any
+                ): Setting;
       return:
         type:
           - 'excel!ExcelScript.Setting:interface'
@@ -363,10 +418,10 @@ items:
     syntax:
       content: |-
         addSlicer(
-                  slicerSource: string | PivotTable | Table,
-                  sourceField: string | PivotField | number | TableColumn,
-                  slicerDestination?: string | Worksheet
-              ): Slicer;
+                    slicerSource: string | PivotTable | Table,
+                    sourceField: string | PivotField | number | TableColumn,
+                    slicerDestination?: string | Worksheet
+                ): Slicer;
       return:
         type:
           - 'excel!ExcelScript.Slicer:interface'
@@ -494,24 +549,6 @@ items:
           description: 'Optional, defaults to false. If true, will append numbers to the name in order to make it unique, if needed.'
           type:
             - boolean
-  - uid: 'excel!ExcelScript.Workbook#addvoid:member(1)'
-    summary: Adds a new style to the collection.
-    name: addvoid(name)
-    fullName: addvoid(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'addvoid(name: string): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the style to be added.
-          type:
-            - string
   - uid: 'excel!ExcelScript.Workbook#addWorksheet:member(1)'
     summary: >-
       Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish
@@ -587,7 +624,7 @@ items:
           - 'excel!ExcelScript.Worksheet:interface'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getApplication:member(1)'
-    summary: Represents the Excel application instance that contains this workbook. Read-only.
+    summary: Represents the Excel application instance that contains this workbook.
     name: getApplication()
     fullName: getApplication()
     langs:
@@ -600,7 +637,7 @@ items:
           - 'excel!ExcelScript.Application:interface'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getAutoSave:member(1)'
-    summary: Specifies whether or not the workbook is in autosave mode. Read-Only.
+    summary: Specifies if the workbook is in autosave mode.
     name: getAutoSave()
     fullName: getAutoSave()
     langs:
@@ -631,7 +668,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getBindings:member(1)'
-    summary: Represents a collection of bindings that are part of the workbook. Read-only.
+    summary: Represents a collection of bindings that are part of the workbook.
     name: getBindings()
     fullName: getBindings()
     langs:
@@ -644,7 +681,7 @@ items:
           - 'excel!ExcelScript.Workbook#getBindings~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getCalculationEngineVersion:member(1)'
-    summary: Returns a number about the version of Excel Calculation Engine. Read-Only.
+    summary: Returns a number about the version of Excel Calculation Engine.
     name: getCalculationEngineVersion()
     fullName: getCalculationEngineVersion()
     langs:
@@ -672,7 +709,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getComment:member(1)'
-    summary: Gets a comment from the collection based on its ID. Read-only.
+    summary: Gets a comment from the collection based on its ID.
     name: getComment(commentId)
     fullName: getComment(commentId)
     langs:
@@ -729,7 +766,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getComments:member(1)'
-    summary: Represents a collection of Comments associated with the workbook. Read-only.
+    summary: Represents a collection of Comments associated with the workbook.
     name: getComments()
     fullName: getComments()
     langs:
@@ -762,7 +799,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getCustomXmlParts:member(1)'
-    summary: Represents the collection of custom XML parts contained by this workbook. Read-only.
+    summary: Represents the collection of custom XML parts contained by this workbook.
     name: getCustomXmlParts()
     fullName: getCustomXmlParts()
     langs:
@@ -846,8 +883,8 @@ items:
             - boolean
   - uid: 'excel!ExcelScript.Workbook#getIsDirty:member(1)'
     summary: >-
-      Specifies whether or not changes have been made since the workbook was last saved. You can set this property to
-      true if you want to close a modified workbook without either saving it or being prompted to save it.
+      Specifies if changes have been made since the workbook was last saved. You can set this property to true if you
+      want to close a modified workbook without either saving it or being prompted to save it.
     name: getIsDirty()
     fullName: getIsDirty()
     langs:
@@ -878,7 +915,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.Workbook#getName:member(1)'
-    summary: Gets the workbook name. Read-only.
+    summary: Gets the workbook name.
     name: getName()
     fullName: getName()
     langs:
@@ -909,7 +946,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getNames:member(1)'
-    summary: Represents a collection of workbook scoped named items (named ranges and constants). Read-only.
+    summary: Represents a collection of workbook scoped named items (named ranges and constants).
     name: getNames()
     fullName: getNames()
     langs:
@@ -940,7 +977,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getPivotTables:member(1)'
-    summary: Represents a collection of PivotTables associated with the workbook. Read-only.
+    summary: Represents a collection of PivotTables associated with the workbook.
     name: getPivotTables()
     fullName: getPivotTables()
     langs:
@@ -971,7 +1008,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getPivotTableStyles:member(1)'
-    summary: Represents a collection of PivotTableStyles associated with the workbook. Read-only.
+    summary: Represents a collection of PivotTableStyles associated with the workbook.
     name: getPivotTableStyles()
     fullName: getPivotTableStyles()
     langs:
@@ -983,8 +1020,39 @@ items:
         type:
           - 'excel!ExcelScript.Workbook#getPivotTableStyles~0:complex'
         description: ''
+  - uid: 'excel!ExcelScript.Workbook#getPredefinedCellStyle:member(1)'
+    summary: Gets a style by name.
+    name: getPredefinedCellStyle(name)
+    fullName: getPredefinedCellStyle(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPredefinedCellStyle(name: string): PredefinedCellStyle;'
+      return:
+        type:
+          - 'excel!ExcelScript.PredefinedCellStyle:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the style to be retrieved.
+          type:
+            - string
+  - uid: 'excel!ExcelScript.Workbook#getPredefinedCellStyles:member(1)'
+    summary: Represents a collection of styles associated with the workbook.
+    name: getPredefinedCellStyles()
+    fullName: getPredefinedCellStyles()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPredefinedCellStyles(): PredefinedCellStyle[];'
+      return:
+        type:
+          - 'excel!ExcelScript.Workbook#getPredefinedCellStyles~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.Workbook#getPreviouslySaved:member(1)'
-    summary: Specifies whether or not the workbook has ever been saved locally or online. Read-Only.
+    summary: Specifies if the workbook has ever been saved locally or online.
     name: getPreviouslySaved()
     fullName: getPreviouslySaved()
     langs:
@@ -997,7 +1065,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getProperties:member(1)'
-    summary: Gets the workbook properties. Read-only.
+    summary: Gets the workbook properties.
     name: getProperties()
     fullName: getProperties()
     langs:
@@ -1010,7 +1078,7 @@ items:
           - 'excel!ExcelScript.DocumentProperties:interface'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getProtection:member(1)'
-    summary: Returns workbook protection object for a workbook. Read-only.
+    summary: Returns workbook protection object for a workbook.
     name: getProtection()
     fullName: getProtection()
     langs:
@@ -1023,7 +1091,7 @@ items:
           - 'excel!ExcelScript.WorkbookProtection:interface'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getReadOnly:member(1)'
-    summary: True if the workbook is open in Read-only mode. Read-only.
+    summary: True if the workbook is open in Read-only mode.
     name: getReadOnly()
     fullName: getReadOnly()
     langs:
@@ -1084,7 +1152,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getSettings:member(1)'
-    summary: Represents a collection of Settings associated with the workbook. Read-only.
+    summary: Represents a collection of Settings associated with the workbook.
     name: getSettings()
     fullName: getSettings()
     langs:
@@ -1115,7 +1183,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getSlicers:member(1)'
-    summary: Represents a collection of Slicers associated with the workbook. Read-only.
+    summary: Represents a collection of Slicers associated with the workbook.
     name: getSlicers()
     fullName: getSlicers()
     langs:
@@ -1146,7 +1214,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getSlicerStyles:member(1)'
-    summary: Represents a collection of SlicerStyles associated with the workbook. Read-only.
+    summary: Represents a collection of SlicerStyles associated with the workbook.
     name: getSlicerStyles()
     fullName: getSlicerStyles()
     langs:
@@ -1157,37 +1225,6 @@ items:
       return:
         type:
           - 'excel!ExcelScript.Workbook#getSlicerStyles~0:complex'
-        description: ''
-  - uid: 'excel!ExcelScript.Workbook#getStyle:member(1)'
-    summary: Gets a style by name.
-    name: getStyle(name)
-    fullName: getStyle(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getStyle(name: string): Style;'
-      return:
-        type:
-          - 'excel!ExcelScript.Style:interface'
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the style to be retrieved.
-          type:
-            - string
-  - uid: 'excel!ExcelScript.Workbook#getStyles:member(1)'
-    summary: Represents a collection of styles associated with the workbook. Read-only.
-    name: getStyles()
-    fullName: getStyles()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getStyles(): Style[];'
-      return:
-        type:
-          - 'excel!ExcelScript.Workbook#getStyles~0:complex'
         description: ''
   - uid: 'excel!ExcelScript.Workbook#getTable:member(1)'
     summary: 'Gets a table by Name or ID. If the table does not exist, will return a null object.'
@@ -1208,7 +1245,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getTables:member(1)'
-    summary: Represents a collection of tables associated with the workbook. Read-only.
+    summary: Represents a collection of tables associated with the workbook.
     name: getTables()
     fullName: getTables()
     langs:
@@ -1239,7 +1276,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getTableStyles:member(1)'
-    summary: Represents a collection of TableStyles associated with the workbook. Read-only.
+    summary: Represents a collection of TableStyles associated with the workbook.
     name: getTableStyles()
     fullName: getTableStyles()
     langs:
@@ -1270,7 +1307,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getTimelineStyles:member(1)'
-    summary: Represents a collection of TimelineStyles associated with the workbook. Read-only.
+    summary: Represents a collection of TimelineStyles associated with the workbook.
     name: getTimelineStyles()
     fullName: getTimelineStyles()
     langs:
@@ -1316,7 +1353,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Workbook#getWorksheets:member(1)'
-    summary: Represents a collection of worksheets associated with the workbook. Read-only.
+    summary: Represents a collection of worksheets associated with the workbook.
     name: getWorksheets()
     fullName: getWorksheets()
     langs:
@@ -1327,6 +1364,19 @@ items:
       return:
         type:
           - 'excel!ExcelScript.Workbook#getWorksheets~0:complex'
+        description: ''
+  - uid: 'excel!ExcelScript.Workbook#refreshAllDataConnections:member(1)'
+    summary: Refreshes all the Data Connections.
+    name: refreshAllDataConnections()
+    fullName: refreshAllDataConnections()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'refreshAllDataConnections(): void;'
+      return:
+        type:
+          - void
         description: ''
   - uid: 'excel!ExcelScript.Workbook#refreshAllPivotTables:member(1)'
     summary: Refreshes all the pivot tables in the collection.
@@ -1371,8 +1421,8 @@ items:
     syntax:
       content: |-
         setDefaultPivotTableStyle(
-                  newDefaultStyle: PivotTableStyle | string
-              ): void;
+                    newDefaultStyle: PivotTableStyle | string
+                ): void;
       return:
         type:
           - void
@@ -1438,8 +1488,8 @@ items:
             - 'excel!ExcelScript.Workbook#setDefaultTimelineStyle~0:complex'
   - uid: 'excel!ExcelScript.Workbook#setIsDirty:member(1)'
     summary: >-
-      Specifies whether or not changes have been made since the workbook was last saved. You can set this property to
-      true if you want to close a modified workbook without either saving it or being prompted to save it.
+      Specifies if changes have been made since the workbook was last saved. You can set this property to true if you
+      want to close a modified workbook without either saving it or being prompted to save it.
     name: setIsDirty(isDirty)
     fullName: setIsDirty(isDirty)
     langs:
@@ -1531,6 +1581,34 @@ references:
         fullName: ExcelScript.Range
       - name: ' | string'
         fullName: ' | string'
+  - uid: 'excel!ExcelScript.PivotTable:interface'
+    name: PivotTable
+    fullName: ExcelScript.PivotTable
+  - uid: 'excel!ExcelScript.Workbook#addPivotTable~0:complex'
+    name: Range | string | Table
+    fullName: ExcelScript.Range | string | ExcelScript.Table
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string | '
+        fullName: ' | string | '
+      - uid: 'excel!ExcelScript.Table:interface'
+        name: Table
+        fullName: ExcelScript.Table
+  - uid: 'excel!ExcelScript.Workbook#addPivotTable~1:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: |2-
+           | string
+                  
+        fullName: |2-
+           | string
+                  
   - uid: 'excel!ExcelScript.PivotTableStyle:interface'
     name: PivotTableStyle
     fullName: ExcelScript.PivotTableStyle
@@ -1553,10 +1631,10 @@ references:
         fullName: Array
       - name: |-
           <any> | any
-                
+                  
         fullName: |-
           <any> | any
-                
+                  
   - uid: 'excel!ExcelScript.Slicer:interface'
     name: Slicer
     fullName: ExcelScript.Slicer
@@ -1738,6 +1816,18 @@ references:
         fullName: ExcelScript.PivotTableStyle
       - name: '[]'
         fullName: '[]'
+  - uid: 'excel!ExcelScript.PredefinedCellStyle:interface'
+    name: PredefinedCellStyle
+    fullName: ExcelScript.PredefinedCellStyle
+  - uid: 'excel!ExcelScript.Workbook#getPredefinedCellStyles~0:complex'
+    name: 'PredefinedCellStyle[]'
+    fullName: 'ExcelScript.PredefinedCellStyle[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.PredefinedCellStyle:interface'
+        name: PredefinedCellStyle
+        fullName: ExcelScript.PredefinedCellStyle
+      - name: '[]'
+        fullName: '[]'
   - uid: 'excel!ExcelScript.DocumentProperties:interface'
     name: DocumentProperties
     fullName: ExcelScript.DocumentProperties
@@ -1799,18 +1889,6 @@ references:
       - uid: 'excel!ExcelScript.SlicerStyle:interface'
         name: SlicerStyle
         fullName: ExcelScript.SlicerStyle
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!ExcelScript.Style:interface'
-    name: Style
-    fullName: ExcelScript.Style
-  - uid: 'excel!ExcelScript.Workbook#getStyles~0:complex'
-    name: 'Style[]'
-    fullName: 'ExcelScript.Style[]'
-    spec.typeScript:
-      - uid: 'excel!ExcelScript.Style:interface'
-        name: Style
-        fullName: ExcelScript.Style
       - name: '[]'
         fullName: '[]'
   - uid: 'excel!ExcelScript.Workbook#getTable~0:complex'
@@ -1894,10 +1972,10 @@ references:
         fullName: ExcelScript.PivotTableStyle
       - name: |2-
            | string
-                
+                  
         fullName: |2-
            | string
-                
+                  
   - uid: 'excel!ExcelScript.Workbook#setDefaultSlicerStyle~0:complex'
     name: SlicerStyle | string
     fullName: ExcelScript.SlicerStyle | string

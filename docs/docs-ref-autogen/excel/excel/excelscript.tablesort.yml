@@ -11,6 +11,7 @@ items:
     children:
       - 'excel!ExcelScript.TableSort#apply:member(1)'
       - 'excel!ExcelScript.TableSort#clear:member(1)'
+      - 'excel!ExcelScript.TableSort#getFields:member(1)'
       - 'excel!ExcelScript.TableSort#getMatchCase:member(1)'
       - 'excel!ExcelScript.TableSort#getMethod:member(1)'
       - 'excel!ExcelScript.TableSort#reapply:member(1)'
@@ -24,10 +25,10 @@ items:
     syntax:
       content: |-
         apply(
-                  fields: SortField[],
-                  matchCase?: boolean,
-                  method?: SortMethod
-              ): void;
+                    fields: SortField[],
+                    matchCase?: boolean,
+                    method?: SortMethod
+                ): void;
       return:
         type:
           - void
@@ -60,8 +61,21 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!ExcelScript.TableSort#getFields:member(1)'
+    summary: Specifies the current conditions used to last sort the table.
+    name: getFields()
+    fullName: getFields()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFields(): SortField[];'
+      return:
+        type:
+          - 'excel!ExcelScript.TableSort#getFields~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.TableSort#getMatchCase:member(1)'
-    summary: Represents whether the casing impacted the last sort of the table. Read-only.
+    summary: Specifies if the casing impacts the last sort of the table.
     name: getMatchCase()
     fullName: getMatchCase()
     langs:
@@ -74,7 +88,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.TableSort#getMethod:member(1)'
-    summary: Represents Chinese character ordering method last used to sort the table. Read-only.
+    summary: Represents Chinese character ordering method last used to sort the table.
     name: getMethod()
     fullName: getMethod()
     langs:
@@ -112,3 +126,12 @@ references:
   - uid: 'excel!ExcelScript.SortMethod:enum'
     name: SortMethod
     fullName: ExcelScript.SortMethod
+  - uid: 'excel!ExcelScript.TableSort#getFields~0:complex'
+    name: 'SortField[]'
+    fullName: 'ExcelScript.SortField[]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.SortField:interface'
+        name: SortField
+        fullName: ExcelScript.SortField
+      - name: '[]'
+        fullName: '[]'

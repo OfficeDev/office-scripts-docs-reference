@@ -11,12 +11,16 @@ items:
     children:
       - 'excel!ExcelScript.ConditionalRangeFormat#getBorders:member(1)'
       - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorder:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderBottom:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderLeft:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderRight:member(1)'
+      - 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderTop:member(1)'
       - 'excel!ExcelScript.ConditionalRangeFormat#getFill:member(1)'
       - 'excel!ExcelScript.ConditionalRangeFormat#getFont:member(1)'
       - 'excel!ExcelScript.ConditionalRangeFormat#getNumberFormat:member(1)'
       - 'excel!ExcelScript.ConditionalRangeFormat#setNumberFormat:member(1)'
   - uid: 'excel!ExcelScript.ConditionalRangeFormat#getBorders:member(1)'
-    summary: Collection of border objects that apply to the overall conditional format range. Read-only.
+    summary: Collection of border objects that apply to the overall conditional format range.
     name: getBorders()
     fullName: getBorders()
     langs:
@@ -38,8 +42,8 @@ items:
     syntax:
       content: |-
         getConditionalRangeBorder(
-                  index: ConditionalRangeBorderIndex
-              ): ConditionalRangeBorder;
+                    index: ConditionalRangeBorderIndex
+                ): ConditionalRangeBorder;
       return:
         type:
           - 'excel!ExcelScript.ConditionalRangeBorder:interface'
@@ -49,8 +53,60 @@ items:
           description: Index value of the border object to be retrieved. See Excel.ConditionalRangeBorderIndex for details.
           type:
             - 'excel!ExcelScript.ConditionalRangeBorderIndex:enum'
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderBottom:member(1)'
+    summary: Gets the bottom border.
+    name: getConditionalRangeBorderBottom()
+    fullName: getConditionalRangeBorderBottom()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getConditionalRangeBorderBottom(): ConditionalRangeBorder;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderLeft:member(1)'
+    summary: Gets the left border.
+    name: getConditionalRangeBorderLeft()
+    fullName: getConditionalRangeBorderLeft()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getConditionalRangeBorderLeft(): ConditionalRangeBorder;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderRight:member(1)'
+    summary: Gets the right border.
+    name: getConditionalRangeBorderRight()
+    fullName: getConditionalRangeBorderRight()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getConditionalRangeBorderRight(): ConditionalRangeBorder;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.ConditionalRangeFormat#getConditionalRangeBorderTop:member(1)'
+    summary: Gets the top border.
+    name: getConditionalRangeBorderTop()
+    fullName: getConditionalRangeBorderTop()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getConditionalRangeBorderTop(): ConditionalRangeBorder;'
+      return:
+        type:
+          - 'excel!ExcelScript.ConditionalRangeBorder:interface'
+        description: ''
   - uid: 'excel!ExcelScript.ConditionalRangeFormat#getFill:member(1)'
-    summary: Returns the fill object defined on the overall conditional format range. Read-only.
+    summary: Returns the fill object defined on the overall conditional format range.
     name: getFill()
     fullName: getFill()
     langs:
@@ -63,7 +119,7 @@ items:
           - 'excel!ExcelScript.ConditionalRangeFill:interface'
         description: ''
   - uid: 'excel!ExcelScript.ConditionalRangeFormat#getFont:member(1)'
-    summary: Returns the font object defined on the overall conditional format range. Read-only.
+    summary: Returns the font object defined on the overall conditional format range.
     name: getFont()
     fullName: getFont()
     langs:

@@ -89,7 +89,7 @@ items:
           - void
         description: ''
   - uid: 'excel!ExcelScript.Shape#getAltTextDescription:member(1)'
-    summary: Returns or sets the alternative description text for a Shape object.
+    summary: Specifies the alternative description text for a Shape object.
     name: getAltTextDescription()
     fullName: getAltTextDescription()
     langs:
@@ -102,7 +102,7 @@ items:
           - string
         description: ''
   - uid: 'excel!ExcelScript.Shape#getAltTextTitle:member(1)'
-    summary: Returns or sets the alternative title text for a Shape object.
+    summary: Specifies the alternative title text for a Shape object.
     name: getAltTextTitle()
     fullName: getAltTextTitle()
     langs:
@@ -136,7 +136,7 @@ items:
           type:
             - 'excel!ExcelScript.PictureFormat:enum'
   - uid: 'excel!ExcelScript.Shape#getConnectionSiteCount:member(1)'
-    summary: Returns the number of connection sites on this shape. Read-only.
+    summary: Returns the number of connection sites on this shape.
     name: getConnectionSiteCount()
     fullName: getConnectionSiteCount()
     langs:
@@ -149,7 +149,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Shape#getFill:member(1)'
-    summary: Returns the fill formatting of this shape. Read-only.
+    summary: Returns the fill formatting of this shape.
     name: getFill()
     fullName: getFill()
     langs:
@@ -178,8 +178,8 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Shape#getGeometricShapeType:member(1)'
     summary: >-
-      Represents the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns
-      null if the shape type is not "GeometricShape".
+      Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null
+      if the shape type is not "GeometricShape".
     name: getGeometricShapeType()
     fullName: getGeometricShapeType()
     langs:
@@ -206,8 +206,8 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Shape#getHeight:member(1)'
     summary: >-
-      Represents the height, in points, of the shape. Throws an invalid argument exception when set with a negative
-      value or zero as input.
+      Specifies the height, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
     name: getHeight()
     fullName: getHeight()
     langs:
@@ -220,7 +220,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Shape#getId:member(1)'
-    summary: Represents the shape identifier. Read-only.
+    summary: Specifies the shape identifier.
     name: getId()
     fullName: getId()
     langs:
@@ -262,7 +262,7 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Shape#getLevel:member(1)'
     summary: >-
-      Represents the level of the specified shape. For example, a level of 0 means that the shape is not part of any
+      Specifies the level of the specified shape. For example, a level of 0 means that the shape is not part of any
       groups, a level of 1 means the shape is part of a top-level group, and a level of 2 means the shape is part of a
       sub-group of the top level.
     name: getLevel()
@@ -290,7 +290,7 @@ items:
           - 'excel!ExcelScript.Line:interface'
         description: ''
   - uid: 'excel!ExcelScript.Shape#getLineFormat:member(1)'
-    summary: Returns the line formatting of this shape. Read-only.
+    summary: Returns the line formatting of this shape.
     name: getLineFormat()
     fullName: getLineFormat()
     langs:
@@ -303,7 +303,7 @@ items:
           - 'excel!ExcelScript.ShapeLineFormat:interface'
         description: ''
   - uid: 'excel!ExcelScript.Shape#getLockAspectRatio:member(1)'
-    summary: Specifies whether or not the aspect ratio of this shape is locked.
+    summary: Specifies if the aspect ratio of this shape is locked.
     name: getLockAspectRatio()
     fullName: getLockAspectRatio()
     langs:
@@ -316,7 +316,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Shape#getName:member(1)'
-    summary: Represents the name of the shape.
+    summary: Specifies the name of the shape.
     name: getName()
     fullName: getName()
     langs:
@@ -342,7 +342,7 @@ items:
           - 'excel!ExcelScript.Placement:enum'
         description: ''
   - uid: 'excel!ExcelScript.Shape#getRotation:member(1)'
-    summary: 'Represents the rotation, in degrees, of the shape.'
+    summary: 'Specifies the rotation, in degrees, of the shape.'
     name: getRotation()
     fullName: getRotation()
     langs:
@@ -383,7 +383,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Shape#getType:member(1)'
-    summary: Returns the type of this shape. See Excel.ShapeType for details. Read-only.
+    summary: Returns the type of this shape. See Excel.ShapeType for details.
     name: getType()
     fullName: getType()
     langs:
@@ -396,7 +396,7 @@ items:
           - 'excel!ExcelScript.ShapeType:enum'
         description: ''
   - uid: 'excel!ExcelScript.Shape#getVisible:member(1)'
-    summary: Represents the visibility of this shape.
+    summary: Specifies if the shape is visible.
     name: getVisible()
     fullName: getVisible()
     langs:
@@ -410,7 +410,7 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Shape#getWidth:member(1)'
     summary: >-
-      Represents the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      Specifies the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
       or zero as input.
     name: getWidth()
     fullName: getWidth()
@@ -424,9 +424,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Shape#getZOrderPosition:member(1)'
-    summary: >-
-      Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.
-      Read-only.
+    summary: 'Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.'
     name: getZOrderPosition()
     fullName: getZOrderPosition()
     langs:
@@ -514,10 +512,10 @@ items:
     syntax:
       content: |-
         scaleHeight(
-                  scaleFactor: number,
-                  scaleType: ShapeScaleType,
-                  scaleFrom?: ShapeScaleFrom
-              ): void;
+                    scaleFactor: number,
+                    scaleType: ShapeScaleType,
+                    scaleFrom?: ShapeScaleFrom
+                ): void;
       return:
         type:
           - void
@@ -552,10 +550,10 @@ items:
     syntax:
       content: |-
         scaleWidth(
-                  scaleFactor: number,
-                  scaleType: ShapeScaleType,
-                  scaleFrom?: ShapeScaleFrom
-              ): void;
+                    scaleFactor: number,
+                    scaleType: ShapeScaleType,
+                    scaleFrom?: ShapeScaleFrom
+                ): void;
       return:
         type:
           - void
@@ -578,7 +576,7 @@ items:
           type:
             - 'excel!ExcelScript.ShapeScaleFrom:enum'
   - uid: 'excel!ExcelScript.Shape#setAltTextDescription:member(1)'
-    summary: Returns or sets the alternative description text for a Shape object.
+    summary: Specifies the alternative description text for a Shape object.
     name: setAltTextDescription(altTextDescription)
     fullName: setAltTextDescription(altTextDescription)
     langs:
@@ -596,7 +594,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Shape#setAltTextTitle:member(1)'
-    summary: Returns or sets the alternative title text for a Shape object.
+    summary: Specifies the alternative title text for a Shape object.
     name: setAltTextTitle(altTextTitle)
     fullName: setAltTextTitle(altTextTitle)
     langs:
@@ -615,8 +613,8 @@ items:
             - string
   - uid: 'excel!ExcelScript.Shape#setGeometricShapeType:member(1)'
     summary: >-
-      Represents the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns
-      null if the shape type is not "GeometricShape".
+      Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null
+      if the shape type is not "GeometricShape".
     name: setGeometricShapeType(geometricShapeType)
     fullName: setGeometricShapeType(geometricShapeType)
     langs:
@@ -635,8 +633,8 @@ items:
             - 'excel!ExcelScript.GeometricShapeType:enum'
   - uid: 'excel!ExcelScript.Shape#setHeight:member(1)'
     summary: >-
-      Represents the height, in points, of the shape. Throws an invalid argument exception when set with a negative
-      value or zero as input.
+      Specifies the height, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
     name: setHeight(height)
     fullName: setHeight(height)
     langs:
@@ -674,7 +672,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Shape#setLockAspectRatio:member(1)'
-    summary: Specifies whether or not the aspect ratio of this shape is locked.
+    summary: Specifies if the aspect ratio of this shape is locked.
     name: setLockAspectRatio(lockAspectRatio)
     fullName: setLockAspectRatio(lockAspectRatio)
     langs:
@@ -692,7 +690,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.Shape#setName:member(1)'
-    summary: Represents the name of the shape.
+    summary: Specifies the name of the shape.
     name: setName(name)
     fullName: setName(name)
     langs:
@@ -728,7 +726,7 @@ items:
           type:
             - 'excel!ExcelScript.Placement:enum'
   - uid: 'excel!ExcelScript.Shape#setRotation:member(1)'
-    summary: 'Represents the rotation, in degrees, of the shape.'
+    summary: 'Specifies the rotation, in degrees, of the shape.'
     name: setRotation(rotation)
     fullName: setRotation(rotation)
     langs:
@@ -766,7 +764,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Shape#setVisible:member(1)'
-    summary: Represents the visibility of this shape.
+    summary: Specifies if the shape is visible.
     name: setVisible(visible)
     fullName: setVisible(visible)
     langs:
@@ -785,7 +783,7 @@ items:
             - boolean
   - uid: 'excel!ExcelScript.Shape#setWidth:member(1)'
     summary: >-
-      Represents the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      Specifies the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
       or zero as input.
     name: setWidth(width)
     fullName: setWidth(width)

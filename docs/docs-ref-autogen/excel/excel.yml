@@ -211,6 +211,7 @@ items:
       - 'excel!ExcelScript.PivotTable:interface'
       - 'excel!ExcelScript.PivotTableStyle:interface'
       - 'excel!ExcelScript.Placement:enum'
+      - 'excel!ExcelScript.PredefinedCellStyle:interface'
       - 'excel!ExcelScript.PresetCriteriaConditionalFormat:interface'
       - 'excel!ExcelScript.PrintComments:enum'
       - 'excel!ExcelScript.PrintErrorType:enum'
@@ -273,12 +274,10 @@ items:
       - 'excel!ExcelScript.SortOrientation:enum'
       - 'excel!ExcelScript.SpecialCellType:enum'
       - 'excel!ExcelScript.SpecialCellValueType:enum'
-      - 'excel!ExcelScript.Style:interface'
       - 'excel!ExcelScript.SubtotalLocationType:enum'
       - 'excel!ExcelScript.Subtotals:interface'
       - 'excel!ExcelScript.Table:interface'
       - 'excel!ExcelScript.TableColumn:interface'
-      - 'excel!ExcelScript.TableRow:interface'
       - 'excel!ExcelScript.TableSort:interface'
       - 'excel!ExcelScript.TableStyle:interface'
       - 'excel!ExcelScript.TextConditionalFormat:interface'
@@ -304,8 +303,8 @@ items:
     syntax:
       content: |-
         export function run(
-              callback: (workbook: Workbook) => Promise<void>
-          ): Promise<void>;
+                callback: (workbook: Workbook) => Promise<void>
+            ): Promise<void>;
       return:
         type:
           - 'excel!ExcelScript.run~0:complex'
@@ -724,6 +723,8 @@ references:
     name: ExcelScript.PivotTableStyle
   - uid: 'excel!ExcelScript.Placement:enum'
     name: ExcelScript.Placement
+  - uid: 'excel!ExcelScript.PredefinedCellStyle:interface'
+    name: ExcelScript.PredefinedCellStyle
   - uid: 'excel!ExcelScript.PresetCriteriaConditionalFormat:interface'
     name: ExcelScript.PresetCriteriaConditionalFormat
   - uid: 'excel!ExcelScript.PrintComments:enum'
@@ -795,10 +796,10 @@ references:
         fullName: Promise
       - name: |-
           <void>
-            
+              
         fullName: |-
           <void>
-            
+              
   - uid: 'excel!ExcelScript.SearchCriteria:interface'
     name: ExcelScript.SearchCriteria
   - uid: 'excel!ExcelScript.SearchDirection:enum'
@@ -875,8 +876,6 @@ references:
     name: ExcelScript.SpecialCellType
   - uid: 'excel!ExcelScript.SpecialCellValueType:enum'
     name: ExcelScript.SpecialCellValueType
-  - uid: 'excel!ExcelScript.Style:interface'
-    name: ExcelScript.Style
   - uid: 'excel!ExcelScript.SubtotalLocationType:enum'
     name: ExcelScript.SubtotalLocationType
   - uid: 'excel!ExcelScript.Subtotals:interface'
@@ -885,8 +884,6 @@ references:
     name: ExcelScript.Table
   - uid: 'excel!ExcelScript.TableColumn:interface'
     name: ExcelScript.TableColumn
-  - uid: 'excel!ExcelScript.TableRow:interface'
-    name: ExcelScript.TableRow
   - uid: 'excel!ExcelScript.TableSort:interface'
     name: ExcelScript.TableSort
   - uid: 'excel!ExcelScript.TableStyle:interface'

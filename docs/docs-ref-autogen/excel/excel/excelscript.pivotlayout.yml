@@ -11,13 +11,13 @@ items:
     children:
       - 'excel!ExcelScript.PivotLayout#getAutoFormat:member(1)'
       - 'excel!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
-      - 'excel!ExcelScript.PivotLayout#getDataBodyRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
       - 'excel!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
       - 'excel!ExcelScript.PivotLayout#getFilterAxisRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getLayoutType:member(1)'
       - 'excel!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
       - 'excel!ExcelScript.PivotLayout#getRange:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)'
       - 'excel!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
       - 'excel!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
@@ -31,7 +31,7 @@ items:
       - 'excel!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)'
       - 'excel!ExcelScript.PivotLayout#setSubtotalLocation:member(1)'
   - uid: 'excel!ExcelScript.PivotLayout#getAutoFormat:member(1)'
-    summary: Specifies whether formatting will be automatically formatted when it’s refreshed or when fields are moved
+    summary: Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved
     name: getAutoFormat()
     fullName: getAutoFormat()
     langs:
@@ -56,19 +56,6 @@ items:
         type:
           - 'excel!ExcelScript.Range:interface'
         description: ''
-  - uid: 'excel!ExcelScript.PivotLayout#getDataBodyRange:member(1)'
-    summary: Returns the range where the PivotTable's data values reside.
-    name: getDataBodyRange()
-    fullName: getDataBodyRange()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getDataBodyRange(): Range;'
-      return:
-        type:
-          - 'excel!ExcelScript.Range:interface'
-        description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
     summary: Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
     name: getDataHierarchy(cell)
@@ -88,7 +75,7 @@ items:
           type:
             - 'excel!ExcelScript.PivotLayout#getDataHierarchy~0:complex'
   - uid: 'excel!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
-    summary: Specifies whether the field list can be shown in the UI.
+    summary: Specifies if the field list can be shown in the UI.
     name: getEnableFieldList()
     fullName: getEnableFieldList()
     langs:
@@ -130,8 +117,8 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
     summary: >-
-      Specifies whether formatting is preserved when the report is refreshed or recalculated by operations such as
-      pivoting, sorting, or changing page field items.
+      Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting,
+      sorting, or changing page field items.
     name: getPreserveFormatting()
     fullName: getPreserveFormatting()
     langs:
@@ -156,6 +143,19 @@ items:
         type:
           - 'excel!ExcelScript.Range:interface'
         description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)'
+    summary: Returns the range where the PivotTable's data values reside.
+    name: getRangeBetweenHeaderAndTotal()
+    fullName: getRangeBetweenHeaderAndTotal()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRangeBetweenHeaderAndTotal(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
+        description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
     summary: Returns the range where the PivotTable's row labels reside.
     name: getRowLabelRange()
@@ -170,7 +170,7 @@ items:
           - 'excel!ExcelScript.Range:interface'
         description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
-    summary: Specifies whether the PivotTable report shows grand totals for columns.
+    summary: Specifies if the PivotTable report shows grand totals for columns.
     name: getShowColumnGrandTotals()
     fullName: getShowColumnGrandTotals()
     langs:
@@ -183,7 +183,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
-    summary: Specifies whether the PivotTable report shows grand totals for rows.
+    summary: Specifies if the PivotTable report shows grand totals for rows.
     name: getShowRowGrandTotals()
     fullName: getShowRowGrandTotals()
     langs:
@@ -211,7 +211,7 @@ items:
           - 'excel!ExcelScript.SubtotalLocationType:enum'
         description: ''
   - uid: 'excel!ExcelScript.PivotLayout#setAutoFormat:member(1)'
-    summary: Specifies whether formatting will be automatically formatted when it’s refreshed or when fields are moved
+    summary: Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved
     name: setAutoFormat(autoFormat)
     fullName: setAutoFormat(autoFormat)
     langs:
@@ -253,7 +253,7 @@ items:
           type:
             - 'excel!ExcelScript.SortBy:enum'
   - uid: 'excel!ExcelScript.PivotLayout#setEnableFieldList:member(1)'
-    summary: Specifies whether the field list can be shown in the UI.
+    summary: Specifies if the field list can be shown in the UI.
     name: setEnableFieldList(enableFieldList)
     fullName: setEnableFieldList(enableFieldList)
     langs:
@@ -292,8 +292,8 @@ items:
             - 'excel!ExcelScript.PivotLayoutType:enum'
   - uid: 'excel!ExcelScript.PivotLayout#setPreserveFormatting:member(1)'
     summary: >-
-      Specifies whether formatting is preserved when the report is refreshed or recalculated by operations such as
-      pivoting, sorting, or changing page field items.
+      Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting,
+      sorting, or changing page field items.
     name: setPreserveFormatting(preserveFormatting)
     fullName: setPreserveFormatting(preserveFormatting)
     langs:
@@ -311,7 +311,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.PivotLayout#setShowColumnGrandTotals:member(1)'
-    summary: Specifies whether the PivotTable report shows grand totals for columns.
+    summary: Specifies if the PivotTable report shows grand totals for columns.
     name: setShowColumnGrandTotals(showColumnGrandTotals)
     fullName: setShowColumnGrandTotals(showColumnGrandTotals)
     langs:
@@ -329,7 +329,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)'
-    summary: Specifies whether the PivotTable report shows grand totals for rows.
+    summary: Specifies if the PivotTable report shows grand totals for rows.
     name: setShowRowGrandTotals(showRowGrandTotals)
     fullName: setShowRowGrandTotals(showRowGrandTotals)
     langs:

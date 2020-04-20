@@ -15,7 +15,7 @@ items:
       - 'excel!ExcelScript.RangeAreas#addConditionalFormat:member(1)'
       - 'excel!ExcelScript.RangeAreas#calculate:member(1)'
       - 'excel!ExcelScript.RangeAreas#clear:member(1)'
-      - 'excel!ExcelScript.RangeAreas#clearAllConditionalFormat:member(1)'
+      - 'excel!ExcelScript.RangeAreas#clearAllConditionalFormats:member(1)'
       - 'excel!ExcelScript.RangeAreas#convertDataTypeToText:member(1)'
       - 'excel!ExcelScript.RangeAreas#convertToLinkedDataType:member(1)'
       - 'excel!ExcelScript.RangeAreas#copyFrom:member(1)'
@@ -34,12 +34,12 @@ items:
       - 'excel!ExcelScript.RangeAreas#getIsEntireColumn:member(1)'
       - 'excel!ExcelScript.RangeAreas#getIsEntireRow:member(1)'
       - 'excel!ExcelScript.RangeAreas#getOffsetRangeAreas:member(1)'
+      - 'excel!ExcelScript.RangeAreas#getPredefinedCellStyle:member(1)'
       - 'excel!ExcelScript.RangeAreas#getSpecialCells:member(1)'
-      - 'excel!ExcelScript.RangeAreas#getStyle:member(1)'
       - 'excel!ExcelScript.RangeAreas#getUsedRangeAreas:member(1)'
       - 'excel!ExcelScript.RangeAreas#getWorksheet:member(1)'
       - 'excel!ExcelScript.RangeAreas#setDirty:member(1)'
-      - 'excel!ExcelScript.RangeAreas#setStyle:member(1)'
+      - 'excel!ExcelScript.RangeAreas#setPredefinedCellStyle:member(1)'
   - uid: 'excel!ExcelScript.RangeAreas#addConditionalFormat:member(1)'
     summary: Adds a new conditional format to the collection at the first/top priority.
     name: addConditionalFormat(type)
@@ -89,15 +89,15 @@ items:
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details. Default is "All".
           type:
             - 'excel!ExcelScript.ClearApplyTo:enum'
-  - uid: 'excel!ExcelScript.RangeAreas#clearAllConditionalFormat:member(1)'
+  - uid: 'excel!ExcelScript.RangeAreas#clearAllConditionalFormats:member(1)'
     summary: Clears all conditional formats active on the current specified range.
-    name: clearAllConditionalFormat()
-    fullName: clearAllConditionalFormat()
+    name: clearAllConditionalFormats()
+    fullName: clearAllConditionalFormats()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'clearAllConditionalFormat(): void;'
+      content: 'clearAllConditionalFormats(): void;'
       return:
         type:
           - void
@@ -125,9 +125,9 @@ items:
     syntax:
       content: |-
         convertToLinkedDataType(
-                  serviceID: number,
-                  languageCulture: string
-              ): void;
+                    serviceID: number,
+                    languageCulture: string
+                ): void;
       return:
         type:
           - void
@@ -154,11 +154,11 @@ items:
     syntax:
       content: |-
         copyFrom(
-                  sourceRange: Range | RangeAreas | string,
-                  copyType?: RangeCopyType,
-                  skipBlanks?: boolean,
-                  transpose?: boolean
-              ): void;
+                    sourceRange: Range | RangeAreas | string,
+                    copyType?: RangeCopyType,
+                    skipBlanks?: boolean,
+                    transpose?: boolean
+                ): void;
       return:
         type:
           - void
@@ -185,7 +185,7 @@ items:
   - uid: 'excel!ExcelScript.RangeAreas#getAddress:member(1)'
     summary: >-
       Returns the RangeAreas reference in A1-style. Address value will contain the worksheet name for each rectangular
-      block of cells (e.g. "Sheet1!A1:B4, Sheet1!D1:D4"). Read-only.
+      block of cells (e.g. "Sheet1!A1:B4, Sheet1!D1:D4").
     name: getAddress()
     fullName: getAddress()
     langs:
@@ -198,7 +198,7 @@ items:
           - string
         description: ''
   - uid: 'excel!ExcelScript.RangeAreas#getAddressLocal:member(1)'
-    summary: Returns the RangeAreas reference in the user locale. Read-only.
+    summary: Returns the RangeAreas reference in the user locale.
     name: getAddressLocal()
     fullName: getAddressLocal()
     langs:
@@ -239,7 +239,7 @@ items:
   - uid: 'excel!ExcelScript.RangeAreas#getCellCount:member(1)'
     summary: >-
       Returns the number of cells in the RangeAreas object, summing up the cell counts of all of the individual
-      rectangular ranges. Returns -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.
+      rectangular ranges. Returns -1 if the cell count exceeds 2^31-1 (2,147,483,647).
     name: getCellCount()
     fullName: getCellCount()
     langs:
@@ -270,7 +270,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.RangeAreas#getConditionalFormats:member(1)'
-    summary: Returns a collection of ConditionalFormats that intersect with any cells in this RangeAreas object. Read-only.
+    summary: Returns a collection of ConditionalFormats that intersect with any cells in this RangeAreas object.
     name: getConditionalFormats()
     fullName: getConditionalFormats()
     langs:
@@ -327,8 +327,8 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.RangeAreas#getFormat:member(1)'
     summary: >-
-      Returns a rangeFormat object, encapsulating the the font, fill, borders, alignment, and other properties for all
-      ranges in the RangeAreas object. Read-only.
+      Returns a RangeFormat object, encapsulating the the font, fill, borders, alignment, and other properties for all
+      ranges in the RangeAreas object.
     name: getFormat()
     fullName: getFormat()
     langs:
@@ -361,7 +361,7 @@ items:
           type:
             - 'excel!ExcelScript.RangeAreas#getIntersection~0:complex'
   - uid: 'excel!ExcelScript.RangeAreas#getIsEntireColumn:member(1)'
-    summary: 'Indicates whether all the ranges on this RangeAreas object represent entire columns (e.g., "A:C, Q:Z"). Read-only.'
+    summary: 'Specifies if all the ranges on this RangeAreas object represent entire columns (e.g., "A:C, Q:Z").'
     name: getIsEntireColumn()
     fullName: getIsEntireColumn()
     langs:
@@ -374,7 +374,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.RangeAreas#getIsEntireRow:member(1)'
-    summary: 'Indicates whether all the ranges on this RangeAreas object represent entire rows (e.g., "1:3, 5:7"). Read-only.'
+    summary: 'Specifies if all the ranges on this RangeAreas object represent entire rows (e.g., "1:3, 5:7").'
     name: getIsEntireRow()
     fullName: getIsEntireRow()
     langs:
@@ -399,9 +399,9 @@ items:
     syntax:
       content: |-
         getOffsetRangeAreas(
-                  rowOffset: number,
-                  columnOffset: number
-              ): RangeAreas;
+                    rowOffset: number,
+                    columnOffset: number
+                ): RangeAreas;
       return:
         type:
           - 'excel!ExcelScript.RangeAreas:interface'
@@ -419,6 +419,22 @@ items:
             are offset to the right, and negative values are offset to the left.
           type:
             - number
+  - uid: 'excel!ExcelScript.RangeAreas#getPredefinedCellStyle:member(1)'
+    summary: >-
+      Represents the style for all ranges in this RangeAreas object. If the styles of the cells are inconsistent, null
+      will be returned. For custom styles, the style name will be returned. For built-in styles, a string representing a
+      value in the BuiltInStyle enum will be returned.
+    name: getPredefinedCellStyle()
+    fullName: getPredefinedCellStyle()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPredefinedCellStyle(): string;'
+      return:
+        type:
+          - string
+        description: ''
   - uid: 'excel!ExcelScript.RangeAreas#getSpecialCells:member(1)'
     summary: >-
       Returns a RangeAreas object that represents all the cells that match the specified type and value. Returns a null
@@ -431,9 +447,9 @@ items:
     syntax:
       content: |-
         getSpecialCells(
-                  cellType: SpecialCellType,
-                  cellValueType?: SpecialCellValueType
-              ): RangeAreas;
+                    cellType: SpecialCellType,
+                    cellValueType?: SpecialCellValueType
+                ): RangeAreas;
       return:
         type:
           - 'excel!ExcelScript.RangeAreas:interface'
@@ -450,22 +466,6 @@ items:
             select all constants or formulas, no matter what the type.
           type:
             - 'excel!ExcelScript.SpecialCellValueType:enum'
-  - uid: 'excel!ExcelScript.RangeAreas#getStyle:member(1)'
-    summary: >-
-      Represents the style for all ranges in this RangeAreas object. If the styles of the cells are inconsistent, null
-      will be returned. For custom styles, the style name will be returned. For built-in styles, a string representing a
-      value in the BuiltInStyle enum will be returned.
-    name: getStyle()
-    fullName: getStyle()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getStyle(): string;'
-      return:
-        type:
-          - string
-        description: ''
   - uid: 'excel!ExcelScript.RangeAreas#getUsedRangeAreas:member(1)'
     summary: >-
       Returns the used RangeAreas that comprises all the used areas of individual rectangular ranges in the RangeAreas
@@ -487,7 +487,7 @@ items:
           type:
             - boolean
   - uid: 'excel!ExcelScript.RangeAreas#getWorksheet:member(1)'
-    summary: Returns the worksheet for the current RangeAreas. Read-only.
+    summary: Returns the worksheet for the current RangeAreas.
     name: getWorksheet()
     fullName: getWorksheet()
     langs:
@@ -512,24 +512,24 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel!ExcelScript.RangeAreas#setStyle:member(1)'
+  - uid: 'excel!ExcelScript.RangeAreas#setPredefinedCellStyle:member(1)'
     summary: >-
       Represents the style for all ranges in this RangeAreas object. If the styles of the cells are inconsistent, null
       will be returned. For custom styles, the style name will be returned. For built-in styles, a string representing a
       value in the BuiltInStyle enum will be returned.
-    name: setStyle(style)
-    fullName: setStyle(style)
+    name: setPredefinedCellStyle(predefinedCellStyle)
+    fullName: setPredefinedCellStyle(predefinedCellStyle)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setStyle(style: string): void;'
+      content: 'setPredefinedCellStyle(predefinedCellStyle: string): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: style
+        - id: predefinedCellStyle
           description: ''
           type:
             - string

@@ -18,7 +18,7 @@ items:
       - 'excel!ExcelScript.Range#autoFill:member(1)'
       - 'excel!ExcelScript.Range#calculate:member(1)'
       - 'excel!ExcelScript.Range#clear:member(1)'
-      - 'excel!ExcelScript.Range#clearAllConditionalFormat:member(1)'
+      - 'excel!ExcelScript.Range#clearAllConditionalFormats:member(1)'
       - 'excel!ExcelScript.Range#convertDataTypeToText:member(1)'
       - 'excel!ExcelScript.Range#convertToLinkedDataType:member(1)'
       - 'excel!ExcelScript.Range#copyFrom:member(1)'
@@ -43,6 +43,9 @@ items:
       - 'excel!ExcelScript.Range#getEntireColumn:member(1)'
       - 'excel!ExcelScript.Range#getEntireRow:member(1)'
       - 'excel!ExcelScript.Range#getFormat:member(1)'
+      - 'excel!ExcelScript.Range#getFormula:member(1)'
+      - 'excel!ExcelScript.Range#getFormulaLocal:member(1)'
+      - 'excel!ExcelScript.Range#getFormulaR1C1:member(1)'
       - 'excel!ExcelScript.Range#getFormulas:member(1)'
       - 'excel!ExcelScript.Range#getFormulasLocal:member(1)'
       - 'excel!ExcelScript.Range#getFormulasR1C1:member(1)'
@@ -57,9 +60,14 @@ items:
       - 'excel!ExcelScript.Range#getLastColumn:member(1)'
       - 'excel!ExcelScript.Range#getLastRow:member(1)'
       - 'excel!ExcelScript.Range#getLeft:member(1)'
+      - 'excel!ExcelScript.Range#getLinkedDataTypeState:member(1)'
+      - 'excel!ExcelScript.Range#getLinkedDataTypeStates:member(1)'
       - 'excel!ExcelScript.Range#getNumberFormat:member(1)'
       - 'excel!ExcelScript.Range#getNumberFormatLocal:member(1)'
+      - 'excel!ExcelScript.Range#getNumberFormats:member(1)'
+      - 'excel!ExcelScript.Range#getNumberFormatsLocal:member(1)'
       - 'excel!ExcelScript.Range#getOffsetRange:member(1)'
+      - 'excel!ExcelScript.Range#getPredefinedCellStyle:member(1)'
       - 'excel!ExcelScript.Range#getResizedRange:member(1)'
       - 'excel!ExcelScript.Range#getRow:member(1)'
       - 'excel!ExcelScript.Range#getRowCount:member(1)'
@@ -69,12 +77,15 @@ items:
       - 'excel!ExcelScript.Range#getRowsBelow:member(1)'
       - 'excel!ExcelScript.Range#getSort:member(1)'
       - 'excel!ExcelScript.Range#getSpecialCells:member(1)'
-      - 'excel!ExcelScript.Range#getStyle:member(1)'
       - 'excel!ExcelScript.Range#getSurroundingRegion:member(1)'
       - 'excel!ExcelScript.Range#getText:member(1)'
+      - 'excel!ExcelScript.Range#getTexts:member(1)'
       - 'excel!ExcelScript.Range#getTop:member(1)'
       - 'excel!ExcelScript.Range#getUsedRange:member(1)'
+      - 'excel!ExcelScript.Range#getValue:member(1)'
       - 'excel!ExcelScript.Range#getValues:member(1)'
+      - 'excel!ExcelScript.Range#getValueType:member(1)'
+      - 'excel!ExcelScript.Range#getValueTypes:member(1)'
       - 'excel!ExcelScript.Range#getVisibleView:member(1)'
       - 'excel!ExcelScript.Range#getWidth:member(1)'
       - 'excel!ExcelScript.Range#getWorksheet:member(1)'
@@ -88,14 +99,20 @@ items:
       - 'excel!ExcelScript.Range#select:member(1)'
       - 'excel!ExcelScript.Range#setColumnHidden:member(1)'
       - 'excel!ExcelScript.Range#setDirty:member(1)'
+      - 'excel!ExcelScript.Range#setFormula:member(1)'
+      - 'excel!ExcelScript.Range#setFormulaLocal:member(1)'
+      - 'excel!ExcelScript.Range#setFormulaR1C1:member(1)'
       - 'excel!ExcelScript.Range#setFormulas:member(1)'
       - 'excel!ExcelScript.Range#setFormulasLocal:member(1)'
       - 'excel!ExcelScript.Range#setFormulasR1C1:member(1)'
       - 'excel!ExcelScript.Range#setHyperlink:member(1)'
       - 'excel!ExcelScript.Range#setNumberFormat:member(1)'
       - 'excel!ExcelScript.Range#setNumberFormatLocal:member(1)'
+      - 'excel!ExcelScript.Range#setNumberFormats:member(1)'
+      - 'excel!ExcelScript.Range#setNumberFormatsLocal:member(1)'
+      - 'excel!ExcelScript.Range#setPredefinedCellStyle:member(1)'
       - 'excel!ExcelScript.Range#setRowHidden:member(1)'
-      - 'excel!ExcelScript.Range#setStyle:member(1)'
+      - 'excel!ExcelScript.Range#setValue:member(1)'
       - 'excel!ExcelScript.Range#setValues:member(1)'
       - 'excel!ExcelScript.Range#showCard:member(1)'
       - 'excel!ExcelScript.Range#showGroupDetails:member(1)'
@@ -137,9 +154,9 @@ items:
     syntax:
       content: |-
         autoFill(
-                  destinationRange?: Range | string,
-                  autoFillType?: AutoFillType
-              ): void;
+                    destinationRange?: Range | string,
+                    autoFillType?: AutoFillType
+                ): void;
       return:
         type:
           - void
@@ -188,15 +205,15 @@ items:
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
           type:
             - 'excel!ExcelScript.ClearApplyTo:enum'
-  - uid: 'excel!ExcelScript.Range#clearAllConditionalFormat:member(1)'
+  - uid: 'excel!ExcelScript.Range#clearAllConditionalFormats:member(1)'
     summary: Clears all conditional formats active on the current specified range.
-    name: clearAllConditionalFormat()
-    fullName: clearAllConditionalFormat()
+    name: clearAllConditionalFormats()
+    fullName: clearAllConditionalFormats()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'clearAllConditionalFormat(): void;'
+      content: 'clearAllConditionalFormats(): void;'
       return:
         type:
           - void
@@ -224,9 +241,9 @@ items:
     syntax:
       content: |-
         convertToLinkedDataType(
-                  serviceID: number,
-                  languageCulture: string
-              ): void;
+                    serviceID: number,
+                    languageCulture: string
+                ): void;
       return:
         type:
           - void
@@ -253,11 +270,11 @@ items:
     syntax:
       content: |-
         copyFrom(
-                  sourceRange: Range | RangeAreas | string,
-                  copyType?: RangeCopyType,
-                  skipBlanks?: boolean,
-                  transpose?: boolean
-              ): void;
+                    sourceRange: Range | RangeAreas | string,
+                    copyType?: RangeCopyType,
+                    skipBlanks?: boolean,
+                    transpose?: boolean
+                ): void;
       return:
         type:
           - void
@@ -366,9 +383,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Range#getAddress:member(1)'
-    summary: >-
-      Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. "Sheet1!A1:B4").
-      Read-only.
+    summary: 'Specifies the range reference in A1-style. Address value will contain the Sheet reference (e.g. "Sheet1!A1:B4").'
     name: getAddress()
     fullName: getAddress()
     langs:
@@ -381,7 +396,7 @@ items:
           - string
         description: ''
   - uid: 'excel!ExcelScript.Range#getAddressLocal:member(1)'
-    summary: Represents range reference for the specified range in the language of the user. Read-only.
+    summary: Specifies the range reference for the specified range in the language of the user.
     name: getAddressLocal()
     fullName: getAddressLocal()
     langs:
@@ -439,7 +454,9 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Range#getCellCount:member(1)'
-    summary: 'Number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1 (2,147,483,647). Read-only.'
+    summary: >-
+      Specifies the number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1
+      (2,147,483,647).
     name: getCellCount()
     fullName: getCellCount()
     langs:
@@ -470,7 +487,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Range#getColumnCount:member(1)'
-    summary: Represents the total number of columns in the range. Read-only.
+    summary: Specifies the total number of columns in the range.
     name: getColumnCount()
     fullName: getColumnCount()
     langs:
@@ -496,7 +513,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Range#getColumnIndex:member(1)'
-    summary: Represents the column number of the first cell in the range. Zero-indexed. Read-only.
+    summary: Specifies the column number of the first cell in the range. Zero-indexed.
     name: getColumnIndex()
     fullName: getColumnIndex()
     langs:
@@ -569,7 +586,7 @@ items:
           type:
             - string
   - uid: 'excel!ExcelScript.Range#getConditionalFormats:member(1)'
-    summary: Collection of ConditionalFormats that intersect the range. Read-only.
+    summary: The collection of ConditionalFormats that intersect the range.
     name: getConditionalFormats()
     fullName: getConditionalFormats()
     langs:
@@ -625,9 +642,7 @@ items:
           - 'excel!ExcelScript.Range:interface'
         description: ''
   - uid: 'excel!ExcelScript.Range#getFormat:member(1)'
-    summary: >-
-      Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties.
-      Read-only.
+    summary: 'Returns a format object, encapsulating the range''s font, fill, borders, alignment, and other properties.'
     name: getFormat()
     fullName: getFormat()
     langs:
@@ -646,6 +661,52 @@ items:
           ```javascript
           // Example code goes here
           ```
+  - uid: 'excel!ExcelScript.Range#getFormula:member(1)'
+    summary: >-
+      Represents the cell formula in A1-style notation. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
+    name: getFormula()
+    fullName: getFormula()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFormula(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getFormulaLocal:member(1)'
+    summary: >-
+      Represents the cell formula in A1-style notation, in the user's language and number-formatting locale. For
+      example, the English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will be returned.
+    name: getFormulaLocal()
+    fullName: getFormulaLocal()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFormulaLocal(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getFormulaR1C1:member(1)'
+    summary: >-
+      Represents the cell formula in R1C1-style notation. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
+    name: getFormulaR1C1()
+    fullName: getFormulaR1C1()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFormulaR1C1(): string;'
+      return:
+        type:
+          - string
+        description: ''
   - uid: 'excel!ExcelScript.Range#getFormulas:member(1)'
     summary: Represents the formula in A1-style notation.
     name: getFormulas()
@@ -688,7 +749,7 @@ items:
           - 'string[][]'
         description: ''
   - uid: 'excel!ExcelScript.Range#getHeight:member(1)'
-    summary: 'Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range. Read-only.'
+    summary: 'Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range.'
     name: getHeight()
     fullName: getHeight()
     langs:
@@ -701,7 +762,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Range#getHidden:member(1)'
-    summary: Represents if all cells of the current range are hidden. Read-only.
+    summary: Represents if all cells of the current range are hidden.
     name: getHidden()
     fullName: getHidden()
     langs:
@@ -760,7 +821,7 @@ items:
           type:
             - 'excel!ExcelScript.Range#getIntersection~0:complex'
   - uid: 'excel!ExcelScript.Range#getIsEntireColumn:member(1)'
-    summary: Represents if the current range is an entire column. Read-only.
+    summary: Represents if the current range is an entire column.
     name: getIsEntireColumn()
     fullName: getIsEntireColumn()
     langs:
@@ -773,7 +834,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Range#getIsEntireRow:member(1)'
-    summary: Represents if the current range is an entire row. Read-only.
+    summary: Represents if the current range is an entire row.
     name: getIsEntireRow()
     fullName: getIsEntireRow()
     langs:
@@ -825,9 +886,7 @@ items:
           - 'excel!ExcelScript.Range:interface'
         description: ''
   - uid: 'excel!ExcelScript.Range#getLeft:member(1)'
-    summary: >-
-      Returns the distance in points, for 100% zoom, from left edge of the worksheet to left edge of the range.
-      Read-only.
+    summary: 'Returns the distance in points, for 100% zoom, from left edge of the worksheet to left edge of the range.'
     name: getLeft()
     fullName: getLeft()
     langs:
@@ -839,31 +898,90 @@ items:
         type:
           - number
         description: ''
+  - uid: 'excel!ExcelScript.Range#getLinkedDataTypeState:member(1)'
+    summary: Represents the data type state of the cell.
+    name: getLinkedDataTypeState()
+    fullName: getLinkedDataTypeState()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLinkedDataTypeState(): LinkedDataTypeState;'
+      return:
+        type:
+          - 'excel!ExcelScript.LinkedDataTypeState:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getLinkedDataTypeStates:member(1)'
+    summary: Represents the data type state of each cell.
+    name: getLinkedDataTypeStates()
+    fullName: getLinkedDataTypeStates()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLinkedDataTypeStates(): LinkedDataTypeState[][];'
+      return:
+        type:
+          - 'excel!ExcelScript.Range#getLinkedDataTypeStates~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.Range#getNumberFormat:member(1)'
-    summary: Represents Excel's number format code for the given range.
+    summary: >-
+      Represents cell Excel number format code for the given range. If the range contains multiple cells, the data from
+      first cell (represented by row index of 0 and column index of 0) will be returned.
     name: getNumberFormat()
     fullName: getNumberFormat()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'getNumberFormat(): string[][];'
+      content: 'getNumberFormat(): string;'
       return:
         type:
-          - 'string[][]'
+          - string
         description: ''
   - uid: 'excel!ExcelScript.Range#getNumberFormatLocal:member(1)'
     summary: >-
-      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
-      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
-      text uses the locally-formatted strings based on the language specified in the system settings.
+      Represents cell Excel number format code for the given range, based on the language settings of the user.​ Excel
+      does not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any
+      returned text uses the locally-formatted strings based on the language specified in the system settings. If the
+      range contains multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will
+      be returned.
     name: getNumberFormatLocal()
     fullName: getNumberFormatLocal()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'getNumberFormatLocal(): string[][];'
+      content: 'getNumberFormatLocal(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getNumberFormats:member(1)'
+    summary: Represents Excel's number format code for the given range.
+    name: getNumberFormats()
+    fullName: getNumberFormats()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNumberFormats(): string[][];'
+      return:
+        type:
+          - 'string[][]'
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getNumberFormatsLocal:member(1)'
+    summary: >-
+      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
+      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
+      text uses the locally-formatted strings based on the language specified in the system settings.
+    name: getNumberFormatsLocal()
+    fullName: getNumberFormatsLocal()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNumberFormatsLocal(): string[][];'
       return:
         type:
           - 'string[][]'
@@ -897,6 +1015,22 @@ items:
             offset to the right, and negative values are offset to the left.
           type:
             - number
+  - uid: 'excel!ExcelScript.Range#getPredefinedCellStyle:member(1)'
+    summary: >-
+      Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
+      custom styles, the style name will be returned. For built-in styles, a string representing a value in the
+      BuiltInStyle enum will be returned.
+    name: getPredefinedCellStyle()
+    fullName: getPredefinedCellStyle()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPredefinedCellStyle(): string;'
+      return:
+        type:
+          - string
+        description: ''
   - uid: 'excel!ExcelScript.Range#getResizedRange:member(1)'
     summary: >-
       Gets a Range object similar to the current Range object, but with its bottom-right corner expanded (or contracted)
@@ -944,7 +1078,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Range#getRowCount:member(1)'
-    summary: Returns the total number of rows in the range. Read-only.
+    summary: Returns the total number of rows in the range.
     name: getRowCount()
     fullName: getRowCount()
     langs:
@@ -970,7 +1104,7 @@ items:
           - boolean
         description: ''
   - uid: 'excel!ExcelScript.Range#getRowIndex:member(1)'
-    summary: Returns the row number of the first cell in the range. Zero-indexed. Read-only.
+    summary: Returns the row number of the first cell in the range. Zero-indexed.
     name: getRowIndex()
     fullName: getRowIndex()
     langs:
@@ -1025,7 +1159,7 @@ items:
           type:
             - number
   - uid: 'excel!ExcelScript.Range#getSort:member(1)'
-    summary: Represents the range sort of the current range. Read-only.
+    summary: Represents the range sort of the current range.
     name: getSort()
     fullName: getSort()
     langs:
@@ -1049,9 +1183,9 @@ items:
     syntax:
       content: |-
         getSpecialCells(
-                  cellType: SpecialCellType,
-                  cellValueType?: SpecialCellValueType
-              ): RangeAreas;
+                    cellType: SpecialCellType,
+                    cellValueType?: SpecialCellValueType
+                ): RangeAreas;
       return:
         type:
           - 'excel!ExcelScript.RangeAreas:interface'
@@ -1068,22 +1202,6 @@ items:
             select all constants or formulas, no matter what the type.
           type:
             - 'excel!ExcelScript.SpecialCellValueType:enum'
-  - uid: 'excel!ExcelScript.Range#getStyle:member(1)'
-    summary: >-
-      Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
-      custom styles, the style name will be returned. For built-in styles, a string representing a value in the
-      BuiltInStyle enum will be returned.
-    name: getStyle()
-    fullName: getStyle()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getStyle(): string;'
-      return:
-        type:
-          - string
-        description: ''
   - uid: 'excel!ExcelScript.Range#getSurroundingRegion:member(1)'
     summary: >-
       Returns a Range object that represents the surrounding region for the top-left cell in this range. A surrounding
@@ -1101,21 +1219,37 @@ items:
         description: ''
   - uid: 'excel!ExcelScript.Range#getText:member(1)'
     summary: >-
-      Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
-      that happens in Excel UI will not affect the text value returned by the API. Read-only.
+      Represents Text value of the specified range. The Text value will not depend on the cell width. The \# sign
+      substitution that happens in Excel UI will not affect the text value returned by the API. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will be returned.
     name: getText()
     fullName: getText()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'getText(): string[][];'
+      content: 'getText(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getTexts:member(1)'
+    summary: >-
+      Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
+      that happens in Excel UI will not affect the text value returned by the API.
+    name: getTexts()
+    fullName: getTexts()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTexts(): string[][];'
       return:
         type:
           - 'string[][]'
         description: ''
   - uid: 'excel!ExcelScript.Range#getTop:member(1)'
-    summary: 'Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range. Read-only.'
+    summary: 'Returns the distance in points, for 100% zoom, from top edge of the worksheet to top edge of the range.'
     name: getTop()
     fullName: getTop()
     langs:
@@ -1147,6 +1281,22 @@ items:
           description: Considers only cells with values as used cells.
           type:
             - boolean
+  - uid: 'excel!ExcelScript.Range#getValue:member(1)'
+    summary: >-
+      Represents the raw value of the specified range. The data returned could be of type string, number, or a boolean.
+      Cell that contain an error will return the error string. If the range contains multiple cells, the data from first
+      cell (represented by row index of 0 and column index of 0) will be returned.
+    name: getValue()
+    fullName: getValue()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getValue(): any;'
+      return:
+        type:
+          - any
+        description: ''
   - uid: 'excel!ExcelScript.Range#getValues:member(1)'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
@@ -1162,6 +1312,34 @@ items:
         type:
           - 'any[][]'
         description: ''
+  - uid: 'excel!ExcelScript.Range#getValueType:member(1)'
+    summary: >-
+      Represents the type of data in the cell. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
+    name: getValueType()
+    fullName: getValueType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getValueType(): RangeValueType;'
+      return:
+        type:
+          - 'excel!ExcelScript.RangeValueType:enum'
+        description: ''
+  - uid: 'excel!ExcelScript.Range#getValueTypes:member(1)'
+    summary: Specifies the type of data in each cell.
+    name: getValueTypes()
+    fullName: getValueTypes()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getValueTypes(): RangeValueType[][];'
+      return:
+        type:
+          - 'excel!ExcelScript.Range#getValueTypes~0:complex'
+        description: ''
   - uid: 'excel!ExcelScript.Range#getVisibleView:member(1)'
     summary: Represents the visible rows of the current range.
     name: getVisibleView()
@@ -1176,7 +1354,7 @@ items:
           - 'excel!ExcelScript.RangeView:interface'
         description: ''
   - uid: 'excel!ExcelScript.Range#getWidth:member(1)'
-    summary: 'Returns the distance in points, for 100% zoom, from left edge of the range to right edge of the range. Read-only.'
+    summary: 'Returns the distance in points, for 100% zoom, from left edge of the range to right edge of the range.'
     name: getWidth()
     fullName: getWidth()
     langs:
@@ -1189,7 +1367,7 @@ items:
           - number
         description: ''
   - uid: 'excel!ExcelScript.Range#getWorksheet:member(1)'
-    summary: The worksheet containing the current range. Read-only.
+    summary: The worksheet containing the current range.
     name: getWorksheet()
     fullName: getWorksheet()
     langs:
@@ -1311,9 +1489,9 @@ items:
     syntax:
       content: |-
         removeDuplicates(
-                  columns: number[],
-                  includesHeader: boolean
-              ): RemoveDuplicatesResult;
+                    columns: number[],
+                    includesHeader: boolean
+                ): RemoveDuplicatesResult;
       return:
         type:
           - 'excel!ExcelScript.RemoveDuplicatesResult:interface'
@@ -1339,10 +1517,10 @@ items:
     syntax:
       content: |-
         replaceAll(
-                  text: string,
-                  replacement: string,
-                  criteria: ReplaceCriteria
-              ): number;
+                    text: string,
+                    replacement: string,
+                    criteria: ReplaceCriteria
+                ): number;
       return:
         type:
           - number
@@ -1404,6 +1582,67 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!ExcelScript.Range#setFormula:member(1)'
+    summary: >-
+      Sets the cell formula in A1-style notation. If the range contains multiple cells, each cell in the given range
+      will be updated with the input data.
+    name: setFormula(formula)
+    fullName: setFormula(formula)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setFormula(formula: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: formula
+          description: ''
+          type:
+            - string
+  - uid: 'excel!ExcelScript.Range#setFormulaLocal:member(1)'
+    summary: >-
+      Set the cell formula in A1-style notation, in the user's language and number-formatting locale. For example, the
+      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If the range contains multiple cells,
+      each cell in the given range will be updated with the input data.
+    name: setFormulaLocal(formulaLocal)
+    fullName: setFormulaLocal(formulaLocal)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setFormulaLocal(formulaLocal: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: formulaLocal
+          description: ''
+          type:
+            - string
+  - uid: 'excel!ExcelScript.Range#setFormulaR1C1:member(1)'
+    summary: >-
+      Sets the cell formula in R1C1-style notation. If the range contains multiple cells, each cell in the given range
+      will be updated with the input data.
+    name: setFormulaR1C1(formulaR1C1)
+    fullName: setFormulaR1C1(formulaR1C1)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setFormulaR1C1(formulaR1C1: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: formulaR1C1
+          description: ''
+          type:
+            - string
   - uid: 'excel!ExcelScript.Range#setFormulas:member(1)'
     summary: Represents the formula in A1-style notation.
     name: setFormulas(formulas)
@@ -1479,14 +1718,16 @@ items:
           type:
             - 'excel!ExcelScript.RangeHyperlink:interface'
   - uid: 'excel!ExcelScript.Range#setNumberFormat:member(1)'
-    summary: Represents Excel's number format code for the given range.
+    summary: >-
+      Sets cell Excel number format code for the given range. If the range contains multiple cells, each cell in the
+      given range will be updated with the input data.
     name: setNumberFormat(numberFormat)
     fullName: setNumberFormat(numberFormat)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setNumberFormat(numberFormat: string[][]): void;'
+      content: 'setNumberFormat(numberFormat: string): void;'
       return:
         type:
           - void
@@ -1495,19 +1736,20 @@ items:
         - id: numberFormat
           description: ''
           type:
-            - 'string[][]'
+            - string
   - uid: 'excel!ExcelScript.Range#setNumberFormatLocal:member(1)'
     summary: >-
-      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
+      Sets cell Excel number format code for the given range, based on the language settings of the user.​ Excel does
       not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
-      text uses the locally-formatted strings based on the language specified in the system settings.
+      text uses the locally-formatted strings based on the language specified in the system settings. If the range
+      contains multiple cells, each cell in the given range will be updated with the input data.
     name: setNumberFormatLocal(numberFormatLocal)
     fullName: setNumberFormatLocal(numberFormatLocal)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setNumberFormatLocal(numberFormatLocal: string[][]): void;'
+      content: 'setNumberFormatLocal(numberFormatLocal: string): void;'
       return:
         type:
           - void
@@ -1516,7 +1758,67 @@ items:
         - id: numberFormatLocal
           description: ''
           type:
+            - string
+  - uid: 'excel!ExcelScript.Range#setNumberFormats:member(1)'
+    summary: Represents Excel's number format code for the given range.
+    name: setNumberFormats(numberFormats)
+    fullName: setNumberFormats(numberFormats)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setNumberFormats(numberFormats: string[][]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: numberFormats
+          description: ''
+          type:
             - 'string[][]'
+  - uid: 'excel!ExcelScript.Range#setNumberFormatsLocal:member(1)'
+    summary: >-
+      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
+      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
+      text uses the locally-formatted strings based on the language specified in the system settings.
+    name: setNumberFormatsLocal(numberFormatsLocal)
+    fullName: setNumberFormatsLocal(numberFormatsLocal)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setNumberFormatsLocal(numberFormatsLocal: string[][]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: numberFormatsLocal
+          description: ''
+          type:
+            - 'string[][]'
+  - uid: 'excel!ExcelScript.Range#setPredefinedCellStyle:member(1)'
+    summary: >-
+      Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
+      custom styles, the style name will be returned. For built-in styles, a string representing a value in the
+      BuiltInStyle enum will be returned.
+    name: setPredefinedCellStyle(predefinedCellStyle)
+    fullName: setPredefinedCellStyle(predefinedCellStyle)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPredefinedCellStyle(predefinedCellStyle: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: predefinedCellStyle
+          description: ''
+          type:
+            - string
   - uid: 'excel!ExcelScript.Range#setRowHidden:member(1)'
     summary: Represents if all rows of the current range are hidden.
     name: setRowHidden(rowHidden)
@@ -1535,27 +1837,27 @@ items:
           description: ''
           type:
             - boolean
-  - uid: 'excel!ExcelScript.Range#setStyle:member(1)'
+  - uid: 'excel!ExcelScript.Range#setValue:member(1)'
     summary: >-
-      Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
-      custom styles, the style name will be returned. For built-in styles, a string representing a value in the
-      BuiltInStyle enum will be returned.
-    name: setStyle(style)
-    fullName: setStyle(style)
+      Sets the raw value of the specified range. The data being set could be of type string, number, or a boolean.
+      `null` value will be ignored (not set or overwritten in Excel). If the range contains multiple cells, each cell in
+      the given range will be updated with the input data.
+    name: setValue(value)
+    fullName: setValue(value)
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'setStyle(style: string): void;'
+      content: 'setValue(value: any): void;'
       return:
         type:
           - void
         description: ''
       parameters:
-        - id: style
+        - id: value
           description: ''
           type:
-            - string
+            - any
   - uid: 'excel!ExcelScript.Range#setValues:member(1)'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
@@ -1722,6 +2024,18 @@ references:
         fullName: ExcelScript.Range
       - name: ' | string'
         fullName: ' | string'
+  - uid: 'excel!ExcelScript.LinkedDataTypeState:enum'
+    name: LinkedDataTypeState
+    fullName: ExcelScript.LinkedDataTypeState
+  - uid: 'excel!ExcelScript.Range#getLinkedDataTypeStates~0:complex'
+    name: 'LinkedDataTypeState[][]'
+    fullName: 'ExcelScript.LinkedDataTypeState[][]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.LinkedDataTypeState:enum'
+        name: LinkedDataTypeState
+        fullName: ExcelScript.LinkedDataTypeState
+      - name: '[][]'
+        fullName: '[][]'
   - uid: 'excel!ExcelScript.RangeSort:interface'
     name: RangeSort
     fullName: ExcelScript.RangeSort
@@ -1734,6 +2048,18 @@ references:
   - uid: 'excel!ExcelScript.SpecialCellValueType:enum'
     name: SpecialCellValueType
     fullName: ExcelScript.SpecialCellValueType
+  - uid: 'excel!ExcelScript.RangeValueType:enum'
+    name: RangeValueType
+    fullName: ExcelScript.RangeValueType
+  - uid: 'excel!ExcelScript.Range#getValueTypes~0:complex'
+    name: 'RangeValueType[][]'
+    fullName: 'ExcelScript.RangeValueType[][]'
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.RangeValueType:enum'
+        name: RangeValueType
+        fullName: ExcelScript.RangeValueType
+      - name: '[][]'
+        fullName: '[][]'
   - uid: 'excel!ExcelScript.RangeView:interface'
     name: RangeView
     fullName: ExcelScript.RangeView
