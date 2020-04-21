@@ -47,9 +47,9 @@ tryCatch(async () => {
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the overview file from the /docs folder
+    // delete everything except the 'overview' folder from the /docs folder
     fsx.readdirSync(docsDestination)
-        .filter(filename => filename !== "overview.md")
+        .filter(filename => filename !== "overview")
         .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
 
     console.log(`Copying docs output files to: ${docsDestination}`);
@@ -68,14 +68,14 @@ tryCatch(async () => {
     let tocPath = versionPath + "/toc.yml";
     let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    fsx.copySync(path.resolve(`${docsDestination}/overview.md`), versionPath + "/overview.md");
+    fsx.copySync(path.resolve(`${docsDestination}/overview/overview.md`), versionPath + "/overview.md");
 
     console.log("Writing TOC for Office Scripts Async");
     versionPath = path.resolve(`${docsDestination}/excel-async`);
     const asyncTocPath = versionPath + "/toc.yml";
     let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
     fsx.writeFileSync(asyncTocPath, jsyaml.safeDump(latestAsyncToc));
-    fsx.copySync(path.resolve(`${docsDestination}/overview.md`), versionPath + "/overview.md");
+    fsx.copySync(path.resolve(`${docsDestination}/overview/overview.md`), versionPath + "/overview.md");
 
     console.log("\nPostprocessor script complete!\n");
 
@@ -104,7 +104,7 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "../overview.md"
+        "href": "overview.md"
     }] as any;
 
     // create folders for Excel subcategories
