@@ -63,15 +63,15 @@ tryCatch(async () => {
     });
 
     // fix all the individual TOC files
-    console.log("Writing TOC for excel");
+    console.log("Writing TOC for Office Scripts");
     const tocPath = path.resolve(`${docsDestination}/excel`) + "/toc.yml";
     let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
 
-    console.log("Writing TOC for excel");
+    console.log("Writing TOC for Office Scripts Async");
     const asyncTocPath = path.resolve(`${docsDestination}/excel-async`) + "/toc.yml";
     let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
-    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestAsyncToc));
+    fsx.writeFileSync(asyncTocPath, jsyaml.safeDump(latestAsyncToc));
 
     console.log("\nPostprocessor script complete!\n");
 
