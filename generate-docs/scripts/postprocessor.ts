@@ -47,7 +47,7 @@ tryCatch(async () => {
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the 'overview' folder from the /docs folder
+    // delete everything except the 'overview' folder under the /docs folder
     fsx.readdirSync(docsDestination)
         .filter(filename => filename !== "overview")
         .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
