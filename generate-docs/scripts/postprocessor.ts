@@ -63,7 +63,15 @@ tryCatch(async () => {
     });
 
     // fix all the individual TOC files
-    scrubAndWriteToc(path.resolve(`${docsDestination}/excel`));
+    console.log("Writing TOC for excel");
+    const tocPath = path.resolve(`${docsDestination}/excel`) + "/toc.yml";
+    let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
+    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
+
+    console.log("Writing TOC for excel");
+    const asyncTocPath = path.resolve(`${docsDestination}/excel-async`) + "/toc.yml";
+    let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
+    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestAsyncToc));
 
     console.log("\nPostprocessor script complete!\n");
 
@@ -79,7 +87,7 @@ async function tryCatch(call: () => Promise<void>) {
     }
 }
 
-function fixToc(tocPath: string): Toc {
+function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     console.log(`Updating the structure of the TOC file: ${tocPath}`);
 
     let origToc = (jsyaml.safeLoad(fsx.readFileSync(tocPath).toString()) as Toc);
@@ -96,7 +104,7 @@ function fixToc(tocPath: string): Toc {
     }] as any;
 
     // create folders for Excel subcategories
-    let excelEnumFilter = generateEnumList(fsx.readFileSync("../api-extractor-inputs-excel/excel.d.ts").toString());
+    let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     let excelIconSetFilter : string [] = ["FiveArrowsGraySet", "FiveArrowsSet", "FiveBoxesSet", "FiveQuartersSet", "FiveRatingSet", "FourArrowsGraySet", "FourArrowsSet", "FourRatingSet", "FourRedToBlackSet", "FourTrafficLightsSet", "IconCollections", "ThreeArrowsGraySet", "ThreeArrowsSet", "ThreeFlagsSet",  "ThreeSignsSet", "ThreeStarsSet",  "ThreeSymbols2Set", "ThreeSymbolsSet", "ThreeTrafficLights1Set", "ThreeTrafficLights2Set", "ThreeTrianglesSet"];
     let excelFilter: string[] = ["Interfaces"];
     excelFilter = excelFilter.concat(excelEnumFilter).concat(excelIconSetFilter);
@@ -149,11 +157,4 @@ function fixToc(tocPath: string): Toc {
     });
 
     return newToc;
-}
-
-function scrubAndWriteToc(versionFolder: string): Toc {
-    const tocPath = versionFolder + "/toc.yml";
-    let latestToc = fixToc(tocPath);
-    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    return latestToc;
 }
