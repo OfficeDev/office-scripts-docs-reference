@@ -1,0 +1,134 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartPointsCollection:class'
+    summary: A collection of all the chart points within a series inside a chart.
+    name: Excel.ChartPointsCollection
+    fullName: Excel.ChartPointsCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.ChartPointsCollection#context:member'
+      - 'excel!Excel.ChartPointsCollection#count:member'
+      - 'excel!Excel.ChartPointsCollection#getCount:member(1)'
+      - 'excel!Excel.ChartPointsCollection#getItemAt:member(1)'
+      - 'excel!Excel.ChartPointsCollection#items:member'
+      - 'excel!Excel.ChartPointsCollection#load:member(1)'
+  - uid: 'excel!Excel.ChartPointsCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.ChartPointsCollection#count:member'
+    summary: Returns the number of chart points in the series. Read-only.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.ChartPointsCollection#getCount:member(1)'
+    summary: Returns the number of chart points in the series.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel!Excel.ChartPointsCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel!Excel.ChartPointsCollection#getItemAt:member(1)'
+    summary: Retrieve a point based on its position within the series.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Excel.ChartPoint;'
+      return:
+        type:
+          - 'excel!Excel.ChartPoint:class'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel!Excel.ChartPointsCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.ChartPoint[];'
+      return:
+        type:
+          - 'excel!Excel.ChartPointsCollection#items~0:complex'
+  - uid: 'excel!Excel.ChartPointsCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartPointsCollection;'
+      return:
+        type:
+          - 'excel!Excel.ChartPointsCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.ChartPointsCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel!Excel.ChartPoint:class'
+    name: ChartPoint
+    fullName: Excel.ChartPoint
+  - uid: 'excel!Excel.ChartPointsCollection#items~0:complex'
+    name: 'Excel.ChartPoint[]'
+    fullName: 'Excel.ChartPoint[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartPoint:class'
+        name: Excel.ChartPoint
+        fullName: Excel.ChartPoint
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.ChartPointsCollection:class'
+    name: ChartPointsCollection
+    fullName: Excel.ChartPointsCollection

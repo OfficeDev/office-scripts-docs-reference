@@ -1,0 +1,191 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.Binding:class'
+    summary: Represents an Office.js binding that is defined in the workbook.
+    name: Excel.Binding
+    fullName: Excel.Binding
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.Binding#context:member'
+      - 'excel!Excel.Binding#delete:member(1)'
+      - 'excel!Excel.Binding#getRange:member(1)'
+      - 'excel!Excel.Binding#getTable:member(1)'
+      - 'excel!Excel.Binding#getText:member(1)'
+      - 'excel!Excel.Binding#id:member'
+      - 'excel!Excel.Binding#load:member(1)'
+      - 'excel!Excel.Binding#load:member(2)'
+      - 'excel!Excel.Binding#type:member'
+  - uid: 'excel!Excel.Binding#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.Binding#delete:member(1)'
+    summary: Deletes the binding.
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.Binding#getRange:member(1)'
+    summary: Returns the range represented by the binding. Will throw an error if binding is not of the correct type.
+    name: getRange()
+    fullName: getRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(): Excel.Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:class'
+        description: ''
+  - uid: 'excel!Excel.Binding#getTable:member(1)'
+    summary: Returns the table represented by the binding. Will throw an error if binding is not of the correct type.
+    name: getTable()
+    fullName: getTable()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTable(): Excel.Table;'
+      return:
+        type:
+          - 'excel!Excel.Table:class'
+        description: ''
+  - uid: 'excel!Excel.Binding#getText:member(1)'
+    summary: Returns the text represented by the binding. Will throw an error if binding is not of the correct type.
+    name: getText()
+    fullName: getText()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getText(): ClientResult<string>;'
+      return:
+        type:
+          - 'excel!Excel.Binding#getText~0:complex'
+        description: ''
+  - uid: 'excel!Excel.Binding#id:member'
+    summary: Represents binding identifier. Read-only.
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Binding#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.Binding;'
+      return:
+        type:
+          - 'excel!Excel.Binding:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.Binding#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.Binding;
+      return:
+        type:
+          - 'excel!Excel.Binding:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.Binding#type:member'
+    summary: Returns the type of the binding. See Excel.BindingType for details. Read-only.
+    name: type
+    fullName: type
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly type: Excel.BindingType | "Range" | "Table" | "Text";'
+      return:
+        type:
+          - 'excel!Excel.Binding#type~0:complex'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.Range:class'
+    name: Range
+    fullName: Excel.Range
+  - uid: 'excel!Excel.Table:class'
+    name: Table
+    fullName: Excel.Table
+  - uid: 'excel!Excel.Binding#getText~0:complex'
+    name: ClientResult<string>
+    fullName: Excel.ClientResult<string>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <string>
+        fullName: <string>
+  - uid: 'excel!Excel.Binding:class'
+    name: Binding
+    fullName: Excel.Binding
+  - uid: 'excel!Excel.Binding#type~0:complex'
+    name: Excel.BindingType | "Range" | "Table" | "Text"
+    fullName: Excel.BindingType | "Range" | "Table" | "Text"
+    spec.typeScript:
+      - uid: 'excel!Excel.BindingType:enum'
+        name: Excel.BindingType
+        fullName: Excel.BindingType
+      - name: ' | "Range" | "Table" | "Text"'
+        fullName: ' | "Range" | "Table" | "Text"'

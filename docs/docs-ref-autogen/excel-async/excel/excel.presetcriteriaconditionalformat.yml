@@ -1,0 +1,166 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat:class'
+    summary: >-
+      Represents the the preset criteria conditional format such as above average, below average, unique values,
+      contains blank, nonblank, error, and noerror.
+    name: Excel.PresetCriteriaConditionalFormat
+    fullName: Excel.PresetCriteriaConditionalFormat
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.PresetCriteriaConditionalFormat#context:member'
+      - 'excel!Excel.PresetCriteriaConditionalFormat#format:member'
+      - 'excel!Excel.PresetCriteriaConditionalFormat#load:member(1)'
+      - 'excel!Excel.PresetCriteriaConditionalFormat#load:member(2)'
+      - 'excel!Excel.PresetCriteriaConditionalFormat#rule:member'
+      - 'excel!Excel.PresetCriteriaConditionalFormat#set:member(1)'
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#format:member'
+    summary: 'Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.'
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly format: Excel.ConditionalRangeFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalRangeFormat:class'
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.PresetCriteriaConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.PresetCriteriaConditionalFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.PresetCriteriaConditionalFormat;
+      return:
+        type:
+          - 'excel!Excel.PresetCriteriaConditionalFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#rule:member'
+    summary: The rule of the conditional format.
+    name: rule
+    fullName: rule
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'rule: Excel.ConditionalPresetCriteriaRule;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalPresetCriteriaRule:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:M5");
+              let conditionalFormat = range.conditionalFormats
+                  .add(Excel.ConditionalFormatType.presetCriteria);
+              conditionalFormat.preset.format.font.color = "white";
+              conditionalFormat.preset.rule = { criterion: Excel.ConditionalFormatPresetCriterion.oneStdDevAboveAverage };
+
+              await context.sync();
+          }
+          ```
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+              conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
+              conditionalFormat.custom.format.font.color = "green";
+
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.PresetCriteriaConditionalFormat): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel!Excel.PresetCriteriaConditionalFormat:class'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.ConditionalRangeFormat:class'
+    name: ConditionalRangeFormat
+    fullName: Excel.ConditionalRangeFormat
+  - uid: 'excel!Excel.PresetCriteriaConditionalFormat:class'
+    name: PresetCriteriaConditionalFormat
+    fullName: Excel.PresetCriteriaConditionalFormat
+  - uid: 'excel!Excel.ConditionalPresetCriteriaRule:interface'
+    name: ConditionalPresetCriteriaRule
+    fullName: Excel.ConditionalPresetCriteriaRule

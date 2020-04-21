@@ -1,67 +1,65 @@
 #!/usr/bin/env node --harmony
 
-// import { promptFromList } from './simple-prompts';
 import * as path from "path";
 import * as fsx from 'fs-extra';
 import yaml = require('js-yaml');
 
 tryCatch(async () => {
-    // ----
-    // Display prompt
-    // ----
-    console.log('\n\n');
-    // TODO: Add CDN endpoint link
-    // const urlToCopyOfficeJsFrom = await promptFromList({
-    //     message: `What is the source of the Office-js TypeScript definition file that should be used to generate the Excel Script docs?`,
-    //     choices: [
-    //         { name: "Local file [generate-docs\\script-inputs\\excel.d.ts]", value: "" }
-    //     ]
-    // });
-
     console.log("\nStarting preprocessor script...");
 
-    const localReleaseDtsPath = "../script-inputs/excel-sync.d.ts";
-    // if (urlToCopyOfficeJsFrom.length > 0) {
-    //     fsx.writeFileSync(localReleaseDtsPath, await fetchAndThrowOnError(urlToCopyOfficeJsFrom, "text"));
-    // }
+    const localDtsPath = "../script-inputs/excel.d.ts";
+    const localAsyncDtsPath = "../script-inputs/excel-async.d.ts";
 
-    let releaseDefinitions = cleanUpDts(localReleaseDtsPath);
+    let dts = cleanUpDts(localDtsPath);
+    let asyncDts = handleLiteralParameterOverloads(cleanUpDts(localAsyncDtsPath));
 
-    console.log("\ncreate file: excel.d.ts (sync)");
-    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', releaseDefinitions);
+    console.log("\ncreate file: excel.d.ts (default)");
+    fsx.writeFileSync('../api-extractor-inputs-excel/excel.d.ts', dts);
 
-    // TODO: Deal with Script Lab snippets
+    console.log("\ncreate file: excel-async.d.ts");
+    fsx.writeFileSync('../api-extractor-inputs-excel-async/excel.d.ts', asyncDts);
+
     // ----
     // Process Snippets
     // ----
     console.log("\nRemoving old snippets input files...");
-
     const scriptInputsPath = path.resolve("../script-inputs");
     fsx.readdirSync(scriptInputsPath)
         .filter(filename => filename.indexOf("snippets") > 0)
         .forEach(filename => fsx.removeSync(scriptInputsPath + '/' + filename));
 
     console.log("\nCreating snippets file...");
-    console.log("\nReading from files: " + path.resolve("../../docs/code-snippets"));
-
     const snippetsSourcePath = path.resolve("../../docs/code-snippets");
-    let localCodeSnippetsString : string = fsx.readFileSync(`${snippetsSourcePath}/excel-sync-snippets.yaml`).toString()
-    // fsx.readdirSync(path.resolve(snippetsSourcePath))
-    //     .filter(name => name.endsWith('.yaml') || name.endsWith('.yml'))
-    //     .forEach((filename, index) => {
-    //         localCodeSnippetsString += fsx.readFileSync(`${snippetsSourcePath}/${filename}`).toString() + "\r\n";
-    //     });
+    console.log("\nReading from files: " + snippetsSourcePath);
 
-    //fsx.writeFileSync("../script-inputs/local-repo-snippets.yaml", localCodeSnippetsString);
+    let localSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-snippets.yaml`).toString();
+    let localAsyncSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-async-snippets.yaml`).toString();
 
     // Parse the YAML into an object/hash set.
-    let snippets = yaml.load(localCodeSnippetsString);
+    let snippets = yaml.load(localSnippetsString);
+    let asyncSnippets = yaml.load(localAsyncSnippetsString);
 
-    let snippetDestination = path.resolve("../json/excel/snippets.yaml")
+    let snippetDestination = path.resolve("../json/excel/snippets.yaml");
     console.log("\nWriting snippets to: " + snippetDestination);
     fsx.createFileSync(snippetDestination);
     fsx.writeFileSync(snippetDestination, yaml.safeDump(
         snippets,
+        {sortKeys: <any>((a: string, b: string) => {
+            if (a < b) {
+                return -1;
+            } else if (a > b) {
+                return 1;
+            } else {
+                return 0;
+            }
+        })}
+    ));
+
+    let asyncSnippetDestination = path.resolve("../json/excel-async/snippets.yaml");
+    console.log("\nWriting snippets to: " + asyncSnippetDestination);
+    fsx.createFileSync(asyncSnippetDestination);
+    fsx.writeFileSync(asyncSnippetDestination, yaml.safeDump(
+        asyncSnippets,
         {sortKeys: <any>((a: string, b: string) => {
             if (a < b) {
                 return -1;
@@ -110,29 +108,28 @@ function applyRegularExpressions (definitionsIn) {
         .replace(/(\s*)(@param)(\s+)(\w+)(\s+)([^\-])/g, `$1$2$3$4$5- $6`);
 }
 
-// TODO: Use once d.ts file is pulled from CDN
-// function handleLiteralParameterOverloads(dtsString: string): string {
-//     // rename parameters for string literal overloads
-//     const matches = dtsString.match(/([a-zA-Z]+)\??: (\"[a-zA-Z]*\").*:/g);
-//     let matchIndex = 0;
-//     matches.forEach((match) => {
-//         let parameterName = match.substring(0, match.indexOf(": "));
-//         matchIndex = dtsString.indexOf(match, matchIndex);
-//         parameterName = parameterName.indexOf("?") >= 0 ? parameterName.substring(0, parameterName.length - 1) : parameterName;
-//         const parameterString = "@param " + parameterName + " ";
-//         const index = dtsString.lastIndexOf(parameterString, matchIndex);
-//         if (index < 0) {
-//             console.warn("Missing @param for literal parameter: " + match);
-//         } else {
-//         dtsString = dtsString.substring(0, index)
-//          + "@param " + parameterName + "String "
-//          + dtsString.substring(index + parameterString.length);
-//          matchIndex += match.length;
-//         }
-//     });
+function handleLiteralParameterOverloads(dtsString: string): string {
+    // rename parameters for string literal overloads
+    const matches = dtsString.match(/([a-zA-Z]+)\??: (\"[a-zA-Z]*\").*:/g);
+    let matchIndex = 0;
+    matches.forEach((match) => {
+        let parameterName = match.substring(0, match.indexOf(": "));
+        matchIndex = dtsString.indexOf(match, matchIndex);
+        parameterName = parameterName.indexOf("?") >= 0 ? parameterName.substring(0, parameterName.length - 1) : parameterName;
+        const parameterString = "@param " + parameterName + " ";
+        const index = dtsString.lastIndexOf(parameterString, matchIndex);
+        if (index < 0) {
+            console.warn("Missing @param for literal parameter: " + match);
+        } else {
+        dtsString = dtsString.substring(0, index)
+         + "@param " + parameterName + "String "
+         + dtsString.substring(index + parameterString.length);
+         matchIndex += match.length;
+        }
+    });
 
-//     return dtsString.replace(/([a-zA-Z]+)(\??: \"[a-zA-Z]*\".*:)/g, "$1String$2");
-// }
+    return dtsString.replace(/([a-zA-Z]+)(\??: \"[a-zA-Z]*\".*:)/g, "$1String$2");
+}
 
 async function tryCatch(call: () => Promise<void>) {
     try {

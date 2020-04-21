@@ -1,0 +1,182 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.WorksheetProtection:class'
+    summary: Represents the protection of a sheet object.
+    name: Excel.WorksheetProtection
+    fullName: Excel.WorksheetProtection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.WorksheetProtection#context:member'
+      - 'excel!Excel.WorksheetProtection#load:member(1)'
+      - 'excel!Excel.WorksheetProtection#load:member(2)'
+      - 'excel!Excel.WorksheetProtection#options:member'
+      - 'excel!Excel.WorksheetProtection#protect:member(1)'
+      - 'excel!Excel.WorksheetProtection#protected:member'
+      - 'excel!Excel.WorksheetProtection#unprotect:member(1)'
+  - uid: 'excel!Excel.WorksheetProtection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.WorksheetProtection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.WorksheetProtection;'
+      return:
+        type:
+          - 'excel!Excel.WorksheetProtection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.WorksheetProtection#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.WorksheetProtection;
+      return:
+        type:
+          - 'excel!Excel.WorksheetProtection:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.WorksheetProtection#options:member'
+    summary: Sheet protection options. Read-only.
+    name: options
+    fullName: options
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly options: Excel.WorksheetProtectionOptions;'
+      return:
+        type:
+          - 'excel!Excel.WorksheetProtectionOptions:interface'
+  - uid: 'excel!Excel.WorksheetProtection#protect:member(1)'
+    summary: Protects a worksheet. Fails if the worksheet has already been protected.
+    name: 'protect(options, password)'
+    fullName: 'protect(options, password)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'protect(options?: Excel.WorksheetProtectionOptions, password?: string): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let activeSheet = context.workbook.worksheets.getActiveWorksheet();
+              activeSheet.load("protection/protected");
+
+              await context.sync();
+
+              if (!activeSheet.protection.protected) {
+                  activeSheet.protection.protect();
+              }
+          }
+          ```
+      parameters:
+        - id: options
+          description: Optional. Sheet protection options.
+          type:
+            - 'excel!Excel.WorksheetProtectionOptions:interface'
+        - id: password
+          description: Optional. Sheet protection password.
+          type:
+            - string
+  - uid: 'excel!Excel.WorksheetProtection#protected:member'
+    summary: Indicates if the worksheet is protected. Read-only.
+    name: protected
+    fullName: protected
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly protected: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.WorksheetProtection#unprotect:member(1)'
+    summary: Unprotects a worksheet.
+    name: unprotect(password)
+    fullName: unprotect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unprotect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          async function main(context: Excel.RequestContext) {
+              let activeSheet = context.workbook.worksheets.getActiveWorksheet();
+              activeSheet.protection.unprotect();
+          }
+          ```
+      parameters:
+        - id: password
+          description: sheet protection password.
+          type:
+            - string
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.WorksheetProtection:class'
+    name: WorksheetProtection
+    fullName: Excel.WorksheetProtection
+  - uid: 'excel!Excel.WorksheetProtectionOptions:interface'
+    name: WorksheetProtectionOptions
+    fullName: Excel.WorksheetProtectionOptions

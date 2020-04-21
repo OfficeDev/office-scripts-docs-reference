@@ -1,0 +1,136 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartSeriesFormat:class'
+    summary: Encapsulates the format properties for the chart series
+    name: Excel.ChartSeriesFormat
+    fullName: Excel.ChartSeriesFormat
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.ChartSeriesFormat#context:member'
+      - 'excel!Excel.ChartSeriesFormat#fill:member'
+      - 'excel!Excel.ChartSeriesFormat#line:member'
+      - 'excel!Excel.ChartSeriesFormat#load:member(1)'
+      - 'excel!Excel.ChartSeriesFormat#load:member(2)'
+      - 'excel!Excel.ChartSeriesFormat#set:member(1)'
+  - uid: 'excel!Excel.ChartSeriesFormat#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.ChartSeriesFormat#fill:member'
+    summary: 'Represents the fill format of a chart series, which includes background formatting information. Read-only.'
+    name: fill
+    fullName: fill
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly fill: Excel.ChartFill;'
+      return:
+        type:
+          - 'excel!Excel.ChartFill:class'
+  - uid: 'excel!Excel.ChartSeriesFormat#line:member'
+    summary: Represents line formatting. Read-only.
+    name: line
+    fullName: line
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly line: Excel.ChartLineFormat;'
+      return:
+        type:
+          - 'excel!Excel.ChartLineFormat:class'
+  - uid: 'excel!Excel.ChartSeriesFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.ChartSeriesFormat;'
+      return:
+        type:
+          - 'excel!Excel.ChartSeriesFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ChartSeriesFormat#load:member(2)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNamesAndPaths)
+    fullName: load(propertyNamesAndPaths)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        load(propertyNamesAndPaths?: {
+                    select?: string;
+                    expand?: string;
+                }): Excel.ChartSeriesFormat;
+      return:
+        type:
+          - 'excel!Excel.ChartSeriesFormat:class'
+        description: ''
+      parameters:
+        - id: propertyNamesAndPaths
+          description: >-
+            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
+            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
+          type:
+            - |-
+              {
+                          select?: string;
+                          expand?: string;
+                      }
+  - uid: 'excel!Excel.ChartSeriesFormat#set:member(1)'
+    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
+    name: set(properties)
+    fullName: set(properties)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'set(properties: Excel.ChartSeriesFormat): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: properties
+          description: ''
+          type:
+            - 'excel!Excel.ChartSeriesFormat:class'
+references:
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.ChartFill:class'
+    name: ChartFill
+    fullName: Excel.ChartFill
+  - uid: 'excel!Excel.ChartLineFormat:class'
+    name: ChartLineFormat
+    fullName: Excel.ChartLineFormat
+  - uid: 'excel!Excel.ChartSeriesFormat:class'
+    name: ChartSeriesFormat
+    fullName: Excel.ChartSeriesFormat

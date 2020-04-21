@@ -47,9 +47,9 @@ tryCatch(async () => {
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the overview file from the /docs folder
+    // delete everything except the 'overview' folder under the /docs folder
     fsx.readdirSync(docsDestination)
-        .filter(filename => filename !== "overview.md")
+        .filter(filename => filename !== "overview")
         .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
 
     console.log(`Copying docs output files to: ${docsDestination}`);
@@ -63,7 +63,19 @@ tryCatch(async () => {
     });
 
     // fix all the individual TOC files
-    scrubAndWriteToc(path.resolve(`${docsDestination}/excel`));
+    console.log("Writing TOC for Office Scripts");
+    let versionPath = path.resolve(`${docsDestination}/excel`);
+    let tocPath = versionPath + "/toc.yml";
+    let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
+    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
+    fsx.copySync(path.resolve(`${docsDestination}/overview/overview.md`), versionPath + "/overview.md");
+
+    console.log("Writing TOC for Office Scripts Async");
+    versionPath = path.resolve(`${docsDestination}/excel-async`);
+    const asyncTocPath = versionPath + "/toc.yml";
+    let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
+    fsx.writeFileSync(asyncTocPath, jsyaml.safeDump(latestAsyncToc));
+    fsx.copySync(path.resolve(`${docsDestination}/overview/overview.md`), versionPath + "/overview.md");
 
     console.log("\nPostprocessor script complete!\n");
 
@@ -79,7 +91,7 @@ async function tryCatch(call: () => Promise<void>) {
     }
 }
 
-function fixToc(tocPath: string): Toc {
+function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     console.log(`Updating the structure of the TOC file: ${tocPath}`);
 
     let origToc = (jsyaml.safeLoad(fsx.readFileSync(tocPath).toString()) as Toc);
@@ -92,11 +104,11 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "../overview.md"
+        "href": "overview.md"
     }] as any;
 
     // create folders for Excel subcategories
-    let excelEnumFilter = generateEnumList(fsx.readFileSync("../api-extractor-inputs-excel/excel.d.ts").toString());
+    let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     let excelIconSetFilter : string [] = ["FiveArrowsGraySet", "FiveArrowsSet", "FiveBoxesSet", "FiveQuartersSet", "FiveRatingSet", "FourArrowsGraySet", "FourArrowsSet", "FourRatingSet", "FourRedToBlackSet", "FourTrafficLightsSet", "IconCollections", "ThreeArrowsGraySet", "ThreeArrowsSet", "ThreeFlagsSet",  "ThreeSignsSet", "ThreeStarsSet",  "ThreeSymbols2Set", "ThreeSymbolsSet", "ThreeTrafficLights1Set", "ThreeTrafficLights2Set", "ThreeTrianglesSet"];
     let excelFilter: string[] = ["Interfaces"];
     excelFilter = excelFilter.concat(excelEnumFilter).concat(excelIconSetFilter);
@@ -149,11 +161,4 @@ function fixToc(tocPath: string): Toc {
     });
 
     return newToc;
-}
-
-function scrubAndWriteToc(versionFolder: string): Toc {
-    const tocPath = versionFolder + "/toc.yml";
-    let latestToc = fixToc(tocPath);
-    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    return latestToc;
 }

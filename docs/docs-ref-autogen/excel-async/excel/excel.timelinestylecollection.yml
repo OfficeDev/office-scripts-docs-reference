@@ -1,0 +1,207 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.TimelineStyleCollection:class'
+    summary: Represents a collection of TimelineStyles.
+    name: Excel.TimelineStyleCollection
+    fullName: Excel.TimelineStyleCollection
+    langs:
+      - typeScript
+    type: class
+    package: excel!
+    children:
+      - 'excel!Excel.TimelineStyleCollection#add:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#context:member'
+      - 'excel!Excel.TimelineStyleCollection#getCount:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#getDefault:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#getItem:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#items:member'
+      - 'excel!Excel.TimelineStyleCollection#load:member(1)'
+      - 'excel!Excel.TimelineStyleCollection#setDefault:member(1)'
+  - uid: 'excel!Excel.TimelineStyleCollection#add:member(1)'
+    summary: Creates a blank TimelineStyle with the specified name.
+    name: 'add(name, makeUniqueName)'
+    fullName: 'add(name, makeUniqueName)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(name: string, makeUniqueName?: boolean): Excel.TimelineStyle;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyle:class'
+        description: The newly created TimelineStyle.
+      parameters:
+        - id: name
+          description: >-
+            The unique name for the new TimelineStyle. Will throw an invalid argument exception if the name is already
+            in use.
+          type:
+            - string
+        - id: makeUniqueName
+          description: 'Optional, defaults to false. If true, will append numbers to the name in order to make it unique, if needed.'
+          type:
+            - boolean
+  - uid: 'excel!Excel.TimelineStyleCollection#context:member'
+    summary: >-
+      The request context associated with the object. This connects the add-in's process to the Office host
+      application's process.
+    name: context
+    fullName: context
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'context: RequestContext;'
+      return:
+        type:
+          - 'excel!Excel.RequestContext:class'
+  - uid: 'excel!Excel.TimelineStyleCollection#getCount:member(1)'
+    summary: Gets the number of timeline styles in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): ClientResult<number>;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyleCollection#getCount~0:complex'
+        description: ''
+  - uid: 'excel!Excel.TimelineStyleCollection#getDefault:member(1)'
+    summary: Gets the default TimelineStyle for the parent object's scope.
+    name: getDefault()
+    fullName: getDefault()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDefault(): Excel.TimelineStyle;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyle:class'
+        description: The TimelineStyle object that is the current default TimelineStyle.
+  - uid: 'excel!Excel.TimelineStyleCollection#getItem:member(1)'
+    summary: Gets a TimelineStyle by name.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): Excel.TimelineStyle;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyle:class'
+        description: The TimelineStyle object whose name matches the input.
+      parameters:
+        - id: name
+          description: Name of the TimelineStyle to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.TimelineStyleCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a TimelineStyle by name. If the TimelineStyle does not exist, will return a null object.'
+    name: getItemOrNullObject(name)
+    fullName: getItemOrNullObject(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(name: string): Excel.TimelineStyle;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyle:class'
+        description: The TimelineStyle object whose name matches the input.
+      parameters:
+        - id: name
+          description: Name of the TimelineStyle to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.TimelineStyleCollection#items:member'
+    summary: Gets the loaded child items in this collection.
+    name: items
+    fullName: items
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly items: Excel.TimelineStyle[];'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyleCollection#items~0:complex'
+  - uid: 'excel!Excel.TimelineStyleCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): Excel.TimelineStyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyleCollection:class'
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.TimelineStyleCollection#setDefault:member(1)'
+    summary: Sets the default TimelineStyle for use in the parent object's scope.
+    name: setDefault(newDefaultStyle)
+    fullName: setDefault(newDefaultStyle)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setDefault(newDefaultStyle: TimelineStyle | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: newDefaultStyle
+          description: The TimelineStyle object or name of the TimelineStyle object that should be the new default.
+          type:
+            - 'excel!Excel.TimelineStyleCollection#setDefault~0:complex'
+references:
+  - uid: 'excel!Excel.TimelineStyle:class'
+    name: TimelineStyle
+    fullName: Excel.TimelineStyle
+  - uid: 'excel!Excel.RequestContext:class'
+    name: RequestContext
+    fullName: Excel.RequestContext
+  - uid: 'excel!Excel.TimelineStyleCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:class'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
+  - uid: 'excel!Excel.TimelineStyleCollection#items~0:complex'
+    name: 'Excel.TimelineStyle[]'
+    fullName: 'Excel.TimelineStyle[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.TimelineStyle:class'
+        name: Excel.TimelineStyle
+        fullName: Excel.TimelineStyle
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.TimelineStyleCollection:class'
+    name: TimelineStyleCollection
+    fullName: Excel.TimelineStyleCollection
+  - uid: 'excel!Excel.TimelineStyleCollection#setDefault~0:complex'
+    name: TimelineStyle | string
+    fullName: Excel.TimelineStyle | string
+    spec.typeScript:
+      - uid: 'excel!Excel.TimelineStyle:class'
+        name: TimelineStyle
+        fullName: Excel.TimelineStyle
+      - name: ' | string'
+        fullName: ' | string'
