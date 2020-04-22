@@ -19,6 +19,7 @@ items:
       - 'excel!ExcelScript.Table#delete:member(1)'
       - 'excel!ExcelScript.Table#deleteRowsAt:member(1)'
       - 'excel!ExcelScript.Table#getAutoFilter:member(1)'
+      - 'excel!ExcelScript.Table#getColumn:member(1)'
       - 'excel!ExcelScript.Table#getColumns:member(1)'
       - 'excel!ExcelScript.Table#getHeaderRowRange:member(1)'
       - 'excel!ExcelScript.Table#getHighlightFirstColumn:member(1)'
@@ -35,7 +36,6 @@ items:
       - 'excel!ExcelScript.Table#getShowHeaders:member(1)'
       - 'excel!ExcelScript.Table#getShowTotals:member(1)'
       - 'excel!ExcelScript.Table#getSort:member(1)'
-      - 'excel!ExcelScript.Table#getTableColumn:member(1)'
       - 'excel!ExcelScript.Table#getTotalRowRange:member(1)'
       - 'excel!ExcelScript.Table#getWorksheet:member(1)'
       - 'excel!ExcelScript.Table#reapplyFilters:member(1)'
@@ -205,6 +205,24 @@ items:
         type:
           - 'excel!ExcelScript.AutoFilter:interface'
         description: ''
+  - uid: 'excel!ExcelScript.Table#getColumn:member(1)'
+    summary: 'Gets a column object by Name or ID. If the column does not exist, will return a null object.'
+    name: getColumn(key)
+    fullName: getColumn(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getColumn(key: number | string): TableColumn | undefined;'
+      return:
+        type:
+          - 'excel!ExcelScript.Table#getColumn~0:complex'
+        description: ''
+      parameters:
+        - id: key
+          description: Column Name or ID.
+          type:
+            - number | string
   - uid: 'excel!ExcelScript.Table#getColumns:member(1)'
     summary: Represents a collection of all the columns in the table.
     name: getColumns()
@@ -429,24 +447,6 @@ items:
         type:
           - 'excel!ExcelScript.TableSort:interface'
         description: ''
-  - uid: 'excel!ExcelScript.Table#getTableColumn:member(1)'
-    summary: 'Gets a column object by Name or ID. If the column does not exist, will return a null object.'
-    name: getTableColumn(key)
-    fullName: getTableColumn(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getTableColumn(key: number | string): TableColumn | undefined;'
-      return:
-        type:
-          - 'excel!ExcelScript.Table#getTableColumn~0:complex'
-        description: ''
-      parameters:
-        - id: key
-          description: Column Name or ID.
-          type:
-            - number | string
   - uid: 'excel!ExcelScript.Table#getTotalRowRange:member(1)'
     summary: Gets the range object associated with totals row of the table.
     name: getTotalRowRange()
@@ -672,6 +672,15 @@ references:
   - uid: 'excel!ExcelScript.AutoFilter:interface'
     name: AutoFilter
     fullName: ExcelScript.AutoFilter
+  - uid: 'excel!ExcelScript.Table#getColumn~0:complex'
+    name: TableColumn | undefined
+    fullName: ExcelScript.TableColumn | undefined
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.TableColumn:interface'
+        name: TableColumn
+        fullName: ExcelScript.TableColumn
+      - name: ' | undefined'
+        fullName: ' | undefined'
   - uid: 'excel!ExcelScript.Table#getColumns~0:complex'
     name: 'TableColumn[]'
     fullName: 'ExcelScript.TableColumn[]'
@@ -684,15 +693,6 @@ references:
   - uid: 'excel!ExcelScript.TableSort:interface'
     name: TableSort
     fullName: ExcelScript.TableSort
-  - uid: 'excel!ExcelScript.Table#getTableColumn~0:complex'
-    name: TableColumn | undefined
-    fullName: ExcelScript.TableColumn | undefined
-    spec.typeScript:
-      - uid: 'excel!ExcelScript.TableColumn:interface'
-        name: TableColumn
-        fullName: ExcelScript.TableColumn
-      - name: ' | undefined'
-        fullName: ' | undefined'
   - uid: 'excel!ExcelScript.Worksheet:interface'
     name: Worksheet
     fullName: ExcelScript.Worksheet

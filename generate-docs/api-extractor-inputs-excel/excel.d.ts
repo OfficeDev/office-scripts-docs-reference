@@ -2375,7 +2375,7 @@ export declare namespace ExcelScript {
          * Gets a column object by Name or ID. If the column does not exist, will return a null object.
          * @param key - Column Name or ID.
          */
-        getTableColumn(key: number | string): TableColumn | undefined;
+        getColumn(key: number | string): TableColumn | undefined;
 
         /**
          * Adds one row to the table.
