@@ -62,6 +62,17 @@ tryCatch(async () => {
         );
     });
 
+    // change the async files to match the sync namespace pattern
+    const asyncDocFolder = docsDestination + "/excel-async/excel";
+    fsx.readdirSync(asyncDocFolder).forEach(filename => {
+        let newFileName = filename.replace("excel.", "excelscript.");
+        fsx.copySync(
+            asyncDocFolder + '/' + filename,
+            asyncDocFolder + '/' + newFileName
+        );
+        fsx.removeSync(asyncDocFolder + '/' + filename);
+    });
+
     // fix all the individual TOC files
     console.log("Writing TOC for Office Scripts");
     let versionPath = path.resolve(`${docsDestination}/excel`);
