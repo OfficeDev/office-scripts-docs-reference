@@ -1,3 +1,18 @@
-'ExcelScript.Range#getFormat:member(1)':
+'ExcelScript.Worksheet#getName:member(1)':
   - |-
-    // Example code goes here
+    /**
+     * This function gets all the worksheet names in the workbook.
+     * It then logs those names to the console.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Create an array to hold the worksheet names.
+        let worksheetNames = [];
+
+        // Iterate over the worksheet collection in the workbook.
+        for (let worksheet of workbook.getWorksheets()) {
+            worksheetNames.push(worksheet.getName());
+        }
+
+        // Log the array of worksheet names.
+        console.log(worksheetNames);
+    }
