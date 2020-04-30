@@ -788,7 +788,29 @@ items:
       return:
         type:
           - string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This function gets all the worksheet names in the workbook.
+           * It then logs those names to the console.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Create an array to hold the worksheet names.
+              let worksheetNames = [];
+
+              // Iterate over the worksheet collection in the workbook.
+              for (let worksheet of workbook.getWorksheets()) {
+                  worksheetNames.push(worksheet.getName());
+              }
+
+              // Log the array of worksheet names.
+              console.log(worksheetNames);
+          }
+          ```
   - uid: 'excel!ExcelScript.Worksheet#getNamedItem:member(1)'
     summary: 'Gets a NamedItem object using its name. If the nameditem object does not exist, will return a null object.'
     name: getNamedItem(name)
