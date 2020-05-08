@@ -32,7 +32,27 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Create a table with the used cells.
+            let usedRange = selectedSheet.getUsedRange();
+            let newTable = selectedSheet.addTable(usedRange, true);
+
+            // Sort the table using the first column.
+            newTable.getSort().apply([{ key: 0, ascending: true }]);
+          }
+          ```
       parameters:
         - id: fields
           description: The list of conditions to sort on.

@@ -1,7 +1,132 @@
+'ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)':
+  - |-
+    /**
+      * This sample finds the first PivotTable in the workbook and logs the values in the "Grand Total" cells.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first PivotTable in the workbook.
+      let pivotTable = workbook.getPivotTables()[0];
+
+      // Get the names of each data column in the PivotTable.
+      let pivotColumnLabelRange = pivotTable.getLayout().getColumnLabelRange();
+
+      // Get the range displaying the pivoted data.
+      let pivotDataRange = pivotTable.getLayout().getRangeBetweenHeaderAndTotal();
+
+      // Get the range with the "grand totals" for the PivotTable columns.
+      let grandTotalRange = pivotDataRange.getLastRow();
+
+      // Print each of the "Grand Totals" to the console.
+      grandTotalRange.getValues()[0].forEach((column, columnIndex) => {
+        console.log(`Grand total of ${pivotColumnLabelRange.getValues()[0][columnIndex]}: ${grandTotalRange.getValues()[0][columnIndex]}`);
+        // Example log: "Grand total of Sum of Crates Sold Wholesale: 11000"
+      });
+    }
+'ExcelScript.Range#addConditionalFormat:member(1)':
+  - |-
+    /**
+      * This sample applies conditional formatting to the currently used range in the worksheet. 
+      * The conditional formatting is a green fill for the top 10% of values.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the used range in the worksheet.
+      let range = selectedSheet.getUsedRange();
+
+      // Set the fill color to green for the top 10% of values in the range.
+      let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+      conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
+      conditionalFormat.getTopBottom().setRule({
+        rank: 10, // The percentage threshold.
+        type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+      });
+    }
+'ExcelScript.Range#getValue:member(1)':
+  - |-
+    /**
+      * This sample reads the value of A1 and prints it to the console.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the value of cell A1.
+      let range = selectedSheet.getRange("A1");
+      
+      // Print the value of A1.
+      console.log(range.getValue());
+    }
+'ExcelScript.TableSort#apply:member(1)':
+  - |-
+    /**
+      * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Create a table with the used cells.
+      let usedRange = selectedSheet.getUsedRange();
+      let newTable = selectedSheet.addTable(usedRange, true);
+
+      // Sort the table using the first column.
+      newTable.getSort().apply([{ key: 0, ascending: true }]);
+    }
+'ExcelScript.TopBottomConditionalFormat#setRule:member(1)':
+  - |-
+    /**
+      * This sample applies conditional formatting to the currently used range in the worksheet. 
+      * The conditional formatting is a green fill for the top 10% of values.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the used range in the worksheet.
+      let range = selectedSheet.getUsedRange();
+
+      // Set the fill color to green for the top 10% of values in the range.
+      let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+      conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
+      conditionalFormat.getTopBottom().setRule({
+        rank: 10, // The percentage threshold.
+        type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+      });
+    }
+'ExcelScript.Worksheet#addTable:member(1)':
+  - |-
+    /**
+      * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Create a table with the used cells.
+      let usedRange = selectedSheet.getUsedRange();
+      let newTable = selectedSheet.addTable(usedRange, true);
+
+      // Sort the table using the first column.
+      newTable.getSort().apply([{ key: 0, ascending: true }]);
+    }
+'ExcelScript.Worksheet#delete:member(1)':
+  - |-
+    /**
+      * The following scripts removes the first worksheet in the workbook.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first worksheet.
+      let sheet = workbook.getWorksheets()[0];
+
+      // Remove that worksheet from the workbook.
+      sheet.delete();
+    }
 'ExcelScript.Worksheet#getName:member(1)':
   - |-
     /**
-     * This function gets all the worksheet names in the workbook.
+     * This sample gets all the worksheet names in the workbook.
      * It then logs those names to the console.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -15,4 +140,19 @@
 
         // Log the array of worksheet names.
         console.log(worksheetNames);
+    }
+'ExcelScript.Worksheet#getRange:member(1)':
+  - |-
+    /**
+      * This sample reads the value of A1 and prints it to the console.
+      */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the value of cell A1.
+      let range = selectedSheet.getRange("A1");
+      
+      // Print the value of A1.
+      console.log(range.getValue());
     }

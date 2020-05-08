@@ -130,7 +130,32 @@ items:
       return:
         type:
           - 'excel!ExcelScript.ConditionalFormat:interface'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample applies conditional formatting to the currently used range in the worksheet. 
+            * The conditional formatting is a green fill for the top 10% of values.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the used range in the worksheet.
+            let range = selectedSheet.getUsedRange();
+
+            // Set the fill color to green for the top 10% of values in the range.
+            let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+            conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
+            conditionalFormat.getTopBottom().setRule({
+              rank: 10, // The percentage threshold.
+              type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+            });
+          }
+          ```
       parameters:
         - id: type
           description: The type of conditional format being added. See Excel.ConditionalFormatType for details.
@@ -1289,7 +1314,26 @@ items:
       return:
         type:
           - any
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample reads the value of A1 and prints it to the console.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the value of cell A1.
+            let range = selectedSheet.getRange("A1");
+            
+            // Print the value of A1.
+            console.log(range.getValue());
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getValues:member(1)'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
