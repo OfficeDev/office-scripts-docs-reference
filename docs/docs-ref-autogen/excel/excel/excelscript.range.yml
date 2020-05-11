@@ -523,7 +523,41 @@ items:
       return:
         type:
           - number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getColumnHidden:member(1)'
     summary: Represents if all columns of the current range are hidden.
     name: getColumnHidden()
@@ -1107,7 +1141,41 @@ items:
       return:
         type:
           - number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getRowHidden:member(1)'
     summary: Represents if all rows of the current range are hidden.
     name: getRowHidden()
