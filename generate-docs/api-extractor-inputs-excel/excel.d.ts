@@ -6348,7 +6348,7 @@ export declare namespace ExcelScript {
         /**
          * Returns the range where the PivotTable's data values reside.
          */
-        getRangeBetweenHeaderAndTotal(): Range;
+        getBodyAndTotalRange(): Range;
 
         /**
          * Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
