@@ -130,7 +130,32 @@ items:
       return:
         type:
           - 'excel!ExcelScript.ConditionalFormat:interface'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample applies conditional formatting to the currently used range in the worksheet. 
+            * The conditional formatting is a green fill for the top 10% of values.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the used range in the worksheet.
+            let range = selectedSheet.getUsedRange();
+
+            // Set the fill color to green for the top 10% of values in the range.
+            let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+            conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
+            conditionalFormat.getTopBottom().setRule({
+              rank: 10, // The percentage threshold.
+              type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+            });
+          }
+          ```
       parameters:
         - id: type
           description: The type of conditional format being added. See Excel.ConditionalFormatType for details.
@@ -498,7 +523,41 @@ items:
       return:
         type:
           - number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getColumnHidden:member(1)'
     summary: Represents if all columns of the current range are hidden.
     name: getColumnHidden()
@@ -1082,7 +1141,41 @@ items:
       return:
         type:
           - number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getRowHidden:member(1)'
     summary: Represents if all rows of the current range are hidden.
     name: getRowHidden()
@@ -1289,7 +1382,26 @@ items:
       return:
         type:
           - any
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample reads the value of A1 and prints it to the console.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the value of cell A1.
+            let range = selectedSheet.getRange("A1");
+            
+            // Print the value of A1.
+            console.log(range.getValue());
+          }
+          ```
   - uid: 'excel!ExcelScript.Range#getValues:member(1)'
     summary: >-
       Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.

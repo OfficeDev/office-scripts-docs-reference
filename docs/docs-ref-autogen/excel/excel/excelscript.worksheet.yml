@@ -437,7 +437,27 @@ items:
       return:
         type:
           - 'excel!ExcelScript.Table:interface'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Create a table with the used cells.
+            let usedRange = selectedSheet.getUsedRange();
+            let newTable = selectedSheet.addTable(usedRange, true);
+
+            // Sort the table using the first column.
+            newTable.getSort().apply([{ key: 0, ascending: true }]);
+          }
+          ```
       parameters:
         - id: address
           description: >-
@@ -553,7 +573,23 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * The following scripts removes the first worksheet in the workbook.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first worksheet.
+            let sheet = workbook.getWorksheets()[0];
+
+            // Remove that worksheet from the workbook.
+            sheet.delete();
+          }
+          ```
   - uid: 'excel!ExcelScript.Worksheet#findAll:member(1)'
     summary: >-
       Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
@@ -795,7 +831,7 @@ items:
 
           ```javascript
           /**
-           * This function gets all the worksheet names in the workbook.
+           * This sample gets all the worksheet names in the workbook.
            * It then logs those names to the console.
            */
           function main(workbook: ExcelScript.Workbook) {
@@ -964,7 +1000,26 @@ items:
       return:
         type:
           - 'excel!ExcelScript.Range:interface'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample reads the value of A1 and prints it to the console.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the value of cell A1.
+            let range = selectedSheet.getRange("A1");
+            
+            // Print the value of A1.
+            console.log(range.getValue());
+          }
+          ```
       parameters:
         - id: address
           description: >-
