@@ -1,4 +1,4 @@
-'ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)':
+'ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)':
   - |-
     /**
       * This sample finds the first PivotTable in the workbook and logs the values in the "Grand Total" cells.
@@ -11,7 +11,7 @@
       let pivotColumnLabelRange = pivotTable.getLayout().getColumnLabelRange();
 
       // Get the range displaying the pivoted data.
-      let pivotDataRange = pivotTable.getLayout().getRangeBetweenHeaderAndTotal();
+      let pivotDataRange = pivotTable.getLayout().getBodyAndTotalRange();
 
       // Get the range with the "grand totals" for the PivotTable columns.
       let grandTotalRange = pivotDataRange.getLastRow();
