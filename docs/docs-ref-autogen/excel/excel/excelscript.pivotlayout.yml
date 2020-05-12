@@ -10,6 +10,7 @@ items:
     package: excel!
     children:
       - 'excel!ExcelScript.PivotLayout#getAutoFormat:member(1)'
+      - 'excel!ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
       - 'excel!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
@@ -17,7 +18,6 @@ items:
       - 'excel!ExcelScript.PivotLayout#getLayoutType:member(1)'
       - 'excel!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
       - 'excel!ExcelScript.PivotLayout#getRange:member(1)'
-      - 'excel!ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)'
       - 'excel!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
       - 'excel!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
       - 'excel!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
@@ -42,6 +42,19 @@ items:
       return:
         type:
           - boolean
+        description: ''
+  - uid: 'excel!ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)'
+    summary: Returns the range where the PivotTable's data values reside.
+    name: getBodyAndTotalRange()
+    fullName: getBodyAndTotalRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getBodyAndTotalRange(): Range;'
+      return:
+        type:
+          - 'excel!ExcelScript.Range:interface'
         description: ''
   - uid: 'excel!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
     summary: Returns the range where the PivotTable's column labels reside.
@@ -139,19 +152,6 @@ items:
     type: method
     syntax:
       content: 'getRange(): Range;'
-      return:
-        type:
-          - 'excel!ExcelScript.Range:interface'
-        description: ''
-  - uid: 'excel!ExcelScript.PivotLayout#getRangeBetweenHeaderAndTotal:member(1)'
-    summary: Returns the range where the PivotTable's data values reside.
-    name: getRangeBetweenHeaderAndTotal()
-    fullName: getRangeBetweenHeaderAndTotal()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getRangeBetweenHeaderAndTotal(): Range;'
       return:
         type:
           - 'excel!ExcelScript.Range:interface'
