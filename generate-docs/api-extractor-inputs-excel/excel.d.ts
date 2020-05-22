@@ -35,11 +35,32 @@ export declare namespace ExcelScript {
         getCalculationState(): CalculationState;
 
         /**
+         * Provides information based on current system culture settings. This includes the culture names, number formatting, and other culturally dependent settings.
+         */
+        getCultureInfo(): CultureInfo;
+
+        /**
+         * Gets the string used as the decimal separator for numeric values. This is based on Excel's local settings.
+         */
+        getDecimalSeparator(): string;
+
+        /**
          * Returns the Iterative Calculation settings.
          * In Excel on Windows and Mac, the settings will apply to the Excel Application.
          * In Excel on the web and other platforms, the settings will apply to the active workbook.
          */
         getIterativeCalculation(): IterativeCalculation;
+
+        /**
+         * Gets the string used to separate groups of digits to the left of the decimal for numeric values. This is based on Excel's local settings.
+         */
+        getThousandsSeparator(): string;
+
+        /**
+         * Specifies if the system separators of Excel are enabled.
+         * System separators include the decimal separator and thousands separator.
+         */
+        getUseSystemSeparators(): boolean;
 
         /**
          * Recalculate all currently opened workbooks in Excel.
@@ -2705,6 +2726,14 @@ export declare namespace ExcelScript {
         setWrapText(wrapText: boolean): void;
 
         /**
+         * Adjusts the indentation of the range formatting. The indent value ranges from 0 to 250 and is measured in characters.
+         * @param amount - The number of character spaces by which the current indent is adjusted. This value should be between -250 and 250.
+         * **Note**: If the amount would raise the indent level above 250, the indent level stays with 250.
+         * Similarly, if the amount would lower the indent level below 0, the indent level stays 0.
+         */
+        adjustIndent(amount: number): void;
+
+        /**
          * Changes the width of the columns of the current range to achieve the best fit, based on the current data in the columns.
          */
         autofitColumns(): void;
@@ -4315,6 +4344,16 @@ export declare namespace ExcelScript {
          * Specifies the axis title.
          */
         setText(text: string): void;
+
+        /**
+         * Specifies the angle to which the text is oriented for the chart axis title. The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
+         */
+        getTextOrientation(): number;
+
+        /**
+         * Specifies the angle to which the text is oriented for the chart axis title. The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
+         */
+        setTextOrientation(textOrientation: number): void;
 
         /**
          * Specifies if the axis title is visibile.
@@ -6064,6 +6103,36 @@ export declare namespace ExcelScript {
          * Removes the AutoFilter for the range.
          */
         remove(): void;
+    }
+
+    /**
+     * Provides information based on current system culture settings. This includes the culture names, number formatting, and other culturally dependent settings.
+     */
+    export interface CultureInfo {
+        /**
+         * Gets the culture name in the format languagecode2-country/regioncode2 (e.g. "zh-cn" or "en-us"). This is based on current system settings.
+         */
+        getName(): string;
+
+        /**
+         * Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
+         */
+        getNumberFormat(): NumberFormatInfo;
+    }
+
+    /**
+     * Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
+     */
+    export interface NumberFormatInfo {
+        /**
+         * Gets the string used as the decimal separator for numeric values. This is based on current system settings.
+         */
+        getNumberDecimalSeparator(): string;
+
+        /**
+         * Gets the string used to separate groups of digits to the left of the decimal for numeric values. This is based on current system settings.
+         */
+        getNumberGroupSeparator(): string;
     }
 
     /**
@@ -8256,6 +8325,16 @@ export declare namespace ExcelScript {
         getMentions(): CommentMention[];
 
         /**
+         * The comment thread status. A value of "true" means the comment thread is resolved.
+         */
+        getResolved(): boolean;
+
+        /**
+         * The comment thread status. A value of "true" means the comment thread is resolved.
+         */
+        setResolved(resolved: boolean): void;
+
+        /**
          * Gets the rich comment content (e.g. mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.
          */
         getRichContent(): string;
@@ -8336,6 +8415,11 @@ export declare namespace ExcelScript {
          * The entities (e.g. people) that are mentioned in comments.
          */
         getMentions(): CommentMention[];
+
+        /**
+         * The comment reply status. A value of "true" means the reply is in the resolved state.
+         */
+        getResolved(): boolean;
 
         /**
          * The rich comment content (e.g. mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.

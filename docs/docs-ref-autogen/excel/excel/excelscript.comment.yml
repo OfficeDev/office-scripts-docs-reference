@@ -20,8 +20,10 @@ items:
       - 'excel!ExcelScript.Comment#getLocation:member(1)'
       - 'excel!ExcelScript.Comment#getMentions:member(1)'
       - 'excel!ExcelScript.Comment#getReplies:member(1)'
+      - 'excel!ExcelScript.Comment#getResolved:member(1)'
       - 'excel!ExcelScript.Comment#getRichContent:member(1)'
       - 'excel!ExcelScript.Comment#setContent:member(1)'
+      - 'excel!ExcelScript.Comment#setResolved:member(1)'
       - 'excel!ExcelScript.Comment#updateMentions:member(1)'
   - uid: 'excel!ExcelScript.Comment#addCommentReply:member(1)'
     summary: Creates a comment reply for comment.
@@ -190,6 +192,19 @@ items:
         type:
           - 'excel!ExcelScript.Comment#getReplies~0:complex'
         description: ''
+  - uid: 'excel!ExcelScript.Comment#getResolved:member(1)'
+    summary: The comment thread status. A value of "true" means the comment thread is resolved.
+    name: getResolved()
+    fullName: getResolved()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getResolved(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
   - uid: 'excel!ExcelScript.Comment#getRichContent:member(1)'
     summary: >-
       Gets the rich comment content (e.g. mentions in comments). This string is not meant to be displayed to end-users.
@@ -223,6 +238,24 @@ items:
           description: ''
           type:
             - string
+  - uid: 'excel!ExcelScript.Comment#setResolved:member(1)'
+    summary: The comment thread status. A value of "true" means the comment thread is resolved.
+    name: setResolved(resolved)
+    fullName: setResolved(resolved)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setResolved(resolved: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: resolved
+          description: ''
+          type:
+            - boolean
   - uid: 'excel!ExcelScript.Comment#updateMentions:member(1)'
     summary: Updates the comment content with a specially formatted string and a list of mentions.
     name: updateMentions(contentWithMentions)

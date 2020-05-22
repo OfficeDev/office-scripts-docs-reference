@@ -13,7 +13,11 @@ items:
       - 'excel!ExcelScript.Application#getCalculationEngineVersion:member(1)'
       - 'excel!ExcelScript.Application#getCalculationMode:member(1)'
       - 'excel!ExcelScript.Application#getCalculationState:member(1)'
+      - 'excel!ExcelScript.Application#getCultureInfo:member(1)'
+      - 'excel!ExcelScript.Application#getDecimalSeparator:member(1)'
       - 'excel!ExcelScript.Application#getIterativeCalculation:member(1)'
+      - 'excel!ExcelScript.Application#getThousandsSeparator:member(1)'
+      - 'excel!ExcelScript.Application#getUseSystemSeparators:member(1)'
       - 'excel!ExcelScript.Application#setCalculationMode:member(1)'
   - uid: 'excel!ExcelScript.Application#calculate:member(1)'
     summary: Recalculate all currently opened workbooks in Excel.
@@ -76,6 +80,34 @@ items:
         type:
           - 'excel!ExcelScript.CalculationState:enum'
         description: ''
+  - uid: 'excel!ExcelScript.Application#getCultureInfo:member(1)'
+    summary: >-
+      Provides information based on current system culture settings. This includes the culture names, number formatting,
+      and other culturally dependent settings.
+    name: getCultureInfo()
+    fullName: getCultureInfo()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCultureInfo(): CultureInfo;'
+      return:
+        type:
+          - 'excel!ExcelScript.CultureInfo:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Application#getDecimalSeparator:member(1)'
+    summary: Gets the string used as the decimal separator for numeric values. This is based on Excel's local settings.
+    name: getDecimalSeparator()
+    fullName: getDecimalSeparator()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDecimalSeparator(): string;'
+      return:
+        type:
+          - string
+        description: ''
   - uid: 'excel!ExcelScript.Application#getIterativeCalculation:member(1)'
     summary: >-
       Returns the Iterative Calculation settings. In Excel on Windows and Mac, the settings will apply to the Excel
@@ -90,6 +122,36 @@ items:
       return:
         type:
           - 'excel!ExcelScript.IterativeCalculation:interface'
+        description: ''
+  - uid: 'excel!ExcelScript.Application#getThousandsSeparator:member(1)'
+    summary: >-
+      Gets the string used to separate groups of digits to the left of the decimal for numeric values. This is based on
+      Excel's local settings.
+    name: getThousandsSeparator()
+    fullName: getThousandsSeparator()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getThousandsSeparator(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'excel!ExcelScript.Application#getUseSystemSeparators:member(1)'
+    summary: >-
+      Specifies if the system separators of Excel are enabled. System separators include the decimal separator and
+      thousands separator.
+    name: getUseSystemSeparators()
+    fullName: getUseSystemSeparators()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getUseSystemSeparators(): boolean;'
+      return:
+        type:
+          - boolean
         description: ''
   - uid: 'excel!ExcelScript.Application#setCalculationMode:member(1)'
     summary: >-
@@ -123,6 +185,9 @@ references:
   - uid: 'excel!ExcelScript.CalculationState:enum'
     name: CalculationState
     fullName: ExcelScript.CalculationState
+  - uid: 'excel!ExcelScript.CultureInfo:interface'
+    name: CultureInfo
+    fullName: ExcelScript.CultureInfo
   - uid: 'excel!ExcelScript.IterativeCalculation:interface'
     name: IterativeCalculation
     fullName: ExcelScript.IterativeCalculation
