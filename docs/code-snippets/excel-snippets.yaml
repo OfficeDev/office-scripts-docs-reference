@@ -29,7 +29,7 @@
         let dueDate = new Date(Math.round((dueDateColumnValues[row][0] - 25569) * 86400 * 1000));
 
         // Check if the current date is greater than the due date.
-        if (dueDate.valueOf() < Date.now()) {
+        if (Date.now() > dueDate.valueOf()) {
 
           /* Create a CommentMention object for the comment,
            * based on the work item's owner.
@@ -47,7 +47,7 @@
           };
 
           /* Create the comment. 
-           * The `<at id=0>` syntax embeds the mention in the comment text. 
+           * The `<at id="0">` syntax embeds the mention in the comment text. 
            * The name is displayed in the comment, 
            * while an email is sent to the given address.
            *
