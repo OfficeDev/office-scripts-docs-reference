@@ -22,9 +22,10 @@
       // Look for overdue work items.
       for (let row = 0; row < dueDateColumnValues.length; row++) {
 
-        // Convert the Excel date into a JavaScript date. 
-        // This is necessary because the two platforms store
-        // their dates as different numerical values.
+        /* Convert the Excel date into a JavaScript date. 
+         * This is necessary because Excel and JavaScript store
+         * their dates as different numerical values.
+         */
         let dueDate = new Date(Math.round((dueDateColumnValues[row][0] - 25569) * 86400 * 1000));
 
         // Check if the current date is greater than the due date.
