@@ -67,13 +67,14 @@ items:
             // Look for overdue work items.
             for (let row = 0; row < dueDateColumnValues.length; row++) {
 
-              // Convert the Excel date into a JavaScript date. 
-              // This is necessary because the two platforms store
-              // their dates as different numerical values.
+              /* Convert the Excel date into a JavaScript date. 
+               * This is necessary because Excel and JavaScript store
+               * their dates as different numerical values.
+               */
               let dueDate = new Date(Math.round((dueDateColumnValues[row][0] - 25569) * 86400 * 1000));
 
               // Check if the current date is greater than the due date.
-              if (dueDate.valueOf() < Date.now()) {
+              if (Date.now() > dueDate.valueOf()) {
 
                 /* Create a CommentMention object for the comment,
                  * based on the work item's owner.
@@ -82,7 +83,7 @@ items:
                  * `name`: The name of the person being mentioned.
                  * `id`: The index of this mention in the comment.
                  * `email`: The email address of the person being mentioned. 
-                 *         In this sample, "Owner: is also the user name for the email.
+                 *          In this sample, "Owner: is also the user name for the email.
                  */
                 let mention = {
                   name: ownerColumnValues[row][0],
@@ -91,7 +92,7 @@ items:
                 };
 
                 /* Create the comment. 
-                 * The `<at id=0>` syntax embeds the mention in the comment text. 
+                 * The `<at id="0">` syntax embeds the mention in the comment text. 
                  * The name is displayed in the comment, 
                  * while an email is sent to the given address.
                  *
