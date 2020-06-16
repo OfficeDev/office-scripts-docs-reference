@@ -164,7 +164,7 @@ declare namespace ExcelScript {
         getProperties(): DocumentProperties;
 
         /**
-         * Returns workbook protection object for a workbook.
+         * Returns the protection object for a workbook.
          */
         getProtection(): WorkbookProtection;
 
@@ -1177,7 +1177,7 @@ declare namespace ExcelScript {
      */
     interface Range {
         /**
-         * Specifies the range reference in A1-style. Address value will contain the Sheet reference (e.g. "Sheet1!A1:B4").
+         * Specifies the range reference in A1-style. Address value will contain the Sheet reference (e.g., "Sheet1!A1:B4").
          */
         getAddress(): string;
 
@@ -1808,7 +1808,7 @@ declare namespace ExcelScript {
      */
     interface RangeAreas {
         /**
-         * Returns the RangeAreas reference in A1-style. Address value will contain the worksheet name for each rectangular block of cells (e.g. "Sheet1!A1:B4, Sheet1!D1:D4").
+         * Returns the RangeAreas reference in A1-style. Address value will contain the worksheet name for each rectangular block of cells (e.g., "Sheet1!A1:B4, Sheet1!D1:D4").
          */
         getAddress(): string;
 
@@ -2430,6 +2430,18 @@ declare namespace ExcelScript {
          * @param count Number of rows to delete. By default, a single row will be deleted.
          */
         deleteRowsAt(index: number, count?: number): void;
+
+        /**
+         * Gets a column object by ID. If the column does not exist, will return undefined.
+         * @param key Column ID.
+         */
+        getColumnById(key: number): TableColumn | undefined;
+
+        /**
+         * Gets a column object by Name. If the column does not exist, will return undefined.
+         * @param key Column Name.
+         */
+        getColumnByName(key: string): TableColumn | undefined;
     }
 
     /**
@@ -2749,13 +2761,13 @@ declare namespace ExcelScript {
         getBorders(): RangeBorder[];
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         getRangeBorderTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;
@@ -2797,12 +2809,12 @@ declare namespace ExcelScript {
      */
     interface RangeFill {
         /**
-         * HTML color code representing the color of the background, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange")
+         * HTML color code representing the color of the background, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange")
          */
         getColor(): string;
 
         /**
-         * HTML color code representing the color of the background, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange")
+         * HTML color code representing the color of the background, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange")
          */
         setColor(color: string): void;
 
@@ -2819,12 +2831,12 @@ declare namespace ExcelScript {
         setPattern(pattern: FillPattern): void;
 
         /**
-         * The HTML color code representing the color of the range pattern, of the form #RRGGBB (e.g. "FFA500").
+         * The HTML color code representing the color of the range pattern, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getPatternColor(): string;
 
         /**
-         * The HTML color code representing the color of the range pattern, of the form #RRGGBB (e.g. "FFA500").
+         * The HTML color code representing the color of the range pattern, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setPatternColor(patternColor: string): void;
 
@@ -2841,13 +2853,13 @@ declare namespace ExcelScript {
         setPatternTintAndShade(patternTintAndShade: number): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the tintAndShades are not uniform, null will be returned.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the tintAndShades are not uniform, null will be returned.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -2863,12 +2875,12 @@ declare namespace ExcelScript {
      */
     interface RangeBorder {
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getColor(): string;
 
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setColor(color: string): void;
 
@@ -2888,13 +2900,13 @@ declare namespace ExcelScript {
         setStyle(style: BorderLineStyle): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Border. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the border doesn't have uniform tintAndShade setting.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Border. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the border doesn't have uniform tintAndShade setting.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -2925,12 +2937,12 @@ declare namespace ExcelScript {
         setBold(bold: boolean): void;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         getColor(): string;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         setColor(color: string): void;
 
@@ -2945,12 +2957,12 @@ declare namespace ExcelScript {
         setItalic(italic: boolean): void;
 
         /**
-         * Font name (e.g. "Calibri")
+         * Font name (e.g., "Calibri")
          */
         getName(): string;
 
         /**
-         * Font name (e.g. "Calibri")
+         * Font name (e.g., "Calibri")
          */
         setName(name: string): void;
 
@@ -3007,13 +3019,13 @@ declare namespace ExcelScript {
         setSuperscript(superscript: boolean): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Font, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Font. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire range doesn't have uniform font tintAndShade setting.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Font, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Font. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire range doesn't have uniform font tintAndShade setting.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -3041,13 +3053,13 @@ declare namespace ExcelScript {
 
         /**
          * Specifies a ChartCategoryLabelLevel enumeration constant referring to
-         * the level of where the category labels are being sourced from. Read/Write.
+         * the level of where the category labels are being sourced from.
          */
         getCategoryLabelLevel(): number;
 
         /**
          * Specifies a ChartCategoryLabelLevel enumeration constant referring to
-         * the level of where the category labels are being sourced from. Read/Write.
+         * the level of where the category labels are being sourced from.
          */
         setCategoryLabelLevel(categoryLabelLevel: number): void;
 
@@ -3446,12 +3458,12 @@ declare namespace ExcelScript {
         setFiltered(filtered: boolean): void;
 
         /**
-         * Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360. Read/Write
+         * Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360.
          */
         getFirstSliceAngle(): number;
 
         /**
-         * Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360. Read/Write
+         * Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360.
          */
         setFirstSliceAngle(firstSliceAngle: number): void;
 
@@ -3696,12 +3708,12 @@ declare namespace ExcelScript {
         setPlotOrder(plotOrder: number): void;
 
         /**
-         * Specifies the size of the secondary section of either a pie of pie chart or a bar of pie chart, as a percentage of the size of the primary pie. Can be a value from 5 to 200.
+         * Specifies the size of the secondary section of either a pie-of-pie chart or a bar-of-pie chart, as a percentage of the size of the primary pie. Can be a value from 5 to 200.
          */
         getSecondPlotSize(): number;
 
         /**
-         * Specifies the size of the secondary section of either a pie of pie chart or a bar of pie chart, as a percentage of the size of the primary pie. Can be a value from 5 to 200.
+         * Specifies the size of the secondary section of either a pie-of-pie chart or a bar-of-pie chart, as a percentage of the size of the primary pie. Can be a value from 5 to 200.
          */
         setSecondPlotSize(secondPlotSize: number): void;
 
@@ -3746,12 +3758,12 @@ declare namespace ExcelScript {
         setSmooth(smooth: boolean): void;
 
         /**
-         * Specifies the way the two sections of either a pie of pie chart or a bar of pie chart are split.
+         * Specifies the way the two sections of either a pie-of-pie chart or a bar-of-pie chart are split.
          */
         getSplitType(): ChartSplitType;
 
         /**
-         * Specifies the way the two sections of either a pie of pie chart or a bar of pie chart are split.
+         * Specifies the way the two sections of either a pie-of-pie chart or a bar-of-pie chart are split.
          */
         setSplitType(splitType: ChartSplitType): void;
 
@@ -3871,22 +3883,22 @@ declare namespace ExcelScript {
         setHasDataLabel(hasDataLabel: boolean): void;
 
         /**
-         * HTML color code representation of the marker background color of data point. E.g. #FF0000 represents Red.
+         * HTML color code representation of the marker background color of data point (e.g., #FF0000 represents Red).
          */
         getMarkerBackgroundColor(): string;
 
         /**
-         * HTML color code representation of the marker background color of data point. E.g. #FF0000 represents Red.
+         * HTML color code representation of the marker background color of data point (e.g., #FF0000 represents Red).
          */
         setMarkerBackgroundColor(markerBackgroundColor: string): void;
 
         /**
-         * HTML color code representation of the marker foreground color of data point. E.g. #FF0000 represents Red.
+         * HTML color code representation of the marker foreground color of data point (e.g., #FF0000 represents Red).
          */
         getMarkerForegroundColor(): string;
 
         /**
-         * HTML color code representation of the marker foreground color of data point. E.g. #FF0000 represents Red.
+         * HTML color code representation of the marker foreground color of data point (e.g., #FF0000 represents Red).
          */
         setMarkerForegroundColor(markerForegroundColor: string): void;
 
@@ -3949,6 +3961,13 @@ declare namespace ExcelScript {
          * Represents the value axis in an axis.
          */
         getValueAxis(): ChartAxis;
+
+        /**
+         * Returns the specific axis identified by type and group.
+         * @param type Specifies the axis type. See Excel.ChartAxisType for details.
+         * @param group Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
+         */
+        getChartAxis(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;
     }
 
     /**
@@ -4426,12 +4445,12 @@ declare namespace ExcelScript {
         ): void;
 
         /**
-         * Specifies if the number format is linked to the cells. If true, the number format will change in the labels when it changes in the cells
+         * Specifies if the number format is linked to the cells. If true, the number format will change in the labels when it changes in the cells.
          */
         getLinkNumberFormat(): boolean;
 
         /**
-         * Specifies if the number format is linked to the cells. If true, the number format will change in the labels when it changes in the cells
+         * Specifies if the number format is linked to the cells. If true, the number format will change in the labels when it changes in the cells.
          */
         setLinkNumberFormat(linkNumberFormat: boolean): void;
 
@@ -4888,12 +4907,12 @@ declare namespace ExcelScript {
         setHeight(height: number): void;
 
         /**
-         * Specifies the left, in points, of a the legenf on the chart. Null if legend is not visible.
+         * Specifies the left, in points, of the legend on the chart. Null if legend is not visible.
          */
         getLeft(): number;
 
         /**
-         * Specifies the left, in points, of a the legenf on the chart. Null if legend is not visible.
+         * Specifies the left, in points, of the legend on the chart. Null if legend is not visible.
          */
         setLeft(left: number): void;
 
@@ -5177,7 +5196,7 @@ declare namespace ExcelScript {
         setVisible(visible: boolean): void;
 
         /**
-         * Specfies the width, in points, of the chart title. Null if chart title is not visible.
+         * Specifies the width, in points, of the chart title. Null if chart title is not visible.
          */
         getWidth(): number;
 
@@ -5236,7 +5255,7 @@ declare namespace ExcelScript {
 
         /**
          * Sets the fill formatting of a chart element to a uniform color.
-         * @param color HTML color code representing the color of the background, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * @param color HTML color code representing the color of the background, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setSolidColor(color: string): void;
     }
@@ -5468,12 +5487,12 @@ declare namespace ExcelScript {
         setBold(bold: boolean): void;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         getColor(): string;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         setColor(color: string): void;
 
@@ -5488,22 +5507,22 @@ declare namespace ExcelScript {
         setItalic(italic: boolean): void;
 
         /**
-         * Font name (e.g. "Calibri")
+         * Font name (e.g., "Calibri")
          */
         getName(): string;
 
         /**
-         * Font name (e.g. "Calibri")
+         * Font name (e.g., "Calibri")
          */
         setName(name: string): void;
 
         /**
-         * Size of the font (e.g. 11)
+         * Size of the font (e.g., 11)
          */
         getSize(): number;
 
         /**
-         * Size of the font (e.g. 11)
+         * Size of the font (e.g., 11)
          */
         setSize(size: number): void;
 
@@ -5643,12 +5662,12 @@ declare namespace ExcelScript {
      */
     interface ChartTrendlineLabel {
         /**
-         * Specifies if trendline label automatically generate appropriate text based on context.
+         * Specifies if trendline label automatically generates appropriate text based on context.
          */
         getAutoText(): boolean;
 
         /**
-         * Specifies if trendline label automatically generate appropriate text based on context.
+         * Specifies if trendline label automatically generates appropriate text based on context.
          */
         setAutoText(autoText: boolean): void;
 
@@ -6110,7 +6129,7 @@ declare namespace ExcelScript {
      */
     interface CultureInfo {
         /**
-         * Gets the culture name in the format languagecode2-country/regioncode2 (e.g. "zh-cn" or "en-us"). This is based on current system settings.
+         * Gets the culture name in the format languagecode2-country/regioncode2 (e.g., "zh-cn" or "en-us"). This is based on current system settings.
          */
         getName(): string;
 
@@ -6340,12 +6359,12 @@ declare namespace ExcelScript {
      */
     interface PivotLayout {
         /**
-         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved
+         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved.
          */
         getAutoFormat(): boolean;
 
         /**
-         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved
+         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved.
          */
         setAutoFormat(autoFormat: boolean): void;
 
@@ -6692,14 +6711,14 @@ declare namespace ExcelScript {
 
         /**
          * Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort will be based on the PivotField itself.
-         * @param sortBy Specifies if the sorting is done in an ascending or descending order.
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
          */
         sortByLabels(sortBy: SortBy): void;
 
         /**
          * Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to sort when
          * there are multiple values from the same DataPivotHierarchy.
-         * @param sortBy Specifies if the sorting is done in an ascending or descending order.
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
          * @param valuesHierarchy Specifies the values hierarchy on the data axis to be used for sorting.
          * @param pivotItemScope The items that should be used for the scope of the sorting. These will be the
          * items that make up the row or column that you want to sort on. If a string is used instead of a PivotItem,
@@ -6875,8 +6894,8 @@ declare namespace ExcelScript {
 
         /**
          * Creates a new or sets an existing custom property.
-         * @param key Required. The custom property's key, which is case-insensitive.
-         * @param value Required. The custom property's value.
+         * @param key Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
+         * @param value Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
          */
         addCustomProperty(key: string, value: any): CustomProperty;
 
@@ -6897,7 +6916,7 @@ declare namespace ExcelScript {
      */
     interface CustomProperty {
         /**
-         * The key of the custom property.
+         * The key of the custom property. The key is limited to 255 characters outside of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
          */
         getKey(): string;
 
@@ -6907,12 +6926,12 @@ declare namespace ExcelScript {
         getType(): DocumentPropertyType;
 
         /**
-         * The value of the custom property.
+         * The value of the custom property. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
          */
         getValue(): any;
 
         /**
-         * The value of the custom property.
+         * The value of the custom property. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
          */
         setValue(value: any): void;
 
@@ -7031,13 +7050,13 @@ declare namespace ExcelScript {
      */
     interface DataBarConditionalFormat {
         /**
-         * HTML color code representing the color of the Axis line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the Axis line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "" (empty string) if no axis is present or set.
          */
         getAxisColor(): string;
 
         /**
-         * HTML color code representing the color of the Axis line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the Axis line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "" (empty string) if no axis is present or set.
          */
         setAxisColor(axisColor: string): void;
@@ -7112,34 +7131,34 @@ declare namespace ExcelScript {
      */
     interface ConditionalDataBarPositiveFormat {
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "" (empty string) if no border is present or set.
          */
         getBorderColor(): string;
 
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "" (empty string) if no border is present or set.
          */
         setBorderColor(borderColor: string): void;
 
         /**
-         * HTML color code representing the fill color, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the fill color, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getFillColor(): string;
 
         /**
-         * HTML color code representing the fill color, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the fill color, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setFillColor(fillColor: string): void;
 
         /**
-         * specifies if the DataBar has a gradient.
+         * Specifies if the DataBar has a gradient.
          */
         getGradientFill(): boolean;
 
         /**
-         * specifies if the DataBar has a gradient.
+         * Specifies if the DataBar has a gradient.
          */
         setGradientFill(gradientFill: boolean): void;
     }
@@ -7149,24 +7168,24 @@ declare namespace ExcelScript {
      */
     interface ConditionalDataBarNegativeFormat {
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "Empty String" if no border is present or set.
          */
         getBorderColor(): string;
 
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * "Empty String" if no border is present or set.
          */
         setBorderColor(borderColor: string): void;
 
         /**
-         * HTML color code representing the fill color, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the fill color, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getFillColor(): string;
 
         /**
-         * HTML color code representing the fill color, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the fill color, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setFillColor(fillColor: string): void;
 
@@ -7181,12 +7200,12 @@ declare namespace ExcelScript {
         setMatchPositiveBorderColor(matchPositiveBorderColor: boolean): void;
 
         /**
-         * Specified if the negative DataBar has the same fill color as the positive DataBar.
+         * Specifies if the negative DataBar has the same fill color as the positive DataBar.
          */
         getMatchPositiveFillColor(): boolean;
 
         /**
-         * Specified if the negative DataBar has the same fill color as the positive DataBar.
+         * Specifies if the negative DataBar has the same fill color as the positive DataBar.
          */
         setMatchPositiveFillColor(matchPositiveFillColor: boolean): void;
     }
@@ -7196,7 +7215,7 @@ declare namespace ExcelScript {
      */
     interface CustomConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7301,7 +7320,7 @@ declare namespace ExcelScript {
      */
     interface TopBottomConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7321,7 +7340,7 @@ declare namespace ExcelScript {
      */
     interface PresetCriteriaConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7341,7 +7360,7 @@ declare namespace ExcelScript {
      */
     interface TextConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7361,7 +7380,7 @@ declare namespace ExcelScript {
      */
     interface CellValueConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7449,12 +7468,12 @@ declare namespace ExcelScript {
         setBold(bold: boolean): void;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         getColor(): string;
 
         /**
-         * HTML color code representation of the text color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the text color (e.g., #FF0000 represents Red).
          */
         setColor(color: string): void;
 
@@ -7499,12 +7518,12 @@ declare namespace ExcelScript {
      */
     interface ConditionalRangeFill {
         /**
-         * HTML color code representing the color of the fill, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the fill, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getColor(): string;
 
         /**
-         * HTML color code representing the color of the fill, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the fill, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setColor(color: string): void;
 
@@ -7519,12 +7538,12 @@ declare namespace ExcelScript {
      */
     interface ConditionalRangeBorder {
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getColor(): string;
 
         /**
-         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * HTML color code representing the color of the border line, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setColor(color: string): void;
 
@@ -7759,13 +7778,13 @@ declare namespace ExcelScript {
         getBorders(): RangeBorder[];
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         getRangeBorderTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;
@@ -8145,73 +8164,73 @@ declare namespace ExcelScript {
     interface HeaderFooter {
         /**
          * The center footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getCenterFooter(): string;
 
         /**
          * The center footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setCenterFooter(centerFooter: string): void;
 
         /**
          * The center header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getCenterHeader(): string;
 
         /**
          * The center header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setCenterHeader(centerHeader: string): void;
 
         /**
          * The left footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getLeftFooter(): string;
 
         /**
          * The left footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setLeftFooter(leftFooter: string): void;
 
         /**
          * The left header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getLeftHeader(): string;
 
         /**
          * The left header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setLeftHeader(leftHeader: string): void;
 
         /**
          * The right footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getRightFooter(): string;
 
         /**
          * The right footer of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setRightFooter(rightFooter: string): void;
 
         /**
          * The right header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         getRightHeader(): string;
 
         /**
          * The right header of the worksheet.
-         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/en-us/library/bb225426.aspx.
+         * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
          */
         setRightHeader(rightHeader: string): void;
     }
@@ -8238,12 +8257,12 @@ declare namespace ExcelScript {
         getOddPages(): HeaderFooter;
 
         /**
-         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
+         * Which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         getState(): HeaderFooterState;
 
         /**
-         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
+         * Which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         setState(state: HeaderFooterState): void;
 
@@ -8320,7 +8339,7 @@ declare namespace ExcelScript {
         getId(): string;
 
         /**
-         * Gets the entities (e.g. people) that are mentioned in comments.
+         * Gets the entities (e.g., people) that are mentioned in comments.
          */
         getMentions(): CommentMention[];
 
@@ -8335,7 +8354,7 @@ declare namespace ExcelScript {
         setResolved(resolved: boolean): void;
 
         /**
-         * Gets the rich comment content (e.g. mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.
+         * Gets the rich comment content (e.g., mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.
          */
         getRichContent(): string;
 
@@ -8362,7 +8381,7 @@ declare namespace ExcelScript {
 
         /**
          * Creates a comment reply for comment.
-         * @param content The comment's content. This can be either a string or Interface CommentRichContent (e.g. for comments with mentions).
+         * @param content The comment's content. This can be either a string or Interface CommentRichContent (e.g., for comments with mentions).
          * @param contentType Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
          */
         addCommentReply(
@@ -8412,7 +8431,7 @@ declare namespace ExcelScript {
         getId(): string;
 
         /**
-         * The entities (e.g. people) that are mentioned in comments.
+         * The entities (e.g., people) that are mentioned in comments.
          */
         getMentions(): CommentMention[];
 
@@ -8422,7 +8441,7 @@ declare namespace ExcelScript {
         getResolved(): boolean;
 
         /**
-         * The rich comment content (e.g. mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.
+         * The rich comment content (e.g., mentions in comments). This string is not meant to be displayed to end-users. Your add-in should only use this to parse rich comment content.
          */
         getRichContent(): string;
 
@@ -8889,12 +8908,12 @@ declare namespace ExcelScript {
      */
     interface ShapeFill {
         /**
-         * Represents the shape fill foreground color in HTML color format, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange")
+         * Represents the shape fill foreground color in HTML color format, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange")
          */
         getForegroundColor(): string;
 
         /**
-         * Represents the shape fill foreground color in HTML color format, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange")
+         * Represents the shape fill foreground color in HTML color format, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange")
          */
         setForegroundColor(foregroundColor: string): void;
 
@@ -8920,7 +8939,7 @@ declare namespace ExcelScript {
 
         /**
          * Sets the fill formatting of the shape to a uniform color. This changes the fill type to "Solid".
-         * @param color A string that represents the fill color in HTML color format, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * @param color A string that represents the fill color in HTML color format, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setSolidColor(color: string): void;
     }
@@ -8930,12 +8949,12 @@ declare namespace ExcelScript {
      */
     interface ShapeLineFormat {
         /**
-         * Represents the line color in HTML color format, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * Represents the line color in HTML color format, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         getColor(): string;
 
         /**
-         * Represents the line color in HTML color format, of the form #RRGGBB (e.g. "FFA500") or as a named HTML color (e.g. "orange").
+         * Represents the line color in HTML color format, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setColor(color: string): void;
 
@@ -9168,12 +9187,12 @@ declare namespace ExcelScript {
         setBold(bold: boolean): void;
 
         /**
-         * HTML color code representation of the text color (e.g. "#FF0000" represents red). Returns null if the TextRange includes text fragments with different colors.
+         * HTML color code representation of the text color (e.g., "#FF0000" represents red). Returns null if the TextRange includes text fragments with different colors.
          */
         getColor(): string;
 
         /**
-         * HTML color code representation of the text color (e.g. "#FF0000" represents red). Returns null if the TextRange includes text fragments with different colors.
+         * HTML color code representation of the text color (e.g., "#FF0000" represents red). Returns null if the TextRange includes text fragments with different colors.
          */
         setColor(color: string): void;
 
@@ -9188,22 +9207,22 @@ declare namespace ExcelScript {
         setItalic(italic: boolean): void;
 
         /**
-         * Represents font name (e.g. "Calibri"). If the text is Complex Script or East Asian language, this is the corresponding font name; otherwise it is the Latin font name.
+         * Represents font name (e.g., "Calibri"). If the text is Complex Script or East Asian language, this is the corresponding font name; otherwise it is the Latin font name.
          */
         getName(): string;
 
         /**
-         * Represents font name (e.g. "Calibri"). If the text is Complex Script or East Asian language, this is the corresponding font name; otherwise it is the Latin font name.
+         * Represents font name (e.g., "Calibri"). If the text is Complex Script or East Asian language, this is the corresponding font name; otherwise it is the Latin font name.
          */
         setName(name: string): void;
 
         /**
-         * Represents font size in points (e.g. 11). Returns null if the TextRange includes text fragments with different font sizes.
+         * Represents font size in points (e.g., 11). Returns null if the TextRange includes text fragments with different font sizes.
          */
         getSize(): number;
 
         /**
-         * Represents font size in points (e.g. 11). Returns null if the TextRange includes text fragments with different font sizes.
+         * Represents font size in points (e.g., 11). Returns null if the TextRange includes text fragments with different font sizes.
          */
         setSize(size: number): void;
 
@@ -10056,7 +10075,7 @@ declare namespace ExcelScript {
          * The first criterion used to filter data. Used as an operator in the case of "custom" filtering.
          * For example ">50" for number greater than 50 or "=*s" for values ending in "s".
          *
-         * Used as a number in the case of top/bottom items/percents. E.g. "5" for the top 5 items if filterOn is set to "topItems"
+         * Used as a number in the case of top/bottom items/percents (e.g., "5" for the top 5 items if filterOn is set to "topItems").
          */
         criterion1?: string;
 
@@ -10273,7 +10292,7 @@ declare namespace ExcelScript {
      */
     interface ConditionalColorScaleCriterion {
         /**
-         * HTML color code representation of the color scale color. E.g. #FF0000 represents Red.
+         * HTML color code representation of the color scale color (e.g., #FF0000 represents Red).
          */
         color?: string;
 
@@ -10428,12 +10447,12 @@ declare namespace ExcelScript {
      */
     interface CommentRichContent {
         /**
-         * An array containing all the entities (e.g. people) mentioned within the comment.
+         * An array containing all the entities (e.g., people) mentioned within the comment.
          */
         mentions?: CommentMention[];
 
         /**
-         * Specifies the rich content of the comment (e.g. comment content with mentions, the first mentioned entity has an id attribute of 0, and the second mentioned entity has an id attribute of 1.
+         * Specifies the rich content of the comment (e.g., comment content with mentions, the first mentioned entity has an id attribute of 0, and the second mentioned entity has an id attribute of 1).
          */
         richContent: string;
     }
@@ -12724,29 +12743,68 @@ declare namespace ExcelScript {
         firstOddAndEven,
     }
 
+    /**
+     * The behavior types when AutoFill is used on a range in the workbook.
+     */
     enum AutoFillType {
+        /**
+         * Populates the adjacent cells based on the surrounding data (the standard AutoFill behavior).
+         */
         fillDefault,
 
+        /**
+         * Populates the adjacent cells with data based on the selected data.
+         */
         fillCopy,
 
+        /**
+         * Populates the adjacent cells with data that follows a pattern in the copied cells.
+         */
         fillSeries,
 
+        /**
+         * Populates the adjacent cells with the selected formulas.
+         */
         fillFormats,
 
+        /**
+         * Populates the adjacent cells with the selected values.
+         */
         fillValues,
 
+        /**
+         * A version of "FillSeries" for dates that bases the pattern on either the day of the month or the day of the week, depending on the context.
+         */
         fillDays,
 
+        /**
+         * A version of "FillSeries" for dates that bases the pattern on the day of the week and only includes weekdays.
+         */
         fillWeekdays,
 
+        /**
+         * A version of "FillSeries" for dates that bases the pattern on the month.
+         */
         fillMonths,
 
+        /**
+         * A version of "FillSeries" for dates that bases the pattern on the year.
+         */
         fillYears,
 
+        /**
+         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a linear trend model.
+         */
         linearTrend,
 
+        /**
+         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a growth trend model.
+         */
         growthTrend,
 
+        /**
+         * Populates the adjacent cells by using Excel's FlashFill feature.
+         */
         flashFill,
     }
 
@@ -13481,4 +13539,10 @@ declare namespace ExcelScript {
          */
         descending,
     }
+
+    //
+    // Type
+    //
+
+    type RangeValue = string | number | boolean | null | undefined;
 }

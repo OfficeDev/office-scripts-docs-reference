@@ -1,6 +1,6 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.SettingCollection:class'
+  - uid: 'excel!Excel.SettingCollection:interface'
     summary: >-
       Represents a collection of key-value pair setting objects that are part of the workbook. The scope is limited to
       per file and add-in (task-pane or content) combination.
@@ -8,15 +8,11 @@ items:
     fullName: Excel.SettingCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.SettingCollection#add:member(1)'
-      - 'excel!Excel.SettingCollection#context:member'
-      - 'excel!Excel.SettingCollection#getCount:member(1)'
-      - 'excel!Excel.SettingCollection#getItem:member(1)'
       - 'excel!Excel.SettingCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SettingCollection#items:member'
       - 'excel!Excel.SettingCollection#load:member(1)'
   - uid: 'excel!Excel.SettingCollection#add:member(1)'
     summary: Sets or adds the specified setting to the workbook.
@@ -26,10 +22,14 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(key: string, value: string | number | boolean | Date | Array<any> | any): Excel.Setting;'
+      content: |-
+        add(
+                    key: string,
+                    value: string | number | boolean | Date | Array<any> | any
+                ): Setting;
       return:
         type:
-          - 'excel!Excel.Setting:class'
+          - 'excel!Excel.Setting:interface'
         description: ''
       parameters:
         - id: key
@@ -40,51 +40,6 @@ items:
           description: The Value for the new setting.
           type:
             - 'excel!Excel.SettingCollection#add~0:complex'
-  - uid: 'excel!Excel.SettingCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.SettingCollection#getCount:member(1)'
-    summary: Gets the number of Settings in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.SettingCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.SettingCollection#getItem:member(1)'
-    summary: Gets a Setting entry via the key.
-    name: getItem(key)
-    fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(key: string): Excel.Setting;'
-      return:
-        type:
-          - 'excel!Excel.Setting:class'
-        description: ''
-      parameters:
-        - id: key
-          description: Key of the setting.
-          type:
-            - string
   - uid: 'excel!Excel.SettingCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a Setting entry via the key. If the Setting does not exist, will return a null object.'
     name: getItemOrNullObject(key)
@@ -93,10 +48,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(key: string): Excel.Setting;'
+      content: 'getItemOrNullObject(key: string): Setting;'
       return:
         type:
-          - 'excel!Excel.Setting:class'
+          - 'excel!Excel.Setting:interface'
         description: |-
 
 
@@ -125,18 +80,6 @@ items:
           description: The key of the setting.
           type:
             - string
-  - uid: 'excel!Excel.SettingCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Setting[];'
-      return:
-        type:
-          - 'excel!Excel.SettingCollection#items~0:complex'
   - uid: 'excel!Excel.SettingCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -147,10 +90,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.SettingCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.SettingCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -158,7 +101,7 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.Setting:class'
+  - uid: 'excel!Excel.Setting:interface'
     name: Setting
     fullName: Excel.Setting
   - uid: 'excel!Excel.SettingCollection#add~0:complex'
@@ -175,29 +118,9 @@ references:
       - uid: '!Array:interface'
         name: Array
         fullName: Array
-      - name: <any> | any
-        fullName: <any> | any
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.SettingCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.SettingCollection#items~0:complex'
-    name: 'Excel.Setting[]'
-    fullName: 'Excel.Setting[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Setting:class'
-        name: Excel.Setting
-        fullName: Excel.Setting
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.SettingCollection:class'
-    name: SettingCollection
-    fullName: Excel.SettingCollection
+      - name: |-
+          <any> | any
+                  
+        fullName: |-
+          <any> | any
+                  

@@ -36,8 +36,8 @@ items:
       -->&gt;<!-- -->50" for number greater than 50 or "=*s" for values ending in "s".
 
 
-      Used as a number in the case of top/bottom items/percents. E.g. "5" for the top 5 items if filterOn is set to
-      "topItems"
+      Used as a number in the case of top/bottom items/percents (e.g., "5" for the top 5 items if filterOn is set to
+      "topItems").
     name: criterion1
     fullName: criterion1
     langs:
@@ -70,17 +70,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        dynamicCriteria?: Excel.DynamicFilterCriteria | "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" |
-        "AllDatesInPeriodAugust" | "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" |
-        "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" |
-        "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2"
-        | "AllDatesInPeriodQuarter3" | "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" |
-        "LastMonth" | "LastQuarter" | "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" |
-        "ThisMonth" | "ThisQuarter" | "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday";
+      content: 'dynamicCriteria?: DynamicFilterCriteria;'
       return:
         type:
-          - 'excel!Excel.FilterCriteria#dynamicCriteria~0:complex'
+          - 'excel!Excel.DynamicFilterCriteria:enum'
   - uid: 'excel!Excel.FilterCriteria#filterOn:member'
     summary: The property used by the filter to determine whether the values should stay visible.
     name: filterOn
@@ -89,12 +82,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        filterOn: Excel.FilterOn | "BottomItems" | "BottomPercent" | "CellColor" | "Dynamic" | "FontColor" | "Values" |
-        "TopItems" | "TopPercent" | "Icon" | "Custom";
+      content: 'filterOn: FilterOn;'
       return:
         type:
-          - 'excel!Excel.FilterCriteria#filterOn~0:complex'
+          - 'excel!Excel.FilterOn:enum'
   - uid: 'excel!Excel.FilterCriteria#icon:member'
     summary: The icon used to filter cells. Used with "icon" filtering.
     name: icon
@@ -103,7 +94,7 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'icon?: Excel.Icon;'
+      content: 'icon?: Icon;'
       return:
         type:
           - 'excel!Excel.Icon:interface'
@@ -115,10 +106,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'operator?: Excel.FilterOperator | "And" | "Or";'
+      content: 'operator?: FilterOperator;'
       return:
         type:
-          - 'excel!Excel.FilterCriteria#operator~0:complex'
+          - 'excel!Excel.FilterOperator:enum'
   - uid: 'excel!Excel.FilterCriteria#subField:member'
     summary: The property used by the filter to do rich filter on richvalues.
     name: subField
@@ -144,54 +135,18 @@ items:
         type:
           - 'excel!Excel.FilterCriteria#values~0:complex'
 references:
-  - uid: 'excel!Excel.FilterCriteria#dynamicCriteria~0:complex'
-    name: >-
-      Excel.DynamicFilterCriteria | "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" | "AllDatesInPeriodAugust" |
-      "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" | "AllDatesInPeriodJuly" |
-      "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" | "AllDatesInPeriodNovember" |
-      "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2" | "AllDatesInPeriodQuarter3" |
-      "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" | "LastMonth" | "LastQuarter" |
-      "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" | "ThisMonth" | "ThisQuarter" |
-      "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"
-    fullName: >-
-      Excel.DynamicFilterCriteria | "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" | "AllDatesInPeriodAugust" |
-      "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" | "AllDatesInPeriodJuly" |
-      "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" | "AllDatesInPeriodNovember" |
-      "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2" | "AllDatesInPeriodQuarter3" |
-      "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" | "LastMonth" | "LastQuarter" |
-      "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" | "ThisMonth" | "ThisQuarter" |
-      "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"
-    spec.typeScript:
-      - uid: 'excel!Excel.DynamicFilterCriteria:enum'
-        name: Excel.DynamicFilterCriteria
-        fullName: Excel.DynamicFilterCriteria
-      - name: ' | "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" | "AllDatesInPeriodAugust" | "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" | "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" | "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2" | "AllDatesInPeriodQuarter3" | "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" | "LastMonth" | "LastQuarter" | "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" | "ThisMonth" | "ThisQuarter" | "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"'
-        fullName: ' | "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" | "AllDatesInPeriodAugust" | "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" | "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" | "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2" | "AllDatesInPeriodQuarter3" | "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" | "LastMonth" | "LastQuarter" | "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" | "ThisMonth" | "ThisQuarter" | "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"'
-  - uid: 'excel!Excel.FilterCriteria#filterOn~0:complex'
-    name: >-
-      Excel.FilterOn | "BottomItems" | "BottomPercent" | "CellColor" | "Dynamic" | "FontColor" | "Values" | "TopItems" |
-      "TopPercent" | "Icon" | "Custom"
-    fullName: >-
-      Excel.FilterOn | "BottomItems" | "BottomPercent" | "CellColor" | "Dynamic" | "FontColor" | "Values" | "TopItems" |
-      "TopPercent" | "Icon" | "Custom"
-    spec.typeScript:
-      - uid: 'excel!Excel.FilterOn:enum'
-        name: Excel.FilterOn
-        fullName: Excel.FilterOn
-      - name: ' | "BottomItems" | "BottomPercent" | "CellColor" | "Dynamic" | "FontColor" | "Values" | "TopItems" | "TopPercent" | "Icon" | "Custom"'
-        fullName: ' | "BottomItems" | "BottomPercent" | "CellColor" | "Dynamic" | "FontColor" | "Values" | "TopItems" | "TopPercent" | "Icon" | "Custom"'
+  - uid: 'excel!Excel.DynamicFilterCriteria:enum'
+    name: DynamicFilterCriteria
+    fullName: Excel.DynamicFilterCriteria
+  - uid: 'excel!Excel.FilterOn:enum'
+    name: FilterOn
+    fullName: Excel.FilterOn
   - uid: 'excel!Excel.Icon:interface'
     name: Icon
     fullName: Excel.Icon
-  - uid: 'excel!Excel.FilterCriteria#operator~0:complex'
-    name: Excel.FilterOperator | "And" | "Or"
-    fullName: Excel.FilterOperator | "And" | "Or"
-    spec.typeScript:
-      - uid: 'excel!Excel.FilterOperator:enum'
-        name: Excel.FilterOperator
-        fullName: Excel.FilterOperator
-      - name: ' | "And" | "Or"'
-        fullName: ' | "And" | "Or"'
+  - uid: 'excel!Excel.FilterOperator:enum'
+    name: FilterOperator
+    fullName: Excel.FilterOperator
   - uid: 'excel!Excel.FilterCriteria#values~0:complex'
     name: Array<string | FilterDatetime>
     fullName: Array<string | Excel.FilterDatetime>

@@ -1,71 +1,54 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat:class'
+  - uid: 'excel!Excel.ChartTrendlineLabelFormat:interface'
     summary: Encapsulates the format properties for the chart trendline label.
     name: Excel.ChartTrendlineLabelFormat
     fullName: Excel.ChartTrendlineLabelFormat
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ChartTrendlineLabelFormat#border:member'
-      - 'excel!Excel.ChartTrendlineLabelFormat#context:member'
       - 'excel!Excel.ChartTrendlineLabelFormat#fill:member'
       - 'excel!Excel.ChartTrendlineLabelFormat#font:member'
       - 'excel!Excel.ChartTrendlineLabelFormat#load:member(1)'
-      - 'excel!Excel.ChartTrendlineLabelFormat#load:member(2)'
-      - 'excel!Excel.ChartTrendlineLabelFormat#set:member(1)'
   - uid: 'excel!Excel.ChartTrendlineLabelFormat#border:member'
-    summary: 'Represents the border format, which includes color, linestyle, and weight.'
+    summary: 'Specifies the border format, which includes color, linestyle, and weight.'
     name: border
     fullName: border
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly border: Excel.ChartBorder;'
+      content: 'readonly border: ChartBorder;'
       return:
         type:
-          - 'excel!Excel.ChartBorder:class'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
+          - 'excel!Excel.ChartBorder:interface'
   - uid: 'excel!Excel.ChartTrendlineLabelFormat#fill:member'
-    summary: Represents the fill format of the current chart trendline label.
+    summary: Specifies the fill format of the current chart trendline label.
     name: fill
     fullName: fill
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly fill: Excel.ChartFill;'
+      content: 'readonly fill: ChartFill;'
       return:
         type:
-          - 'excel!Excel.ChartFill:class'
+          - 'excel!Excel.ChartFill:interface'
   - uid: 'excel!Excel.ChartTrendlineLabelFormat#font:member'
-    summary: 'Represents the font attributes (font name, font size, color, etc.) for a chart trendline label.'
+    summary: 'Specifies the font attributes (font name, font size, color, etc.) for a chart trendline label.'
     name: font
     fullName: font
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly font: Excel.ChartFont;'
+      content: 'readonly font: ChartFont;'
       return:
         type:
-          - 'excel!Excel.ChartFont:class'
+          - 'excel!Excel.ChartFont:interface'
   - uid: 'excel!Excel.ChartTrendlineLabelFormat#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -76,77 +59,23 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartTrendlineLabelFormat;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartTrendlineLabelFormat:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartTrendlineLabelFormat;
-      return:
-        type:
-          - 'excel!Excel.ChartTrendlineLabelFormat:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartTrendlineLabelFormat): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartTrendlineLabelFormat:class'
 references:
-  - uid: 'excel!Excel.ChartBorder:class'
+  - uid: 'excel!Excel.ChartBorder:interface'
     name: ChartBorder
     fullName: Excel.ChartBorder
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartFill:class'
+  - uid: 'excel!Excel.ChartFill:interface'
     name: ChartFill
     fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:class'
+  - uid: 'excel!Excel.ChartFont:interface'
     name: ChartFont
     fullName: Excel.ChartFont
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat:class'
-    name: ChartTrendlineLabelFormat
-    fullName: Excel.ChartTrendlineLabelFormat

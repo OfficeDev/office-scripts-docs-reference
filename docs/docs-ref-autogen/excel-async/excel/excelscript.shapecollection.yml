@@ -1,26 +1,20 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ShapeCollection:class'
+  - uid: 'excel!Excel.ShapeCollection:interface'
     summary: Represents a collection of all the shapes in the worksheet.
     name: Excel.ShapeCollection
     fullName: Excel.ShapeCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ShapeCollection#addGeometricShape:member(1)'
-      - 'excel!Excel.ShapeCollection#addGeometricShape:member(2)'
       - 'excel!Excel.ShapeCollection#addGroup:member(1)'
       - 'excel!Excel.ShapeCollection#addImage:member(1)'
       - 'excel!Excel.ShapeCollection#addLine:member(1)'
-      - 'excel!Excel.ShapeCollection#addLine:member(2)'
       - 'excel!Excel.ShapeCollection#addTextBox:member(1)'
-      - 'excel!Excel.ShapeCollection#context:member'
-      - 'excel!Excel.ShapeCollection#getCount:member(1)'
       - 'excel!Excel.ShapeCollection#getItem:member(1)'
-      - 'excel!Excel.ShapeCollection#getItemAt:member(1)'
-      - 'excel!Excel.ShapeCollection#items:member'
       - 'excel!Excel.ShapeCollection#load:member(1)'
   - uid: 'excel!Excel.ShapeCollection#addGeometricShape:member(1)'
     summary: Adds a geometric shape to the worksheet. Returns a Shape object that represents the new shape.
@@ -30,10 +24,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'addGeometricShape(geometricShapeType: Excel.GeometricShapeType): Excel.Shape;'
+      content: 'addGeometricShape(geometricShapeType: GeometricShapeType): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: |-
 
 
@@ -55,87 +49,6 @@ items:
           description: Represents the type of the geometric shape. See Excel.GeometricShapeType for details.
           type:
             - 'excel!Excel.GeometricShapeType:enum'
-  - uid: 'excel!Excel.ShapeCollection#addGeometricShape:member(2)'
-    summary: Adds a geometric shape to the worksheet. Returns a Shape object that represents the new shape.
-    name: addGeometricShape(geometricShapeTypeStringString)
-    fullName: addGeometricShape(geometricShapeTypeStringString)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        addGeometricShape(geometricShapeTypeStringString: "LineInverse" | "Triangle" | "RightTriangle" | "Rectangle" |
-        "Diamond" | "Parallelogram" | "Trapezoid" | "NonIsoscelesTrapezoid" | "Pentagon" | "Hexagon" | "Heptagon" |
-        "Octagon" | "Decagon" | "Dodecagon" | "Star4" | "Star5" | "Star6" | "Star7" | "Star8" | "Star10" | "Star12" |
-        "Star16" | "Star24" | "Star32" | "RoundRectangle" | "Round1Rectangle" | "Round2SameRectangle" |
-        "Round2DiagonalRectangle" | "SnipRoundRectangle" | "Snip1Rectangle" | "Snip2SameRectangle" |
-        "Snip2DiagonalRectangle" | "Plaque" | "Ellipse" | "Teardrop" | "HomePlate" | "Chevron" | "PieWedge" | "Pie" |
-        "BlockArc" | "Donut" | "NoSmoking" | "RightArrow" | "LeftArrow" | "UpArrow" | "DownArrow" | "StripedRightArrow"
-        | "NotchedRightArrow" | "BentUpArrow" | "LeftRightArrow" | "UpDownArrow" | "LeftUpArrow" | "LeftRightUpArrow" |
-        "QuadArrow" | "LeftArrowCallout" | "RightArrowCallout" | "UpArrowCallout" | "DownArrowCallout" |
-        "LeftRightArrowCallout" | "UpDownArrowCallout" | "QuadArrowCallout" | "BentArrow" | "UturnArrow" |
-        "CircularArrow" | "LeftCircularArrow" | "LeftRightCircularArrow" | "CurvedRightArrow" | "CurvedLeftArrow" |
-        "CurvedUpArrow" | "CurvedDownArrow" | "SwooshArrow" | "Cube" | "Can" | "LightningBolt" | "Heart" | "Sun" |
-        "Moon" | "SmileyFace" | "IrregularSeal1" | "IrregularSeal2" | "FoldedCorner" | "Bevel" | "Frame" | "HalfFrame" |
-        "Corner" | "DiagonalStripe" | "Chord" | "Arc" | "LeftBracket" | "RightBracket" | "LeftBrace" | "RightBrace" |
-        "BracketPair" | "BracePair" | "Callout1" | "Callout2" | "Callout3" | "AccentCallout1" | "AccentCallout2" |
-        "AccentCallout3" | "BorderCallout1" | "BorderCallout2" | "BorderCallout3" | "AccentBorderCallout1" |
-        "AccentBorderCallout2" | "AccentBorderCallout3" | "WedgeRectCallout" | "WedgeRRectCallout" |
-        "WedgeEllipseCallout" | "CloudCallout" | "Cloud" | "Ribbon" | "Ribbon2" | "EllipseRibbon" | "EllipseRibbon2" |
-        "LeftRightRibbon" | "VerticalScroll" | "HorizontalScroll" | "Wave" | "DoubleWave" | "Plus" | "FlowChartProcess"
-        | "FlowChartDecision" | "FlowChartInputOutput" | "FlowChartPredefinedProcess" | "FlowChartInternalStorage" |
-        "FlowChartDocument" | "FlowChartMultidocument" | "FlowChartTerminator" | "FlowChartPreparation" |
-        "FlowChartManualInput" | "FlowChartManualOperation" | "FlowChartConnector" | "FlowChartPunchedCard" |
-        "FlowChartPunchedTape" | "FlowChartSummingJunction" | "FlowChartOr" | "FlowChartCollate" | "FlowChartSort" |
-        "FlowChartExtract" | "FlowChartMerge" | "FlowChartOfflineStorage" | "FlowChartOnlineStorage" |
-        "FlowChartMagneticTape" | "FlowChartMagneticDisk" | "FlowChartMagneticDrum" | "FlowChartDisplay" |
-        "FlowChartDelay" | "FlowChartAlternateProcess" | "FlowChartOffpageConnector" | "ActionButtonBlank" |
-        "ActionButtonHome" | "ActionButtonHelp" | "ActionButtonInformation" | "ActionButtonForwardNext" |
-        "ActionButtonBackPrevious" | "ActionButtonEnd" | "ActionButtonBeginning" | "ActionButtonReturn" |
-        "ActionButtonDocument" | "ActionButtonSound" | "ActionButtonMovie" | "Gear6" | "Gear9" | "Funnel" | "MathPlus" |
-        "MathMinus" | "MathMultiply" | "MathDivide" | "MathEqual" | "MathNotEqual" | "CornerTabs" | "SquareTabs" |
-        "PlaqueTabs" | "ChartX" | "ChartStar" | "ChartPlus"): Excel.Shape;
-      return:
-        type:
-          - 'excel!Excel.Shape:class'
-        description: ''
-      parameters:
-        - id: geometricShapeTypeStringString
-          description: Represents the type of the geometric shape. See Excel.GeometricShapeType for details.
-          type:
-            - >-
-              "LineInverse" | "Triangle" | "RightTriangle" | "Rectangle" | "Diamond" | "Parallelogram" | "Trapezoid" |
-              "NonIsoscelesTrapezoid" | "Pentagon" | "Hexagon" | "Heptagon" | "Octagon" | "Decagon" | "Dodecagon" |
-              "Star4" | "Star5" | "Star6" | "Star7" | "Star8" | "Star10" | "Star12" | "Star16" | "Star24" | "Star32" |
-              "RoundRectangle" | "Round1Rectangle" | "Round2SameRectangle" | "Round2DiagonalRectangle" |
-              "SnipRoundRectangle" | "Snip1Rectangle" | "Snip2SameRectangle" | "Snip2DiagonalRectangle" | "Plaque" |
-              "Ellipse" | "Teardrop" | "HomePlate" | "Chevron" | "PieWedge" | "Pie" | "BlockArc" | "Donut" | "NoSmoking"
-              | "RightArrow" | "LeftArrow" | "UpArrow" | "DownArrow" | "StripedRightArrow" | "NotchedRightArrow" |
-              "BentUpArrow" | "LeftRightArrow" | "UpDownArrow" | "LeftUpArrow" | "LeftRightUpArrow" | "QuadArrow" |
-              "LeftArrowCallout" | "RightArrowCallout" | "UpArrowCallout" | "DownArrowCallout" | "LeftRightArrowCallout"
-              | "UpDownArrowCallout" | "QuadArrowCallout" | "BentArrow" | "UturnArrow" | "CircularArrow" |
-              "LeftCircularArrow" | "LeftRightCircularArrow" | "CurvedRightArrow" | "CurvedLeftArrow" | "CurvedUpArrow"
-              | "CurvedDownArrow" | "SwooshArrow" | "Cube" | "Can" | "LightningBolt" | "Heart" | "Sun" | "Moon" |
-              "SmileyFace" | "IrregularSeal1" | "IrregularSeal2" | "FoldedCorner" | "Bevel" | "Frame" | "HalfFrame" |
-              "Corner" | "DiagonalStripe" | "Chord" | "Arc" | "LeftBracket" | "RightBracket" | "LeftBrace" |
-              "RightBrace" | "BracketPair" | "BracePair" | "Callout1" | "Callout2" | "Callout3" | "AccentCallout1" |
-              "AccentCallout2" | "AccentCallout3" | "BorderCallout1" | "BorderCallout2" | "BorderCallout3" |
-              "AccentBorderCallout1" | "AccentBorderCallout2" | "AccentBorderCallout3" | "WedgeRectCallout" |
-              "WedgeRRectCallout" | "WedgeEllipseCallout" | "CloudCallout" | "Cloud" | "Ribbon" | "Ribbon2" |
-              "EllipseRibbon" | "EllipseRibbon2" | "LeftRightRibbon" | "VerticalScroll" | "HorizontalScroll" | "Wave" |
-              "DoubleWave" | "Plus" | "FlowChartProcess" | "FlowChartDecision" | "FlowChartInputOutput" |
-              "FlowChartPredefinedProcess" | "FlowChartInternalStorage" | "FlowChartDocument" | "FlowChartMultidocument"
-              | "FlowChartTerminator" | "FlowChartPreparation" | "FlowChartManualInput" | "FlowChartManualOperation" |
-              "FlowChartConnector" | "FlowChartPunchedCard" | "FlowChartPunchedTape" | "FlowChartSummingJunction" |
-              "FlowChartOr" | "FlowChartCollate" | "FlowChartSort" | "FlowChartExtract" | "FlowChartMerge" |
-              "FlowChartOfflineStorage" | "FlowChartOnlineStorage" | "FlowChartMagneticTape" | "FlowChartMagneticDisk" |
-              "FlowChartMagneticDrum" | "FlowChartDisplay" | "FlowChartDelay" | "FlowChartAlternateProcess" |
-              "FlowChartOffpageConnector" | "ActionButtonBlank" | "ActionButtonHome" | "ActionButtonHelp" |
-              "ActionButtonInformation" | "ActionButtonForwardNext" | "ActionButtonBackPrevious" | "ActionButtonEnd" |
-              "ActionButtonBeginning" | "ActionButtonReturn" | "ActionButtonDocument" | "ActionButtonSound" |
-              "ActionButtonMovie" | "Gear6" | "Gear9" | "Funnel" | "MathPlus" | "MathMinus" | "MathMultiply" |
-              "MathDivide" | "MathEqual" | "MathNotEqual" | "CornerTabs" | "SquareTabs" | "PlaqueTabs" | "ChartX" |
-              "ChartStar" | "ChartPlus"
   - uid: 'excel!Excel.ShapeCollection#addGroup:member(1)'
     summary: >-
       Groups a subset of shapes in this collection's worksheet. Returns a Shape object that represents the new group of
@@ -146,10 +59,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'addGroup(values: Array<string | Shape>): Excel.Shape;'
+      content: 'addGroup(values: Array<string | Shape>): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: |-
 
 
@@ -184,10 +97,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'addImage(base64ImageString: string): Excel.Shape;'
+      content: 'addImage(base64ImageString: string): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: |-
 
 
@@ -224,12 +137,17 @@ items:
       - typeScript
     type: method
     syntax:
-      content: >-
-        addLine(startLeft: number, startTop: number, endLeft: number, endTop: number, connectorType?:
-        Excel.ConnectorType): Excel.Shape;
+      content: |-
+        addLine(
+                    startLeft: number,
+                    startTop: number,
+                    endLeft: number,
+                    endTop: number,
+                    connectorType?: ConnectorType
+                ): Shape;
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: |-
 
 
@@ -264,42 +182,6 @@ items:
           description: Represents the connector type. See Excel.ConnectorType for details.
           type:
             - 'excel!Excel.ConnectorType:enum'
-  - uid: 'excel!Excel.ShapeCollection#addLine:member(2)'
-    summary: Adds a line to worksheet. Returns a Shape object that represents the new line.
-    name: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeStringString)'
-    fullName: 'addLine(startLeft, startTop, endLeft, endTop, connectorTypeStringString)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        addLine(startLeft: number, startTop: number, endLeft: number, endTop: number, connectorTypeStringString?:
-        "Straight" | "Elbow" | "Curve"): Excel.Shape;
-      return:
-        type:
-          - 'excel!Excel.Shape:class'
-        description: ''
-      parameters:
-        - id: startLeft
-          description: 'The distance, in points, from the start of the line to the left side of the worksheet.'
-          type:
-            - number
-        - id: startTop
-          description: 'The distance, in points, from the start of the line to the top of the worksheet.'
-          type:
-            - number
-        - id: endLeft
-          description: 'The distance, in points, from the end of the line to the left of the worksheet.'
-          type:
-            - number
-        - id: endTop
-          description: 'The distance, in points, from the end of the line to the top of the worksheet.'
-          type:
-            - number
-        - id: connectorTypeStringString
-          description: Represents the connector type. See Excel.ConnectorType for details.
-          type:
-            - '"Straight" | "Elbow" | "Curve"'
   - uid: 'excel!Excel.ShapeCollection#addTextBox:member(1)'
     summary: >-
       Adds a text box to the worksheet with the provided text as the content. Returns a Shape object that represents the
@@ -310,10 +192,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'addTextBox(text?: string): Excel.Shape;'
+      content: 'addTextBox(text?: string): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: |-
 
 
@@ -336,33 +218,6 @@ items:
           description: Represents the text that will be shown in the created text box.
           type:
             - string
-  - uid: 'excel!Excel.ShapeCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.ShapeCollection#getCount:member(1)'
-    summary: Returns the number of shapes in the worksheet. Read-only.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.ShapeCollection#getCount~0:complex'
-        description: ''
   - uid: 'excel!Excel.ShapeCollection#getItem:member(1)'
     summary: Gets a shape using its Name or ID.
     name: getItem(key)
@@ -371,46 +226,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(key: string): Excel.Shape;'
+      content: 'getItem(key: string): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: ''
       parameters:
         - id: key
           description: Name or ID of the shape to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.ShapeCollection#getItemAt:member(1)'
-    summary: Gets a shape using its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:class'
-        description: ''
-      parameters:
-        - id: index
-          description: The zero-based index of the shape to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ShapeCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Shape[];'
-      return:
-        type:
-          - 'excel!Excel.ShapeCollection#items~0:complex'
   - uid: 'excel!Excel.ShapeCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -421,10 +246,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ShapeCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ShapeCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -432,7 +257,7 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.Shape:class'
+  - uid: 'excel!Excel.Shape:interface'
     name: Shape
     fullName: Excel.Shape
   - uid: 'excel!Excel.GeometricShapeType:enum'
@@ -447,7 +272,7 @@ references:
         fullName: Array
       - name: '<string | '
         fullName: '<string | '
-      - uid: 'excel!Excel.Shape:class'
+      - uid: 'excel!Excel.Shape:interface'
         name: Shape
         fullName: Excel.Shape
       - name: '>'
@@ -455,27 +280,3 @@ references:
   - uid: 'excel!Excel.ConnectorType:enum'
     name: ConnectorType
     fullName: Excel.ConnectorType
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ShapeCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.ShapeCollection#items~0:complex'
-    name: 'Excel.Shape[]'
-    fullName: 'Excel.Shape[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Shape:class'
-        name: Excel.Shape
-        fullName: Excel.Shape
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.ShapeCollection:class'
-    name: ShapeCollection
-    fullName: Excel.ShapeCollection

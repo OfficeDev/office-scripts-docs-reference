@@ -1,33 +1,17 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.RemoveDuplicatesResult:class'
+  - uid: 'excel!Excel.RemoveDuplicatesResult:interface'
     summary: Represents the results from the removeDuplicates method on range
     name: Excel.RemoveDuplicatesResult
     fullName: Excel.RemoveDuplicatesResult
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.RemoveDuplicatesResult#context:member'
       - 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
-      - 'excel!Excel.RemoveDuplicatesResult#load:member(2)'
       - 'excel!Excel.RemoveDuplicatesResult#removed:member'
       - 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
-  - uid: 'excel!Excel.RemoveDuplicatesResult#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -38,46 +22,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.RemoveDuplicatesResult;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.RemoveDuplicatesResult:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.RemoveDuplicatesResult#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.RemoveDuplicatesResult;
-      return:
-        type:
-          - 'excel!Excel.RemoveDuplicatesResult:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.RemoveDuplicatesResult#removed:member'
     summary: Number of duplicated rows removed by the operation.
     name: removed
@@ -120,10 +74,3 @@ items:
               console.log(deleteResult.uniqueRemaining + " entries with unique names remain in the range.");
           }
           ```
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.RemoveDuplicatesResult:class'
-    name: RemoveDuplicatesResult
-    fullName: Excel.RemoveDuplicatesResult

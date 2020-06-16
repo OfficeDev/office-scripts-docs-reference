@@ -1,20 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.FilterPivotHierarchyCollection:interface'
     summary: Represents a collection of FilterPivotHierarchy items associated with the PivotTable.
     name: Excel.FilterPivotHierarchyCollection
     fullName: Excel.FilterPivotHierarchyCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.FilterPivotHierarchyCollection#add:member(1)'
-      - 'excel!Excel.FilterPivotHierarchyCollection#context:member'
-      - 'excel!Excel.FilterPivotHierarchyCollection#getCount:member(1)'
-      - 'excel!Excel.FilterPivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.FilterPivotHierarchyCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.FilterPivotHierarchyCollection#items:member'
       - 'excel!Excel.FilterPivotHierarchyCollection#load:member(1)'
       - 'excel!Excel.FilterPivotHierarchyCollection#remove:member(1)'
   - uid: 'excel!Excel.FilterPivotHierarchyCollection#add:member(1)'
@@ -27,61 +23,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(pivotHierarchy: Excel.PivotHierarchy): Excel.FilterPivotHierarchy;'
+      content: 'add(pivotHierarchy: PivotHierarchy): FilterPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.FilterPivotHierarchy:class'
+          - 'excel!Excel.FilterPivotHierarchy:interface'
         description: ''
       parameters:
         - id: pivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.PivotHierarchy:class'
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#getCount:member(1)'
-    summary: Gets the number of pivot hierarchies in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.FilterPivotHierarchyCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#getItem:member(1)'
-    summary: Gets a FilterPivotHierarchy by its name or id.
-    name: getItem(name)
-    fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(name: string): Excel.FilterPivotHierarchy;'
-      return:
-        type:
-          - 'excel!Excel.FilterPivotHierarchy:class'
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the FilterPivotHierarchy to be retrieved.
-          type:
-            - string
+            - 'excel!Excel.PivotHierarchy:interface'
   - uid: 'excel!Excel.FilterPivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)
@@ -90,28 +41,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(name: string): Excel.FilterPivotHierarchy;'
+      content: 'getItemOrNullObject(name: string): FilterPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.FilterPivotHierarchy:class'
+          - 'excel!Excel.FilterPivotHierarchy:interface'
         description: ''
       parameters:
         - id: name
           description: Name of the FilterPivotHierarchy to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.FilterPivotHierarchy[];'
-      return:
-        type:
-          - 'excel!Excel.FilterPivotHierarchyCollection#items~0:complex'
   - uid: 'excel!Excel.FilterPivotHierarchyCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -122,10 +61,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.FilterPivotHierarchyCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.FilterPivotHierarchyCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -140,7 +79,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'remove(filterPivotHierarchy: Excel.FilterPivotHierarchy): void;'
+      content: 'remove(filterPivotHierarchy: FilterPivotHierarchy): void;'
       return:
         type:
           - void
@@ -149,35 +88,11 @@ items:
         - id: filterPivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.FilterPivotHierarchy:class'
+            - 'excel!Excel.FilterPivotHierarchy:interface'
 references:
-  - uid: 'excel!Excel.FilterPivotHierarchy:class'
+  - uid: 'excel!Excel.FilterPivotHierarchy:interface'
     name: FilterPivotHierarchy
     fullName: Excel.FilterPivotHierarchy
-  - uid: 'excel!Excel.PivotHierarchy:class'
+  - uid: 'excel!Excel.PivotHierarchy:interface'
     name: PivotHierarchy
     fullName: Excel.PivotHierarchy
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection#items~0:complex'
-    name: 'Excel.FilterPivotHierarchy[]'
-    fullName: 'Excel.FilterPivotHierarchy[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.FilterPivotHierarchy:class'
-        name: Excel.FilterPivotHierarchy
-        fullName: Excel.FilterPivotHierarchy
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection:class'
-    name: FilterPivotHierarchyCollection
-    fullName: Excel.FilterPivotHierarchyCollection

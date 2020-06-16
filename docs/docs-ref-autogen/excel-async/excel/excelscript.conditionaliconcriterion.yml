@@ -23,7 +23,7 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'customIcon?: Excel.Icon;'
+      content: 'customIcon?: Icon;'
       return:
         type:
           - 'excel!Excel.Icon:interface'
@@ -92,10 +92,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'operator: Excel.ConditionalIconCriterionOperator | "Invalid" | "GreaterThan" | "GreaterThanOrEqual";'
+      content: 'operator: ConditionalIconCriterionOperator;'
       return:
         type:
-          - 'excel!Excel.ConditionalIconCriterion#operator~0:complex'
+          - 'excel!Excel.ConditionalIconCriterionOperator:enum'
         description: |-
 
 
@@ -161,10 +161,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: Excel.ConditionalFormatIconRuleType | "Invalid" | "Number" | "Percent" | "Formula" | "Percentile";'
+      content: 'type: ConditionalFormatIconRuleType;'
       return:
         type:
-          - 'excel!Excel.ConditionalIconCriterion#type~0:complex'
+          - 'excel!Excel.ConditionalFormatIconRuleType:enum'
         description: |-
 
 
@@ -214,21 +214,9 @@ references:
   - uid: 'excel!Excel.Icon:interface'
     name: Icon
     fullName: Excel.Icon
-  - uid: 'excel!Excel.ConditionalIconCriterion#operator~0:complex'
-    name: Excel.ConditionalIconCriterionOperator | "Invalid" | "GreaterThan" | "GreaterThanOrEqual"
-    fullName: Excel.ConditionalIconCriterionOperator | "Invalid" | "GreaterThan" | "GreaterThanOrEqual"
-    spec.typeScript:
-      - uid: 'excel!Excel.ConditionalIconCriterionOperator:enum'
-        name: Excel.ConditionalIconCriterionOperator
-        fullName: Excel.ConditionalIconCriterionOperator
-      - name: ' | "Invalid" | "GreaterThan" | "GreaterThanOrEqual"'
-        fullName: ' | "Invalid" | "GreaterThan" | "GreaterThanOrEqual"'
-  - uid: 'excel!Excel.ConditionalIconCriterion#type~0:complex'
-    name: Excel.ConditionalFormatIconRuleType | "Invalid" | "Number" | "Percent" | "Formula" | "Percentile"
-    fullName: Excel.ConditionalFormatIconRuleType | "Invalid" | "Number" | "Percent" | "Formula" | "Percentile"
-    spec.typeScript:
-      - uid: 'excel!Excel.ConditionalFormatIconRuleType:enum'
-        name: Excel.ConditionalFormatIconRuleType
-        fullName: Excel.ConditionalFormatIconRuleType
-      - name: ' | "Invalid" | "Number" | "Percent" | "Formula" | "Percentile"'
-        fullName: ' | "Invalid" | "Number" | "Percent" | "Formula" | "Percentile"'
+  - uid: 'excel!Excel.ConditionalIconCriterionOperator:enum'
+    name: ConditionalIconCriterionOperator
+    fullName: Excel.ConditionalIconCriterionOperator
+  - uid: 'excel!Excel.ConditionalFormatIconRuleType:enum'
+    name: ConditionalFormatIconRuleType
+    fullName: Excel.ConditionalFormatIconRuleType

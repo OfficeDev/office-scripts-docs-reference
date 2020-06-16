@@ -1,45 +1,28 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartGridlinesFormat:class'
+  - uid: 'excel!Excel.ChartGridlinesFormat:interface'
     summary: Encapsulates the format properties for chart gridlines.
     name: Excel.ChartGridlinesFormat
     fullName: Excel.ChartGridlinesFormat
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartGridlinesFormat#context:member'
       - 'excel!Excel.ChartGridlinesFormat#line:member'
       - 'excel!Excel.ChartGridlinesFormat#load:member(1)'
-      - 'excel!Excel.ChartGridlinesFormat#load:member(2)'
-      - 'excel!Excel.ChartGridlinesFormat#set:member(1)'
-  - uid: 'excel!Excel.ChartGridlinesFormat#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartGridlinesFormat#line:member'
-    summary: Represents chart line formatting. Read-only.
+    summary: Represents chart line formatting.
     name: line
     fullName: line
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly line: Excel.ChartLineFormat;'
+      content: 'readonly line: ChartLineFormat;'
       return:
         type:
-          - 'excel!Excel.ChartLineFormat:class'
+          - 'excel!Excel.ChartLineFormat:interface'
   - uid: 'excel!Excel.ChartGridlinesFormat#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -50,71 +33,17 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartGridlinesFormat;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartGridlinesFormat:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartGridlinesFormat#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartGridlinesFormat;
-      return:
-        type:
-          - 'excel!Excel.ChartGridlinesFormat:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartGridlinesFormat#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartGridlinesFormat): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartGridlinesFormat:class'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartLineFormat:class'
+  - uid: 'excel!Excel.ChartLineFormat:interface'
     name: ChartLineFormat
     fullName: Excel.ChartLineFormat
-  - uid: 'excel!Excel.ChartGridlinesFormat:class'
-    name: ChartGridlinesFormat
-    fullName: Excel.ChartGridlinesFormat

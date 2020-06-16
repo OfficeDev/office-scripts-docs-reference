@@ -1,71 +1,54 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartAxisFormat:class'
+  - uid: 'excel!Excel.ChartAxisFormat:interface'
     summary: Encapsulates the format properties for the chart axis.
     name: Excel.ChartAxisFormat
     fullName: Excel.ChartAxisFormat
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartAxisFormat#context:member'
       - 'excel!Excel.ChartAxisFormat#fill:member'
       - 'excel!Excel.ChartAxisFormat#font:member'
       - 'excel!Excel.ChartAxisFormat#line:member'
       - 'excel!Excel.ChartAxisFormat#load:member(1)'
-      - 'excel!Excel.ChartAxisFormat#load:member(2)'
-      - 'excel!Excel.ChartAxisFormat#set:member(1)'
-  - uid: 'excel!Excel.ChartAxisFormat#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartAxisFormat#fill:member'
-    summary: Represents chart fill formatting. Read-only.
+    summary: Specifies chart fill formatting.
     name: fill
     fullName: fill
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly fill: Excel.ChartFill;'
+      content: 'readonly fill: ChartFill;'
       return:
         type:
-          - 'excel!Excel.ChartFill:class'
+          - 'excel!Excel.ChartFill:interface'
   - uid: 'excel!Excel.ChartAxisFormat#font:member'
-    summary: 'Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.'
+    summary: 'Specifies the font attributes (font name, font size, color, etc.) for a chart axis element.'
     name: font
     fullName: font
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly font: Excel.ChartFont;'
+      content: 'readonly font: ChartFont;'
       return:
         type:
-          - 'excel!Excel.ChartFont:class'
+          - 'excel!Excel.ChartFont:interface'
   - uid: 'excel!Excel.ChartAxisFormat#line:member'
-    summary: Represents chart line formatting. Read-only.
+    summary: Specifies chart line formatting.
     name: line
     fullName: line
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly line: Excel.ChartLineFormat;'
+      content: 'readonly line: ChartLineFormat;'
       return:
         type:
-          - 'excel!Excel.ChartLineFormat:class'
+          - 'excel!Excel.ChartLineFormat:interface'
   - uid: 'excel!Excel.ChartAxisFormat#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -76,77 +59,23 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartAxisFormat;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartAxisFormat:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartAxisFormat#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartAxisFormat;
-      return:
-        type:
-          - 'excel!Excel.ChartAxisFormat:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartAxisFormat#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartAxisFormat): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartAxisFormat:class'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartFill:class'
+  - uid: 'excel!Excel.ChartFill:interface'
     name: ChartFill
     fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:class'
+  - uid: 'excel!Excel.ChartFont:interface'
     name: ChartFont
     fullName: Excel.ChartFont
-  - uid: 'excel!Excel.ChartLineFormat:class'
+  - uid: 'excel!Excel.ChartLineFormat:interface'
     name: ChartLineFormat
     fullName: Excel.ChartLineFormat
-  - uid: 'excel!Excel.ChartAxisFormat:class'
-    name: ChartAxisFormat
-    fullName: Excel.ChartAxisFormat

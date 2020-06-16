@@ -1,17 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Slicer:class'
+  - uid: 'excel!Excel.Slicer:interface'
     summary: Represents a slicer object in the workbook.
     name: Excel.Slicer
     fullName: Excel.Slicer
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.Slicer#caption:member'
       - 'excel!Excel.Slicer#clearFilters:member(1)'
-      - 'excel!Excel.Slicer#context:member'
       - 'excel!Excel.Slicer#delete:member(1)'
       - 'excel!Excel.Slicer#getSelectedItems:member(1)'
       - 'excel!Excel.Slicer#height:member'
@@ -19,10 +18,8 @@ items:
       - 'excel!Excel.Slicer#isFilterCleared:member'
       - 'excel!Excel.Slicer#left:member'
       - 'excel!Excel.Slicer#load:member(1)'
-      - 'excel!Excel.Slicer#load:member(2)'
       - 'excel!Excel.Slicer#name:member'
       - 'excel!Excel.Slicer#selectItems:member(1)'
-      - 'excel!Excel.Slicer#set:member(1)'
       - 'excel!Excel.Slicer#slicerItems:member'
       - 'excel!Excel.Slicer#sortBy:member'
       - 'excel!Excel.Slicer#style:member'
@@ -65,20 +62,6 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Slicer#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.Slicer#delete:member(1)'
     summary: Deletes the slicer.
     name: delete()
@@ -104,17 +87,17 @@ items:
           }
           ```
   - uid: 'excel!Excel.Slicer#getSelectedItems:member(1)'
-    summary: Returns an array of selected items' keys. Read-only.
+    summary: Returns an array of selected items' keys.
     name: getSelectedItems()
     fullName: getSelectedItems()
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'getSelectedItems(): ClientResult<string[]>;'
+      content: 'getSelectedItems(): string[];'
       return:
         type:
-          - 'excel!Excel.Slicer#getSelectedItems~0:complex'
+          - 'string[]'
         description: ''
   - uid: 'excel!Excel.Slicer#height:member'
     summary: >-
@@ -131,7 +114,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.Slicer#id:member'
-    summary: Represents the unique id of slicer. Read-only.
+    summary: Represents the unique id of slicer.
     name: id
     fullName: id
     langs:
@@ -178,46 +161,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Slicer;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Slicer:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Slicer#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Slicer;
-      return:
-        type:
-          - 'excel!Excel.Slicer:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.Slicer#name:member'
     summary: Represents the name of slicer.
     name: name
@@ -261,36 +214,18 @@ items:
           description: Optional. The specified slicer item names to be selected.
           type:
             - 'string[]'
-  - uid: 'excel!Excel.Slicer#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.Slicer): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.Slicer:class'
   - uid: 'excel!Excel.Slicer#slicerItems:member'
-    summary: Represents the collection of SlicerItems that are part of the slicer. Read-only.
+    summary: Represents the collection of SlicerItems that are part of the slicer.
     name: slicerItems
     fullName: slicerItems
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly slicerItems: Excel.SlicerItemCollection;'
+      content: 'readonly slicerItems: SlicerItemCollection;'
       return:
         type:
-          - 'excel!Excel.SlicerItemCollection:class'
+          - 'excel!Excel.SlicerItemCollection:interface'
   - uid: 'excel!Excel.Slicer#sortBy:member'
     summary: >-
       Represents the sort order of the items in the slicer. Possible values are: "DataSourceOrder", "Ascending",
@@ -301,10 +236,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'sortBy: Excel.SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending";'
+      content: 'sortBy: SlicerSortType;'
       return:
         type:
-          - 'excel!Excel.Slicer#sortBy~0:complex'
+          - 'excel!Excel.SlicerSortType:enum'
   - uid: 'excel!Excel.Slicer#style:member'
     summary: >-
       Constant value that represents the Slicer style. Possible values are: "SlicerStyleLight1" through
@@ -361,45 +296,24 @@ items:
         type:
           - number
   - uid: 'excel!Excel.Slicer#worksheet:member'
-    summary: Represents the worksheet containing the slicer. Read-only.
+    summary: Represents the worksheet containing the slicer.
     name: worksheet
     fullName: worksheet
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly worksheet: Excel.Worksheet;'
+      content: 'readonly worksheet: Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.Slicer#getSelectedItems~0:complex'
-    name: 'ClientResult<string[]>'
-    fullName: 'Excel.ClientResult<string[]>'
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: '<string[]>'
-        fullName: '<string[]>'
-  - uid: 'excel!Excel.Slicer:class'
-    name: Slicer
-    fullName: Excel.Slicer
-  - uid: 'excel!Excel.SlicerItemCollection:class'
+  - uid: 'excel!Excel.SlicerItemCollection:interface'
     name: SlicerItemCollection
     fullName: Excel.SlicerItemCollection
-  - uid: 'excel!Excel.Slicer#sortBy~0:complex'
-    name: Excel.SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending"
-    fullName: Excel.SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending"
-    spec.typeScript:
-      - uid: 'excel!Excel.SlicerSortType:enum'
-        name: Excel.SlicerSortType
-        fullName: Excel.SlicerSortType
-      - name: ' | "DataSourceOrder" | "Ascending" | "Descending"'
-        fullName: ' | "DataSourceOrder" | "Ascending" | "Descending"'
-  - uid: 'excel!Excel.Worksheet:class'
+  - uid: 'excel!Excel.SlicerSortType:enum'
+    name: SlicerSortType
+    fullName: Excel.SlicerSortType
+  - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet

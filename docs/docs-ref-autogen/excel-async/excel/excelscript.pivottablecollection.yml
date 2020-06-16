@@ -1,36 +1,37 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.PivotTableCollection:class'
+  - uid: 'excel!Excel.PivotTableCollection:interface'
     summary: Represents a collection of all the PivotTables that are part of the workbook or worksheet.
     name: Excel.PivotTableCollection
     fullName: Excel.PivotTableCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.PivotTableCollection#add:member(1)'
-      - 'excel!Excel.PivotTableCollection#context:member'
-      - 'excel!Excel.PivotTableCollection#getCount:member(1)'
-      - 'excel!Excel.PivotTableCollection#getItem:member(1)'
       - 'excel!Excel.PivotTableCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.PivotTableCollection#items:member'
       - 'excel!Excel.PivotTableCollection#load:member(1)'
       - 'excel!Excel.PivotTableCollection#refreshAll:member(1)'
   - uid: 'excel!Excel.PivotTableCollection#add:member(1)'
-    summary: Add a Pivottable based on the specified source data and insert it at the top left cell of the destination range.
+    summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
     name: 'add(name, source, destination)'
     fullName: 'add(name, source, destination)'
     langs:
       - typeScript
     type: method
     syntax:
-      content: 'add(name: string, source: Range | string | Table, destination: Range | string): Excel.PivotTable;'
+      content: |-
+        add(
+                    name: string,
+                    source: Range | string | Table,
+                    destination: Range | string
+                ): PivotTable;
       return:
         type:
-          - 'excel!Excel.PivotTable:class'
+          - 'excel!Excel.PivotTable:interface'
         description: |-
-          Returns the newly inserted PivotTable.
+
 
           #### Examples
 
@@ -60,51 +61,6 @@ items:
             where the resulting report will be placed).
           type:
             - 'excel!Excel.PivotTableCollection#add~1:complex'
-  - uid: 'excel!Excel.PivotTableCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.PivotTableCollection#getCount:member(1)'
-    summary: Gets the number of pivot tables in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.PivotTableCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.PivotTableCollection#getItem:member(1)'
-    summary: Gets a PivotTable by name.
-    name: getItem(name)
-    fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(name: string): Excel.PivotTable;'
-      return:
-        type:
-          - 'excel!Excel.PivotTable:class'
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the PivotTable to be retrieved.
-          type:
-            - string
   - uid: 'excel!Excel.PivotTableCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a PivotTable by name. If the PivotTable does not exist, will return a null object.'
     name: getItemOrNullObject(name)
@@ -113,28 +69,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(name: string): Excel.PivotTable;'
+      content: 'getItemOrNullObject(name: string): PivotTable;'
       return:
         type:
-          - 'excel!Excel.PivotTable:class'
+          - 'excel!Excel.PivotTable:interface'
         description: ''
       parameters:
         - id: name
           description: Name of the PivotTable to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.PivotTableCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.PivotTable[];'
-      return:
-        type:
-          - 'excel!Excel.PivotTableCollection#items~0:complex'
   - uid: 'excel!Excel.PivotTableCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -145,10 +89,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.PivotTableCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.PivotTableCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -169,51 +113,31 @@ items:
           - void
         description: ''
 references:
-  - uid: 'excel!Excel.PivotTable:class'
+  - uid: 'excel!Excel.PivotTable:interface'
     name: PivotTable
     fullName: Excel.PivotTable
   - uid: 'excel!Excel.PivotTableCollection#add~0:complex'
     name: Range | string | Table
     fullName: Excel.Range | string | Excel.Table
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
       - name: ' | string | '
         fullName: ' | string | '
-      - uid: 'excel!Excel.Table:class'
+      - uid: 'excel!Excel.Table:interface'
         name: Table
         fullName: Excel.Table
   - uid: 'excel!Excel.PivotTableCollection#add~1:complex'
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.PivotTableCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.PivotTableCollection#items~0:complex'
-    name: 'Excel.PivotTable[]'
-    fullName: 'Excel.PivotTable[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.PivotTable:class'
-        name: Excel.PivotTable
-        fullName: Excel.PivotTable
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.PivotTableCollection:class'
-    name: PivotTableCollection
-    fullName: Excel.PivotTableCollection
+      - name: |2-
+           | string
+                  
+        fullName: |2-
+           | string
+                  

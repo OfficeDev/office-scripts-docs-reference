@@ -1,21 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.SlicerCollection:class'
+  - uid: 'excel!Excel.SlicerCollection:interface'
     summary: Represents a collection of all the slicer objects on the workbook or a worksheet.
     name: Excel.SlicerCollection
     fullName: Excel.SlicerCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.SlicerCollection#add:member(1)'
-      - 'excel!Excel.SlicerCollection#context:member'
-      - 'excel!Excel.SlicerCollection#getCount:member(1)'
-      - 'excel!Excel.SlicerCollection#getItem:member(1)'
-      - 'excel!Excel.SlicerCollection#getItemAt:member(1)'
       - 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SlicerCollection#items:member'
       - 'excel!Excel.SlicerCollection#load:member(1)'
   - uid: 'excel!Excel.SlicerCollection#add:member(1)'
     summary: Adds a new slicer to the workbook.
@@ -25,14 +20,17 @@ items:
       - typeScript
     type: method
     syntax:
-      content: >-
-        add(slicerSource: string | PivotTable | Table, sourceField: string | PivotField | number | TableColumn,
-        slicerDestination?: string | Worksheet): Excel.Slicer;
+      content: |-
+        add(
+                    slicerSource: string | PivotTable | Table,
+                    sourceField: string | PivotField | number | TableColumn,
+                    slicerDestination?: string | Worksheet
+                ): Slicer;
       return:
         type:
-          - 'excel!Excel.Slicer:class'
+          - 'excel!Excel.Slicer:interface'
         description: |-
-          The new slicer.
+
 
           #### Examples
 
@@ -68,84 +66,6 @@ items:
             of a worksheet. This parameter can be omitted if the slicer collection is retrieved from worksheet.
           type:
             - 'excel!Excel.SlicerCollection#add~2:complex'
-  - uid: 'excel!Excel.SlicerCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.SlicerCollection#getCount:member(1)'
-    summary: Returns the number of slicers in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.SlicerCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.SlicerCollection#getItem:member(1)'
-    summary: Gets a slicer object using its name or id.
-    name: getItem(key)
-    fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(key: string): Excel.Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:class'
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let slicer = context.workbook.slicers.getItem("Fruit Slicer");
-              slicer.caption = "Fruit Types";
-              slicer.left = 395;
-              slicer.top = 15;
-              slicer.height = 135;
-              slicer.width = 150;
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: key
-          description: The name or id of the slicer.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerCollection#getItemAt:member(1)'
-    summary: Gets a slicer based on its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:class'
-        description: ''
-      parameters:
-        - id: index
-          description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
   - uid: 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a slicer using its name or id. If the slicer does not exist, will return a null object.'
     name: getItemOrNullObject(key)
@@ -154,28 +74,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(key: string): Excel.Slicer;'
+      content: 'getItemOrNullObject(key: string): Slicer;'
       return:
         type:
-          - 'excel!Excel.Slicer:class'
+          - 'excel!Excel.Slicer:interface'
         description: ''
       parameters:
         - id: key
           description: Name or Id of the slicer to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.SlicerCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Slicer[];'
-      return:
-        type:
-          - 'excel!Excel.SlicerCollection#items~0:complex'
   - uid: 'excel!Excel.SlicerCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -186,10 +94,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.SlicerCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.SlicerCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -197,7 +105,7 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.Slicer:class'
+  - uid: 'excel!Excel.Slicer:interface'
     name: Slicer
     fullName: Excel.Slicer
   - uid: 'excel!Excel.SlicerCollection#add~0:complex'
@@ -206,12 +114,12 @@ references:
     spec.typeScript:
       - name: 'string | '
         fullName: 'string | '
-      - uid: 'excel!Excel.PivotTable:class'
+      - uid: 'excel!Excel.PivotTable:interface'
         name: PivotTable
         fullName: Excel.PivotTable
       - name: ' | '
         fullName: ' | '
-      - uid: 'excel!Excel.Table:class'
+      - uid: 'excel!Excel.Table:interface'
         name: Table
         fullName: Excel.Table
   - uid: 'excel!Excel.SlicerCollection#add~1:complex'
@@ -220,12 +128,12 @@ references:
     spec.typeScript:
       - name: 'string | '
         fullName: 'string | '
-      - uid: 'excel!Excel.PivotField:class'
+      - uid: 'excel!Excel.PivotField:interface'
         name: PivotField
         fullName: Excel.PivotField
       - name: ' | number | '
         fullName: ' | number | '
-      - uid: 'excel!Excel.TableColumn:class'
+      - uid: 'excel!Excel.TableColumn:interface'
         name: TableColumn
         fullName: Excel.TableColumn
   - uid: 'excel!Excel.SlicerCollection#add~2:complex'
@@ -234,30 +142,6 @@ references:
     spec.typeScript:
       - name: 'string | '
         fullName: 'string | '
-      - uid: 'excel!Excel.Worksheet:class'
+      - uid: 'excel!Excel.Worksheet:interface'
         name: Worksheet
         fullName: Excel.Worksheet
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.SlicerCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.SlicerCollection#items~0:complex'
-    name: 'Excel.Slicer[]'
-    fullName: 'Excel.Slicer[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Slicer:class'
-        name: Excel.Slicer
-        fullName: Excel.Slicer
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.SlicerCollection:class'
-    name: SlicerCollection
-    fullName: Excel.SlicerCollection

@@ -26,7 +26,7 @@ items:
         type:
           - string
   - uid: 'excel!Excel.DataValidationErrorAlert#showAlert:member'
-    summary: Determines whether to show an error alert dialog or not when a user enters invalid data. The default is true.
+    summary: Specifies whether to show an error alert dialog when a user enters invalid data. The default is true.
     name: showAlert
     fullName: showAlert
     langs:
@@ -38,17 +38,17 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.DataValidationErrorAlert#style:member'
-    summary: 'Represents data validation alert type, please see Excel.DataValidationAlertStyle for details.'
+    summary: 'The data validation alert type, please see Excel.DataValidationAlertStyle for details.'
     name: style
     fullName: style
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'style: Excel.DataValidationAlertStyle | "Stop" | "Warning" | "Information";'
+      content: 'style: DataValidationAlertStyle;'
       return:
         type:
-          - 'excel!Excel.DataValidationErrorAlert#style~0:complex'
+          - 'excel!Excel.DataValidationAlertStyle:enum'
   - uid: 'excel!Excel.DataValidationErrorAlert#title:member'
     summary: Represents error alert dialog title.
     name: title
@@ -62,12 +62,6 @@ items:
         type:
           - string
 references:
-  - uid: 'excel!Excel.DataValidationErrorAlert#style~0:complex'
-    name: Excel.DataValidationAlertStyle | "Stop" | "Warning" | "Information"
-    fullName: Excel.DataValidationAlertStyle | "Stop" | "Warning" | "Information"
-    spec.typeScript:
-      - uid: 'excel!Excel.DataValidationAlertStyle:enum'
-        name: Excel.DataValidationAlertStyle
-        fullName: Excel.DataValidationAlertStyle
-      - name: ' | "Stop" | "Warning" | "Information"'
-        fullName: ' | "Stop" | "Warning" | "Information"'
+  - uid: 'excel!Excel.DataValidationAlertStyle:enum'
+    name: DataValidationAlertStyle
+    fullName: Excel.DataValidationAlertStyle

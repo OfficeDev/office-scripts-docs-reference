@@ -56,12 +56,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        operator: Excel.DataValidationOperator | "Between" | "NotBetween" | "EqualTo" | "NotEqualTo" | "GreaterThan" |
-        "LessThan" | "GreaterThanOrEqualTo" | "LessThanOrEqualTo";
+      content: 'operator: DataValidationOperator;'
       return:
         type:
-          - 'excel!Excel.BasicDataValidation#operator~0:complex'
+          - 'excel!Excel.DataValidationOperator:enum'
 references:
   - uid: 'excel!Excel.BasicDataValidation#formula1~0:complex'
     name: string | number | Range
@@ -69,7 +67,7 @@ references:
     spec.typeScript:
       - name: 'string | number | '
         fullName: 'string | number | '
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
   - uid: 'excel!Excel.BasicDataValidation#formula2~0:complex'
@@ -78,19 +76,9 @@ references:
     spec.typeScript:
       - name: 'string | number | '
         fullName: 'string | number | '
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
-  - uid: 'excel!Excel.BasicDataValidation#operator~0:complex'
-    name: >-
-      Excel.DataValidationOperator | "Between" | "NotBetween" | "EqualTo" | "NotEqualTo" | "GreaterThan" | "LessThan" |
-      "GreaterThanOrEqualTo" | "LessThanOrEqualTo"
-    fullName: >-
-      Excel.DataValidationOperator | "Between" | "NotBetween" | "EqualTo" | "NotEqualTo" | "GreaterThan" | "LessThan" |
-      "GreaterThanOrEqualTo" | "LessThanOrEqualTo"
-    spec.typeScript:
-      - uid: 'excel!Excel.DataValidationOperator:enum'
-        name: Excel.DataValidationOperator
-        fullName: Excel.DataValidationOperator
-      - name: ' | "Between" | "NotBetween" | "EqualTo" | "NotEqualTo" | "GreaterThan" | "LessThan" | "GreaterThanOrEqualTo" | "LessThanOrEqualTo"'
-        fullName: ' | "Between" | "NotBetween" | "EqualTo" | "NotEqualTo" | "GreaterThan" | "LessThan" | "GreaterThanOrEqualTo" | "LessThanOrEqualTo"'
+  - uid: 'excel!Excel.DataValidationOperator:enum'
+    name: DataValidationOperator
+    fullName: Excel.DataValidationOperator

@@ -1,61 +1,42 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartMapOptions:class'
+  - uid: 'excel!Excel.ChartMapOptions:interface'
     summary: Encapsulates the properties for a region map chart.
     name: Excel.ChartMapOptions
     fullName: Excel.ChartMapOptions
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartMapOptions#context:member'
       - 'excel!Excel.ChartMapOptions#labelStrategy:member'
       - 'excel!Excel.ChartMapOptions#level:member'
       - 'excel!Excel.ChartMapOptions#load:member(1)'
-      - 'excel!Excel.ChartMapOptions#load:member(2)'
       - 'excel!Excel.ChartMapOptions#projectionType:member'
-      - 'excel!Excel.ChartMapOptions#set:member(1)'
-  - uid: 'excel!Excel.ChartMapOptions#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartMapOptions#labelStrategy:member'
-    summary: Returns or sets the series map labels strategy of a region map chart. Read/Write.
+    summary: Specifies the series map labels strategy of a region map chart.
     name: labelStrategy
     fullName: labelStrategy
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'labelStrategy: Excel.ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll";'
+      content: 'labelStrategy: ChartMapLabelStrategy;'
       return:
         type:
-          - 'excel!Excel.ChartMapOptions#labelStrategy~0:complex'
+          - 'excel!Excel.ChartMapLabelStrategy:enum'
   - uid: 'excel!Excel.ChartMapOptions#level:member'
-    summary: Returns or sets the series mapping level of a region map chart. Read/Write.
+    summary: Specifies the series mapping level of a region map chart.
     name: level
     fullName: level
     langs:
       - typeScript
     type: property
     syntax:
-      content: >-
-        level: Excel.ChartMapAreaLevel | "Automatic" | "DataOnly" | "City" | "County" | "State" | "Country" |
-        "Continent" | "World";
+      content: 'level: ChartMapAreaLevel;'
       return:
         type:
-          - 'excel!Excel.ChartMapOptions#level~0:complex'
+          - 'excel!Excel.ChartMapAreaLevel:enum'
   - uid: 'excel!Excel.ChartMapOptions#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -66,111 +47,35 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartMapOptions;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartMapOptions:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartMapOptions#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartMapOptions;
-      return:
-        type:
-          - 'excel!Excel.ChartMapOptions:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.ChartMapOptions#projectionType:member'
-    summary: Returns or sets the series projection type of a region map chart. Read/Write.
+    summary: Specifies the series projection type of a region map chart.
     name: projectionType
     fullName: projectionType
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'projectionType: Excel.ChartMapProjectionType | "Automatic" | "Mercator" | "Miller" | "Robinson" | "Albers";'
+      content: 'projectionType: ChartMapProjectionType;'
       return:
         type:
-          - 'excel!Excel.ChartMapOptions#projectionType~0:complex'
-  - uid: 'excel!Excel.ChartMapOptions#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartMapOptions): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartMapOptions:class'
+          - 'excel!Excel.ChartMapProjectionType:enum'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartMapOptions#labelStrategy~0:complex'
-    name: Excel.ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll"
-    fullName: Excel.ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartMapLabelStrategy:enum'
-        name: Excel.ChartMapLabelStrategy
-        fullName: Excel.ChartMapLabelStrategy
-      - name: ' | "None" | "BestFit" | "ShowAll"'
-        fullName: ' | "None" | "BestFit" | "ShowAll"'
-  - uid: 'excel!Excel.ChartMapOptions#level~0:complex'
-    name: >-
-      Excel.ChartMapAreaLevel | "Automatic" | "DataOnly" | "City" | "County" | "State" | "Country" | "Continent" |
-      "World"
-    fullName: >-
-      Excel.ChartMapAreaLevel | "Automatic" | "DataOnly" | "City" | "County" | "State" | "Country" | "Continent" |
-      "World"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartMapAreaLevel:enum'
-        name: Excel.ChartMapAreaLevel
-        fullName: Excel.ChartMapAreaLevel
-      - name: ' | "Automatic" | "DataOnly" | "City" | "County" | "State" | "Country" | "Continent" | "World"'
-        fullName: ' | "Automatic" | "DataOnly" | "City" | "County" | "State" | "Country" | "Continent" | "World"'
-  - uid: 'excel!Excel.ChartMapOptions:class'
-    name: ChartMapOptions
-    fullName: Excel.ChartMapOptions
-  - uid: 'excel!Excel.ChartMapOptions#projectionType~0:complex'
-    name: Excel.ChartMapProjectionType | "Automatic" | "Mercator" | "Miller" | "Robinson" | "Albers"
-    fullName: Excel.ChartMapProjectionType | "Automatic" | "Mercator" | "Miller" | "Robinson" | "Albers"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartMapProjectionType:enum'
-        name: Excel.ChartMapProjectionType
-        fullName: Excel.ChartMapProjectionType
-      - name: ' | "Automatic" | "Mercator" | "Miller" | "Robinson" | "Albers"'
-        fullName: ' | "Automatic" | "Mercator" | "Miller" | "Robinson" | "Albers"'
+  - uid: 'excel!Excel.ChartMapLabelStrategy:enum'
+    name: ChartMapLabelStrategy
+    fullName: Excel.ChartMapLabelStrategy
+  - uid: 'excel!Excel.ChartMapAreaLevel:enum'
+    name: ChartMapAreaLevel
+    fullName: Excel.ChartMapAreaLevel
+  - uid: 'excel!Excel.ChartMapProjectionType:enum'
+    name: ChartMapProjectionType
+    fullName: Excel.ChartMapProjectionType

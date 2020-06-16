@@ -1,20 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.DataPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.DataPivotHierarchyCollection:interface'
     summary: Represents a collection of DataPivotHierarchy items associated with the PivotTable.
     name: Excel.DataPivotHierarchyCollection
     fullName: Excel.DataPivotHierarchyCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.DataPivotHierarchyCollection#add:member(1)'
-      - 'excel!Excel.DataPivotHierarchyCollection#context:member'
-      - 'excel!Excel.DataPivotHierarchyCollection#getCount:member(1)'
-      - 'excel!Excel.DataPivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.DataPivotHierarchyCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.DataPivotHierarchyCollection#items:member'
       - 'excel!Excel.DataPivotHierarchyCollection#load:member(1)'
       - 'excel!Excel.DataPivotHierarchyCollection#remove:member(1)'
   - uid: 'excel!Excel.DataPivotHierarchyCollection#add:member(1)'
@@ -25,61 +21,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(pivotHierarchy: Excel.PivotHierarchy): Excel.DataPivotHierarchy;'
+      content: 'add(pivotHierarchy: PivotHierarchy): DataPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.DataPivotHierarchy:class'
+          - 'excel!Excel.DataPivotHierarchy:interface'
         description: ''
       parameters:
         - id: pivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.PivotHierarchy:class'
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#getCount:member(1)'
-    summary: Gets the number of pivot hierarchies in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.DataPivotHierarchyCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#getItem:member(1)'
-    summary: Gets a DataPivotHierarchy by its name or id.
-    name: getItem(name)
-    fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(name: string): Excel.DataPivotHierarchy;'
-      return:
-        type:
-          - 'excel!Excel.DataPivotHierarchy:class'
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the DataPivotHierarchy to be retrieved.
-          type:
-            - string
+            - 'excel!Excel.PivotHierarchy:interface'
   - uid: 'excel!Excel.DataPivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)
@@ -88,28 +39,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(name: string): Excel.DataPivotHierarchy;'
+      content: 'getItemOrNullObject(name: string): DataPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.DataPivotHierarchy:class'
+          - 'excel!Excel.DataPivotHierarchy:interface'
         description: ''
       parameters:
         - id: name
           description: Name of the DataPivotHierarchy to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.DataPivotHierarchy[];'
-      return:
-        type:
-          - 'excel!Excel.DataPivotHierarchyCollection#items~0:complex'
   - uid: 'excel!Excel.DataPivotHierarchyCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -120,10 +59,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.DataPivotHierarchyCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.DataPivotHierarchyCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -138,7 +77,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'remove(DataPivotHierarchy: Excel.DataPivotHierarchy): void;'
+      content: 'remove(DataPivotHierarchy: DataPivotHierarchy): void;'
       return:
         type:
           - void
@@ -147,35 +86,11 @@ items:
         - id: DataPivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.DataPivotHierarchy:class'
+            - 'excel!Excel.DataPivotHierarchy:interface'
 references:
-  - uid: 'excel!Excel.DataPivotHierarchy:class'
+  - uid: 'excel!Excel.DataPivotHierarchy:interface'
     name: DataPivotHierarchy
     fullName: Excel.DataPivotHierarchy
-  - uid: 'excel!Excel.PivotHierarchy:class'
+  - uid: 'excel!Excel.PivotHierarchy:interface'
     name: PivotHierarchy
     fullName: Excel.PivotHierarchy
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.DataPivotHierarchyCollection#items~0:complex'
-    name: 'Excel.DataPivotHierarchy[]'
-    fullName: 'Excel.DataPivotHierarchy[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.DataPivotHierarchy:class'
-        name: Excel.DataPivotHierarchy
-        fullName: Excel.DataPivotHierarchy
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.DataPivotHierarchyCollection:class'
-    name: DataPivotHierarchyCollection
-    fullName: Excel.DataPivotHierarchyCollection

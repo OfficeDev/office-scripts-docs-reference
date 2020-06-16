@@ -1,49 +1,31 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartAxes:class'
+  - uid: 'excel!Excel.ChartAxes:interface'
     summary: Represents the chart axes.
     name: Excel.ChartAxes
     fullName: Excel.ChartAxes
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ChartAxes#categoryAxis:member'
-      - 'excel!Excel.ChartAxes#context:member'
       - 'excel!Excel.ChartAxes#getItem:member(1)'
-      - 'excel!Excel.ChartAxes#getItem:member(2)'
       - 'excel!Excel.ChartAxes#load:member(1)'
-      - 'excel!Excel.ChartAxes#load:member(2)'
       - 'excel!Excel.ChartAxes#seriesAxis:member'
-      - 'excel!Excel.ChartAxes#set:member(1)'
       - 'excel!Excel.ChartAxes#valueAxis:member'
   - uid: 'excel!Excel.ChartAxes#categoryAxis:member'
-    summary: Represents the category axis in a chart. Read-only.
+    summary: Represents the category axis in a chart.
     name: categoryAxis
     fullName: categoryAxis
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly categoryAxis: Excel.ChartAxis;'
+      content: 'readonly categoryAxis: ChartAxis;'
       return:
         type:
-          - 'excel!Excel.ChartAxis:class'
-  - uid: 'excel!Excel.ChartAxes#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
+          - 'excel!Excel.ChartAxis:interface'
   - uid: 'excel!Excel.ChartAxes#getItem:member(1)'
     summary: Returns the specific axis identified by type and group.
     name: 'getItem(type, group)'
@@ -52,10 +34,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(type: Excel.ChartAxisType, group?: Excel.ChartAxisGroup): Excel.ChartAxis;'
+      content: 'getItem(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;'
       return:
         type:
-          - 'excel!Excel.ChartAxis:class'
+          - 'excel!Excel.ChartAxis:interface'
         description: ''
       parameters:
         - id: type
@@ -66,30 +48,6 @@ items:
           description: Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
           type:
             - 'excel!Excel.ChartAxisGroup:enum'
-  - uid: 'excel!Excel.ChartAxes#getItem:member(2)'
-    summary: Returns the specific axis identified by type and group.
-    name: 'getItem(typeStringString, group)'
-    fullName: 'getItem(typeStringString, group)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        getItem(typeStringString: "Invalid" | "Category" | "Value" | "Series", group?: "Primary" | "Secondary"):
-        Excel.ChartAxis;
-      return:
-        type:
-          - 'excel!Excel.ChartAxis:class'
-        description: ''
-      parameters:
-        - id: typeStringString
-          description: Specifies the axis type. See Excel.ChartAxisType for details.
-          type:
-            - '"Invalid" | "Category" | "Value" | "Series"'
-        - id: group
-          description: Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
-          type:
-            - '"Primary" | "Secondary"'
   - uid: 'excel!Excel.ChartAxes#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -100,101 +58,47 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartAxes;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartAxes:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartAxes#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartAxes;
-      return:
-        type:
-          - 'excel!Excel.ChartAxes:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.ChartAxes#seriesAxis:member'
-    summary: Represents the series axis of a 3-dimensional chart. Read-only.
+    summary: Represents the series axis of a 3-dimensional chart.
     name: seriesAxis
     fullName: seriesAxis
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly seriesAxis: Excel.ChartAxis;'
+      content: 'readonly seriesAxis: ChartAxis;'
       return:
         type:
-          - 'excel!Excel.ChartAxis:class'
-  - uid: 'excel!Excel.ChartAxes#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartAxes): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartAxes:class'
+          - 'excel!Excel.ChartAxis:interface'
   - uid: 'excel!Excel.ChartAxes#valueAxis:member'
-    summary: Represents the value axis in an axis. Read-only.
+    summary: Represents the value axis in an axis.
     name: valueAxis
     fullName: valueAxis
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly valueAxis: Excel.ChartAxis;'
+      content: 'readonly valueAxis: ChartAxis;'
       return:
         type:
-          - 'excel!Excel.ChartAxis:class'
+          - 'excel!Excel.ChartAxis:interface'
 references:
-  - uid: 'excel!Excel.ChartAxis:class'
+  - uid: 'excel!Excel.ChartAxis:interface'
     name: ChartAxis
     fullName: Excel.ChartAxis
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
   - uid: 'excel!Excel.ChartAxisType:enum'
     name: ChartAxisType
     fullName: Excel.ChartAxisType
   - uid: 'excel!Excel.ChartAxisGroup:enum'
     name: ChartAxisGroup
     fullName: Excel.ChartAxisGroup
-  - uid: 'excel!Excel.ChartAxes:class'
-    name: ChartAxes
-    fullName: Excel.ChartAxes

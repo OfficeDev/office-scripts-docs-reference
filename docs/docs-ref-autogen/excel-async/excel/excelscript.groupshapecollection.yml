@@ -1,47 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.GroupShapeCollection:class'
+  - uid: 'excel!Excel.GroupShapeCollection:interface'
     summary: Represents the shape collection inside a shape group.
     name: Excel.GroupShapeCollection
     fullName: Excel.GroupShapeCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.GroupShapeCollection#context:member'
-      - 'excel!Excel.GroupShapeCollection#getCount:member(1)'
       - 'excel!Excel.GroupShapeCollection#getItem:member(1)'
-      - 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
-      - 'excel!Excel.GroupShapeCollection#items:member'
       - 'excel!Excel.GroupShapeCollection#load:member(1)'
-  - uid: 'excel!Excel.GroupShapeCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.GroupShapeCollection#getCount:member(1)'
-    summary: Returns the number of shapes in the shape group. Read-only.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.GroupShapeCollection#getCount~0:complex'
-        description: ''
   - uid: 'excel!Excel.GroupShapeCollection#getItem:member(1)'
     summary: Gets a shape using its Name or ID.
     name: getItem(key)
@@ -50,46 +19,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(key: string): Excel.Shape;'
+      content: 'getItem(key: string): Shape;'
       return:
         type:
-          - 'excel!Excel.Shape:class'
+          - 'excel!Excel.Shape:interface'
         description: ''
       parameters:
         - id: key
           description: The Name or ID of the shape to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
-    summary: Gets a shape based on its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:class'
-        description: ''
-      parameters:
-        - id: index
-          description: The zero-based index value of the object to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.GroupShapeCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Shape[];'
-      return:
-        type:
-          - 'excel!Excel.GroupShapeCollection#items~0:complex'
   - uid: 'excel!Excel.GroupShapeCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -100,10 +39,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.GroupShapeCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.GroupShapeCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -111,30 +50,6 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.GroupShapeCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.Shape:class'
+  - uid: 'excel!Excel.Shape:interface'
     name: Shape
     fullName: Excel.Shape
-  - uid: 'excel!Excel.GroupShapeCollection#items~0:complex'
-    name: 'Excel.Shape[]'
-    fullName: 'Excel.Shape[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Shape:class'
-        name: Excel.Shape
-        fullName: Excel.Shape
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.GroupShapeCollection:class'
-    name: GroupShapeCollection
-    fullName: Excel.GroupShapeCollection

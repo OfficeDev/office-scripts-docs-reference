@@ -1,20 +1,15 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartSeriesCollection:class'
+  - uid: 'excel!Excel.ChartSeriesCollection:interface'
     summary: Represents a collection of chart series.
     name: Excel.ChartSeriesCollection
     fullName: Excel.ChartSeriesCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ChartSeriesCollection#add:member(1)'
-      - 'excel!Excel.ChartSeriesCollection#context:member'
-      - 'excel!Excel.ChartSeriesCollection#count:member'
-      - 'excel!Excel.ChartSeriesCollection#getCount:member(1)'
-      - 'excel!Excel.ChartSeriesCollection#getItemAt:member(1)'
-      - 'excel!Excel.ChartSeriesCollection#items:member'
       - 'excel!Excel.ChartSeriesCollection#load:member(1)'
   - uid: 'excel!Excel.ChartSeriesCollection#add:member(1)'
     summary: >-
@@ -26,10 +21,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(name?: string, index?: number): Excel.ChartSeries;'
+      content: 'add(name?: string, index?: number): ChartSeries;'
       return:
         type:
-          - 'excel!Excel.ChartSeries:class'
+          - 'excel!Excel.ChartSeries:interface'
         description: ''
       parameters:
         - id: name
@@ -40,75 +35,6 @@ items:
           description: Optional. Index value of the series to be added. Zero-indexed.
           type:
             - number
-  - uid: 'excel!Excel.ChartSeriesCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.ChartSeriesCollection#count:member'
-    summary: Returns the number of series in the collection. Read-only.
-    name: count
-    fullName: count
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly count: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartSeriesCollection#getCount:member(1)'
-    summary: Returns the number of series in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.ChartSeriesCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.ChartSeriesCollection#getItemAt:member(1)'
-    summary: Retrieves a series based on its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.ChartSeries;'
-      return:
-        type:
-          - 'excel!Excel.ChartSeries:class'
-        description: ''
-      parameters:
-        - id: index
-          description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.ChartSeriesCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.ChartSeries[];'
-      return:
-        type:
-          - 'excel!Excel.ChartSeriesCollection#items~0:complex'
   - uid: 'excel!Excel.ChartSeriesCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -119,10 +45,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartSeriesCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartSeriesCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -130,30 +56,6 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.ChartSeries:class'
+  - uid: 'excel!Excel.ChartSeries:interface'
     name: ChartSeries
     fullName: Excel.ChartSeries
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartSeriesCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.ChartSeriesCollection#items~0:complex'
-    name: 'Excel.ChartSeries[]'
-    fullName: 'Excel.ChartSeries[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartSeries:class'
-        name: Excel.ChartSeries
-        fullName: Excel.ChartSeries
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.ChartSeriesCollection:class'
-    name: ChartSeriesCollection
-    fullName: Excel.ChartSeriesCollection

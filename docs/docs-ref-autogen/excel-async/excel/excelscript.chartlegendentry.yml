@@ -1,40 +1,23 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartLegendEntry:class'
+  - uid: 'excel!Excel.ChartLegendEntry:interface'
     summary: Represents the legendEntry in legendEntryCollection.
     name: Excel.ChartLegendEntry
     fullName: Excel.ChartLegendEntry
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartLegendEntry#context:member'
       - 'excel!Excel.ChartLegendEntry#height:member'
       - 'excel!Excel.ChartLegendEntry#index:member'
       - 'excel!Excel.ChartLegendEntry#left:member'
       - 'excel!Excel.ChartLegendEntry#load:member(1)'
-      - 'excel!Excel.ChartLegendEntry#load:member(2)'
-      - 'excel!Excel.ChartLegendEntry#set:member(1)'
       - 'excel!Excel.ChartLegendEntry#top:member'
       - 'excel!Excel.ChartLegendEntry#visible:member'
       - 'excel!Excel.ChartLegendEntry#width:member'
-  - uid: 'excel!Excel.ChartLegendEntry#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartLegendEntry#height:member'
-    summary: Represents the height of the legendEntry on the chart legend.
+    summary: Specifies the height of the legendEntry on the chart legend.
     name: height
     fullName: height
     langs:
@@ -46,7 +29,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartLegendEntry#index:member'
-    summary: Represents the index of the legendEntry in the chart legend.
+    summary: Specifies the index of the legendEntry in the chart legend.
     name: index
     fullName: index
     langs:
@@ -58,7 +41,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartLegendEntry#left:member'
-    summary: Represents the left of a chart legendEntry.
+    summary: Specifies the left of a chart legendEntry.
     name: left
     fullName: left
     langs:
@@ -79,66 +62,18 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartLegendEntry;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartLegendEntry:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartLegendEntry#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartLegendEntry;
-      return:
-        type:
-          - 'excel!Excel.ChartLegendEntry:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartLegendEntry#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartLegendEntry): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartLegendEntry:class'
   - uid: 'excel!Excel.ChartLegendEntry#top:member'
-    summary: Represents the top of a chart legendEntry.
+    summary: Specifies the top of a chart legendEntry.
     name: top
     fullName: top
     langs:
@@ -173,10 +108,3 @@ items:
       return:
         type:
           - number
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartLegendEntry:class'
-    name: ChartLegendEntry
-    fullName: Excel.ChartLegendEntry

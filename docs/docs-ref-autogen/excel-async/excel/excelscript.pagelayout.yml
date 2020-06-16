@@ -1,6 +1,6 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.PageLayout:class'
+  - uid: 'excel!Excel.PageLayout:interface'
     summary: >-
       Represents layout and print settings that are not dependent any printer-specific implementation. These settings
       include margins, orientation, page numbering, title rows, and print area.
@@ -8,28 +8,23 @@ items:
     fullName: Excel.PageLayout
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.PageLayout#blackAndWhite:member'
       - 'excel!Excel.PageLayout#bottomMargin:member'
       - 'excel!Excel.PageLayout#centerHorizontally:member'
       - 'excel!Excel.PageLayout#centerVertically:member'
-      - 'excel!Excel.PageLayout#context:member'
       - 'excel!Excel.PageLayout#draftMode:member'
       - 'excel!Excel.PageLayout#firstPageNumber:member'
       - 'excel!Excel.PageLayout#footerMargin:member'
-      - 'excel!Excel.PageLayout#getPrintArea:member(1)'
       - 'excel!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
-      - 'excel!Excel.PageLayout#getPrintTitleColumns:member(1)'
       - 'excel!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
-      - 'excel!Excel.PageLayout#getPrintTitleRows:member(1)'
       - 'excel!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
       - 'excel!Excel.PageLayout#headerMargin:member'
       - 'excel!Excel.PageLayout#headersFooters:member'
       - 'excel!Excel.PageLayout#leftMargin:member'
       - 'excel!Excel.PageLayout#load:member(1)'
-      - 'excel!Excel.PageLayout#load:member(2)'
       - 'excel!Excel.PageLayout#orientation:member'
       - 'excel!Excel.PageLayout#paperSize:member'
       - 'excel!Excel.PageLayout#printComments:member'
@@ -38,16 +33,14 @@ items:
       - 'excel!Excel.PageLayout#printHeadings:member'
       - 'excel!Excel.PageLayout#printOrder:member'
       - 'excel!Excel.PageLayout#rightMargin:member'
-      - 'excel!Excel.PageLayout#set:member(1)'
       - 'excel!Excel.PageLayout#setPrintArea:member(1)'
       - 'excel!Excel.PageLayout#setPrintMargins:member(1)'
-      - 'excel!Excel.PageLayout#setPrintMargins:member(2)'
       - 'excel!Excel.PageLayout#setPrintTitleColumns:member(1)'
       - 'excel!Excel.PageLayout#setPrintTitleRows:member(1)'
       - 'excel!Excel.PageLayout#topMargin:member'
       - 'excel!Excel.PageLayout#zoom:member'
   - uid: 'excel!Excel.PageLayout#blackAndWhite:member'
-    summary: Gets or sets the worksheet's black and white print option.
+    summary: The worksheet's black and white print option.
     name: blackAndWhite
     fullName: blackAndWhite
     langs:
@@ -59,7 +52,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.PageLayout#bottomMargin:member'
-    summary: Gets or sets the worksheet's bottom page margin to use for printing in points.
+    summary: The worksheet's bottom page margin to use for printing in points.
     name: bottomMargin
     fullName: bottomMargin
     langs:
@@ -72,8 +65,8 @@ items:
           - number
   - uid: 'excel!Excel.PageLayout#centerHorizontally:member'
     summary: >-
-      Gets or sets the worksheet's center horizontally flag. This flag determines whether the worksheet will be centered
-      horizontally when it's printed.
+      The worksheet's center horizontally flag. This flag determines whether the worksheet will be centered horizontally
+      when it's printed.
     name: centerHorizontally
     fullName: centerHorizontally
     langs:
@@ -99,8 +92,8 @@ items:
           ```
   - uid: 'excel!Excel.PageLayout#centerVertically:member'
     summary: >-
-      Gets or sets the worksheet's center vertically flag. This flag determines whether the worksheet will be centered
-      vertically when it's printed.
+      The worksheet's center vertically flag. This flag determines whether the worksheet will be centered vertically
+      when it's printed.
     name: centerVertically
     fullName: centerVertically
     langs:
@@ -124,22 +117,8 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.PageLayout#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.PageLayout#draftMode:member'
-    summary: Gets or sets the worksheet's draft mode option. If true the sheet will be printed without graphics.
+    summary: The worksheet's draft mode option. If true the sheet will be printed without graphics.
     name: draftMode
     fullName: draftMode
     langs:
@@ -151,7 +130,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.PageLayout#firstPageNumber:member'
-    summary: Gets or sets the worksheet's first page number to print. Null value represents "auto" page numbering.
+    summary: The worksheet's first page number to print. Null value represents "auto" page numbering.
     name: firstPageNumber
     fullName: firstPageNumber
     langs:
@@ -163,7 +142,7 @@ items:
         type:
           - number | ""
   - uid: 'excel!Excel.PageLayout#footerMargin:member'
-    summary: 'Gets or sets the worksheet''s footer margin, in points, for use when printing.'
+    summary: 'The worksheet''s footer margin, in points, for use when printing.'
     name: footerMargin
     fullName: footerMargin
     langs:
@@ -174,21 +153,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.PageLayout#getPrintArea:member(1)'
-    summary: >-
-      Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
-      worksheet. If there is no print area, an ItemNotFound error will be thrown.
-    name: getPrintArea()
-    fullName: getPrintArea()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getPrintArea(): Excel.RangeAreas;'
-      return:
-        type:
-          - 'excel!Excel.RangeAreas:class'
-        description: ''
   - uid: 'excel!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
     summary: >-
       Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
@@ -199,23 +163,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getPrintAreaOrNullObject(): Excel.RangeAreas;'
+      content: 'getPrintAreaOrNullObject(): RangeAreas;'
       return:
         type:
-          - 'excel!Excel.RangeAreas:class'
-        description: ''
-  - uid: 'excel!Excel.PageLayout#getPrintTitleColumns:member(1)'
-    summary: Gets the range object representing the title columns.
-    name: getPrintTitleColumns()
-    fullName: getPrintTitleColumns()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getPrintTitleColumns(): Excel.Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.RangeAreas:interface'
         description: ''
   - uid: 'excel!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
     summary: 'Gets the range object representing the title columns. If not set, this will return a null object.'
@@ -225,23 +176,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getPrintTitleColumnsOrNullObject(): Excel.Range;'
+      content: 'getPrintTitleColumnsOrNullObject(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
-        description: ''
-  - uid: 'excel!Excel.PageLayout#getPrintTitleRows:member(1)'
-    summary: Gets the range object representing the title rows.
-    name: getPrintTitleRows()
-    fullName: getPrintTitleRows()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getPrintTitleRows(): Excel.Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
     summary: 'Gets the range object representing the title rows. If not set, this will return a null object.'
@@ -251,13 +189,13 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getPrintTitleRowsOrNullObject(): Excel.Range;'
+      content: 'getPrintTitleRowsOrNullObject(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.PageLayout#headerMargin:member'
-    summary: 'Gets or sets the worksheet''s header margin, in points, for use when printing.'
+    summary: 'The worksheet''s header margin, in points, for use when printing.'
     name: headerMargin
     fullName: headerMargin
     langs:
@@ -276,12 +214,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly headersFooters: Excel.HeaderFooterGroup;'
+      content: 'readonly headersFooters: HeaderFooterGroup;'
       return:
         type:
-          - 'excel!Excel.HeaderFooterGroup:class'
+          - 'excel!Excel.HeaderFooterGroup:interface'
   - uid: 'excel!Excel.PageLayout#leftMargin:member'
-    summary: 'Gets or sets the worksheet''s left margin, in points, for use when printing.'
+    summary: 'The worksheet''s left margin, in points, for use when printing.'
     name: leftMargin
     fullName: leftMargin
     langs:
@@ -302,58 +240,28 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.PageLayout;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.PageLayout:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.PageLayout#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.PageLayout;
-      return:
-        type:
-          - 'excel!Excel.PageLayout:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.PageLayout#orientation:member'
-    summary: Gets or sets the worksheet's orientation of the page.
+    summary: The worksheet's orientation of the page.
     name: orientation
     fullName: orientation
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'orientation: Excel.PageOrientation | "Portrait" | "Landscape";'
+      content: 'orientation: PageOrientation;'
       return:
         type:
-          - 'excel!Excel.PageLayout#orientation~0:complex'
+          - 'excel!Excel.PageOrientation:enum'
         description: |-
 
 
@@ -367,49 +275,43 @@ items:
           }
           ```
   - uid: 'excel!Excel.PageLayout#paperSize:member'
-    summary: Gets or sets the worksheet's paper size of the page.
+    summary: The worksheet's paper size of the page.
     name: paperSize
     fullName: paperSize
     langs:
       - typeScript
     type: property
     syntax:
-      content: >-
-        paperSize: Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" |
-        "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" |
-        "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" |
-        "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" |
-        "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" |
-        "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman";
+      content: 'paperSize: PaperType;'
       return:
         type:
-          - 'excel!Excel.PageLayout#paperSize~0:complex'
+          - 'excel!Excel.PaperType:enum'
   - uid: 'excel!Excel.PageLayout#printComments:member'
-    summary: Gets or sets whether the worksheet's comments should be displayed when printing.
+    summary: Specifies if the worksheet's comments should be displayed when printing.
     name: printComments
     fullName: printComments
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'printComments: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace";'
+      content: 'printComments: PrintComments;'
       return:
         type:
-          - 'excel!Excel.PageLayout#printComments~0:complex'
+          - 'excel!Excel.PrintComments:enum'
   - uid: 'excel!Excel.PageLayout#printErrors:member'
-    summary: Gets or sets the worksheet's print errors option.
+    summary: The worksheet's print errors option.
     name: printErrors
     fullName: printErrors
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'printErrors: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable";'
+      content: 'printErrors: PrintErrorType;'
       return:
         type:
-          - 'excel!Excel.PageLayout#printErrors~0:complex'
+          - 'excel!Excel.PrintErrorType:enum'
   - uid: 'excel!Excel.PageLayout#printGridlines:member'
-    summary: Gets or sets the worksheet's print gridlines flag. This flag determines whether gridlines will be printed or not.
+    summary: Specifies if the worksheet's gridlines will be printed.
     name: printGridlines
     fullName: printGridlines
     langs:
@@ -421,7 +323,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.PageLayout#printHeadings:member'
-    summary: Gets or sets the worksheet's print headings flag. This flag determines whether headings will be printed or not.
+    summary: Specifies if the worksheet's headings will be printed.
     name: printHeadings
     fullName: printHeadings
     langs:
@@ -433,21 +335,19 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.PageLayout#printOrder:member'
-    summary: >-
-      Gets or sets the worksheet's page print order option. This specifies the order to use for processing the page
-      number printed.
+    summary: The worksheet's page print order option. This specifies the order to use for processing the page number printed.
     name: printOrder
     fullName: printOrder
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'printOrder: Excel.PrintOrder | "DownThenOver" | "OverThenDown";'
+      content: 'printOrder: PrintOrder;'
       return:
         type:
-          - 'excel!Excel.PageLayout#printOrder~0:complex'
+          - 'excel!Excel.PrintOrder:enum'
   - uid: 'excel!Excel.PageLayout#rightMargin:member'
-    summary: 'Gets or sets the worksheet''s right margin, in points, for use when printing.'
+    summary: 'The worksheet''s right margin, in points, for use when printing.'
     name: rightMargin
     fullName: rightMargin
     langs:
@@ -458,24 +358,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.PageLayout#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.PageLayout): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.PageLayout:class'
   - uid: 'excel!Excel.PageLayout#setPrintArea:member(1)'
     summary: Sets the worksheet's print area.
     name: setPrintArea(printArea)
@@ -513,7 +395,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'setPrintMargins(unit: Excel.PrintMarginUnit, marginOptions: Excel.PageLayoutMarginOptions): void;'
+      content: |-
+        setPrintMargins(
+                    unit: PrintMarginUnit,
+                    marginOptions: PageLayoutMarginOptions
+                ): void;
       return:
         type:
           - void
@@ -523,30 +409,6 @@ items:
           description: Measurement unit for the margins provided.
           type:
             - 'excel!Excel.PrintMarginUnit:enum'
-        - id: marginOptions
-          description: 'Margin values to set, margins not provided will remain unchanged.'
-          type:
-            - 'excel!Excel.PageLayoutMarginOptions:interface'
-  - uid: 'excel!Excel.PageLayout#setPrintMargins:member(2)'
-    summary: Sets the worksheet's page margins with units.
-    name: 'setPrintMargins(unitStringString, marginOptions)'
-    fullName: 'setPrintMargins(unitStringString, marginOptions)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        setPrintMargins(unitStringString: "Points" | "Inches" | "Centimeters", marginOptions:
-        Excel.PageLayoutMarginOptions): void;
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: unitStringString
-          description: Measurement unit for the margins provided.
-          type:
-            - '"Points" | "Inches" | "Centimeters"'
         - id: marginOptions
           description: 'Margin values to set, margins not provided will remain unchanged.'
           type:
@@ -599,7 +461,7 @@ items:
           type:
             - 'excel!Excel.PageLayout#setPrintTitleRows~0:complex'
   - uid: 'excel!Excel.PageLayout#topMargin:member'
-    summary: 'Gets or sets the worksheet''s top margin, in points, for use when printing.'
+    summary: 'The worksheet''s top margin, in points, for use when printing.'
     name: topMargin
     fullName: topMargin
     langs:
@@ -612,15 +474,15 @@ items:
           - number
   - uid: 'excel!Excel.PageLayout#zoom:member'
     summary: >-
-      Gets or sets the worksheet's print zoom options. The `PageLayoutZoomOptions` object must be set as a JSON object
-      (use `x.zoom = {...}` instead of `x.zoom.scale = ...`<!-- -->).
+      The worksheet's print zoom options. The `PageLayoutZoomOptions` object must be set as a JSON object (use `x.zoom =
+      {...}` instead of `x.zoom.scale = ...`<!-- -->).
     name: zoom
     fullName: zoom
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'zoom: Excel.PageLayoutZoomOptions;'
+      content: 'zoom: PageLayoutZoomOptions;'
       return:
         type:
           - 'excel!Excel.PageLayoutZoomOptions:interface'
@@ -637,88 +499,40 @@ items:
           }
           ```
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.RangeAreas:class'
+  - uid: 'excel!Excel.RangeAreas:interface'
     name: RangeAreas
     fullName: Excel.RangeAreas
-  - uid: 'excel!Excel.Range:class'
+  - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.HeaderFooterGroup:class'
+  - uid: 'excel!Excel.HeaderFooterGroup:interface'
     name: HeaderFooterGroup
     fullName: Excel.HeaderFooterGroup
-  - uid: 'excel!Excel.PageLayout:class'
-    name: PageLayout
-    fullName: Excel.PageLayout
-  - uid: 'excel!Excel.PageLayout#orientation~0:complex'
-    name: Excel.PageOrientation | "Portrait" | "Landscape"
-    fullName: Excel.PageOrientation | "Portrait" | "Landscape"
-    spec.typeScript:
-      - uid: 'excel!Excel.PageOrientation:enum'
-        name: Excel.PageOrientation
-        fullName: Excel.PageOrientation
-      - name: ' | "Portrait" | "Landscape"'
-        fullName: ' | "Portrait" | "Landscape"'
-  - uid: 'excel!Excel.PageLayout#paperSize~0:complex'
-    name: >-
-      Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" |
-      "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" |
-      "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" |
-      "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" |
-      "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" |
-      "FanfoldLegalGerman"
-    fullName: >-
-      Excel.PaperType | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" |
-      "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" |
-      "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" |
-      "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" |
-      "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" |
-      "FanfoldLegalGerman"
-    spec.typeScript:
-      - uid: 'excel!Excel.PaperType:enum'
-        name: Excel.PaperType
-        fullName: Excel.PaperType
-      - name: ' | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman"'
-        fullName: ' | "Letter" | "LetterSmall" | "Tabloid" | "Ledger" | "Legal" | "Statement" | "Executive" | "A3" | "A4" | "A4Small" | "A5" | "B4" | "B5" | "Folio" | "Quatro" | "Paper10x14" | "Paper11x17" | "Note" | "Envelope9" | "Envelope10" | "Envelope11" | "Envelope12" | "Envelope14" | "Csheet" | "Dsheet" | "Esheet" | "EnvelopeDL" | "EnvelopeC5" | "EnvelopeC3" | "EnvelopeC4" | "EnvelopeC6" | "EnvelopeC65" | "EnvelopeB4" | "EnvelopeB5" | "EnvelopeB6" | "EnvelopeItaly" | "EnvelopeMonarch" | "EnvelopePersonal" | "FanfoldUS" | "FanfoldStdGerman" | "FanfoldLegalGerman"'
-  - uid: 'excel!Excel.PageLayout#printComments~0:complex'
-    name: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace"
-    fullName: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace"
-    spec.typeScript:
-      - uid: 'excel!Excel.PrintComments:enum'
-        name: Excel.PrintComments
-        fullName: Excel.PrintComments
-      - name: ' | "NoComments" | "EndSheet" | "InPlace"'
-        fullName: ' | "NoComments" | "EndSheet" | "InPlace"'
-  - uid: 'excel!Excel.PageLayout#printErrors~0:complex'
-    name: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"
-    fullName: Excel.PrintErrorType | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"
-    spec.typeScript:
-      - uid: 'excel!Excel.PrintErrorType:enum'
-        name: Excel.PrintErrorType
-        fullName: Excel.PrintErrorType
-      - name: ' | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"'
-        fullName: ' | "AsDisplayed" | "Blank" | "Dash" | "NotAvailable"'
-  - uid: 'excel!Excel.PageLayout#printOrder~0:complex'
-    name: Excel.PrintOrder | "DownThenOver" | "OverThenDown"
-    fullName: Excel.PrintOrder | "DownThenOver" | "OverThenDown"
-    spec.typeScript:
-      - uid: 'excel!Excel.PrintOrder:enum'
-        name: Excel.PrintOrder
-        fullName: Excel.PrintOrder
-      - name: ' | "DownThenOver" | "OverThenDown"'
-        fullName: ' | "DownThenOver" | "OverThenDown"'
+  - uid: 'excel!Excel.PageOrientation:enum'
+    name: PageOrientation
+    fullName: Excel.PageOrientation
+  - uid: 'excel!Excel.PaperType:enum'
+    name: PaperType
+    fullName: Excel.PaperType
+  - uid: 'excel!Excel.PrintComments:enum'
+    name: PrintComments
+    fullName: Excel.PrintComments
+  - uid: 'excel!Excel.PrintErrorType:enum'
+    name: PrintErrorType
+    fullName: Excel.PrintErrorType
+  - uid: 'excel!Excel.PrintOrder:enum'
+    name: PrintOrder
+    fullName: Excel.PrintOrder
   - uid: 'excel!Excel.PageLayout#setPrintArea~0:complex'
     name: Range | RangeAreas | string
     fullName: Excel.Range | Excel.RangeAreas | string
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
       - name: ' | '
         fullName: ' | '
-      - uid: 'excel!Excel.RangeAreas:class'
+      - uid: 'excel!Excel.RangeAreas:interface'
         name: RangeAreas
         fullName: Excel.RangeAreas
       - name: ' | string'
@@ -733,7 +547,7 @@ references:
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
       - name: ' | string'
@@ -742,7 +556,7 @@ references:
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
       - name: ' | string'

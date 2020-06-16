@@ -1,12 +1,12 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.RangeFormat:class'
+  - uid: 'excel!Excel.RangeFormat:interface'
     summary: 'A format object encapsulating the range''s font, fill, borders, alignment, and other properties.'
     name: Excel.RangeFormat
     fullName: Excel.RangeFormat
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.RangeFormat#adjustIndent:member(1)'
@@ -15,17 +15,14 @@ items:
       - 'excel!Excel.RangeFormat#autoIndent:member'
       - 'excel!Excel.RangeFormat#borders:member'
       - 'excel!Excel.RangeFormat#columnWidth:member'
-      - 'excel!Excel.RangeFormat#context:member'
       - 'excel!Excel.RangeFormat#fill:member'
       - 'excel!Excel.RangeFormat#font:member'
       - 'excel!Excel.RangeFormat#horizontalAlignment:member'
       - 'excel!Excel.RangeFormat#indentLevel:member'
       - 'excel!Excel.RangeFormat#load:member(1)'
-      - 'excel!Excel.RangeFormat#load:member(2)'
       - 'excel!Excel.RangeFormat#protection:member'
       - 'excel!Excel.RangeFormat#readingOrder:member'
       - 'excel!Excel.RangeFormat#rowHeight:member'
-      - 'excel!Excel.RangeFormat#set:member(1)'
       - 'excel!Excel.RangeFormat#shrinkToFit:member'
       - 'excel!Excel.RangeFormat#textOrientation:member'
       - 'excel!Excel.RangeFormat#useStandardHeight:member'
@@ -35,7 +32,7 @@ items:
   - uid: 'excel!Excel.RangeFormat#adjustIndent:member(1)'
     summary: >-
       Adjusts the indentation of the range formatting. The indent value ranges from 0 to 250 and is measured in
-      characters..
+      characters.
     name: adjustIndent(amount)
     fullName: adjustIndent(amount)
     langs:
@@ -51,7 +48,7 @@ items:
         - id: amount
           description: >-
             The number of character spaces by which the current indent is adjusted. This value should be between -250
-            and 250. *Note**: If the amount would raise the indent level above 250, the indent level stays with 250.
+            and 250. **Note**: If the amount would raise the indent level above 250, the indent level stays with 250.
             Similarly, if the amount would lower the indent level below 0, the indent level stays 0.
           type:
             - number
@@ -86,7 +83,7 @@ items:
           - void
         description: ''
   - uid: 'excel!Excel.RangeFormat#autoIndent:member'
-    summary: Indicates if text is automatically indented when text alignment is set to equal distribution.
+    summary: Specifies if text is automatically indented when text alignment is set to equal distribution.
     name: autoIndent
     fullName: autoIndent
     langs:
@@ -98,21 +95,19 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.RangeFormat#borders:member'
-    summary: Collection of border objects that apply to the overall range. Read-only.
+    summary: Collection of border objects that apply to the overall range.
     name: borders
     fullName: borders
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly borders: Excel.RangeBorderCollection;'
+      content: 'readonly borders: RangeBorderCollection;'
       return:
         type:
-          - 'excel!Excel.RangeBorderCollection:class'
+          - 'excel!Excel.RangeBorderCollection:interface'
   - uid: 'excel!Excel.RangeFormat#columnWidth:member'
-    summary: >-
-      Gets or sets the width of all colums within the range. If the column widths are not uniform, null will be
-      returned.
+    summary: 'Specifies the width of all colums within the range. If the column widths are not uniform, null will be returned.'
     name: columnWidth
     fullName: columnWidth
     langs:
@@ -123,44 +118,30 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.RangeFormat#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.RangeFormat#fill:member'
-    summary: Returns the fill object defined on the overall range. Read-only.
+    summary: Returns the fill object defined on the overall range.
     name: fill
     fullName: fill
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly fill: Excel.RangeFill;'
+      content: 'readonly fill: RangeFill;'
       return:
         type:
-          - 'excel!Excel.RangeFill:class'
+          - 'excel!Excel.RangeFill:interface'
   - uid: 'excel!Excel.RangeFormat#font:member'
-    summary: Returns the font object defined on the overall range. Read-only.
+    summary: Returns the font object defined on the overall range.
     name: font
     fullName: font
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly font: Excel.RangeFont;'
+      content: 'readonly font: RangeFont;'
       return:
         type:
-          - 'excel!Excel.RangeFont:class'
+          - 'excel!Excel.RangeFont:interface'
   - uid: 'excel!Excel.RangeFormat#horizontalAlignment:member'
     summary: Represents the horizontal alignment for the specified object. See Excel.HorizontalAlignment for details.
     name: horizontalAlignment
@@ -169,12 +150,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        horizontalAlignment: Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" |
-        "CenterAcrossSelection" | "Distributed";
+      content: 'horizontalAlignment: HorizontalAlignment;'
       return:
         type:
-          - 'excel!Excel.RangeFormat#horizontalAlignment~0:complex'
+          - 'excel!Excel.HorizontalAlignment:enum'
   - uid: 'excel!Excel.RangeFormat#indentLevel:member'
     summary: An integer from 0 to 250 that indicates the indent level.
     name: indentLevel
@@ -197,58 +176,28 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.RangeFormat;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.RangeFormat:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.RangeFormat#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.RangeFormat;
-      return:
-        type:
-          - 'excel!Excel.RangeFormat:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.RangeFormat#protection:member'
-    summary: Returns the format protection object for a range. Read-only.
+    summary: Returns the format protection object for a range.
     name: protection
     fullName: protection
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly protection: Excel.FormatProtection;'
+      content: 'readonly protection: FormatProtection;'
       return:
         type:
-          - 'excel!Excel.FormatProtection:class'
+          - 'excel!Excel.FormatProtection:interface'
   - uid: 'excel!Excel.RangeFormat#readingOrder:member'
     summary: The reading order for the range.
     name: readingOrder
@@ -257,12 +206,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readingOrder: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft";'
+      content: 'readingOrder: ReadingOrder;'
       return:
         type:
-          - 'excel!Excel.RangeFormat#readingOrder~0:complex'
+          - 'excel!Excel.ReadingOrder:enum'
   - uid: 'excel!Excel.RangeFormat#rowHeight:member'
-    summary: 'Gets or sets the height of all rows in the range. If the row heights are not uniform, null will be returned.'
+    summary: 'The height of all rows in the range. If the row heights are not uniform, null will be returned.'
     name: rowHeight
     fullName: rowHeight
     langs:
@@ -273,26 +222,8 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.RangeFormat#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.RangeFormat): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.RangeFormat:class'
   - uid: 'excel!Excel.RangeFormat#shrinkToFit:member'
-    summary: Indicates if text automatically shrinks to fit in the available column width.
+    summary: Specifies if text automatically shrinks to fit in the available column width.
     name: shrinkToFit
     fullName: shrinkToFit
     langs:
@@ -305,9 +236,9 @@ items:
           - boolean
   - uid: 'excel!Excel.RangeFormat#textOrientation:member'
     summary: >-
-      Gets or sets the text orientation of all the cells within the range. The text orientation should be an integer
-      either from -90 to 90, or 180 for vertically-oriented text. If the orientation within a range are not uniform,
-      then null will be returned.
+      The text orientation of all the cells within the range. The text orientation should be an integer either from -90
+      to 90, or 180 for vertically-oriented text. If the orientation within a range are not uniform, then null will be
+      returned.
     name: textOrientation
     fullName: textOrientation
     langs:
@@ -352,7 +283,7 @@ items:
           - boolean
   - uid: 'excel!Excel.RangeFormat#useStandardWidth:member'
     summary: >-
-      Indicates whether the column width of the Range object equals the standard width of the sheet. Returns True if the
+      Specifies if the column width of the Range object equals the standard width of the sheet. Returns True if the
       column width of the Range object equals the standard width of the sheet. Returns Null if the range contains more
       than one column and the columns aren't all the same height. Returns False otherwise.
     name: useStandardWidth
@@ -373,13 +304,13 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'verticalAlignment: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed";'
+      content: 'verticalAlignment: VerticalAlignment;'
       return:
         type:
-          - 'excel!Excel.RangeFormat#verticalAlignment~0:complex'
+          - 'excel!Excel.VerticalAlignment:enum'
   - uid: 'excel!Excel.RangeFormat#wrapText:member'
     summary: >-
-      Indicates if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform
+      Specifies if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform
       wrap setting
     name: wrapText
     fullName: wrapText
@@ -392,52 +323,24 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.RangeBorderCollection:class'
+  - uid: 'excel!Excel.RangeBorderCollection:interface'
     name: RangeBorderCollection
     fullName: Excel.RangeBorderCollection
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.RangeFill:class'
+  - uid: 'excel!Excel.RangeFill:interface'
     name: RangeFill
     fullName: Excel.RangeFill
-  - uid: 'excel!Excel.RangeFont:class'
+  - uid: 'excel!Excel.RangeFont:interface'
     name: RangeFont
     fullName: Excel.RangeFont
-  - uid: 'excel!Excel.RangeFormat#horizontalAlignment~0:complex'
-    name: >-
-      Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection"
-      | "Distributed"
-    fullName: >-
-      Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection"
-      | "Distributed"
-    spec.typeScript:
-      - uid: 'excel!Excel.HorizontalAlignment:enum'
-        name: Excel.HorizontalAlignment
-        fullName: Excel.HorizontalAlignment
-      - name: ' | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed"'
-        fullName: ' | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed"'
-  - uid: 'excel!Excel.RangeFormat:class'
-    name: RangeFormat
-    fullName: Excel.RangeFormat
-  - uid: 'excel!Excel.FormatProtection:class'
+  - uid: 'excel!Excel.HorizontalAlignment:enum'
+    name: HorizontalAlignment
+    fullName: Excel.HorizontalAlignment
+  - uid: 'excel!Excel.FormatProtection:interface'
     name: FormatProtection
     fullName: Excel.FormatProtection
-  - uid: 'excel!Excel.RangeFormat#readingOrder~0:complex'
-    name: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
-    fullName: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
-    spec.typeScript:
-      - uid: 'excel!Excel.ReadingOrder:enum'
-        name: Excel.ReadingOrder
-        fullName: Excel.ReadingOrder
-      - name: ' | "Context" | "LeftToRight" | "RightToLeft"'
-        fullName: ' | "Context" | "LeftToRight" | "RightToLeft"'
-  - uid: 'excel!Excel.RangeFormat#verticalAlignment~0:complex'
-    name: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"
-    fullName: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"
-    spec.typeScript:
-      - uid: 'excel!Excel.VerticalAlignment:enum'
-        name: Excel.VerticalAlignment
-        fullName: Excel.VerticalAlignment
-      - name: ' | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"'
-        fullName: ' | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"'
+  - uid: 'excel!Excel.ReadingOrder:enum'
+    name: ReadingOrder
+    fullName: Excel.ReadingOrder
+  - uid: 'excel!Excel.VerticalAlignment:enum'
+    name: VerticalAlignment
+    fullName: Excel.VerticalAlignment

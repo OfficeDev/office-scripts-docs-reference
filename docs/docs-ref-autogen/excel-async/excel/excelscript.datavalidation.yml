@@ -1,6 +1,6 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.DataValidation:class'
+  - uid: 'excel!Excel.DataValidation:interface'
     summary: >-
       Represents the data validation applied to the current range. To learn more about the data validation object model,
       read [Add data validation to Excel
@@ -9,20 +9,16 @@ items:
     fullName: Excel.DataValidation
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.DataValidation#clear:member(1)'
-      - 'excel!Excel.DataValidation#context:member'
       - 'excel!Excel.DataValidation#errorAlert:member'
-      - 'excel!Excel.DataValidation#getInvalidCells:member(1)'
       - 'excel!Excel.DataValidation#getInvalidCellsOrNullObject:member(1)'
       - 'excel!Excel.DataValidation#ignoreBlanks:member'
       - 'excel!Excel.DataValidation#load:member(1)'
-      - 'excel!Excel.DataValidation#load:member(2)'
       - 'excel!Excel.DataValidation#prompt:member'
       - 'excel!Excel.DataValidation#rule:member'
-      - 'excel!Excel.DataValidation#set:member(1)'
       - 'excel!Excel.DataValidation#type:member'
       - 'excel!Excel.DataValidation#valid:member'
   - uid: 'excel!Excel.DataValidation#clear:member(1)'
@@ -38,20 +34,6 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel!Excel.DataValidation#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.DataValidation#errorAlert:member'
     summary: Error alert when user enters invalid data.
     name: errorAlert
@@ -60,7 +42,7 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'errorAlert: Excel.DataValidationErrorAlert;'
+      content: 'errorAlert: DataValidationErrorAlert;'
       return:
         type:
           - 'excel!Excel.DataValidationErrorAlert:interface'
@@ -98,21 +80,6 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.DataValidation#getInvalidCells:member(1)'
-    summary: >-
-      Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are
-      valid, this function will throw an ItemNotFound error.
-    name: getInvalidCells()
-    fullName: getInvalidCells()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getInvalidCells(): Excel.RangeAreas;'
-      return:
-        type:
-          - 'excel!Excel.RangeAreas:class'
-        description: ''
   - uid: 'excel!Excel.DataValidation#getInvalidCellsOrNullObject:member(1)'
     summary: >-
       Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are
@@ -123,13 +90,13 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getInvalidCellsOrNullObject(): Excel.RangeAreas;'
+      content: 'getInvalidCellsOrNullObject(): RangeAreas;'
       return:
         type:
-          - 'excel!Excel.RangeAreas:class'
+          - 'excel!Excel.RangeAreas:interface'
         description: ''
   - uid: 'excel!Excel.DataValidation#ignoreBlanks:member'
-    summary: 'Ignore blanks: no data validation will be performed on blank cells, it defaults to true.'
+    summary: 'Specifies if data validation will be performed on blank cells, it defaults to true.'
     name: ignoreBlanks
     fullName: ignoreBlanks
     langs:
@@ -150,46 +117,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.DataValidation;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.DataValidation:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.DataValidation#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.DataValidation;
-      return:
-        type:
-          - 'excel!Excel.DataValidation:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.DataValidation#prompt:member'
     summary: Prompt when users select a cell.
     name: prompt
@@ -198,7 +135,7 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'prompt: Excel.DataValidationPrompt;'
+      content: 'prompt: DataValidationPrompt;'
       return:
         type:
           - 'excel!Excel.DataValidationPrompt:interface'
@@ -248,7 +185,7 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'rule: Excel.DataValidationRule;'
+      content: 'rule: DataValidationRule;'
       return:
         type:
           - 'excel!Excel.DataValidationRule:interface'
@@ -280,24 +217,6 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.DataValidation#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.DataValidation): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.DataValidation:class'
   - uid: 'excel!Excel.DataValidation#type:member'
     summary: 'Type of the data validation, see Excel.DataValidationType for details.'
     name: type
@@ -306,12 +225,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        readonly type: Excel.DataValidationType | "None" | "WholeNumber" | "Decimal" | "List" | "Date" | "Time" |
-        "TextLength" | "Custom" | "Inconsistent" | "MixedCriteria";
+      content: 'readonly type: DataValidationType;'
       return:
         type:
-          - 'excel!Excel.DataValidation#type~0:complex'
+          - 'excel!Excel.DataValidationType:enum'
   - uid: 'excel!Excel.DataValidation#valid:member'
     summary: >-
       Represents if all cell values are valid according to the data validation rules. Returns true if all cell values
@@ -328,34 +245,18 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
   - uid: 'excel!Excel.DataValidationErrorAlert:interface'
     name: DataValidationErrorAlert
     fullName: Excel.DataValidationErrorAlert
-  - uid: 'excel!Excel.RangeAreas:class'
+  - uid: 'excel!Excel.RangeAreas:interface'
     name: RangeAreas
     fullName: Excel.RangeAreas
-  - uid: 'excel!Excel.DataValidation:class'
-    name: DataValidation
-    fullName: Excel.DataValidation
   - uid: 'excel!Excel.DataValidationPrompt:interface'
     name: DataValidationPrompt
     fullName: Excel.DataValidationPrompt
   - uid: 'excel!Excel.DataValidationRule:interface'
     name: DataValidationRule
     fullName: Excel.DataValidationRule
-  - uid: 'excel!Excel.DataValidation#type~0:complex'
-    name: >-
-      Excel.DataValidationType | "None" | "WholeNumber" | "Decimal" | "List" | "Date" | "Time" | "TextLength" | "Custom"
-      | "Inconsistent" | "MixedCriteria"
-    fullName: >-
-      Excel.DataValidationType | "None" | "WholeNumber" | "Decimal" | "List" | "Date" | "Time" | "TextLength" | "Custom"
-      | "Inconsistent" | "MixedCriteria"
-    spec.typeScript:
-      - uid: 'excel!Excel.DataValidationType:enum'
-        name: Excel.DataValidationType
-        fullName: Excel.DataValidationType
-      - name: ' | "None" | "WholeNumber" | "Decimal" | "List" | "Date" | "Time" | "TextLength" | "Custom" | "Inconsistent" | "MixedCriteria"'
-        fullName: ' | "None" | "WholeNumber" | "Decimal" | "List" | "Date" | "Time" | "TextLength" | "Custom" | "Inconsistent" | "MixedCriteria"'
+  - uid: 'excel!Excel.DataValidationType:enum'
+    name: DataValidationType
+    fullName: Excel.DataValidationType

@@ -1,20 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartTrendlineCollection:class'
+  - uid: 'excel!Excel.ChartTrendlineCollection:interface'
     summary: Represents a collection of Chart Trendlines.
     name: Excel.ChartTrendlineCollection
     fullName: Excel.ChartTrendlineCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ChartTrendlineCollection#add:member(1)'
-      - 'excel!Excel.ChartTrendlineCollection#add:member(2)'
-      - 'excel!Excel.ChartTrendlineCollection#context:member'
-      - 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
       - 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
-      - 'excel!Excel.ChartTrendlineCollection#items:member'
       - 'excel!Excel.ChartTrendlineCollection#load:member(1)'
   - uid: 'excel!Excel.ChartTrendlineCollection#add:member(1)'
     summary: Adds a new trendline to trendline collection.
@@ -24,10 +20,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(type?: Excel.ChartTrendlineType): Excel.ChartTrendline;'
+      content: 'add(type?: ChartTrendlineType): ChartTrendline;'
       return:
         type:
-          - 'excel!Excel.ChartTrendline:class'
+          - 'excel!Excel.ChartTrendline:interface'
         description: |-
 
 
@@ -50,53 +46,6 @@ items:
           description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
           type:
             - 'excel!Excel.ChartTrendlineType:enum'
-  - uid: 'excel!Excel.ChartTrendlineCollection#add:member(2)'
-    summary: Adds a new trendline to trendline collection.
-    name: add(typeStringString)
-    fullName: add(typeStringString)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        add(typeStringString?: "Linear" | "Exponential" | "Logarithmic" | "MovingAverage" | "Polynomial" | "Power"):
-        Excel.ChartTrendline;
-      return:
-        type:
-          - 'excel!Excel.ChartTrendline:class'
-        description: ''
-      parameters:
-        - id: typeStringString
-          description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
-          type:
-            - '"Linear" | "Exponential" | "Logarithmic" | "MovingAverage" | "Polynomial" | "Power"'
-  - uid: 'excel!Excel.ChartTrendlineCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
-    summary: Returns the number of trendlines in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
-        description: ''
   - uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
     summary: 'Get trendline object by index, which is the insertion order in items array.'
     name: getItem(index)
@@ -105,28 +54,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(index: number): Excel.ChartTrendline;'
+      content: 'getItem(index: number): ChartTrendline;'
       return:
         type:
-          - 'excel!Excel.ChartTrendline:class'
+          - 'excel!Excel.ChartTrendline:interface'
         description: ''
       parameters:
         - id: index
           description: Represents the insertion order in items array.
           type:
             - number
-  - uid: 'excel!Excel.ChartTrendlineCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.ChartTrendline[];'
-      return:
-        type:
-          - 'excel!Excel.ChartTrendlineCollection#items~0:complex'
   - uid: 'excel!Excel.ChartTrendlineCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -137,10 +74,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartTrendlineCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartTrendlineCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -148,33 +85,9 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.ChartTrendline:class'
+  - uid: 'excel!Excel.ChartTrendline:interface'
     name: ChartTrendline
     fullName: Excel.ChartTrendline
   - uid: 'excel!Excel.ChartTrendlineType:enum'
     name: ChartTrendlineType
     fullName: Excel.ChartTrendlineType
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.ChartTrendlineCollection#items~0:complex'
-    name: 'Excel.ChartTrendline[]'
-    fullName: 'Excel.ChartTrendline[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartTrendline:class'
-        name: Excel.ChartTrendline
-        fullName: Excel.ChartTrendline
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.ChartTrendlineCollection:class'
-    name: ChartTrendlineCollection
-    fullName: Excel.ChartTrendlineCollection
