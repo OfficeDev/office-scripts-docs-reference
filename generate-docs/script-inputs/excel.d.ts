@@ -2761,13 +2761,13 @@ declare namespace ExcelScript {
         getBorders(): RangeBorder[];
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         getRangeBorderTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;
@@ -2853,13 +2853,13 @@ declare namespace ExcelScript {
         setPatternTintAndShade(patternTintAndShade: number): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the tintAndShades are not uniform, null will be returned.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the tintAndShades are not uniform, null will be returned.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -2900,13 +2900,13 @@ declare namespace ExcelScript {
         setStyle(style: BorderLineStyle): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Border. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the border doesn't have uniform tintAndShade setting.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Border. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the border doesn't have uniform tintAndShade setting.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -3019,13 +3019,13 @@ declare namespace ExcelScript {
         setSuperscript(superscript: boolean): void;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Font, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Font. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire range doesn't have uniform font tintAndShade setting.
          */
         getTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Font, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Font. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire range doesn't have uniform font tintAndShade setting.
          */
         setTintAndShade(tintAndShade: number): void;
@@ -5662,12 +5662,12 @@ declare namespace ExcelScript {
      */
     interface ChartTrendlineLabel {
         /**
-         * Specifies if trendline label automatically generate appropriate text based on context.
+         * Specifies if trendline label automatically generates appropriate text based on context.
          */
         getAutoText(): boolean;
 
         /**
-         * Specifies if trendline label automatically generate appropriate text based on context.
+         * Specifies if trendline label automatically generates appropriate text based on context.
          */
         setAutoText(autoText: boolean): void;
 
@@ -7215,7 +7215,7 @@ declare namespace ExcelScript {
      */
     interface CustomConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7320,7 +7320,7 @@ declare namespace ExcelScript {
      */
     interface TopBottomConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7340,7 +7340,7 @@ declare namespace ExcelScript {
      */
     interface PresetCriteriaConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7360,7 +7360,7 @@ declare namespace ExcelScript {
      */
     interface TextConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7380,7 +7380,7 @@ declare namespace ExcelScript {
      */
     interface CellValueConditionalFormat {
         /**
-         * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
+         * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
         getFormat(): ConditionalRangeFormat;
 
@@ -7778,13 +7778,13 @@ declare namespace ExcelScript {
         getBorders(): RangeBorder[];
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         getRangeBorderTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a color for Range Borders. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
         setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;
@@ -8257,12 +8257,12 @@ declare namespace ExcelScript {
         getOddPages(): HeaderFooter;
 
         /**
-         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
+         * Which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         getState(): HeaderFooterState;
 
         /**
-         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
+         * Which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         setState(state: HeaderFooterState): void;
 
@@ -12748,12 +12748,12 @@ declare namespace ExcelScript {
      */
     enum AutoFillType {
         /**
-         * Populates the adjacent cells with data the selected data.
+         * Populates the adjacent cells based on the surrounding data (the standard AutoFill behavior).
          */
         fillDefault,
 
         /**
-         * Populates the adjacent cells with data the selected data.
+         * Populates the adjacent cells with data based on the selected data.
          */
         fillCopy,
 
