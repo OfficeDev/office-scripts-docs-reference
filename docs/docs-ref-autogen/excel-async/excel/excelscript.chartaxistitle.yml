@@ -1,48 +1,32 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartAxisTitle:class'
+  - uid: 'excel!Excel.ChartAxisTitle:interface'
     summary: Represents the title of a chart axis.
     name: Excel.ChartAxisTitle
     fullName: Excel.ChartAxisTitle
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartAxisTitle#context:member'
       - 'excel!Excel.ChartAxisTitle#format:member'
       - 'excel!Excel.ChartAxisTitle#load:member(1)'
-      - 'excel!Excel.ChartAxisTitle#load:member(2)'
-      - 'excel!Excel.ChartAxisTitle#set:member(1)'
       - 'excel!Excel.ChartAxisTitle#setFormula:member(1)'
       - 'excel!Excel.ChartAxisTitle#text:member'
+      - 'excel!Excel.ChartAxisTitle#textOrientation:member'
       - 'excel!Excel.ChartAxisTitle#visible:member'
-  - uid: 'excel!Excel.ChartAxisTitle#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartAxisTitle#format:member'
-    summary: Represents the formatting of chart axis title. Read-only.
+    summary: Specifies the formatting of chart axis title.
     name: format
     fullName: format
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly format: Excel.ChartAxisTitleFormat;'
+      content: 'readonly format: ChartAxisTitleFormat;'
       return:
         type:
-          - 'excel!Excel.ChartAxisTitleFormat:class'
+          - 'excel!Excel.ChartAxisTitleFormat:interface'
   - uid: 'excel!Excel.ChartAxisTitle#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -53,64 +37,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartAxisTitle;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartAxisTitle:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartAxisTitle#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartAxisTitle;
-      return:
-        type:
-          - 'excel!Excel.ChartAxisTitle:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartAxisTitle#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartAxisTitle): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartAxisTitle:class'
   - uid: 'excel!Excel.ChartAxisTitle#setFormula:member(1)'
     summary: A string value that represents the formula of chart axis title using A1-style notation.
     name: setFormula(formula)
@@ -130,7 +66,7 @@ items:
           type:
             - string
   - uid: 'excel!Excel.ChartAxisTitle#text:member'
-    summary: Represents the axis title.
+    summary: Specifies the axis title.
     name: text
     fullName: text
     langs:
@@ -141,8 +77,22 @@ items:
       return:
         type:
           - string
+  - uid: 'excel!Excel.ChartAxisTitle#textOrientation:member'
+    summary: >-
+      Specifies the angle to which the text is oriented for the chart axis title. The value should either be an integer
+      from -90 to 90 or the integer 180 for vertically-oriented text.
+    name: textOrientation
+    fullName: textOrientation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'textOrientation: number;'
+      return:
+        type:
+          - number
   - uid: 'excel!Excel.ChartAxisTitle#visible:member'
-    summary: A boolean that specifies the visibility of an axis title.
+    summary: Specifies if the axis title is visibile.
     name: visible
     fullName: visible
     langs:
@@ -154,12 +104,6 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartAxisTitleFormat:class'
+  - uid: 'excel!Excel.ChartAxisTitleFormat:interface'
     name: ChartAxisTitleFormat
     fullName: Excel.ChartAxisTitleFormat
-  - uid: 'excel!Excel.ChartAxisTitle:class'
-    name: ChartAxisTitle
-    fullName: Excel.ChartAxisTitle

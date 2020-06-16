@@ -1,18 +1,17 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Style:class'
+  - uid: 'excel!Excel.Style:interface'
     summary: An object encapsulating a style's format and other properties.
     name: Excel.Style
     fullName: Excel.Style
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.Style#autoIndent:member'
       - 'excel!Excel.Style#borders:member'
       - 'excel!Excel.Style#builtIn:member'
-      - 'excel!Excel.Style#context:member'
       - 'excel!Excel.Style#delete:member(1)'
       - 'excel!Excel.Style#fill:member'
       - 'excel!Excel.Style#font:member'
@@ -26,19 +25,17 @@ items:
       - 'excel!Excel.Style#includeProtection:member'
       - 'excel!Excel.Style#indentLevel:member'
       - 'excel!Excel.Style#load:member(1)'
-      - 'excel!Excel.Style#load:member(2)'
       - 'excel!Excel.Style#locked:member'
       - 'excel!Excel.Style#name:member'
       - 'excel!Excel.Style#numberFormat:member'
       - 'excel!Excel.Style#numberFormatLocal:member'
       - 'excel!Excel.Style#readingOrder:member'
-      - 'excel!Excel.Style#set:member(1)'
       - 'excel!Excel.Style#shrinkToFit:member'
       - 'excel!Excel.Style#textOrientation:member'
       - 'excel!Excel.Style#verticalAlignment:member'
       - 'excel!Excel.Style#wrapText:member'
   - uid: 'excel!Excel.Style#autoIndent:member'
-    summary: Indicates if text is automatically indented when the text alignment in a cell is set to equal distribution.
+    summary: Specifies if text is automatically indented when the text alignment in a cell is set to equal distribution.
     name: autoIndent
     fullName: autoIndent
     langs:
@@ -57,12 +54,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly borders: Excel.RangeBorderCollection;'
+      content: 'readonly borders: RangeBorderCollection;'
       return:
         type:
-          - 'excel!Excel.RangeBorderCollection:class'
+          - 'excel!Excel.RangeBorderCollection:interface'
   - uid: 'excel!Excel.Style#builtIn:member'
-    summary: Indicates if the style is a built-in style.
+    summary: Specifies if the style is a built-in style.
     name: builtIn
     fullName: builtIn
     langs:
@@ -73,20 +70,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel!Excel.Style#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.Style#delete:member(1)'
     summary: Deletes this style.
     name: delete()
@@ -125,10 +108,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly fill: Excel.RangeFill;'
+      content: 'readonly fill: RangeFill;'
       return:
         type:
-          - 'excel!Excel.RangeFill:class'
+          - 'excel!Excel.RangeFill:interface'
   - uid: 'excel!Excel.Style#font:member'
     summary: A Font object that represents the font of the style.
     name: font
@@ -137,10 +120,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly font: Excel.RangeFont;'
+      content: 'readonly font: RangeFont;'
       return:
         type:
-          - 'excel!Excel.RangeFont:class'
+          - 'excel!Excel.RangeFont:interface'
         description: |-
 
 
@@ -163,7 +146,7 @@ items:
           }
           ```
   - uid: 'excel!Excel.Style#formulaHidden:member'
-    summary: Indicates if the formula will be hidden when the worksheet is protected.
+    summary: Specifies if the formula will be hidden when the worksheet is protected.
     name: formulaHidden
     fullName: formulaHidden
     langs:
@@ -182,12 +165,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        horizontalAlignment: Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" |
-        "CenterAcrossSelection" | "Distributed";
+      content: 'horizontalAlignment: HorizontalAlignment;'
       return:
         type:
-          - 'excel!Excel.Style#horizontalAlignment~0:complex'
+          - 'excel!Excel.HorizontalAlignment:enum'
         description: |-
 
 
@@ -208,7 +189,7 @@ items:
           ```
   - uid: 'excel!Excel.Style#includeAlignment:member'
     summary: >-
-      Indicates if the style includes the AutoIndent, HorizontalAlignment, VerticalAlignment, WrapText, IndentLevel, and
+      Specifies if the style includes the AutoIndent, HorizontalAlignment, VerticalAlignment, WrapText, IndentLevel, and
       TextOrientation properties.
     name: includeAlignment
     fullName: includeAlignment
@@ -221,7 +202,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Style#includeBorder:member'
-    summary: 'Indicates if the style includes the Color, ColorIndex, LineStyle, and Weight border properties.'
+    summary: 'Specifies if the style includes the Color, ColorIndex, LineStyle, and Weight border properties.'
     name: includeBorder
     fullName: includeBorder
     langs:
@@ -234,7 +215,7 @@ items:
           - boolean
   - uid: 'excel!Excel.Style#includeFont:member'
     summary: >-
-      Indicates if the style includes the Background, Bold, Color, ColorIndex, FontStyle, Italic, Name, Size,
+      Specifies if the style includes the Background, Bold, Color, ColorIndex, FontStyle, Italic, Name, Size,
       Strikethrough, Subscript, Superscript, and Underline font properties.
     name: includeFont
     fullName: includeFont
@@ -247,7 +228,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Style#includeNumber:member'
-    summary: Indicates if the style includes the NumberFormat property.
+    summary: Specifies if the style includes the NumberFormat property.
     name: includeNumber
     fullName: includeNumber
     langs:
@@ -260,7 +241,7 @@ items:
           - boolean
   - uid: 'excel!Excel.Style#includePatterns:member'
     summary: >-
-      Indicates if the style includes the Color, ColorIndex, InvertIfNegative, Pattern, PatternColor, and
+      Specifies if the style includes the Color, ColorIndex, InvertIfNegative, Pattern, PatternColor, and
       PatternColorIndex interior properties.
     name: includePatterns
     fullName: includePatterns
@@ -273,7 +254,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Style#includeProtection:member'
-    summary: Indicates if the style includes the FormulaHidden and Locked protection properties.
+    summary: Specifies if the style includes the FormulaHidden and Locked protection properties.
     name: includeProtection
     fullName: includeProtection
     langs:
@@ -306,10 +287,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Style;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Style:class'
+          - void
         description: |-
 
 
@@ -337,38 +318,8 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Style#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Style;
-      return:
-        type:
-          - 'excel!Excel.Style:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.Style#locked:member'
-    summary: Indicates if the object is locked when the worksheet is protected.
+    summary: Specifies if the object is locked when the worksheet is protected.
     name: locked
     fullName: locked
     langs:
@@ -423,30 +374,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readingOrder: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft";'
+      content: 'readingOrder: ReadingOrder;'
       return:
         type:
-          - 'excel!Excel.Style#readingOrder~0:complex'
-  - uid: 'excel!Excel.Style#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.Style): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.Style:class'
+          - 'excel!Excel.ReadingOrder:enum'
   - uid: 'excel!Excel.Style#shrinkToFit:member'
-    summary: Indicates if text automatically shrinks to fit in the available column width.
+    summary: Specifies if text automatically shrinks to fit in the available column width.
     name: shrinkToFit
     fullName: shrinkToFit
     langs:
@@ -470,19 +403,19 @@ items:
         type:
           - number
   - uid: 'excel!Excel.Style#verticalAlignment:member'
-    summary: Represents the vertical alignment for the style. See Excel.VerticalAlignment for details.
+    summary: Specifies the vertical alignment for the style. See Excel.VerticalAlignment for details.
     name: verticalAlignment
     fullName: verticalAlignment
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'verticalAlignment: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed";'
+      content: 'verticalAlignment: VerticalAlignment;'
       return:
         type:
-          - 'excel!Excel.Style#verticalAlignment~0:complex'
+          - 'excel!Excel.VerticalAlignment:enum'
   - uid: 'excel!Excel.Style#wrapText:member'
-    summary: Indicates if Microsoft Excel wraps the text in the object.
+    summary: Specifies if Excel wraps the text in the object.
     name: wrapText
     fullName: wrapText
     langs:
@@ -494,49 +427,21 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.RangeBorderCollection:class'
+  - uid: 'excel!Excel.RangeBorderCollection:interface'
     name: RangeBorderCollection
     fullName: Excel.RangeBorderCollection
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.RangeFill:class'
+  - uid: 'excel!Excel.RangeFill:interface'
     name: RangeFill
     fullName: Excel.RangeFill
-  - uid: 'excel!Excel.RangeFont:class'
+  - uid: 'excel!Excel.RangeFont:interface'
     name: RangeFont
     fullName: Excel.RangeFont
-  - uid: 'excel!Excel.Style#horizontalAlignment~0:complex'
-    name: >-
-      Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection"
-      | "Distributed"
-    fullName: >-
-      Excel.HorizontalAlignment | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection"
-      | "Distributed"
-    spec.typeScript:
-      - uid: 'excel!Excel.HorizontalAlignment:enum'
-        name: Excel.HorizontalAlignment
-        fullName: Excel.HorizontalAlignment
-      - name: ' | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed"'
-        fullName: ' | "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed"'
-  - uid: 'excel!Excel.Style:class'
-    name: Style
-    fullName: Excel.Style
-  - uid: 'excel!Excel.Style#readingOrder~0:complex'
-    name: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
-    fullName: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
-    spec.typeScript:
-      - uid: 'excel!Excel.ReadingOrder:enum'
-        name: Excel.ReadingOrder
-        fullName: Excel.ReadingOrder
-      - name: ' | "Context" | "LeftToRight" | "RightToLeft"'
-        fullName: ' | "Context" | "LeftToRight" | "RightToLeft"'
-  - uid: 'excel!Excel.Style#verticalAlignment~0:complex'
-    name: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"
-    fullName: Excel.VerticalAlignment | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"
-    spec.typeScript:
-      - uid: 'excel!Excel.VerticalAlignment:enum'
-        name: Excel.VerticalAlignment
-        fullName: Excel.VerticalAlignment
-      - name: ' | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"'
-        fullName: ' | "Top" | "Center" | "Bottom" | "Justify" | "Distributed"'
+  - uid: 'excel!Excel.HorizontalAlignment:enum'
+    name: HorizontalAlignment
+    fullName: Excel.HorizontalAlignment
+  - uid: 'excel!Excel.ReadingOrder:enum'
+    name: ReadingOrder
+    fullName: Excel.ReadingOrder
+  - uid: 'excel!Excel.VerticalAlignment:enum'
+    name: VerticalAlignment
+    fullName: Excel.VerticalAlignment

@@ -14,14 +14,14 @@ items:
       - 'excel!Excel.CommentRichContent#mentions:member'
       - 'excel!Excel.CommentRichContent#richContent:member'
   - uid: 'excel!Excel.CommentRichContent#mentions:member'
-    summary: An array containing all the entities (e.g. people) mentioned within the comment.
+    summary: 'An array containing all the entities (e.g., people) mentioned within the comment.'
     name: mentions
     fullName: mentions
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'mentions?: Excel.CommentMention[];'
+      content: 'mentions?: CommentMention[];'
       return:
         type:
           - 'excel!Excel.CommentRichContent#mentions~0:complex'
@@ -52,6 +52,9 @@ items:
           }
           ```
   - uid: 'excel!Excel.CommentRichContent#richContent:member'
+    summary: >-
+      Specifies the rich content of the comment (e.g., comment content with mentions, the first mentioned entity has an
+      id attribute of 0, and the second mentioned entity has an id attribute of 1).
     name: richContent
     fullName: richContent
     langs:
@@ -64,11 +67,11 @@ items:
           - string
 references:
   - uid: 'excel!Excel.CommentRichContent#mentions~0:complex'
-    name: 'Excel.CommentMention[]'
+    name: 'CommentMention[]'
     fullName: 'Excel.CommentMention[]'
     spec.typeScript:
       - uid: 'excel!Excel.CommentMention:interface'
-        name: Excel.CommentMention
+        name: CommentMention
         fullName: Excel.CommentMention
       - name: '[]'
         fullName: '[]'

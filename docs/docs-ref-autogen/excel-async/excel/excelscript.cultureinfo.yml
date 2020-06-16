@@ -1,0 +1,66 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CultureInfo:interface'
+    summary: >-
+      Provides information based on current system culture settings. This includes the culture names, number formatting,
+      and other culturally dependent settings.
+    name: Excel.CultureInfo
+    fullName: Excel.CultureInfo
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.CultureInfo#load:member(1)'
+      - 'excel!Excel.CultureInfo#name:member'
+      - 'excel!Excel.CultureInfo#numberFormat:member'
+  - uid: 'excel!Excel.CultureInfo#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.CultureInfo#name:member'
+    summary: >-
+      Gets the culture name in the format languagecode2-country/regioncode2 (e.g., "zh-cn" or "en-us"). This is based on
+      current system settings.
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.CultureInfo#numberFormat:member'
+    summary: Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
+    name: numberFormat
+    fullName: numberFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly numberFormat: NumberFormatInfo;'
+      return:
+        type:
+          - 'excel!Excel.NumberFormatInfo:interface'
+references:
+  - uid: 'excel!Excel.NumberFormatInfo:interface'
+    name: NumberFormatInfo
+    fullName: Excel.NumberFormatInfo

@@ -1,37 +1,20 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions:class'
+  - uid: 'excel!Excel.ChartBoxwhiskerOptions:interface'
     summary: Represents the properties of a box and whisker chart.
     name: Excel.ChartBoxwhiskerOptions
     fullName: Excel.ChartBoxwhiskerOptions
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartBoxwhiskerOptions#context:member'
       - 'excel!Excel.ChartBoxwhiskerOptions#load:member(1)'
-      - 'excel!Excel.ChartBoxwhiskerOptions#load:member(2)'
       - 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation:member'
-      - 'excel!Excel.ChartBoxwhiskerOptions#set:member(1)'
       - 'excel!Excel.ChartBoxwhiskerOptions#showInnerPoints:member'
       - 'excel!Excel.ChartBoxwhiskerOptions#showMeanLine:member'
       - 'excel!Excel.ChartBoxwhiskerOptions#showMeanMarker:member'
       - 'excel!Excel.ChartBoxwhiskerOptions#showOutlierPoints:member'
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -42,78 +25,30 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartBoxwhiskerOptions;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartBoxwhiskerOptions:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartBoxwhiskerOptions;
-      return:
-        type:
-          - 'excel!Excel.ChartBoxwhiskerOptions:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation:member'
-    summary: Returns or sets the quartile calculation type of a box and whisker chart. Read/Write.
+    summary: Specifies if the quartile calculation type of a box and whisker chart.
     name: quartileCalculation
     fullName: quartileCalculation
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'quartileCalculation: Excel.ChartBoxQuartileCalculation | "Inclusive" | "Exclusive";'
+      content: 'quartileCalculation: ChartBoxQuartileCalculation;'
       return:
         type:
-          - 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation~0:complex'
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartBoxwhiskerOptions): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartBoxwhiskerOptions:class'
+          - 'excel!Excel.ChartBoxQuartileCalculation:enum'
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#showInnerPoints:member'
-    summary: Specifies whether or not the inner points are shown in a box and whisker chart. Read/Write.
+    summary: Specifies if inner points are shown in a box and whisker chart.
     name: showInnerPoints
     fullName: showInnerPoints
     langs:
@@ -125,7 +60,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#showMeanLine:member'
-    summary: Specifies whether or not the mean line is shown in a box and whisker chart. Read/Write.
+    summary: Specifies if the mean line is shown in a box and whisker chart.
     name: showMeanLine
     fullName: showMeanLine
     langs:
@@ -137,7 +72,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#showMeanMarker:member'
-    summary: Specifies whether or not the mean marker is shown in a box and whisker chart. Read/Write.
+    summary: Specifies if the mean marker is shown in a box and whisker chart.
     name: showMeanMarker
     fullName: showMeanMarker
     langs:
@@ -149,7 +84,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#showOutlierPoints:member'
-    summary: Specifies whether or not outlier points are shown in a box and whisker chart. Read/Write.
+    summary: Specifies if outlier points are shown in a box and whisker chart.
     name: showOutlierPoints
     fullName: showOutlierPoints
     langs:
@@ -161,18 +96,6 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions:class'
-    name: ChartBoxwhiskerOptions
-    fullName: Excel.ChartBoxwhiskerOptions
-  - uid: 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation~0:complex'
-    name: Excel.ChartBoxQuartileCalculation | "Inclusive" | "Exclusive"
-    fullName: Excel.ChartBoxQuartileCalculation | "Inclusive" | "Exclusive"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartBoxQuartileCalculation:enum'
-        name: Excel.ChartBoxQuartileCalculation
-        fullName: Excel.ChartBoxQuartileCalculation
-      - name: ' | "Inclusive" | "Exclusive"'
-        fullName: ' | "Inclusive" | "Exclusive"'
+  - uid: 'excel!Excel.ChartBoxQuartileCalculation:enum'
+    name: ChartBoxQuartileCalculation
+    fullName: Excel.ChartBoxQuartileCalculation

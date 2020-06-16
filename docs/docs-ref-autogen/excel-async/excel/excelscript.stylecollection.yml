@@ -1,20 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.StyleCollection:class'
+  - uid: 'excel!Excel.StyleCollection:interface'
     summary: Represents a collection of all the styles.
     name: Excel.StyleCollection
     fullName: Excel.StyleCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.StyleCollection#add:member(1)'
-      - 'excel!Excel.StyleCollection#context:member'
-      - 'excel!Excel.StyleCollection#getCount:member(1)'
       - 'excel!Excel.StyleCollection#getItem:member(1)'
-      - 'excel!Excel.StyleCollection#getItemAt:member(1)'
-      - 'excel!Excel.StyleCollection#items:member'
       - 'excel!Excel.StyleCollection#load:member(1)'
   - uid: 'excel!Excel.StyleCollection#add:member(1)'
     summary: Adds a new style to the collection.
@@ -60,33 +56,6 @@ items:
           description: Name of the style to be added.
           type:
             - string
-  - uid: 'excel!Excel.StyleCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.StyleCollection#getCount:member(1)'
-    summary: Gets the number of styles in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.StyleCollection#getCount~0:complex'
-        description: ''
   - uid: 'excel!Excel.StyleCollection#getItem:member(1)'
     summary: Gets a style by name.
     name: getItem(name)
@@ -95,10 +64,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(name: string): Excel.Style;'
+      content: 'getItem(name: string): Style;'
       return:
         type:
-          - 'excel!Excel.Style:class'
+          - 'excel!Excel.Style:interface'
         description: |-
 
 
@@ -131,36 +100,6 @@ items:
           description: Name of the style to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.StyleCollection#getItemAt:member(1)'
-    summary: Gets a style based on its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.Style;'
-      return:
-        type:
-          - 'excel!Excel.Style:class'
-        description: ''
-      parameters:
-        - id: index
-          description: Index value of the style object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.StyleCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Style[];'
-      return:
-        type:
-          - 'excel!Excel.StyleCollection#items~0:complex'
   - uid: 'excel!Excel.StyleCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -171,10 +110,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.StyleCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.StyleCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -182,30 +121,6 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.StyleCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.Style:class'
+  - uid: 'excel!Excel.Style:interface'
     name: Style
     fullName: Excel.Style
-  - uid: 'excel!Excel.StyleCollection#items~0:complex'
-    name: 'Excel.Style[]'
-    fullName: 'Excel.Style[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Style:class'
-        name: Excel.Style
-        fullName: Excel.Style
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.StyleCollection:class'
-    name: StyleCollection
-    fullName: Excel.StyleCollection

@@ -1,20 +1,17 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ConditionalRangeFill:class'
+  - uid: 'excel!Excel.ConditionalRangeFill:interface'
     summary: Represents the background of a conditional range object.
     name: Excel.ConditionalRangeFill
     fullName: Excel.ConditionalRangeFill
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ConditionalRangeFill#clear:member(1)'
       - 'excel!Excel.ConditionalRangeFill#color:member'
-      - 'excel!Excel.ConditionalRangeFill#context:member'
       - 'excel!Excel.ConditionalRangeFill#load:member(1)'
-      - 'excel!Excel.ConditionalRangeFill#load:member(2)'
-      - 'excel!Excel.ConditionalRangeFill#set:member(1)'
   - uid: 'excel!Excel.ConditionalRangeFill#clear:member(1)'
     summary: Resets the fill.
     name: clear()
@@ -30,8 +27,8 @@ items:
         description: ''
   - uid: 'excel!Excel.ConditionalRangeFill#color:member'
     summary: >-
-      HTML color code representing the color of the fill, of the form \#RRGGBB (e.g. "FFA500") or as a named HTML color
-      (e.g. "orange").
+      HTML color code representing the color of the fill, of the form \#RRGGBB (e.g., "FFA500") or as a named HTML color
+      (e.g., "orange").
     name: color
     fullName: color
     langs:
@@ -42,20 +39,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel!Excel.ConditionalRangeFill#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ConditionalRangeFill#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -66,68 +49,13 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ConditionalRangeFill;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ConditionalRangeFill:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ConditionalRangeFill#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ConditionalRangeFill;
-      return:
-        type:
-          - 'excel!Excel.ConditionalRangeFill:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ConditionalRangeFill#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ConditionalRangeFill): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ConditionalRangeFill:class'
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ConditionalRangeFill:class'
-    name: ConditionalRangeFill
-    fullName: Excel.ConditionalRangeFill

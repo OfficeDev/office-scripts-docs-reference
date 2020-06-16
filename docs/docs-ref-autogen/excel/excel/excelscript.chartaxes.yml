@@ -10,6 +10,7 @@ items:
     package: excel!
     children:
       - 'excel!ExcelScript.ChartAxes#getCategoryAxis:member(1)'
+      - 'excel!ExcelScript.ChartAxes#getChartAxis:member(1)'
       - 'excel!ExcelScript.ChartAxes#getSeriesAxis:member(1)'
       - 'excel!ExcelScript.ChartAxes#getValueAxis:member(1)'
   - uid: 'excel!ExcelScript.ChartAxes#getCategoryAxis:member(1)'
@@ -25,6 +26,28 @@ items:
         type:
           - 'excel!ExcelScript.ChartAxis:interface'
         description: ''
+  - uid: 'excel!ExcelScript.ChartAxes#getChartAxis:member(1)'
+    summary: Returns the specific axis identified by type and group.
+    name: 'getChartAxis(type, group)'
+    fullName: 'getChartAxis(type, group)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getChartAxis(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;'
+      return:
+        type:
+          - 'excel!ExcelScript.ChartAxis:interface'
+        description: ''
+      parameters:
+        - id: type
+          description: Specifies the axis type. See Excel.ChartAxisType for details.
+          type:
+            - 'excel!ExcelScript.ChartAxisType:enum'
+        - id: group
+          description: Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
+          type:
+            - 'excel!ExcelScript.ChartAxisGroup:enum'
   - uid: 'excel!ExcelScript.ChartAxes#getSeriesAxis:member(1)'
     summary: Represents the series axis of a 3-dimensional chart.
     name: getSeriesAxis()
@@ -55,3 +78,9 @@ references:
   - uid: 'excel!ExcelScript.ChartAxis:interface'
     name: ChartAxis
     fullName: ExcelScript.ChartAxis
+  - uid: 'excel!ExcelScript.ChartAxisType:enum'
+    name: ChartAxisType
+    fullName: ExcelScript.ChartAxisType
+  - uid: 'excel!ExcelScript.ChartAxisGroup:enum'
+    name: ChartAxisGroup
+    fullName: ExcelScript.ChartAxisGroup

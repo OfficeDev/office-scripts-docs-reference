@@ -1,22 +1,19 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.PageBreak:class'
+  - uid: 'excel!Excel.PageBreak:interface'
     name: Excel.PageBreak
     fullName: Excel.PageBreak
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.PageBreak#columnIndex:member'
-      - 'excel!Excel.PageBreak#context:member'
       - 'excel!Excel.PageBreak#delete:member(1)'
       - 'excel!Excel.PageBreak#getCellAfterBreak:member(1)'
       - 'excel!Excel.PageBreak#load:member(1)'
-      - 'excel!Excel.PageBreak#load:member(2)'
-      - 'excel!Excel.PageBreak#rowIndex:member'
   - uid: 'excel!Excel.PageBreak#columnIndex:member'
-    summary: Represents the column index for the page break
+    summary: Specifies the column index for the page break
     name: columnIndex
     fullName: columnIndex
     langs:
@@ -27,20 +24,6 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.PageBreak#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.PageBreak#delete:member(1)'
     summary: Deletes a page break object.
     name: delete()
@@ -62,10 +45,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCellAfterBreak(): Excel.Range;'
+      content: 'getCellAfterBreak(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.PageBreak#load:member(1)'
     summary: >-
@@ -77,65 +60,17 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.PageBreak;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.PageBreak:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.PageBreak#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.PageBreak;
-      return:
-        type:
-          - 'excel!Excel.PageBreak:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.PageBreak#rowIndex:member'
-    summary: Represents the row index for the page break
-    name: rowIndex
-    fullName: rowIndex
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly rowIndex: number;'
-      return:
-        type:
-          - number
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.Range:class'
+  - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.PageBreak:class'
-    name: PageBreak
-    fullName: Excel.PageBreak

@@ -1,15 +1,14 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartPlotArea:class'
+  - uid: 'excel!Excel.ChartPlotArea:interface'
     summary: This object represents the attributes for a chart plotArea object.
     name: Excel.ChartPlotArea
     fullName: Excel.ChartPlotArea
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartPlotArea#context:member'
       - 'excel!Excel.ChartPlotArea#format:member'
       - 'excel!Excel.ChartPlotArea#height:member'
       - 'excel!Excel.ChartPlotArea#insideHeight:member'
@@ -18,39 +17,23 @@ items:
       - 'excel!Excel.ChartPlotArea#insideWidth:member'
       - 'excel!Excel.ChartPlotArea#left:member'
       - 'excel!Excel.ChartPlotArea#load:member(1)'
-      - 'excel!Excel.ChartPlotArea#load:member(2)'
       - 'excel!Excel.ChartPlotArea#position:member'
-      - 'excel!Excel.ChartPlotArea#set:member(1)'
       - 'excel!Excel.ChartPlotArea#top:member'
       - 'excel!Excel.ChartPlotArea#width:member'
-  - uid: 'excel!Excel.ChartPlotArea#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartPlotArea#format:member'
-    summary: Represents the formatting of a chart plotArea.
+    summary: Specifies the formatting of a chart plotArea.
     name: format
     fullName: format
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly format: Excel.ChartPlotAreaFormat;'
+      content: 'readonly format: ChartPlotAreaFormat;'
       return:
         type:
-          - 'excel!Excel.ChartPlotAreaFormat:class'
+          - 'excel!Excel.ChartPlotAreaFormat:interface'
   - uid: 'excel!Excel.ChartPlotArea#height:member'
-    summary: Represents the height value of plotArea.
+    summary: Specifies the height value of plotArea.
     name: height
     fullName: height
     langs:
@@ -62,7 +45,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#insideHeight:member'
-    summary: Represents the insideHeight value of plotArea.
+    summary: Specifies the insideHeight value of plotArea.
     name: insideHeight
     fullName: insideHeight
     langs:
@@ -74,7 +57,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#insideLeft:member'
-    summary: Represents the insideLeft value of plotArea.
+    summary: Specifies the insideLeft value of plotArea.
     name: insideLeft
     fullName: insideLeft
     langs:
@@ -86,7 +69,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#insideTop:member'
-    summary: Represents the insideTop value of plotArea.
+    summary: Specifies the insideTop value of plotArea.
     name: insideTop
     fullName: insideTop
     langs:
@@ -98,7 +81,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#insideWidth:member'
-    summary: Represents the insideWidth value of plotArea.
+    summary: Specifies the insideWidth value of plotArea.
     name: insideWidth
     fullName: insideWidth
     langs:
@@ -110,7 +93,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#left:member'
-    summary: Represents the left value of plotArea.
+    summary: Specifies the left value of plotArea.
     name: left
     fullName: left
     langs:
@@ -131,78 +114,30 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartPlotArea;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartPlotArea:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartPlotArea#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartPlotArea;
-      return:
-        type:
-          - 'excel!Excel.ChartPlotArea:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.ChartPlotArea#position:member'
-    summary: Represents the position of plotArea.
+    summary: Specifies the position of plotArea.
     name: position
     fullName: position
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'position: Excel.ChartPlotAreaPosition | "Automatic" | "Custom";'
+      content: 'position: ChartPlotAreaPosition;'
       return:
         type:
-          - 'excel!Excel.ChartPlotArea#position~0:complex'
-  - uid: 'excel!Excel.ChartPlotArea#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartPlotArea): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartPlotArea:class'
+          - 'excel!Excel.ChartPlotAreaPosition:enum'
   - uid: 'excel!Excel.ChartPlotArea#top:member'
-    summary: Represents the top value of plotArea.
+    summary: Specifies the top value of plotArea.
     name: top
     fullName: top
     langs:
@@ -214,7 +149,7 @@ items:
         type:
           - number
   - uid: 'excel!Excel.ChartPlotArea#width:member'
-    summary: Represents the width value of plotArea.
+    summary: Specifies the width value of plotArea.
     name: width
     fullName: width
     langs:
@@ -226,21 +161,9 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartPlotAreaFormat:class'
+  - uid: 'excel!Excel.ChartPlotAreaFormat:interface'
     name: ChartPlotAreaFormat
     fullName: Excel.ChartPlotAreaFormat
-  - uid: 'excel!Excel.ChartPlotArea:class'
-    name: ChartPlotArea
-    fullName: Excel.ChartPlotArea
-  - uid: 'excel!Excel.ChartPlotArea#position~0:complex'
-    name: Excel.ChartPlotAreaPosition | "Automatic" | "Custom"
-    fullName: Excel.ChartPlotAreaPosition | "Automatic" | "Custom"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartPlotAreaPosition:enum'
-        name: Excel.ChartPlotAreaPosition
-        fullName: Excel.ChartPlotAreaPosition
-      - name: ' | "Automatic" | "Custom"'
-        fullName: ' | "Automatic" | "Custom"'
+  - uid: 'excel!Excel.ChartPlotAreaPosition:enum'
+    name: ChartPlotAreaPosition
+    fullName: Excel.ChartPlotAreaPosition

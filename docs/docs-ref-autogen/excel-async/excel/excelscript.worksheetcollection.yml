@@ -1,23 +1,19 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.WorksheetCollection:class'
+  - uid: 'excel!Excel.WorksheetCollection:interface'
     summary: Represents a collection of worksheet objects that are part of the workbook.
     name: Excel.WorksheetCollection
     fullName: Excel.WorksheetCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.WorksheetCollection#add:member(1)'
-      - 'excel!Excel.WorksheetCollection#context:member'
       - 'excel!Excel.WorksheetCollection#getActiveWorksheet:member(1)'
-      - 'excel!Excel.WorksheetCollection#getCount:member(1)'
       - 'excel!Excel.WorksheetCollection#getFirst:member(1)'
-      - 'excel!Excel.WorksheetCollection#getItem:member(1)'
       - 'excel!Excel.WorksheetCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.WorksheetCollection#getLast:member(1)'
-      - 'excel!Excel.WorksheetCollection#items:member'
       - 'excel!Excel.WorksheetCollection#load:member(1)'
   - uid: 'excel!Excel.WorksheetCollection#add:member(1)'
     summary: >-
@@ -29,10 +25,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(name?: string): Excel.Worksheet;'
+      content: 'add(name?: string): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: ''
       parameters:
         - id: name
@@ -41,20 +37,6 @@ items:
             Excel determines the name of the new worksheet.
           type:
             - string
-  - uid: 'excel!Excel.WorksheetCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.WorksheetCollection#getActiveWorksheet:member(1)'
     summary: Gets the currently active worksheet in the workbook.
     name: getActiveWorksheet()
@@ -63,29 +45,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getActiveWorksheet(): Excel.Worksheet;'
+      content: 'getActiveWorksheet(): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: ''
-  - uid: 'excel!Excel.WorksheetCollection#getCount:member(1)'
-    summary: Gets the number of worksheets in the collection.
-    name: getCount(visibleOnly)
-    fullName: getCount(visibleOnly)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(visibleOnly?: boolean): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.WorksheetCollection#getCount~0:complex'
-        description: ''
-      parameters:
-        - id: visibleOnly
-          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
-          type:
-            - boolean
   - uid: 'excel!Excel.WorksheetCollection#getFirst:member(1)'
     summary: Gets the first worksheet in the collection.
     name: getFirst(visibleOnly)
@@ -94,10 +58,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getFirst(visibleOnly?: boolean): Excel.Worksheet;'
+      content: 'getFirst(visibleOnly?: boolean): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: |-
 
 
@@ -134,24 +98,6 @@ items:
           description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
           type:
             - boolean
-  - uid: 'excel!Excel.WorksheetCollection#getItem:member(1)'
-    summary: Gets a worksheet object using its Name or ID.
-    name: getItem(key)
-    fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(key: string): Excel.Worksheet;'
-      return:
-        type:
-          - 'excel!Excel.Worksheet:class'
-        description: ''
-      parameters:
-        - id: key
-          description: The Name or ID of the worksheet.
-          type:
-            - string
   - uid: 'excel!Excel.WorksheetCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a worksheet object using its Name or ID. If the worksheet does not exist, will return a null object.'
     name: getItemOrNullObject(key)
@@ -160,10 +106,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(key: string): Excel.Worksheet;'
+      content: 'getItemOrNullObject(key: string): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: ''
       parameters:
         - id: key
@@ -178,10 +124,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getLast(visibleOnly?: boolean): Excel.Worksheet;'
+      content: 'getLast(visibleOnly?: boolean): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: |-
 
 
@@ -218,18 +164,6 @@ items:
           description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
           type:
             - boolean
-  - uid: 'excel!Excel.WorksheetCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.Worksheet[];'
-      return:
-        type:
-          - 'excel!Excel.WorksheetCollection#items~0:complex'
   - uid: 'excel!Excel.WorksheetCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -240,10 +174,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.WorksheetCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.WorksheetCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -251,30 +185,6 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.Worksheet:class'
+  - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.WorksheetCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.WorksheetCollection#items~0:complex'
-    name: 'Excel.Worksheet[]'
-    fullName: 'Excel.Worksheet[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.Worksheet:class'
-        name: Excel.Worksheet
-        fullName: Excel.Worksheet
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.WorksheetCollection:class'
-    name: WorksheetCollection
-    fullName: Excel.WorksheetCollection

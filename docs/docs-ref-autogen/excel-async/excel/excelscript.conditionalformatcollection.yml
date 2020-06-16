@@ -1,22 +1,17 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ConditionalFormatCollection:class'
+  - uid: 'excel!Excel.ConditionalFormatCollection:interface'
     summary: Represents a collection of all the conditional formats that are overlap the range.
     name: Excel.ConditionalFormatCollection
     fullName: Excel.ConditionalFormatCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.ConditionalFormatCollection#add:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#add:member(2)'
       - 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#context:member'
-      - 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
       - 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#items:member'
       - 'excel!Excel.ConditionalFormatCollection#load:member(1)'
   - uid: 'excel!Excel.ConditionalFormatCollection#add:member(1)'
     summary: Adds a new conditional format to the collection at the first/top priority.
@@ -26,10 +21,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(type: Excel.ConditionalFormatType): Excel.ConditionalFormat;'
+      content: 'add(type: ConditionalFormatType): ConditionalFormat;'
       return:
         type:
-          - 'excel!Excel.ConditionalFormat:class'
+          - 'excel!Excel.ConditionalFormat:interface'
         description: |-
 
 
@@ -56,28 +51,6 @@ items:
           description: The type of conditional format being added. See Excel.ConditionalFormatType for details.
           type:
             - 'excel!Excel.ConditionalFormatType:enum'
-  - uid: 'excel!Excel.ConditionalFormatCollection#add:member(2)'
-    summary: Adds a new conditional format to the collection at the first/top priority.
-    name: add(typeStringString)
-    fullName: add(typeStringString)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        add(typeStringString: "Custom" | "DataBar" | "ColorScale" | "IconSet" | "TopBottom" | "PresetCriteria" |
-        "ContainsText" | "CellValue"): Excel.ConditionalFormat;
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormat:class'
-        description: ''
-      parameters:
-        - id: typeStringString
-          description: The type of conditional format being added. See Excel.ConditionalFormatType for details.
-          type:
-            - >-
-              "Custom" | "DataBar" | "ColorScale" | "IconSet" | "TopBottom" | "PresetCriteria" | "ContainsText" |
-              "CellValue"
   - uid: 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
     summary: Clears all conditional formats active on the current specified range.
     name: clearAll()
@@ -106,33 +79,6 @@ items:
               $(".conditional-formats").hide();
           }
           ```
-  - uid: 'excel!Excel.ConditionalFormatCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
-    summary: Returns the number of conditional formats in the workbook. Read-only.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormatCollection#getCount~0:complex'
-        description: ''
   - uid: 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
     summary: Returns a conditional format for the given ID.
     name: getItem(id)
@@ -141,77 +87,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(id: string): Excel.ConditionalFormat;'
+      content: 'getItem(id: string): ConditionalFormat;'
       return:
         type:
-          - 'excel!Excel.ConditionalFormat:class'
-        description: Conditional Format object.
+          - 'excel!Excel.ConditionalFormat:interface'
+        description: ''
       parameters:
         - id: id
           description: The id of the conditional format.
           type:
             - string
-  - uid: 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
-    summary: Returns a conditional format at the given index.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.ConditionalFormat;'
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormat:class'
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Sample");
-              let worksheetRange = sheet.getRange();
-              worksheetRange.conditionalFormats.load("type");
-
-              await context.sync();
-
-              let cfRangePairs: { cf: Excel.ConditionalFormat, range: Excel.Range }[] = [];
-              worksheetRange.conditionalFormats.items.forEach(item => {
-                  cfRangePairs.push({
-                      cf: item,
-                      range: item.getRange().load("address")
-                  });
-              });
-
-              await context.sync();
-
-              if (cfRangePairs.length > 0) {
-                  cfRangePairs.forEach(item => {
-                      console.log(item.cf.type);
-                  });
-              } else {
-                  console.log("No conditional formats applied.");
-              }
-          }
-          ```
-      parameters:
-        - id: index
-          description: Index of the conditional formats to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ConditionalFormatCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.ConditionalFormat[];'
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormatCollection#items~0:complex'
   - uid: 'excel!Excel.ConditionalFormatCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -222,10 +107,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ConditionalFormatCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ConditionalFormatCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -233,33 +118,9 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.ConditionalFormat:class'
+  - uid: 'excel!Excel.ConditionalFormat:interface'
     name: ConditionalFormat
     fullName: Excel.ConditionalFormat
   - uid: 'excel!Excel.ConditionalFormatType:enum'
     name: ConditionalFormatType
     fullName: Excel.ConditionalFormatType
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ConditionalFormatCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.ConditionalFormatCollection#items~0:complex'
-    name: 'Excel.ConditionalFormat[]'
-    fullName: 'Excel.ConditionalFormat[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.ConditionalFormat:class'
-        name: Excel.ConditionalFormat
-        fullName: Excel.ConditionalFormat
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.ConditionalFormatCollection:class'
-    name: ConditionalFormatCollection
-    fullName: Excel.ConditionalFormatCollection

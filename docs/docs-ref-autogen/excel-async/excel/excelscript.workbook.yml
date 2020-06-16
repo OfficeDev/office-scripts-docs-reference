@@ -1,12 +1,15 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Workbook:class'
-    summary: 'Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc.'
+  - uid: 'excel!Excel.Workbook:interface'
+    summary: >-
+      Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc.
+      To learn more about the workbook object model, read [Work with workbooks using the Excel JavaScript
+      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-workbooks)<!-- -->.
     name: Excel.Workbook
     fullName: Excel.Workbook
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.Workbook#application:member'
@@ -15,21 +18,14 @@ items:
       - 'excel!Excel.Workbook#calculationEngineVersion:member'
       - 'excel!Excel.Workbook#chartDataPointTrack:member'
       - 'excel!Excel.Workbook#comments:member'
-      - 'excel!Excel.Workbook#context:member'
       - 'excel!Excel.Workbook#customXmlParts:member'
-      - 'excel!Excel.Workbook#dataConnections:member'
-      - 'excel!Excel.Workbook#functions:member'
       - 'excel!Excel.Workbook#getActiveCell:member(1)'
-      - 'excel!Excel.Workbook#getActiveChart:member(1)'
       - 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
-      - 'excel!Excel.Workbook#getActiveSlicer:member(1)'
       - 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
-      - 'excel!Excel.Workbook#getIsActiveCollabSession:member(1)'
       - 'excel!Excel.Workbook#getSelectedRange:member(1)'
       - 'excel!Excel.Workbook#getSelectedRanges:member(1)'
       - 'excel!Excel.Workbook#isDirty:member'
       - 'excel!Excel.Workbook#load:member(1)'
-      - 'excel!Excel.Workbook#load:member(2)'
       - 'excel!Excel.Workbook#name:member'
       - 'excel!Excel.Workbook#names:member'
       - 'excel!Excel.Workbook#pivotTables:member'
@@ -38,7 +34,6 @@ items:
       - 'excel!Excel.Workbook#properties:member'
       - 'excel!Excel.Workbook#protection:member'
       - 'excel!Excel.Workbook#readOnly:member'
-      - 'excel!Excel.Workbook#set:member(1)'
       - 'excel!Excel.Workbook#settings:member'
       - 'excel!Excel.Workbook#slicers:member'
       - 'excel!Excel.Workbook#slicerStyles:member'
@@ -49,19 +44,19 @@ items:
       - 'excel!Excel.Workbook#usePrecisionAsDisplayed:member'
       - 'excel!Excel.Workbook#worksheets:member'
   - uid: 'excel!Excel.Workbook#application:member'
-    summary: Represents the Excel application instance that contains this workbook. Read-only.
+    summary: Represents the Excel application instance that contains this workbook.
     name: application
     fullName: application
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly application: Excel.Application;'
+      content: 'readonly application: Application;'
       return:
         type:
-          - 'excel!Excel.Application:class'
+          - 'excel!Excel.Application:interface'
   - uid: 'excel!Excel.Workbook#autoSave:member'
-    summary: Specifies whether or not the workbook is in autosave mode. Read-Only.
+    summary: Specifies if the workbook is in autosave mode.
     name: autoSave
     fullName: autoSave
     langs:
@@ -73,19 +68,19 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Workbook#bindings:member'
-    summary: Represents a collection of bindings that are part of the workbook. Read-only.
+    summary: Represents a collection of bindings that are part of the workbook.
     name: bindings
     fullName: bindings
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly bindings: Excel.BindingCollection;'
+      content: 'readonly bindings: BindingCollection;'
       return:
         type:
-          - 'excel!Excel.BindingCollection:class'
+          - 'excel!Excel.BindingCollection:interface'
   - uid: 'excel!Excel.Workbook#calculationEngineVersion:member'
-    summary: Returns a number about the version of Excel Calculation Engine. Read-Only.
+    summary: Returns a number about the version of Excel Calculation Engine.
     name: calculationEngineVersion
     fullName: calculationEngineVersion
     langs:
@@ -111,67 +106,29 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Workbook#comments:member'
-    summary: Represents a collection of Comments associated with the workbook. Read-only.
+    summary: Represents a collection of Comments associated with the workbook.
     name: comments
     fullName: comments
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly comments: Excel.CommentCollection;'
+      content: 'readonly comments: CommentCollection;'
       return:
         type:
-          - 'excel!Excel.CommentCollection:class'
-  - uid: 'excel!Excel.Workbook#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
+          - 'excel!Excel.CommentCollection:interface'
   - uid: 'excel!Excel.Workbook#customXmlParts:member'
-    summary: Represents the collection of custom XML parts contained by this workbook. Read-only.
+    summary: Represents the collection of custom XML parts contained by this workbook.
     name: customXmlParts
     fullName: customXmlParts
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly customXmlParts: Excel.CustomXmlPartCollection;'
+      content: 'readonly customXmlParts: CustomXmlPartCollection;'
       return:
         type:
-          - 'excel!Excel.CustomXmlPartCollection:class'
-  - uid: 'excel!Excel.Workbook#dataConnections:member'
-    summary: Represents all data connections in the workbook. Read-only.
-    name: dataConnections
-    fullName: dataConnections
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly dataConnections: Excel.DataConnectionCollection;'
-      return:
-        type:
-          - 'excel!Excel.DataConnectionCollection:class'
-  - uid: 'excel!Excel.Workbook#functions:member'
-    summary: Represents a collection of worksheet functions that can be used for computation. Read-only.
-    name: functions
-    fullName: functions
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly functions: Excel.Functions;'
-      return:
-        type:
-          - 'excel!Excel.Functions:class'
+          - 'excel!Excel.CustomXmlPartCollection:interface'
   - uid: 'excel!Excel.Workbook#getActiveCell:member(1)'
     summary: Gets the currently active cell from the workbook.
     name: getActiveCell()
@@ -180,10 +137,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getActiveCell(): Excel.Range;'
+      content: 'getActiveCell(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: |-
 
 
@@ -201,21 +158,6 @@ items:
               console.log("The active cell is " + activeCell.address);
           }
           ```
-  - uid: 'excel!Excel.Workbook#getActiveChart:member(1)'
-    summary: >-
-      Gets the currently active chart in the workbook. If there is no active chart, an `ItemNotFound` exception is
-      thrown.
-    name: getActiveChart()
-    fullName: getActiveChart()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getActiveChart(): Excel.Chart;'
-      return:
-        type:
-          - 'excel!Excel.Chart:class'
-        description: ''
   - uid: 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
     summary: 'Gets the currently active chart in the workbook. If there is no active chart, a null object is returned.'
     name: getActiveChartOrNullObject()
@@ -224,25 +166,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getActiveChartOrNullObject(): Excel.Chart;'
+      content: 'getActiveChartOrNullObject(): Chart;'
       return:
         type:
-          - 'excel!Excel.Chart:class'
-        description: ''
-  - uid: 'excel!Excel.Workbook#getActiveSlicer:member(1)'
-    summary: >-
-      Gets the currently active slicer in the workbook. If there is no active slicer, an `ItemNotFound` exception is
-      thrown.
-    name: getActiveSlicer()
-    fullName: getActiveSlicer()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getActiveSlicer(): Excel.Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:class'
+          - 'excel!Excel.Chart:interface'
         description: ''
   - uid: 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
     summary: 'Gets the currently active slicer in the workbook. If there is no active slicer, a null object is returned.'
@@ -252,25 +179,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getActiveSlicerOrNullObject(): Excel.Slicer;'
+      content: 'getActiveSlicerOrNullObject(): Slicer;'
       return:
         type:
-          - 'excel!Excel.Slicer:class'
-        description: ''
-  - uid: 'excel!Excel.Workbook#getIsActiveCollabSession:member(1)'
-    summary: >-
-      True if the workbook is being edited by multiple users (co-authoring). Please be aware there might be some delay
-      between when the workbook status changes and when the changes are reflected on the result of the method.
-    name: getIsActiveCollabSession()
-    fullName: getIsActiveCollabSession()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getIsActiveCollabSession(): ClientResult<boolean>;'
-      return:
-        type:
-          - 'excel!Excel.Workbook#getIsActiveCollabSession~0:complex'
+          - 'excel!Excel.Slicer:interface'
         description: ''
   - uid: 'excel!Excel.Workbook#getSelectedRange:member(1)'
     summary: >-
@@ -282,10 +194,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getSelectedRange(): Excel.Range;'
+      content: 'getSelectedRange(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.Workbook#getSelectedRanges:member(1)'
     summary: >-
@@ -297,10 +209,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getSelectedRanges(): Excel.RangeAreas;'
+      content: 'getSelectedRanges(): RangeAreas;'
       return:
         type:
-          - 'excel!Excel.RangeAreas:class'
+          - 'excel!Excel.RangeAreas:interface'
         description: |-
 
 
@@ -317,8 +229,8 @@ items:
           ```
   - uid: 'excel!Excel.Workbook#isDirty:member'
     summary: >-
-      Specifies whether or not changes have been made since the workbook was last saved. You can set this property to
-      true if you want to close a modified workbook without either saving it or being prompted to save it.
+      Specifies if changes have been made since the workbook was last saved. You can set this property to true if you
+      want to close a modified workbook without either saving it or being prompted to save it.
     name: isDirty
     fullName: isDirty
     langs:
@@ -339,48 +251,18 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Workbook;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Workbook:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Workbook#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Workbook;
-      return:
-        type:
-          - 'excel!Excel.Workbook:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.Workbook#name:member'
-    summary: Gets the workbook name. Read-only.
+    summary: Gets the workbook name.
     name: name
     fullName: name
     langs:
@@ -392,43 +274,43 @@ items:
         type:
           - string
   - uid: 'excel!Excel.Workbook#names:member'
-    summary: Represents a collection of workbook scoped named items (named ranges and constants). Read-only.
+    summary: Represents a collection of workbook scoped named items (named ranges and constants).
     name: names
     fullName: names
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly names: Excel.NamedItemCollection;'
+      content: 'readonly names: NamedItemCollection;'
       return:
         type:
-          - 'excel!Excel.NamedItemCollection:class'
+          - 'excel!Excel.NamedItemCollection:interface'
   - uid: 'excel!Excel.Workbook#pivotTables:member'
-    summary: Represents a collection of PivotTables associated with the workbook. Read-only.
+    summary: Represents a collection of PivotTables associated with the workbook.
     name: pivotTables
     fullName: pivotTables
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly pivotTables: Excel.PivotTableCollection;'
+      content: 'readonly pivotTables: PivotTableCollection;'
       return:
         type:
-          - 'excel!Excel.PivotTableCollection:class'
+          - 'excel!Excel.PivotTableCollection:interface'
   - uid: 'excel!Excel.Workbook#pivotTableStyles:member'
-    summary: Represents a collection of PivotTableStyles associated with the workbook. Read-only.
+    summary: Represents a collection of PivotTableStyles associated with the workbook.
     name: pivotTableStyles
     fullName: pivotTableStyles
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly pivotTableStyles: Excel.PivotTableStyleCollection;'
+      content: 'readonly pivotTableStyles: PivotTableStyleCollection;'
       return:
         type:
-          - 'excel!Excel.PivotTableStyleCollection:class'
+          - 'excel!Excel.PivotTableStyleCollection:interface'
   - uid: 'excel!Excel.Workbook#previouslySaved:member'
-    summary: Specifies whether or not the workbook has ever been saved locally or online. Read-Only.
+    summary: Specifies if the workbook has ever been saved locally or online.
     name: previouslySaved
     fullName: previouslySaved
     langs:
@@ -440,17 +322,17 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Workbook#properties:member'
-    summary: Gets the workbook properties. Read-only.
+    summary: Gets the workbook properties.
     name: properties
     fullName: properties
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly properties: Excel.DocumentProperties;'
+      content: 'readonly properties: DocumentProperties;'
       return:
         type:
-          - 'excel!Excel.DocumentProperties:class'
+          - 'excel!Excel.DocumentProperties:interface'
         description: |-
 
 
@@ -483,19 +365,19 @@ items:
           }
           ```
   - uid: 'excel!Excel.Workbook#protection:member'
-    summary: Returns workbook protection object for a workbook. Read-only.
+    summary: Returns the protection object for a workbook.
     name: protection
     fullName: protection
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly protection: Excel.WorkbookProtection;'
+      content: 'readonly protection: WorkbookProtection;'
       return:
         type:
-          - 'excel!Excel.WorkbookProtection:class'
+          - 'excel!Excel.WorkbookProtection:interface'
   - uid: 'excel!Excel.Workbook#readOnly:member'
-    summary: True if the workbook is open in Read-only mode. Read-only.
+    summary: True if the workbook is open in Read-only mode.
     name: readOnly
     fullName: readOnly
     langs:
@@ -506,72 +388,54 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel!Excel.Workbook#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.Workbook): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.Workbook:class'
   - uid: 'excel!Excel.Workbook#settings:member'
-    summary: Represents a collection of Settings associated with the workbook. Read-only.
+    summary: Represents a collection of Settings associated with the workbook.
     name: settings
     fullName: settings
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly settings: Excel.SettingCollection;'
+      content: 'readonly settings: SettingCollection;'
       return:
         type:
-          - 'excel!Excel.SettingCollection:class'
+          - 'excel!Excel.SettingCollection:interface'
   - uid: 'excel!Excel.Workbook#slicers:member'
-    summary: Represents a collection of Slicers associated with the workbook. Read-only.
+    summary: Represents a collection of Slicers associated with the workbook.
     name: slicers
     fullName: slicers
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly slicers: Excel.SlicerCollection;'
+      content: 'readonly slicers: SlicerCollection;'
       return:
         type:
-          - 'excel!Excel.SlicerCollection:class'
+          - 'excel!Excel.SlicerCollection:interface'
   - uid: 'excel!Excel.Workbook#slicerStyles:member'
-    summary: Represents a collection of SlicerStyles associated with the workbook. Read-only.
+    summary: Represents a collection of SlicerStyles associated with the workbook.
     name: slicerStyles
     fullName: slicerStyles
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly slicerStyles: Excel.SlicerStyleCollection;'
+      content: 'readonly slicerStyles: SlicerStyleCollection;'
       return:
         type:
-          - 'excel!Excel.SlicerStyleCollection:class'
+          - 'excel!Excel.SlicerStyleCollection:interface'
   - uid: 'excel!Excel.Workbook#styles:member'
-    summary: Represents a collection of styles associated with the workbook. Read-only.
+    summary: Represents a collection of styles associated with the workbook.
     name: styles
     fullName: styles
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly styles: Excel.StyleCollection;'
+      content: 'readonly styles: StyleCollection;'
       return:
         type:
-          - 'excel!Excel.StyleCollection:class'
+          - 'excel!Excel.StyleCollection:interface'
         description: |-
 
 
@@ -600,41 +464,41 @@ items:
           }
           ```
   - uid: 'excel!Excel.Workbook#tables:member'
-    summary: Represents a collection of tables associated with the workbook. Read-only.
+    summary: Represents a collection of tables associated with the workbook.
     name: tables
     fullName: tables
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly tables: Excel.TableCollection;'
+      content: 'readonly tables: TableCollection;'
       return:
         type:
-          - 'excel!Excel.TableCollection:class'
+          - 'excel!Excel.TableCollection:interface'
   - uid: 'excel!Excel.Workbook#tableStyles:member'
-    summary: Represents a collection of TableStyles associated with the workbook. Read-only.
+    summary: Represents a collection of TableStyles associated with the workbook.
     name: tableStyles
     fullName: tableStyles
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly tableStyles: Excel.TableStyleCollection;'
+      content: 'readonly tableStyles: TableStyleCollection;'
       return:
         type:
-          - 'excel!Excel.TableStyleCollection:class'
+          - 'excel!Excel.TableStyleCollection:interface'
   - uid: 'excel!Excel.Workbook#timelineStyles:member'
-    summary: Represents a collection of TimelineStyles associated with the workbook. Read-only.
+    summary: Represents a collection of TimelineStyles associated with the workbook.
     name: timelineStyles
     fullName: timelineStyles
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly timelineStyles: Excel.TimelineStyleCollection;'
+      content: 'readonly timelineStyles: TimelineStyleCollection;'
       return:
         type:
-          - 'excel!Excel.TimelineStyleCollection:class'
+          - 'excel!Excel.TimelineStyleCollection:interface'
   - uid: 'excel!Excel.Workbook#usePrecisionAsDisplayed:member'
     summary: >-
       True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
@@ -650,99 +514,78 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.Workbook#worksheets:member'
-    summary: Represents a collection of worksheets associated with the workbook. Read-only.
+    summary: Represents a collection of worksheets associated with the workbook.
     name: worksheets
     fullName: worksheets
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly worksheets: Excel.WorksheetCollection;'
+      content: 'readonly worksheets: WorksheetCollection;'
       return:
         type:
-          - 'excel!Excel.WorksheetCollection:class'
+          - 'excel!Excel.WorksheetCollection:interface'
 references:
-  - uid: 'excel!Excel.Application:class'
+  - uid: 'excel!Excel.Application:interface'
     name: Application
     fullName: Excel.Application
-  - uid: 'excel!Excel.BindingCollection:class'
+  - uid: 'excel!Excel.BindingCollection:interface'
     name: BindingCollection
     fullName: Excel.BindingCollection
-  - uid: 'excel!Excel.CommentCollection:class'
+  - uid: 'excel!Excel.CommentCollection:interface'
     name: CommentCollection
     fullName: Excel.CommentCollection
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.CustomXmlPartCollection:class'
+  - uid: 'excel!Excel.CustomXmlPartCollection:interface'
     name: CustomXmlPartCollection
     fullName: Excel.CustomXmlPartCollection
-  - uid: 'excel!Excel.DataConnectionCollection:class'
-    name: DataConnectionCollection
-    fullName: Excel.DataConnectionCollection
-  - uid: 'excel!Excel.Functions:class'
-    name: Functions
-    fullName: Excel.Functions
-  - uid: 'excel!Excel.Range:class'
+  - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.Chart:class'
+  - uid: 'excel!Excel.Chart:interface'
     name: Chart
     fullName: Excel.Chart
-  - uid: 'excel!Excel.Slicer:class'
+  - uid: 'excel!Excel.Slicer:interface'
     name: Slicer
     fullName: Excel.Slicer
-  - uid: 'excel!Excel.Workbook#getIsActiveCollabSession~0:complex'
-    name: ClientResult<boolean>
-    fullName: Excel.ClientResult<boolean>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <boolean>
-        fullName: <boolean>
-  - uid: 'excel!Excel.RangeAreas:class'
+  - uid: 'excel!Excel.RangeAreas:interface'
     name: RangeAreas
     fullName: Excel.RangeAreas
-  - uid: 'excel!Excel.Workbook:class'
-    name: Workbook
-    fullName: Excel.Workbook
-  - uid: 'excel!Excel.NamedItemCollection:class'
+  - uid: 'excel!Excel.NamedItemCollection:interface'
     name: NamedItemCollection
     fullName: Excel.NamedItemCollection
-  - uid: 'excel!Excel.PivotTableCollection:class'
+  - uid: 'excel!Excel.PivotTableCollection:interface'
     name: PivotTableCollection
     fullName: Excel.PivotTableCollection
-  - uid: 'excel!Excel.PivotTableStyleCollection:class'
+  - uid: 'excel!Excel.PivotTableStyleCollection:interface'
     name: PivotTableStyleCollection
     fullName: Excel.PivotTableStyleCollection
-  - uid: 'excel!Excel.DocumentProperties:class'
+  - uid: 'excel!Excel.DocumentProperties:interface'
     name: DocumentProperties
     fullName: Excel.DocumentProperties
-  - uid: 'excel!Excel.WorkbookProtection:class'
+  - uid: 'excel!Excel.WorkbookProtection:interface'
     name: WorkbookProtection
     fullName: Excel.WorkbookProtection
-  - uid: 'excel!Excel.SettingCollection:class'
+  - uid: 'excel!Excel.SettingCollection:interface'
     name: SettingCollection
     fullName: Excel.SettingCollection
-  - uid: 'excel!Excel.SlicerCollection:class'
+  - uid: 'excel!Excel.SlicerCollection:interface'
     name: SlicerCollection
     fullName: Excel.SlicerCollection
-  - uid: 'excel!Excel.SlicerStyleCollection:class'
+  - uid: 'excel!Excel.SlicerStyleCollection:interface'
     name: SlicerStyleCollection
     fullName: Excel.SlicerStyleCollection
-  - uid: 'excel!Excel.StyleCollection:class'
+  - uid: 'excel!Excel.StyleCollection:interface'
     name: StyleCollection
     fullName: Excel.StyleCollection
-  - uid: 'excel!Excel.TableCollection:class'
+  - uid: 'excel!Excel.TableCollection:interface'
     name: TableCollection
     fullName: Excel.TableCollection
-  - uid: 'excel!Excel.TableStyleCollection:class'
+  - uid: 'excel!Excel.TableStyleCollection:interface'
     name: TableStyleCollection
     fullName: Excel.TableStyleCollection
-  - uid: 'excel!Excel.TimelineStyleCollection:class'
+  - uid: 'excel!Excel.TimelineStyleCollection:interface'
     name: TimelineStyleCollection
     fullName: Excel.TimelineStyleCollection
-  - uid: 'excel!Excel.WorksheetCollection:class'
+  - uid: 'excel!Excel.WorksheetCollection:interface'
     name: WorksheetCollection
     fullName: Excel.WorksheetCollection

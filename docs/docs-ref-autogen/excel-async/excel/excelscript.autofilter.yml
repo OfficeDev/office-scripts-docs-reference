@@ -1,6 +1,6 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.AutoFilter:class'
+  - uid: 'excel!Excel.AutoFilter:interface'
     summary: >-
       Represents the AutoFilter object. AutoFilter turns the values in Excel column into specific filters based on the
       cell contents.
@@ -8,19 +8,16 @@ items:
     fullName: Excel.AutoFilter
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.AutoFilter#apply:member(1)'
       - 'excel!Excel.AutoFilter#clearCriteria:member(1)'
-      - 'excel!Excel.AutoFilter#context:member'
       - 'excel!Excel.AutoFilter#criteria:member'
       - 'excel!Excel.AutoFilter#enabled:member'
-      - 'excel!Excel.AutoFilter#getRange:member(1)'
       - 'excel!Excel.AutoFilter#getRangeOrNullObject:member(1)'
       - 'excel!Excel.AutoFilter#isDataFiltered:member'
       - 'excel!Excel.AutoFilter#load:member(1)'
-      - 'excel!Excel.AutoFilter#load:member(2)'
       - 'excel!Excel.AutoFilter#reapply:member(1)'
       - 'excel!Excel.AutoFilter#remove:member(1)'
   - uid: 'excel!Excel.AutoFilter#apply:member(1)'
@@ -31,7 +28,12 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'apply(range: Range | string, columnIndex?: number, criteria?: Excel.FilterCriteria): void;'
+      content: |-
+        apply(
+                    range: Range | string,
+                    columnIndex?: number,
+                    criteria?: FilterCriteria
+                ): void;
       return:
         type:
           - void
@@ -76,34 +78,20 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel!Excel.AutoFilter#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.AutoFilter#criteria:member'
-    summary: An array that holds all the filter criteria in the autofiltered range. Read-Only.
+    summary: An array that holds all the filter criteria in the autofiltered range.
     name: criteria
     fullName: criteria
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly criteria: Excel.FilterCriteria[];'
+      content: 'readonly criteria: FilterCriteria[];'
       return:
         type:
           - 'excel!Excel.AutoFilter#criteria~0:complex'
   - uid: 'excel!Excel.AutoFilter#enabled:member'
-    summary: Indicates if the AutoFilter is enabled or not. Read-Only.
+    summary: Specifies if the AutoFilter is enabled.
     name: enabled
     fullName: enabled
     langs:
@@ -114,19 +102,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel!Excel.AutoFilter#getRange:member(1)'
-    summary: Returns the Range object that represents the range to which the AutoFilter applies.
-    name: getRange()
-    fullName: getRange()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getRange(): Excel.Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:class'
-        description: ''
   - uid: 'excel!Excel.AutoFilter#getRangeOrNullObject:member(1)'
     summary: >-
       Returns the Range object that represents the range to which the AutoFilter applies. If there is no Range object
@@ -137,13 +112,13 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getRangeOrNullObject(): Excel.Range;'
+      content: 'getRangeOrNullObject(): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.AutoFilter#isDataFiltered:member'
-    summary: Indicates if the AutoFilter has filter criteria. Read-Only.
+    summary: Specifies if the AutoFilter has filter criteria.
     name: isDataFiltered
     fullName: isDataFiltered
     langs:
@@ -164,46 +139,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.AutoFilter;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.AutoFilter:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.AutoFilter#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.AutoFilter;
-      return:
-        type:
-          - 'excel!Excel.AutoFilter:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.AutoFilter#reapply:member(1)'
     summary: Applies the specified Autofilter object currently on the range.
     name: reapply()
@@ -235,7 +180,7 @@ references:
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:
-      - uid: 'excel!Excel.Range:class'
+      - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
       - name: ' | string'
@@ -243,21 +188,15 @@ references:
   - uid: 'excel!Excel.FilterCriteria:interface'
     name: FilterCriteria
     fullName: Excel.FilterCriteria
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
   - uid: 'excel!Excel.AutoFilter#criteria~0:complex'
-    name: 'Excel.FilterCriteria[]'
+    name: 'FilterCriteria[]'
     fullName: 'Excel.FilterCriteria[]'
     spec.typeScript:
       - uid: 'excel!Excel.FilterCriteria:interface'
-        name: Excel.FilterCriteria
+        name: FilterCriteria
         fullName: Excel.FilterCriteria
       - name: '[]'
         fullName: '[]'
-  - uid: 'excel!Excel.Range:class'
+  - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.AutoFilter:class'
-    name: AutoFilter
-    fullName: Excel.AutoFilter

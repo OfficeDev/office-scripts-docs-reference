@@ -1,20 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
     summary: Represents a collection of RowColumnPivotHierarchy items associated with the PivotTable.
     name: Excel.RowColumnPivotHierarchyCollection
     fullName: Excel.RowColumnPivotHierarchyCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
-      - 'excel!Excel.RowColumnPivotHierarchyCollection#context:member'
-      - 'excel!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
-      - 'excel!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.RowColumnPivotHierarchyCollection#items:member'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#remove:member(1)'
   - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
@@ -27,61 +23,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(pivotHierarchy: Excel.PivotHierarchy): Excel.RowColumnPivotHierarchy;'
+      content: 'add(pivotHierarchy: PivotHierarchy): RowColumnPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.RowColumnPivotHierarchy:class'
+          - 'excel!Excel.RowColumnPivotHierarchy:interface'
         description: ''
       parameters:
         - id: pivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.PivotHierarchy:class'
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
-    summary: Gets the number of pivot hierarchies in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
-    summary: Gets a RowColumnPivotHierarchy by its name or id.
-    name: getItem(name)
-    fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(name: string): Excel.RowColumnPivotHierarchy;'
-      return:
-        type:
-          - 'excel!Excel.RowColumnPivotHierarchy:class'
-        description: ''
-      parameters:
-        - id: name
-          description: Name of the RowColumnPivotHierarchy to be retrieved.
-          type:
-            - string
+            - 'excel!Excel.PivotHierarchy:interface'
   - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)
@@ -90,28 +41,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(name: string): Excel.RowColumnPivotHierarchy;'
+      content: 'getItemOrNullObject(name: string): RowColumnPivotHierarchy;'
       return:
         type:
-          - 'excel!Excel.RowColumnPivotHierarchy:class'
+          - 'excel!Excel.RowColumnPivotHierarchy:interface'
         description: ''
       parameters:
         - id: name
           description: Name of the RowColumnPivotHierarchy to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.RowColumnPivotHierarchy[];'
-      return:
-        type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection#items~0:complex'
   - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -122,10 +61,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.RowColumnPivotHierarchyCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -140,7 +79,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'remove(rowColumnPivotHierarchy: Excel.RowColumnPivotHierarchy): void;'
+      content: 'remove(rowColumnPivotHierarchy: RowColumnPivotHierarchy): void;'
       return:
         type:
           - void
@@ -149,35 +88,11 @@ items:
         - id: rowColumnPivotHierarchy
           description: ''
           type:
-            - 'excel!Excel.RowColumnPivotHierarchy:class'
+            - 'excel!Excel.RowColumnPivotHierarchy:interface'
 references:
-  - uid: 'excel!Excel.RowColumnPivotHierarchy:class'
+  - uid: 'excel!Excel.RowColumnPivotHierarchy:interface'
     name: RowColumnPivotHierarchy
     fullName: Excel.RowColumnPivotHierarchy
-  - uid: 'excel!Excel.PivotHierarchy:class'
+  - uid: 'excel!Excel.PivotHierarchy:interface'
     name: PivotHierarchy
     fullName: Excel.PivotHierarchy
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#items~0:complex'
-    name: 'Excel.RowColumnPivotHierarchy[]'
-    fullName: 'Excel.RowColumnPivotHierarchy[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.RowColumnPivotHierarchy:class'
-        name: Excel.RowColumnPivotHierarchy
-        fullName: Excel.RowColumnPivotHierarchy
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:class'
-    name: RowColumnPivotHierarchyCollection
-    fullName: Excel.RowColumnPivotHierarchyCollection

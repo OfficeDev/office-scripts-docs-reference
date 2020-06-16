@@ -1,12 +1,15 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Worksheet:class'
-    summary: 'An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc.'
+  - uid: 'excel!Excel.Worksheet:interface'
+    summary: >-
+      An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc. To learn more about the worksheet
+      object model, read [Work with worksheets using the Excel JavaScript
+      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-worksheets)<!-- -->.
     name: Excel.Worksheet
     fullName: Excel.Worksheet
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.Worksheet#activate:member(1)'
@@ -14,28 +17,21 @@ items:
       - 'excel!Excel.Worksheet#calculate:member(1)'
       - 'excel!Excel.Worksheet#charts:member'
       - 'excel!Excel.Worksheet#comments:member'
-      - 'excel!Excel.Worksheet#context:member'
       - 'excel!Excel.Worksheet#copy:member(1)'
-      - 'excel!Excel.Worksheet#copy:member(2)'
       - 'excel!Excel.Worksheet#delete:member(1)'
       - 'excel!Excel.Worksheet#enableCalculation:member'
-      - 'excel!Excel.Worksheet#findAll:member(1)'
       - 'excel!Excel.Worksheet#findAllOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#freezePanes:member'
       - 'excel!Excel.Worksheet#getCell:member(1)'
-      - 'excel!Excel.Worksheet#getNext:member(1)'
       - 'excel!Excel.Worksheet#getNextOrNullObject:member(1)'
-      - 'excel!Excel.Worksheet#getPrevious:member(1)'
       - 'excel!Excel.Worksheet#getPreviousOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#getRange:member(1)'
       - 'excel!Excel.Worksheet#getRangeByIndexes:member(1)'
       - 'excel!Excel.Worksheet#getRanges:member(1)'
-      - 'excel!Excel.Worksheet#getUsedRange:member(1)'
       - 'excel!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#horizontalPageBreaks:member'
       - 'excel!Excel.Worksheet#id:member'
       - 'excel!Excel.Worksheet#load:member(1)'
-      - 'excel!Excel.Worksheet#load:member(2)'
       - 'excel!Excel.Worksheet#name:member'
       - 'excel!Excel.Worksheet#names:member'
       - 'excel!Excel.Worksheet#pageLayout:member'
@@ -43,7 +39,6 @@ items:
       - 'excel!Excel.Worksheet#position:member'
       - 'excel!Excel.Worksheet#protection:member'
       - 'excel!Excel.Worksheet#replaceAll:member(1)'
-      - 'excel!Excel.Worksheet#set:member(1)'
       - 'excel!Excel.Worksheet#shapes:member'
       - 'excel!Excel.Worksheet#showGridlines:member'
       - 'excel!Excel.Worksheet#showHeadings:member'
@@ -69,17 +64,17 @@ items:
           - void
         description: ''
   - uid: 'excel!Excel.Worksheet#autoFilter:member'
-    summary: Represents the AutoFilter object of the worksheet. Read-Only.
+    summary: Represents the AutoFilter object of the worksheet.
     name: autoFilter
     fullName: autoFilter
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly autoFilter: Excel.AutoFilter;'
+      content: 'readonly autoFilter: AutoFilter;'
       return:
         type:
-          - 'excel!Excel.AutoFilter:class'
+          - 'excel!Excel.AutoFilter:interface'
         description: |-
 
 
@@ -114,43 +109,29 @@ items:
           type:
             - boolean
   - uid: 'excel!Excel.Worksheet#charts:member'
-    summary: Returns a collection of charts that are part of the worksheet. Read-only.
+    summary: Returns a collection of charts that are part of the worksheet.
     name: charts
     fullName: charts
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly charts: Excel.ChartCollection;'
+      content: 'readonly charts: ChartCollection;'
       return:
         type:
-          - 'excel!Excel.ChartCollection:class'
+          - 'excel!Excel.ChartCollection:interface'
   - uid: 'excel!Excel.Worksheet#comments:member'
-    summary: Returns a collection of all the Comments objects on the worksheet. Read-only.
+    summary: Returns a collection of all the Comments objects on the worksheet.
     name: comments
     fullName: comments
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly comments: Excel.CommentCollection;'
+      content: 'readonly comments: CommentCollection;'
       return:
         type:
-          - 'excel!Excel.CommentCollection:class'
-  - uid: 'excel!Excel.Worksheet#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
+          - 'excel!Excel.CommentCollection:interface'
   - uid: 'excel!Excel.Worksheet#copy:member(1)'
     summary: Copies a worksheet and places it at the specified position.
     name: 'copy(positionType, relativeTo)'
@@ -159,12 +140,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'copy(positionType?: Excel.WorksheetPositionType, relativeTo?: Excel.Worksheet): Excel.Worksheet;'
+      content: |-
+        copy(
+                    positionType?: WorksheetPositionType,
+                    relativeTo?: Worksheet
+                ): Worksheet;
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: |-
-          The newly created worksheet.
+
 
           #### Examples
 
@@ -194,35 +179,7 @@ items:
             The existing worksheet which determines the newly created worksheet's position. This is only needed if
             `positionType` is "Before" or "After".
           type:
-            - 'excel!Excel.Worksheet:class'
-  - uid: 'excel!Excel.Worksheet#copy:member(2)'
-    summary: Copies a worksheet and places it at the specified position.
-    name: 'copy(positionTypeStringString, relativeTo)'
-    fullName: 'copy(positionTypeStringString, relativeTo)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        copy(positionTypeStringString?: "None" | "Before" | "After" | "Beginning" | "End", relativeTo?:
-        Excel.Worksheet): Excel.Worksheet;
-      return:
-        type:
-          - 'excel!Excel.Worksheet:class'
-        description: The newly created worksheet.
-      parameters:
-        - id: positionTypeStringString
-          description: >-
-            The location in the workbook to place the newly created worksheet. The default value is "None", which
-            inserts the worksheet at the beginning of the worksheet.
-          type:
-            - '"None" | "Before" | "After" | "Beginning" | "End"'
-        - id: relativeTo
-          description: >-
-            The existing worksheet which determines the newly created worksheet's position. This is only needed if
-            `positionType` is "Before" or "After".
-          type:
-            - 'excel!Excel.Worksheet:class'
+            - 'excel!Excel.Worksheet:interface'
   - uid: 'excel!Excel.Worksheet#delete:member(1)'
     summary: >-
       Deletes the worksheet from the workbook. Note that if the worksheet's visibility is set to "VeryHidden", the
@@ -241,7 +198,7 @@ items:
         description: ''
   - uid: 'excel!Excel.Worksheet#enableCalculation:member'
     summary: >-
-      Gets or sets the enableCalculation property of the worksheet. True if Excel recalculates the worksheet when
+      Determines if Excel should recalculate the worksheet when necessary. True if Excel recalculates the worksheet when
       necessary. False if Excel doesn't recalculate the sheet.
     name: enableCalculation
     fullName: enableCalculation
@@ -253,34 +210,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel!Excel.Worksheet#findAll:member(1)'
-    summary: >-
-      Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
-      comprising one or more rectangular ranges.
-    name: 'findAll(text, criteria)'
-    fullName: 'findAll(text, criteria)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'findAll(text: string, criteria: Excel.WorksheetSearchCriteria): Excel.RangeAreas;'
-      return:
-        type:
-          - 'excel!Excel.RangeAreas:class'
-        description: >-
-          A RangeArea object, comprising one or more rectangular ranges, that matches the search criteria. If no cells
-          meet this criteria, an ItemNotFound error will be thrown.
-      parameters:
-        - id: text
-          description: The string to find.
-          type:
-            - string
-        - id: criteria
-          description: >-
-            Additional search criteria, including whether the search needs to match the entire cell or be case
-            sensitive.
-          type:
-            - 'excel!Excel.WorksheetSearchCriteria:interface'
   - uid: 'excel!Excel.Worksheet#findAllOrNullObject:member(1)'
     summary: >-
       Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
@@ -291,20 +220,20 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'findAllOrNullObject(text: string, criteria: Excel.WorksheetSearchCriteria): Excel.RangeAreas;'
+      content: |-
+        findAllOrNullObject(
+                    text: string,
+                    criteria: WorksheetSearchCriteria
+                ): RangeAreas;
       return:
         type:
-          - 'excel!Excel.RangeAreas:class'
-        description: >-
-          A RangeArea object, comprising one or more rectangular ranges, that matches the search criteria. If there are
-          no matches, this function will return a null object.
+          - 'excel!Excel.RangeAreas:interface'
+        description: |-
 
 
           #### Examples
 
-
           ```typescript
-
           async function main(context: Excel.RequestContext) {
               let sheet = context.workbook.worksheets.getItem("Sample");
               let foundRanges = sheet.findAllOrNullObject("Complete", {
@@ -320,7 +249,6 @@ items:
                   foundRanges.format.fill.color = "green"
               }
           }
-
           ```
       parameters:
         - id: text
@@ -334,17 +262,17 @@ items:
           type:
             - 'excel!Excel.WorksheetSearchCriteria:interface'
   - uid: 'excel!Excel.Worksheet#freezePanes:member'
-    summary: Gets an object that can be used to manipulate frozen panes on the worksheet. Read-only.
+    summary: Gets an object that can be used to manipulate frozen panes on the worksheet.
     name: freezePanes
     fullName: freezePanes
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly freezePanes: Excel.WorksheetFreezePanes;'
+      content: 'readonly freezePanes: WorksheetFreezePanes;'
       return:
         type:
-          - 'excel!Excel.WorksheetFreezePanes:class'
+          - 'excel!Excel.WorksheetFreezePanes:interface'
   - uid: 'excel!Excel.Worksheet#getCell:member(1)'
     summary: >-
       Gets the range object containing the single cell based on row and column numbers. The cell can be outside the
@@ -355,10 +283,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCell(row: number, column: number): Excel.Range;'
+      content: 'getCell(row: number, column: number): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
       parameters:
         - id: row
@@ -369,56 +297,6 @@ items:
           description: the column number of the cell to be retrieved. Zero-indexed.
           type:
             - number
-  - uid: 'excel!Excel.Worksheet#getNext:member(1)'
-    summary: >-
-      Gets the worksheet that follows this one. If there are no worksheets following this one, this method will throw an
-      error.
-    name: getNext(visibleOnly)
-    fullName: getNext(visibleOnly)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getNext(visibleOnly?: boolean): Excel.Worksheet;'
-      return:
-        type:
-          - 'excel!Excel.Worksheet:class'
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheets = context.workbook.worksheets;
-
-              // We don't want to include the default worksheet that was created
-              // when the workbook was created, so our "firstSheet" will be the one
-              // after the literal first. Note chaining of navigation methods.
-              let firstSheet = sheets.getFirst().getNext();
-              let lastSheet = sheets.getLast();
-              let firstTaxRateRange = firstSheet.getRange("B2");
-              let lastTaxRateRange = lastSheet.getRange("B2");
-
-              firstSheet.load("name");
-              lastSheet.load("name");
-              firstTaxRateRange.load("text");
-              lastTaxRateRange.load("text");
-
-              await context.sync();
-
-              let firstYear = firstSheet.name.substr(5, 4);
-              let lastYear = lastSheet.name.substr(5, 4);
-              console.log(`Tax Rate change from ${firstYear} to ${lastYear}`, `Tax rate for ${firstYear}: ${firstTaxRateRange.text[0][0]}\nTax rate for ${lastYear}: ${lastTaxRateRange.text[0][0]}`)
-
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: visibleOnly
-          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
-          type:
-            - boolean
   - uid: 'excel!Excel.Worksheet#getNextOrNullObject:member(1)'
     summary: >-
       Gets the worksheet that follows this one. If there are no worksheets following this one, this method will return a
@@ -429,55 +307,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getNextOrNullObject(visibleOnly?: boolean): Excel.Worksheet;'
+      content: 'getNextOrNullObject(visibleOnly?: boolean): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: ''
-      parameters:
-        - id: visibleOnly
-          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
-          type:
-            - boolean
-  - uid: 'excel!Excel.Worksheet#getPrevious:member(1)'
-    summary: 'Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.'
-    name: getPrevious(visibleOnly)
-    fullName: getPrevious(visibleOnly)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getPrevious(visibleOnly?: boolean): Excel.Worksheet;'
-      return:
-        type:
-          - 'excel!Excel.Worksheet:class'
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheets = context.workbook.worksheets;
-              let currentSheet = sheets.getActiveWorksheet();
-              let previousYearSheet = currentSheet.getPrevious();
-              let currentTaxDueRange = currentSheet.getRange("C2");
-              let previousTaxDueRange = previousYearSheet.getRange("C2");
-
-              currentSheet.load("name");
-              previousYearSheet.load("name");
-              currentTaxDueRange.load("text");
-              previousTaxDueRange.load("text");
-
-              await context.sync();
-
-              let currentYear = currentSheet.name.substr(5, 4);
-              let previousYear = previousYearSheet.name.substr(5, 4);
-              console.log("Two Year Tax Due Comparison", `Tax due for ${currentYear} was ${currentTaxDueRange.text[0][0]}\nTax due for ${previousYear} was ${previousTaxDueRange.text[0][0]}`)
-
-              await context.sync();
-          }
-          ```
       parameters:
         - id: visibleOnly
           description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
@@ -493,10 +327,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getPreviousOrNullObject(visibleOnly?: boolean): Excel.Worksheet;'
+      content: 'getPreviousOrNullObject(visibleOnly?: boolean): Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
         description: ''
       parameters:
         - id: visibleOnly
@@ -511,10 +345,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getRange(address?: string): Excel.Range;'
+      content: 'getRange(address?: string): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
       parameters:
         - id: address
@@ -533,10 +367,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getRangeByIndexes(startRow: number, startColumn: number, rowCount: number, columnCount: number): Excel.Range;'
+      content: |-
+        getRangeByIndexes(
+                    startRow: number,
+                    startColumn: number,
+                    rowCount: number,
+                    columnCount: number
+                ): Range;
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
       parameters:
         - id: startRow
@@ -565,10 +405,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getRanges(address?: string): Excel.RangeAreas;'
+      content: 'getRanges(address?: string): RangeAreas;'
       return:
         type:
-          - 'excel!Excel.RangeAreas:class'
+          - 'excel!Excel.RangeAreas:interface'
         description: |-
 
 
@@ -591,26 +431,6 @@ items:
             "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
           type:
             - string
-  - uid: 'excel!Excel.Worksheet#getUsedRange:member(1)'
-    summary: >-
-      The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
-      If the entire worksheet is blank, this function will return the top left cell (i.e. it will *not* throw an error).
-    name: getUsedRange(valuesOnly)
-    fullName: getUsedRange(valuesOnly)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getUsedRange(valuesOnly?: boolean): Excel.Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:class'
-        description: ''
-      parameters:
-        - id: valuesOnly
-          description: 'Optional. If true, considers only cells with values as used cells (ignoring formatting).'
-          type:
-            - boolean
   - uid: 'excel!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
     summary: >-
       The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
@@ -621,10 +441,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getUsedRangeOrNullObject(valuesOnly?: boolean): Excel.Range;'
+      content: 'getUsedRangeOrNullObject(valuesOnly?: boolean): Range;'
       return:
         type:
-          - 'excel!Excel.Range:class'
+          - 'excel!Excel.Range:interface'
         description: ''
       parameters:
         - id: valuesOnly
@@ -639,14 +459,14 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly horizontalPageBreaks: Excel.PageBreakCollection;'
+      content: 'readonly horizontalPageBreaks: PageBreakCollection;'
       return:
         type:
-          - 'excel!Excel.PageBreakCollection:class'
+          - 'excel!Excel.PageBreakCollection:interface'
   - uid: 'excel!Excel.Worksheet#id:member'
     summary: >-
       Returns a value that uniquely identifies the worksheet in a given workbook. The value of the identifier remains
-      the same even when the worksheet is renamed or moved. Read-only.
+      the same even when the worksheet is renamed or moved.
     name: id
     fullName: id
     langs:
@@ -667,46 +487,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Worksheet;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Worksheet#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Worksheet;
-      return:
-        type:
-          - 'excel!Excel.Worksheet:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.Worksheet#name:member'
     summary: The display name of the worksheet.
     name: name
@@ -720,17 +510,17 @@ items:
         type:
           - string
   - uid: 'excel!Excel.Worksheet#names:member'
-    summary: Collection of names scoped to the current worksheet. Read-only.
+    summary: Collection of names scoped to the current worksheet.
     name: names
     fullName: names
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly names: Excel.NamedItemCollection;'
+      content: 'readonly names: NamedItemCollection;'
       return:
         type:
-          - 'excel!Excel.NamedItemCollection:class'
+          - 'excel!Excel.NamedItemCollection:interface'
   - uid: 'excel!Excel.Worksheet#pageLayout:member'
     summary: Gets the PageLayout object of the worksheet.
     name: pageLayout
@@ -739,22 +529,22 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly pageLayout: Excel.PageLayout;'
+      content: 'readonly pageLayout: PageLayout;'
       return:
         type:
-          - 'excel!Excel.PageLayout:class'
+          - 'excel!Excel.PageLayout:interface'
   - uid: 'excel!Excel.Worksheet#pivotTables:member'
-    summary: Collection of PivotTables that are part of the worksheet. Read-only.
+    summary: Collection of PivotTables that are part of the worksheet.
     name: pivotTables
     fullName: pivotTables
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly pivotTables: Excel.PivotTableCollection;'
+      content: 'readonly pivotTables: PivotTableCollection;'
       return:
         type:
-          - 'excel!Excel.PivotTableCollection:class'
+          - 'excel!Excel.PivotTableCollection:interface'
   - uid: 'excel!Excel.Worksheet#position:member'
     summary: The zero-based position of the worksheet within the workbook.
     name: position
@@ -768,17 +558,17 @@ items:
         type:
           - number
   - uid: 'excel!Excel.Worksheet#protection:member'
-    summary: Returns sheet protection object for a worksheet. Read-only.
+    summary: Returns sheet protection object for a worksheet.
     name: protection
     fullName: protection
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly protection: Excel.WorksheetProtection;'
+      content: 'readonly protection: WorksheetProtection;'
       return:
         type:
-          - 'excel!Excel.WorksheetProtection:class'
+          - 'excel!Excel.WorksheetProtection:interface'
   - uid: 'excel!Excel.Worksheet#replaceAll:member(1)'
     summary: Finds and replaces the given string based on the criteria specified within the current worksheet.
     name: 'replaceAll(text, replacement, criteria)'
@@ -787,11 +577,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'replaceAll(text: string, replacement: string, criteria: Excel.ReplaceCriteria): ClientResult<number>;'
+      content: |-
+        replaceAll(
+                    text: string,
+                    replacement: string,
+                    criteria: ReplaceCriteria
+                ): number;
       return:
         type:
-          - 'excel!Excel.Worksheet#replaceAll~0:complex'
-        description: The number of replacements performed.
+          - number
+        description: ''
       parameters:
         - id: text
           description: String to find.
@@ -805,38 +600,20 @@ items:
           description: Additional Replace Criteria.
           type:
             - 'excel!Excel.ReplaceCriteria:interface'
-  - uid: 'excel!Excel.Worksheet#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.Worksheet): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.Worksheet:class'
   - uid: 'excel!Excel.Worksheet#shapes:member'
-    summary: Returns the collection of all the Shape objects on the worksheet. Read-only.
+    summary: Returns the collection of all the Shape objects on the worksheet.
     name: shapes
     fullName: shapes
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly shapes: Excel.ShapeCollection;'
+      content: 'readonly shapes: ShapeCollection;'
       return:
         type:
-          - 'excel!Excel.ShapeCollection:class'
+          - 'excel!Excel.ShapeCollection:interface'
   - uid: 'excel!Excel.Worksheet#showGridlines:member'
-    summary: Gets or sets the worksheet's gridlines flag. This flag determines whether gridlines are visible to the user.
+    summary: Specifies if gridlines are visible to the user.
     name: showGridlines
     fullName: showGridlines
     langs:
@@ -861,7 +638,7 @@ items:
           }
           ```
   - uid: 'excel!Excel.Worksheet#showHeadings:member'
-    summary: Gets or sets the worksheet's headings flag. This flag determines whether headings are visible to the user.
+    summary: Specifies if headings are visible to the user.
     name: showHeadings
     fullName: showHeadings
     langs:
@@ -921,17 +698,17 @@ items:
           type:
             - number
   - uid: 'excel!Excel.Worksheet#slicers:member'
-    summary: Returns a collection of slicers that are part of the worksheet. Read-only.
+    summary: Returns a collection of slicers that are part of the worksheet.
     name: slicers
     fullName: slicers
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly slicers: Excel.SlicerCollection;'
+      content: 'readonly slicers: SlicerCollection;'
       return:
         type:
-          - 'excel!Excel.SlicerCollection:class'
+          - 'excel!Excel.SlicerCollection:interface'
         description: |-
 
 
@@ -949,7 +726,7 @@ items:
           }
           ```
   - uid: 'excel!Excel.Worksheet#standardHeight:member'
-    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points. Read-only.'
+    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points.'
     name: standardHeight
     fullName: standardHeight
     langs:
@@ -962,9 +739,9 @@ items:
           - number
   - uid: 'excel!Excel.Worksheet#standardWidth:member'
     summary: >-
-      Returns or sets the standard (default) width of all the columns in the worksheet. One unit of column width is
-      equal to the width of one character in the Normal style. For proportional fonts, the width of the character 0
-      (zero) is used.
+      Specifies the standard (default) width of all the columns in the worksheet. One unit of column width is equal to
+      the width of one character in the Normal style. For proportional fonts, the width of the character 0 (zero) is
+      used.
     name: standardWidth
     fullName: standardWidth
     langs:
@@ -977,10 +754,10 @@ items:
           - number
   - uid: 'excel!Excel.Worksheet#tabColor:member'
     summary: >-
-      Gets or sets the worksheet tab color. When retrieving the tab color, if the worksheet is invisible, the value will
-      be null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
-      Otherwise, the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string
-      to set an "auto" color, or a real color otherwise.
+      The tab color of the worksheet. When retrieving the tab color, if the worksheet is invisible, the value will be
+      null. If the worksheet is visible but the tab color is set to auto, an empty string will be returned. Otherwise,
+      the property will be set to a color, in the form "\#123456" When setting the color, use an empty-string to set an
+      "auto" color, or a real color otherwise.
     name: tabColor
     fullName: tabColor
     langs:
@@ -1005,17 +782,17 @@ items:
           }
           ```
   - uid: 'excel!Excel.Worksheet#tables:member'
-    summary: Collection of tables that are part of the worksheet. Read-only.
+    summary: Collection of tables that are part of the worksheet.
     name: tables
     fullName: tables
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly tables: Excel.TableCollection;'
+      content: 'readonly tables: TableCollection;'
       return:
         type:
-          - 'excel!Excel.TableCollection:class'
+          - 'excel!Excel.TableCollection:interface'
   - uid: 'excel!Excel.Worksheet#verticalPageBreaks:member'
     summary: Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
     name: verticalPageBreaks
@@ -1024,10 +801,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly verticalPageBreaks: Excel.PageBreakCollection;'
+      content: 'readonly verticalPageBreaks: PageBreakCollection;'
       return:
         type:
-          - 'excel!Excel.PageBreakCollection:class'
+          - 'excel!Excel.PageBreakCollection:interface'
   - uid: 'excel!Excel.Worksheet#visibility:member'
     summary: The Visibility of the worksheet.
     name: visibility
@@ -1036,83 +813,65 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'visibility: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden";'
+      content: 'visibility: SheetVisibility;'
       return:
         type:
-          - 'excel!Excel.Worksheet#visibility~0:complex'
+          - 'excel!Excel.SheetVisibility:enum'
 references:
-  - uid: 'excel!Excel.AutoFilter:class'
+  - uid: 'excel!Excel.AutoFilter:interface'
     name: AutoFilter
     fullName: Excel.AutoFilter
-  - uid: 'excel!Excel.ChartCollection:class'
+  - uid: 'excel!Excel.ChartCollection:interface'
     name: ChartCollection
     fullName: Excel.ChartCollection
-  - uid: 'excel!Excel.CommentCollection:class'
+  - uid: 'excel!Excel.CommentCollection:interface'
     name: CommentCollection
     fullName: Excel.CommentCollection
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.Worksheet:class'
+  - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet
   - uid: 'excel!Excel.WorksheetPositionType:enum'
     name: WorksheetPositionType
     fullName: Excel.WorksheetPositionType
-  - uid: 'excel!Excel.RangeAreas:class'
+  - uid: 'excel!Excel.RangeAreas:interface'
     name: RangeAreas
     fullName: Excel.RangeAreas
   - uid: 'excel!Excel.WorksheetSearchCriteria:interface'
     name: WorksheetSearchCriteria
     fullName: Excel.WorksheetSearchCriteria
-  - uid: 'excel!Excel.WorksheetFreezePanes:class'
+  - uid: 'excel!Excel.WorksheetFreezePanes:interface'
     name: WorksheetFreezePanes
     fullName: Excel.WorksheetFreezePanes
-  - uid: 'excel!Excel.Range:class'
+  - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.PageBreakCollection:class'
+  - uid: 'excel!Excel.PageBreakCollection:interface'
     name: PageBreakCollection
     fullName: Excel.PageBreakCollection
-  - uid: 'excel!Excel.NamedItemCollection:class'
+  - uid: 'excel!Excel.NamedItemCollection:interface'
     name: NamedItemCollection
     fullName: Excel.NamedItemCollection
-  - uid: 'excel!Excel.PageLayout:class'
+  - uid: 'excel!Excel.PageLayout:interface'
     name: PageLayout
     fullName: Excel.PageLayout
-  - uid: 'excel!Excel.PivotTableCollection:class'
+  - uid: 'excel!Excel.PivotTableCollection:interface'
     name: PivotTableCollection
     fullName: Excel.PivotTableCollection
-  - uid: 'excel!Excel.WorksheetProtection:class'
+  - uid: 'excel!Excel.WorksheetProtection:interface'
     name: WorksheetProtection
     fullName: Excel.WorksheetProtection
-  - uid: 'excel!Excel.Worksheet#replaceAll~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
   - uid: 'excel!Excel.ReplaceCriteria:interface'
     name: ReplaceCriteria
     fullName: Excel.ReplaceCriteria
-  - uid: 'excel!Excel.ShapeCollection:class'
+  - uid: 'excel!Excel.ShapeCollection:interface'
     name: ShapeCollection
     fullName: Excel.ShapeCollection
-  - uid: 'excel!Excel.SlicerCollection:class'
+  - uid: 'excel!Excel.SlicerCollection:interface'
     name: SlicerCollection
     fullName: Excel.SlicerCollection
-  - uid: 'excel!Excel.TableCollection:class'
+  - uid: 'excel!Excel.TableCollection:interface'
     name: TableCollection
     fullName: Excel.TableCollection
-  - uid: 'excel!Excel.Worksheet#visibility~0:complex'
-    name: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden"
-    fullName: Excel.SheetVisibility | "Visible" | "Hidden" | "VeryHidden"
-    spec.typeScript:
-      - uid: 'excel!Excel.SheetVisibility:enum'
-        name: Excel.SheetVisibility
-        fullName: Excel.SheetVisibility
-      - name: ' | "Visible" | "Hidden" | "VeryHidden"'
-        fullName: ' | "Visible" | "Hidden" | "VeryHidden"'
+  - uid: 'excel!Excel.SheetVisibility:enum'
+    name: SheetVisibility
+    fullName: Excel.SheetVisibility

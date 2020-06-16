@@ -1,32 +1,29 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.DocumentProperties:class'
+  - uid: 'excel!Excel.DocumentProperties:interface'
     summary: Represents workbook properties.
     name: Excel.DocumentProperties
     fullName: Excel.DocumentProperties
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.DocumentProperties#author:member'
       - 'excel!Excel.DocumentProperties#category:member'
       - 'excel!Excel.DocumentProperties#comments:member'
       - 'excel!Excel.DocumentProperties#company:member'
-      - 'excel!Excel.DocumentProperties#context:member'
       - 'excel!Excel.DocumentProperties#creationDate:member'
       - 'excel!Excel.DocumentProperties#custom:member'
       - 'excel!Excel.DocumentProperties#keywords:member'
       - 'excel!Excel.DocumentProperties#lastAuthor:member'
       - 'excel!Excel.DocumentProperties#load:member(1)'
-      - 'excel!Excel.DocumentProperties#load:member(2)'
       - 'excel!Excel.DocumentProperties#manager:member'
       - 'excel!Excel.DocumentProperties#revisionNumber:member'
-      - 'excel!Excel.DocumentProperties#set:member(1)'
       - 'excel!Excel.DocumentProperties#subject:member'
       - 'excel!Excel.DocumentProperties#title:member'
   - uid: 'excel!Excel.DocumentProperties#author:member'
-    summary: Gets or sets the author of the workbook.
+    summary: The author of the workbook.
     name: author
     fullName: author
     langs:
@@ -38,7 +35,7 @@ items:
         type:
           - string
   - uid: 'excel!Excel.DocumentProperties#category:member'
-    summary: Gets or sets the category of the workbook.
+    summary: The category of the workbook.
     name: category
     fullName: category
     langs:
@@ -50,7 +47,7 @@ items:
         type:
           - string
   - uid: 'excel!Excel.DocumentProperties#comments:member'
-    summary: Gets or sets the comments of the workbook.
+    summary: The comments of the workbook.
     name: comments
     fullName: comments
     langs:
@@ -62,7 +59,7 @@ items:
         type:
           - string
   - uid: 'excel!Excel.DocumentProperties#company:member'
-    summary: Gets or sets the company of the workbook.
+    summary: The company of the workbook.
     name: company
     fullName: company
     langs:
@@ -73,20 +70,6 @@ items:
       return:
         type:
           - string
-  - uid: 'excel!Excel.DocumentProperties#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.DocumentProperties#creationDate:member'
     summary: Gets the creation date of the workbook. Read only.
     name: creationDate
@@ -107,12 +90,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly custom: Excel.CustomPropertyCollection;'
+      content: 'readonly custom: CustomPropertyCollection;'
       return:
         type:
-          - 'excel!Excel.CustomPropertyCollection:class'
+          - 'excel!Excel.CustomPropertyCollection:interface'
   - uid: 'excel!Excel.DocumentProperties#keywords:member'
-    summary: Gets or sets the keywords of the workbook.
+    summary: The keywords of the workbook.
     name: keywords
     fullName: keywords
     langs:
@@ -145,48 +128,18 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.DocumentProperties;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.DocumentProperties:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.DocumentProperties#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.DocumentProperties;
-      return:
-        type:
-          - 'excel!Excel.DocumentProperties:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.DocumentProperties#manager:member'
-    summary: Gets or sets the manager of the workbook.
+    summary: The manager of the workbook.
     name: manager
     fullName: manager
     langs:
@@ -209,26 +162,8 @@ items:
       return:
         type:
           - number
-  - uid: 'excel!Excel.DocumentProperties#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.DocumentProperties): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.DocumentProperties:class'
   - uid: 'excel!Excel.DocumentProperties#subject:member'
-    summary: Gets or sets the subject of the workbook.
+    summary: The subject of the workbook.
     name: subject
     fullName: subject
     langs:
@@ -240,7 +175,7 @@ items:
         type:
           - string
   - uid: 'excel!Excel.DocumentProperties#title:member'
-    summary: Gets or sets the title of the workbook.
+    summary: The title of the workbook.
     name: title
     fullName: title
     langs:
@@ -252,14 +187,8 @@ items:
         type:
           - string
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
   - uid: '!Date:interface'
     name: Date
-  - uid: 'excel!Excel.CustomPropertyCollection:class'
+  - uid: 'excel!Excel.CustomPropertyCollection:interface'
     name: CustomPropertyCollection
     fullName: Excel.CustomPropertyCollection
-  - uid: 'excel!Excel.DocumentProperties:class'
-    name: DocumentProperties
-    fullName: Excel.DocumentProperties

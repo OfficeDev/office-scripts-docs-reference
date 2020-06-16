@@ -1,6 +1,6 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Setting:class'
+  - uid: 'excel!Excel.Setting:interface'
     summary: >-
       Setting represents a key-value pair of a setting persisted to the document (per file per add-in). These custom
       key-value pair can be used to store state or lifecycle information needed by the content or task-pane add-in. Note
@@ -10,30 +10,13 @@ items:
     fullName: Excel.Setting
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.Setting#context:member'
       - 'excel!Excel.Setting#delete:member(1)'
       - 'excel!Excel.Setting#key:member'
       - 'excel!Excel.Setting#load:member(1)'
-      - 'excel!Excel.Setting#load:member(2)'
-      - 'excel!Excel.Setting#set:member(1)'
       - 'excel!Excel.Setting#value:member'
-  - uid: 'excel!Excel.Setting#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.Setting#delete:member(1)'
     summary: Deletes the setting.
     name: delete()
@@ -70,7 +53,7 @@ items:
           }
           ```
   - uid: 'excel!Excel.Setting#key:member'
-    summary: Returns the key that represents the id of the Setting. Read-only.
+    summary: The key that represents the id of the Setting.
     name: key
     fullName: key
     langs:
@@ -91,64 +74,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Setting;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Setting:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Setting#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Setting;
-      return:
-        type:
-          - 'excel!Excel.Setting:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.Setting#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.Setting): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.Setting:class'
   - uid: 'excel!Excel.Setting#value:member'
     summary: Represents the value stored for this setting.
     name: value
@@ -161,10 +96,3 @@ items:
       return:
         type:
           - any
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.Setting:class'
-    name: Setting
-    fullName: Excel.Setting

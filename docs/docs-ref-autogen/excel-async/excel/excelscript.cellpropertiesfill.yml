@@ -115,13 +115,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: >-
-        pattern?: Excel.FillPattern | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" |
-        "Down" | "Up" | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" |
-        "Grid" | "CrissCross" | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient";
+      content: 'pattern?: FillPattern;'
       return:
         type:
-          - 'excel!Excel.CellPropertiesFill#pattern~0:complex'
+          - 'excel!Excel.FillPattern:enum'
   - uid: 'excel!Excel.CellPropertiesFill#patternColor:member'
     summary: Represents the `format.fill.patternColor` property.
     name: patternColor
@@ -159,18 +156,6 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.CellPropertiesFill#pattern~0:complex'
-    name: >-
-      Excel.FillPattern | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up"
-      | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross"
-      | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"
-    fullName: >-
-      Excel.FillPattern | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up"
-      | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross"
-      | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"
-    spec.typeScript:
-      - uid: 'excel!Excel.FillPattern:enum'
-        name: Excel.FillPattern
-        fullName: Excel.FillPattern
-      - name: ' | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up" | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross" | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"'
-        fullName: ' | "None" | "Solid" | "Gray50" | "Gray75" | "Gray25" | "Horizontal" | "Vertical" | "Down" | "Up" | "Checker" | "SemiGray75" | "LightHorizontal" | "LightVertical" | "LightDown" | "LightUp" | "Grid" | "CrissCross" | "Gray16" | "Gray8" | "LinearGradient" | "RectangularGradient"'
+  - uid: 'excel!Excel.FillPattern:enum'
+    name: FillPattern
+    fullName: Excel.FillPattern

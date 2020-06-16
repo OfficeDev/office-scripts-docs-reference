@@ -1,16 +1,17 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.PivotTable:class'
-    summary: Represents an Excel PivotTable.
+  - uid: 'excel!Excel.PivotTable:interface'
+    summary: >-
+      Represents an Excel PivotTable. To learn more about the PivotTable object model, read [Work with PivotTables using
+      the Excel JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-pivottables)<!-- -->.
     name: Excel.PivotTable
     fullName: Excel.PivotTable
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.PivotTable#columnHierarchies:member'
-      - 'excel!Excel.PivotTable#context:member'
       - 'excel!Excel.PivotTable#dataHierarchies:member'
       - 'excel!Excel.PivotTable#delete:member(1)'
       - 'excel!Excel.PivotTable#enableDataValueEditing:member'
@@ -19,11 +20,9 @@ items:
       - 'excel!Excel.PivotTable#id:member'
       - 'excel!Excel.PivotTable#layout:member'
       - 'excel!Excel.PivotTable#load:member(1)'
-      - 'excel!Excel.PivotTable#load:member(2)'
       - 'excel!Excel.PivotTable#name:member'
       - 'excel!Excel.PivotTable#refresh:member(1)'
       - 'excel!Excel.PivotTable#rowHierarchies:member'
-      - 'excel!Excel.PivotTable#set:member(1)'
       - 'excel!Excel.PivotTable#useCustomSortLists:member'
       - 'excel!Excel.PivotTable#worksheet:member'
   - uid: 'excel!Excel.PivotTable#columnHierarchies:member'
@@ -34,10 +33,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly columnHierarchies: Excel.RowColumnPivotHierarchyCollection;'
+      content: 'readonly columnHierarchies: RowColumnPivotHierarchyCollection;'
       return:
         type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection:class'
+          - 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
         description: |-
 
 
@@ -62,20 +61,6 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.PivotTable#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.PivotTable#dataHierarchies:member'
     summary: The Data Pivot Hierarchies of the PivotTable.
     name: dataHierarchies
@@ -84,10 +69,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly dataHierarchies: Excel.DataPivotHierarchyCollection;'
+      content: 'readonly dataHierarchies: DataPivotHierarchyCollection;'
       return:
         type:
-          - 'excel!Excel.DataPivotHierarchyCollection:class'
+          - 'excel!Excel.DataPivotHierarchyCollection:interface'
         description: |-
 
 
@@ -127,7 +112,7 @@ items:
           }
           ```
   - uid: 'excel!Excel.PivotTable#enableDataValueEditing:member'
-    summary: Specifies whether the PivotTable allows values in the data body to be edited by the user.
+    summary: Specifies if the PivotTable allows values in the data body to be edited by the user.
     name: enableDataValueEditing
     fullName: enableDataValueEditing
     langs:
@@ -146,10 +131,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly filterHierarchies: Excel.FilterPivotHierarchyCollection;'
+      content: 'readonly filterHierarchies: FilterPivotHierarchyCollection;'
       return:
         type:
-          - 'excel!Excel.FilterPivotHierarchyCollection:class'
+          - 'excel!Excel.FilterPivotHierarchyCollection:interface'
         description: |-
 
 
@@ -180,12 +165,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly hierarchies: Excel.PivotHierarchyCollection;'
+      content: 'readonly hierarchies: PivotHierarchyCollection;'
       return:
         type:
-          - 'excel!Excel.PivotHierarchyCollection:class'
+          - 'excel!Excel.PivotHierarchyCollection:interface'
   - uid: 'excel!Excel.PivotTable#id:member'
-    summary: Id of the PivotTable. Read-only.
+    summary: Id of the PivotTable.
     name: id
     fullName: id
     langs:
@@ -204,10 +189,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly layout: Excel.PivotLayout;'
+      content: 'readonly layout: PivotLayout;'
       return:
         type:
-          - 'excel!Excel.PivotLayout:class'
+          - 'excel!Excel.PivotLayout:interface'
         description: |-
 
 
@@ -241,46 +226,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.PivotTable;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.PivotTable:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.PivotTable#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.PivotTable;
-      return:
-        type:
-          - 'excel!Excel.PivotTable:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.PivotTable#name:member'
     summary: Name of the PivotTable.
     name: name
@@ -314,30 +269,12 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly rowHierarchies: Excel.RowColumnPivotHierarchyCollection;'
+      content: 'readonly rowHierarchies: RowColumnPivotHierarchyCollection;'
       return:
         type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection:class'
-  - uid: 'excel!Excel.PivotTable#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.PivotTable): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.PivotTable:class'
+          - 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
   - uid: 'excel!Excel.PivotTable#useCustomSortLists:member'
-    summary: Specifies whether the PivotTable uses custom lists when sorting.
+    summary: Specifies if the PivotTable uses custom lists when sorting.
     name: useCustomSortLists
     fullName: useCustomSortLists
     langs:
@@ -356,32 +293,26 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly worksheet: Excel.Worksheet;'
+      content: 'readonly worksheet: Worksheet;'
       return:
         type:
-          - 'excel!Excel.Worksheet:class'
+          - 'excel!Excel.Worksheet:interface'
 references:
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
     name: RowColumnPivotHierarchyCollection
     fullName: Excel.RowColumnPivotHierarchyCollection
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.DataPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.DataPivotHierarchyCollection:interface'
     name: DataPivotHierarchyCollection
     fullName: Excel.DataPivotHierarchyCollection
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection:class'
+  - uid: 'excel!Excel.FilterPivotHierarchyCollection:interface'
     name: FilterPivotHierarchyCollection
     fullName: Excel.FilterPivotHierarchyCollection
-  - uid: 'excel!Excel.PivotHierarchyCollection:class'
+  - uid: 'excel!Excel.PivotHierarchyCollection:interface'
     name: PivotHierarchyCollection
     fullName: Excel.PivotHierarchyCollection
-  - uid: 'excel!Excel.PivotLayout:class'
+  - uid: 'excel!Excel.PivotLayout:interface'
     name: PivotLayout
     fullName: Excel.PivotLayout
-  - uid: 'excel!Excel.PivotTable:class'
-    name: PivotTable
-    fullName: Excel.PivotTable
-  - uid: 'excel!Excel.Worksheet:class'
+  - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet

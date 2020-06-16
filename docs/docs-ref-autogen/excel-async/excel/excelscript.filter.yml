@@ -1,12 +1,12 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.Filter:class'
+  - uid: 'excel!Excel.Filter:interface'
     summary: Manages the filtering of a table's column.
     name: Excel.Filter
     fullName: Excel.Filter
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
       - 'excel!Excel.Filter#apply:member(1)'
@@ -14,19 +14,15 @@ items:
       - 'excel!Excel.Filter#applyBottomPercentFilter:member(1)'
       - 'excel!Excel.Filter#applyCellColorFilter:member(1)'
       - 'excel!Excel.Filter#applyCustomFilter:member(1)'
-      - 'excel!Excel.Filter#applyCustomFilter:member(2)'
       - 'excel!Excel.Filter#applyDynamicFilter:member(1)'
-      - 'excel!Excel.Filter#applyDynamicFilter:member(2)'
       - 'excel!Excel.Filter#applyFontColorFilter:member(1)'
       - 'excel!Excel.Filter#applyIconFilter:member(1)'
       - 'excel!Excel.Filter#applyTopItemsFilter:member(1)'
       - 'excel!Excel.Filter#applyTopPercentFilter:member(1)'
       - 'excel!Excel.Filter#applyValuesFilter:member(1)'
       - 'excel!Excel.Filter#clear:member(1)'
-      - 'excel!Excel.Filter#context:member'
       - 'excel!Excel.Filter#criteria:member'
       - 'excel!Excel.Filter#load:member(1)'
-      - 'excel!Excel.Filter#load:member(2)'
   - uid: 'excel!Excel.Filter#apply:member(1)'
     summary: Apply the given filter criteria on the given column.
     name: apply(criteria)
@@ -35,7 +31,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'apply(criteria: Excel.FilterCriteria): void;'
+      content: 'apply(criteria: FilterCriteria): void;'
       return:
         type:
           - void
@@ -107,7 +103,12 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'applyCustomFilter(criteria1: string, criteria2?: string, oper?: Excel.FilterOperator): void;'
+      content: |-
+        applyCustomFilter(
+                    criteria1: string,
+                    criteria2?: string,
+                    oper?: FilterOperator
+                ): void;
       return:
         type:
           - void
@@ -125,32 +126,6 @@ items:
           description: Optional. The operator that describes how the two criteria are joined.
           type:
             - 'excel!Excel.FilterOperator:enum'
-  - uid: 'excel!Excel.Filter#applyCustomFilter:member(2)'
-    summary: Apply an "Icon" filter to the column for the given criteria strings.
-    name: 'applyCustomFilter(criteria1, criteria2, operStringString)'
-    fullName: 'applyCustomFilter(criteria1, criteria2, operStringString)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'applyCustomFilter(criteria1: string, criteria2?: string, operStringString?: "And" | "Or"): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: criteria1
-          description: The first criteria string.
-          type:
-            - string
-        - id: criteria2
-          description: Optional. The second criteria string.
-          type:
-            - string
-        - id: operStringString
-          description: Optional. The operator that describes how the two criteria are joined.
-          type:
-            - '"And" | "Or"'
   - uid: 'excel!Excel.Filter#applyDynamicFilter:member(1)'
     summary: Apply a "Dynamic" filter to the column.
     name: applyDynamicFilter(criteria)
@@ -159,7 +134,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'applyDynamicFilter(criteria: Excel.DynamicFilterCriteria): void;'
+      content: 'applyDynamicFilter(criteria: DynamicFilterCriteria): void;'
       return:
         type:
           - void
@@ -169,40 +144,6 @@ items:
           description: The dynamic criteria to apply.
           type:
             - 'excel!Excel.DynamicFilterCriteria:enum'
-  - uid: 'excel!Excel.Filter#applyDynamicFilter:member(2)'
-    summary: Apply a "Dynamic" filter to the column.
-    name: applyDynamicFilter(criteriaStringString)
-    fullName: applyDynamicFilter(criteriaStringString)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: >-
-        applyDynamicFilter(criteriaStringString: "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" |
-        "AllDatesInPeriodAugust" | "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" |
-        "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" |
-        "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" | "AllDatesInPeriodQuarter2"
-        | "AllDatesInPeriodQuarter3" | "AllDatesInPeriodQuarter4" | "AllDatesInPeriodSeptember" | "BelowAverage" |
-        "LastMonth" | "LastQuarter" | "LastWeek" | "LastYear" | "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" |
-        "ThisMonth" | "ThisQuarter" | "ThisWeek" | "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"):
-        void;
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: criteriaStringString
-          description: The dynamic criteria to apply.
-          type:
-            - >-
-              "Unknown" | "AboveAverage" | "AllDatesInPeriodApril" | "AllDatesInPeriodAugust" |
-              "AllDatesInPeriodDecember" | "AllDatesInPeriodFebruray" | "AllDatesInPeriodJanuary" |
-              "AllDatesInPeriodJuly" | "AllDatesInPeriodJune" | "AllDatesInPeriodMarch" | "AllDatesInPeriodMay" |
-              "AllDatesInPeriodNovember" | "AllDatesInPeriodOctober" | "AllDatesInPeriodQuarter1" |
-              "AllDatesInPeriodQuarter2" | "AllDatesInPeriodQuarter3" | "AllDatesInPeriodQuarter4" |
-              "AllDatesInPeriodSeptember" | "BelowAverage" | "LastMonth" | "LastQuarter" | "LastWeek" | "LastYear" |
-              "NextMonth" | "NextQuarter" | "NextWeek" | "NextYear" | "ThisMonth" | "ThisQuarter" | "ThisWeek" |
-              "ThisYear" | "Today" | "Tomorrow" | "YearToDate" | "Yesterday"
   - uid: 'excel!Excel.Filter#applyFontColorFilter:member(1)'
     summary: Apply a "Font Color" filter to the column for the given color.
     name: applyFontColorFilter(color)
@@ -229,7 +170,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'applyIconFilter(icon: Excel.Icon): void;'
+      content: 'applyIconFilter(icon: Icon): void;'
       return:
         type:
           - void
@@ -306,29 +247,15 @@ items:
         type:
           - void
         description: ''
-  - uid: 'excel!Excel.Filter#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.Filter#criteria:member'
-    summary: The currently applied filter on the given column. Read-only.
+    summary: The currently applied filter on the given column.
     name: criteria
     fullName: criteria
     langs:
       - typeScript
     type: property
     syntax:
-      content: 'readonly criteria: Excel.FilterCriteria;'
+      content: 'readonly criteria: FilterCriteria;'
       return:
         type:
           - 'excel!Excel.FilterCriteria:interface'
@@ -342,46 +269,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.Filter;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.Filter:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.Filter#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.Filter;
-      return:
-        type:
-          - 'excel!Excel.Filter:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
 references:
   - uid: 'excel!Excel.FilterCriteria:interface'
     name: FilterCriteria
@@ -409,9 +306,3 @@ references:
         fullName: Excel.FilterDatetime
       - name: '>'
         fullName: '>'
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.Filter:class'
-    name: Filter
-    fullName: Excel.Filter

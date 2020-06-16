@@ -1,36 +1,19 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.PivotItem:class'
+  - uid: 'excel!Excel.PivotItem:interface'
     summary: Represents the Excel PivotItem.
     name: Excel.PivotItem
     fullName: Excel.PivotItem
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.PivotItem#context:member'
       - 'excel!Excel.PivotItem#id:member'
       - 'excel!Excel.PivotItem#isExpanded:member'
       - 'excel!Excel.PivotItem#load:member(1)'
-      - 'excel!Excel.PivotItem#load:member(2)'
       - 'excel!Excel.PivotItem#name:member'
-      - 'excel!Excel.PivotItem#set:member(1)'
       - 'excel!Excel.PivotItem#visible:member'
-  - uid: 'excel!Excel.PivotItem#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.PivotItem#id:member'
     summary: Id of the PivotItem.
     name: id
@@ -65,46 +48,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.PivotItem;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.PivotItem:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.PivotItem#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.PivotItem;
-      return:
-        type:
-          - 'excel!Excel.PivotItem:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.PivotItem#name:member'
     summary: Name of the PivotItem.
     name: name
@@ -117,26 +70,8 @@ items:
       return:
         type:
           - string
-  - uid: 'excel!Excel.PivotItem#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.PivotItem): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.PivotItem:class'
   - uid: 'excel!Excel.PivotItem#visible:member'
-    summary: Determines whether the PivotItem is visible or not.
+    summary: Specifies if the PivotItem is visible.
     name: visible
     fullName: visible
     langs:
@@ -147,10 +82,3 @@ items:
       return:
         type:
           - boolean
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.PivotItem:class'
-    name: PivotItem
-    fullName: Excel.PivotItem

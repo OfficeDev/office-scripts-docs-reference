@@ -1,76 +1,15 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartLegendEntryCollection:class'
+  - uid: 'excel!Excel.ChartLegendEntryCollection:interface'
     summary: Represents a collection of legendEntries.
     name: Excel.ChartLegendEntryCollection
     fullName: Excel.ChartLegendEntryCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartLegendEntryCollection#context:member'
-      - 'excel!Excel.ChartLegendEntryCollection#getCount:member(1)'
-      - 'excel!Excel.ChartLegendEntryCollection#getItemAt:member(1)'
-      - 'excel!Excel.ChartLegendEntryCollection#items:member'
       - 'excel!Excel.ChartLegendEntryCollection#load:member(1)'
-  - uid: 'excel!Excel.ChartLegendEntryCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.ChartLegendEntryCollection#getCount:member(1)'
-    summary: Returns the number of legendEntry in the collection.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.ChartLegendEntryCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.ChartLegendEntryCollection#getItemAt:member(1)'
-    summary: Returns a legendEntry at the given index.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.ChartLegendEntry;'
-      return:
-        type:
-          - 'excel!Excel.ChartLegendEntry:class'
-        description: ''
-      parameters:
-        - id: index
-          description: Index of the legendEntry to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ChartLegendEntryCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.ChartLegendEntry[];'
-      return:
-        type:
-          - 'excel!Excel.ChartLegendEntryCollection#items~0:complex'
   - uid: 'excel!Excel.ChartLegendEntryCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -81,41 +20,13 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartLegendEntryCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartLegendEntryCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartLegendEntryCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.ChartLegendEntry:class'
-    name: ChartLegendEntry
-    fullName: Excel.ChartLegendEntry
-  - uid: 'excel!Excel.ChartLegendEntryCollection#items~0:complex'
-    name: 'Excel.ChartLegendEntry[]'
-    fullName: 'Excel.ChartLegendEntry[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartLegendEntry:class'
-        name: Excel.ChartLegendEntry
-        fullName: Excel.ChartLegendEntry
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.ChartLegendEntryCollection:class'
-    name: ChartLegendEntryCollection
-    fullName: Excel.ChartLegendEntryCollection

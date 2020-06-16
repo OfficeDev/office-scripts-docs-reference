@@ -1,84 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.SlicerItemCollection:class'
+  - uid: 'excel!Excel.SlicerItemCollection:interface'
     summary: Represents a collection of all the slicer item objects on the slicer.
     name: Excel.SlicerItemCollection
     fullName: Excel.SlicerItemCollection
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.SlicerItemCollection#context:member'
-      - 'excel!Excel.SlicerItemCollection#getCount:member(1)'
-      - 'excel!Excel.SlicerItemCollection#getItem:member(1)'
-      - 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
       - 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SlicerItemCollection#items:member'
       - 'excel!Excel.SlicerItemCollection#load:member(1)'
-  - uid: 'excel!Excel.SlicerItemCollection#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
-  - uid: 'excel!Excel.SlicerItemCollection#getCount:member(1)'
-    summary: Returns the number of slicer items in the slicer.
-    name: getCount()
-    fullName: getCount()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getCount(): ClientResult<number>;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItemCollection#getCount~0:complex'
-        description: ''
-  - uid: 'excel!Excel.SlicerItemCollection#getItem:member(1)'
-    summary: Gets a slicer item object using its key or name.
-    name: getItem(key)
-    fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItem(key: string): Excel.SlicerItem;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:class'
-        description: ''
-      parameters:
-        - id: key
-          description: The key or name of the slicer item.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
-    summary: Gets a slicer item based on its position in the collection.
-    name: getItemAt(index)
-    fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getItemAt(index: number): Excel.SlicerItem;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:class'
-        description: ''
-      parameters:
-        - id: index
-          description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
   - uid: 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a slicer item using its key or name. If the slicer item does not exist, will return a null object.'
     name: getItemOrNullObject(key)
@@ -87,28 +19,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItemOrNullObject(key: string): Excel.SlicerItem;'
+      content: 'getItemOrNullObject(key: string): SlicerItem;'
       return:
         type:
-          - 'excel!Excel.SlicerItem:class'
+          - 'excel!Excel.SlicerItem:interface'
         description: ''
       parameters:
         - id: key
           description: Key or name of the slicer to be retrieved.
           type:
             - string
-  - uid: 'excel!Excel.SlicerItemCollection#items:member'
-    summary: Gets the loaded child items in this collection.
-    name: items
-    fullName: items
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly items: Excel.SlicerItem[];'
-      return:
-        type:
-          - 'excel!Excel.SlicerItemCollection#items~0:complex'
   - uid: 'excel!Excel.SlicerItemCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -119,10 +39,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.SlicerItemCollection;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.SlicerItemCollection:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
@@ -130,30 +50,6 @@ items:
           type:
             - 'string | string[]'
 references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.SlicerItemCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:class'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.SlicerItem:class'
+  - uid: 'excel!Excel.SlicerItem:interface'
     name: SlicerItem
     fullName: Excel.SlicerItem
-  - uid: 'excel!Excel.SlicerItemCollection#items~0:complex'
-    name: 'Excel.SlicerItem[]'
-    fullName: 'Excel.SlicerItem[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.SlicerItem:class'
-        name: Excel.SlicerItem
-        fullName: Excel.SlicerItem
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.SlicerItemCollection:class'
-    name: SlicerItemCollection
-    fullName: Excel.SlicerItemCollection

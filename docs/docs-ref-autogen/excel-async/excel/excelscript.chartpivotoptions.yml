@@ -1,36 +1,19 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.ChartPivotOptions:class'
+  - uid: 'excel!Excel.ChartPivotOptions:interface'
     summary: Encapsulates the options for the pivot chart.
     name: Excel.ChartPivotOptions
     fullName: Excel.ChartPivotOptions
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.ChartPivotOptions#context:member'
       - 'excel!Excel.ChartPivotOptions#load:member(1)'
-      - 'excel!Excel.ChartPivotOptions#load:member(2)'
-      - 'excel!Excel.ChartPivotOptions#set:member(1)'
       - 'excel!Excel.ChartPivotOptions#showAxisFieldButtons:member'
       - 'excel!Excel.ChartPivotOptions#showLegendFieldButtons:member'
       - 'excel!Excel.ChartPivotOptions#showReportFilterFieldButtons:member'
       - 'excel!Excel.ChartPivotOptions#showValueFieldButtons:member'
-  - uid: 'excel!Excel.ChartPivotOptions#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.ChartPivotOptions#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -41,69 +24,21 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.ChartPivotOptions;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.ChartPivotOptions:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.ChartPivotOptions#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.ChartPivotOptions;
-      return:
-        type:
-          - 'excel!Excel.ChartPivotOptions:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
-  - uid: 'excel!Excel.ChartPivotOptions#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.ChartPivotOptions): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.ChartPivotOptions:class'
   - uid: 'excel!Excel.ChartPivotOptions#showAxisFieldButtons:member'
     summary: >-
-      Specifies whether or not to display the axis field buttons on a PivotChart. The ShowAxisFieldButtons property
-      corresponds to the "Show Axis Field Buttons" command on the "Field Buttons" drop-down list of the "Analyze" tab,
-      which is available when a PivotChart is selected.
+      Specifies whether to display the axis field buttons on a PivotChart. The ShowAxisFieldButtons property corresponds
+      to the "Show Axis Field Buttons" command on the "Field Buttons" drop-down list of the "Analyze" tab, which is
+      available when a PivotChart is selected.
     name: showAxisFieldButtons
     fullName: showAxisFieldButtons
     langs:
@@ -115,7 +50,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartPivotOptions#showLegendFieldButtons:member'
-    summary: Specifies whether or not to display the legend field buttons on a PivotChart.
+    summary: Specifies whether to display the legend field buttons on a PivotChart.
     name: showLegendFieldButtons
     fullName: showLegendFieldButtons
     langs:
@@ -127,7 +62,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartPivotOptions#showReportFilterFieldButtons:member'
-    summary: Specifies whether or not to display the report filter field buttons on a PivotChart.
+    summary: Specifies whether to display the report filter field buttons on a PivotChart.
     name: showReportFilterFieldButtons
     fullName: showReportFilterFieldButtons
     langs:
@@ -139,7 +74,7 @@ items:
         type:
           - boolean
   - uid: 'excel!Excel.ChartPivotOptions#showValueFieldButtons:member'
-    summary: Specifies whether or not to display the show value field buttons on a PivotChart.
+    summary: Specifies whether to display the show value field buttons on a PivotChart.
     name: showValueFieldButtons
     fullName: showValueFieldButtons
     langs:
@@ -150,10 +85,3 @@ items:
       return:
         type:
           - boolean
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.ChartPivotOptions:class'
-    name: ChartPivotOptions
-    fullName: Excel.ChartPivotOptions

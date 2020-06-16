@@ -20,6 +20,8 @@ items:
       - 'excel!ExcelScript.Table#deleteRowsAt:member(1)'
       - 'excel!ExcelScript.Table#getAutoFilter:member(1)'
       - 'excel!ExcelScript.Table#getColumn:member(1)'
+      - 'excel!ExcelScript.Table#getColumnById:member(1)'
+      - 'excel!ExcelScript.Table#getColumnByName:member(1)'
       - 'excel!ExcelScript.Table#getColumns:member(1)'
       - 'excel!ExcelScript.Table#getHeaderRowRange:member(1)'
       - 'excel!ExcelScript.Table#getHighlightFirstColumn:member(1)'
@@ -223,6 +225,42 @@ items:
           description: Column Name or ID.
           type:
             - number | string
+  - uid: 'excel!ExcelScript.Table#getColumnById:member(1)'
+    summary: 'Gets a column object by ID. If the column does not exist, will return undefined.'
+    name: getColumnById(key)
+    fullName: getColumnById(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getColumnById(key: number): TableColumn | undefined;'
+      return:
+        type:
+          - 'excel!ExcelScript.Table#getColumnById~0:complex'
+        description: ''
+      parameters:
+        - id: key
+          description: Column ID.
+          type:
+            - number
+  - uid: 'excel!ExcelScript.Table#getColumnByName:member(1)'
+    summary: 'Gets a column object by Name. If the column does not exist, will return undefined.'
+    name: getColumnByName(key)
+    fullName: getColumnByName(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getColumnByName(key: string): TableColumn | undefined;'
+      return:
+        type:
+          - 'excel!ExcelScript.Table#getColumnByName~0:complex'
+        description: ''
+      parameters:
+        - id: key
+          description: Column Name.
+          type:
+            - string
   - uid: 'excel!ExcelScript.Table#getColumns:member(1)'
     summary: Represents a collection of all the columns in the table.
     name: getColumns()
@@ -673,6 +711,24 @@ references:
     name: AutoFilter
     fullName: ExcelScript.AutoFilter
   - uid: 'excel!ExcelScript.Table#getColumn~0:complex'
+    name: TableColumn | undefined
+    fullName: ExcelScript.TableColumn | undefined
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.TableColumn:interface'
+        name: TableColumn
+        fullName: ExcelScript.TableColumn
+      - name: ' | undefined'
+        fullName: ' | undefined'
+  - uid: 'excel!ExcelScript.Table#getColumnById~0:complex'
+    name: TableColumn | undefined
+    fullName: ExcelScript.TableColumn | undefined
+    spec.typeScript:
+      - uid: 'excel!ExcelScript.TableColumn:interface'
+        name: TableColumn
+        fullName: ExcelScript.TableColumn
+      - name: ' | undefined'
+        fullName: ' | undefined'
+  - uid: 'excel!ExcelScript.Table#getColumnByName~0:complex'
     name: TableColumn | undefined
     fullName: ExcelScript.TableColumn | undefined
     spec.typeScript:

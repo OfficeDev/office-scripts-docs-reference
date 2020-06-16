@@ -1,36 +1,19 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: 'excel!Excel.SlicerItem:class'
+  - uid: 'excel!Excel.SlicerItem:interface'
     summary: Represents a slicer item in a slicer.
     name: Excel.SlicerItem
     fullName: Excel.SlicerItem
     langs:
       - typeScript
-    type: class
+    type: interface
     package: excel!
     children:
-      - 'excel!Excel.SlicerItem#context:member'
       - 'excel!Excel.SlicerItem#hasData:member'
       - 'excel!Excel.SlicerItem#isSelected:member'
       - 'excel!Excel.SlicerItem#key:member'
       - 'excel!Excel.SlicerItem#load:member(1)'
-      - 'excel!Excel.SlicerItem#load:member(2)'
       - 'excel!Excel.SlicerItem#name:member'
-      - 'excel!Excel.SlicerItem#set:member(1)'
-  - uid: 'excel!Excel.SlicerItem#context:member'
-    summary: >-
-      The request context associated with the object. This connects the add-in's process to the Office host
-      application's process.
-    name: context
-    fullName: context
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'context: RequestContext;'
-      return:
-        type:
-          - 'excel!Excel.RequestContext:class'
   - uid: 'excel!Excel.SlicerItem#hasData:member'
     summary: True if the slicer item has data.
     name: hasData
@@ -79,46 +62,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'load(propertyNames?: string | string[]): Excel.SlicerItem;'
+      content: 'load(propertyNames?: string | string[]): void;'
       return:
         type:
-          - 'excel!Excel.SlicerItem:class'
+          - void
         description: ''
       parameters:
         - id: propertyNames
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
-  - uid: 'excel!Excel.SlicerItem#load:member(2)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNamesAndPaths)
-    fullName: load(propertyNamesAndPaths)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        load(propertyNamesAndPaths?: {
-                    select?: string;
-                    expand?: string;
-                }): Excel.SlicerItem;
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:class'
-        description: ''
-      parameters:
-        - id: propertyNamesAndPaths
-          description: >-
-            `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and
-            `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-          type:
-            - |-
-              {
-                          select?: string;
-                          expand?: string;
-                      }
   - uid: 'excel!Excel.SlicerItem#name:member'
     summary: Represents the title displayed in the UI.
     name: name
@@ -131,28 +84,3 @@ items:
       return:
         type:
           - string
-  - uid: 'excel!Excel.SlicerItem#set:member(1)'
-    summary: 'Sets multiple properties on the object at the same time, based on an existing loaded object.'
-    name: set(properties)
-    fullName: set(properties)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'set(properties: Excel.SlicerItem): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: properties
-          description: ''
-          type:
-            - 'excel!Excel.SlicerItem:class'
-references:
-  - uid: 'excel!Excel.RequestContext:class'
-    name: RequestContext
-    fullName: Excel.RequestContext
-  - uid: 'excel!Excel.SlicerItem:class'
-    name: SlicerItem
-    fullName: Excel.SlicerItem
