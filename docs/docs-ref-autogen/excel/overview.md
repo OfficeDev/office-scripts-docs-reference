@@ -1,12 +1,15 @@
 ---
 title: Office Scripts API reference 
-description: 'An overview of the Office Scripts JavaScript APIs'
-ms.date: 06/16/2020
+description: 'An overview of the Office Scripts JavaScript APIs.'
+ms.date: 06/17/2020
 ---
 
 # Office Scripts API reference
 
 The Office Scripts API lets you automate common tasks in Excel on the web. Use this reference documentation to learn more about the classes, methods, and other types available for your scripts. All the objects accessible through Office Scripts can be found in the table of contents on the left of the page.
+
+> [!NOTE]
+> If you're looking for the JavaScript APIs for developing Office Add-ins, visit the [Office Add-ins JavaScript API reference](/javascript/api/overview?view=excel-js-preview).
 
 ## Common classes
 
