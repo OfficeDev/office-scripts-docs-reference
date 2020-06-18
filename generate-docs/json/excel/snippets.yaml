@@ -142,6 +142,61 @@
       // Log the negative number count to the console.
       console.log(negativeCount);
     }
+'ExcelScript.Range#getOffsetRange:member(1)':
+  - |-
+    /**
+     * This script gets adjacent cells using relative references.
+     * Note that if the active cell is on the top row, part of the script fails, 
+     * because it references the cell above the currently selected one.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the currently active cell in the workbook.
+      let activeCell = workbook.getActiveCell();
+      console.log(`The active cell's address is: ${activeCell.getAddress()}`);
+
+      // Get the cell to the right of the active cell and set its value and color.
+      let rightCell = activeCell.getOffsetRange(0,1);
+      rightCell.setValue("Right cell");
+      console.log(`The right cell's address is: ${rightCell.getAddress()}`);
+      rightCell.getFormat().getFont().setColor("Magenta");
+      rightCell.getFormat().getFill().setColor("Cyan");
+
+      // Get the cell to the above of the active cell and set its value and color.
+      // Note that this operation will fail if the active cell is in the top row.
+      let aboveCell = activeCell.getOffsetRange(-1, 0);
+      aboveCell.setValue("Above cell");
+      console.log(`The above cell's address is: ${aboveCell.getAddress()}`);
+      aboveCell.getFormat().getFont().setColor("White");
+      aboveCell.getFormat().getFill().setColor("Black");
+    }
+'ExcelScript.Range#getResizedRange:member(1)':
+  - >-
+    /**
+
+    * This script copies the formatting in the active cell to the neighboring
+    cells.
+
+    * Note that this script only works when the active cell isn't on an edge of
+    the worksheet.
+
+    */
+
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      let activeCell = workbook.getActiveCell();
+
+      // Get the cell that's one row above and one column to the left of the active cell.
+      let cornerCell = activeCell.getOffsetRange(-1,-1);
+
+      // Get a range that includes all the cells surrounding the active cell.
+      let surroundingRange = cornerCell.getResizedRange(2, 2)
+
+      // Copy the formatting from the active cell to the new range.
+      surroundingRange.copyFrom(
+        activeCell, /* The source range. */
+        ExcelScript.RangeCopyType.formats /* What to copy. */
+        );
+    }
 'ExcelScript.Range#getRowCount:member(1)':
   - |-
     /**
@@ -224,11 +279,22 @@
         type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
       });
     }
+'ExcelScript.Workbook#getActiveCell:member(1)':
+  - |-
+    /**
+     * This script logs the value of the current active cell. 
+     * If multiple cells are selected, the top-leftmost cell will be logged.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current active cell in the workbook.
+      let cell = workbook.getActiveCell();
+      console.log(`The current cell's value is ${cell.getValue()}`);
+    }
 'ExcelScript.Worksheet#addTable:member(1)':
   - |-
     /**
-      * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
-      */
+     * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       let selectedSheet = workbook.getActiveWorksheet();
@@ -243,8 +309,8 @@
 'ExcelScript.Worksheet#delete:member(1)':
   - |-
     /**
-      * The following scripts removes the first worksheet in the workbook.
-      */
+     * The following scripts removes the first worksheet in the workbook.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the first worksheet.
       let sheet = workbook.getWorksheets()[0];
@@ -273,8 +339,8 @@
 'ExcelScript.Worksheet#getRange:member(1)':
   - |-
     /**
-      * This sample reads the value of A1 and prints it to the console.
-      */
+     * This sample reads the value of A1 and prints it to the console.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       let selectedSheet = workbook.getActiveWorksheet();
