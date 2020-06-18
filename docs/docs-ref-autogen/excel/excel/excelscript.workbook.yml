@@ -583,7 +583,22 @@ items:
       return:
         type:
           - 'excel!ExcelScript.Range:interface'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script logs the value of the current active cell. 
+           * If multiple cells are selected, the top-leftmost cell will be logged.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current active cell in the workbook.
+            let cell = workbook.getActiveCell();
+            console.log(`The current cell's value is ${cell.getValue()}`);
+          }
+          ```
   - uid: 'excel!ExcelScript.Workbook#getActiveChart:member(1)'
     summary: 'Gets the currently active chart in the workbook. If there is no active chart, a null object is returned.'
     name: getActiveChart()
