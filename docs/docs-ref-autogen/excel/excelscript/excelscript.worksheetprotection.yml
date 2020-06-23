@@ -1,0 +1,85 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtection:interface'
+    summary: Represents the protection of a sheet object.
+    name: ExcelScript.WorksheetProtection
+    fullName: ExcelScript.WorksheetProtection
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.WorksheetProtection#getOptions:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetProtection#getProtected:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetProtection#protect:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetProtection#unprotect:member(1)'
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtection#getOptions:member(1)'
+    summary: Specifies the protection options for the worksheet.
+    name: getOptions()
+    fullName: getOptions()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getOptions(): WorksheetProtectionOptions;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.WorksheetProtectionOptions:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtection#getProtected:member(1)'
+    summary: Specifies if the worksheet is protected.
+    name: getProtected()
+    fullName: getProtected()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getProtected(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtection#protect:member(1)'
+    summary: Protects a worksheet. Fails if the worksheet has already been protected.
+    name: 'protect(options, password)'
+    fullName: 'protect(options, password)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'protect(options?: WorksheetProtectionOptions, password?: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: options
+          description: Optional. Sheet protection options.
+          type:
+            - 'ExcelScript!ExcelScript.WorksheetProtectionOptions:interface'
+        - id: password
+          description: Optional. Sheet protection password.
+          type:
+            - string
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtection#unprotect:member(1)'
+    summary: Unprotects a worksheet.
+    name: unprotect(password)
+    fullName: unprotect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unprotect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: password
+          description: sheet protection password.
+          type:
+            - string
+references:
+  - uid: 'ExcelScript!ExcelScript.WorksheetProtectionOptions:interface'
+    name: WorksheetProtectionOptions
+    fullName: ExcelScript.WorksheetProtectionOptions

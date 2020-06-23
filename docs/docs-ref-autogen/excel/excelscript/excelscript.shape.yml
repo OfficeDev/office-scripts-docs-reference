@@ -1,0 +1,878 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.Shape:interface'
+    summary: >-
+      Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes,
+      etc. To learn more about the shape object model, read [Work with shapes using the Excel JavaScript
+      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-shapes)<!-- -->.
+    name: ExcelScript.Shape
+    fullName: ExcelScript.Shape
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.Shape#copyTo:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#delete:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getAltTextDescription:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getAltTextTitle:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getAsImage:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getConnectionSiteCount:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getFill:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getGeometricShape:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getGeometricShapeType:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getGroup:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getHeight:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getId:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getImage:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getLeft:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getLevel:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getLine:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getLineFormat:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getLockAspectRatio:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getName:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getPlacement:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getRotation:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getTextFrame:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getTop:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getType:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getVisible:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getWidth:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#getZOrderPosition:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#incrementLeft:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#incrementRotation:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#incrementTop:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#scaleHeight:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#scaleWidth:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setAltTextDescription:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setAltTextTitle:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setGeometricShapeType:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setHeight:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setLeft:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setLockAspectRatio:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setName:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setPlacement:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setRotation:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setTop:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setVisible:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setWidth:member(1)'
+      - 'ExcelScript!ExcelScript.Shape#setZOrder:member(1)'
+  - uid: 'ExcelScript!ExcelScript.Shape#copyTo:member(1)'
+    summary: Copies and pastes a Shape object. The pasted shape is copied to the same pixel location as this shape.
+    name: copyTo(destinationSheet)
+    fullName: copyTo(destinationSheet)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'copyTo(destinationSheet?: Worksheet | string): Shape;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Shape:interface'
+        description: ''
+      parameters:
+        - id: destinationSheet
+          description: The sheet to which the shape object will be pasted. The default value is the copied Shape's worksheet.
+          type:
+            - 'ExcelScript!ExcelScript.Shape#copyTo~0:complex'
+  - uid: 'ExcelScript!ExcelScript.Shape#delete:member(1)'
+    summary: Removes the shape from the worksheet.
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getAltTextDescription:member(1)'
+    summary: Specifies the alternative description text for a Shape object.
+    name: getAltTextDescription()
+    fullName: getAltTextDescription()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getAltTextDescription(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getAltTextTitle:member(1)'
+    summary: Specifies the alternative title text for a Shape object.
+    name: getAltTextTitle()
+    fullName: getAltTextTitle()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getAltTextTitle(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getAsImage:member(1)'
+    summary: >-
+      Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
+      formats are `Excel.PictureFormat.BMP`<!-- -->, `Excel.PictureFormat.PNG`<!-- -->, `Excel.PictureFormat.JPEG`<!--
+      -->, and `Excel.PictureFormat.GIF`<!-- -->.
+    name: getAsImage(format)
+    fullName: getAsImage(format)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getAsImage(format: PictureFormat): string;'
+      return:
+        type:
+          - string
+        description: ''
+      parameters:
+        - id: format
+          description: Specifies the format of the image.
+          type:
+            - 'ExcelScript!ExcelScript.PictureFormat:enum'
+  - uid: 'ExcelScript!ExcelScript.Shape#getConnectionSiteCount:member(1)'
+    summary: Returns the number of connection sites on this shape.
+    name: getConnectionSiteCount()
+    fullName: getConnectionSiteCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getConnectionSiteCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getFill:member(1)'
+    summary: Returns the fill formatting of this shape.
+    name: getFill()
+    fullName: getFill()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFill(): ShapeFill;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ShapeFill:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getGeometricShape:member(1)'
+    summary: >-
+      Returns the geometric shape associated with the shape. An error will be thrown if the shape type is not
+      "GeometricShape".
+    name: getGeometricShape()
+    fullName: getGeometricShape()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getGeometricShape(): GeometricShape;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.GeometricShape:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getGeometricShapeType:member(1)'
+    summary: >-
+      Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null
+      if the shape type is not "GeometricShape".
+    name: getGeometricShapeType()
+    fullName: getGeometricShapeType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getGeometricShapeType(): GeometricShapeType;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.GeometricShapeType:enum'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getGroup:member(1)'
+    summary: Returns the shape group associated with the shape. An error will be thrown if the shape type is not "GroupShape".
+    name: getGroup()
+    fullName: getGroup()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getGroup(): ShapeGroup;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ShapeGroup:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getHeight:member(1)'
+    summary: >-
+      Specifies the height, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
+    name: getHeight()
+    fullName: getHeight()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getHeight(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getId:member(1)'
+    summary: Specifies the shape identifier.
+    name: getId()
+    fullName: getId()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getImage:member(1)'
+    summary: Returns the image associated with the shape. An error will be thrown if the shape type is not "Image".
+    name: getImage()
+    fullName: getImage()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getImage(): Image;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Image:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getLeft:member(1)'
+    summary: >-
+      The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an invalid
+      argument exception when set with a negative value as input.
+    name: getLeft()
+    fullName: getLeft()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLeft(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getLevel:member(1)'
+    summary: >-
+      Specifies the level of the specified shape. For example, a level of 0 means that the shape is not part of any
+      groups, a level of 1 means the shape is part of a top-level group, and a level of 2 means the shape is part of a
+      sub-group of the top level.
+    name: getLevel()
+    fullName: getLevel()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLevel(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getLine:member(1)'
+    summary: Returns the line associated with the shape. An error will be thrown if the shape type is not "Line".
+    name: getLine()
+    fullName: getLine()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLine(): Line;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Line:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getLineFormat:member(1)'
+    summary: Returns the line formatting of this shape.
+    name: getLineFormat()
+    fullName: getLineFormat()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLineFormat(): ShapeLineFormat;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ShapeLineFormat:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getLockAspectRatio:member(1)'
+    summary: Specifies if the aspect ratio of this shape is locked.
+    name: getLockAspectRatio()
+    fullName: getLockAspectRatio()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLockAspectRatio(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getName:member(1)'
+    summary: Specifies the name of the shape.
+    name: getName()
+    fullName: getName()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type:
+          - string
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getPlacement:member(1)'
+    summary: Represents how the object is attached to the cells below it.
+    name: getPlacement()
+    fullName: getPlacement()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPlacement(): Placement;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Placement:enum'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getRotation:member(1)'
+    summary: 'Specifies the rotation, in degrees, of the shape.'
+    name: getRotation()
+    fullName: getRotation()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRotation(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getTextFrame:member(1)'
+    summary: Returns the text frame object of this shape. Read only.
+    name: getTextFrame()
+    fullName: getTextFrame()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTextFrame(): TextFrame;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.TextFrame:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getTop:member(1)'
+    summary: >-
+      The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an invalid
+      argument exception when set with a negative value as input.
+    name: getTop()
+    fullName: getTop()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTop(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getType:member(1)'
+    summary: Returns the type of this shape. See Excel.ShapeType for details.
+    name: getType()
+    fullName: getType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getType(): ShapeType;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ShapeType:enum'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getVisible:member(1)'
+    summary: Specifies if the shape is visible.
+    name: getVisible()
+    fullName: getVisible()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getVisible(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getWidth:member(1)'
+    summary: >-
+      Specifies the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
+    name: getWidth()
+    fullName: getWidth()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getWidth(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#getZOrderPosition:member(1)'
+    summary: 'Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.'
+    name: getZOrderPosition()
+    fullName: getZOrderPosition()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getZOrderPosition(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Shape#incrementLeft:member(1)'
+    summary: Moves the shape horizontally by the specified number of points.
+    name: incrementLeft(increment)
+    fullName: incrementLeft(increment)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'incrementLeft(increment: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: increment
+          description: >-
+            The increment, in points, the shape will be horizontally moved. A positive value moves the shape to the
+            right and a negative value moves it to the left. If the sheet is right-to-left oriented, this is reversed:
+            positive values will move the shape to the left and negative values will move it to the right.
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#incrementRotation:member(1)'
+    summary: >-
+      Rotates the shape clockwise around the z-axis by the specified number of degrees. Use the `rotation` property to
+      set the absolute rotation of the shape.
+    name: incrementRotation(increment)
+    fullName: incrementRotation(increment)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'incrementRotation(increment: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: increment
+          description: >-
+            How many degrees the shape will be rotated. A positive value rotates the shape clockwise; a negative value
+            rotates it counterclockwise.
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#incrementTop:member(1)'
+    summary: Moves the shape vertically by the specified number of points.
+    name: incrementTop(increment)
+    fullName: incrementTop(increment)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'incrementTop(increment: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: increment
+          description: >-
+            The increment, in points, the shape will be vertically moved. in points. A positive value moves the shape
+            down and a negative value moves it up.
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#scaleHeight:member(1)'
+    summary: >-
+      Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the
+      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
+      current height.
+    name: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
+    fullName: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        scaleHeight(
+                    scaleFactor: number,
+                    scaleType: ShapeScaleType,
+                    scaleFrom?: ShapeScaleFrom
+                ): void;
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: scaleFactor
+          description: Specifies the ratio between the height of the shape after you resize it and the current or original height.
+          type:
+            - number
+        - id: scaleType
+          description: >-
+            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
+            option only works for images.
+          type:
+            - 'ExcelScript!ExcelScript.ShapeScaleType:enum'
+        - id: scaleFrom
+          description: >-
+            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
+            represents the shape's upper left corner retains its position.
+          type:
+            - 'ExcelScript!ExcelScript.ShapeScaleFrom:enum'
+  - uid: 'ExcelScript!ExcelScript.Shape#scaleWidth:member(1)'
+    summary: >-
+      Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the
+      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
+      current width.
+    name: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
+    fullName: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        scaleWidth(
+                    scaleFactor: number,
+                    scaleType: ShapeScaleType,
+                    scaleFrom?: ShapeScaleFrom
+                ): void;
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: scaleFactor
+          description: Specifies the ratio between the width of the shape after you resize it and the current or original width.
+          type:
+            - number
+        - id: scaleType
+          description: >-
+            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
+            option only works for images.
+          type:
+            - 'ExcelScript!ExcelScript.ShapeScaleType:enum'
+        - id: scaleFrom
+          description: >-
+            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
+            represents the shape's upper left corner retains its position.
+          type:
+            - 'ExcelScript!ExcelScript.ShapeScaleFrom:enum'
+  - uid: 'ExcelScript!ExcelScript.Shape#setAltTextDescription:member(1)'
+    summary: Specifies the alternative description text for a Shape object.
+    name: setAltTextDescription(altTextDescription)
+    fullName: setAltTextDescription(altTextDescription)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setAltTextDescription(altTextDescription: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: altTextDescription
+          description: ''
+          type:
+            - string
+  - uid: 'ExcelScript!ExcelScript.Shape#setAltTextTitle:member(1)'
+    summary: Specifies the alternative title text for a Shape object.
+    name: setAltTextTitle(altTextTitle)
+    fullName: setAltTextTitle(altTextTitle)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setAltTextTitle(altTextTitle: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: altTextTitle
+          description: ''
+          type:
+            - string
+  - uid: 'ExcelScript!ExcelScript.Shape#setGeometricShapeType:member(1)'
+    summary: >-
+      Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null
+      if the shape type is not "GeometricShape".
+    name: setGeometricShapeType(geometricShapeType)
+    fullName: setGeometricShapeType(geometricShapeType)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setGeometricShapeType(geometricShapeType: GeometricShapeType): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: geometricShapeType
+          description: ''
+          type:
+            - 'ExcelScript!ExcelScript.GeometricShapeType:enum'
+  - uid: 'ExcelScript!ExcelScript.Shape#setHeight:member(1)'
+    summary: >-
+      Specifies the height, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
+    name: setHeight(height)
+    fullName: setHeight(height)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setHeight(height: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: height
+          description: ''
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#setLeft:member(1)'
+    summary: >-
+      The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an invalid
+      argument exception when set with a negative value as input.
+    name: setLeft(left)
+    fullName: setLeft(left)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setLeft(left: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: left
+          description: ''
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#setLockAspectRatio:member(1)'
+    summary: Specifies if the aspect ratio of this shape is locked.
+    name: setLockAspectRatio(lockAspectRatio)
+    fullName: setLockAspectRatio(lockAspectRatio)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setLockAspectRatio(lockAspectRatio: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: lockAspectRatio
+          description: ''
+          type:
+            - boolean
+  - uid: 'ExcelScript!ExcelScript.Shape#setName:member(1)'
+    summary: Specifies the name of the shape.
+    name: setName(name)
+    fullName: setName(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setName(name: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: name
+          description: ''
+          type:
+            - string
+  - uid: 'ExcelScript!ExcelScript.Shape#setPlacement:member(1)'
+    summary: Represents how the object is attached to the cells below it.
+    name: setPlacement(placement)
+    fullName: setPlacement(placement)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPlacement(placement: Placement): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: placement
+          description: ''
+          type:
+            - 'ExcelScript!ExcelScript.Placement:enum'
+  - uid: 'ExcelScript!ExcelScript.Shape#setRotation:member(1)'
+    summary: 'Specifies the rotation, in degrees, of the shape.'
+    name: setRotation(rotation)
+    fullName: setRotation(rotation)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setRotation(rotation: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: rotation
+          description: ''
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#setTop:member(1)'
+    summary: >-
+      The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an invalid
+      argument exception when set with a negative value as input.
+    name: setTop(top)
+    fullName: setTop(top)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setTop(top: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: top
+          description: ''
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#setVisible:member(1)'
+    summary: Specifies if the shape is visible.
+    name: setVisible(visible)
+    fullName: setVisible(visible)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setVisible(visible: boolean): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: visible
+          description: ''
+          type:
+            - boolean
+  - uid: 'ExcelScript!ExcelScript.Shape#setWidth:member(1)'
+    summary: >-
+      Specifies the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
+      or zero as input.
+    name: setWidth(width)
+    fullName: setWidth(width)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setWidth(width: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: width
+          description: ''
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.Shape#setZOrder:member(1)'
+    summary: 'Moves the specified shape up or down the collection''s z-order, which shifts it in front of or behind other shapes.'
+    name: setZOrder(position)
+    fullName: setZOrder(position)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setZOrder(position: ShapeZOrder): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: position
+          description: >-
+            Where to move the shape in the z-order stack relative to the other shapes. See Excel.ShapeZOrder for
+            details.
+          type:
+            - 'ExcelScript!ExcelScript.ShapeZOrder:enum'
+references:
+  - uid: 'ExcelScript!ExcelScript.Shape:interface'
+    name: Shape
+    fullName: ExcelScript.Shape
+  - uid: 'ExcelScript!ExcelScript.Shape#copyTo~0:complex'
+    name: Worksheet | string
+    fullName: ExcelScript.Worksheet | string
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.Worksheet:interface'
+        name: Worksheet
+        fullName: ExcelScript.Worksheet
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'ExcelScript!ExcelScript.PictureFormat:enum'
+    name: PictureFormat
+    fullName: ExcelScript.PictureFormat
+  - uid: 'ExcelScript!ExcelScript.ShapeFill:interface'
+    name: ShapeFill
+    fullName: ExcelScript.ShapeFill
+  - uid: 'ExcelScript!ExcelScript.GeometricShape:interface'
+    name: GeometricShape
+    fullName: ExcelScript.GeometricShape
+  - uid: 'ExcelScript!ExcelScript.GeometricShapeType:enum'
+    name: GeometricShapeType
+    fullName: ExcelScript.GeometricShapeType
+  - uid: 'ExcelScript!ExcelScript.ShapeGroup:interface'
+    name: ShapeGroup
+    fullName: ExcelScript.ShapeGroup
+  - uid: 'ExcelScript!ExcelScript.Image:interface'
+    name: Image
+    fullName: ExcelScript.Image
+  - uid: 'ExcelScript!ExcelScript.Line:interface'
+    name: Line
+    fullName: ExcelScript.Line
+  - uid: 'ExcelScript!ExcelScript.ShapeLineFormat:interface'
+    name: ShapeLineFormat
+    fullName: ExcelScript.ShapeLineFormat
+  - uid: 'ExcelScript!ExcelScript.Placement:enum'
+    name: Placement
+    fullName: ExcelScript.Placement
+  - uid: 'ExcelScript!ExcelScript.TextFrame:interface'
+    name: TextFrame
+    fullName: ExcelScript.TextFrame
+  - uid: 'ExcelScript!ExcelScript.ShapeType:enum'
+    name: ShapeType
+    fullName: ExcelScript.ShapeType
+  - uid: 'ExcelScript!ExcelScript.ShapeScaleType:enum'
+    name: ShapeScaleType
+    fullName: ExcelScript.ShapeScaleType
+  - uid: 'ExcelScript!ExcelScript.ShapeScaleFrom:enum'
+    name: ShapeScaleFrom
+    fullName: ExcelScript.ShapeScaleFrom
+  - uid: 'ExcelScript!ExcelScript.ShapeZOrder:enum'
+    name: ShapeZOrder
+    fullName: ExcelScript.ShapeZOrder
