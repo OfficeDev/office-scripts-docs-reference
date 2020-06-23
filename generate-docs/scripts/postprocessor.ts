@@ -122,9 +122,7 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
 
     // create folders for Excel subcategories
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
-    let excelIconSetFilter : string [] = ["FiveArrowsGraySet", "FiveArrowsSet", "FiveBoxesSet", "FiveQuartersSet", "FiveRatingSet", "FourArrowsGraySet", "FourArrowsSet", "FourRatingSet", "FourRedToBlackSet", "FourTrafficLightsSet", "IconCollections", "ThreeArrowsGraySet", "ThreeArrowsSet", "ThreeFlagsSet",  "ThreeSignsSet", "ThreeStarsSet",  "ThreeSymbols2Set", "ThreeSymbolsSet", "ThreeTrafficLights1Set", "ThreeTrafficLights2Set", "ThreeTrianglesSet"];
     let excelFilter: string[] = ["Interfaces"];
-    excelFilter = excelFilter.concat(excelEnumFilter).concat(excelIconSetFilter);
 
     // process all packages except 'office' (Common "Shared" API)
     origToc.items.forEach((rootItem, rootIndex) => {
@@ -138,16 +136,11 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
                     let enumList = membersToMove.items.filter(item => {
                             return excelEnumFilter.indexOf(item.name) >= 0;
                         });
-                    let iconSetList = membersToMove.items.filter(item => {
-                            return excelIconSetFilter.indexOf(item.name) >= 0;
-                    });
                     let primaryList = membersToMove.items.filter(item => {
                         return excelFilter.indexOf(item.name) < 0;
                     });
 
                     let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                    let excelIconSetRoot = {"name": "Icon Sets", "uid": "", "items": iconSetList};
-                    primaryList.unshift(excelIconSetRoot);
                     primaryList.unshift(excelEnumRoot);
                     newToc.items[0].items.push({
                         "name": packageName,
