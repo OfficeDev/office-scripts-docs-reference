@@ -59,22 +59,23 @@ tryCatch(async () => {
     // copy docs output to /docs/docs-ref-autogen folder
     fsx.readdirSync(docsSource)
         .forEach(filename => {
-        fsx.copySync(
-            docsSource + '/' + filename,
-            docsDestination + '/' + filename
-        );
+            fsx.copySync(
+                docsSource + '/' + filename,
+                docsDestination + '/' + filename
+            );
     });
 
     // change the async files to match the sync namespace pattern
     const asyncDocFolder = docsDestination + "/excel-async/excel";
     fsx.readdirSync(asyncDocFolder).forEach(filename => {
-        let newFileName = filename.replace("excel.", "excelscript.");
-        fsx.copySync(
+        fsx.renameSync(
             asyncDocFolder + '/' + filename,
-            asyncDocFolder + '/' + newFileName
+            asyncDocFolder + '/' + filename.replace("excel.", "excelscript.")
         );
         fsx.removeSync(asyncDocFolder + '/' + filename);
     });
+    fsx.renameSync(asyncDocFolder, docsDestination + "/excel-async/excelscript");
+    fsx.renameSync(asyncDocFolder + ".yml", docsDestination + "/excel-async/excelscript.yml");
 
     // fix all the individual TOC files
     console.log("Writing TOC for Office Scripts");
