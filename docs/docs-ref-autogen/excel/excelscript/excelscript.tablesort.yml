@@ -1,0 +1,157 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.TableSort:interface'
+    summary: Manages sorting operations on Table objects.
+    name: ExcelScript.TableSort
+    fullName: ExcelScript.TableSort
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.TableSort#apply:member(1)'
+      - 'ExcelScript!ExcelScript.TableSort#clear:member(1)'
+      - 'ExcelScript!ExcelScript.TableSort#getFields:member(1)'
+      - 'ExcelScript!ExcelScript.TableSort#getMatchCase:member(1)'
+      - 'ExcelScript!ExcelScript.TableSort#getMethod:member(1)'
+      - 'ExcelScript!ExcelScript.TableSort#reapply:member(1)'
+  - uid: 'ExcelScript!ExcelScript.TableSort#apply:member(1)'
+    summary: Perform a sort operation.
+    name: 'apply(fields, matchCase, method)'
+    fullName: 'apply(fields, matchCase, method)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        apply(
+                    fields: SortField[],
+                    matchCase?: boolean,
+                    method?: SortMethod
+                ): void;
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+            * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+            */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Create a table with the used cells.
+            let usedRange = selectedSheet.getUsedRange();
+            let newTable = selectedSheet.addTable(usedRange, true);
+
+            // Sort the table using the first column.
+            newTable.getSort().apply([{ key: 0, ascending: true }]);
+          }
+          ```
+      parameters:
+        - id: fields
+          description: The list of conditions to sort on.
+          type:
+            - 'ExcelScript!ExcelScript.TableSort#apply~0:complex'
+        - id: matchCase
+          description: Optional. Whether to have the casing impact string ordering.
+          type:
+            - boolean
+        - id: method
+          description: Optional. The ordering method used for Chinese characters.
+          type:
+            - 'ExcelScript!ExcelScript.SortMethod:enum'
+  - uid: 'ExcelScript!ExcelScript.TableSort#clear:member(1)'
+    summary: >-
+      Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the
+      state of the header buttons.
+    name: clear()
+    fullName: clear()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.TableSort#getFields:member(1)'
+    summary: Specifies the current conditions used to last sort the table.
+    name: getFields()
+    fullName: getFields()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFields(): SortField[];'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.TableSort#getFields~0:complex'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.TableSort#getMatchCase:member(1)'
+    summary: Specifies if the casing impacts the last sort of the table.
+    name: getMatchCase()
+    fullName: getMatchCase()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getMatchCase(): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.TableSort#getMethod:member(1)'
+    summary: Represents Chinese character ordering method last used to sort the table.
+    name: getMethod()
+    fullName: getMethod()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getMethod(): SortMethod;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.SortMethod:enum'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.TableSort#reapply:member(1)'
+    summary: Reapplies the current sorting parameters to the table.
+    name: reapply()
+    fullName: reapply()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'reapply(): void;'
+      return:
+        type:
+          - void
+        description: ''
+references:
+  - uid: 'ExcelScript!ExcelScript.TableSort#apply~0:complex'
+    name: 'SortField[]'
+    fullName: 'ExcelScript.SortField[]'
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.SortField:interface'
+        name: SortField
+        fullName: ExcelScript.SortField
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'ExcelScript!ExcelScript.SortMethod:enum'
+    name: SortMethod
+    fullName: ExcelScript.SortMethod
+  - uid: 'ExcelScript!ExcelScript.TableSort#getFields~0:complex'
+    name: 'SortField[]'
+    fullName: 'ExcelScript.SortField[]'
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.SortField:interface'
+        name: SortField
+        fullName: ExcelScript.SortField
+      - name: '[]'
+        fullName: '[]'
