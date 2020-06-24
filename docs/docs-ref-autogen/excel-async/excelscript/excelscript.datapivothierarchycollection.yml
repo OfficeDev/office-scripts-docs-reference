@@ -1,0 +1,96 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.DataPivotHierarchyCollection:interface'
+    summary: Represents a collection of DataPivotHierarchy items associated with the PivotTable.
+    name: Excel.DataPivotHierarchyCollection
+    fullName: Excel.DataPivotHierarchyCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.DataPivotHierarchyCollection#add:member(1)'
+      - 'excel!Excel.DataPivotHierarchyCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.DataPivotHierarchyCollection#load:member(1)'
+      - 'excel!Excel.DataPivotHierarchyCollection#remove:member(1)'
+  - uid: 'excel!Excel.DataPivotHierarchyCollection#add:member(1)'
+    summary: Adds the PivotHierarchy to the current axis.
+    name: add(pivotHierarchy)
+    fullName: add(pivotHierarchy)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(pivotHierarchy: PivotHierarchy): DataPivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.DataPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type:
+            - 'excel!Excel.PivotHierarchy:interface'
+  - uid: 'excel!Excel.DataPivotHierarchyCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, will return a null object.'
+    name: getItemOrNullObject(name)
+    fullName: getItemOrNullObject(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(name: string): DataPivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.DataPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the DataPivotHierarchy to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.DataPivotHierarchyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.DataPivotHierarchyCollection#remove:member(1)'
+    summary: Removes the PivotHierarchy from the current axis.
+    name: remove(DataPivotHierarchy)
+    fullName: remove(DataPivotHierarchy)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'remove(DataPivotHierarchy: DataPivotHierarchy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: DataPivotHierarchy
+          description: ''
+          type:
+            - 'excel!Excel.DataPivotHierarchy:interface'
+references:
+  - uid: 'excel!Excel.DataPivotHierarchy:interface'
+    name: DataPivotHierarchy
+    fullName: Excel.DataPivotHierarchy
+  - uid: 'excel!Excel.PivotHierarchy:interface'
+    name: PivotHierarchy
+    fullName: Excel.PivotHierarchy

@@ -1,0 +1,58 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ConditionalTextComparisonRule:interface'
+    summary: Represents a Cell Value Conditional Format Rule
+    name: Excel.ConditionalTextComparisonRule
+    fullName: Excel.ConditionalTextComparisonRule
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ConditionalTextComparisonRule#operator:member'
+      - 'excel!Excel.ConditionalTextComparisonRule#text:member'
+  - uid: 'excel!Excel.ConditionalTextComparisonRule#operator:member'
+    summary: The operator of the text conditional format.
+    name: operator
+    fullName: operator
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'operator: ConditionalTextOperator;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalTextOperator:enum'
+  - uid: 'excel!Excel.ConditionalTextComparisonRule#text:member'
+    summary: The Text value of conditional format.
+    name: text
+    fullName: text
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'text: string;'
+      return:
+        type:
+          - string
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B16:D18");
+              let conditionalFormat = range.conditionalFormats
+                  .add(Excel.ConditionalFormatType.containsText);
+              conditionalFormat.textComparison.format.font.color = "red";
+              conditionalFormat.textComparison.rule = { operator: Excel.ConditionalTextOperator.contains, text: "Delayed" };
+
+              await context.sync();
+          }
+          ```
+references:
+  - uid: 'excel!Excel.ConditionalTextOperator:enum'
+    name: ConditionalTextOperator
+    fullName: Excel.ConditionalTextOperator

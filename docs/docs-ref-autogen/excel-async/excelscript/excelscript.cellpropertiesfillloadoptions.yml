@@ -1,0 +1,106 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions:interface'
+    summary: Specifies which properties to load on the `format.fill` object.
+    name: Excel.CellPropertiesFillLoadOptions
+    fullName: Excel.CellPropertiesFillLoadOptions
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.CellPropertiesFillLoadOptions#color:member'
+      - 'excel!Excel.CellPropertiesFillLoadOptions#pattern:member'
+      - 'excel!Excel.CellPropertiesFillLoadOptions#patternColor:member'
+      - 'excel!Excel.CellPropertiesFillLoadOptions#patternTintAndShade:member'
+      - 'excel!Excel.CellPropertiesFillLoadOptions#tintAndShade:member'
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions#color:member'
+    summary: Specifies whether to load the `color` property.
+    name: color
+    fullName: color
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'color?: boolean;'
+      return:
+        type:
+          - boolean
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let cell = context.workbook.getActiveCell();
+
+              // Define the cell properties to get by setting the matching LoadOptions to true.
+              let propertiesToGet = cell.getCellProperties({
+                  address: true,
+                  format: {
+                      fill: {
+                          color: true
+                      },
+                      font: {
+                          color: true
+                      }
+                  },
+                  style: true
+              });
+
+              // Sync to get the data from the workbook.
+              await context.sync();
+              let cellProperties = propertiesToGet.value[0][0];
+              console.log(
+                  `Address: ${cellProperties.address}\nStyle: ${cellProperties.style}\nFill Color: ${cellProperties.format.fill.color}\nFont Color: ${cellProperties.format.font.color}`);
+          }
+          ```
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions#pattern:member'
+    summary: Specifies whether to load the `pattern` property.
+    name: pattern
+    fullName: pattern
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'pattern?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions#patternColor:member'
+    summary: Specifies whether to load the `patternColor` property.
+    name: patternColor
+    fullName: patternColor
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'patternColor?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions#patternTintAndShade:member'
+    summary: Specifies whether to load the `patternTintAndShade` property.
+    name: patternTintAndShade
+    fullName: patternTintAndShade
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'patternTintAndShade?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.CellPropertiesFillLoadOptions#tintAndShade:member'
+    summary: Specifies whether to load the `tintAndShade` property.
+    name: tintAndShade
+    fullName: tintAndShade
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'tintAndShade?: boolean;'
+      return:
+        type:
+          - boolean

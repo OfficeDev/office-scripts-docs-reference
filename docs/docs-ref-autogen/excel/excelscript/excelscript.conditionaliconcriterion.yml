@@ -1,0 +1,75 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterion:interface'
+    summary: >-
+      Represents an Icon Criterion which contains a type, value, an Operator, and an optional custom icon, if not using
+      an iconset.
+    name: ExcelScript.ConditionalIconCriterion
+    fullName: ExcelScript.ConditionalIconCriterion
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.ConditionalIconCriterion#customIcon:member'
+      - 'ExcelScript!ExcelScript.ConditionalIconCriterion#formula:member'
+      - 'ExcelScript!ExcelScript.ConditionalIconCriterion#operator:member'
+      - 'ExcelScript!ExcelScript.ConditionalIconCriterion#type:member'
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterion#customIcon:member'
+    summary: 'The custom icon for the current criterion if different from the default IconSet, else null will be returned.'
+    name: customIcon
+    fullName: customIcon
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'customIcon?: Icon;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Icon:interface'
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterion#formula:member'
+    summary: A number or a formula depending on the type.
+    name: formula
+    fullName: formula
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'formula: string;'
+      return:
+        type:
+          - string
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterion#operator:member'
+    summary: GreaterThan or GreaterThanOrEqual for each of the rule type for the Icon conditional format.
+    name: operator
+    fullName: operator
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'operator: ConditionalIconCriterionOperator;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ConditionalIconCriterionOperator:enum'
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterion#type:member'
+    summary: What the icon conditional formula should be based on.
+    name: type
+    fullName: type
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'type: ConditionalFormatIconRuleType;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ConditionalFormatIconRuleType:enum'
+references:
+  - uid: 'ExcelScript!ExcelScript.Icon:interface'
+    name: Icon
+    fullName: ExcelScript.Icon
+  - uid: 'ExcelScript!ExcelScript.ConditionalIconCriterionOperator:enum'
+    name: ConditionalIconCriterionOperator
+    fullName: ExcelScript.ConditionalIconCriterionOperator
+  - uid: 'ExcelScript!ExcelScript.ConditionalFormatIconRuleType:enum'
+    name: ConditionalFormatIconRuleType
+    fullName: ExcelScript.ConditionalFormatIconRuleType

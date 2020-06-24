@@ -1,0 +1,111 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CommentReplyCollection:interface'
+    summary: Represents a collection of comment reply objects that are part of the comment.
+    name: Excel.CommentReplyCollection
+    fullName: Excel.CommentReplyCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.CommentReplyCollection#add:member(1)'
+      - 'excel!Excel.CommentReplyCollection#getItem:member(1)'
+      - 'excel!Excel.CommentReplyCollection#load:member(1)'
+  - uid: 'excel!Excel.CommentReplyCollection#add:member(1)'
+    summary: Creates a comment reply for comment.
+    name: 'add(content, contentType)'
+    fullName: 'add(content, contentType)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        add(
+                    content: CommentRichContent | string,
+                    contentType?: ContentType
+                ): CommentReply;
+      return:
+        type:
+          - 'excel!Excel.CommentReply:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              // Adds a reply to the first comment in this worksheet.
+              let sheet = context.workbook.worksheets.getItem("Comments");
+              let comment = sheet.comments.getItemAt(0);
+              comment.replies.add("Add content to this worksheet.");
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or Interface CommentRichContent (e.g., for comments with
+            mentions).
+          type:
+            - 'excel!Excel.CommentReplyCollection#add~0:complex'
+        - id: contentType
+          description: >-
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->.
+          type:
+            - 'excel!Excel.ContentType:enum'
+  - uid: 'excel!Excel.CommentReplyCollection#getItem:member(1)'
+    summary: Returns a comment reply identified by its ID.
+    name: getItem(commentReplyId)
+    fullName: getItem(commentReplyId)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(commentReplyId: string): CommentReply;'
+      return:
+        type:
+          - 'excel!Excel.CommentReply:interface'
+        description: ''
+      parameters:
+        - id: commentReplyId
+          description: The identifier for the comment reply.
+          type:
+            - string
+  - uid: 'excel!Excel.CommentReplyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.CommentReply:interface'
+    name: CommentReply
+    fullName: Excel.CommentReply
+  - uid: 'excel!Excel.CommentReplyCollection#add~0:complex'
+    name: CommentRichContent | string
+    fullName: Excel.CommentRichContent | string
+    spec.typeScript:
+      - uid: 'excel!Excel.CommentRichContent:interface'
+        name: CommentRichContent
+        fullName: Excel.CommentRichContent
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.ContentType:enum'
+    name: ContentType
+    fullName: Excel.ContentType

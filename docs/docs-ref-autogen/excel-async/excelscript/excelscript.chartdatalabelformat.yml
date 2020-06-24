@@ -1,0 +1,81 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartDataLabelFormat:interface'
+    summary: Encapsulates the format properties for the chart data labels.
+    name: Excel.ChartDataLabelFormat
+    fullName: Excel.ChartDataLabelFormat
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartDataLabelFormat#border:member'
+      - 'excel!Excel.ChartDataLabelFormat#fill:member'
+      - 'excel!Excel.ChartDataLabelFormat#font:member'
+      - 'excel!Excel.ChartDataLabelFormat#load:member(1)'
+  - uid: 'excel!Excel.ChartDataLabelFormat#border:member'
+    summary: 'Represents the border format, which includes color, linestyle, and weight.'
+    name: border
+    fullName: border
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly border: ChartBorder;'
+      return:
+        type:
+          - 'excel!Excel.ChartBorder:interface'
+  - uid: 'excel!Excel.ChartDataLabelFormat#fill:member'
+    summary: Represents the fill format of the current chart data label.
+    name: fill
+    fullName: fill
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly fill: ChartFill;'
+      return:
+        type:
+          - 'excel!Excel.ChartFill:interface'
+  - uid: 'excel!Excel.ChartDataLabelFormat#font:member'
+    summary: 'Represents the font attributes (font name, font size, color, etc.) for a chart data label.'
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: ChartFont;'
+      return:
+        type:
+          - 'excel!Excel.ChartFont:interface'
+  - uid: 'excel!Excel.ChartDataLabelFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.ChartBorder:interface'
+    name: ChartBorder
+    fullName: Excel.ChartBorder
+  - uid: 'excel!Excel.ChartFill:interface'
+    name: ChartFill
+    fullName: Excel.ChartFill
+  - uid: 'excel!Excel.ChartFont:interface'
+    name: ChartFont
+    fullName: Excel.ChartFont

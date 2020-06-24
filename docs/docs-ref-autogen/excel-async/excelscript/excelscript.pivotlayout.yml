@@ -1,0 +1,299 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.PivotLayout:interface'
+    summary: Represents the visual layout of the PivotTable.
+    name: Excel.PivotLayout
+    fullName: Excel.PivotLayout
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.PivotLayout#autoFormat:member'
+      - 'excel!Excel.PivotLayout#enableFieldList:member'
+      - 'excel!Excel.PivotLayout#getColumnLabelRange:member(1)'
+      - 'excel!Excel.PivotLayout#getDataBodyRange:member(1)'
+      - 'excel!Excel.PivotLayout#getDataHierarchy:member(1)'
+      - 'excel!Excel.PivotLayout#getFilterAxisRange:member(1)'
+      - 'excel!Excel.PivotLayout#getRange:member(1)'
+      - 'excel!Excel.PivotLayout#getRowLabelRange:member(1)'
+      - 'excel!Excel.PivotLayout#layoutType:member'
+      - 'excel!Excel.PivotLayout#load:member(1)'
+      - 'excel!Excel.PivotLayout#preserveFormatting:member'
+      - 'excel!Excel.PivotLayout#setAutoSortOnCell:member(1)'
+      - 'excel!Excel.PivotLayout#showColumnGrandTotals:member'
+      - 'excel!Excel.PivotLayout#showRowGrandTotals:member'
+      - 'excel!Excel.PivotLayout#subtotalLocation:member'
+  - uid: 'excel!Excel.PivotLayout#autoFormat:member'
+    summary: Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved.
+    name: autoFormat
+    fullName: autoFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'autoFormat: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.PivotLayout#enableFieldList:member'
+    summary: Specifies if the field list can be shown in the UI.
+    name: enableFieldList
+    fullName: enableFieldList
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'enableFieldList: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.PivotLayout#getColumnLabelRange:member(1)'
+    summary: Returns the range where the PivotTable's column labels reside.
+    name: getColumnLabelRange()
+    fullName: getColumnLabelRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getColumnLabelRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.PivotLayout#getDataBodyRange:member(1)'
+    summary: Returns the range where the PivotTable's data values reside.
+    name: getDataBodyRange()
+    fullName: getDataBodyRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDataBodyRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let pivotTable = context.workbook.worksheets.getActiveWorksheet().pivotTables.getItem("Farm Sales");
+
+              // the layout controls the ranges used by the PivotTable
+              let range = pivotTable.layout.getDataBodyRange();
+
+              // get all the data hierarchy totals
+              let grandTotalRange = range.getLastRow();
+              grandTotalRange.load("address");
+              await context.sync();
+              
+              // use the wholesale and farm sale totals to make a final sum
+              let masterTotalRange = context.workbook.worksheets.getActiveWorksheet().getRange("B27:C27");
+              masterTotalRange.formulas = [["All Crates", "=SUM(" + grandTotalRange.address + ")"]];
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.PivotLayout#getDataHierarchy:member(1)'
+    summary: Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
+    name: getDataHierarchy(cell)
+    fullName: getDataHierarchy(cell)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDataHierarchy(cell: Range | string): DataPivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.DataPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: cell
+          description: A single cell within the PivotTable data body.
+          type:
+            - 'excel!Excel.PivotLayout#getDataHierarchy~0:complex'
+  - uid: 'excel!Excel.PivotLayout#getFilterAxisRange:member(1)'
+    summary: Returns the range of the PivotTable's filter area.
+    name: getFilterAxisRange()
+    fullName: getFilterAxisRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFilterAxisRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.PivotLayout#getRange:member(1)'
+    summary: 'Returns the range the PivotTable exists on, excluding the filter area.'
+    name: getRange()
+    fullName: getRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.PivotLayout#getRowLabelRange:member(1)'
+    summary: Returns the range where the PivotTable's row labels reside.
+    name: getRowLabelRange()
+    fullName: getRowLabelRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRowLabelRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.PivotLayout#layoutType:member'
+    summary: >-
+      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
+      will be null.
+    name: layoutType
+    fullName: layoutType
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'layoutType: PivotLayoutType;'
+      return:
+        type:
+          - 'excel!Excel.PivotLayoutType:enum'
+  - uid: 'excel!Excel.PivotLayout#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.PivotLayout#preserveFormatting:member'
+    summary: >-
+      Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting,
+      sorting, or changing page field items.
+    name: preserveFormatting
+    fullName: preserveFormatting
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'preserveFormatting: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.PivotLayout#setAutoSortOnCell:member(1)'
+    summary: >-
+      Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria
+      and context. This behaves identically to applying an autosort from the UI.
+    name: 'setAutoSortOnCell(cell, sortBy)'
+    fullName: 'setAutoSortOnCell(cell, sortBy)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: cell
+          description: A single cell to use get the criteria from for applying the autosort.
+          type:
+            - 'excel!Excel.PivotLayout#setAutoSortOnCell~0:complex'
+        - id: sortBy
+          description: The direction of the sort.
+          type:
+            - 'excel!Excel.SortBy:enum'
+  - uid: 'excel!Excel.PivotLayout#showColumnGrandTotals:member'
+    summary: Specifies if the PivotTable report shows grand totals for columns.
+    name: showColumnGrandTotals
+    fullName: showColumnGrandTotals
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showColumnGrandTotals: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.PivotLayout#showRowGrandTotals:member'
+    summary: Specifies if the PivotTable report shows grand totals for rows.
+    name: showRowGrandTotals
+    fullName: showRowGrandTotals
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showRowGrandTotals: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.PivotLayout#subtotalLocation:member'
+    summary: >-
+      This property indicates the SubtotalLocationType of all fields on the PivotTable. If fields have different states,
+      this will be null.
+    name: subtotalLocation
+    fullName: subtotalLocation
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'subtotalLocation: SubtotalLocationType;'
+      return:
+        type:
+          - 'excel!Excel.SubtotalLocationType:enum'
+references:
+  - uid: 'excel!Excel.Range:interface'
+    name: Range
+    fullName: Excel.Range
+  - uid: 'excel!Excel.DataPivotHierarchy:interface'
+    name: DataPivotHierarchy
+    fullName: Excel.DataPivotHierarchy
+  - uid: 'excel!Excel.PivotLayout#getDataHierarchy~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.PivotLayoutType:enum'
+    name: PivotLayoutType
+    fullName: Excel.PivotLayoutType
+  - uid: 'excel!Excel.PivotLayout#setAutoSortOnCell~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.SortBy:enum'
+    name: SortBy
+    fullName: Excel.SortBy
+  - uid: 'excel!Excel.SubtotalLocationType:enum'
+    name: SubtotalLocationType
+    fullName: Excel.SubtotalLocationType

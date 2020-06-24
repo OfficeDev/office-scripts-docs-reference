@@ -1,0 +1,73 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.TableScopedCollection:interface'
+    summary: >-
+      Represents a scoped collection of tables. For each table its top-left corner is considered its anchor location and
+      the tables are sorted top to bottom and then left to right.
+    name: Excel.TableScopedCollection
+    fullName: Excel.TableScopedCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.TableScopedCollection#getFirst:member(1)'
+      - 'excel!Excel.TableScopedCollection#getItem:member(1)'
+      - 'excel!Excel.TableScopedCollection#load:member(1)'
+  - uid: 'excel!Excel.TableScopedCollection#getFirst:member(1)'
+    summary: >-
+      Gets the first table in the collection. The tables in the collection are sorted top to bottom and left to right,
+      such that top left table is the first table in the collection.
+    name: getFirst()
+    fullName: getFirst()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFirst(): Table;'
+      return:
+        type:
+          - 'excel!Excel.Table:interface'
+        description: ''
+  - uid: 'excel!Excel.TableScopedCollection#getItem:member(1)'
+    summary: Gets a table by Name or ID.
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): Table;'
+      return:
+        type:
+          - 'excel!Excel.Table:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: Name or ID of the table to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.TableScopedCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.Table:interface'
+    name: Table
+    fullName: Excel.Table

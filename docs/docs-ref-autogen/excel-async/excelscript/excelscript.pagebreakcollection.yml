@@ -1,0 +1,88 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.PageBreakCollection:interface'
+    name: Excel.PageBreakCollection
+    fullName: Excel.PageBreakCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.PageBreakCollection#add:member(1)'
+      - 'excel!Excel.PageBreakCollection#load:member(1)'
+      - 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
+  - uid: 'excel!Excel.PageBreakCollection#add:member(1)'
+    summary: Adds a page break before the top-left cell of the range specified.
+    name: add(pageBreakRange)
+    fullName: add(pageBreakRange)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(pageBreakRange: Range | string): PageBreak;'
+      return:
+        type:
+          - 'excel!Excel.PageBreak:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let farmSheet = context.workbook.worksheets.getItem("Print");
+              farmSheet.horizontalPageBreaks.add("A21:E21");
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: pageBreakRange
+          description: The range immediately after the page break to be added.
+          type:
+            - 'excel!Excel.PageBreakCollection#add~0:complex'
+  - uid: 'excel!Excel.PageBreakCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
+    summary: Resets all manual page breaks in the collection.
+    name: removePageBreaks()
+    fullName: removePageBreaks()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'removePageBreaks(): void;'
+      return:
+        type:
+          - void
+        description: ''
+references:
+  - uid: 'excel!Excel.PageBreak:interface'
+    name: PageBreak
+    fullName: Excel.PageBreak
+  - uid: 'excel!Excel.PageBreakCollection#add~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'

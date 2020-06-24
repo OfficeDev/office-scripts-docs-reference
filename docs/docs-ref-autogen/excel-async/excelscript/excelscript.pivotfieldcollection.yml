@@ -1,0 +1,55 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.PivotFieldCollection:interface'
+    summary: Represents a collection of all the PivotFields that are part of a PivotTable's hierarchy.
+    name: Excel.PivotFieldCollection
+    fullName: Excel.PivotFieldCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.PivotFieldCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.PivotFieldCollection#load:member(1)'
+  - uid: 'excel!Excel.PivotFieldCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a PivotField by name. If the PivotField does not exist, will return a null object.'
+    name: getItemOrNullObject(name)
+    fullName: getItemOrNullObject(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(name: string): PivotField;'
+      return:
+        type:
+          - 'excel!Excel.PivotField:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the PivotField to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.PivotFieldCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.PivotField:interface'
+    name: PivotField
+    fullName: Excel.PivotField

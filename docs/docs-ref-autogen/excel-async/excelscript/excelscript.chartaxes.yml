@@ -1,0 +1,104 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartAxes:interface'
+    summary: Represents the chart axes.
+    name: Excel.ChartAxes
+    fullName: Excel.ChartAxes
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartAxes#categoryAxis:member'
+      - 'excel!Excel.ChartAxes#getItem:member(1)'
+      - 'excel!Excel.ChartAxes#load:member(1)'
+      - 'excel!Excel.ChartAxes#seriesAxis:member'
+      - 'excel!Excel.ChartAxes#valueAxis:member'
+  - uid: 'excel!Excel.ChartAxes#categoryAxis:member'
+    summary: Represents the category axis in a chart.
+    name: categoryAxis
+    fullName: categoryAxis
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly categoryAxis: ChartAxis;'
+      return:
+        type:
+          - 'excel!Excel.ChartAxis:interface'
+  - uid: 'excel!Excel.ChartAxes#getItem:member(1)'
+    summary: Returns the specific axis identified by type and group.
+    name: 'getItem(type, group)'
+    fullName: 'getItem(type, group)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;'
+      return:
+        type:
+          - 'excel!Excel.ChartAxis:interface'
+        description: ''
+      parameters:
+        - id: type
+          description: Specifies the axis type. See Excel.ChartAxisType for details.
+          type:
+            - 'excel!Excel.ChartAxisType:enum'
+        - id: group
+          description: Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
+          type:
+            - 'excel!Excel.ChartAxisGroup:enum'
+  - uid: 'excel!Excel.ChartAxes#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ChartAxes#seriesAxis:member'
+    summary: Represents the series axis of a 3-dimensional chart.
+    name: seriesAxis
+    fullName: seriesAxis
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly seriesAxis: ChartAxis;'
+      return:
+        type:
+          - 'excel!Excel.ChartAxis:interface'
+  - uid: 'excel!Excel.ChartAxes#valueAxis:member'
+    summary: Represents the value axis in an axis.
+    name: valueAxis
+    fullName: valueAxis
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly valueAxis: ChartAxis;'
+      return:
+        type:
+          - 'excel!Excel.ChartAxis:interface'
+references:
+  - uid: 'excel!Excel.ChartAxis:interface'
+    name: ChartAxis
+    fullName: Excel.ChartAxis
+  - uid: 'excel!Excel.ChartAxisType:enum'
+    name: ChartAxisType
+    fullName: Excel.ChartAxisType
+  - uid: 'excel!Excel.ChartAxisGroup:enum'
+    name: ChartAxisGroup
+    fullName: Excel.ChartAxisGroup

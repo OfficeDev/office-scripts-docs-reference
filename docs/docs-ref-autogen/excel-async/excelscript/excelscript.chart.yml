@@ -1,0 +1,535 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.Chart:interface'
+    summary: >-
+      Represents a chart object in a workbook. To learn more about the Chart object model, see [Work with charts using
+      the Excel JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-charts)<!-- -->.
+    name: Excel.Chart
+    fullName: Excel.Chart
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.Chart#activate:member(1)'
+      - 'excel!Excel.Chart#axes:member'
+      - 'excel!Excel.Chart#categoryLabelLevel:member'
+      - 'excel!Excel.Chart#chartType:member'
+      - 'excel!Excel.Chart#dataLabels:member'
+      - 'excel!Excel.Chart#delete:member(1)'
+      - 'excel!Excel.Chart#displayBlanksAs:member'
+      - 'excel!Excel.Chart#format:member'
+      - 'excel!Excel.Chart#getImage:member(1)'
+      - 'excel!Excel.Chart#height:member'
+      - 'excel!Excel.Chart#id:member'
+      - 'excel!Excel.Chart#left:member'
+      - 'excel!Excel.Chart#legend:member'
+      - 'excel!Excel.Chart#load:member(1)'
+      - 'excel!Excel.Chart#name:member'
+      - 'excel!Excel.Chart#pivotOptions:member'
+      - 'excel!Excel.Chart#plotArea:member'
+      - 'excel!Excel.Chart#plotBy:member'
+      - 'excel!Excel.Chart#plotVisibleOnly:member'
+      - 'excel!Excel.Chart#series:member'
+      - 'excel!Excel.Chart#seriesNameLevel:member'
+      - 'excel!Excel.Chart#setData:member(1)'
+      - 'excel!Excel.Chart#setPosition:member(1)'
+      - 'excel!Excel.Chart#showAllFieldButtons:member'
+      - 'excel!Excel.Chart#showDataLabelsOverMaximum:member'
+      - 'excel!Excel.Chart#style:member'
+      - 'excel!Excel.Chart#title:member'
+      - 'excel!Excel.Chart#top:member'
+      - 'excel!Excel.Chart#width:member'
+      - 'excel!Excel.Chart#worksheet:member'
+  - uid: 'excel!Excel.Chart#activate:member(1)'
+    summary: Activates the chart in the Excel UI.
+    name: activate()
+    fullName: activate()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'activate(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.Chart#axes:member'
+    summary: Represents chart axes.
+    name: axes
+    fullName: axes
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly axes: ChartAxes;'
+      return:
+        type:
+          - 'excel!Excel.ChartAxes:interface'
+  - uid: 'excel!Excel.Chart#categoryLabelLevel:member'
+    summary: >-
+      Specifies a ChartCategoryLabelLevel enumeration constant referring to the level of where the category labels are
+      being sourced from.
+    name: categoryLabelLevel
+    fullName: categoryLabelLevel
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'categoryLabelLevel: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#chartType:member'
+    summary: Specifies the type of the chart. See Excel.ChartType for details.
+    name: chartType
+    fullName: chartType
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'chartType: ChartType;'
+      return:
+        type:
+          - 'excel!Excel.ChartType:enum'
+  - uid: 'excel!Excel.Chart#dataLabels:member'
+    summary: Represents the datalabels on the chart.
+    name: dataLabels
+    fullName: dataLabels
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly dataLabels: ChartDataLabels;'
+      return:
+        type:
+          - 'excel!Excel.ChartDataLabels:interface'
+  - uid: 'excel!Excel.Chart#delete:member(1)'
+    summary: Deletes the chart object.
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.Chart#displayBlanksAs:member'
+    summary: Specifies the way that blank cells are plotted on a chart.
+    name: displayBlanksAs
+    fullName: displayBlanksAs
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'displayBlanksAs: ChartDisplayBlanksAs;'
+      return:
+        type:
+          - 'excel!Excel.ChartDisplayBlanksAs:enum'
+  - uid: 'excel!Excel.Chart#format:member'
+    summary: Encapsulates the format properties for the chart area.
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly format: ChartAreaFormat;'
+      return:
+        type:
+          - 'excel!Excel.ChartAreaFormat:interface'
+  - uid: 'excel!Excel.Chart#getImage:member(1)'
+    summary: >-
+      Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions. The aspect ratio
+      is preserved as part of the resizing.
+    name: 'getImage(width, height, fittingMode)'
+    fullName: 'getImage(width, height, fittingMode)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        getImage(
+                    width?: number,
+                    height?: number,
+                    fittingMode?: ImageFittingMode
+                ): string;
+      return:
+        type:
+          - string
+        description: ''
+      parameters:
+        - id: width
+          description: (Optional) The desired width of the resulting image.
+          type:
+            - number
+        - id: height
+          description: (Optional) The desired height of the resulting image.
+          type:
+            - number
+        - id: fittingMode
+          description: >-
+            (Optional) The method used to scale the chart to the specified to the specified dimensions (if both height
+            and width are set).
+          type:
+            - 'excel!Excel.ImageFittingMode:enum'
+  - uid: 'excel!Excel.Chart#height:member'
+    summary: 'Specifies the height, in points, of the chart object.'
+    name: height
+    fullName: height
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'height: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#id:member'
+    summary: The unique id of chart.
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Chart#left:member'
+    summary: 'The distance, in points, from the left side of the chart to the worksheet origin.'
+    name: left
+    fullName: left
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'left: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#legend:member'
+    summary: Represents the legend for the chart.
+    name: legend
+    fullName: legend
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly legend: ChartLegend;'
+      return:
+        type:
+          - 'excel!Excel.ChartLegend:interface'
+  - uid: 'excel!Excel.Chart#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.Chart#name:member'
+    summary: Specifies the name of a chart object.
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Chart#pivotOptions:member'
+    summary: Encapsulates the options for a pivot chart.
+    name: pivotOptions
+    fullName: pivotOptions
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly pivotOptions: ChartPivotOptions;'
+      return:
+        type:
+          - 'excel!Excel.ChartPivotOptions:interface'
+  - uid: 'excel!Excel.Chart#plotArea:member'
+    summary: Represents the plotArea for the chart.
+    name: plotArea
+    fullName: plotArea
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly plotArea: ChartPlotArea;'
+      return:
+        type:
+          - 'excel!Excel.ChartPlotArea:interface'
+  - uid: 'excel!Excel.Chart#plotBy:member'
+    summary: Specifies the way columns or rows are used as data series on the chart.
+    name: plotBy
+    fullName: plotBy
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'plotBy: ChartPlotBy;'
+      return:
+        type:
+          - 'excel!Excel.ChartPlotBy:enum'
+  - uid: 'excel!Excel.Chart#plotVisibleOnly:member'
+    summary: True if only visible cells are plotted. False if both visible and hidden cells are plotted.
+    name: plotVisibleOnly
+    fullName: plotVisibleOnly
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'plotVisibleOnly: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Chart#series:member'
+    summary: Represents either a single series or collection of series in the chart.
+    name: series
+    fullName: series
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly series: ChartSeriesCollection;'
+      return:
+        type:
+          - 'excel!Excel.ChartSeriesCollection:interface'
+  - uid: 'excel!Excel.Chart#seriesNameLevel:member'
+    summary: >-
+      Specifies a ChartSeriesNameLevel enumeration constant referring to the level of where the series names are being
+      sourced from.
+    name: seriesNameLevel
+    fullName: seriesNameLevel
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'seriesNameLevel: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#setData:member(1)'
+    summary: Resets the source data for the chart.
+    name: 'setData(sourceData, seriesBy)'
+    fullName: 'setData(sourceData, seriesBy)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setData(sourceData: Range, seriesBy?: ChartSeriesBy): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: sourceData
+          description: The range object corresponding to the source data.
+          type:
+            - 'excel!Excel.Range:interface'
+        - id: seriesBy
+          description: >-
+            Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto
+            (default), Rows, and Columns. See Excel.ChartSeriesBy for details.
+          type:
+            - 'excel!Excel.ChartSeriesBy:enum'
+  - uid: 'excel!Excel.Chart#setPosition:member(1)'
+    summary: Positions the chart relative to cells on the worksheet.
+    name: 'setPosition(startCell, endCell)'
+    fullName: 'setPosition(startCell, endCell)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setPosition(startCell: Range | string, endCell?: Range | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: startCell
+          description: >-
+            The start cell. This is where the chart will be moved to. The start cell is the top-left or top-right cell,
+            depending on the user's right-to-left display settings.
+          type:
+            - 'excel!Excel.Chart#setPosition~0:complex'
+        - id: endCell
+          description: >-
+            (Optional) The end cell. If specified, the chart's width and height will be set to fully cover up this
+            cell/range.
+          type:
+            - 'excel!Excel.Chart#setPosition~1:complex'
+  - uid: 'excel!Excel.Chart#showAllFieldButtons:member'
+    summary: Specifies whether to display all field buttons on a PivotChart.
+    name: showAllFieldButtons
+    fullName: showAllFieldButtons
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showAllFieldButtons: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Chart#showDataLabelsOverMaximum:member'
+    summary: >-
+      Specifies whether to show the data labels when the value is greater than the maximum value on the value axis. If
+      value axis became smaller than the size of data points, you can use this property to set whether to show the data
+      labels. This property applies to 2-D charts only.
+    name: showDataLabelsOverMaximum
+    fullName: showDataLabelsOverMaximum
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showDataLabelsOverMaximum: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Chart#style:member'
+    summary: Specifies the chart style for the chart.
+    name: style
+    fullName: style
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'style: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#title:member'
+    summary: 'Specifies the title of the specified chart, including the text, visibility, position, and formatting of the title.'
+    name: title
+    fullName: title
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly title: ChartTitle;'
+      return:
+        type:
+          - 'excel!Excel.ChartTitle:interface'
+  - uid: 'excel!Excel.Chart#top:member'
+    summary: >-
+      Specifies the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the top
+      of the chart area (on a chart).
+    name: top
+    fullName: top
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'top: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#width:member'
+    summary: 'Specifies the width, in points, of the chart object.'
+    name: width
+    fullName: width
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'width: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Chart#worksheet:member'
+    summary: The worksheet containing the current chart.
+    name: worksheet
+    fullName: worksheet
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly worksheet: Worksheet;'
+      return:
+        type:
+          - 'excel!Excel.Worksheet:interface'
+references:
+  - uid: 'excel!Excel.ChartAxes:interface'
+    name: ChartAxes
+    fullName: Excel.ChartAxes
+  - uid: 'excel!Excel.ChartType:enum'
+    name: ChartType
+    fullName: Excel.ChartType
+  - uid: 'excel!Excel.ChartDataLabels:interface'
+    name: ChartDataLabels
+    fullName: Excel.ChartDataLabels
+  - uid: 'excel!Excel.ChartDisplayBlanksAs:enum'
+    name: ChartDisplayBlanksAs
+    fullName: Excel.ChartDisplayBlanksAs
+  - uid: 'excel!Excel.ChartAreaFormat:interface'
+    name: ChartAreaFormat
+    fullName: Excel.ChartAreaFormat
+  - uid: 'excel!Excel.ImageFittingMode:enum'
+    name: ImageFittingMode
+    fullName: Excel.ImageFittingMode
+  - uid: 'excel!Excel.ChartLegend:interface'
+    name: ChartLegend
+    fullName: Excel.ChartLegend
+  - uid: 'excel!Excel.ChartPivotOptions:interface'
+    name: ChartPivotOptions
+    fullName: Excel.ChartPivotOptions
+  - uid: 'excel!Excel.ChartPlotArea:interface'
+    name: ChartPlotArea
+    fullName: Excel.ChartPlotArea
+  - uid: 'excel!Excel.ChartPlotBy:enum'
+    name: ChartPlotBy
+    fullName: Excel.ChartPlotBy
+  - uid: 'excel!Excel.ChartSeriesCollection:interface'
+    name: ChartSeriesCollection
+    fullName: Excel.ChartSeriesCollection
+  - uid: 'excel!Excel.Range:interface'
+    name: Range
+    fullName: Excel.Range
+  - uid: 'excel!Excel.ChartSeriesBy:enum'
+    name: ChartSeriesBy
+    fullName: Excel.ChartSeriesBy
+  - uid: 'excel!Excel.Chart#setPosition~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.Chart#setPosition~1:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.ChartTitle:interface'
+    name: ChartTitle
+    fullName: Excel.ChartTitle
+  - uid: 'excel!Excel.Worksheet:interface'
+    name: Worksheet
+    fullName: Excel.Worksheet

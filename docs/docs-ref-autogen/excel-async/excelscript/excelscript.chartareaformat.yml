@@ -1,0 +1,110 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartAreaFormat:interface'
+    summary: Encapsulates the format properties for the overall chart area.
+    name: Excel.ChartAreaFormat
+    fullName: Excel.ChartAreaFormat
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartAreaFormat#border:member'
+      - 'excel!Excel.ChartAreaFormat#colorScheme:member'
+      - 'excel!Excel.ChartAreaFormat#fill:member'
+      - 'excel!Excel.ChartAreaFormat#font:member'
+      - 'excel!Excel.ChartAreaFormat#load:member(1)'
+      - 'excel!Excel.ChartAreaFormat#roundedCorners:member'
+  - uid: 'excel!Excel.ChartAreaFormat#border:member'
+    summary: 'Represents the border format of chart area, which includes color, linestyle, and weight.'
+    name: border
+    fullName: border
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly border: ChartBorder;'
+      return:
+        type:
+          - 'excel!Excel.ChartBorder:interface'
+  - uid: 'excel!Excel.ChartAreaFormat#colorScheme:member'
+    summary: Specifies the color scheme of the chart.
+    name: colorScheme
+    fullName: colorScheme
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'colorScheme: ChartColorScheme;'
+      return:
+        type:
+          - 'excel!Excel.ChartColorScheme:enum'
+  - uid: 'excel!Excel.ChartAreaFormat#fill:member'
+    summary: 'Represents the fill format of an object, which includes background formatting information.'
+    name: fill
+    fullName: fill
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly fill: ChartFill;'
+      return:
+        type:
+          - 'excel!Excel.ChartFill:interface'
+  - uid: 'excel!Excel.ChartAreaFormat#font:member'
+    summary: 'Represents the font attributes (font name, font size, color, etc.) for the current object.'
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: ChartFont;'
+      return:
+        type:
+          - 'excel!Excel.ChartFont:interface'
+  - uid: 'excel!Excel.ChartAreaFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ChartAreaFormat#roundedCorners:member'
+    summary: Specifies if the chart area of the chart has rounded corners.
+    name: roundedCorners
+    fullName: roundedCorners
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'roundedCorners: boolean;'
+      return:
+        type:
+          - boolean
+references:
+  - uid: 'excel!Excel.ChartBorder:interface'
+    name: ChartBorder
+    fullName: Excel.ChartBorder
+  - uid: 'excel!Excel.ChartColorScheme:enum'
+    name: ChartColorScheme
+    fullName: Excel.ChartColorScheme
+  - uid: 'excel!Excel.ChartFill:interface'
+    name: ChartFill
+    fullName: Excel.ChartFill
+  - uid: 'excel!Excel.ChartFont:interface'
+    name: ChartFont
+    fullName: Excel.ChartFont

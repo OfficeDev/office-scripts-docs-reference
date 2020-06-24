@@ -1,0 +1,206 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.WorksheetFreezePanes:interface'
+    name: Excel.WorksheetFreezePanes
+    fullName: Excel.WorksheetFreezePanes
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.WorksheetFreezePanes#freezeAt:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#freezeColumns:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#freezeRows:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#getLocationOrNullObject:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#load:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#unfreeze:member(1)'
+  - uid: 'excel!Excel.WorksheetFreezePanes#freezeAt:member(1)'
+    summary: >-
+      Sets the frozen cells in the active worksheet view. The range provided corresponds to cells that will be frozen in
+      the top- and left-most pane.
+    name: freezeAt(frozenRange)
+    fullName: freezeAt(frozenRange)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeAt(frozenRange: Range | string): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the specified range in top-and-left-most pane of the worksheet.
+              sheet.freezePanes.freezeAt(sheet.getRange("H2:K5"));
+
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: frozenRange
+          description: 'A range that represents the cells to be frozen, or null to remove all frozen panes.'
+          type:
+            - 'excel!Excel.WorksheetFreezePanes#freezeAt~0:complex'
+  - uid: 'excel!Excel.WorksheetFreezePanes#freezeColumns:member(1)'
+    summary: Freeze the first column(s) of the worksheet in place.
+    name: freezeColumns(count)
+    fullName: freezeColumns(count)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeColumns(count?: number): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the first two columns in the worksheet.
+              sheet.freezePanes.freezeColumns(2);
+
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: count
+          description: 'Optional number of columns to freeze, or zero to unfreeze all columns'
+          type:
+            - number
+  - uid: 'excel!Excel.WorksheetFreezePanes#freezeRows:member(1)'
+    summary: Freeze the top row(s) of the worksheet in place.
+    name: freezeRows(count)
+    fullName: freezeRows(count)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeRows(count?: number): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              // Freeze the top two rows in the worksheet.
+              sheet.freezePanes.freezeRows(2);
+
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: count
+          description: 'Optional number of rows to freeze, or zero to unfreeze all rows'
+          type:
+            - number
+  - uid: 'excel!Excel.WorksheetFreezePanes#getLocationOrNullObject:member(1)'
+    summary: >-
+      Gets a range that describes the frozen cells in the active worksheet view. The frozen range is corresponds to
+      cells that are frozen in the top- and left-most pane. If there is no frozen pane, returns a null object.
+    name: getLocationOrNullObject()
+    fullName: getLocationOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLocationOrNullObject(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let frozenRange = sheet.freezePanes.getLocationOrNullObject();
+              frozenRange.load("address");
+
+              await context.sync();
+
+              if (frozenRange.isNullObject) {
+                  console.log(`The worksheet does not contain a frozen pane.`);
+              } else {
+                  console.log(`The address of the frozen range (cells that are frozen in the top-and-left-most pane) is "${frozenRange.address}"`);
+              }
+          }
+          ```
+  - uid: 'excel!Excel.WorksheetFreezePanes#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.WorksheetFreezePanes#unfreeze:member(1)'
+    summary: Removes all frozen panes in the worksheet.
+    name: unfreeze()
+    fullName: unfreeze()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unfreeze(): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              sheet.freezePanes.unfreeze();
+
+              await context.sync();
+          }
+          ```
+references:
+  - uid: 'excel!Excel.WorksheetFreezePanes#freezeAt~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.Range:interface'
+    name: Range
+    fullName: Excel.Range

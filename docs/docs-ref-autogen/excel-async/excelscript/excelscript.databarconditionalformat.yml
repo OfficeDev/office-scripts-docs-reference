@@ -1,0 +1,176 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.DataBarConditionalFormat:interface'
+    summary: Represents an Excel Conditional Data Bar Type.
+    name: Excel.DataBarConditionalFormat
+    fullName: Excel.DataBarConditionalFormat
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.DataBarConditionalFormat#axisColor:member'
+      - 'excel!Excel.DataBarConditionalFormat#axisFormat:member'
+      - 'excel!Excel.DataBarConditionalFormat#barDirection:member'
+      - 'excel!Excel.DataBarConditionalFormat#load:member(1)'
+      - 'excel!Excel.DataBarConditionalFormat#lowerBoundRule:member'
+      - 'excel!Excel.DataBarConditionalFormat#negativeFormat:member'
+      - 'excel!Excel.DataBarConditionalFormat#positiveFormat:member'
+      - 'excel!Excel.DataBarConditionalFormat#showDataBarOnly:member'
+      - 'excel!Excel.DataBarConditionalFormat#upperBoundRule:member'
+  - uid: 'excel!Excel.DataBarConditionalFormat#axisColor:member'
+    summary: >-
+      HTML color code representing the color of the Axis line, of the form \#RRGGBB (e.g., "FFA500") or as a named HTML
+      color (e.g., "orange"). "" (empty string) if no axis is present or set.
+    name: axisColor
+    fullName: axisColor
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'axisColor: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.DataBarConditionalFormat#axisFormat:member'
+    summary: Representation of how the axis is determined for an Excel data bar.
+    name: axisFormat
+    fullName: axisFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'axisFormat: ConditionalDataBarAxisFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarAxisFormat:enum'
+  - uid: 'excel!Excel.DataBarConditionalFormat#barDirection:member'
+    summary: Specifies the direction that the data bar graphic should be based on.
+    name: barDirection
+    fullName: barDirection
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'barDirection: ConditionalDataBarDirection;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarDirection:enum'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats
+                  .add(Excel.ConditionalFormatType.dataBar);
+              conditionalFormat.dataBar.barDirection = Excel.ConditionalDataBarDirection.leftToRight;
+
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.DataBarConditionalFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.DataBarConditionalFormat#lowerBoundRule:member'
+    summary: >-
+      The rule for what consistutes the lower bound (and how to calculate it, if applicable) for a data bar. The
+      `ConditionalDataBarRule` object must be set as a JSON object (use `x.lowerBoundRule = {...}` instead of
+      `x.lowerBoundRule.formula = ...`<!-- -->).
+    name: lowerBoundRule
+    fullName: lowerBoundRule
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'lowerBoundRule: ConditionalDataBarRule;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarRule:interface'
+  - uid: 'excel!Excel.DataBarConditionalFormat#negativeFormat:member'
+    summary: Representation of all values to the left of the axis in an Excel data bar.
+    name: negativeFormat
+    fullName: negativeFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly negativeFormat: ConditionalDataBarNegativeFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarNegativeFormat:interface'
+  - uid: 'excel!Excel.DataBarConditionalFormat#positiveFormat:member'
+    summary: Representation of all values to the right of the axis in an Excel data bar.
+    name: positiveFormat
+    fullName: positiveFormat
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly positiveFormat: ConditionalDataBarPositiveFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarPositiveFormat:interface'
+  - uid: 'excel!Excel.DataBarConditionalFormat#showDataBarOnly:member'
+    summary: 'If true, hides the values from the cells where the data bar is applied.'
+    name: showDataBarOnly
+    fullName: showDataBarOnly
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'showDataBarOnly: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.DataBarConditionalFormat#upperBoundRule:member'
+    summary: >-
+      The rule for what constitutes the upper bound (and how to calculate it, if applicable) for a data bar. The
+      `ConditionalDataBarRule` object must be set as a JSON object (use `x.upperBoundRule = {...}` instead of
+      `x.upperBoundRule.formula = ...`<!-- -->).
+    name: upperBoundRule
+    fullName: upperBoundRule
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'upperBoundRule: ConditionalDataBarRule;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalDataBarRule:interface'
+references:
+  - uid: 'excel!Excel.ConditionalDataBarAxisFormat:enum'
+    name: ConditionalDataBarAxisFormat
+    fullName: Excel.ConditionalDataBarAxisFormat
+  - uid: 'excel!Excel.ConditionalDataBarDirection:enum'
+    name: ConditionalDataBarDirection
+    fullName: Excel.ConditionalDataBarDirection
+  - uid: 'excel!Excel.ConditionalDataBarRule:interface'
+    name: ConditionalDataBarRule
+    fullName: Excel.ConditionalDataBarRule
+  - uid: 'excel!Excel.ConditionalDataBarNegativeFormat:interface'
+    name: ConditionalDataBarNegativeFormat
+    fullName: Excel.ConditionalDataBarNegativeFormat
+  - uid: 'excel!Excel.ConditionalDataBarPositiveFormat:interface'
+    name: ConditionalDataBarPositiveFormat
+    fullName: Excel.ConditionalDataBarPositiveFormat

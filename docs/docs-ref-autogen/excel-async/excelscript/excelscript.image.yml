@@ -1,0 +1,78 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.Image:interface'
+    summary: 'Represents an image in the worksheet. To get the corresponding Shape object, use Image.shape.'
+    name: Excel.Image
+    fullName: Excel.Image
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.Image#format:member'
+      - 'excel!Excel.Image#id:member'
+      - 'excel!Excel.Image#load:member(1)'
+  - uid: 'excel!Excel.Image#format:member'
+    summary: Returns the format of the image.
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly format: PictureFormat;'
+      return:
+        type:
+          - 'excel!Excel.PictureFormat:enum'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let image = sheet.shapes.getItem("Image").image;
+              image.load("format");
+              await context.sync();
+
+              console.log("The image's format is: " + image.format);
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.Image#id:member'
+    summary: Specifies the shape identifier for the image object.
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Image#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.PictureFormat:enum'
+    name: PictureFormat
+    fullName: Excel.PictureFormat
