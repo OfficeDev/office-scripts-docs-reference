@@ -1,0 +1,93 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ShapeGroup:interface'
+    summary: >-
+      Represents a shape group inside a worksheet. To get the corresponding Shape object, use `ShapeGroup.shape`<!--
+      -->.
+    name: Excel.ShapeGroup
+    fullName: Excel.ShapeGroup
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ShapeGroup#id:member'
+      - 'excel!Excel.ShapeGroup#load:member(1)'
+      - 'excel!Excel.ShapeGroup#shapes:member'
+      - 'excel!Excel.ShapeGroup#ungroup:member(1)'
+  - uid: 'excel!Excel.ShapeGroup#id:member'
+    summary: Specifies the shape identifier.
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.ShapeGroup#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ShapeGroup#shapes:member'
+    summary: Returns the collection of Shape objects.
+    name: shapes
+    fullName: shapes
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly shapes: GroupShapeCollection;'
+      return:
+        type:
+          - 'excel!Excel.GroupShapeCollection:interface'
+  - uid: 'excel!Excel.ShapeGroup#ungroup:member(1)'
+    summary: Ungroups any grouped shapes in the specified shape group.
+    name: ungroup()
+    fullName: ungroup()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'ungroup(): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+
+              let shapeGroup = sheet.shapes.getItem("Group").group;
+              shapeGroup.ungroup();
+              console.log("Shapes ungrouped");
+
+              await context.sync();
+          }
+          ```
+references:
+  - uid: 'excel!Excel.GroupShapeCollection:interface'
+    name: GroupShapeCollection
+    fullName: Excel.GroupShapeCollection

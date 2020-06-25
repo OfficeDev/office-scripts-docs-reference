@@ -7,7 +7,8 @@
           "**/toc.yml"
         ],
         "exclude": [
-          "excel/**"
+          "excel/**",
+          "excel-async/**"
         ],
         "src": "docs-ref-autogen",
         "dest": "api/office-scripts/office_ref_toc"
@@ -40,6 +41,7 @@
         "exclude": [
           "excel/**",
           "excel.yml",
+          "excel-async/**",
           "**/obj/**",
           "**/includes/**",
           "**/_themes/**",
@@ -56,6 +58,7 @@
           "**/*.md",
           "**/*.yml"
         ],
+        "group": "office-scripts",
         "src": "docs-ref-autogen/excel",
         "dest": "api/office-scripts"
       },
@@ -63,9 +66,45 @@
         "files": [
           "excel.yml"
         ],
-        "src": "docs-ref-autogen",
+        "group": "office-scripts",
+        "src": "docs-ref-autogen/excel",
         "dest": "api/office-scripts"
       },
+      {
+        "files": [
+          "toc.yml"
+        ],
+        "group": "office-scripts",
+        "src": "breadcrumb",
+        "dest": "office_scripts_breadcrumb"
+      },
+      
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "group": "office-scripts-async",
+        "src": "docs-ref-autogen/excel-async",
+        "dest": "api/office-scripts"
+      },
+      {
+        "files": [
+          "excel.yml"
+        ],
+        "group": "office-scripts-async",
+        "src": "docs-ref-autogen/excel-async",
+        "dest": "api/office-scripts"
+      },
+      {
+        "files": [
+          "toc.yml"
+        ],
+        "group": "office-scripts-async",
+        "src": "breadcrumb",
+        "dest": "office_scripts_breadcrumb"
+      },
+
       {
         "files": [
           "toc.yml"
@@ -100,6 +139,16 @@
         "dest": "office-scripts"
       }
     ],
+    "groups": {
+      "office-scripts": {
+        "dest": "office-scripts",
+        "moniker_range": "office-scripts"
+      },
+      "office-scripts-async": {
+        "dest": "office-scripts-async",
+        "moniker_range": "office-scripts-async"
+      }
+    },
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
@@ -134,10 +183,15 @@
       "product": {
         "docs-ref-autogen/excel/**": [
           "office scripts"
+        ],        
+        "docs-ref-autogen/excel-async/**": [
+          "office scripts async"
         ]
       },
       "ms.prod": {
-        "docs-ref-autogen/excel/**": "excel"
+        "docs-ref-autogen/excel/**": "excel",
+        "docs-ref-autogen/excel-async/**": "excel",
+        "docs-ref-autogen/overview/**": "non-product-specific"
       }
     },
     "template": [],

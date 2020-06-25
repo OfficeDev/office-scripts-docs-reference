@@ -1,0 +1,76 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.RemoveDuplicatesResult:interface'
+    summary: Represents the results from the removeDuplicates method on range
+    name: Excel.RemoveDuplicatesResult
+    fullName: Excel.RemoveDuplicatesResult
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
+      - 'excel!Excel.RemoveDuplicatesResult#removed:member'
+      - 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
+  - uid: 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.RemoveDuplicatesResult#removed:member'
+    summary: Number of duplicated rows removed by the operation.
+    name: removed
+    fullName: removed
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly removed: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
+    summary: Number of remaining unique rows present in the resulting range.
+    name: uniqueRemaining
+    fullName: uniqueRemaining
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly uniqueRemaining: number;'
+      return:
+        type:
+          - number
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B2:D11");
+
+              let deleteResult = range.removeDuplicates([0],true);    
+              deleteResult.load();    
+              await context.sync();
+
+              console.log(deleteResult.removed + " entries with duplicate names removed.");
+              console.log(deleteResult.uniqueRemaining + " entries with unique names remain in the range.");
+          }
+          ```

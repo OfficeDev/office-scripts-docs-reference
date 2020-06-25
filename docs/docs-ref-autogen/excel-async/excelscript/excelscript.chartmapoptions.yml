@@ -1,0 +1,81 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartMapOptions:interface'
+    summary: Encapsulates the properties for a region map chart.
+    name: Excel.ChartMapOptions
+    fullName: Excel.ChartMapOptions
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartMapOptions#labelStrategy:member'
+      - 'excel!Excel.ChartMapOptions#level:member'
+      - 'excel!Excel.ChartMapOptions#load:member(1)'
+      - 'excel!Excel.ChartMapOptions#projectionType:member'
+  - uid: 'excel!Excel.ChartMapOptions#labelStrategy:member'
+    summary: Specifies the series map labels strategy of a region map chart.
+    name: labelStrategy
+    fullName: labelStrategy
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'labelStrategy: ChartMapLabelStrategy;'
+      return:
+        type:
+          - 'excel!Excel.ChartMapLabelStrategy:enum'
+  - uid: 'excel!Excel.ChartMapOptions#level:member'
+    summary: Specifies the series mapping level of a region map chart.
+    name: level
+    fullName: level
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'level: ChartMapAreaLevel;'
+      return:
+        type:
+          - 'excel!Excel.ChartMapAreaLevel:enum'
+  - uid: 'excel!Excel.ChartMapOptions#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ChartMapOptions#projectionType:member'
+    summary: Specifies the series projection type of a region map chart.
+    name: projectionType
+    fullName: projectionType
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'projectionType: ChartMapProjectionType;'
+      return:
+        type:
+          - 'excel!Excel.ChartMapProjectionType:enum'
+references:
+  - uid: 'excel!Excel.ChartMapLabelStrategy:enum'
+    name: ChartMapLabelStrategy
+    fullName: Excel.ChartMapLabelStrategy
+  - uid: 'excel!Excel.ChartMapAreaLevel:enum'
+    name: ChartMapAreaLevel
+    fullName: Excel.ChartMapAreaLevel
+  - uid: 'excel!Excel.ChartMapProjectionType:enum'
+    name: ChartMapProjectionType
+    fullName: Excel.ChartMapProjectionType

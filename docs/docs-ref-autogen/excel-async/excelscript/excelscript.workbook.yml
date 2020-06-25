@@ -1,0 +1,591 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.Workbook:interface'
+    summary: >-
+      Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc.
+      To learn more about the workbook object model, read [Work with workbooks using the Excel JavaScript
+      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-workbooks)<!-- -->.
+    name: Excel.Workbook
+    fullName: Excel.Workbook
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.Workbook#application:member'
+      - 'excel!Excel.Workbook#autoSave:member'
+      - 'excel!Excel.Workbook#bindings:member'
+      - 'excel!Excel.Workbook#calculationEngineVersion:member'
+      - 'excel!Excel.Workbook#chartDataPointTrack:member'
+      - 'excel!Excel.Workbook#comments:member'
+      - 'excel!Excel.Workbook#customXmlParts:member'
+      - 'excel!Excel.Workbook#getActiveCell:member(1)'
+      - 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
+      - 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
+      - 'excel!Excel.Workbook#getSelectedRange:member(1)'
+      - 'excel!Excel.Workbook#getSelectedRanges:member(1)'
+      - 'excel!Excel.Workbook#isDirty:member'
+      - 'excel!Excel.Workbook#load:member(1)'
+      - 'excel!Excel.Workbook#name:member'
+      - 'excel!Excel.Workbook#names:member'
+      - 'excel!Excel.Workbook#pivotTables:member'
+      - 'excel!Excel.Workbook#pivotTableStyles:member'
+      - 'excel!Excel.Workbook#previouslySaved:member'
+      - 'excel!Excel.Workbook#properties:member'
+      - 'excel!Excel.Workbook#protection:member'
+      - 'excel!Excel.Workbook#readOnly:member'
+      - 'excel!Excel.Workbook#settings:member'
+      - 'excel!Excel.Workbook#slicers:member'
+      - 'excel!Excel.Workbook#slicerStyles:member'
+      - 'excel!Excel.Workbook#styles:member'
+      - 'excel!Excel.Workbook#tables:member'
+      - 'excel!Excel.Workbook#tableStyles:member'
+      - 'excel!Excel.Workbook#timelineStyles:member'
+      - 'excel!Excel.Workbook#usePrecisionAsDisplayed:member'
+      - 'excel!Excel.Workbook#worksheets:member'
+  - uid: 'excel!Excel.Workbook#application:member'
+    summary: Represents the Excel application instance that contains this workbook.
+    name: application
+    fullName: application
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly application: Application;'
+      return:
+        type:
+          - 'excel!Excel.Application:interface'
+  - uid: 'excel!Excel.Workbook#autoSave:member'
+    summary: Specifies if the workbook is in autosave mode.
+    name: autoSave
+    fullName: autoSave
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly autoSave: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#bindings:member'
+    summary: Represents a collection of bindings that are part of the workbook.
+    name: bindings
+    fullName: bindings
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly bindings: BindingCollection;'
+      return:
+        type:
+          - 'excel!Excel.BindingCollection:interface'
+  - uid: 'excel!Excel.Workbook#calculationEngineVersion:member'
+    summary: Returns a number about the version of Excel Calculation Engine.
+    name: calculationEngineVersion
+    fullName: calculationEngineVersion
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly calculationEngineVersion: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.Workbook#chartDataPointTrack:member'
+    summary: >-
+      True if all charts in the workbook are tracking the actual data points to which they are attached. False if the
+      charts track the index of the data points.
+    name: chartDataPointTrack
+    fullName: chartDataPointTrack
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'chartDataPointTrack: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#comments:member'
+    summary: Represents a collection of Comments associated with the workbook.
+    name: comments
+    fullName: comments
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly comments: CommentCollection;'
+      return:
+        type:
+          - 'excel!Excel.CommentCollection:interface'
+  - uid: 'excel!Excel.Workbook#customXmlParts:member'
+    summary: Represents the collection of custom XML parts contained by this workbook.
+    name: customXmlParts
+    fullName: customXmlParts
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly customXmlParts: CustomXmlPartCollection;'
+      return:
+        type:
+          - 'excel!Excel.CustomXmlPartCollection:interface'
+  - uid: 'excel!Excel.Workbook#getActiveCell:member(1)'
+    summary: Gets the currently active cell from the workbook.
+    name: getActiveCell()
+    fullName: getActiveCell()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveCell(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+
+              let myWorkbook = context.workbook;
+              let activeCell = myWorkbook.getActiveCell();
+              activeCell.load("address");
+
+              await context.sync();
+              
+              console.log("The active cell is " + activeCell.address);
+          }
+          ```
+  - uid: 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
+    summary: 'Gets the currently active chart in the workbook. If there is no active chart, a null object is returned.'
+    name: getActiveChartOrNullObject()
+    fullName: getActiveChartOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveChartOrNullObject(): Chart;'
+      return:
+        type:
+          - 'excel!Excel.Chart:interface'
+        description: ''
+  - uid: 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
+    summary: 'Gets the currently active slicer in the workbook. If there is no active slicer, a null object is returned.'
+    name: getActiveSlicerOrNullObject()
+    fullName: getActiveSlicerOrNullObject()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveSlicerOrNullObject(): Slicer;'
+      return:
+        type:
+          - 'excel!Excel.Slicer:interface'
+        description: ''
+  - uid: 'excel!Excel.Workbook#getSelectedRange:member(1)'
+    summary: >-
+      Gets the currently selected single range from the workbook. If there are multiple ranges selected, this method
+      will throw an error.
+    name: getSelectedRange()
+    fullName: getSelectedRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getSelectedRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.Workbook#getSelectedRanges:member(1)'
+    summary: >-
+      Gets the currently selected one or more ranges from the workbook. Unlike getSelectedRange(), this method returns a
+      RangeAreas object that represents all the selected ranges.
+    name: getSelectedRanges()
+    fullName: getSelectedRanges()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getSelectedRanges(): RangeAreas;'
+      return:
+        type:
+          - 'excel!Excel.RangeAreas:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+
+              let selectedRanges = context.workbook.getSelectedRanges();
+              selectedRanges.format.fill.color = "lightblue";
+
+              await context.sync();
+          })
+          ```
+  - uid: 'excel!Excel.Workbook#isDirty:member'
+    summary: >-
+      Specifies if changes have been made since the workbook was last saved. You can set this property to true if you
+      want to close a modified workbook without either saving it or being prompted to save it.
+    name: isDirty
+    fullName: isDirty
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'isDirty: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.Workbook#name:member'
+    summary: Gets the workbook name.
+    name: name
+    fullName: name
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly name: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Workbook#names:member'
+    summary: Represents a collection of workbook scoped named items (named ranges and constants).
+    name: names
+    fullName: names
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly names: NamedItemCollection;'
+      return:
+        type:
+          - 'excel!Excel.NamedItemCollection:interface'
+  - uid: 'excel!Excel.Workbook#pivotTables:member'
+    summary: Represents a collection of PivotTables associated with the workbook.
+    name: pivotTables
+    fullName: pivotTables
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly pivotTables: PivotTableCollection;'
+      return:
+        type:
+          - 'excel!Excel.PivotTableCollection:interface'
+  - uid: 'excel!Excel.Workbook#pivotTableStyles:member'
+    summary: Represents a collection of PivotTableStyles associated with the workbook.
+    name: pivotTableStyles
+    fullName: pivotTableStyles
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly pivotTableStyles: PivotTableStyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.PivotTableStyleCollection:interface'
+  - uid: 'excel!Excel.Workbook#previouslySaved:member'
+    summary: Specifies if the workbook has ever been saved locally or online.
+    name: previouslySaved
+    fullName: previouslySaved
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly previouslySaved: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#properties:member'
+    summary: Gets the workbook properties.
+    name: properties
+    fullName: properties
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly properties: DocumentProperties;'
+      return:
+        type:
+          - 'excel!Excel.DocumentProperties:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let titleValue = "Excel document properties API";
+              let subjectValue = "Set and get document properties";
+              let keywordsValue = "Set and get operations";
+              let commentsValue = "This is an Excel document properties API code sample";
+              let categoryValue = "Office Add-ins";
+              let managerValue = "John";
+              let companyValue = "Microsoft";
+
+              let docProperties = context.workbook.properties;
+
+              // Set the writeable document properties.
+              docProperties.title = titleValue;
+              docProperties.subject = subjectValue;
+              docProperties.keywords = keywordsValue;
+              docProperties.comments = commentsValue;
+              docProperties.category = categoryValue;
+              docProperties.manager = managerValue;
+              docProperties.company = companyValue;
+
+              await context.sync();
+
+              console.log("Set the following document properties: title, subject, keywords, comments, category, manager, company.");
+          }
+          ```
+  - uid: 'excel!Excel.Workbook#protection:member'
+    summary: Returns the protection object for a workbook.
+    name: protection
+    fullName: protection
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly protection: WorkbookProtection;'
+      return:
+        type:
+          - 'excel!Excel.WorkbookProtection:interface'
+  - uid: 'excel!Excel.Workbook#readOnly:member'
+    summary: True if the workbook is open in Read-only mode.
+    name: readOnly
+    fullName: readOnly
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly readOnly: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#settings:member'
+    summary: Represents a collection of Settings associated with the workbook.
+    name: settings
+    fullName: settings
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly settings: SettingCollection;'
+      return:
+        type:
+          - 'excel!Excel.SettingCollection:interface'
+  - uid: 'excel!Excel.Workbook#slicers:member'
+    summary: Represents a collection of Slicers associated with the workbook.
+    name: slicers
+    fullName: slicers
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly slicers: SlicerCollection;'
+      return:
+        type:
+          - 'excel!Excel.SlicerCollection:interface'
+  - uid: 'excel!Excel.Workbook#slicerStyles:member'
+    summary: Represents a collection of SlicerStyles associated with the workbook.
+    name: slicerStyles
+    fullName: slicerStyles
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly slicerStyles: SlicerStyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.SlicerStyleCollection:interface'
+  - uid: 'excel!Excel.Workbook#styles:member'
+    summary: Represents a collection of styles associated with the workbook.
+    name: styles
+    fullName: styles
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly styles: StyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.StyleCollection:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let styles = context.workbook.styles;
+
+              // Add a new style to the style collection.
+              // Styles is in the Home tab ribbon.
+              styles.add("Diagonal Orientation Style");
+                    
+              let newStyle = styles.getItem("Diagonal Orientation Style");
+              
+              // The "Diagonal Orientation Style" properties.
+              newStyle.textOrientation = 38;
+              newStyle.autoIndent = true;
+              newStyle.includeProtection = true;
+              newStyle.shrinkToFit = true;
+              newStyle.locked = false;
+              
+              await context.sync();
+
+              console.log("Successfully added a new style with diagonal orientation to the Home tab ribbon.");
+          }
+          ```
+  - uid: 'excel!Excel.Workbook#tables:member'
+    summary: Represents a collection of tables associated with the workbook.
+    name: tables
+    fullName: tables
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly tables: TableCollection;'
+      return:
+        type:
+          - 'excel!Excel.TableCollection:interface'
+  - uid: 'excel!Excel.Workbook#tableStyles:member'
+    summary: Represents a collection of TableStyles associated with the workbook.
+    name: tableStyles
+    fullName: tableStyles
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly tableStyles: TableStyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.TableStyleCollection:interface'
+  - uid: 'excel!Excel.Workbook#timelineStyles:member'
+    summary: Represents a collection of TimelineStyles associated with the workbook.
+    name: timelineStyles
+    fullName: timelineStyles
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly timelineStyles: TimelineStyleCollection;'
+      return:
+        type:
+          - 'excel!Excel.TimelineStyleCollection:interface'
+  - uid: 'excel!Excel.Workbook#usePrecisionAsDisplayed:member'
+    summary: >-
+      True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
+      Data will permanently lose accuracy when switching this property from false to true.
+    name: usePrecisionAsDisplayed
+    fullName: usePrecisionAsDisplayed
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'usePrecisionAsDisplayed: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.Workbook#worksheets:member'
+    summary: Represents a collection of worksheets associated with the workbook.
+    name: worksheets
+    fullName: worksheets
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly worksheets: WorksheetCollection;'
+      return:
+        type:
+          - 'excel!Excel.WorksheetCollection:interface'
+references:
+  - uid: 'excel!Excel.Application:interface'
+    name: Application
+    fullName: Excel.Application
+  - uid: 'excel!Excel.BindingCollection:interface'
+    name: BindingCollection
+    fullName: Excel.BindingCollection
+  - uid: 'excel!Excel.CommentCollection:interface'
+    name: CommentCollection
+    fullName: Excel.CommentCollection
+  - uid: 'excel!Excel.CustomXmlPartCollection:interface'
+    name: CustomXmlPartCollection
+    fullName: Excel.CustomXmlPartCollection
+  - uid: 'excel!Excel.Range:interface'
+    name: Range
+    fullName: Excel.Range
+  - uid: 'excel!Excel.Chart:interface'
+    name: Chart
+    fullName: Excel.Chart
+  - uid: 'excel!Excel.Slicer:interface'
+    name: Slicer
+    fullName: Excel.Slicer
+  - uid: 'excel!Excel.RangeAreas:interface'
+    name: RangeAreas
+    fullName: Excel.RangeAreas
+  - uid: 'excel!Excel.NamedItemCollection:interface'
+    name: NamedItemCollection
+    fullName: Excel.NamedItemCollection
+  - uid: 'excel!Excel.PivotTableCollection:interface'
+    name: PivotTableCollection
+    fullName: Excel.PivotTableCollection
+  - uid: 'excel!Excel.PivotTableStyleCollection:interface'
+    name: PivotTableStyleCollection
+    fullName: Excel.PivotTableStyleCollection
+  - uid: 'excel!Excel.DocumentProperties:interface'
+    name: DocumentProperties
+    fullName: Excel.DocumentProperties
+  - uid: 'excel!Excel.WorkbookProtection:interface'
+    name: WorkbookProtection
+    fullName: Excel.WorkbookProtection
+  - uid: 'excel!Excel.SettingCollection:interface'
+    name: SettingCollection
+    fullName: Excel.SettingCollection
+  - uid: 'excel!Excel.SlicerCollection:interface'
+    name: SlicerCollection
+    fullName: Excel.SlicerCollection
+  - uid: 'excel!Excel.SlicerStyleCollection:interface'
+    name: SlicerStyleCollection
+    fullName: Excel.SlicerStyleCollection
+  - uid: 'excel!Excel.StyleCollection:interface'
+    name: StyleCollection
+    fullName: Excel.StyleCollection
+  - uid: 'excel!Excel.TableCollection:interface'
+    name: TableCollection
+    fullName: Excel.TableCollection
+  - uid: 'excel!Excel.TableStyleCollection:interface'
+    name: TableStyleCollection
+    fullName: Excel.TableStyleCollection
+  - uid: 'excel!Excel.TimelineStyleCollection:interface'
+    name: TimelineStyleCollection
+    fullName: Excel.TimelineStyleCollection
+  - uid: 'excel!Excel.WorksheetCollection:interface'
+    name: WorksheetCollection
+    fullName: Excel.WorksheetCollection

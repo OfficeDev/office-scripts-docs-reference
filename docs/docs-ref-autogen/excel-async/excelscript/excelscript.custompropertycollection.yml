@@ -1,0 +1,98 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CustomPropertyCollection:interface'
+    summary: Contains the collection of customProperty objects.
+    name: Excel.CustomPropertyCollection
+    fullName: Excel.CustomPropertyCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.CustomPropertyCollection#add:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#load:member(1)'
+  - uid: 'excel!Excel.CustomPropertyCollection#add:member(1)'
+    summary: Creates a new or sets an existing custom property.
+    name: 'add(key, value)'
+    fullName: 'add(key, value)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(key: string, value: any): CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: >-
+            Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside
+            of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
+          type:
+            - string
+        - id: value
+          description: >-
+            Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web
+            (larger values are automatically trimmed to 255 characters on other platforms).
+          type:
+            - any
+  - uid: 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+    summary: Deletes all custom properties in this collection.
+    name: deleteAll()
+    fullName: deleteAll()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'deleteAll(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
+    summary: >-
+      Gets a custom property object by its key, which is case-insensitive. Returns a null object if the custom property
+      does not exist.
+    name: getItemOrNullObject(key)
+    fullName: getItemOrNullObject(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(key: string): CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: Required. The key that identifies the custom property object.
+          type:
+            - string
+  - uid: 'excel!Excel.CustomPropertyCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.CustomProperty:interface'
+    name: CustomProperty
+    fullName: Excel.CustomProperty

@@ -1,0 +1,112 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes:interface'
+    name: ExcelScript.WorksheetFreezePanes
+    fullName: ExcelScript.WorksheetFreezePanes
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeAt:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeColumns:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeRows:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetFreezePanes#getLocation:member(1)'
+      - 'ExcelScript!ExcelScript.WorksheetFreezePanes#unfreeze:member(1)'
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeAt:member(1)'
+    summary: >-
+      Sets the frozen cells in the active worksheet view. The range provided corresponds to cells that will be frozen in
+      the top- and left-most pane.
+    name: freezeAt(frozenRange)
+    fullName: freezeAt(frozenRange)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeAt(frozenRange: Range | string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: frozenRange
+          description: 'A range that represents the cells to be frozen, or null to remove all frozen panes.'
+          type:
+            - 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeAt~0:complex'
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeColumns:member(1)'
+    summary: Freeze the first column(s) of the worksheet in place.
+    name: freezeColumns(count)
+    fullName: freezeColumns(count)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeColumns(count?: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: count
+          description: 'Optional number of columns to freeze, or zero to unfreeze all columns'
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeRows:member(1)'
+    summary: Freeze the top row(s) of the worksheet in place.
+    name: freezeRows(count)
+    fullName: freezeRows(count)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'freezeRows(count?: number): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: count
+          description: 'Optional number of rows to freeze, or zero to unfreeze all rows'
+          type:
+            - number
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#getLocation:member(1)'
+    summary: >-
+      Gets a range that describes the frozen cells in the active worksheet view. The frozen range is corresponds to
+      cells that are frozen in the top- and left-most pane. If there is no frozen pane, returns a null object.
+    name: getLocation()
+    fullName: getLocation()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLocation(): Range;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#unfreeze:member(1)'
+    summary: Removes all frozen panes in the worksheet.
+    name: unfreeze()
+    fullName: unfreeze()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unfreeze(): void;'
+      return:
+        type:
+          - void
+        description: ''
+references:
+  - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes#freezeAt~0:complex'
+    name: Range | string
+    fullName: ExcelScript.Range | string
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.Range:interface'
+        name: Range
+        fullName: ExcelScript.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'ExcelScript!ExcelScript.Range:interface'
+    name: Range
+    fullName: ExcelScript.Range

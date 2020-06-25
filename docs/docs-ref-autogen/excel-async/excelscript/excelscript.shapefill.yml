@@ -1,0 +1,115 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ShapeFill:interface'
+    summary: Represents the fill formatting of a shape object.
+    name: Excel.ShapeFill
+    fullName: Excel.ShapeFill
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ShapeFill#clear:member(1)'
+      - 'excel!Excel.ShapeFill#foregroundColor:member'
+      - 'excel!Excel.ShapeFill#load:member(1)'
+      - 'excel!Excel.ShapeFill#setSolidColor:member(1)'
+      - 'excel!Excel.ShapeFill#transparency:member'
+      - 'excel!Excel.ShapeFill#type:member'
+  - uid: 'excel!Excel.ShapeFill#clear:member(1)'
+    summary: Clears the fill formatting of this shape.
+    name: clear()
+    fullName: clear()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.ShapeFill#foregroundColor:member'
+    summary: >-
+      Represents the shape fill foreground color in HTML color format, of the form \#RRGGBB (e.g., "FFA500") or as a
+      named HTML color (e.g., "orange")
+    name: foregroundColor
+    fullName: foregroundColor
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'foregroundColor: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.ShapeFill#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.ShapeFill#setSolidColor:member(1)'
+    summary: Sets the fill formatting of the shape to a uniform color. This changes the fill type to "Solid".
+    name: setSolidColor(color)
+    fullName: setSolidColor(color)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'setSolidColor(color: string): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: color
+          description: >-
+            A string that represents the fill color in HTML color format, of the form \#RRGGBB (e.g., "FFA500") or as a
+            named HTML color (e.g., "orange").
+          type:
+            - string
+  - uid: 'excel!Excel.ShapeFill#transparency:member'
+    summary: >-
+      Specifies the transparency percentage of the fill as a value from 0.0 (opaque) through 1.0 (clear). Returns null
+      if the shape type does not support transparency or the shape fill has inconsistent transparency, such as with a
+      gradient fill type.
+    name: transparency
+    fullName: transparency
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'transparency: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.ShapeFill#type:member'
+    summary: Returns the fill type of the shape. See Excel.ShapeFillType for details.
+    name: type
+    fullName: type
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly type: ShapeFillType;'
+      return:
+        type:
+          - 'excel!Excel.ShapeFillType:enum'
+references:
+  - uid: 'excel!Excel.ShapeFillType:enum'
+    name: ShapeFillType
+    fullName: Excel.ShapeFillType

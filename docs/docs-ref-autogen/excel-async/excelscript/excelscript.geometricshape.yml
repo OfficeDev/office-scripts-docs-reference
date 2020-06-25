@@ -1,0 +1,47 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.GeometricShape:interface'
+    summary: >-
+      Represents a geometric shape inside a worksheet. A geometric shape can be a rectangle, block arrow, equation
+      symbol, flowchart item, star, banner, callout, or any other basic shape in Excel.
+    name: Excel.GeometricShape
+    fullName: Excel.GeometricShape
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.GeometricShape#id:member'
+      - 'excel!Excel.GeometricShape#load:member(1)'
+  - uid: 'excel!Excel.GeometricShape#id:member'
+    summary: Returns the shape identifier.
+    name: id
+    fullName: id
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.GeometricShape#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'

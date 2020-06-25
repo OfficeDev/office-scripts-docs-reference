@@ -1,0 +1,98 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.Setting:interface'
+    summary: >-
+      Setting represents a key-value pair of a setting persisted to the document (per file per add-in). These custom
+      key-value pair can be used to store state or lifecycle information needed by the content or task-pane add-in. Note
+      that settings are persisted in the document and hence it is not a place to store any sensitive or protected
+      information such as user information and password.
+    name: Excel.Setting
+    fullName: Excel.Setting
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.Setting#delete:member(1)'
+      - 'excel!Excel.Setting#key:member'
+      - 'excel!Excel.Setting#load:member(1)'
+      - 'excel!Excel.Setting#value:member'
+  - uid: 'excel!Excel.Setting#delete:member(1)'
+    summary: Deletes the setting.
+    name: delete()
+    fullName: delete()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let settings = context.workbook.settings;
+              let needsReview = settings.getItem("NeedsReview");
+              needsReview.delete();
+              needsReview = settings.getItemOrNullObject("NeedsReview");
+
+              await context.sync();
+
+              if (needsReview.isNullObject) {
+                  console.log("The setting has been deleted");
+              } else {
+                  console.log("The setting was not deleted");
+              }
+
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.Setting#key:member'
+    summary: The key that represents the id of the Setting.
+    name: key
+    fullName: key
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly key: string;'
+      return:
+        type:
+          - string
+  - uid: 'excel!Excel.Setting#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.Setting#value:member'
+    summary: Represents the value stored for this setting.
+    name: value
+    fullName: value
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'value: any;'
+      return:
+        type:
+          - any

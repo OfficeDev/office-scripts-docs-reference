@@ -1,0 +1,131 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.WorkbookProtection:interface'
+    summary: Represents the protection of a workbook object.
+    name: Excel.WorkbookProtection
+    fullName: Excel.WorkbookProtection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.WorkbookProtection#load:member(1)'
+      - 'excel!Excel.WorkbookProtection#protect:member(1)'
+      - 'excel!Excel.WorkbookProtection#protected:member'
+      - 'excel!Excel.WorkbookProtection#unprotect:member(1)'
+  - uid: 'excel!Excel.WorkbookProtection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.WorkbookProtection#protect:member(1)'
+    summary: Protects a workbook. Fails if the workbook has been protected.
+    name: protect(password)
+    fullName: protect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'protect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.load("protection/protected");
+
+              await context.sync();
+
+              if (!workbook.protection.protected) {
+                  workbook.protection.protect();
+              }
+          }
+          ```
+          ```typescript
+          let password = await passwordHandler();
+          passwordHelper(password);
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.load("protection/protected");
+
+              await context.sync();
+
+              if (!workbook.protection.protected) {
+                  workbook.protection.protect(password);
+              }
+          }
+          ```
+      parameters:
+        - id: password
+          description: workbook protection password.
+          type:
+            - string
+  - uid: 'excel!Excel.WorkbookProtection#protected:member'
+    summary: Specifies if the workbook is protected.
+    name: protected
+    fullName: protected
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly protected: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.WorkbookProtection#unprotect:member(1)'
+    summary: Unprotects a workbook.
+    name: unprotect(password)
+    fullName: unprotect(password)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'unprotect(password?: string): void;'
+      return:
+        type:
+          - void
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.protection.unprotect();
+          }
+          ```
+          ```typescript
+          let password = await passwordHandler();
+          passwordHelper(password);
+          async function main(context: Excel.RequestContext) {
+              let workbook = context.workbook;
+              workbook.protection.unprotect(password);
+          }
+          ```
+      parameters:
+        - id: password
+          description: workbook protection password.
+          type:
+            - string

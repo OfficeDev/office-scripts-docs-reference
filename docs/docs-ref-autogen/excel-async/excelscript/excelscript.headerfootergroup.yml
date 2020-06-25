@@ -1,0 +1,133 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.HeaderFooterGroup:interface'
+    name: Excel.HeaderFooterGroup
+    fullName: Excel.HeaderFooterGroup
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.HeaderFooterGroup#defaultForAllPages:member'
+      - 'excel!Excel.HeaderFooterGroup#evenPages:member'
+      - 'excel!Excel.HeaderFooterGroup#firstPage:member'
+      - 'excel!Excel.HeaderFooterGroup#load:member(1)'
+      - 'excel!Excel.HeaderFooterGroup#oddPages:member'
+      - 'excel!Excel.HeaderFooterGroup#state:member'
+      - 'excel!Excel.HeaderFooterGroup#useSheetMargins:member'
+      - 'excel!Excel.HeaderFooterGroup#useSheetScale:member'
+  - uid: 'excel!Excel.HeaderFooterGroup#defaultForAllPages:member'
+    summary: 'The general header/footer, used for all pages unless even/odd or first page is specified.'
+    name: defaultForAllPages
+    fullName: defaultForAllPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly defaultForAllPages: HeaderFooter;'
+      return:
+        type:
+          - 'excel!Excel.HeaderFooter:interface'
+  - uid: 'excel!Excel.HeaderFooterGroup#evenPages:member'
+    summary: 'The header/footer to use for even pages, odd header/footer needs to be specified for odd pages.'
+    name: evenPages
+    fullName: evenPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly evenPages: HeaderFooter;'
+      return:
+        type:
+          - 'excel!Excel.HeaderFooter:interface'
+  - uid: 'excel!Excel.HeaderFooterGroup#firstPage:member'
+    summary: 'The first page header/footer, for all other pages general or even/odd is used.'
+    name: firstPage
+    fullName: firstPage
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly firstPage: HeaderFooter;'
+      return:
+        type:
+          - 'excel!Excel.HeaderFooter:interface'
+  - uid: 'excel!Excel.HeaderFooterGroup#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.HeaderFooterGroup#oddPages:member'
+    summary: 'The header/footer to use for odd pages, even header/footer needs to be specified for even pages.'
+    name: oddPages
+    fullName: oddPages
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly oddPages: HeaderFooter;'
+      return:
+        type:
+          - 'excel!Excel.HeaderFooter:interface'
+  - uid: 'excel!Excel.HeaderFooterGroup#state:member'
+    summary: The state by which headers/footers are set. See Excel.HeaderFooterState for details.
+    name: state
+    fullName: state
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'state: HeaderFooterState;'
+      return:
+        type:
+          - 'excel!Excel.HeaderFooterState:enum'
+  - uid: 'excel!Excel.HeaderFooterGroup#useSheetMargins:member'
+    summary: >-
+      Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options
+      for the worksheet.
+    name: useSheetMargins
+    fullName: useSheetMargins
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'useSheetMargins: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'excel!Excel.HeaderFooterGroup#useSheetScale:member'
+    summary: >-
+      Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page
+      layout options for the worksheet.
+    name: useSheetScale
+    fullName: useSheetScale
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'useSheetScale: boolean;'
+      return:
+        type:
+          - boolean
+references:
+  - uid: 'excel!Excel.HeaderFooter:interface'
+    name: HeaderFooter
+    fullName: Excel.HeaderFooter
+  - uid: 'excel!Excel.HeaderFooterState:enum'
+    name: HeaderFooterState
+    fullName: Excel.HeaderFooterState

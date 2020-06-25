@@ -1,0 +1,55 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.TableColumnCollection:interface'
+    summary: Represents a collection of all the columns that are part of the table.
+    name: Excel.TableColumnCollection
+    fullName: Excel.TableColumnCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.TableColumnCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.TableColumnCollection#load:member(1)'
+  - uid: 'excel!Excel.TableColumnCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a column object by Name or ID. If the column does not exist, will return a null object.'
+    name: getItemOrNullObject(key)
+    fullName: getItemOrNullObject(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(key: number | string): TableColumn;'
+      return:
+        type:
+          - 'excel!Excel.TableColumn:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: Column Name or ID.
+          type:
+            - number | string
+  - uid: 'excel!Excel.TableColumnCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.TableColumn:interface'
+    name: TableColumn
+    fullName: Excel.TableColumn

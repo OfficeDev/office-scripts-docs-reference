@@ -1,0 +1,160 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.BindingCollection:interface'
+    summary: Represents the collection of all the binding objects that are part of the workbook.
+    name: Excel.BindingCollection
+    fullName: Excel.BindingCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.BindingCollection#add:member(1)'
+      - 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
+      - 'excel!Excel.BindingCollection#addFromSelection:member(1)'
+      - 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
+      - 'excel!Excel.BindingCollection#load:member(1)'
+  - uid: 'excel!Excel.BindingCollection#add:member(1)'
+    summary: Add a new binding to a particular Range.
+    name: 'add(range, bindingType, id)'
+    fullName: 'add(range, bindingType, id)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        add(
+                    range: Range | string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: range
+          description: >-
+            Range to bind the binding to. May be an Excel Range object, or a string. If string, must contain the full
+            address, including the sheet name
+          type:
+            - 'excel!Excel.BindingCollection#add~0:complex'
+        - id: bindingType
+          description: Type of binding. See Excel.BindingType.
+          type:
+            - 'excel!Excel.BindingType:enum'
+        - id: id
+          description: Name of binding.
+          type:
+            - string
+  - uid: 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
+    summary: >-
+      Add a new binding based on a named item in the workbook. If the named item references to multiple areas, the
+      "InvalidReference" error will be returned.
+    name: 'addFromNamedItem(name, bindingType, id)'
+    fullName: 'addFromNamedItem(name, bindingType, id)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        addFromNamedItem(
+                    name: string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name from which to create binding.
+          type:
+            - string
+        - id: bindingType
+          description: Type of binding. See Excel.BindingType.
+          type:
+            - 'excel!Excel.BindingType:enum'
+        - id: id
+          description: Name of binding.
+          type:
+            - string
+  - uid: 'excel!Excel.BindingCollection#addFromSelection:member(1)'
+    summary: >-
+      Add a new binding based on the current selection. If the selection has multiple areas, the "InvalidReference"
+      error will be returned.
+    name: 'addFromSelection(bindingType, id)'
+    fullName: 'addFromSelection(bindingType, id)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'addFromSelection(bindingType: BindingType, id: string): Binding;'
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: bindingType
+          description: Type of binding. See Excel.BindingType.
+          type:
+            - 'excel!Excel.BindingType:enum'
+        - id: id
+          description: Name of binding.
+          type:
+            - string
+  - uid: 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
+    summary: 'Gets a binding object by ID. If the binding object does not exist, will return a null object.'
+    name: getItemOrNullObject(id)
+    fullName: getItemOrNullObject(id)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemOrNullObject(id: string): Binding;'
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: id
+          description: Id of the binding object to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.BindingCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.Binding:interface'
+    name: Binding
+    fullName: Excel.Binding
+  - uid: 'excel!Excel.BindingCollection#add~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.BindingType:enum'
+    name: BindingType
+    fullName: Excel.BindingType

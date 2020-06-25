@@ -47,23 +47,48 @@ tryCatch(async () => {
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
-    // delete everything except the overview file from the /docs folder
-    fsx.readdirSync(docsDestination)
-        .filter(filename => filename !== "overview.md")
-        .forEach(filename => fsx.removeSync(docsDestination + '/' + filename));
+    // Delete everything except the 'overview' files.
+    fsx.readdirSync(docsDestination).forEach(folder => {
+        fsx.readdirSync(docsDestination + '/' + folder).forEach(filename => {
+            if (!filename.includes("overview.md")) {
+                fsx.removeSync(docsDestination + '/' + folder + '/' + filename);
+            }});
+        });
 
     console.log(`Copying docs output files to: ${docsDestination}`);
     // copy docs output to /docs/docs-ref-autogen folder
     fsx.readdirSync(docsSource)
         .forEach(filename => {
-        fsx.copySync(
-            docsSource + '/' + filename,
-            docsDestination + '/' + filename
-        );
+            fsx.copySync(
+                docsSource + '/' + filename,
+                docsDestination + '/' + filename
+            );
     });
 
+    // change the async files to match the sync namespace pattern
+    const asyncDocFolder = docsDestination + "/excel-async/excel";
+    fsx.readdirSync(asyncDocFolder).forEach(filename => {
+        fsx.renameSync(
+            asyncDocFolder + '/' + filename,
+            asyncDocFolder + '/' + filename.replace("excel.", "excelscript.")
+        );
+        fsx.removeSync(asyncDocFolder + '/' + filename);
+    });
+    fsx.renameSync(asyncDocFolder, docsDestination + "/excel-async/excelscript");
+    fsx.renameSync(asyncDocFolder + ".yml", docsDestination + "/excel-async/excelscript.yml");
+
     // fix all the individual TOC files
-    scrubAndWriteToc(path.resolve(`${docsDestination}/excel`));
+    console.log("Writing TOC for Office Scripts");
+    let versionPath = path.resolve(`${docsDestination}/excel`);
+    let tocPath = versionPath + "/toc.yml";
+    let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
+    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
+
+    console.log("Writing TOC for Office Scripts Async");
+    versionPath = path.resolve(`${docsDestination}/excel-async`);
+    const asyncTocPath = versionPath + "/toc.yml";
+    let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
+    fsx.writeFileSync(asyncTocPath, jsyaml.safeDump(latestAsyncToc));
 
     console.log("\nPostprocessor script complete!\n");
 
@@ -79,7 +104,7 @@ async function tryCatch(call: () => Promise<void>) {
     }
 }
 
-function fixToc(tocPath: string): Toc {
+function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     console.log(`Updating the structure of the TOC file: ${tocPath}`);
 
     let origToc = (jsyaml.safeLoad(fsx.readFileSync(tocPath).toString()) as Toc);
@@ -92,14 +117,12 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "../overview.md"
+        "href": "overview.md"
     }] as any;
 
     // create folders for Excel subcategories
-    let excelEnumFilter = generateEnumList(fsx.readFileSync("../api-extractor-inputs-excel/excel.d.ts").toString());
-    let excelIconSetFilter : string [] = ["FiveArrowsGraySet", "FiveArrowsSet", "FiveBoxesSet", "FiveQuartersSet", "FiveRatingSet", "FourArrowsGraySet", "FourArrowsSet", "FourRatingSet", "FourRedToBlackSet", "FourTrafficLightsSet", "IconCollections", "ThreeArrowsGraySet", "ThreeArrowsSet", "ThreeFlagsSet",  "ThreeSignsSet", "ThreeStarsSet",  "ThreeSymbols2Set", "ThreeSymbolsSet", "ThreeTrafficLights1Set", "ThreeTrafficLights2Set", "ThreeTrianglesSet"];
+    let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     let excelFilter: string[] = ["Interfaces"];
-    excelFilter = excelFilter.concat(excelEnumFilter).concat(excelIconSetFilter);
 
     // process all packages except 'office' (Common "Shared" API)
     origToc.items.forEach((rootItem, rootIndex) => {
@@ -113,16 +136,11 @@ function fixToc(tocPath: string): Toc {
                     let enumList = membersToMove.items.filter(item => {
                             return excelEnumFilter.indexOf(item.name) >= 0;
                         });
-                    let iconSetList = membersToMove.items.filter(item => {
-                            return excelIconSetFilter.indexOf(item.name) >= 0;
-                    });
                     let primaryList = membersToMove.items.filter(item => {
                         return excelFilter.indexOf(item.name) < 0;
                     });
 
                     let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                    let excelIconSetRoot = {"name": "Icon Sets", "uid": "", "items": iconSetList};
-                    primaryList.unshift(excelIconSetRoot);
                     primaryList.unshift(excelEnumRoot);
                     newToc.items[0].items.push({
                         "name": packageName,
@@ -149,11 +167,4 @@ function fixToc(tocPath: string): Toc {
     });
 
     return newToc;
-}
-
-function scrubAndWriteToc(versionFolder: string): Toc {
-    const tocPath = versionFolder + "/toc.yml";
-    let latestToc = fixToc(tocPath);
-    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
-    return latestToc;
 }

@@ -1,0 +1,81 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.CustomConditionalFormat:interface'
+    summary: Represents a custom conditional format type.
+    name: Excel.CustomConditionalFormat
+    fullName: Excel.CustomConditionalFormat
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.CustomConditionalFormat#format:member'
+      - 'excel!Excel.CustomConditionalFormat#load:member(1)'
+      - 'excel!Excel.CustomConditionalFormat#rule:member'
+  - uid: 'excel!Excel.CustomConditionalFormat#format:member'
+    summary: 'Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.'
+    name: format
+    fullName: format
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly format: ConditionalRangeFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalRangeFormat:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let range = sheet.getRange("B8:E13");
+              let conditionalFormat = range.conditionalFormats.add(Excel.ConditionalFormatType.custom);
+              conditionalFormat.custom.rule.formula = '=IF(B8>INDIRECT("RC[-1]",0),TRUE)';
+              conditionalFormat.custom.format.font.color = "green";
+
+              await context.sync();
+          }
+          ```
+  - uid: 'excel!Excel.CustomConditionalFormat#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+  - uid: 'excel!Excel.CustomConditionalFormat#rule:member'
+    summary: Specifies the Rule object on this conditional format.
+    name: rule
+    fullName: rule
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly rule: ConditionalFormatRule;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalFormatRule:interface'
+references:
+  - uid: 'excel!Excel.ConditionalRangeFormat:interface'
+    name: ConditionalRangeFormat
+    fullName: Excel.ConditionalRangeFormat
+  - uid: 'excel!Excel.ConditionalFormatRule:interface'
+    name: ConditionalFormatRule
+    fullName: Excel.ConditionalFormatRule

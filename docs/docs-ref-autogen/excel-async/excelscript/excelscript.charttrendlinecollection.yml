@@ -1,0 +1,93 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartTrendlineCollection:interface'
+    summary: Represents a collection of Chart Trendlines.
+    name: Excel.ChartTrendlineCollection
+    fullName: Excel.ChartTrendlineCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartTrendlineCollection#add:member(1)'
+      - 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
+      - 'excel!Excel.ChartTrendlineCollection#load:member(1)'
+  - uid: 'excel!Excel.ChartTrendlineCollection#add:member(1)'
+    summary: Adds a new trendline to trendline collection.
+    name: add(type)
+    fullName: add(type)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'add(type?: ChartTrendlineType): ChartTrendline;'
+      return:
+        type:
+          - 'excel!Excel.ChartTrendline:interface'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+
+              let seriesCollection = sheet.charts.getItemAt(0).series;
+
+               // Add a trendline.  
+              seriesCollection.getItemAt(0).trendlines.add("Linear");
+
+              await context.sync();
+          }
+          ```
+      parameters:
+        - id: type
+          description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
+          type:
+            - 'excel!Excel.ChartTrendlineType:enum'
+  - uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
+    summary: 'Get trendline object by index, which is the insertion order in items array.'
+    name: getItem(index)
+    fullName: getItem(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(index: number): ChartTrendline;'
+      return:
+        type:
+          - 'excel!Excel.ChartTrendline:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Represents the insertion order in items array.
+          type:
+            - number
+  - uid: 'excel!Excel.ChartTrendlineCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.ChartTrendline:interface'
+    name: ChartTrendline
+    fullName: Excel.ChartTrendline
+  - uid: 'excel!Excel.ChartTrendlineType:enum'
+    name: ChartTrendlineType
+    fullName: Excel.ChartTrendlineType

@@ -1,0 +1,51 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.ChartFormatString:interface'
+    summary: >-
+      Represents the substring in chart related objects that contains text, like ChartTitle object, ChartAxisTitle
+      object, etc.
+    name: Excel.ChartFormatString
+    fullName: Excel.ChartFormatString
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.ChartFormatString#font:member'
+      - 'excel!Excel.ChartFormatString#load:member(1)'
+  - uid: 'excel!Excel.ChartFormatString#font:member'
+    summary: 'Represents the font attributes, such as font name, font size, color, etc. of chart characters object.'
+    name: font
+    fullName: font
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly font: ChartFont;'
+      return:
+        type:
+          - 'excel!Excel.ChartFont:interface'
+  - uid: 'excel!Excel.ChartFormatString#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.ChartFont:interface'
+    name: ChartFont
+    fullName: Excel.ChartFont
