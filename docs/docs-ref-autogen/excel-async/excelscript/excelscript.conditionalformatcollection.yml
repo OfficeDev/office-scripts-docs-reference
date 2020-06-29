@@ -11,7 +11,9 @@ items:
     children:
       - 'excel!Excel.ConditionalFormatCollection#add:member(1)'
       - 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
+      - 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
       - 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
+      - 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
       - 'excel!Excel.ConditionalFormatCollection#load:member(1)'
   - uid: 'excel!Excel.ConditionalFormatCollection#add:member(1)'
     summary: Adds a new conditional format to the collection at the first/top priority.
@@ -79,6 +81,19 @@ items:
               $(".conditional-formats").hide();
           }
           ```
+  - uid: 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
+    summary: Returns the number of conditional formats in the workbook.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
     summary: Returns a conditional format for the given ID.
     name: getItem(id)
@@ -97,6 +112,24 @@ items:
           description: The id of the conditional format.
           type:
             - string
+  - uid: 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
+    summary: Returns a conditional format at the given index.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): ConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.ConditionalFormat:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index of the conditional formats to be retrieved.
+          type:
+            - number
   - uid: 'excel!Excel.ConditionalFormatCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading

@@ -9,8 +9,41 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.PivotHierarchyCollection#getCount:member(1)'
+      - 'excel!Excel.PivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.PivotHierarchyCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.PivotHierarchyCollection#load:member(1)'
+  - uid: 'excel!Excel.PivotHierarchyCollection#getCount:member(1)'
+    summary: Gets the number of pivot hierarchies in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.PivotHierarchyCollection#getItem:member(1)'
+    summary: Gets a PivotHierarchy by its name or id.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): PivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.PivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the PivotHierarchy to be retrieved.
+          type:
+            - string
   - uid: 'excel!Excel.PivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)

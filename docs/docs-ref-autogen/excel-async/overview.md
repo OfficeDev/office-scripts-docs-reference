@@ -1,7 +1,7 @@
 ---
 title: Office Scripts API reference 
 description: 'An overview of the Office Scripts Async JavaScript APIs.'
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ---
 
 # Office Scripts Async API reference
@@ -15,12 +15,12 @@ The Office Scripts Async API supports older scripts made during the Office Scrip
 
 The following list breaks down the basics of the Office Scripts object model. This shows the common classes and how they relate to one another.
 
-- A [Workbook](/javascript/api/office-scripts/excel/excelscript.workbook) contains one or more [Worksheets](/javascript/api/office-scripts/excel/excelscript.worksheet) in a [WorksheetCollection](/javascript/api/office-scripts/excel/excelscript.worksheetcollection).
-- A [Worksheet](/javascript/api/office-scripts/excel/excelscript.worksheet) gives access to cells through [Range](/javascript/api/office-scripts/excel/excelscript.range) objects.
-- A [Range](/javascript/api/office-scripts/excel/excelscript.range) represents a group of contiguous cells.
-- [Ranges](/javascript/api/office-scripts/excel/excelscript.range) are used to create and place [Tables](/javascript/api/office-scripts/excel/excelscript.table), [Charts](/javascript/api/office-scripts/excel/excelscript.chart), [Shapes](/javascript/api/office-scripts/excel/excelscript.shape), and other data visualization or organization objects.
-- A [Worksheet](/javascript/api/office-scripts/excel/excelscript.worksheet) contains collections of those data objects (such as a [ChartCollection](/javascript/api/office-scripts/excel/excelscript.chartcollection)) that are present in the individual sheet.
-- [Workbooks](/javascript/api/office-scripts/excel/excelscript.workbook) contain collections of some of those data objects (such as a [TableCollection](/javascript/api/office-scripts/excel/excelscript.tablecollection)) for the entire [Workbook](/javascript/api/office-scripts/excel/excelscript.workbook).
+- A [Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook) contains one or more [Worksheets](/javascript/api/office-scripts/excelscript/excelscript.worksheet) in a [WorksheetCollection](/javascript/api/office-scripts/excelscript/excelscript.worksheetcollection).
+- A [Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet) gives access to cells through [Range](/javascript/api/office-scripts/excelscript/excelscript.range) objects.
+- A [Range](/javascript/api/office-scripts/excelscript/excelscript.range) represents a group of contiguous cells.
+- [Ranges](/javascript/api/office-scripts/excelscript/excelscript.range) are used to create and place [Tables](/javascript/api/office-scripts/excelscript/excelscript.table), [Charts](/javascript/api/office-scripts/excelscript/excelscript.chart), [Shapes](/javascript/api/office-scripts/excelscript/excelscript.shape), and other data visualization or organization objects.
+- A [Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet) contains collections of those data objects (such as a [ChartCollection](/javascript/api/office-scripts/excelscript/excelscript.chartcollection)) that are present in the individual sheet.
+- [Workbooks](/javascript/api/office-scripts/excelscript/excelscript.workbook) contain collections of some of those data objects (such as a [TableCollection](/javascript/api/office-scripts/excelscript/excelscript.tablecollection)) for the entire [Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook).
 
 For more information about the Office Scripts object model, visit [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
 

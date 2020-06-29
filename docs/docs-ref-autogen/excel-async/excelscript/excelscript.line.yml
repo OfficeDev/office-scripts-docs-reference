@@ -12,6 +12,7 @@ items:
       - 'excel!Excel.Line#beginArrowheadLength:member'
       - 'excel!Excel.Line#beginArrowheadStyle:member'
       - 'excel!Excel.Line#beginArrowheadWidth:member'
+      - 'excel!Excel.Line#beginConnectedShape:member'
       - 'excel!Excel.Line#beginConnectedSite:member'
       - 'excel!Excel.Line#connectBeginShape:member(1)'
       - 'excel!Excel.Line#connectEndShape:member(1)'
@@ -21,11 +22,13 @@ items:
       - 'excel!Excel.Line#endArrowheadLength:member'
       - 'excel!Excel.Line#endArrowheadStyle:member'
       - 'excel!Excel.Line#endArrowheadWidth:member'
+      - 'excel!Excel.Line#endConnectedShape:member'
       - 'excel!Excel.Line#endConnectedSite:member'
       - 'excel!Excel.Line#id:member'
       - 'excel!Excel.Line#isBeginConnected:member'
       - 'excel!Excel.Line#isEndConnected:member'
       - 'excel!Excel.Line#load:member(1)'
+      - 'excel!Excel.Line#shape:member'
   - uid: 'excel!Excel.Line#beginArrowheadLength:member'
     summary: Represents the length of the arrowhead at the beginning of the specified line.
     name: beginArrowheadLength
@@ -62,6 +65,18 @@ items:
       return:
         type:
           - 'excel!Excel.ArrowheadWidth:enum'
+  - uid: 'excel!Excel.Line#beginConnectedShape:member'
+    summary: Represents the shape to which the beginning of the specified line is attached.
+    name: beginConnectedShape
+    fullName: beginConnectedShape
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly beginConnectedShape: Shape;'
+      return:
+        type:
+          - 'excel!Excel.Shape:interface'
   - uid: 'excel!Excel.Line#beginConnectedSite:member'
     summary: >-
       Represents the connection site to which the beginning of a connector is connected. Returns null when the beginning
@@ -250,6 +265,18 @@ items:
       return:
         type:
           - 'excel!Excel.ArrowheadWidth:enum'
+  - uid: 'excel!Excel.Line#endConnectedShape:member'
+    summary: Represents the shape to which the end of the specified line is attached.
+    name: endConnectedShape
+    fullName: endConnectedShape
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly endConnectedShape: Shape;'
+      return:
+        type:
+          - 'excel!Excel.Shape:interface'
   - uid: 'excel!Excel.Line#endConnectedSite:member'
     summary: >-
       Represents the connection site to which the end of a connector is connected. Returns null when the end of the line
@@ -320,6 +347,18 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+  - uid: 'excel!Excel.Line#shape:member'
+    summary: Returns the Shape object associated with the line.
+    name: shape
+    fullName: shape
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly shape: Shape;'
+      return:
+        type:
+          - 'excel!Excel.Shape:interface'
 references:
   - uid: 'excel!Excel.ArrowheadLength:enum'
     name: ArrowheadLength

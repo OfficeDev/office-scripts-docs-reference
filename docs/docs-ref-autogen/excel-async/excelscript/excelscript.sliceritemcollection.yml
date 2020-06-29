@@ -9,8 +9,60 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.SlicerItemCollection#getCount:member(1)'
+      - 'excel!Excel.SlicerItemCollection#getItem:member(1)'
+      - 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
       - 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.SlicerItemCollection#load:member(1)'
+  - uid: 'excel!Excel.SlicerItemCollection#getCount:member(1)'
+    summary: Returns the number of slicer items in the slicer.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.SlicerItemCollection#getItem:member(1)'
+    summary: Gets a slicer item object using its key or name.
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): SlicerItem;'
+      return:
+        type:
+          - 'excel!Excel.SlicerItem:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: The key or name of the slicer item.
+          type:
+            - string
+  - uid: 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
+    summary: Gets a slicer item based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): SlicerItem;'
+      return:
+        type:
+          - 'excel!Excel.SlicerItem:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a slicer item using its key or name. If the slicer item does not exist, will return a null object.'
     name: getItemOrNullObject(key)

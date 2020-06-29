@@ -9,6 +9,16 @@ export declare namespace Excel {
         }) => Promise<T>
     ): Promise<T>;
 
+    /**
+     * The RequestContext object facilitates requests to the Excel workbook.
+     * The script and the Excel workbook run in separate processes.
+     * The request context is used to synchronize data and actions between the script and the workbook.
+     */
+    export interface RequestContext {
+        readonly workbook: Workbook;
+        sync(): Promise<void>;
+    }
+
     //
     // Class
     //
@@ -65,6 +75,18 @@ export declare namespace Excel {
          * @param calculationType - Specifies the calculation type to use. See Excel.CalculationType for details.
          */
         calculate(calculationType: CalculationType): void;
+
+        /**
+         * Suspends calculation until the next "context.sync()" is called. Once set, it is the developer's responsibility to re-calc the workbook, to ensure that any dependencies are propagated.
+         */
+        suspendApiCalculationUntilNextSync(): void;
+
+        /**
+         * Suspends screen updating until the next `context.sync()` is called.
+         *
+         * **Note**: Don't call `suspendScreenUpdatingUntilNextSync` repeatedly (such as in a loop). Repeated calls will cause the Excel window to flicker.
+         */
+        suspendScreenUpdatingUntilNextSync(): void;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -143,6 +165,11 @@ export declare namespace Excel {
         readonly customXmlParts: CustomXmlPartCollection;
 
         /**
+         * Represents all data connections in the workbook.
+         */
+        readonly dataConnections: DataConnectionCollection;
+
+        /**
          * Specifies if changes have been made since the workbook was last saved.
          * You can set this property to true if you want to close a modified workbook without either saving it or being prompted to save it.
          */
@@ -187,11 +214,6 @@ export declare namespace Excel {
          * True if the workbook is open in Read-only mode.
          */
         readonly readOnly: boolean;
-
-        /**
-         * Represents a collection of Settings associated with the workbook.
-         */
-        readonly settings: SettingCollection;
 
         /**
          * Represents a collection of SlicerStyles associated with the workbook.
@@ -240,9 +262,19 @@ export declare namespace Excel {
         getActiveCell(): Range;
 
         /**
+         * Gets the currently active chart in the workbook. If there is no active chart, an `ItemNotFound` exception is thrown.
+         */
+        getActiveChart(): Chart;
+
+        /**
          * Gets the currently active chart in the workbook. If there is no active chart, a null object is returned.
          */
         getActiveChartOrNullObject(): Chart;
+
+        /**
+         * Gets the currently active slicer in the workbook. If there is no active slicer, an `ItemNotFound` exception is thrown.
+         */
+        getActiveSlicer(): Slicer;
 
         /**
          * Gets the currently active slicer in the workbook. If there is no active slicer, a null object is returned.
@@ -451,6 +483,13 @@ export declare namespace Excel {
          * @param text - The string to find.
          * @param criteria - Additional search criteria, including whether the search needs to match the entire cell or be case sensitive.
          */
+        findAll(text: string, criteria: WorksheetSearchCriteria): RangeAreas;
+
+        /**
+         * Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object, comprising one or more rectangular ranges.
+         * @param text - The string to find.
+         * @param criteria - Additional search criteria, including whether the search needs to match the entire cell or be case sensitive.
+         */
         findAllOrNullObject(
             text: string,
             criteria: WorksheetSearchCriteria
@@ -464,10 +503,22 @@ export declare namespace Excel {
         getCell(row: number, column: number): Range;
 
         /**
+         * Gets the worksheet that follows this one. If there are no worksheets following this one, this method will throw an error.
+         * @param visibleOnly - Optional. If true, considers only visible worksheets, skipping over any hidden ones.
+         */
+        getNext(visibleOnly?: boolean): Worksheet;
+
+        /**
          * Gets the worksheet that follows this one. If there are no worksheets following this one, this method will return a null object.
          * @param visibleOnly - Optional. If true, considers only visible worksheets, skipping over any hidden ones.
          */
         getNextOrNullObject(visibleOnly?: boolean): Worksheet;
+
+        /**
+         * Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.
+         * @param visibleOnly - Optional. If true, considers only visible worksheets, skipping over any hidden ones.
+         */
+        getPrevious(visibleOnly?: boolean): Worksheet;
 
         /**
          * Gets the worksheet that precedes this one. If there are no previous worksheets, this method will return a null objet.
@@ -500,6 +551,12 @@ export declare namespace Excel {
          * @param address - Optional. A string containing the comma-separated addresses or names of the individual ranges. For example, "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
          */
         getRanges(address?: string): RangeAreas;
+
+        /**
+         * The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them. If the entire worksheet is blank, this function will return the top left cell (i.e. it will *not* throw an error).
+         * @param valuesOnly - Optional. If true, considers only cells with values as used cells (ignoring formatting).
+         */
+        getUsedRange(valuesOnly?: boolean): Range;
 
         /**
          * The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them. If the entire worksheet is blank, this function will return a null object.
@@ -554,10 +611,22 @@ export declare namespace Excel {
         getActiveWorksheet(): Worksheet;
 
         /**
+         * Gets the number of worksheets in the collection.
+         * @param visibleOnly - Optional. If true, considers only visible worksheets, skipping over any hidden ones.
+         */
+        getCount(visibleOnly?: boolean): number;
+
+        /**
          * Gets the first worksheet in the collection.
          * @param visibleOnly - Optional. If true, considers only visible worksheets, skipping over any hidden ones.
          */
         getFirst(visibleOnly?: boolean): Worksheet;
+
+        /**
+         * Gets a worksheet object using its Name or ID.
+         * @param key - The Name or ID of the worksheet.
+         */
+        getItem(key: string): Worksheet;
 
         /**
          * Gets a worksheet object using its Name or ID. If the worksheet does not exist, will return a null object.
@@ -633,6 +702,12 @@ export declare namespace Excel {
          * @param count - Optional number of rows to freeze, or zero to unfreeze all rows
          */
         freezeRows(count?: number): void;
+
+        /**
+         * Gets a range that describes the frozen cells in the active worksheet view.
+         * The frozen range is corresponds to cells that are frozen in the top- and left-most pane.
+         */
+        getLocation(): Range;
 
         /**
          * Gets a range that describes the frozen cells in the active worksheet view.
@@ -888,6 +963,14 @@ export declare namespace Excel {
         /**
          * Finds the given string based on the criteria specified.
          * If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
+         * @param text - The string to find.
+         * @param criteria - Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case sensitive.
+         */
+        find(text: string, criteria: SearchCriteria): Range;
+
+        /**
+         * Finds the given string based on the criteria specified.
+         * If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
          * If there are no matches, this function will return a null object.
          * @param text - The string to find.
          * @param criteria - Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case sensitive.
@@ -953,6 +1036,12 @@ export declare namespace Excel {
         getImage(): string;
 
         /**
+         * Gets the range object that represents the rectangular intersection of the given ranges.
+         * @param anotherRange - The range object or range address that will be used to determine the intersection of ranges.
+         */
+        getIntersection(anotherRange: Range | string): Range;
+
+        /**
          * Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is found, will return a null object.
          * @param anotherRange - The range object or range address that will be used to determine the intersection of ranges.
          */
@@ -981,6 +1070,12 @@ export declare namespace Excel {
         getOffsetRange(rowOffset: number, columnOffset: number): Range;
 
         /**
+         * Gets a scoped collection of PivotTables that overlap with the range.
+         * @param fullyContained - If true, returns only PivotTables that are fully contained within the range bounds. The default value is false.
+         */
+        getPivotTables(fullyContained?: boolean): PivotTableScopedCollection;
+
+        /**
          * Gets a Range object similar to the current Range object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns.
          * @param deltaRows - The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
          * @param deltaColumns - The number of columns by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
@@ -1006,6 +1101,17 @@ export declare namespace Excel {
         getRowsBelow(count?: number): Range;
 
         /**
+         * Gets the RangeAreas object, comprising one or more rectangular ranges, that represents all the cells that match the specified type and value.
+         * If no special cells are found, an ItemNotFound error will be thrown.
+         * @param cellType - The type of cells to include.
+         * @param cellValueType - If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
+         */
+        getSpecialCells(
+            cellType: SpecialCellType,
+            cellValueType?: SpecialCellValueType
+        ): RangeAreas;
+
+        /**
          * Gets the RangeAreas object, comprising one or more ranges, that represents all the cells that match the specified type and value.
          * If no special cells are found, a null object will be returned.
          * @param cellType - The type of cells to include.
@@ -1020,6 +1126,18 @@ export declare namespace Excel {
          * Returns a Range object that represents the surrounding region for the top-left cell in this range. A surrounding region is a range bounded by any combination of blank rows and blank columns relative to this range.
          */
         getSurroundingRegion(): Range;
+
+        /**
+         * Gets a scoped collection of tables that overlap with the range.
+         * @param fullyContained - If true, returns only tables that are fully contained within the range bounds. The default value is false.
+         */
+        getTables(fullyContained?: boolean): TableScopedCollection;
+
+        /**
+         * Returns the used range of the given range object. If there are no used cells within the range, this function will throw an ItemNotFound error.
+         * @param valuesOnly - Considers only cells with values as used cells.
+         */
+        getUsedRange(valuesOnly?: boolean): Range;
 
         /**
          * Returns the used range of the given range object. If there are no used cells within the range, this function will return a null object.
@@ -1247,6 +1365,12 @@ export declare namespace Excel {
         getEntireRow(): RangeAreas;
 
         /**
+         * Returns the RangeAreas object that represents the intersection of the given ranges or RangeAreas. If no intersection is found, an ItemNotFound error will be thrown.
+         * @param anotherRange - The range, RangeAreas object or range address that will be used to determine the intersection.
+         */
+        getIntersection(anotherRange: Range | RangeAreas | string): RangeAreas;
+
+        /**
          * Returns the RangeAreas object that represents the intersection of the given ranges or RangeAreas. If no intersection is found, a null object is returned.
          * @param anotherRange - The range, RangeAreas, or address that will be used to determine the intersection.
          */
@@ -1265,6 +1389,16 @@ export declare namespace Excel {
         ): RangeAreas;
 
         /**
+         * Returns a RangeAreas object that represents all the cells that match the specified type and value. Throws an error if no special cells are found that match the criteria.
+         * @param cellType - The type of cells to include.
+         * @param cellValueType - If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
+         */
+        getSpecialCells(
+            cellType: SpecialCellType,
+            cellValueType?: SpecialCellValueType
+        ): RangeAreas;
+
+        /**
          * Returns a RangeAreas object that represents all the cells that match the specified type and value. Returns a null object if no special cells are found that match the criteria.
          * @param cellType - The type of cells to include.
          * @param cellValueType - If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
@@ -1273,6 +1407,19 @@ export declare namespace Excel {
             cellType: SpecialCellType,
             cellValueType?: SpecialCellValueType
         ): RangeAreas;
+
+        /**
+         * Returns a scoped collection of tables that overlap with any range in this RangeAreas object.
+         * @param fullyContained - If true, returns only tables that are fully contained within the range bounds. Default is false.
+         */
+        getTables(fullyContained?: boolean): TableScopedCollection;
+
+        /**
+         * Returns the used RangeAreas that comprises all the used areas of individual rectangular ranges in the RangeAreas object.
+         * If there are no used cells within the RangeAreas, the ItemNotFound error will be thrown.
+         * @param valuesOnly - Whether to only consider cells with values as used cells. Default is false.
+         */
+        getUsedRangeAreas(valuesOnly?: boolean): RangeAreas;
 
         /**
          * Returns the used RangeAreas that comprises all the used areas of individual rectangular ranges in the RangeAreas object.
@@ -1376,6 +1523,17 @@ export declare namespace Excel {
      */
     export interface RangeViewCollection {
         /**
+         * Gets the number of RangeView objects in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a RangeView Row via its index. Zero-Indexed.
+         * @param index - Index of the visible row.
+         */
+        getItemAt(index: number): RangeView;
+
+        /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
          * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
@@ -1396,6 +1554,17 @@ export declare namespace Excel {
             key: string,
             value: string | number | boolean | Date | Array<any> | any
         ): Setting;
+
+        /**
+         * Gets the number of Settings in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a Setting entry via the key.
+         * @param key - Key of the setting.
+         */
+        getItem(key: string): Setting;
 
         /**
          * Gets a Setting entry via the key. If the Setting does not exist, will return a null object.
@@ -1467,6 +1636,17 @@ export declare namespace Excel {
         ): NamedItem;
 
         /**
+         * Gets the number of named items in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a NamedItem object using its name.
+         * @param name - Nameditem name.
+         */
+        getItem(name: string): NamedItem;
+
+        /**
          * Gets a NamedItem object using its name. If the nameditem object does not exist, will return a null object.
          * @param name - Nameditem name.
          */
@@ -1525,9 +1705,24 @@ export declare namespace Excel {
         visible: boolean;
 
         /**
+         * Returns the worksheet on which the named item is scoped to. Throws an error if the item is scoped to the workbook instead.
+         */
+        readonly worksheet: Worksheet;
+
+        /**
+         * Returns the worksheet on which the named item is scoped to. Returns a null object if the item is scoped to the workbook instead.
+         */
+        readonly worksheetOrNullObject: Worksheet;
+
+        /**
          * Deletes the given name.
          */
         delete(): void;
+
+        /**
+         * Returns the range object that is associated with the name. Throws an error if the named item's type is not a range.
+         */
+        getRange(): Range;
 
         /**
          * Returns the range object that is associated with the name. Returns a null object if the named item's type is not a range.
@@ -1611,6 +1806,11 @@ export declare namespace Excel {
      */
     export interface BindingCollection {
         /**
+         * Returns the number of bindings in the collection.
+         */
+        readonly count: number;
+
+        /**
          * Add a new binding to a particular Range.
          * @param range - Range to bind the binding to. May be an Excel Range object, or a string. If string, must contain the full address, including the sheet name
          * @param bindingType - Type of binding. See Excel.BindingType.
@@ -1644,6 +1844,23 @@ export declare namespace Excel {
         addFromSelection(bindingType: BindingType, id: string): Binding;
 
         /**
+         * Gets the number of bindings in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a binding object by ID.
+         * @param id - Id of the binding object to be retrieved.
+         */
+        getItem(id: string): Binding;
+
+        /**
+         * Gets a binding object based on its position in the items array.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Binding;
+
+        /**
          * Gets a binding object by ID. If the binding object does not exist, will return a null object.
          * @param id - Id of the binding object to be retrieved.
          */
@@ -1662,11 +1879,33 @@ export declare namespace Excel {
      */
     export interface TableCollection {
         /**
+         * Returns the number of tables in the workbook.
+         */
+        readonly count: number;
+
+        /**
          * Create a new table. The range object or source address determines the worksheet under which the table will be added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another table), an error will be thrown.
          * @param address - A Range object, or a string address or name of the range representing the data source. If the address does not contain a sheet name, the currently-active sheet is used.
          * @param hasHeaders - Boolean value that indicates whether the data being imported has column labels. If the source does not contain headers (i.e,. when this property set to false), Excel will automatically generate header shifting the data down by one row.
          */
         add(address: Range | string, hasHeaders: boolean): Table;
+
+        /**
+         * Gets the number of tables in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a table by Name or ID.
+         * @param key - Name or ID of the table to be retrieved.
+         */
+        getItem(key: string): Table;
+
+        /**
+         * Gets a table based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Table;
 
         /**
          * Gets a table by Name or ID. If the table does not exist, will return a null object.
@@ -1686,6 +1925,11 @@ export declare namespace Excel {
      * Represents a scoped collection of tables. For each table its top-left corner is considered its anchor location and the tables are sorted top to bottom and then left to right.
      */
     export interface TableScopedCollection {
+        /**
+         * Gets the number of tables in the collection.
+         */
+        getCount(): number;
+
         /**
          * Gets the first table in the collection. The tables in the collection are sorted top to bottom and left to right, such that top left table is the first table in the collection.
          */
@@ -1746,6 +1990,11 @@ export declare namespace Excel {
          * The set name of the table must follow the guidelines specified in the {@link https://support.office.com/article/Rename-an-Excel-table-FBF49A4F-82A3-43EB-8BA2-44D21233B114 | Rename an Excel table} article.
          */
         name: string;
+
+        /**
+         * Represents a collection of all the rows in the table.
+         */
+        readonly rows: TableRowCollection;
 
         /**
          * Specifies if the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
@@ -1840,6 +2089,44 @@ export declare namespace Excel {
      */
     export interface TableColumnCollection {
         /**
+         * Returns the number of columns in the table.
+         */
+        readonly count: number;
+
+        /**
+         * Adds a new column to the table.
+         * @param index - Optional. Specifies the relative position of the new column. If null or -1, the addition happens at the end. Columns with a higher index will be shifted to the side. Zero-indexed.
+         * @param values - Optional. A 2-dimensional array of unformatted values of the table column.
+         * @param name - Optional. Specifies the name of the new column. If null, the default name will be used.
+         */
+        add(
+            index?: number,
+            values?:
+                | Array<Array<boolean | string | number>>
+                | boolean
+                | string
+                | number,
+            name?: string
+        ): TableColumn;
+
+        /**
+         * Gets the number of columns in the table.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a column object by Name or ID.
+         * @param key - Column Name or ID.
+         */
+        getItem(key: number | string): TableColumn;
+
+        /**
+         * Gets a column based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): TableColumn;
+
+        /**
          * Gets a column object by Name or ID. If the column does not exist, will return a null object.
          * @param key - Column Name or ID.
          */
@@ -1878,6 +2165,11 @@ export declare namespace Excel {
         name: string;
 
         /**
+         * Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cells that contain an error will return the error string.
+         */
+        values: any[][];
+
+        /**
          * Deletes the column from the table.
          */
         delete(): void;
@@ -1901,6 +2193,95 @@ export declare namespace Excel {
          * Gets the range object associated with the totals row of the column.
          */
         getTotalRowRange(): Range;
+
+        /**
+         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
+         *
+         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
+         */
+        load(propertyNames?: string | string[]): void;
+    }
+
+    /**
+     * Represents a collection of all the rows that are part of the table.
+     *
+     * Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them,
+     * a TableRow object represent the physical location of the table row, but not the data.
+     * That is, if the data is sorted or if new rows are added, a table row will continue
+     * to point at the index for which it was created.
+     */
+    export interface TableRowCollection {
+        /**
+         * Returns the number of rows in the table.
+         */
+        readonly count: number;
+
+        /**
+         * Adds one or more rows to the table. The return object will be the top of the newly added row(s).
+         *
+         * Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them,
+         * a TableRow object represent the physical location of the table row, but not the data.
+         * That is, if the data is sorted or if new rows are added, a table row will continue
+         * to point at the index for which it was created.
+         * @param index - Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end. Any rows below the inserted row are shifted downwards. Zero-indexed.
+         * @param values - Optional. A 2-dimensional array of unformatted values of the table row.
+         */
+        add(
+            index?: number,
+            values?:
+                | Array<Array<boolean | string | number>>
+                | boolean
+                | string
+                | number
+        ): TableRow;
+
+        /**
+         * Gets the number of rows in the table.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a row based on its position in the collection.
+         *
+         * Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them,
+         * a TableRow object represent the physical location of the table row, but not the data.
+         * That is, if the data is sorted or if new rows are added, a table row will continue
+         * to point at the index for which it was created.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): TableRow;
+
+        /**
+         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
+         *
+         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
+         */
+        load(propertyNames?: string | string[]): void;
+    }
+
+    /**
+     * Represents a row in a table.
+     *
+     * Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them,
+     * a TableRow object represent the physical location of the table row, but not the data.
+     * That is, if the data is sorted or if new rows are added, a table row will continue
+     * to point at the index for which it was created.
+     */
+    export interface TableRow {
+        /**
+         * Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cells that contain an error will return the error string.
+         */
+        values: any[][];
+
+        /**
+         * Deletes the row from the table.
+         */
+        delete(): void;
+
+        /**
+         * Returns the range object associated with the entire row.
+         */
+        getRange(): Range;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -1951,6 +2332,11 @@ export declare namespace Excel {
          * Clears the data validation from the current range.
          */
         clear(): void;
+
+        /**
+         * Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this function will throw an ItemNotFound error.
+         */
+        getInvalidCells(): RangeAreas;
 
         /**
          * Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this function will return null.
@@ -2215,6 +2601,11 @@ export declare namespace Excel {
      */
     export interface RangeBorderCollection {
         /**
+         * Number of border objects in the collection.
+         */
+        readonly count: number;
+
+        /**
          * Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * A null value indicates that the entire border collections don't have uniform tintAndShade setting.
          */
@@ -2225,6 +2616,12 @@ export declare namespace Excel {
          * @param index - Index value of the border object to be retrieved. See Excel.BorderIndex for details.
          */
         getItem(index: BorderIndex): RangeBorder;
+
+        /**
+         * Gets a border object using its index.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): RangeBorder;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -2308,6 +2705,11 @@ export declare namespace Excel {
      */
     export interface ChartCollection {
         /**
+         * Returns the number of charts in the worksheet.
+         */
+        readonly count: number;
+
+        /**
          * Creates a new chart.
          * @param type - Represents the type of a chart. See Excel.ChartType for details.
          * @param sourceData - The Range object corresponding to the source data.
@@ -2318,6 +2720,23 @@ export declare namespace Excel {
             sourceData: Range,
             seriesBy?: ChartSeriesBy
         ): Chart;
+
+        /**
+         * Returns the number of charts in the worksheet.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned.
+         * @param name - Name of the chart to be retrieved.
+         */
+        getItem(name: string): Chart;
+
+        /**
+         * Gets a chart based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Chart;
 
         /**
          * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned.
@@ -2582,11 +3001,27 @@ export declare namespace Excel {
      */
     export interface ChartSeriesCollection {
         /**
+         * Returns the number of series in the collection.
+         */
+        readonly count: number;
+
+        /**
          * Add a new series to the collection. The new added series is not visible until set values/x axis values/bubble sizes for it (depending on chart type).
          * @param name - Optional. Name of the series.
          * @param index - Optional. Index value of the series to be added. Zero-indexed.
          */
         add(name?: string, index?: number): ChartSeries;
+
+        /**
+         * Returns the number of series in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Retrieves a series based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): ChartSeries;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -2889,6 +3324,22 @@ export declare namespace Excel {
      * A collection of all the chart points within a series inside a chart.
      */
     export interface ChartPointsCollection {
+        /**
+         * Returns the number of chart points in the series.
+         */
+        readonly count: number;
+
+        /**
+         * Returns the number of chart points in the series.
+         */
+        getCount(): number;
+
+        /**
+         * Retrieve a point based on its position within the series.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): ChartPoint;
+
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
@@ -3759,6 +4210,17 @@ export declare namespace Excel {
      */
     export interface ChartLegendEntryCollection {
         /**
+         * Returns the number of legendEntry in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Returns a legendEntry at the given index.
+         * @param index - Index of the legendEntry to be retrieved.
+         */
+        getItemAt(index: number): ChartLegendEntry;
+
+        /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
          * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
@@ -4250,6 +4712,11 @@ export declare namespace Excel {
         add(type?: ChartTrendlineType): ChartTrendline;
 
         /**
+         * Returns the number of trendlines in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Get trendline object by index, which is the insertion order in items array.
          * @param index - Represents the insertion order in items array.
          */
@@ -4680,6 +5147,11 @@ export declare namespace Excel {
 
         /**
          * Returns the Range object that represents the range to which the AutoFilter applies.
+         */
+        getRange(): Range;
+
+        /**
+         * Returns the Range object that represents the range to which the AutoFilter applies.
          * If there is no Range object associated with the AutoFilter, this method returns a null object.
          */
         getRangeOrNullObject(): Range;
@@ -4753,11 +5225,28 @@ export declare namespace Excel {
      */
     export interface CustomXmlPartScopedCollection {
         /**
+         * Gets the number of CustomXML parts in this collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a custom XML part based on its ID.
+         * @param id - ID of the object to be retrieved.
+         */
+        getItem(id: string): CustomXmlPart;
+
+        /**
          * Gets a custom XML part based on its ID.
          * If the CustomXmlPart does not exist, the return object's isNull property will be true.
          * @param id - ID of the object to be retrieved.
          */
         getItemOrNullObject(id: string): CustomXmlPart;
+
+        /**
+         * If the collection contains exactly one item, this method returns it.
+         * Otherwise, this method produces an error.
+         */
+        getOnlyItem(): CustomXmlPart;
 
         /**
          * If the collection contains exactly one item, this method returns it.
@@ -4782,6 +5271,23 @@ export declare namespace Excel {
          * @param xml - XML content. Must be a valid XML fragment.
          */
         add(xml: string): CustomXmlPart;
+
+        /**
+         * Gets a new scoped collection of custom XML parts whose namespaces match the given namespace.
+         * @param namespaceUri - This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
+         */
+        getByNamespace(namespaceUri: string): CustomXmlPartScopedCollection;
+
+        /**
+         * Gets the number of CustomXml parts in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a custom XML part based on its ID.
+         * @param id - ID of the object to be retrieved.
+         */
+        getItem(id: string): CustomXmlPart;
 
         /**
          * Gets a custom XML part based on its ID.
@@ -4837,6 +5343,40 @@ export declare namespace Excel {
     }
 
     /**
+     * Represents a scoped collection of PivotTables. The PivotTables are sorted based on the location of the PivotTable's top-left corner. They are ordered top to bottom and then left to right.
+     */
+    export interface PivotTableScopedCollection {
+        /**
+         * Gets the number of PivotTables in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets the first PivotTable in the collection. The PivotTables in the collection are sorted top to bottom and left to right, such that top-left table is the first PivotTable in the collection.
+         */
+        getFirst(): PivotTable;
+
+        /**
+         * Gets a PivotTable by name.
+         * @param key - Name of the PivotTable to be retrieved.
+         */
+        getItem(key: string): PivotTable;
+
+        /**
+         * Gets a PivotTable by name. If the PivotTable does not exist, will return a null object.
+         * @param name - Name of the PivotTable to be retrieved.
+         */
+        getItemOrNullObject(name: string): PivotTable;
+
+        /**
+         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
+         *
+         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
+         */
+        load(propertyNames?: string | string[]): void;
+    }
+
+    /**
      * Represents a collection of all the PivotTables that are part of the workbook or worksheet.
      */
     export interface PivotTableCollection {
@@ -4851,6 +5391,17 @@ export declare namespace Excel {
             source: Range | string | Table,
             destination: Range | string
         ): PivotTable;
+
+        /**
+         * Gets the number of pivot tables in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a PivotTable by name.
+         * @param name - Name of the PivotTable to be retrieved.
+         */
+        getItem(name: string): PivotTable;
 
         /**
          * Gets a PivotTable by name. If the PivotTable does not exist, will return a null object.
@@ -5010,6 +5561,13 @@ export declare namespace Excel {
         getFilterAxisRange(): Range;
 
         /**
+         * Gets the PivotItems from an axis that make up the value in a specified range within the PivotTable.
+         * @param axis - The axis from which to get the PivotItems. Must be either "row" or "column."
+         * @param cell - A single cell within the PivotTable's data body.
+         */
+        getPivotItems(axis: PivotAxis, cell: Range | string): PivotItem[];
+
+        /**
          * Returns the range the PivotTable exists on, excluding the filter area.
          */
         getRange(): Range;
@@ -5038,6 +5596,17 @@ export declare namespace Excel {
      * Represents a collection of all the PivotHierarchies that are part of the PivotTable.
      */
     export interface PivotHierarchyCollection {
+        /**
+         * Gets the number of pivot hierarchies in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a PivotHierarchy by its name or id.
+         * @param name - Name of the PivotHierarchy to be retrieved.
+         */
+        getItem(name: string): PivotHierarchy;
+
         /**
          * Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, will return a null object.
          * @param name - Name of the PivotHierarchy to be retrieved.
@@ -5088,6 +5657,17 @@ export declare namespace Excel {
          * or filter axis, it will be removed from that location.
          */
         add(pivotHierarchy: PivotHierarchy): RowColumnPivotHierarchy;
+
+        /**
+         * Gets the number of pivot hierarchies in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a RowColumnPivotHierarchy by its name or id.
+         * @param name - Name of the RowColumnPivotHierarchy to be retrieved.
+         */
+        getItem(name: string): RowColumnPivotHierarchy;
 
         /**
          * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, will return a null object.
@@ -5154,6 +5734,17 @@ export declare namespace Excel {
          * or filter axis, it will be removed from that location.
          */
         add(pivotHierarchy: PivotHierarchy): FilterPivotHierarchy;
+
+        /**
+         * Gets the number of pivot hierarchies in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a FilterPivotHierarchy by its name or id.
+         * @param name - Name of the FilterPivotHierarchy to be retrieved.
+         */
+        getItem(name: string): FilterPivotHierarchy;
 
         /**
          * Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, will return a null object.
@@ -5224,6 +5815,17 @@ export declare namespace Excel {
          * Adds the PivotHierarchy to the current axis.
          */
         add(pivotHierarchy: PivotHierarchy): DataPivotHierarchy;
+
+        /**
+         * Gets the number of pivot hierarchies in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a DataPivotHierarchy by its name or id.
+         * @param name - Name of the DataPivotHierarchy to be retrieved.
+         */
+        getItem(name: string): DataPivotHierarchy;
 
         /**
          * Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, will return a null object.
@@ -5301,6 +5903,17 @@ export declare namespace Excel {
      */
     export interface PivotFieldCollection {
         /**
+         * Gets the number of pivot fields in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a PivotField by its name or id.
+         * @param name - Name of the PivotField to be retrieved.
+         */
+        getItem(name: string): PivotField;
+
+        /**
          * Gets a PivotField by name. If the PivotField does not exist, will return a null object.
          * @param name - Name of the PivotField to be retrieved.
          */
@@ -5377,6 +5990,17 @@ export declare namespace Excel {
      * Represents a collection of all the PivotItems related to their parent PivotField.
      */
     export interface PivotItemCollection {
+        /**
+         * Gets the number of PivotItems in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a PivotItem by its name or id.
+         * @param name - Name of the PivotItem to be retrieved.
+         */
+        getItem(name: string): PivotItem;
+
         /**
          * Gets a PivotItem by name. If the PivotItem does not exist, will return a null object.
          * @param name - Name of the PivotItem to be retrieved.
@@ -5544,6 +6168,17 @@ export declare namespace Excel {
         deleteAll(): void;
 
         /**
+         * Gets the count of custom properties.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.
+         * @param key - The key that identifies the custom property object.
+         */
+        getItem(key: string): CustomProperty;
+
+        /**
          * Gets a custom property object by its key, which is case-insensitive. Returns a null object if the custom property does not exist.
          * @param key - Required. The key that identifies the custom property object.
          */
@@ -5573,10 +6208,21 @@ export declare namespace Excel {
         clearAll(): void;
 
         /**
+         * Returns the number of conditional formats in the workbook.
+         */
+        getCount(): number;
+
+        /**
          * Returns a conditional format for the given ID.
          * @param id - The id of the conditional format.
          */
         getItem(id: string): ConditionalFormat;
+
+        /**
+         * Returns a conditional format at the given index.
+         * @param index - Index of the conditional formats to be retrieved.
+         */
+        getItemAt(index: number): ConditionalFormat;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -5595,7 +6241,18 @@ export declare namespace Excel {
          * Returns the cell value conditional format properties if the current conditional format is a CellValue type.
          * For example to format all cells between 5 and 10.
          */
+        readonly cellValue: CellValueConditionalFormat;
+
+        /**
+         * Returns the cell value conditional format properties if the current conditional format is a CellValue type.
+         * For example to format all cells between 5 and 10.
+         */
         readonly cellValueOrNullObject: CellValueConditionalFormat;
+
+        /**
+         * Returns the ColorScale conditional format properties if the current conditional format is an ColorScale type.
+         */
+        readonly colorScale: ColorScaleConditionalFormat;
 
         /**
          * Returns the ColorScale conditional format properties if the current conditional format is an ColorScale type.
@@ -5605,12 +6262,27 @@ export declare namespace Excel {
         /**
          * Returns the custom conditional format properties if the current conditional format is a custom type.
          */
+        readonly custom: CustomConditionalFormat;
+
+        /**
+         * Returns the custom conditional format properties if the current conditional format is a custom type.
+         */
         readonly customOrNullObject: CustomConditionalFormat;
 
         /**
          * Returns the data bar properties if the current conditional format is a data bar.
          */
+        readonly dataBar: DataBarConditionalFormat;
+
+        /**
+         * Returns the data bar properties if the current conditional format is a data bar.
+         */
         readonly dataBarOrNullObject: DataBarConditionalFormat;
+
+        /**
+         * Returns the IconSet conditional format properties if the current conditional format is an IconSet type.
+         */
+        readonly iconSet: IconSetConditionalFormat;
 
         /**
          * Returns the IconSet conditional format properties if the current conditional format is an IconSet type.
@@ -5621,6 +6293,11 @@ export declare namespace Excel {
          * The Priority of the Conditional Format within the current ConditionalFormatCollection.
          */
         readonly id: string;
+
+        /**
+         * Returns the preset criteria conditional format. See Excel.PresetCriteriaConditionalFormat for more details.
+         */
+        readonly preset: PresetCriteriaConditionalFormat;
 
         /**
          * Returns the preset criteria conditional format. See Excel.PresetCriteriaConditionalFormat for more details.
@@ -5646,7 +6323,19 @@ export declare namespace Excel {
          * Returns the specific text conditional format properties if the current conditional format is a text type.
          * For example to format cells matching the word "Text".
          */
+        readonly textComparison: TextConditionalFormat;
+
+        /**
+         * Returns the specific text conditional format properties if the current conditional format is a text type.
+         * For example to format cells matching the word "Text".
+         */
         readonly textComparisonOrNullObject: TextConditionalFormat;
+
+        /**
+         * Returns the Top/Bottom conditional format properties if the current conditional format is an TopBottom type.
+         * For example to format the top 10% or bottom 10 items.
+         */
+        readonly topBottom: TopBottomConditionalFormat;
 
         /**
          * Returns the Top/Bottom conditional format properties if the current conditional format is an TopBottom type.
@@ -5663,6 +6352,11 @@ export declare namespace Excel {
          * Deletes this conditional format.
          */
         delete(): void;
+
+        /**
+         * Returns the range the conditonal format is applied to. Throws an error if the conditional format is applied to multiple ranges.
+         */
+        getRange(): Range;
 
         /**
          * Returns the range the conditonal format is applied to, or a null object if the conditional format is applied to multiple ranges.
@@ -6117,6 +6811,11 @@ export declare namespace Excel {
         readonly bottom: ConditionalRangeBorder;
 
         /**
+         * Number of border objects in the collection.
+         */
+        readonly count: number;
+
+        /**
          * Gets the left border.
          */
         readonly left: ConditionalRangeBorder;
@@ -6136,6 +6835,12 @@ export declare namespace Excel {
          * @param index - Index value of the border object to be retrieved. See Excel.ConditionalRangeBorderIndex for details.
          */
         getItem(index: ConditionalRangeBorderIndex): ConditionalRangeBorder;
+
+        /**
+         * Gets a border object using its index.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): ConditionalRangeBorder;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -6288,10 +6993,21 @@ export declare namespace Excel {
         add(name: string): void;
 
         /**
+         * Gets the number of styles in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets a style by name.
          * @param name - Name of the style to be retrieved.
          */
         getItem(name: string): Style;
+
+        /**
+         * Gets a style based on its position in the collection.
+         * @param index - Index value of the style object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Style;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -6313,9 +7029,20 @@ export declare namespace Excel {
         add(name: string, makeUniqueName?: boolean): TableStyle;
 
         /**
+         * Gets the number of table styles in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets the default TableStyle for the parent object's scope.
          */
         getDefault(): TableStyle;
+
+        /**
+         * Gets a TableStyle by name.
+         * @param name - Name of the TableStyle to be retrieved.
+         */
+        getItem(name: string): TableStyle;
 
         /**
          * Gets a TableStyle by name. If the TableStyle does not exist, will return a null object.
@@ -6381,9 +7108,20 @@ export declare namespace Excel {
         add(name: string, makeUniqueName?: boolean): PivotTableStyle;
 
         /**
+         * Gets the number of PivotTable styles in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets the default PivotTableStyle for the parent object's scope.
          */
         getDefault(): PivotTableStyle;
+
+        /**
+         * Gets a PivotTableStyle by name.
+         * @param name - Name of the PivotTableStyle to be retrieved.
+         */
+        getItem(name: string): PivotTableStyle;
 
         /**
          * Gets a PivotTableStyle by name. If the PivotTableStyle does not exist, will return a null object.
@@ -6449,9 +7187,20 @@ export declare namespace Excel {
         add(name: string, makeUniqueName?: boolean): SlicerStyle;
 
         /**
+         * Gets the number of slicer styles in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets the default SlicerStyle for the parent object's scope.
          */
         getDefault(): SlicerStyle;
+
+        /**
+         * Gets a SlicerStyle by name.
+         * @param name - Name of the SlicerStyle to be retrieved.
+         */
+        getItem(name: string): SlicerStyle;
 
         /**
          * Gets a SlicerStyle by name. If the SlicerStyle does not exist, will return a null object.
@@ -6517,9 +7266,20 @@ export declare namespace Excel {
         add(name: string, makeUniqueName?: boolean): TimelineStyle;
 
         /**
+         * Gets the number of timeline styles in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets the default TimelineStyle for the parent object's scope.
          */
         getDefault(): TimelineStyle;
+
+        /**
+         * Gets a TimelineStyle by name.
+         * @param name - Name of the TimelineStyle to be retrieved.
+         */
+        getItem(name: string): TimelineStyle;
 
         /**
          * Gets a TimelineStyle by name. If the TimelineStyle does not exist, will return a null object.
@@ -6679,14 +7439,29 @@ export declare namespace Excel {
         zoom: PageLayoutZoomOptions;
 
         /**
+         * Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the worksheet. If there is no print area, an ItemNotFound error will be thrown.
+         */
+        getPrintArea(): RangeAreas;
+
+        /**
          * Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the worksheet. If there is no print area, a null object will be returned.
          */
         getPrintAreaOrNullObject(): RangeAreas;
 
         /**
+         * Gets the range object representing the title columns.
+         */
+        getPrintTitleColumns(): Range;
+
+        /**
          * Gets the range object representing the title columns. If not set, this will return a null object.
          */
         getPrintTitleColumnsOrNullObject(): Range;
+
+        /**
+         * Gets the range object representing the title rows.
+         */
+        getPrintTitleRows(): Range;
 
         /**
          * Gets the range object representing the title rows. If not set, this will return a null object.
@@ -6850,6 +7625,17 @@ export declare namespace Excel {
         add(pageBreakRange: Range | string): PageBreak;
 
         /**
+         * Gets the number of page breaks in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a page break object via the index.
+         * @param index - Index of the page break.
+         */
+        getItem(index: number): PageBreak;
+
+        /**
          * Resets all manual page breaks in the collection.
          */
         removePageBreaks(): void;
@@ -6862,7 +7648,35 @@ export declare namespace Excel {
         load(propertyNames?: string | string[]): void;
     }
 
+    /**
+     * Represents a collection of all the Data Connections that are part of the workbook or worksheet.
+     */
+    export interface DataConnectionCollection {
+        /**
+         * Refreshes all the Data Connections in the collection.
+         */
+        refreshAll(): void;
+
+        /**
+         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
+         *
+         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
+         */
+        load(propertyNames?: string | string[]): void;
+    }
+
     export interface RangeCollection {
+        /**
+         * Returns the number of ranges in the RangeCollection.
+         */
+        getCount(): number;
+
+        /**
+         * Returns the range object based on its position in the RangeCollection.
+         * @param index - Index value of the range object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Range;
+
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
@@ -6888,10 +7702,21 @@ export declare namespace Excel {
         ): Comment;
 
         /**
+         * Gets the number of comments in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Gets a comment from the collection based on its ID.
          * @param commentId - The identifier for the comment.
          */
         getItem(commentId: string): Comment;
+
+        /**
+         * Gets a comment from the collection based on its position.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Comment;
 
         /**
          * Gets the comment from the specified cell.
@@ -7001,10 +7826,21 @@ export declare namespace Excel {
         ): CommentReply;
 
         /**
+         * Gets the number of comment replies in the collection.
+         */
+        getCount(): number;
+
+        /**
          * Returns a comment reply identified by its ID.
          * @param commentReplyId - The identifier for the comment reply.
          */
         getItem(commentReplyId: string): CommentReply;
+
+        /**
+         * Gets a comment reply based on its position in the collection.
+         * @param index - The index value of the comment reply to be retrieved. The collection uses zero-based indexing.
+         */
+        getItemAt(index: number): CommentReply;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -7132,10 +7968,27 @@ export declare namespace Excel {
         addTextBox(text?: string): Shape;
 
         /**
+         * Returns the number of shapes in the worksheet.
+         */
+        getCount(): number;
+
+        /**
          * Gets a shape using its Name or ID.
          * @param key - Name or ID of the shape to be retrieved.
          */
         getItem(key: string): Shape;
+
+        /**
+         * Gets a shape using its position in the collection.
+         * @param index - The zero-based index of the shape to be retrieved.
+         */
+        getItemAt(index: number): Shape;
+
+        /**
+         * Returns a shape identified by the shape id.
+         * @param shapeId - The identifier for the shape.
+         */
+        _GetItem(shapeId: string): Shape;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -7231,6 +8084,11 @@ export declare namespace Excel {
          * Specifies the name of the shape.
          */
         name: string;
+
+        /**
+         * Specifies the parent group of this shape.
+         */
+        readonly parentGroup: Shape;
 
         /**
          * Represents how the object is attached to the cells below it.
@@ -7359,6 +8217,11 @@ export declare namespace Excel {
         readonly id: string;
 
         /**
+         * Returns the Shape object for the geometric shape.
+         */
+        readonly shape: Shape;
+
+        /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
          * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
@@ -7374,6 +8237,11 @@ export declare namespace Excel {
          * Specifies the shape identifier for the image object.
          */
         readonly id: string;
+
+        /**
+         * Returns the Shape object associated with the image.
+         */
+        readonly shape: Shape;
 
         /**
          * Returns the format of the image.
@@ -7398,6 +8266,11 @@ export declare namespace Excel {
         readonly id: string;
 
         /**
+         * Returns the Shape object associated with the group.
+         */
+        readonly shape: Shape;
+
+        /**
          * Returns the collection of Shape objects.
          */
         readonly shapes: GroupShapeCollection;
@@ -7420,10 +8293,27 @@ export declare namespace Excel {
      */
     export interface GroupShapeCollection {
         /**
+         * Returns the number of shapes in the shape group.
+         */
+        getCount(): number;
+
+        /**
          * Gets a shape using its Name or ID.
          * @param key - The Name or ID of the shape to be retrieved.
          */
         getItem(key: string): Shape;
+
+        /**
+         * Gets a shape based on its position in the collection.
+         * @param index - The zero-based index value of the object to be retrieved.
+         */
+        getItemAt(index: number): Shape;
+
+        /**
+         * Returns a shape identified by the shape id.
+         * @param shapeId - The identifier for the shape.
+         */
+        _GetItem(shapeId: string): Shape;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -7453,6 +8343,11 @@ export declare namespace Excel {
         beginArrowheadWidth: ArrowheadWidth;
 
         /**
+         * Represents the shape to which the beginning of the specified line is attached.
+         */
+        readonly beginConnectedShape: Shape;
+
+        /**
          * Represents the connection site to which the beginning of a connector is connected. Returns null when the beginning of the line is not attached to any shape.
          */
         readonly beginConnectedSite: number;
@@ -7473,6 +8368,11 @@ export declare namespace Excel {
         endArrowheadWidth: ArrowheadWidth;
 
         /**
+         * Represents the shape to which the end of the specified line is attached.
+         */
+        readonly endConnectedShape: Shape;
+
+        /**
          * Represents the connection site to which the end of a connector is connected. Returns null when the end of the line is not attached to any shape.
          */
         readonly endConnectedSite: number;
@@ -7491,6 +8391,11 @@ export declare namespace Excel {
          * Specifies if the end of the specified line is connected to a shape.
          */
         readonly isEndConnected: boolean;
+
+        /**
+         * Returns the Shape object associated with the line.
+         */
+        readonly shape: Shape;
 
         /**
          * Represents the connector type for the line.
@@ -7877,6 +8782,23 @@ export declare namespace Excel {
         ): Slicer;
 
         /**
+         * Returns the number of slicers in the collection.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a slicer object using its name or id.
+         * @param key - The name or id of the slicer.
+         */
+        getItem(key: string): Slicer;
+
+        /**
+         * Gets a slicer based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): Slicer;
+
+        /**
          * Gets a slicer using its name or id. If the slicer does not exist, will return a null object.
          * @param key - Name or Id of the slicer to be retrieved.
          */
@@ -7928,6 +8850,23 @@ export declare namespace Excel {
      * Represents a collection of all the slicer item objects on the slicer.
      */
     export interface SlicerItemCollection {
+        /**
+         * Returns the number of slicer items in the slicer.
+         */
+        getCount(): number;
+
+        /**
+         * Gets a slicer item object using its key or name.
+         * @param key - The key or name of the slicer item.
+         */
+        getItem(key: string): SlicerItem;
+
+        /**
+         * Gets a slicer item based on its position in the collection.
+         * @param index - Index value of the object to be retrieved. Zero-indexed.
+         */
+        getItemAt(index: number): SlicerItem;
+
         /**
          * Gets a slicer item using its key or name. If the slicer item does not exist, will return a null object.
          * @param key - Key or name of the slicer to be retrieved.

@@ -10,6 +10,7 @@ items:
     package: excel!
     children:
       - 'excel!Excel.ChartTrendlineCollection#add:member(1)'
+      - 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
       - 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
       - 'excel!Excel.ChartTrendlineCollection#load:member(1)'
   - uid: 'excel!Excel.ChartTrendlineCollection#add:member(1)'
@@ -46,6 +47,19 @@ items:
           description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
           type:
             - 'excel!Excel.ChartTrendlineType:enum'
+  - uid: 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
+    summary: Returns the number of trendlines in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
     summary: 'Get trendline object by index, which is the insertion order in items array.'
     name: getItem(index)

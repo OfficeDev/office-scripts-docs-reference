@@ -9,7 +9,40 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.ChartLegendEntryCollection#getCount:member(1)'
+      - 'excel!Excel.ChartLegendEntryCollection#getItemAt:member(1)'
       - 'excel!Excel.ChartLegendEntryCollection#load:member(1)'
+  - uid: 'excel!Excel.ChartLegendEntryCollection#getCount:member(1)'
+    summary: Returns the number of legendEntry in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.ChartLegendEntryCollection#getItemAt:member(1)'
+    summary: Returns a legendEntry at the given index.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): ChartLegendEntry;'
+      return:
+        type:
+          - 'excel!Excel.ChartLegendEntry:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index of the legendEntry to be retrieved.
+          type:
+            - number
   - uid: 'excel!Excel.ChartLegendEntryCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -30,3 +63,7 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+references:
+  - uid: 'excel!Excel.ChartLegendEntry:interface'
+    name: ChartLegendEntry
+    fullName: Excel.ChartLegendEntry

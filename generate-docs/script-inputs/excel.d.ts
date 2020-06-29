@@ -301,6 +301,12 @@ declare namespace ExcelScript {
         addCustomXmlPart(xml: string): CustomXmlPart;
 
         /**
+         * Gets a new scoped collection of custom XML parts whose namespaces match the given namespace.
+         * @param namespaceUri This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
+         */
+        getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];
+
+        /**
          * Gets a custom XML part based on its ID.
          * If the CustomXmlPart does not exist, the return object's isNull property will be true.
          * @param id ID of the object to be retrieved.
@@ -403,27 +409,6 @@ declare namespace ExcelScript {
          * Refreshes all the pivot tables in the collection.
          */
         refreshAllPivotTables(): void;
-
-        /**
-         * Represents a collection of Settings associated with the workbook.
-         */
-        getSettings(): Setting[];
-
-        /**
-         * Sets or adds the specified setting to the workbook.
-         * @param key The Key of the new setting.
-         * @param value The Value for the new setting.
-         */
-        addSetting(
-            key: string,
-            value: string | number | boolean | Date | Array<any> | any
-        ): Setting;
-
-        /**
-         * Gets a Setting entry via the key. If the Setting does not exist, will return a null object.
-         * @param key The key of the setting.
-         */
-        getSetting(key: string): Setting | undefined;
 
         /**
          * Represents a collection of SlicerStyles associated with the workbook.
@@ -1546,6 +1531,12 @@ declare namespace ExcelScript {
         getOffsetRange(rowOffset: number, columnOffset: number): Range;
 
         /**
+         * Gets a scoped collection of PivotTables that overlap with the range.
+         * @param fullyContained If true, returns only PivotTables that are fully contained within the range bounds. The default value is false.
+         */
+        getPivotTables(fullyContained?: boolean): PivotTable[];
+
+        /**
          * Gets a Range object similar to the current Range object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns.
          * @param deltaRows The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
          * @param deltaColumns The number of columns by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
@@ -1585,6 +1576,12 @@ declare namespace ExcelScript {
          * Returns a Range object that represents the surrounding region for the top-left cell in this range. A surrounding region is a range bounded by any combination of blank rows and blank columns relative to this range.
          */
         getSurroundingRegion(): Range;
+
+        /**
+         * Gets a scoped collection of tables that overlap with the range.
+         * @param fullyContained If true, returns only tables that are fully contained within the range bounds. The default value is false.
+         */
+        getTables(fullyContained?: boolean): Table[];
 
         /**
          * Returns the used range of the given range object. If there are no used cells within the range, this function will return a null object.
@@ -1944,6 +1941,12 @@ declare namespace ExcelScript {
         ): RangeAreas;
 
         /**
+         * Returns a scoped collection of tables that overlap with any range in this RangeAreas object.
+         * @param fullyContained If true, returns only tables that are fully contained within the range bounds. Default is false.
+         */
+        getTables(fullyContained?: boolean): Table[];
+
+        /**
          * Returns the used RangeAreas that comprises all the used areas of individual rectangular ranges in the RangeAreas object.
          * If there are no used cells within the RangeAreas, a null object will be returned.
          * @param valuesOnly Whether to only consider cells with values as used cells.
@@ -2161,6 +2164,11 @@ declare namespace ExcelScript {
          * Specifies if the object is visible.
          */
         setVisible(visible: boolean): void;
+
+        /**
+         * Returns the worksheet on which the named item is scoped to. Returns a null object if the item is scoped to the workbook instead.
+         */
+        getWorksheet(): Worksheet | undefined;
 
         /**
          * Deletes the given name.
@@ -2841,13 +2849,13 @@ declare namespace ExcelScript {
         setPatternColor(patternColor: string): void;
 
         /**
-         * Specifies a double that lightens or darkens a pattern color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a pattern color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the pattern tintAndShades are not uniform, null will be returned.
          */
         getPatternTintAndShade(): number;
 
         /**
-         * Specifies a double that lightens or darkens a pattern color for Range Fill, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
+         * Specifies a double that lightens or darkens a pattern color for Range Fill. The value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
          * If the pattern tintAndShades are not uniform, null will be returned.
          */
         setPatternTintAndShade(patternTintAndShade: number): void;
@@ -8257,12 +8265,12 @@ declare namespace ExcelScript {
         getOddPages(): HeaderFooter;
 
         /**
-         * Which headers/footers are set. See Excel.HeaderFooterState for details.
+         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         getState(): HeaderFooterState;
 
         /**
-         * Which headers/footers are set. See Excel.HeaderFooterState for details.
+         * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
          */
         setState(state: HeaderFooterState): void;
 
@@ -8592,6 +8600,11 @@ declare namespace ExcelScript {
         setName(name: string): void;
 
         /**
+         * Specifies the parent group of this shape.
+         */
+        getParentGroup(): Shape;
+
+        /**
          * Represents how the object is attached to the cells below it.
          */
         getPlacement(): Placement;
@@ -8748,6 +8761,11 @@ declare namespace ExcelScript {
         getId(): string;
 
         /**
+         * Returns the Shape object associated with the image.
+         */
+        getShape(): Shape;
+
+        /**
          * Returns the format of the image.
          */
         getFormat(): PictureFormat;
@@ -8761,6 +8779,11 @@ declare namespace ExcelScript {
          * Specifies the shape identifier.
          */
         getId(): string;
+
+        /**
+         * Returns the Shape object associated with the group.
+         */
+        getGroupShape(): Shape;
 
         /**
          * Ungroups any grouped shapes in the specified shape group.
@@ -8814,6 +8837,11 @@ declare namespace ExcelScript {
         setBeginArrowheadWidth(beginArrowheadWidth: ArrowheadWidth): void;
 
         /**
+         * Represents the shape to which the beginning of the specified line is attached.
+         */
+        getBeginConnectedShape(): Shape;
+
+        /**
          * Represents the connection site to which the beginning of a connector is connected. Returns null when the beginning of the line is not attached to any shape.
          */
         getBeginConnectedSite(): number;
@@ -8849,6 +8877,11 @@ declare namespace ExcelScript {
         setEndArrowheadWidth(endArrowheadWidth: ArrowheadWidth): void;
 
         /**
+         * Represents the shape to which the end of the specified line is attached.
+         */
+        getEndConnectedShape(): Shape;
+
+        /**
          * Represents the connection site to which the end of a connector is connected. Returns null when the end of the line is not attached to any shape.
          */
         getEndConnectedSite(): number;
@@ -8867,6 +8900,11 @@ declare namespace ExcelScript {
          * Specifies if the end of the specified line is connected to a shape.
          */
         getIsEndConnected(): boolean;
+
+        /**
+         * Returns the Shape object associated with the line.
+         */
+        getShape(): Shape;
 
         /**
          * Represents the connector type for the line.

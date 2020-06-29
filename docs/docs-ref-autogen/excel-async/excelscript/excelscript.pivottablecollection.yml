@@ -10,6 +10,8 @@ items:
     package: excel!
     children:
       - 'excel!Excel.PivotTableCollection#add:member(1)'
+      - 'excel!Excel.PivotTableCollection#getCount:member(1)'
+      - 'excel!Excel.PivotTableCollection#getItem:member(1)'
       - 'excel!Excel.PivotTableCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.PivotTableCollection#load:member(1)'
       - 'excel!Excel.PivotTableCollection#refreshAll:member(1)'
@@ -61,6 +63,37 @@ items:
             where the resulting report will be placed).
           type:
             - 'excel!Excel.PivotTableCollection#add~1:complex'
+  - uid: 'excel!Excel.PivotTableCollection#getCount:member(1)'
+    summary: Gets the number of pivot tables in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.PivotTableCollection#getItem:member(1)'
+    summary: Gets a PivotTable by name.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): PivotTable;'
+      return:
+        type:
+          - 'excel!Excel.PivotTable:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the PivotTable to be retrieved.
+          type:
+            - string
   - uid: 'excel!Excel.PivotTableCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a PivotTable by name. If the PivotTable does not exist, will return a null object.'
     name: getItemOrNullObject(name)

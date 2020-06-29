@@ -10,6 +10,8 @@ items:
     package: excel!
     children:
       - 'excel!Excel.FilterPivotHierarchyCollection#add:member(1)'
+      - 'excel!Excel.FilterPivotHierarchyCollection#getCount:member(1)'
+      - 'excel!Excel.FilterPivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.FilterPivotHierarchyCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.FilterPivotHierarchyCollection#load:member(1)'
       - 'excel!Excel.FilterPivotHierarchyCollection#remove:member(1)'
@@ -33,6 +35,37 @@ items:
           description: ''
           type:
             - 'excel!Excel.PivotHierarchy:interface'
+  - uid: 'excel!Excel.FilterPivotHierarchyCollection#getCount:member(1)'
+    summary: Gets the number of pivot hierarchies in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.FilterPivotHierarchyCollection#getItem:member(1)'
+    summary: Gets a FilterPivotHierarchy by its name or id.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): FilterPivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.FilterPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the FilterPivotHierarchy to be retrieved.
+          type:
+            - string
   - uid: 'excel!Excel.FilterPivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)

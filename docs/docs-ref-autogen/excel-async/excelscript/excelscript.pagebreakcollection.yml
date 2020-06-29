@@ -9,6 +9,8 @@ items:
     package: excel!
     children:
       - 'excel!Excel.PageBreakCollection#add:member(1)'
+      - 'excel!Excel.PageBreakCollection#getCount:member(1)'
+      - 'excel!Excel.PageBreakCollection#getItem:member(1)'
       - 'excel!Excel.PageBreakCollection#load:member(1)'
       - 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
   - uid: 'excel!Excel.PageBreakCollection#add:member(1)'
@@ -40,6 +42,37 @@ items:
           description: The range immediately after the page break to be added.
           type:
             - 'excel!Excel.PageBreakCollection#add~0:complex'
+  - uid: 'excel!Excel.PageBreakCollection#getCount:member(1)'
+    summary: Gets the number of page breaks in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.PageBreakCollection#getItem:member(1)'
+    summary: Gets a page break object via the index.
+    name: getItem(index)
+    fullName: getItem(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(index: number): PageBreak;'
+      return:
+        type:
+          - 'excel!Excel.PageBreak:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index of the page break.
+          type:
+            - number
   - uid: 'excel!Excel.PageBreakCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading

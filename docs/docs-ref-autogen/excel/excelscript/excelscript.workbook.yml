@@ -22,7 +22,6 @@ items:
       - 'ExcelScript!ExcelScript.Workbook#addPivotTable:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#addPivotTableStyle:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#addPredefinedCellStyle:member(1)'
-      - 'ExcelScript!ExcelScript.Workbook#addSetting:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#addSlicer:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#addSlicerStyle:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#addTable:member(1)'
@@ -44,6 +43,7 @@ items:
       - 'ExcelScript!ExcelScript.Workbook#getCommentByReplyId:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getComments:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getCustomXmlPart:member(1)'
+      - 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getCustomXmlParts:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getDefaultPivotTableStyle:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getDefaultSlicerStyle:member(1)'
@@ -67,8 +67,6 @@ items:
       - 'ExcelScript!ExcelScript.Workbook#getReadOnly:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getSelectedRange:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getSelectedRanges:member(1)'
-      - 'ExcelScript!ExcelScript.Workbook#getSetting:member(1)'
-      - 'ExcelScript!ExcelScript.Workbook#getSettings:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getSlicer:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getSlicers:member(1)'
       - 'ExcelScript!ExcelScript.Workbook#getSlicerStyle:member(1)'
@@ -382,32 +380,6 @@ items:
           description: Name of the style to be added.
           type:
             - string
-  - uid: 'ExcelScript!ExcelScript.Workbook#addSetting:member(1)'
-    summary: Sets or adds the specified setting to the workbook.
-    name: 'addSetting(key, value)'
-    fullName: 'addSetting(key, value)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        addSetting(
-                    key: string,
-                    value: string | number | boolean | Date | Array<any> | any
-                ): Setting;
-      return:
-        type:
-          - 'ExcelScript!ExcelScript.Setting:interface'
-        description: ''
-      parameters:
-        - id: key
-          description: The Key of the new setting.
-          type:
-            - string
-        - id: value
-          description: The Value for the new setting.
-          type:
-            - 'ExcelScript!ExcelScript.Workbook#addSetting~0:complex'
   - uid: 'ExcelScript!ExcelScript.Workbook#addSlicer:member(1)'
     summary: Adds a new slicer to the workbook.
     name: 'addSlicer(slicerSource, sourceField, slicerDestination)'
@@ -813,6 +785,24 @@ items:
           description: ID of the object to be retrieved.
           type:
             - string
+  - uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace:member(1)'
+    summary: Gets a new scoped collection of custom XML parts whose namespaces match the given namespace.
+    name: getCustomXmlPartByNamespace(namespaceUri)
+    fullName: getCustomXmlPartByNamespace(namespaceUri)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace~0:complex'
+        description: ''
+      parameters:
+        - id: namespaceUri
+          description: 'This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".'
+          type:
+            - string
   - uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlParts:member(1)'
     summary: Represents the collection of custom XML parts contained by this workbook.
     name: getCustomXmlParts()
@@ -1147,37 +1137,6 @@ items:
       return:
         type:
           - 'ExcelScript!ExcelScript.RangeAreas:interface'
-        description: ''
-  - uid: 'ExcelScript!ExcelScript.Workbook#getSetting:member(1)'
-    summary: 'Gets a Setting entry via the key. If the Setting does not exist, will return a null object.'
-    name: getSetting(key)
-    fullName: getSetting(key)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getSetting(key: string): Setting | undefined;'
-      return:
-        type:
-          - 'ExcelScript!ExcelScript.Workbook#getSetting~0:complex'
-        description: ''
-      parameters:
-        - id: key
-          description: The key of the setting.
-          type:
-            - string
-  - uid: 'ExcelScript!ExcelScript.Workbook#getSettings:member(1)'
-    summary: Represents a collection of Settings associated with the workbook.
-    name: getSettings()
-    fullName: getSettings()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getSettings(): Setting[];'
-      return:
-        type:
-          - 'ExcelScript!ExcelScript.Workbook#getSettings~0:complex'
         description: ''
   - uid: 'ExcelScript!ExcelScript.Workbook#getSlicer:member(1)'
     summary: 'Gets a slicer using its name or id. If the slicer does not exist, will return a null object.'
@@ -1627,29 +1586,6 @@ references:
   - uid: 'ExcelScript!ExcelScript.PivotTableStyle:interface'
     name: PivotTableStyle
     fullName: ExcelScript.PivotTableStyle
-  - uid: 'ExcelScript!ExcelScript.Setting:interface'
-    name: Setting
-    fullName: ExcelScript.Setting
-  - uid: 'ExcelScript!ExcelScript.Workbook#addSetting~0:complex'
-    name: string | number | boolean | Date | Array<any> | any
-    fullName: string | number | boolean | Date | Array<any> | any
-    spec.typeScript:
-      - name: 'string | number | boolean | '
-        fullName: 'string | number | boolean | '
-      - uid: '!Date:interface'
-        name: Date
-        fullName: Date
-      - name: ' | '
-        fullName: ' | '
-      - uid: '!Array:interface'
-        name: Array
-        fullName: Array
-      - name: |-
-          <any> | any
-                  
-        fullName: |-
-          <any> | any
-                  
   - uid: 'ExcelScript!ExcelScript.Slicer:interface'
     name: Slicer
     fullName: ExcelScript.Slicer
@@ -1768,6 +1704,15 @@ references:
         fullName: ExcelScript.CustomXmlPart
       - name: ' | undefined'
         fullName: ' | undefined'
+  - uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace~0:complex'
+    name: 'CustomXmlPart[]'
+    fullName: 'ExcelScript.CustomXmlPart[]'
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.CustomXmlPart:interface'
+        name: CustomXmlPart
+        fullName: ExcelScript.CustomXmlPart
+      - name: '[]'
+        fullName: '[]'
   - uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlParts~0:complex'
     name: 'CustomXmlPart[]'
     fullName: 'ExcelScript.CustomXmlPart[]'
@@ -1852,24 +1797,6 @@ references:
   - uid: 'ExcelScript!ExcelScript.RangeAreas:interface'
     name: RangeAreas
     fullName: ExcelScript.RangeAreas
-  - uid: 'ExcelScript!ExcelScript.Workbook#getSetting~0:complex'
-    name: Setting | undefined
-    fullName: ExcelScript.Setting | undefined
-    spec.typeScript:
-      - uid: 'ExcelScript!ExcelScript.Setting:interface'
-        name: Setting
-        fullName: ExcelScript.Setting
-      - name: ' | undefined'
-        fullName: ' | undefined'
-  - uid: 'ExcelScript!ExcelScript.Workbook#getSettings~0:complex'
-    name: 'Setting[]'
-    fullName: 'ExcelScript.Setting[]'
-    spec.typeScript:
-      - uid: 'ExcelScript!ExcelScript.Setting:interface'
-        name: Setting
-        fullName: ExcelScript.Setting
-      - name: '[]'
-        fullName: '[]'
   - uid: 'ExcelScript!ExcelScript.Workbook#getSlicer~0:complex'
     name: Slicer | undefined
     fullName: ExcelScript.Slicer | undefined
