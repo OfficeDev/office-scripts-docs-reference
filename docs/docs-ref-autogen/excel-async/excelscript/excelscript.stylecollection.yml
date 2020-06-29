@@ -10,7 +10,9 @@ items:
     package: excel!
     children:
       - 'excel!Excel.StyleCollection#add:member(1)'
+      - 'excel!Excel.StyleCollection#getCount:member(1)'
       - 'excel!Excel.StyleCollection#getItem:member(1)'
+      - 'excel!Excel.StyleCollection#getItemAt:member(1)'
       - 'excel!Excel.StyleCollection#load:member(1)'
   - uid: 'excel!Excel.StyleCollection#add:member(1)'
     summary: Adds a new style to the collection.
@@ -56,6 +58,19 @@ items:
           description: Name of the style to be added.
           type:
             - string
+  - uid: 'excel!Excel.StyleCollection#getCount:member(1)'
+    summary: Gets the number of styles in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.StyleCollection#getItem:member(1)'
     summary: Gets a style by name.
     name: getItem(name)
@@ -100,6 +115,24 @@ items:
           description: Name of the style to be retrieved.
           type:
             - string
+  - uid: 'excel!Excel.StyleCollection#getItemAt:member(1)'
+    summary: Gets a style based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Style;'
+      return:
+        type:
+          - 'excel!Excel.Style:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the style object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.StyleCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading

@@ -19,8 +19,11 @@ items:
       - 'excel!Excel.Workbook#chartDataPointTrack:member'
       - 'excel!Excel.Workbook#comments:member'
       - 'excel!Excel.Workbook#customXmlParts:member'
+      - 'excel!Excel.Workbook#dataConnections:member'
       - 'excel!Excel.Workbook#getActiveCell:member(1)'
+      - 'excel!Excel.Workbook#getActiveChart:member(1)'
       - 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
+      - 'excel!Excel.Workbook#getActiveSlicer:member(1)'
       - 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
       - 'excel!Excel.Workbook#getSelectedRange:member(1)'
       - 'excel!Excel.Workbook#getSelectedRanges:member(1)'
@@ -34,7 +37,6 @@ items:
       - 'excel!Excel.Workbook#properties:member'
       - 'excel!Excel.Workbook#protection:member'
       - 'excel!Excel.Workbook#readOnly:member'
-      - 'excel!Excel.Workbook#settings:member'
       - 'excel!Excel.Workbook#slicers:member'
       - 'excel!Excel.Workbook#slicerStyles:member'
       - 'excel!Excel.Workbook#styles:member'
@@ -129,6 +131,18 @@ items:
       return:
         type:
           - 'excel!Excel.CustomXmlPartCollection:interface'
+  - uid: 'excel!Excel.Workbook#dataConnections:member'
+    summary: Represents all data connections in the workbook.
+    name: dataConnections
+    fullName: dataConnections
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly dataConnections: DataConnectionCollection;'
+      return:
+        type:
+          - 'excel!Excel.DataConnectionCollection:interface'
   - uid: 'excel!Excel.Workbook#getActiveCell:member(1)'
     summary: Gets the currently active cell from the workbook.
     name: getActiveCell()
@@ -158,6 +172,21 @@ items:
               console.log("The active cell is " + activeCell.address);
           }
           ```
+  - uid: 'excel!Excel.Workbook#getActiveChart:member(1)'
+    summary: >-
+      Gets the currently active chart in the workbook. If there is no active chart, an `ItemNotFound` exception is
+      thrown.
+    name: getActiveChart()
+    fullName: getActiveChart()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveChart(): Chart;'
+      return:
+        type:
+          - 'excel!Excel.Chart:interface'
+        description: ''
   - uid: 'excel!Excel.Workbook#getActiveChartOrNullObject:member(1)'
     summary: 'Gets the currently active chart in the workbook. If there is no active chart, a null object is returned.'
     name: getActiveChartOrNullObject()
@@ -170,6 +199,21 @@ items:
       return:
         type:
           - 'excel!Excel.Chart:interface'
+        description: ''
+  - uid: 'excel!Excel.Workbook#getActiveSlicer:member(1)'
+    summary: >-
+      Gets the currently active slicer in the workbook. If there is no active slicer, an `ItemNotFound` exception is
+      thrown.
+    name: getActiveSlicer()
+    fullName: getActiveSlicer()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getActiveSlicer(): Slicer;'
+      return:
+        type:
+          - 'excel!Excel.Slicer:interface'
         description: ''
   - uid: 'excel!Excel.Workbook#getActiveSlicerOrNullObject:member(1)'
     summary: 'Gets the currently active slicer in the workbook. If there is no active slicer, a null object is returned.'
@@ -388,18 +432,6 @@ items:
       return:
         type:
           - boolean
-  - uid: 'excel!Excel.Workbook#settings:member'
-    summary: Represents a collection of Settings associated with the workbook.
-    name: settings
-    fullName: settings
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly settings: SettingCollection;'
-      return:
-        type:
-          - 'excel!Excel.SettingCollection:interface'
   - uid: 'excel!Excel.Workbook#slicers:member'
     summary: Represents a collection of Slicers associated with the workbook.
     name: slicers
@@ -538,6 +570,9 @@ references:
   - uid: 'excel!Excel.CustomXmlPartCollection:interface'
     name: CustomXmlPartCollection
     fullName: Excel.CustomXmlPartCollection
+  - uid: 'excel!Excel.DataConnectionCollection:interface'
+    name: DataConnectionCollection
+    fullName: Excel.DataConnectionCollection
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
@@ -565,9 +600,6 @@ references:
   - uid: 'excel!Excel.WorkbookProtection:interface'
     name: WorkbookProtection
     fullName: Excel.WorkbookProtection
-  - uid: 'excel!Excel.SettingCollection:interface'
-    name: SettingCollection
-    fullName: Excel.SettingCollection
   - uid: 'excel!Excel.SlicerCollection:interface'
     name: SlicerCollection
     fullName: Excel.SlicerCollection

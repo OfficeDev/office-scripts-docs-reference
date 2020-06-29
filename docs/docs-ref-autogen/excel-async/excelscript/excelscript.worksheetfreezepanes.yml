@@ -11,6 +11,7 @@ items:
       - 'excel!Excel.WorksheetFreezePanes#freezeAt:member(1)'
       - 'excel!Excel.WorksheetFreezePanes#freezeColumns:member(1)'
       - 'excel!Excel.WorksheetFreezePanes#freezeRows:member(1)'
+      - 'excel!Excel.WorksheetFreezePanes#getLocation:member(1)'
       - 'excel!Excel.WorksheetFreezePanes#getLocationOrNullObject:member(1)'
       - 'excel!Excel.WorksheetFreezePanes#load:member(1)'
       - 'excel!Excel.WorksheetFreezePanes#unfreeze:member(1)'
@@ -112,6 +113,21 @@ items:
           description: 'Optional number of rows to freeze, or zero to unfreeze all rows'
           type:
             - number
+  - uid: 'excel!Excel.WorksheetFreezePanes#getLocation:member(1)'
+    summary: >-
+      Gets a range that describes the frozen cells in the active worksheet view. The frozen range is corresponds to
+      cells that are frozen in the top- and left-most pane.
+    name: getLocation()
+    fullName: getLocation()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getLocation(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
   - uid: 'excel!Excel.WorksheetFreezePanes#getLocationOrNullObject:member(1)'
     summary: >-
       Gets a range that describes the frozen cells in the active worksheet view. The frozen range is corresponds to

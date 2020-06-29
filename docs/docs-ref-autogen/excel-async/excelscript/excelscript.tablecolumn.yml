@@ -19,6 +19,7 @@ items:
       - 'excel!Excel.TableColumn#index:member'
       - 'excel!Excel.TableColumn#load:member(1)'
       - 'excel!Excel.TableColumn#name:member'
+      - 'excel!Excel.TableColumn#values:member'
   - uid: 'excel!Excel.TableColumn#delete:member(1)'
     summary: Deletes the column from the table.
     name: delete()
@@ -152,6 +153,20 @@ items:
       return:
         type:
           - string
+  - uid: 'excel!Excel.TableColumn#values:member'
+    summary: >-
+      Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean.
+      Cells that contain an error will return the error string.
+    name: values
+    fullName: values
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'values: any[][];'
+      return:
+        type:
+          - 'any[][]'
 references:
   - uid: 'excel!Excel.Filter:interface'
     name: Filter

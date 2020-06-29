@@ -10,7 +10,9 @@ items:
     package: excel!
     children:
       - 'excel!Excel.CommentReplyCollection#add:member(1)'
+      - 'excel!Excel.CommentReplyCollection#getCount:member(1)'
       - 'excel!Excel.CommentReplyCollection#getItem:member(1)'
+      - 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
       - 'excel!Excel.CommentReplyCollection#load:member(1)'
   - uid: 'excel!Excel.CommentReplyCollection#add:member(1)'
     summary: Creates a comment reply for comment.
@@ -55,6 +57,19 @@ items:
             `ContentType.Plain`<!-- -->.
           type:
             - 'excel!Excel.ContentType:enum'
+  - uid: 'excel!Excel.CommentReplyCollection#getCount:member(1)'
+    summary: Gets the number of comment replies in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.CommentReplyCollection#getItem:member(1)'
     summary: Returns a comment reply identified by its ID.
     name: getItem(commentReplyId)
@@ -73,6 +88,24 @@ items:
           description: The identifier for the comment reply.
           type:
             - string
+  - uid: 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
+    summary: Gets a comment reply based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): CommentReply;'
+      return:
+        type:
+          - 'excel!Excel.CommentReply:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: The index value of the comment reply to be retrieved. The collection uses zero-based indexing.
+          type:
+            - number
   - uid: 'excel!Excel.CommentReplyCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading

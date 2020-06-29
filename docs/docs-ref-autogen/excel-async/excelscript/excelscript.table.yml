@@ -27,6 +27,7 @@ items:
       - 'excel!Excel.Table#load:member(1)'
       - 'excel!Excel.Table#name:member'
       - 'excel!Excel.Table#reapplyFilters:member(1)'
+      - 'excel!Excel.Table#rows:member'
       - 'excel!Excel.Table#showBandedColumns:member'
       - 'excel!Excel.Table#showBandedRows:member'
       - 'excel!Excel.Table#showFilterButton:member'
@@ -250,6 +251,18 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!Excel.Table#rows:member'
+    summary: Represents a collection of all the rows in the table.
+    name: rows
+    fullName: rows
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly rows: TableRowCollection;'
+      return:
+        type:
+          - 'excel!Excel.TableRowCollection:interface'
   - uid: 'excel!Excel.Table#showBandedColumns:member'
     summary: >-
       Specifies if the columns show banded formatting in which odd columns are highlighted differently from even ones to
@@ -383,6 +396,9 @@ references:
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
+  - uid: 'excel!Excel.TableRowCollection:interface'
+    name: TableRowCollection
+    fullName: Excel.TableRowCollection
   - uid: 'excel!Excel.TableSort:interface'
     name: TableSort
     fullName: Excel.TableSort

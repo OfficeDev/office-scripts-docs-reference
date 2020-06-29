@@ -1,0 +1,167 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'excel!Excel.TableRowCollection:interface'
+    summary: >-
+      Represents a collection of all the rows that are part of the table.
+
+
+      Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them, a TableRow object
+      represent the physical location of the table row, but not the data. That is, if the data is sorted or if new rows
+      are added, a table row will continue to point at the index for which it was created.
+    name: Excel.TableRowCollection
+    fullName: Excel.TableRowCollection
+    langs:
+      - typeScript
+    type: interface
+    package: excel!
+    children:
+      - 'excel!Excel.TableRowCollection#add:member(1)'
+      - 'excel!Excel.TableRowCollection#count:member'
+      - 'excel!Excel.TableRowCollection#getCount:member(1)'
+      - 'excel!Excel.TableRowCollection#getItemAt:member(1)'
+      - 'excel!Excel.TableRowCollection#load:member(1)'
+  - uid: 'excel!Excel.TableRowCollection#add:member(1)'
+    summary: >-
+      Adds one or more rows to the table. The return object will be the top of the newly added row(s).
+
+
+      Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them, a TableRow object
+      represent the physical location of the table row, but not the data. That is, if the data is sorted or if new rows
+      are added, a table row will continue to point at the index for which it was created.
+    name: 'add(index, values)'
+    fullName: 'add(index, values)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: |-
+        add(
+                    index?: number,
+                    values?:
+                        | Array<Array<boolean | string | number>>
+                        | boolean
+                        | string
+                        | number
+                ): TableRow;
+      return:
+        type:
+          - 'excel!Excel.TableRow:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: >-
+            Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end.
+            Any rows below the inserted row are shifted downwards. Zero-indexed.
+          type:
+            - number
+        - id: values
+          description: Optional. A 2-dimensional array of unformatted values of the table row.
+          type:
+            - 'excel!Excel.TableRowCollection#add~0:complex'
+  - uid: 'excel!Excel.TableRowCollection#count:member'
+    summary: Returns the number of rows in the table.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.TableRowCollection#getCount:member(1)'
+    summary: Gets the number of rows in the table.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.TableRowCollection#getItemAt:member(1)'
+    summary: >-
+      Gets a row based on its position in the collection.
+
+
+      Note that unlike Ranges or Columns, which will adjust if new rows/columns are added before them, a TableRow object
+      represent the physical location of the table row, but not the data. That is, if the data is sorted or if new rows
+      are added, a table row will continue to point at the index for which it was created.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): TableRow;'
+      return:
+        type:
+          - 'excel!Excel.TableRow:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
+  - uid: 'excel!Excel.TableRowCollection#load:member(1)'
+    summary: >-
+      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
+      the properties.
+    name: load(propertyNames)
+    fullName: load(propertyNames)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: propertyNames
+          description: A comma-delimited string or an array of strings that specify the properties to load.
+          type:
+            - 'string | string[]'
+references:
+  - uid: 'excel!Excel.TableRow:interface'
+    name: TableRow
+    fullName: Excel.TableRow
+  - uid: 'excel!Excel.TableRowCollection#add~0:complex'
+    name: |-
+      | Array<Array<boolean | string | number>>
+                      | boolean
+                      | string
+                      | number
+    fullName: |-
+      | Array<Array<boolean | string | number>>
+                      | boolean
+                      | string
+                      | number
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: '!Array:interface'
+        name: Array
+        fullName: Array
+      - name: <
+        fullName: <
+      - uid: '!Array:interface'
+        name: Array
+        fullName: Array
+      - name: |-
+          <boolean | string | number>>
+                          | boolean
+                          | string
+                          | number
+                  
+        fullName: |-
+          <boolean | string | number>>
+                          | boolean
+                          | string
+                          | number
+                  

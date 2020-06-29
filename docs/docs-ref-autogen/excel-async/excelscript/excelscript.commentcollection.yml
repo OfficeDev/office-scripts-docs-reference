@@ -10,7 +10,9 @@ items:
     package: excel!
     children:
       - 'excel!Excel.CommentCollection#add:member(1)'
+      - 'excel!Excel.CommentCollection#getCount:member(1)'
       - 'excel!Excel.CommentCollection#getItem:member(1)'
+      - 'excel!Excel.CommentCollection#getItemAt:member(1)'
       - 'excel!Excel.CommentCollection#getItemByCell:member(1)'
       - 'excel!Excel.CommentCollection#getItemByReplyId:member(1)'
       - 'excel!Excel.CommentCollection#load:member(1)'
@@ -67,6 +69,19 @@ items:
             `ContentType.Plain`<!-- -->.
           type:
             - 'excel!Excel.ContentType:enum'
+  - uid: 'excel!Excel.CommentCollection#getCount:member(1)'
+    summary: Gets the number of comments in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.CommentCollection#getItem:member(1)'
     summary: Gets a comment from the collection based on its ID.
     name: getItem(commentId)
@@ -85,6 +100,24 @@ items:
           description: The identifier for the comment.
           type:
             - string
+  - uid: 'excel!Excel.CommentCollection#getItemAt:member(1)'
+    summary: Gets a comment from the collection based on its position.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Comment;'
+      return:
+        type:
+          - 'excel!Excel.Comment:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.CommentCollection#getItemByCell:member(1)'
     summary: Gets the comment from the specified cell.
     name: getItemByCell(cellAddress)

@@ -17,6 +17,8 @@ items:
       - 'excel!Excel.Application#decimalSeparator:member'
       - 'excel!Excel.Application#iterativeCalculation:member'
       - 'excel!Excel.Application#load:member(1)'
+      - 'excel!Excel.Application#suspendApiCalculationUntilNextSync:member(1)'
+      - 'excel!Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)'
       - 'excel!Excel.Application#thousandsSeparator:member'
       - 'excel!Excel.Application#useSystemSeparators:member'
   - uid: 'excel!Excel.Application#calculate:member(1)'
@@ -137,6 +139,39 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+  - uid: 'excel!Excel.Application#suspendApiCalculationUntilNextSync:member(1)'
+    summary: >-
+      Suspends calculation until the next "context.sync()" is called. Once set, it is the developer's responsibility to
+      re-calc the workbook, to ensure that any dependencies are propagated.
+    name: suspendApiCalculationUntilNextSync()
+    fullName: suspendApiCalculationUntilNextSync()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'suspendApiCalculationUntilNextSync(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'excel!Excel.Application#suspendScreenUpdatingUntilNextSync:member(1)'
+    summary: >-
+      Suspends screen updating until the next `context.sync()` is called.
+
+
+      **Note**: Don't call `suspendScreenUpdatingUntilNextSync` repeatedly (such as in a loop). Repeated calls will
+      cause the Excel window to flicker.
+    name: suspendScreenUpdatingUntilNextSync()
+    fullName: suspendScreenUpdatingUntilNextSync()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'suspendScreenUpdatingUntilNextSync(): void;'
+      return:
+        type:
+          - void
+        description: ''
   - uid: 'excel!Excel.Application#thousandsSeparator:member'
     summary: >-
       Gets the string used to separate groups of digits to the left of the decimal for numeric values. This is based on

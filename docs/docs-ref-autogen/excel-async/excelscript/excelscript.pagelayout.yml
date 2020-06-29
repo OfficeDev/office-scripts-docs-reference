@@ -18,8 +18,11 @@ items:
       - 'excel!Excel.PageLayout#draftMode:member'
       - 'excel!Excel.PageLayout#firstPageNumber:member'
       - 'excel!Excel.PageLayout#footerMargin:member'
+      - 'excel!Excel.PageLayout#getPrintArea:member(1)'
       - 'excel!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
+      - 'excel!Excel.PageLayout#getPrintTitleColumns:member(1)'
       - 'excel!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
+      - 'excel!Excel.PageLayout#getPrintTitleRows:member(1)'
       - 'excel!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
       - 'excel!Excel.PageLayout#headerMargin:member'
       - 'excel!Excel.PageLayout#headersFooters:member'
@@ -153,6 +156,21 @@ items:
       return:
         type:
           - number
+  - uid: 'excel!Excel.PageLayout#getPrintArea:member(1)'
+    summary: >-
+      Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
+      worksheet. If there is no print area, an ItemNotFound error will be thrown.
+    name: getPrintArea()
+    fullName: getPrintArea()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintArea(): RangeAreas;'
+      return:
+        type:
+          - 'excel!Excel.RangeAreas:interface'
+        description: ''
   - uid: 'excel!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
     summary: >-
       Gets the RangeAreas object, comprising one or more rectangular ranges, that represents the print area for the
@@ -168,6 +186,19 @@ items:
         type:
           - 'excel!Excel.RangeAreas:interface'
         description: ''
+  - uid: 'excel!Excel.PageLayout#getPrintTitleColumns:member(1)'
+    summary: Gets the range object representing the title columns.
+    name: getPrintTitleColumns()
+    fullName: getPrintTitleColumns()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleColumns(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
   - uid: 'excel!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
     summary: 'Gets the range object representing the title columns. If not set, this will return a null object.'
     name: getPrintTitleColumnsOrNullObject()
@@ -177,6 +208,19 @@ items:
     type: method
     syntax:
       content: 'getPrintTitleColumnsOrNullObject(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+  - uid: 'excel!Excel.PageLayout#getPrintTitleRows:member(1)'
+    summary: Gets the range object representing the title rows.
+    name: getPrintTitleRows()
+    fullName: getPrintTitleRows()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrintTitleRows(): Range;'
       return:
         type:
           - 'excel!Excel.Range:interface'

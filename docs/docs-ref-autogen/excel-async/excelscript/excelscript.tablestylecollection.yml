@@ -10,7 +10,9 @@ items:
     package: excel!
     children:
       - 'excel!Excel.TableStyleCollection#add:member(1)'
+      - 'excel!Excel.TableStyleCollection#getCount:member(1)'
       - 'excel!Excel.TableStyleCollection#getDefault:member(1)'
+      - 'excel!Excel.TableStyleCollection#getItem:member(1)'
       - 'excel!Excel.TableStyleCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.TableStyleCollection#load:member(1)'
       - 'excel!Excel.TableStyleCollection#setDefault:member(1)'
@@ -38,6 +40,19 @@ items:
           description: 'Optional, defaults to false. If true, will append numbers to the name in order to make it unique, if needed.'
           type:
             - boolean
+  - uid: 'excel!Excel.TableStyleCollection#getCount:member(1)'
+    summary: Gets the number of table styles in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.TableStyleCollection#getDefault:member(1)'
     summary: Gets the default TableStyle for the parent object's scope.
     name: getDefault()
@@ -51,6 +66,24 @@ items:
         type:
           - 'excel!Excel.TableStyle:interface'
         description: ''
+  - uid: 'excel!Excel.TableStyleCollection#getItem:member(1)'
+    summary: Gets a TableStyle by name.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): TableStyle;'
+      return:
+        type:
+          - 'excel!Excel.TableStyle:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the TableStyle to be retrieved.
+          type:
+            - string
   - uid: 'excel!Excel.TableStyleCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a TableStyle by name. If the TableStyle does not exist, will return a null object.'
     name: getItemOrNullObject(name)

@@ -9,8 +9,42 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.GroupShapeCollection#_GetItem:member(1)'
+      - 'excel!Excel.GroupShapeCollection#getCount:member(1)'
       - 'excel!Excel.GroupShapeCollection#getItem:member(1)'
+      - 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
       - 'excel!Excel.GroupShapeCollection#load:member(1)'
+  - uid: 'excel!Excel.GroupShapeCollection#_GetItem:member(1)'
+    summary: Returns a shape identified by the shape id.
+    name: _GetItem(shapeId)
+    fullName: _GetItem(shapeId)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: '_GetItem(shapeId: string): Shape;'
+      return:
+        type:
+          - 'excel!Excel.Shape:interface'
+        description: ''
+      parameters:
+        - id: shapeId
+          description: The identifier for the shape.
+          type:
+            - string
+  - uid: 'excel!Excel.GroupShapeCollection#getCount:member(1)'
+    summary: Returns the number of shapes in the shape group.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
   - uid: 'excel!Excel.GroupShapeCollection#getItem:member(1)'
     summary: Gets a shape using its Name or ID.
     name: getItem(key)
@@ -29,6 +63,24 @@ items:
           description: The Name or ID of the shape to be retrieved.
           type:
             - string
+  - uid: 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
+    summary: Gets a shape based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Shape;'
+      return:
+        type:
+          - 'excel!Excel.Shape:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: The zero-based index value of the object to be retrieved.
+          type:
+            - number
   - uid: 'excel!Excel.GroupShapeCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading

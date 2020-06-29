@@ -14,6 +14,7 @@ items:
     children:
       - 'excel!Excel.DataValidation#clear:member(1)'
       - 'excel!Excel.DataValidation#errorAlert:member'
+      - 'excel!Excel.DataValidation#getInvalidCells:member(1)'
       - 'excel!Excel.DataValidation#getInvalidCellsOrNullObject:member(1)'
       - 'excel!Excel.DataValidation#ignoreBlanks:member'
       - 'excel!Excel.DataValidation#load:member(1)'
@@ -80,6 +81,21 @@ items:
               await context.sync();
           }
           ```
+  - uid: 'excel!Excel.DataValidation#getInvalidCells:member(1)'
+    summary: >-
+      Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are
+      valid, this function will throw an ItemNotFound error.
+    name: getInvalidCells()
+    fullName: getInvalidCells()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getInvalidCells(): RangeAreas;'
+      return:
+        type:
+          - 'excel!Excel.RangeAreas:interface'
+        description: ''
   - uid: 'excel!Excel.DataValidation#getInvalidCellsOrNullObject:member(1)'
     summary: >-
       Returns a RangeAreas, comprising one or more rectangular ranges, with invalid cell values. If all cell values are

@@ -8,7 +8,40 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.RangeCollection#getCount:member(1)'
+      - 'excel!Excel.RangeCollection#getItemAt:member(1)'
       - 'excel!Excel.RangeCollection#load:member(1)'
+  - uid: 'excel!Excel.RangeCollection#getCount:member(1)'
+    summary: Returns the number of ranges in the RangeCollection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.RangeCollection#getItemAt:member(1)'
+    summary: Returns the range object based on its position in the RangeCollection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the range object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.RangeCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -29,3 +62,7 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+references:
+  - uid: 'excel!Excel.Range:interface'
+    name: Range
+    fullName: Excel.Range

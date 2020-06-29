@@ -67,6 +67,7 @@ items:
       - 'ExcelScript!ExcelScript.Range#getNumberFormats:member(1)'
       - 'ExcelScript!ExcelScript.Range#getNumberFormatsLocal:member(1)'
       - 'ExcelScript!ExcelScript.Range#getOffsetRange:member(1)'
+      - 'ExcelScript!ExcelScript.Range#getPivotTables:member(1)'
       - 'ExcelScript!ExcelScript.Range#getPredefinedCellStyle:member(1)'
       - 'ExcelScript!ExcelScript.Range#getResizedRange:member(1)'
       - 'ExcelScript!ExcelScript.Range#getRow:member(1)'
@@ -78,6 +79,7 @@ items:
       - 'ExcelScript!ExcelScript.Range#getSort:member(1)'
       - 'ExcelScript!ExcelScript.Range#getSpecialCells:member(1)'
       - 'ExcelScript!ExcelScript.Range#getSurroundingRegion:member(1)'
+      - 'ExcelScript!ExcelScript.Range#getTables:member(1)'
       - 'ExcelScript!ExcelScript.Range#getText:member(1)'
       - 'ExcelScript!ExcelScript.Range#getTexts:member(1)'
       - 'ExcelScript!ExcelScript.Range#getTop:member(1)'
@@ -1098,6 +1100,26 @@ items:
             offset to the right, and negative values are offset to the left.
           type:
             - number
+  - uid: 'ExcelScript!ExcelScript.Range#getPivotTables:member(1)'
+    summary: Gets a scoped collection of PivotTables that overlap with the range.
+    name: getPivotTables(fullyContained)
+    fullName: getPivotTables(fullyContained)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPivotTables(fullyContained?: boolean): PivotTable[];'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Range#getPivotTables~0:complex'
+        description: ''
+      parameters:
+        - id: fullyContained
+          description: >-
+            If true, returns only PivotTables that are fully contained within the range bounds. The default value is
+            false.
+          type:
+            - boolean
   - uid: 'ExcelScript!ExcelScript.Range#getPredefinedCellStyle:member(1)'
     summary: >-
       Represents the style of the current range. If the styles of the cells are inconsistent, null will be returned. For
@@ -1360,6 +1382,24 @@ items:
         type:
           - 'ExcelScript!ExcelScript.Range:interface'
         description: ''
+  - uid: 'ExcelScript!ExcelScript.Range#getTables:member(1)'
+    summary: Gets a scoped collection of tables that overlap with the range.
+    name: getTables(fullyContained)
+    fullName: getTables(fullyContained)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getTables(fullyContained?: boolean): Table[];'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Range#getTables~0:complex'
+        description: ''
+      parameters:
+        - id: fullyContained
+          description: 'If true, returns only tables that are fully contained within the range bounds. The default value is false.'
+          type:
+            - boolean
   - uid: 'ExcelScript!ExcelScript.Range#getText:member(1)'
     summary: >-
       Represents Text value of the specified range. The Text value will not depend on the cell width. The \# sign
@@ -2198,6 +2238,15 @@ references:
         fullName: ExcelScript.LinkedDataTypeState
       - name: '[][]'
         fullName: '[][]'
+  - uid: 'ExcelScript!ExcelScript.Range#getPivotTables~0:complex'
+    name: 'PivotTable[]'
+    fullName: 'ExcelScript.PivotTable[]'
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.PivotTable:interface'
+        name: PivotTable
+        fullName: ExcelScript.PivotTable
+      - name: '[]'
+        fullName: '[]'
   - uid: 'ExcelScript!ExcelScript.RangeSort:interface'
     name: RangeSort
     fullName: ExcelScript.RangeSort
@@ -2210,6 +2259,15 @@ references:
   - uid: 'ExcelScript!ExcelScript.SpecialCellValueType:enum'
     name: SpecialCellValueType
     fullName: ExcelScript.SpecialCellValueType
+  - uid: 'ExcelScript!ExcelScript.Range#getTables~0:complex'
+    name: 'Table[]'
+    fullName: 'ExcelScript.Table[]'
+    spec.typeScript:
+      - uid: 'ExcelScript!ExcelScript.Table:interface'
+        name: Table
+        fullName: ExcelScript.Table
+      - name: '[]'
+        fullName: '[]'
   - uid: 'ExcelScript!ExcelScript.RangeValueType:enum'
     name: RangeValueType
     fullName: ExcelScript.RangeValueType
