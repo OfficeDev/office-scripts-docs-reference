@@ -16,15 +16,18 @@ items:
       - 'ExcelScript!ExcelScript.Line#getBeginArrowheadLength:member(1)'
       - 'ExcelScript!ExcelScript.Line#getBeginArrowheadStyle:member(1)'
       - 'ExcelScript!ExcelScript.Line#getBeginArrowheadWidth:member(1)'
+      - 'ExcelScript!ExcelScript.Line#getBeginConnectedShape:member(1)'
       - 'ExcelScript!ExcelScript.Line#getBeginConnectedSite:member(1)'
       - 'ExcelScript!ExcelScript.Line#getConnectorType:member(1)'
       - 'ExcelScript!ExcelScript.Line#getEndArrowheadLength:member(1)'
       - 'ExcelScript!ExcelScript.Line#getEndArrowheadStyle:member(1)'
       - 'ExcelScript!ExcelScript.Line#getEndArrowheadWidth:member(1)'
+      - 'ExcelScript!ExcelScript.Line#getEndConnectedShape:member(1)'
       - 'ExcelScript!ExcelScript.Line#getEndConnectedSite:member(1)'
       - 'ExcelScript!ExcelScript.Line#getId:member(1)'
       - 'ExcelScript!ExcelScript.Line#getIsBeginConnected:member(1)'
       - 'ExcelScript!ExcelScript.Line#getIsEndConnected:member(1)'
+      - 'ExcelScript!ExcelScript.Line#getShape:member(1)'
       - 'ExcelScript!ExcelScript.Line#setBeginArrowheadLength:member(1)'
       - 'ExcelScript!ExcelScript.Line#setBeginArrowheadStyle:member(1)'
       - 'ExcelScript!ExcelScript.Line#setBeginArrowheadWidth:member(1)'
@@ -145,6 +148,19 @@ items:
         type:
           - 'ExcelScript!ExcelScript.ArrowheadWidth:enum'
         description: ''
+  - uid: 'ExcelScript!ExcelScript.Line#getBeginConnectedShape:member(1)'
+    summary: Represents the shape to which the beginning of the specified line is attached.
+    name: getBeginConnectedShape()
+    fullName: getBeginConnectedShape()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getBeginConnectedShape(): Shape;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Shape:interface'
+        description: ''
   - uid: 'ExcelScript!ExcelScript.Line#getBeginConnectedSite:member(1)'
     summary: >-
       Represents the connection site to which the beginning of a connector is connected. Returns null when the beginning
@@ -212,6 +228,19 @@ items:
         type:
           - 'ExcelScript!ExcelScript.ArrowheadWidth:enum'
         description: ''
+  - uid: 'ExcelScript!ExcelScript.Line#getEndConnectedShape:member(1)'
+    summary: Represents the shape to which the end of the specified line is attached.
+    name: getEndConnectedShape()
+    fullName: getEndConnectedShape()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getEndConnectedShape(): Shape;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Shape:interface'
+        description: ''
   - uid: 'ExcelScript!ExcelScript.Line#getEndConnectedSite:member(1)'
     summary: >-
       Represents the connection site to which the end of a connector is connected. Returns null when the end of the line
@@ -265,6 +294,19 @@ items:
       return:
         type:
           - boolean
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Line#getShape:member(1)'
+    summary: Returns the Shape object associated with the line.
+    name: getShape()
+    fullName: getShape()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getShape(): Shape;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.Shape:interface'
         description: ''
   - uid: 'ExcelScript!ExcelScript.Line#setBeginArrowheadLength:member(1)'
     summary: Represents the length of the arrowhead at the beginning of the specified line.

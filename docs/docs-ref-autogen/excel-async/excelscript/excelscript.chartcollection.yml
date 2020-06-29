@@ -10,6 +10,10 @@ items:
     package: excel!
     children:
       - 'excel!Excel.ChartCollection#add:member(1)'
+      - 'excel!Excel.ChartCollection#count:member'
+      - 'excel!Excel.ChartCollection#getCount:member(1)'
+      - 'excel!Excel.ChartCollection#getItem:member(1)'
+      - 'excel!Excel.ChartCollection#getItemAt:member(1)'
       - 'excel!Excel.ChartCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.ChartCollection#load:member(1)'
   - uid: 'excel!Excel.ChartCollection#add:member(1)'
@@ -45,6 +49,67 @@ items:
             for details.
           type:
             - 'excel!Excel.ChartSeriesBy:enum'
+  - uid: 'excel!Excel.ChartCollection#count:member'
+    summary: Returns the number of charts in the worksheet.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.ChartCollection#getCount:member(1)'
+    summary: Returns the number of charts in the worksheet.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.ChartCollection#getItem:member(1)'
+    summary: 'Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned.'
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): Chart;'
+      return:
+        type:
+          - 'excel!Excel.Chart:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the chart to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.ChartCollection#getItemAt:member(1)'
+    summary: Gets a chart based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Chart;'
+      return:
+        type:
+          - 'excel!Excel.Chart:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.ChartCollection#getItemOrNullObject:member(1)'
     summary: >-
       Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If

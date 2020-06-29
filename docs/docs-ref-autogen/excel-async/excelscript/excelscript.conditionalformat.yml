@@ -12,22 +12,45 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.ConditionalFormat#cellValue:member'
       - 'excel!Excel.ConditionalFormat#cellValueOrNullObject:member'
+      - 'excel!Excel.ConditionalFormat#colorScale:member'
       - 'excel!Excel.ConditionalFormat#colorScaleOrNullObject:member'
+      - 'excel!Excel.ConditionalFormat#custom:member'
       - 'excel!Excel.ConditionalFormat#customOrNullObject:member'
+      - 'excel!Excel.ConditionalFormat#dataBar:member'
       - 'excel!Excel.ConditionalFormat#dataBarOrNullObject:member'
       - 'excel!Excel.ConditionalFormat#delete:member(1)'
+      - 'excel!Excel.ConditionalFormat#getRange:member(1)'
       - 'excel!Excel.ConditionalFormat#getRangeOrNullObject:member(1)'
       - 'excel!Excel.ConditionalFormat#getRanges:member(1)'
+      - 'excel!Excel.ConditionalFormat#iconSet:member'
       - 'excel!Excel.ConditionalFormat#iconSetOrNullObject:member'
       - 'excel!Excel.ConditionalFormat#id:member'
       - 'excel!Excel.ConditionalFormat#load:member(1)'
+      - 'excel!Excel.ConditionalFormat#preset:member'
       - 'excel!Excel.ConditionalFormat#presetOrNullObject:member'
       - 'excel!Excel.ConditionalFormat#priority:member'
       - 'excel!Excel.ConditionalFormat#stopIfTrue:member'
+      - 'excel!Excel.ConditionalFormat#textComparison:member'
       - 'excel!Excel.ConditionalFormat#textComparisonOrNullObject:member'
+      - 'excel!Excel.ConditionalFormat#topBottom:member'
       - 'excel!Excel.ConditionalFormat#topBottomOrNullObject:member'
       - 'excel!Excel.ConditionalFormat#type:member'
+  - uid: 'excel!Excel.ConditionalFormat#cellValue:member'
+    summary: >-
+      Returns the cell value conditional format properties if the current conditional format is a CellValue type. For
+      example to format all cells between 5 and 10.
+    name: cellValue
+    fullName: cellValue
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly cellValue: CellValueConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.CellValueConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#cellValueOrNullObject:member'
     summary: >-
       Returns the cell value conditional format properties if the current conditional format is a CellValue type. For
@@ -42,6 +65,18 @@ items:
       return:
         type:
           - 'excel!Excel.CellValueConditionalFormat:interface'
+  - uid: 'excel!Excel.ConditionalFormat#colorScale:member'
+    summary: Returns the ColorScale conditional format properties if the current conditional format is an ColorScale type.
+    name: colorScale
+    fullName: colorScale
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly colorScale: ColorScaleConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.ColorScaleConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#colorScaleOrNullObject:member'
     summary: Returns the ColorScale conditional format properties if the current conditional format is an ColorScale type.
     name: colorScaleOrNullObject
@@ -54,6 +89,18 @@ items:
       return:
         type:
           - 'excel!Excel.ColorScaleConditionalFormat:interface'
+  - uid: 'excel!Excel.ConditionalFormat#custom:member'
+    summary: Returns the custom conditional format properties if the current conditional format is a custom type.
+    name: custom
+    fullName: custom
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly custom: CustomConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.CustomConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#customOrNullObject:member'
     summary: Returns the custom conditional format properties if the current conditional format is a custom type.
     name: customOrNullObject
@@ -66,6 +113,18 @@ items:
       return:
         type:
           - 'excel!Excel.CustomConditionalFormat:interface'
+  - uid: 'excel!Excel.ConditionalFormat#dataBar:member'
+    summary: Returns the data bar properties if the current conditional format is a data bar.
+    name: dataBar
+    fullName: dataBar
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly dataBar: DataBarConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.DataBarConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#dataBarOrNullObject:member'
     summary: Returns the data bar properties if the current conditional format is a data bar.
     name: dataBarOrNullObject
@@ -90,6 +149,21 @@ items:
       return:
         type:
           - void
+        description: ''
+  - uid: 'excel!Excel.ConditionalFormat#getRange:member(1)'
+    summary: >-
+      Returns the range the conditonal format is applied to. Throws an error if the conditional format is applied to
+      multiple ranges.
+    name: getRange()
+    fullName: getRange()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
         description: ''
   - uid: 'excel!Excel.ConditionalFormat#getRangeOrNullObject:member(1)'
     summary: >-
@@ -119,6 +193,18 @@ items:
         type:
           - 'excel!Excel.RangeAreas:interface'
         description: ''
+  - uid: 'excel!Excel.ConditionalFormat#iconSet:member'
+    summary: Returns the IconSet conditional format properties if the current conditional format is an IconSet type.
+    name: iconSet
+    fullName: iconSet
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly iconSet: IconSetConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.IconSetConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#iconSetOrNullObject:member'
     summary: Returns the IconSet conditional format properties if the current conditional format is an IconSet type.
     name: iconSetOrNullObject
@@ -163,6 +249,18 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+  - uid: 'excel!Excel.ConditionalFormat#preset:member'
+    summary: Returns the preset criteria conditional format. See Excel.PresetCriteriaConditionalFormat for more details.
+    name: preset
+    fullName: preset
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly preset: PresetCriteriaConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.PresetCriteriaConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#presetOrNullObject:member'
     summary: Returns the preset criteria conditional format. See Excel.PresetCriteriaConditionalFormat for more details.
     name: presetOrNullObject
@@ -206,6 +304,20 @@ items:
       return:
         type:
           - boolean
+  - uid: 'excel!Excel.ConditionalFormat#textComparison:member'
+    summary: >-
+      Returns the specific text conditional format properties if the current conditional format is a text type. For
+      example to format cells matching the word "Text".
+    name: textComparison
+    fullName: textComparison
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly textComparison: TextConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.TextConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#textComparisonOrNullObject:member'
     summary: >-
       Returns the specific text conditional format properties if the current conditional format is a text type. For
@@ -220,6 +332,20 @@ items:
       return:
         type:
           - 'excel!Excel.TextConditionalFormat:interface'
+  - uid: 'excel!Excel.ConditionalFormat#topBottom:member'
+    summary: >-
+      Returns the Top/Bottom conditional format properties if the current conditional format is an TopBottom type. For
+      example to format the top 10% or bottom 10 items.
+    name: topBottom
+    fullName: topBottom
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly topBottom: TopBottomConditionalFormat;'
+      return:
+        type:
+          - 'excel!Excel.TopBottomConditionalFormat:interface'
   - uid: 'excel!Excel.ConditionalFormat#topBottomOrNullObject:member'
     summary: >-
       Returns the Top/Bottom conditional format properties if the current conditional format is an TopBottom type. For

@@ -12,6 +12,10 @@ items:
     package: excel!
     children:
       - 'excel!Excel.TableCollection#add:member(1)'
+      - 'excel!Excel.TableCollection#count:member'
+      - 'excel!Excel.TableCollection#getCount:member(1)'
+      - 'excel!Excel.TableCollection#getItem:member(1)'
+      - 'excel!Excel.TableCollection#getItemAt:member(1)'
       - 'excel!Excel.TableCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.TableCollection#load:member(1)'
   - uid: 'excel!Excel.TableCollection#add:member(1)'
@@ -44,6 +48,67 @@ items:
             the data down by one row.
           type:
             - boolean
+  - uid: 'excel!Excel.TableCollection#count:member'
+    summary: Returns the number of tables in the workbook.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.TableCollection#getCount:member(1)'
+    summary: Gets the number of tables in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.TableCollection#getItem:member(1)'
+    summary: Gets a table by Name or ID.
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): Table;'
+      return:
+        type:
+          - 'excel!Excel.Table:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: Name or ID of the table to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.TableCollection#getItemAt:member(1)'
+    summary: Gets a table based on its position in the collection.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Table;'
+      return:
+        type:
+          - 'excel!Excel.Table:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.TableCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a table by Name or ID. If the table does not exist, will return a null object.'
     name: getItemOrNullObject(key)

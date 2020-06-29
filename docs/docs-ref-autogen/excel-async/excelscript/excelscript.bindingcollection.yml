@@ -12,6 +12,10 @@ items:
       - 'excel!Excel.BindingCollection#add:member(1)'
       - 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
       - 'excel!Excel.BindingCollection#addFromSelection:member(1)'
+      - 'excel!Excel.BindingCollection#count:member'
+      - 'excel!Excel.BindingCollection#getCount:member(1)'
+      - 'excel!Excel.BindingCollection#getItem:member(1)'
+      - 'excel!Excel.BindingCollection#getItemAt:member(1)'
       - 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.BindingCollection#load:member(1)'
   - uid: 'excel!Excel.BindingCollection#add:member(1)'
@@ -104,6 +108,67 @@ items:
           description: Name of binding.
           type:
             - string
+  - uid: 'excel!Excel.BindingCollection#count:member'
+    summary: Returns the number of bindings in the collection.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.BindingCollection#getCount:member(1)'
+    summary: Gets the number of bindings in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.BindingCollection#getItem:member(1)'
+    summary: Gets a binding object by ID.
+    name: getItem(id)
+    fullName: getItem(id)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(id: string): Binding;'
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: id
+          description: Id of the binding object to be retrieved.
+          type:
+            - string
+  - uid: 'excel!Excel.BindingCollection#getItemAt:member(1)'
+    summary: Gets a binding object based on its position in the items array.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): Binding;'
+      return:
+        type:
+          - 'excel!Excel.Binding:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a binding object by ID. If the binding object does not exist, will return a null object.'
     name: getItemOrNullObject(id)

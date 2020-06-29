@@ -15,6 +15,7 @@ items:
       - 'excel!Excel.PivotLayout#getDataBodyRange:member(1)'
       - 'excel!Excel.PivotLayout#getDataHierarchy:member(1)'
       - 'excel!Excel.PivotLayout#getFilterAxisRange:member(1)'
+      - 'excel!Excel.PivotLayout#getPivotItems:member(1)'
       - 'excel!Excel.PivotLayout#getRange:member(1)'
       - 'excel!Excel.PivotLayout#getRowLabelRange:member(1)'
       - 'excel!Excel.PivotLayout#layoutType:member'
@@ -127,6 +128,28 @@ items:
         type:
           - 'excel!Excel.Range:interface'
         description: ''
+  - uid: 'excel!Excel.PivotLayout#getPivotItems:member(1)'
+    summary: Gets the PivotItems from an axis that make up the value in a specified range within the PivotTable.
+    name: 'getPivotItems(axis, cell)'
+    fullName: 'getPivotItems(axis, cell)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPivotItems(axis: PivotAxis, cell: Range | string): PivotItem[];'
+      return:
+        type:
+          - 'excel!Excel.PivotLayout#getPivotItems~0:complex'
+        description: ''
+      parameters:
+        - id: axis
+          description: The axis from which to get the PivotItems. Must be either "row" or "column."
+          type:
+            - 'excel!Excel.PivotAxis:enum'
+        - id: cell
+          description: A single cell within the PivotTable's data body.
+          type:
+            - 'excel!Excel.PivotLayout#getPivotItems~1:complex'
   - uid: 'excel!Excel.PivotLayout#getRange:member(1)'
     summary: 'Returns the range the PivotTable exists on, excluding the filter area.'
     name: getRange()
@@ -271,6 +294,27 @@ references:
     name: DataPivotHierarchy
     fullName: Excel.DataPivotHierarchy
   - uid: 'excel!Excel.PivotLayout#getDataHierarchy~0:complex'
+    name: Range | string
+    fullName: Excel.Range | string
+    spec.typeScript:
+      - uid: 'excel!Excel.Range:interface'
+        name: Range
+        fullName: Excel.Range
+      - name: ' | string'
+        fullName: ' | string'
+  - uid: 'excel!Excel.PivotLayout#getPivotItems~0:complex'
+    name: 'PivotItem[]'
+    fullName: 'Excel.PivotItem[]'
+    spec.typeScript:
+      - uid: 'excel!Excel.PivotItem:interface'
+        name: PivotItem
+        fullName: Excel.PivotItem
+      - name: '[]'
+        fullName: '[]'
+  - uid: 'excel!Excel.PivotAxis:enum'
+    name: PivotAxis
+    fullName: Excel.PivotAxis
+  - uid: 'excel!Excel.PivotLayout#getPivotItems~1:complex'
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:

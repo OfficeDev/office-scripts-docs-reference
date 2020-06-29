@@ -11,6 +11,8 @@ items:
     children:
       - 'excel!Excel.CustomPropertyCollection#add:member(1)'
       - 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
+      - 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
       - 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.CustomPropertyCollection#load:member(1)'
   - uid: 'excel!Excel.CustomPropertyCollection#add:member(1)'
@@ -52,6 +54,37 @@ items:
         type:
           - void
         description: ''
+  - uid: 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
+    summary: Gets the count of custom properties.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
+    summary: 'Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.'
+    name: getItem(key)
+    fullName: getItem(key)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(key: string): CustomProperty;'
+      return:
+        type:
+          - 'excel!Excel.CustomProperty:interface'
+        description: ''
+      parameters:
+        - id: key
+          description: The key that identifies the custom property object.
+          type:
+            - string
   - uid: 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
     summary: >-
       Gets a custom property object by its key, which is case-insensitive. Returns a null object if the custom property

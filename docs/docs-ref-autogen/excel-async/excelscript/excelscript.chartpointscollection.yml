@@ -9,7 +9,53 @@ items:
     type: interface
     package: excel!
     children:
+      - 'excel!Excel.ChartPointsCollection#count:member'
+      - 'excel!Excel.ChartPointsCollection#getCount:member(1)'
+      - 'excel!Excel.ChartPointsCollection#getItemAt:member(1)'
       - 'excel!Excel.ChartPointsCollection#load:member(1)'
+  - uid: 'excel!Excel.ChartPointsCollection#count:member'
+    summary: Returns the number of chart points in the series.
+    name: count
+    fullName: count
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type:
+          - number
+  - uid: 'excel!Excel.ChartPointsCollection#getCount:member(1)'
+    summary: Returns the number of chart points in the series.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.ChartPointsCollection#getItemAt:member(1)'
+    summary: Retrieve a point based on its position within the series.
+    name: getItemAt(index)
+    fullName: getItemAt(index)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItemAt(index: number): ChartPoint;'
+      return:
+        type:
+          - 'excel!Excel.ChartPoint:interface'
+        description: ''
+      parameters:
+        - id: index
+          description: Index value of the object to be retrieved. Zero-indexed.
+          type:
+            - number
   - uid: 'excel!Excel.ChartPointsCollection#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -30,3 +76,7 @@ items:
           description: A comma-delimited string or an array of strings that specify the properties to load.
           type:
             - 'string | string[]'
+references:
+  - uid: 'excel!Excel.ChartPoint:interface'
+    name: ChartPoint
+    fullName: Excel.ChartPoint

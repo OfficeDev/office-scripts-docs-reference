@@ -20,14 +20,18 @@ items:
       - 'excel!Excel.Worksheet#copy:member(1)'
       - 'excel!Excel.Worksheet#delete:member(1)'
       - 'excel!Excel.Worksheet#enableCalculation:member'
+      - 'excel!Excel.Worksheet#findAll:member(1)'
       - 'excel!Excel.Worksheet#findAllOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#freezePanes:member'
       - 'excel!Excel.Worksheet#getCell:member(1)'
+      - 'excel!Excel.Worksheet#getNext:member(1)'
       - 'excel!Excel.Worksheet#getNextOrNullObject:member(1)'
+      - 'excel!Excel.Worksheet#getPrevious:member(1)'
       - 'excel!Excel.Worksheet#getPreviousOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#getRange:member(1)'
       - 'excel!Excel.Worksheet#getRangeByIndexes:member(1)'
       - 'excel!Excel.Worksheet#getRanges:member(1)'
+      - 'excel!Excel.Worksheet#getUsedRange:member(1)'
       - 'excel!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
       - 'excel!Excel.Worksheet#horizontalPageBreaks:member'
       - 'excel!Excel.Worksheet#id:member'
@@ -210,6 +214,32 @@ items:
       return:
         type:
           - boolean
+  - uid: 'excel!Excel.Worksheet#findAll:member(1)'
+    summary: >-
+      Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
+      comprising one or more rectangular ranges.
+    name: 'findAll(text, criteria)'
+    fullName: 'findAll(text, criteria)'
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'findAll(text: string, criteria: WorksheetSearchCriteria): RangeAreas;'
+      return:
+        type:
+          - 'excel!Excel.RangeAreas:interface'
+        description: ''
+      parameters:
+        - id: text
+          description: The string to find.
+          type:
+            - string
+        - id: criteria
+          description: >-
+            Additional search criteria, including whether the search needs to match the entire cell or be case
+            sensitive.
+          type:
+            - 'excel!Excel.WorksheetSearchCriteria:interface'
   - uid: 'excel!Excel.Worksheet#findAllOrNullObject:member(1)'
     summary: >-
       Finds all occurrences of the given string based on the criteria specified and returns them as a RangeAreas object,
@@ -297,6 +327,26 @@ items:
           description: the column number of the cell to be retrieved. Zero-indexed.
           type:
             - number
+  - uid: 'excel!Excel.Worksheet#getNext:member(1)'
+    summary: >-
+      Gets the worksheet that follows this one. If there are no worksheets following this one, this method will throw an
+      error.
+    name: getNext(visibleOnly)
+    fullName: getNext(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getNext(visibleOnly?: boolean): Worksheet;'
+      return:
+        type:
+          - 'excel!Excel.Worksheet:interface'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
   - uid: 'excel!Excel.Worksheet#getNextOrNullObject:member(1)'
     summary: >-
       Gets the worksheet that follows this one. If there are no worksheets following this one, this method will return a
@@ -308,6 +358,24 @@ items:
     type: method
     syntax:
       content: 'getNextOrNullObject(visibleOnly?: boolean): Worksheet;'
+      return:
+        type:
+          - 'excel!Excel.Worksheet:interface'
+        description: ''
+      parameters:
+        - id: visibleOnly
+          description: 'Optional. If true, considers only visible worksheets, skipping over any hidden ones.'
+          type:
+            - boolean
+  - uid: 'excel!Excel.Worksheet#getPrevious:member(1)'
+    summary: 'Gets the worksheet that precedes this one. If there are no previous worksheets, this method will throw an error.'
+    name: getPrevious(visibleOnly)
+    fullName: getPrevious(visibleOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getPrevious(visibleOnly?: boolean): Worksheet;'
       return:
         type:
           - 'excel!Excel.Worksheet:interface'
@@ -431,6 +499,26 @@ items:
             "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
           type:
             - string
+  - uid: 'excel!Excel.Worksheet#getUsedRange:member(1)'
+    summary: >-
+      The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
+      If the entire worksheet is blank, this function will return the top left cell (i.e. it will *not* throw an error).
+    name: getUsedRange(valuesOnly)
+    fullName: getUsedRange(valuesOnly)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getUsedRange(valuesOnly?: boolean): Range;'
+      return:
+        type:
+          - 'excel!Excel.Range:interface'
+        description: ''
+      parameters:
+        - id: valuesOnly
+          description: 'Optional. If true, considers only cells with values as used cells (ignoring formatting).'
+          type:
+            - boolean
   - uid: 'excel!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
     summary: >-
       The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.

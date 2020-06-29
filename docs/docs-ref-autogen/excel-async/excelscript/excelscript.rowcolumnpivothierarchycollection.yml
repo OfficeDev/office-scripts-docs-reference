@@ -10,6 +10,8 @@ items:
     package: excel!
     children:
       - 'excel!Excel.RowColumnPivotHierarchyCollection#add:member(1)'
+      - 'excel!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
+      - 'excel!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#load:member(1)'
       - 'excel!Excel.RowColumnPivotHierarchyCollection#remove:member(1)'
@@ -33,6 +35,37 @@ items:
           description: ''
           type:
             - 'excel!Excel.PivotHierarchy:interface'
+  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getCount:member(1)'
+    summary: Gets the number of pivot hierarchies in the collection.
+    name: getCount()
+    fullName: getCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getCount(): number;'
+      return:
+        type:
+          - number
+        description: ''
+  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getItem:member(1)'
+    summary: Gets a RowColumnPivotHierarchy by its name or id.
+    name: getItem(name)
+    fullName: getItem(name)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getItem(name: string): RowColumnPivotHierarchy;'
+      return:
+        type:
+          - 'excel!Excel.RowColumnPivotHierarchy:interface'
+        description: ''
+      parameters:
+        - id: name
+          description: Name of the RowColumnPivotHierarchy to be retrieved.
+          type:
+            - string
   - uid: 'excel!Excel.RowColumnPivotHierarchyCollection#getItemOrNullObject:member(1)'
     summary: 'Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, will return a null object.'
     name: getItemOrNullObject(name)
