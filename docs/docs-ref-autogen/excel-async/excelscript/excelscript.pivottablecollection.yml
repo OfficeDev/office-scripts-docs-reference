@@ -71,10 +71,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.PivotTableCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.PivotTableCollection#getItem:member(1)'
     summary: Gets a PivotTable by name.
@@ -174,3 +174,12 @@ references:
         fullName: |2-
            | string
                   
+  - uid: 'excel!Excel.PivotTableCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

@@ -150,10 +150,20 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'horizontalAlignment: HorizontalAlignment;'
+      content: |-
+        horizontalAlignment:
+                    | HorizontalAlignment
+                    | "General"
+                    | "Left"
+                    | "Center"
+                    | "Right"
+                    | "Fill"
+                    | "Justify"
+                    | "CenterAcrossSelection"
+                    | "Distributed";
       return:
         type:
-          - 'excel!Excel.HorizontalAlignment:enum'
+          - 'excel!Excel.RangeFormat#horizontalAlignment~0:complex'
   - uid: 'excel!Excel.RangeFormat#indentLevel:member'
     summary: An integer from 0 to 250 that indicates the indent level.
     name: indentLevel
@@ -206,10 +216,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readingOrder: ReadingOrder;'
+      content: 'readingOrder: ReadingOrder | "Context" | "LeftToRight" | "RightToLeft";'
       return:
         type:
-          - 'excel!Excel.ReadingOrder:enum'
+          - 'excel!Excel.RangeFormat#readingOrder~0:complex'
   - uid: 'excel!Excel.RangeFormat#rowHeight:member'
     summary: 'The height of all rows in the range. If the row heights are not uniform, null will be returned.'
     name: rowHeight
@@ -304,10 +314,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'verticalAlignment: VerticalAlignment;'
+      content: |-
+        verticalAlignment:
+                    | VerticalAlignment
+                    | "Top"
+                    | "Center"
+                    | "Bottom"
+                    | "Justify"
+                    | "Distributed";
       return:
         type:
-          - 'excel!Excel.VerticalAlignment:enum'
+          - 'excel!Excel.RangeFormat#verticalAlignment~0:complex'
   - uid: 'excel!Excel.RangeFormat#wrapText:member'
     summary: >-
       Specifies if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform
@@ -332,15 +349,97 @@ references:
   - uid: 'excel!Excel.RangeFont:interface'
     name: RangeFont
     fullName: Excel.RangeFont
-  - uid: 'excel!Excel.HorizontalAlignment:enum'
-    name: HorizontalAlignment
-    fullName: Excel.HorizontalAlignment
+  - uid: 'excel!Excel.RangeFormat#horizontalAlignment~0:complex'
+    name: |-
+      | HorizontalAlignment
+                  | "General"
+                  | "Left"
+                  | "Center"
+                  | "Right"
+                  | "Fill"
+                  | "Justify"
+                  | "CenterAcrossSelection"
+                  | "Distributed"
+    fullName: |-
+      | Excel.HorizontalAlignment
+                  | "General"
+                  | "Left"
+                  | "Center"
+                  | "Right"
+                  | "Fill"
+                  | "Justify"
+                  | "CenterAcrossSelection"
+                  | "Distributed"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.HorizontalAlignment:enum'
+        name: HorizontalAlignment
+        fullName: Excel.HorizontalAlignment
+      - name: |2-
+
+                      | "General"
+                      | "Left"
+                      | "Center"
+                      | "Right"
+                      | "Fill"
+                      | "Justify"
+                      | "CenterAcrossSelection"
+                      | "Distributed"
+        fullName: |2-
+
+                      | "General"
+                      | "Left"
+                      | "Center"
+                      | "Right"
+                      | "Fill"
+                      | "Justify"
+                      | "CenterAcrossSelection"
+                      | "Distributed"
   - uid: 'excel!Excel.FormatProtection:interface'
     name: FormatProtection
     fullName: Excel.FormatProtection
-  - uid: 'excel!Excel.ReadingOrder:enum'
-    name: ReadingOrder
-    fullName: Excel.ReadingOrder
-  - uid: 'excel!Excel.VerticalAlignment:enum'
-    name: VerticalAlignment
-    fullName: Excel.VerticalAlignment
+  - uid: 'excel!Excel.RangeFormat#readingOrder~0:complex'
+    name: ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
+    fullName: Excel.ReadingOrder | "Context" | "LeftToRight" | "RightToLeft"
+    spec.typeScript:
+      - uid: 'excel!Excel.ReadingOrder:enum'
+        name: ReadingOrder
+        fullName: Excel.ReadingOrder
+      - name: ' | "Context" | "LeftToRight" | "RightToLeft"'
+        fullName: ' | "Context" | "LeftToRight" | "RightToLeft"'
+  - uid: 'excel!Excel.RangeFormat#verticalAlignment~0:complex'
+    name: |-
+      | VerticalAlignment
+                  | "Top"
+                  | "Center"
+                  | "Bottom"
+                  | "Justify"
+                  | "Distributed"
+    fullName: |-
+      | Excel.VerticalAlignment
+                  | "Top"
+                  | "Center"
+                  | "Bottom"
+                  | "Justify"
+                  | "Distributed"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.VerticalAlignment:enum'
+        name: VerticalAlignment
+        fullName: Excel.VerticalAlignment
+      - name: |2-
+
+                      | "Top"
+                      | "Center"
+                      | "Bottom"
+                      | "Justify"
+                      | "Distributed"
+        fullName: |2-
+
+                      | "Top"
+                      | "Center"
+                      | "Bottom"
+                      | "Justify"
+                      | "Distributed"

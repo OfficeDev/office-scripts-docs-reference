@@ -62,10 +62,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
     summary: 'Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.'
@@ -129,3 +129,12 @@ references:
   - uid: 'excel!Excel.CustomProperty:interface'
     name: CustomProperty
     fullName: Excel.CustomProperty
+  - uid: 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

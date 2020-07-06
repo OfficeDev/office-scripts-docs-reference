@@ -28,7 +28,7 @@ items:
         apply(
                     fields: SortField[],
                     matchCase?: boolean,
-                    method?: SortMethod
+                    method?: SortMethod | "PinYin" | "StrokeCount"
                 ): void;
       return:
         type:
@@ -63,7 +63,7 @@ items:
         - id: method
           description: Optional. The ordering method used for Chinese characters.
           type:
-            - 'excel!Excel.SortMethod:enum'
+            - 'excel!Excel.TableSort#apply~1:complex'
   - uid: 'excel!Excel.TableSort#clear:member(1)'
     summary: >-
       Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the
@@ -131,10 +131,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly method: SortMethod;'
+      content: 'readonly method: SortMethod | "PinYin" | "StrokeCount";'
       return:
         type:
-          - 'excel!Excel.SortMethod:enum'
+          - 'excel!Excel.TableSort#method~0:complex'
   - uid: 'excel!Excel.TableSort#reapply:member(1)'
     summary: Reapplies the current sorting parameters to the table.
     name: reapply()
@@ -158,9 +158,19 @@ references:
         fullName: Excel.SortField
       - name: '[]'
         fullName: '[]'
-  - uid: 'excel!Excel.SortMethod:enum'
-    name: SortMethod
-    fullName: Excel.SortMethod
+  - uid: 'excel!Excel.TableSort#apply~1:complex'
+    name: SortMethod | "PinYin" | "StrokeCount"
+    fullName: Excel.SortMethod | "PinYin" | "StrokeCount"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortMethod:enum'
+        name: SortMethod
+        fullName: Excel.SortMethod
+      - name: |2-
+           | "PinYin" | "StrokeCount"
+                  
+        fullName: |2-
+           | "PinYin" | "StrokeCount"
+                  
   - uid: 'excel!Excel.TableSort#fields~0:complex'
     name: 'SortField[]'
     fullName: 'Excel.SortField[]'
@@ -170,3 +180,12 @@ references:
         fullName: Excel.SortField
       - name: '[]'
         fullName: '[]'
+  - uid: 'excel!Excel.TableSort#method~0:complex'
+    name: SortMethod | "PinYin" | "StrokeCount"
+    fullName: Excel.SortMethod | "PinYin" | "StrokeCount"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortMethod:enum'
+        name: SortMethod
+        fullName: Excel.SortMethod
+      - name: ' | "PinYin" | "StrokeCount"'
+        fullName: ' | "PinYin" | "StrokeCount"'

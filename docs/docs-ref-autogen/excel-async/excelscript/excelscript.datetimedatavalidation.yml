@@ -55,10 +55,20 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'operator: DataValidationOperator;'
+      content: |-
+        operator:
+                    | DataValidationOperator
+                    | "Between"
+                    | "NotBetween"
+                    | "EqualTo"
+                    | "NotEqualTo"
+                    | "GreaterThan"
+                    | "LessThan"
+                    | "GreaterThanOrEqualTo"
+                    | "LessThanOrEqualTo";
       return:
         type:
-          - 'excel!Excel.DataValidationOperator:enum'
+          - 'excel!Excel.DateTimeDataValidation#operator~0:complex'
 references:
   - uid: 'excel!Excel.DateTimeDataValidation#formula1~0:complex'
     name: string | Date | Range
@@ -88,6 +98,50 @@ references:
       - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
-  - uid: 'excel!Excel.DataValidationOperator:enum'
-    name: DataValidationOperator
-    fullName: Excel.DataValidationOperator
+  - uid: 'excel!Excel.DateTimeDataValidation#operator~0:complex'
+    name: |-
+      | DataValidationOperator
+                  | "Between"
+                  | "NotBetween"
+                  | "EqualTo"
+                  | "NotEqualTo"
+                  | "GreaterThan"
+                  | "LessThan"
+                  | "GreaterThanOrEqualTo"
+                  | "LessThanOrEqualTo"
+    fullName: |-
+      | Excel.DataValidationOperator
+                  | "Between"
+                  | "NotBetween"
+                  | "EqualTo"
+                  | "NotEqualTo"
+                  | "GreaterThan"
+                  | "LessThan"
+                  | "GreaterThanOrEqualTo"
+                  | "LessThanOrEqualTo"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.DataValidationOperator:enum'
+        name: DataValidationOperator
+        fullName: Excel.DataValidationOperator
+      - name: |2-
+
+                      | "Between"
+                      | "NotBetween"
+                      | "EqualTo"
+                      | "NotEqualTo"
+                      | "GreaterThan"
+                      | "LessThan"
+                      | "GreaterThanOrEqualTo"
+                      | "LessThanOrEqualTo"
+        fullName: |2-
+
+                      | "Between"
+                      | "NotBetween"
+                      | "EqualTo"
+                      | "NotEqualTo"
+                      | "GreaterThan"
+                      | "LessThan"
+                      | "GreaterThanOrEqualTo"
+                      | "LessThanOrEqualTo"

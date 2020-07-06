@@ -88,10 +88,94 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'chartType: ChartType;'
+      content: |-
+        chartType:
+                    | ChartType
+                    | "Invalid"
+                    | "ColumnClustered"
+                    | "ColumnStacked"
+                    | "ColumnStacked100"
+                    | "3DColumnClustered"
+                    | "3DColumnStacked"
+                    | "3DColumnStacked100"
+                    | "BarClustered"
+                    | "BarStacked"
+                    | "BarStacked100"
+                    | "3DBarClustered"
+                    | "3DBarStacked"
+                    | "3DBarStacked100"
+                    | "LineStacked"
+                    | "LineStacked100"
+                    | "LineMarkers"
+                    | "LineMarkersStacked"
+                    | "LineMarkersStacked100"
+                    | "PieOfPie"
+                    | "PieExploded"
+                    | "3DPieExploded"
+                    | "BarOfPie"
+                    | "XyscatterSmooth"
+                    | "XyscatterSmoothNoMarkers"
+                    | "XyscatterLines"
+                    | "XyscatterLinesNoMarkers"
+                    | "AreaStacked"
+                    | "AreaStacked100"
+                    | "3DAreaStacked"
+                    | "3DAreaStacked100"
+                    | "DoughnutExploded"
+                    | "RadarMarkers"
+                    | "RadarFilled"
+                    | "Surface"
+                    | "SurfaceWireframe"
+                    | "SurfaceTopView"
+                    | "SurfaceTopViewWireframe"
+                    | "Bubble"
+                    | "Bubble3DEffect"
+                    | "StockHLC"
+                    | "StockOHLC"
+                    | "StockVHLC"
+                    | "StockVOHLC"
+                    | "CylinderColClustered"
+                    | "CylinderColStacked"
+                    | "CylinderColStacked100"
+                    | "CylinderBarClustered"
+                    | "CylinderBarStacked"
+                    | "CylinderBarStacked100"
+                    | "CylinderCol"
+                    | "ConeColClustered"
+                    | "ConeColStacked"
+                    | "ConeColStacked100"
+                    | "ConeBarClustered"
+                    | "ConeBarStacked"
+                    | "ConeBarStacked100"
+                    | "ConeCol"
+                    | "PyramidColClustered"
+                    | "PyramidColStacked"
+                    | "PyramidColStacked100"
+                    | "PyramidBarClustered"
+                    | "PyramidBarStacked"
+                    | "PyramidBarStacked100"
+                    | "PyramidCol"
+                    | "3DColumn"
+                    | "Line"
+                    | "3DLine"
+                    | "3DPie"
+                    | "Pie"
+                    | "Xyscatter"
+                    | "3DArea"
+                    | "Area"
+                    | "Doughnut"
+                    | "Radar"
+                    | "Histogram"
+                    | "Boxwhisker"
+                    | "Pareto"
+                    | "RegionMap"
+                    | "Treemap"
+                    | "Waterfall"
+                    | "Sunburst"
+                    | "Funnel";
       return:
         type:
-          - 'excel!Excel.ChartType:enum'
+          - 'excel!Excel.Chart#chartType~0:complex'
   - uid: 'excel!Excel.Chart#dataLabels:member'
     summary: Represents the datalabels on the chart.
     name: dataLabels
@@ -125,10 +209,15 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'displayBlanksAs: ChartDisplayBlanksAs;'
+      content: |-
+        displayBlanksAs:
+                    | ChartDisplayBlanksAs
+                    | "NotPlotted"
+                    | "Zero"
+                    | "Interplotted";
       return:
         type:
-          - 'excel!Excel.ChartDisplayBlanksAs:enum'
+          - 'excel!Excel.Chart#displayBlanksAs~0:complex'
   - uid: 'excel!Excel.Chart#format:member'
     summary: Encapsulates the format properties for the chart area.
     name: format
@@ -155,11 +244,11 @@ items:
         getImage(
                     width?: number,
                     height?: number,
-                    fittingMode?: ImageFittingMode
-                ): string;
+                    fittingMode?: ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
+                ): ClientResult<string>;
       return:
         type:
-          - string
+          - 'excel!Excel.Chart#getImage~0:complex'
         description: ''
       parameters:
         - id: width
@@ -175,7 +264,7 @@ items:
             (Optional) The method used to scale the chart to the specified to the specified dimensions (if both height
             and width are set).
           type:
-            - 'excel!Excel.ImageFittingMode:enum'
+            - 'excel!Excel.Chart#getImage~1:complex'
   - uid: 'excel!Excel.Chart#height:member'
     summary: 'Specifies the height, in points, of the chart object.'
     name: height
@@ -288,10 +377,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'plotBy: ChartPlotBy;'
+      content: 'plotBy: ChartPlotBy | "Rows" | "Columns";'
       return:
         type:
-          - 'excel!Excel.ChartPlotBy:enum'
+          - 'excel!Excel.Chart#plotBy~0:complex'
   - uid: 'excel!Excel.Chart#plotVisibleOnly:member'
     summary: True if only visible cells are plotted. False if both visible and hidden cells are plotted.
     name: plotVisibleOnly
@@ -338,7 +427,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'setData(sourceData: Range, seriesBy?: ChartSeriesBy): void;'
+      content: |-
+        setData(
+                    sourceData: Range,
+                    seriesBy?: ChartSeriesBy | "Auto" | "Columns" | "Rows"
+                ): void;
       return:
         type:
           - void
@@ -353,7 +446,7 @@ items:
             Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto
             (default), Rows, and Columns. See Excel.ChartSeriesBy for details.
           type:
-            - 'excel!Excel.ChartSeriesBy:enum'
+            - 'excel!Excel.Chart#setData~0:complex'
   - uid: 'excel!Excel.Chart#setPosition:member(1)'
     summary: Positions the chart relative to cells on the worksheet.
     name: 'setPosition(startCell, endCell)'
@@ -473,21 +566,404 @@ references:
   - uid: 'excel!Excel.ChartAxes:interface'
     name: ChartAxes
     fullName: Excel.ChartAxes
-  - uid: 'excel!Excel.ChartType:enum'
-    name: ChartType
-    fullName: Excel.ChartType
+  - uid: 'excel!Excel.Chart#chartType~0:complex'
+    name: |-
+      | ChartType
+                  | "Invalid"
+                  | "ColumnClustered"
+                  | "ColumnStacked"
+                  | "ColumnStacked100"
+                  | "3DColumnClustered"
+                  | "3DColumnStacked"
+                  | "3DColumnStacked100"
+                  | "BarClustered"
+                  | "BarStacked"
+                  | "BarStacked100"
+                  | "3DBarClustered"
+                  | "3DBarStacked"
+                  | "3DBarStacked100"
+                  | "LineStacked"
+                  | "LineStacked100"
+                  | "LineMarkers"
+                  | "LineMarkersStacked"
+                  | "LineMarkersStacked100"
+                  | "PieOfPie"
+                  | "PieExploded"
+                  | "3DPieExploded"
+                  | "BarOfPie"
+                  | "XyscatterSmooth"
+                  | "XyscatterSmoothNoMarkers"
+                  | "XyscatterLines"
+                  | "XyscatterLinesNoMarkers"
+                  | "AreaStacked"
+                  | "AreaStacked100"
+                  | "3DAreaStacked"
+                  | "3DAreaStacked100"
+                  | "DoughnutExploded"
+                  | "RadarMarkers"
+                  | "RadarFilled"
+                  | "Surface"
+                  | "SurfaceWireframe"
+                  | "SurfaceTopView"
+                  | "SurfaceTopViewWireframe"
+                  | "Bubble"
+                  | "Bubble3DEffect"
+                  | "StockHLC"
+                  | "StockOHLC"
+                  | "StockVHLC"
+                  | "StockVOHLC"
+                  | "CylinderColClustered"
+                  | "CylinderColStacked"
+                  | "CylinderColStacked100"
+                  | "CylinderBarClustered"
+                  | "CylinderBarStacked"
+                  | "CylinderBarStacked100"
+                  | "CylinderCol"
+                  | "ConeColClustered"
+                  | "ConeColStacked"
+                  | "ConeColStacked100"
+                  | "ConeBarClustered"
+                  | "ConeBarStacked"
+                  | "ConeBarStacked100"
+                  | "ConeCol"
+                  | "PyramidColClustered"
+                  | "PyramidColStacked"
+                  | "PyramidColStacked100"
+                  | "PyramidBarClustered"
+                  | "PyramidBarStacked"
+                  | "PyramidBarStacked100"
+                  | "PyramidCol"
+                  | "3DColumn"
+                  | "Line"
+                  | "3DLine"
+                  | "3DPie"
+                  | "Pie"
+                  | "Xyscatter"
+                  | "3DArea"
+                  | "Area"
+                  | "Doughnut"
+                  | "Radar"
+                  | "Histogram"
+                  | "Boxwhisker"
+                  | "Pareto"
+                  | "RegionMap"
+                  | "Treemap"
+                  | "Waterfall"
+                  | "Sunburst"
+                  | "Funnel"
+    fullName: |-
+      | Excel.ChartType
+                  | "Invalid"
+                  | "ColumnClustered"
+                  | "ColumnStacked"
+                  | "ColumnStacked100"
+                  | "3DColumnClustered"
+                  | "3DColumnStacked"
+                  | "3DColumnStacked100"
+                  | "BarClustered"
+                  | "BarStacked"
+                  | "BarStacked100"
+                  | "3DBarClustered"
+                  | "3DBarStacked"
+                  | "3DBarStacked100"
+                  | "LineStacked"
+                  | "LineStacked100"
+                  | "LineMarkers"
+                  | "LineMarkersStacked"
+                  | "LineMarkersStacked100"
+                  | "PieOfPie"
+                  | "PieExploded"
+                  | "3DPieExploded"
+                  | "BarOfPie"
+                  | "XyscatterSmooth"
+                  | "XyscatterSmoothNoMarkers"
+                  | "XyscatterLines"
+                  | "XyscatterLinesNoMarkers"
+                  | "AreaStacked"
+                  | "AreaStacked100"
+                  | "3DAreaStacked"
+                  | "3DAreaStacked100"
+                  | "DoughnutExploded"
+                  | "RadarMarkers"
+                  | "RadarFilled"
+                  | "Surface"
+                  | "SurfaceWireframe"
+                  | "SurfaceTopView"
+                  | "SurfaceTopViewWireframe"
+                  | "Bubble"
+                  | "Bubble3DEffect"
+                  | "StockHLC"
+                  | "StockOHLC"
+                  | "StockVHLC"
+                  | "StockVOHLC"
+                  | "CylinderColClustered"
+                  | "CylinderColStacked"
+                  | "CylinderColStacked100"
+                  | "CylinderBarClustered"
+                  | "CylinderBarStacked"
+                  | "CylinderBarStacked100"
+                  | "CylinderCol"
+                  | "ConeColClustered"
+                  | "ConeColStacked"
+                  | "ConeColStacked100"
+                  | "ConeBarClustered"
+                  | "ConeBarStacked"
+                  | "ConeBarStacked100"
+                  | "ConeCol"
+                  | "PyramidColClustered"
+                  | "PyramidColStacked"
+                  | "PyramidColStacked100"
+                  | "PyramidBarClustered"
+                  | "PyramidBarStacked"
+                  | "PyramidBarStacked100"
+                  | "PyramidCol"
+                  | "3DColumn"
+                  | "Line"
+                  | "3DLine"
+                  | "3DPie"
+                  | "Pie"
+                  | "Xyscatter"
+                  | "3DArea"
+                  | "Area"
+                  | "Doughnut"
+                  | "Radar"
+                  | "Histogram"
+                  | "Boxwhisker"
+                  | "Pareto"
+                  | "RegionMap"
+                  | "Treemap"
+                  | "Waterfall"
+                  | "Sunburst"
+                  | "Funnel"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartType:enum'
+        name: ChartType
+        fullName: Excel.ChartType
+      - name: |2-
+
+                      | "Invalid"
+                      | "ColumnClustered"
+                      | "ColumnStacked"
+                      | "ColumnStacked100"
+                      | "3DColumnClustered"
+                      | "3DColumnStacked"
+                      | "3DColumnStacked100"
+                      | "BarClustered"
+                      | "BarStacked"
+                      | "BarStacked100"
+                      | "3DBarClustered"
+                      | "3DBarStacked"
+                      | "3DBarStacked100"
+                      | "LineStacked"
+                      | "LineStacked100"
+                      | "LineMarkers"
+                      | "LineMarkersStacked"
+                      | "LineMarkersStacked100"
+                      | "PieOfPie"
+                      | "PieExploded"
+                      | "3DPieExploded"
+                      | "BarOfPie"
+                      | "XyscatterSmooth"
+                      | "XyscatterSmoothNoMarkers"
+                      | "XyscatterLines"
+                      | "XyscatterLinesNoMarkers"
+                      | "AreaStacked"
+                      | "AreaStacked100"
+                      | "3DAreaStacked"
+                      | "3DAreaStacked100"
+                      | "DoughnutExploded"
+                      | "RadarMarkers"
+                      | "RadarFilled"
+                      | "Surface"
+                      | "SurfaceWireframe"
+                      | "SurfaceTopView"
+                      | "SurfaceTopViewWireframe"
+                      | "Bubble"
+                      | "Bubble3DEffect"
+                      | "StockHLC"
+                      | "StockOHLC"
+                      | "StockVHLC"
+                      | "StockVOHLC"
+                      | "CylinderColClustered"
+                      | "CylinderColStacked"
+                      | "CylinderColStacked100"
+                      | "CylinderBarClustered"
+                      | "CylinderBarStacked"
+                      | "CylinderBarStacked100"
+                      | "CylinderCol"
+                      | "ConeColClustered"
+                      | "ConeColStacked"
+                      | "ConeColStacked100"
+                      | "ConeBarClustered"
+                      | "ConeBarStacked"
+                      | "ConeBarStacked100"
+                      | "ConeCol"
+                      | "PyramidColClustered"
+                      | "PyramidColStacked"
+                      | "PyramidColStacked100"
+                      | "PyramidBarClustered"
+                      | "PyramidBarStacked"
+                      | "PyramidBarStacked100"
+                      | "PyramidCol"
+                      | "3DColumn"
+                      | "Line"
+                      | "3DLine"
+                      | "3DPie"
+                      | "Pie"
+                      | "Xyscatter"
+                      | "3DArea"
+                      | "Area"
+                      | "Doughnut"
+                      | "Radar"
+                      | "Histogram"
+                      | "Boxwhisker"
+                      | "Pareto"
+                      | "RegionMap"
+                      | "Treemap"
+                      | "Waterfall"
+                      | "Sunburst"
+                      | "Funnel"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "ColumnClustered"
+                      | "ColumnStacked"
+                      | "ColumnStacked100"
+                      | "3DColumnClustered"
+                      | "3DColumnStacked"
+                      | "3DColumnStacked100"
+                      | "BarClustered"
+                      | "BarStacked"
+                      | "BarStacked100"
+                      | "3DBarClustered"
+                      | "3DBarStacked"
+                      | "3DBarStacked100"
+                      | "LineStacked"
+                      | "LineStacked100"
+                      | "LineMarkers"
+                      | "LineMarkersStacked"
+                      | "LineMarkersStacked100"
+                      | "PieOfPie"
+                      | "PieExploded"
+                      | "3DPieExploded"
+                      | "BarOfPie"
+                      | "XyscatterSmooth"
+                      | "XyscatterSmoothNoMarkers"
+                      | "XyscatterLines"
+                      | "XyscatterLinesNoMarkers"
+                      | "AreaStacked"
+                      | "AreaStacked100"
+                      | "3DAreaStacked"
+                      | "3DAreaStacked100"
+                      | "DoughnutExploded"
+                      | "RadarMarkers"
+                      | "RadarFilled"
+                      | "Surface"
+                      | "SurfaceWireframe"
+                      | "SurfaceTopView"
+                      | "SurfaceTopViewWireframe"
+                      | "Bubble"
+                      | "Bubble3DEffect"
+                      | "StockHLC"
+                      | "StockOHLC"
+                      | "StockVHLC"
+                      | "StockVOHLC"
+                      | "CylinderColClustered"
+                      | "CylinderColStacked"
+                      | "CylinderColStacked100"
+                      | "CylinderBarClustered"
+                      | "CylinderBarStacked"
+                      | "CylinderBarStacked100"
+                      | "CylinderCol"
+                      | "ConeColClustered"
+                      | "ConeColStacked"
+                      | "ConeColStacked100"
+                      | "ConeBarClustered"
+                      | "ConeBarStacked"
+                      | "ConeBarStacked100"
+                      | "ConeCol"
+                      | "PyramidColClustered"
+                      | "PyramidColStacked"
+                      | "PyramidColStacked100"
+                      | "PyramidBarClustered"
+                      | "PyramidBarStacked"
+                      | "PyramidBarStacked100"
+                      | "PyramidCol"
+                      | "3DColumn"
+                      | "Line"
+                      | "3DLine"
+                      | "3DPie"
+                      | "Pie"
+                      | "Xyscatter"
+                      | "3DArea"
+                      | "Area"
+                      | "Doughnut"
+                      | "Radar"
+                      | "Histogram"
+                      | "Boxwhisker"
+                      | "Pareto"
+                      | "RegionMap"
+                      | "Treemap"
+                      | "Waterfall"
+                      | "Sunburst"
+                      | "Funnel"
   - uid: 'excel!Excel.ChartDataLabels:interface'
     name: ChartDataLabels
     fullName: Excel.ChartDataLabels
-  - uid: 'excel!Excel.ChartDisplayBlanksAs:enum'
-    name: ChartDisplayBlanksAs
-    fullName: Excel.ChartDisplayBlanksAs
+  - uid: 'excel!Excel.Chart#displayBlanksAs~0:complex'
+    name: |-
+      | ChartDisplayBlanksAs
+                  | "NotPlotted"
+                  | "Zero"
+                  | "Interplotted"
+    fullName: |-
+      | Excel.ChartDisplayBlanksAs
+                  | "NotPlotted"
+                  | "Zero"
+                  | "Interplotted"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartDisplayBlanksAs:enum'
+        name: ChartDisplayBlanksAs
+        fullName: Excel.ChartDisplayBlanksAs
+      - name: |2-
+
+                      | "NotPlotted"
+                      | "Zero"
+                      | "Interplotted"
+        fullName: |2-
+
+                      | "NotPlotted"
+                      | "Zero"
+                      | "Interplotted"
   - uid: 'excel!Excel.ChartAreaFormat:interface'
     name: ChartAreaFormat
     fullName: Excel.ChartAreaFormat
-  - uid: 'excel!Excel.ImageFittingMode:enum'
-    name: ImageFittingMode
-    fullName: Excel.ImageFittingMode
+  - uid: 'excel!Excel.Chart#getImage~0:complex'
+    name: ClientResult<string>
+    fullName: Excel.ClientResult<string>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <string>
+        fullName: <string>
+  - uid: 'excel!Excel.Chart#getImage~1:complex'
+    name: ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
+    fullName: Excel.ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
+    spec.typeScript:
+      - uid: 'excel!Excel.ImageFittingMode:enum'
+        name: ImageFittingMode
+        fullName: Excel.ImageFittingMode
+      - name: |2-
+           | "Fit" | "FitAndCenter" | "Fill"
+                  
+        fullName: |2-
+           | "Fit" | "FitAndCenter" | "Fill"
+                  
   - uid: 'excel!Excel.ChartLegend:interface'
     name: ChartLegend
     fullName: Excel.ChartLegend
@@ -497,18 +973,34 @@ references:
   - uid: 'excel!Excel.ChartPlotArea:interface'
     name: ChartPlotArea
     fullName: Excel.ChartPlotArea
-  - uid: 'excel!Excel.ChartPlotBy:enum'
-    name: ChartPlotBy
-    fullName: Excel.ChartPlotBy
+  - uid: 'excel!Excel.Chart#plotBy~0:complex'
+    name: ChartPlotBy | "Rows" | "Columns"
+    fullName: Excel.ChartPlotBy | "Rows" | "Columns"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartPlotBy:enum'
+        name: ChartPlotBy
+        fullName: Excel.ChartPlotBy
+      - name: ' | "Rows" | "Columns"'
+        fullName: ' | "Rows" | "Columns"'
   - uid: 'excel!Excel.ChartSeriesCollection:interface'
     name: ChartSeriesCollection
     fullName: Excel.ChartSeriesCollection
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.ChartSeriesBy:enum'
-    name: ChartSeriesBy
-    fullName: Excel.ChartSeriesBy
+  - uid: 'excel!Excel.Chart#setData~0:complex'
+    name: ChartSeriesBy | "Auto" | "Columns" | "Rows"
+    fullName: Excel.ChartSeriesBy | "Auto" | "Columns" | "Rows"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartSeriesBy:enum'
+        name: ChartSeriesBy
+        fullName: Excel.ChartSeriesBy
+      - name: |2-
+           | "Auto" | "Columns" | "Rows"
+                  
+        fullName: |2-
+           | "Auto" | "Columns" | "Rows"
+                  
   - uid: 'excel!Excel.Chart#setPosition~0:complex'
     name: Range | string
     fullName: Excel.Range | string

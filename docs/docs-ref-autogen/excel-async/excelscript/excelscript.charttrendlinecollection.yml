@@ -21,7 +21,17 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'add(type?: ChartTrendlineType): ChartTrendline;'
+      content: |-
+        add(
+                    type?:
+                        | ChartTrendlineType
+                        | "Linear"
+                        | "Exponential"
+                        | "Logarithmic"
+                        | "MovingAverage"
+                        | "Polynomial"
+                        | "Power"
+                ): ChartTrendline;
       return:
         type:
           - 'excel!Excel.ChartTrendline:interface'
@@ -46,7 +56,7 @@ items:
         - id: type
           description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
           type:
-            - 'excel!Excel.ChartTrendlineType:enum'
+            - 'excel!Excel.ChartTrendlineCollection#add~0:complex'
   - uid: 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
     summary: Returns the number of trendlines in the collection.
     name: getCount()
@@ -55,10 +65,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
     summary: 'Get trendline object by index, which is the insertion order in items array.'
@@ -102,6 +112,53 @@ references:
   - uid: 'excel!Excel.ChartTrendline:interface'
     name: ChartTrendline
     fullName: Excel.ChartTrendline
-  - uid: 'excel!Excel.ChartTrendlineType:enum'
-    name: ChartTrendlineType
-    fullName: Excel.ChartTrendlineType
+  - uid: 'excel!Excel.ChartTrendlineCollection#add~0:complex'
+    name: |-
+      | ChartTrendlineType
+                      | "Linear"
+                      | "Exponential"
+                      | "Logarithmic"
+                      | "MovingAverage"
+                      | "Polynomial"
+                      | "Power"
+    fullName: |-
+      | Excel.ChartTrendlineType
+                      | "Linear"
+                      | "Exponential"
+                      | "Logarithmic"
+                      | "MovingAverage"
+                      | "Polynomial"
+                      | "Power"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartTrendlineType:enum'
+        name: ChartTrendlineType
+        fullName: Excel.ChartTrendlineType
+      - name: |2-
+
+                          | "Linear"
+                          | "Exponential"
+                          | "Logarithmic"
+                          | "MovingAverage"
+                          | "Polynomial"
+                          | "Power"
+                  
+        fullName: |2-
+
+                          | "Linear"
+                          | "Exponential"
+                          | "Logarithmic"
+                          | "MovingAverage"
+                          | "Polynomial"
+                          | "Power"
+                  
+  - uid: 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

@@ -196,10 +196,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly scope: NamedItemScope;'
+      content: 'readonly scope: NamedItemScope | "Worksheet" | "Workbook";'
       return:
         type:
-          - 'excel!Excel.NamedItemScope:enum'
+          - 'excel!Excel.NamedItem#scope~0:complex'
   - uid: 'excel!Excel.NamedItem#type:member'
     summary: Specifies the type of the value returned by the name's formula. See Excel.NamedItemType for details.
     name: type
@@ -208,10 +208,19 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly type: NamedItemType;'
+      content: |-
+        readonly type:
+                    | NamedItemType
+                    | "String"
+                    | "Integer"
+                    | "Double"
+                    | "Boolean"
+                    | "Range"
+                    | "Error"
+                    | "Array";
       return:
         type:
-          - 'excel!Excel.NamedItemType:enum'
+          - 'excel!Excel.NamedItem#type~0:complex'
   - uid: 'excel!Excel.NamedItem#value:member'
     summary: 'Represents the value computed by the name''s formula. For a named range, will return the range address.'
     name: value
@@ -271,12 +280,58 @@ references:
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.NamedItemScope:enum'
-    name: NamedItemScope
-    fullName: Excel.NamedItemScope
-  - uid: 'excel!Excel.NamedItemType:enum'
-    name: NamedItemType
-    fullName: Excel.NamedItemType
+  - uid: 'excel!Excel.NamedItem#scope~0:complex'
+    name: NamedItemScope | "Worksheet" | "Workbook"
+    fullName: Excel.NamedItemScope | "Worksheet" | "Workbook"
+    spec.typeScript:
+      - uid: 'excel!Excel.NamedItemScope:enum'
+        name: NamedItemScope
+        fullName: Excel.NamedItemScope
+      - name: ' | "Worksheet" | "Workbook"'
+        fullName: ' | "Worksheet" | "Workbook"'
+  - uid: 'excel!Excel.NamedItem#type~0:complex'
+    name: |-
+      | NamedItemType
+                  | "String"
+                  | "Integer"
+                  | "Double"
+                  | "Boolean"
+                  | "Range"
+                  | "Error"
+                  | "Array"
+    fullName: |-
+      | Excel.NamedItemType
+                  | "String"
+                  | "Integer"
+                  | "Double"
+                  | "Boolean"
+                  | "Range"
+                  | "Error"
+                  | "Array"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.NamedItemType:enum'
+        name: NamedItemType
+        fullName: Excel.NamedItemType
+      - name: |2-
+
+                      | "String"
+                      | "Integer"
+                      | "Double"
+                      | "Boolean"
+                      | "Range"
+                      | "Error"
+                      | "Array"
+        fullName: |2-
+
+                      | "String"
+                      | "Integer"
+                      | "Double"
+                      | "Boolean"
+                      | "Range"
+                      | "Error"
+                      | "Array"
   - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet

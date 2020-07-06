@@ -93,10 +93,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'horizontalAlignment: ChartTextHorizontalAlignment;'
+      content: |-
+        horizontalAlignment:
+                    | ChartTextHorizontalAlignment
+                    | "Center"
+                    | "Left"
+                    | "Right"
+                    | "Justify"
+                    | "Distributed";
       return:
         type:
-          - 'excel!Excel.ChartTextHorizontalAlignment:enum'
+          - 'excel!Excel.ChartTitle#horizontalAlignment~0:complex'
   - uid: 'excel!Excel.ChartTitle#left:member'
     summary: >-
       Specifies the distance, in points, from the left edge of chart title to the left edge of chart area. Null if chart
@@ -151,10 +158,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'position: ChartTitlePosition;'
+      content: |-
+        position:
+                    | ChartTitlePosition
+                    | "Automatic"
+                    | "Top"
+                    | "Bottom"
+                    | "Left"
+                    | "Right";
       return:
         type:
-          - 'excel!Excel.ChartTitlePosition:enum'
+          - 'excel!Excel.ChartTitle#position~0:complex'
   - uid: 'excel!Excel.ChartTitle#setFormula:member(1)'
     summary: Sets a string value that represents the formula of chart title using A1-style notation.
     name: setFormula(formula)
@@ -247,10 +261,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'verticalAlignment: ChartTextVerticalAlignment;'
+      content: |-
+        verticalAlignment:
+                    | ChartTextVerticalAlignment
+                    | "Center"
+                    | "Bottom"
+                    | "Top"
+                    | "Justify"
+                    | "Distributed";
       return:
         type:
-          - 'excel!Excel.ChartTextVerticalAlignment:enum'
+          - 'excel!Excel.ChartTitle#verticalAlignment~0:complex'
   - uid: 'excel!Excel.ChartTitle#visible:member'
     summary: Specifies if the chart title is visibile.
     name: visible
@@ -282,12 +303,108 @@ references:
   - uid: 'excel!Excel.ChartFormatString:interface'
     name: ChartFormatString
     fullName: Excel.ChartFormatString
-  - uid: 'excel!Excel.ChartTextHorizontalAlignment:enum'
-    name: ChartTextHorizontalAlignment
-    fullName: Excel.ChartTextHorizontalAlignment
-  - uid: 'excel!Excel.ChartTitlePosition:enum'
-    name: ChartTitlePosition
-    fullName: Excel.ChartTitlePosition
-  - uid: 'excel!Excel.ChartTextVerticalAlignment:enum'
-    name: ChartTextVerticalAlignment
-    fullName: Excel.ChartTextVerticalAlignment
+  - uid: 'excel!Excel.ChartTitle#horizontalAlignment~0:complex'
+    name: |-
+      | ChartTextHorizontalAlignment
+                  | "Center"
+                  | "Left"
+                  | "Right"
+                  | "Justify"
+                  | "Distributed"
+    fullName: |-
+      | Excel.ChartTextHorizontalAlignment
+                  | "Center"
+                  | "Left"
+                  | "Right"
+                  | "Justify"
+                  | "Distributed"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartTextHorizontalAlignment:enum'
+        name: ChartTextHorizontalAlignment
+        fullName: Excel.ChartTextHorizontalAlignment
+      - name: |2-
+
+                      | "Center"
+                      | "Left"
+                      | "Right"
+                      | "Justify"
+                      | "Distributed"
+        fullName: |2-
+
+                      | "Center"
+                      | "Left"
+                      | "Right"
+                      | "Justify"
+                      | "Distributed"
+  - uid: 'excel!Excel.ChartTitle#position~0:complex'
+    name: |-
+      | ChartTitlePosition
+                  | "Automatic"
+                  | "Top"
+                  | "Bottom"
+                  | "Left"
+                  | "Right"
+    fullName: |-
+      | Excel.ChartTitlePosition
+                  | "Automatic"
+                  | "Top"
+                  | "Bottom"
+                  | "Left"
+                  | "Right"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartTitlePosition:enum'
+        name: ChartTitlePosition
+        fullName: Excel.ChartTitlePosition
+      - name: |2-
+
+                      | "Automatic"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+  - uid: 'excel!Excel.ChartTitle#verticalAlignment~0:complex'
+    name: |-
+      | ChartTextVerticalAlignment
+                  | "Center"
+                  | "Bottom"
+                  | "Top"
+                  | "Justify"
+                  | "Distributed"
+    fullName: |-
+      | Excel.ChartTextVerticalAlignment
+                  | "Center"
+                  | "Bottom"
+                  | "Top"
+                  | "Justify"
+                  | "Distributed"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartTextVerticalAlignment:enum'
+        name: ChartTextVerticalAlignment
+        fullName: Excel.ChartTextVerticalAlignment
+      - name: |2-
+
+                      | "Center"
+                      | "Bottom"
+                      | "Top"
+                      | "Justify"
+                      | "Distributed"
+        fullName: |2-
+
+                      | "Center"
+                      | "Bottom"
+                      | "Top"
+                      | "Justify"
+                      | "Distributed"

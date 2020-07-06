@@ -50,10 +50,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.SettingCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.SettingCollection#getItem:member(1)'
     summary: Gets a Setting entry via the key.
@@ -157,3 +157,12 @@ references:
         fullName: |-
           <any> | any
                   
+  - uid: 'excel!Excel.SettingCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

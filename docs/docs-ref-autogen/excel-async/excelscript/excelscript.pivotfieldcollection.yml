@@ -21,10 +21,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.PivotFieldCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.PivotFieldCollection#getItem:member(1)'
     summary: Gets a PivotField by its name or id.
@@ -83,6 +83,15 @@ items:
           type:
             - 'string | string[]'
 references:
+  - uid: 'excel!Excel.PivotFieldCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.PivotField:interface'
     name: PivotField
     fullName: Excel.PivotField

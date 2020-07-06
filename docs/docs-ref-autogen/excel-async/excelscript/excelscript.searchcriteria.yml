@@ -47,11 +47,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'searchDirection?: SearchDirection;'
+      content: 'searchDirection?: SearchDirection | "Forward" | "Backwards";'
       return:
         type:
-          - 'excel!Excel.SearchDirection:enum'
+          - 'excel!Excel.SearchCriteria#searchDirection~0:complex'
 references:
-  - uid: 'excel!Excel.SearchDirection:enum'
-    name: SearchDirection
-    fullName: Excel.SearchDirection
+  - uid: 'excel!Excel.SearchCriteria#searchDirection~0:complex'
+    name: SearchDirection | "Forward" | "Backwards"
+    fullName: Excel.SearchDirection | "Forward" | "Backwards"
+    spec.typeScript:
+      - uid: 'excel!Excel.SearchDirection:enum'
+        name: SearchDirection
+        fullName: Excel.SearchDirection
+      - name: ' | "Forward" | "Backwards"'
+        fullName: ' | "Forward" | "Backwards"'

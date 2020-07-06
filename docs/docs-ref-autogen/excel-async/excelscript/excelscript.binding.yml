@@ -63,10 +63,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getText(): string;'
+      content: 'getText(): ClientResult<string>;'
       return:
         type:
-          - string
+          - 'excel!Excel.Binding#getText~0:complex'
         description: ''
   - uid: 'excel!Excel.Binding#id:member'
     summary: Represents binding identifier.
@@ -108,10 +108,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly type: BindingType;'
+      content: 'readonly type: BindingType | "Range" | "Table" | "Text";'
       return:
         type:
-          - 'excel!Excel.BindingType:enum'
+          - 'excel!Excel.Binding#type~0:complex'
 references:
   - uid: 'excel!Excel.Range:interface'
     name: Range
@@ -119,6 +119,21 @@ references:
   - uid: 'excel!Excel.Table:interface'
     name: Table
     fullName: Excel.Table
-  - uid: 'excel!Excel.BindingType:enum'
-    name: BindingType
-    fullName: Excel.BindingType
+  - uid: 'excel!Excel.Binding#getText~0:complex'
+    name: ClientResult<string>
+    fullName: Excel.ClientResult<string>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <string>
+        fullName: <string>
+  - uid: 'excel!Excel.Binding#type~0:complex'
+    name: BindingType | "Range" | "Table" | "Text"
+    fullName: Excel.BindingType | "Range" | "Table" | "Text"
+    spec.typeScript:
+      - uid: 'excel!Excel.BindingType:enum'
+        name: BindingType
+        fullName: Excel.BindingType
+      - name: ' | "Range" | "Table" | "Text"'
+        fullName: ' | "Range" | "Table" | "Text"'
