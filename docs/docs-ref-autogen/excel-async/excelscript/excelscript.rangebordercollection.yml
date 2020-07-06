@@ -34,7 +34,19 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getItem(index: BorderIndex): RangeBorder;'
+      content: |-
+        getItem(
+                    index:
+                        | BorderIndex
+                        | "EdgeTop"
+                        | "EdgeBottom"
+                        | "EdgeLeft"
+                        | "EdgeRight"
+                        | "InsideVertical"
+                        | "InsideHorizontal"
+                        | "DiagonalDown"
+                        | "DiagonalUp"
+                ): RangeBorder;
       return:
         type:
           - 'excel!Excel.RangeBorder:interface'
@@ -43,7 +55,7 @@ items:
         - id: index
           description: Index value of the border object to be retrieved. See Excel.BorderIndex for details.
           type:
-            - 'excel!Excel.BorderIndex:enum'
+            - 'excel!Excel.RangeBorderCollection#getItem~0:complex'
   - uid: 'excel!Excel.RangeBorderCollection#getItemAt:member(1)'
     summary: Gets a border object using its index.
     name: getItemAt(index)
@@ -101,6 +113,52 @@ references:
   - uid: 'excel!Excel.RangeBorder:interface'
     name: RangeBorder
     fullName: Excel.RangeBorder
-  - uid: 'excel!Excel.BorderIndex:enum'
-    name: BorderIndex
-    fullName: Excel.BorderIndex
+  - uid: 'excel!Excel.RangeBorderCollection#getItem~0:complex'
+    name: |-
+      | BorderIndex
+                      | "EdgeTop"
+                      | "EdgeBottom"
+                      | "EdgeLeft"
+                      | "EdgeRight"
+                      | "InsideVertical"
+                      | "InsideHorizontal"
+                      | "DiagonalDown"
+                      | "DiagonalUp"
+    fullName: |-
+      | Excel.BorderIndex
+                      | "EdgeTop"
+                      | "EdgeBottom"
+                      | "EdgeLeft"
+                      | "EdgeRight"
+                      | "InsideVertical"
+                      | "InsideHorizontal"
+                      | "DiagonalDown"
+                      | "DiagonalUp"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.BorderIndex:enum'
+        name: BorderIndex
+        fullName: Excel.BorderIndex
+      - name: |2-
+
+                          | "EdgeTop"
+                          | "EdgeBottom"
+                          | "EdgeLeft"
+                          | "EdgeRight"
+                          | "InsideVertical"
+                          | "InsideHorizontal"
+                          | "DiagonalDown"
+                          | "DiagonalUp"
+                  
+        fullName: |2-
+
+                          | "EdgeTop"
+                          | "EdgeBottom"
+                          | "EdgeLeft"
+                          | "EdgeRight"
+                          | "InsideVertical"
+                          | "InsideHorizontal"
+                          | "DiagonalDown"
+                          | "DiagonalUp"
+                  

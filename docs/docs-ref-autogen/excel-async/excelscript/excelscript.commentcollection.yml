@@ -30,7 +30,7 @@ items:
         add(
                     cellAddress: Range | string,
                     content: CommentRichContent | string,
-                    contentType?: ContentType
+                    contentType?: ContentType | "Plain" | "Mention"
                 ): Comment;
       return:
         type:
@@ -68,7 +68,7 @@ items:
             Optional. The type of content contained within the comment. The default value is enum
             `ContentType.Plain`<!-- -->.
           type:
-            - 'excel!Excel.ContentType:enum'
+            - 'excel!Excel.CommentCollection#add~2:complex'
   - uid: 'excel!Excel.CommentCollection#getCount:member(1)'
     summary: Gets the number of comments in the collection.
     name: getCount()
@@ -77,10 +77,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.CommentCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.CommentCollection#getItem:member(1)'
     summary: Gets a comment from the collection based on its ID.
@@ -199,9 +199,28 @@ references:
         fullName: Excel.CommentRichContent
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.ContentType:enum'
-    name: ContentType
-    fullName: Excel.ContentType
+  - uid: 'excel!Excel.CommentCollection#add~2:complex'
+    name: ContentType | "Plain" | "Mention"
+    fullName: Excel.ContentType | "Plain" | "Mention"
+    spec.typeScript:
+      - uid: 'excel!Excel.ContentType:enum'
+        name: ContentType
+        fullName: Excel.ContentType
+      - name: |2-
+           | "Plain" | "Mention"
+                  
+        fullName: |2-
+           | "Plain" | "Mention"
+                  
+  - uid: 'excel!Excel.CommentCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.CommentCollection#getItemByCell~0:complex'
     name: Range | string
     fullName: Excel.Range | string

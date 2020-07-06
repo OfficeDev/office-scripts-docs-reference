@@ -132,10 +132,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'position: ChartPlotAreaPosition;'
+      content: 'position: ChartPlotAreaPosition | "Automatic" | "Custom";'
       return:
         type:
-          - 'excel!Excel.ChartPlotAreaPosition:enum'
+          - 'excel!Excel.ChartPlotArea#position~0:complex'
   - uid: 'excel!Excel.ChartPlotArea#top:member'
     summary: Specifies the top value of plotArea.
     name: top
@@ -164,6 +164,12 @@ references:
   - uid: 'excel!Excel.ChartPlotAreaFormat:interface'
     name: ChartPlotAreaFormat
     fullName: Excel.ChartPlotAreaFormat
-  - uid: 'excel!Excel.ChartPlotAreaPosition:enum'
-    name: ChartPlotAreaPosition
-    fullName: Excel.ChartPlotAreaPosition
+  - uid: 'excel!Excel.ChartPlotArea#position~0:complex'
+    name: ChartPlotAreaPosition | "Automatic" | "Custom"
+    fullName: Excel.ChartPlotAreaPosition | "Automatic" | "Custom"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartPlotAreaPosition:enum'
+        name: ChartPlotAreaPosition
+        fullName: Excel.ChartPlotAreaPosition
+      - name: ' | "Automatic" | "Custom"'
+        fullName: ' | "Automatic" | "Custom"'

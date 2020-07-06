@@ -104,11 +104,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'underline: ChartUnderlineStyle;'
+      content: 'underline: ChartUnderlineStyle | "None" | "Single";'
       return:
         type:
-          - 'excel!Excel.ChartUnderlineStyle:enum'
+          - 'excel!Excel.ChartFont#underline~0:complex'
 references:
-  - uid: 'excel!Excel.ChartUnderlineStyle:enum'
-    name: ChartUnderlineStyle
-    fullName: Excel.ChartUnderlineStyle
+  - uid: 'excel!Excel.ChartFont#underline~0:complex'
+    name: ChartUnderlineStyle | "None" | "Single"
+    fullName: Excel.ChartUnderlineStyle | "None" | "Single"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartUnderlineStyle:enum'
+        name: ChartUnderlineStyle
+        fullName: Excel.ChartUnderlineStyle
+      - name: ' | "None" | "Single"'
+        fullName: ' | "None" | "Single"'

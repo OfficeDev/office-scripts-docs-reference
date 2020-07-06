@@ -140,7 +140,20 @@ items:
       content: |-
         autoFill(
                     destinationRange?: Range | string,
-                    autoFillType?: AutoFillType
+                    autoFillType?:
+                        | AutoFillType
+                        | "FillDefault"
+                        | "FillCopy"
+                        | "FillSeries"
+                        | "FillFormats"
+                        | "FillValues"
+                        | "FillDays"
+                        | "FillWeekdays"
+                        | "FillMonths"
+                        | "FillYears"
+                        | "LinearTrend"
+                        | "GrowthTrend"
+                        | "FlashFill"
                 ): void;
       return:
         type:
@@ -173,7 +186,7 @@ items:
             The type of autofill. Specifies how the destination range is to be filled, based on the contents of the
             current range. Default is "FillDefault".
           type:
-            - 'excel!Excel.AutoFillType:enum'
+            - 'excel!Excel.Range#autoFill~1:complex'
   - uid: 'excel!Excel.Range#calculate:member(1)'
     summary: Calculates a range of cells on a worksheet.
     name: calculate()
@@ -209,7 +222,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'clear(applyTo?: ClearApplyTo): void;'
+      content: |-
+        clear(
+                    applyTo?:
+                        | ClearApplyTo
+                        | "All"
+                        | "Formats"
+                        | "Contents"
+                        | "Hyperlinks"
+                        | "RemoveHyperlinks"
+                ): void;
       return:
         type:
           - void
@@ -218,7 +240,7 @@ items:
         - id: applyTo
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
           type:
-            - 'excel!Excel.ClearApplyTo:enum'
+            - 'excel!Excel.Range#clear~0:complex'
   - uid: 'excel!Excel.Range#columnCount:member'
     summary: Specifies the total number of columns in the range.
     name: columnCount
@@ -320,7 +342,12 @@ items:
       content: |-
         copyFrom(
                     sourceRange: Range | RangeAreas | string,
-                    copyType?: RangeCopyType,
+                    copyType?:
+                        | RangeCopyType
+                        | "All"
+                        | "Formulas"
+                        | "Values"
+                        | "Formats",
                     skipBlanks?: boolean,
                     transpose?: boolean
                 ): void;
@@ -354,7 +381,7 @@ items:
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
           type:
-            - 'excel!Excel.RangeCopyType:enum'
+            - 'excel!Excel.Range#copyFrom~1:complex'
         - id: skipBlanks
           description: True if to skip blank cells in the source range. Default is false.
           type:
@@ -383,7 +410,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'delete(shift: DeleteShiftDirection): void;'
+      content: 'delete(shift: DeleteShiftDirection | "Up" | "Left"): void;'
       return:
         type:
           - void
@@ -392,7 +419,7 @@ items:
         - id: shift
           description: Specifies which way to shift the cells. See Excel.DeleteShiftDirection for details.
           type:
-            - 'excel!Excel.DeleteShiftDirection:enum'
+            - 'excel!Excel.Range#delete~0:complex'
   - uid: 'excel!Excel.Range#find:member(1)'
     summary: >-
       Finds the given string based on the criteria specified. If the current range is larger than a single cell, then
@@ -703,10 +730,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getImage(): string;'
+      content: 'getImage(): ClientResult<string>;'
       return:
         type:
-          - string
+          - 'excel!Excel.Range#getImage~0:complex'
         description: ''
   - uid: 'excel!Excel.Range#getIntersection:member(1)'
     summary: Gets the range object that represents the rectangular intersection of the given ranges.
@@ -994,8 +1021,33 @@ items:
     syntax:
       content: |-
         getSpecialCells(
-                    cellType: SpecialCellType,
-                    cellValueType?: SpecialCellValueType
+                    cellType:
+                        | SpecialCellType
+                        | "ConditionalFormats"
+                        | "DataValidations"
+                        | "Blanks"
+                        | "Constants"
+                        | "Formulas"
+                        | "SameConditionalFormat"
+                        | "SameDataValidation"
+                        | "Visible",
+                    cellValueType?:
+                        | SpecialCellValueType
+                        | "All"
+                        | "Errors"
+                        | "ErrorsLogical"
+                        | "ErrorsNumbers"
+                        | "ErrorsText"
+                        | "ErrorsLogicalNumber"
+                        | "ErrorsLogicalText"
+                        | "ErrorsNumberText"
+                        | "Logical"
+                        | "LogicalNumbers"
+                        | "LogicalText"
+                        | "LogicalNumbersText"
+                        | "Numbers"
+                        | "NumbersText"
+                        | "Text"
                 ): RangeAreas;
       return:
         type:
@@ -1005,14 +1057,14 @@ items:
         - id: cellType
           description: The type of cells to include.
           type:
-            - 'excel!Excel.SpecialCellType:enum'
+            - 'excel!Excel.Range#getSpecialCells~0:complex'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used to determine which types of cells to
             include in the result. These values can be combined together to return more than one type. The default is to
             select all constants or formulas, no matter what the type.
           type:
-            - 'excel!Excel.SpecialCellValueType:enum'
+            - 'excel!Excel.Range#getSpecialCells~1:complex'
   - uid: 'excel!Excel.Range#getSpecialCellsOrNullObject:member(1)'
     summary: >-
       Gets the RangeAreas object, comprising one or more ranges, that represents all the cells that match the specified
@@ -1025,8 +1077,33 @@ items:
     syntax:
       content: |-
         getSpecialCellsOrNullObject(
-                    cellType: SpecialCellType,
-                    cellValueType?: SpecialCellValueType
+                    cellType:
+                        | SpecialCellType
+                        | "ConditionalFormats"
+                        | "DataValidations"
+                        | "Blanks"
+                        | "Constants"
+                        | "Formulas"
+                        | "SameConditionalFormat"
+                        | "SameDataValidation"
+                        | "Visible",
+                    cellValueType?:
+                        | SpecialCellValueType
+                        | "All"
+                        | "Errors"
+                        | "ErrorsLogical"
+                        | "ErrorsNumbers"
+                        | "ErrorsText"
+                        | "ErrorsLogicalNumber"
+                        | "ErrorsLogicalText"
+                        | "ErrorsNumberText"
+                        | "Logical"
+                        | "LogicalNumbers"
+                        | "LogicalText"
+                        | "LogicalNumbersText"
+                        | "Numbers"
+                        | "NumbersText"
+                        | "Text"
                 ): RangeAreas;
       return:
         type:
@@ -1036,14 +1113,14 @@ items:
         - id: cellType
           description: The type of cells to include.
           type:
-            - 'excel!Excel.SpecialCellType:enum'
+            - 'excel!Excel.Range#getSpecialCellsOrNullObject~0:complex'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used to determine which types of cells to
             include in the result. These values can be combined together to return more than one type. The default is to
             select all constants or formulas, no matter what the type.
           type:
-            - 'excel!Excel.SpecialCellValueType:enum'
+            - 'excel!Excel.Range#getSpecialCellsOrNullObject~1:complex'
   - uid: 'excel!Excel.Range#getSurroundingRegion:member(1)'
     summary: >-
       Returns a Range object that represents the surrounding region for the top-left cell in this range. A surrounding
@@ -1176,7 +1253,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'group(groupOption: GroupOption): void;'
+      content: 'group(groupOption: GroupOption | "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
@@ -1207,7 +1284,7 @@ items:
             group option differs from the range's `isEntireRow` or `isEntireColumn` property (i.e., `range.isEntireRow`
             is true and `groupOption` is "ByColumns" or `range.isEntireColumn` is true and `groupOption` is "ByRows").
           type:
-            - 'excel!Excel.GroupOption:enum'
+            - 'excel!Excel.Range#group~0:complex'
   - uid: 'excel!Excel.Range#height:member'
     summary: 'Returns the distance in points, for 100% zoom, from top edge of the range to bottom edge of the range.'
     name: height
@@ -1240,7 +1317,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'hideGroupDetails(groupOption: GroupOption): void;'
+      content: |-
+        hideGroupDetails(
+                    groupOption: GroupOption | "ByRows" | "ByColumns"
+                ): void;
       return:
         type:
           - void
@@ -1249,7 +1329,7 @@ items:
         - id: groupOption
           description: Specifies whether to hide details of grouped rows or grouped columns.
           type:
-            - 'excel!Excel.GroupOption:enum'
+            - 'excel!Excel.Range#hideGroupDetails~0:complex'
   - uid: 'excel!Excel.Range#hyperlink:member'
     summary: Represents the hyperlink for the current range.
     name: hyperlink
@@ -1303,7 +1383,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'insert(shift: InsertShiftDirection): Range;'
+      content: 'insert(shift: InsertShiftDirection | "Down" | "Right"): Range;'
       return:
         type:
           - 'excel!Excel.Range:interface'
@@ -1312,7 +1392,7 @@ items:
         - id: shift
           description: Specifies which way to shift the cells. See Excel.InsertShiftDirection for details.
           type:
-            - 'excel!Excel.InsertShiftDirection:enum'
+            - 'excel!Excel.Range#insert~0:complex'
   - uid: 'excel!Excel.Range#isEntireColumn:member'
     summary: Represents if the current range is an entire column.
     name: isEntireColumn
@@ -1507,10 +1587,10 @@ items:
                     text: string,
                     replacement: string,
                     criteria: ReplaceCriteria
-                ): number;
+                ): ClientResult<number>;
       return:
         type:
-          - number
+          - 'excel!Excel.Range#replaceAll~0:complex'
         description: ''
       parameters:
         - id: text
@@ -1608,7 +1688,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'showGroupDetails(groupOption: GroupOption): void;'
+      content: |-
+        showGroupDetails(
+                    groupOption: GroupOption | "ByRows" | "ByColumns"
+                ): void;
       return:
         type:
           - void
@@ -1617,7 +1700,7 @@ items:
         - id: groupOption
           description: Specifies whether to show details of grouped rows or grouped columns.
           type:
-            - 'excel!Excel.GroupOption:enum'
+            - 'excel!Excel.Range#showGroupDetails~0:complex'
   - uid: 'excel!Excel.Range#sort:member'
     summary: Represents the range sort of the current range.
     name: sort
@@ -1726,7 +1809,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'ungroup(groupOption: GroupOption): void;'
+      content: 'ungroup(groupOption: GroupOption | "ByRows" | "ByColumns"): void;'
       return:
         type:
           - void
@@ -1752,7 +1835,7 @@ items:
         - id: groupOption
           description: Specifies how the range can be ungrouped by rows or columns.
           type:
-            - 'excel!Excel.GroupOption:enum'
+            - 'excel!Excel.Range#ungroup~0:complex'
   - uid: 'excel!Excel.Range#unmerge:member(1)'
     summary: Unmerge the range cells into separate cells.
     name: unmerge()
@@ -1826,12 +1909,108 @@ references:
         fullName: Excel.Range
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.AutoFillType:enum'
-    name: AutoFillType
-    fullName: Excel.AutoFillType
-  - uid: 'excel!Excel.ClearApplyTo:enum'
-    name: ClearApplyTo
-    fullName: Excel.ClearApplyTo
+  - uid: 'excel!Excel.Range#autoFill~1:complex'
+    name: |-
+      | AutoFillType
+                      | "FillDefault"
+                      | "FillCopy"
+                      | "FillSeries"
+                      | "FillFormats"
+                      | "FillValues"
+                      | "FillDays"
+                      | "FillWeekdays"
+                      | "FillMonths"
+                      | "FillYears"
+                      | "LinearTrend"
+                      | "GrowthTrend"
+                      | "FlashFill"
+    fullName: |-
+      | Excel.AutoFillType
+                      | "FillDefault"
+                      | "FillCopy"
+                      | "FillSeries"
+                      | "FillFormats"
+                      | "FillValues"
+                      | "FillDays"
+                      | "FillWeekdays"
+                      | "FillMonths"
+                      | "FillYears"
+                      | "LinearTrend"
+                      | "GrowthTrend"
+                      | "FlashFill"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.AutoFillType:enum'
+        name: AutoFillType
+        fullName: Excel.AutoFillType
+      - name: |2-
+
+                          | "FillDefault"
+                          | "FillCopy"
+                          | "FillSeries"
+                          | "FillFormats"
+                          | "FillValues"
+                          | "FillDays"
+                          | "FillWeekdays"
+                          | "FillMonths"
+                          | "FillYears"
+                          | "LinearTrend"
+                          | "GrowthTrend"
+                          | "FlashFill"
+                  
+        fullName: |2-
+
+                          | "FillDefault"
+                          | "FillCopy"
+                          | "FillSeries"
+                          | "FillFormats"
+                          | "FillValues"
+                          | "FillDays"
+                          | "FillWeekdays"
+                          | "FillMonths"
+                          | "FillYears"
+                          | "LinearTrend"
+                          | "GrowthTrend"
+                          | "FlashFill"
+                  
+  - uid: 'excel!Excel.Range#clear~0:complex'
+    name: |-
+      | ClearApplyTo
+                      | "All"
+                      | "Formats"
+                      | "Contents"
+                      | "Hyperlinks"
+                      | "RemoveHyperlinks"
+    fullName: |-
+      | Excel.ClearApplyTo
+                      | "All"
+                      | "Formats"
+                      | "Contents"
+                      | "Hyperlinks"
+                      | "RemoveHyperlinks"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ClearApplyTo:enum'
+        name: ClearApplyTo
+        fullName: Excel.ClearApplyTo
+      - name: |2-
+
+                          | "All"
+                          | "Formats"
+                          | "Contents"
+                          | "Hyperlinks"
+                          | "RemoveHyperlinks"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Formats"
+                          | "Contents"
+                          | "Hyperlinks"
+                          | "RemoveHyperlinks"
+                  
   - uid: 'excel!Excel.ConditionalFormatCollection:interface'
     name: ConditionalFormatCollection
     fullName: Excel.ConditionalFormatCollection
@@ -1849,15 +2028,49 @@ references:
         fullName: Excel.RangeAreas
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.RangeCopyType:enum'
-    name: RangeCopyType
-    fullName: Excel.RangeCopyType
+  - uid: 'excel!Excel.Range#copyFrom~1:complex'
+    name: |-
+      | RangeCopyType
+                      | "All"
+                      | "Formulas"
+                      | "Values"
+                      | "Formats"
+    fullName: |-
+      | Excel.RangeCopyType
+                      | "All"
+                      | "Formulas"
+                      | "Values"
+                      | "Formats"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.RangeCopyType:enum'
+        name: RangeCopyType
+        fullName: Excel.RangeCopyType
+      - name: |2-
+
+                          | "All"
+                          | "Formulas"
+                          | "Values"
+                          | "Formats"
+        fullName: |2-
+
+                          | "All"
+                          | "Formulas"
+                          | "Values"
+                          | "Formats"
   - uid: 'excel!Excel.DataValidation:interface'
     name: DataValidation
     fullName: Excel.DataValidation
-  - uid: 'excel!Excel.DeleteShiftDirection:enum'
-    name: DeleteShiftDirection
-    fullName: Excel.DeleteShiftDirection
+  - uid: 'excel!Excel.Range#delete~0:complex'
+    name: DeleteShiftDirection | "Up" | "Left"
+    fullName: Excel.DeleteShiftDirection | "Up" | "Left"
+    spec.typeScript:
+      - uid: 'excel!Excel.DeleteShiftDirection:enum'
+        name: DeleteShiftDirection
+        fullName: Excel.DeleteShiftDirection
+      - name: ' | "Up" | "Left"'
+        fullName: ' | "Up" | "Left"'
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
@@ -1876,6 +2089,15 @@ references:
         fullName: Excel.Range
       - name: ' | string'
         fullName: ' | string'
+  - uid: 'excel!Excel.Range#getImage~0:complex'
+    name: ClientResult<string>
+    fullName: Excel.ClientResult<string>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <string>
+        fullName: <string>
   - uid: 'excel!Excel.Range#getIntersection~0:complex'
     name: Range | string
     fullName: Excel.Range | string
@@ -1900,27 +2122,294 @@ references:
   - uid: 'excel!Excel.RangeAreas:interface'
     name: RangeAreas
     fullName: Excel.RangeAreas
-  - uid: 'excel!Excel.SpecialCellType:enum'
-    name: SpecialCellType
-    fullName: Excel.SpecialCellType
-  - uid: 'excel!Excel.SpecialCellValueType:enum'
-    name: SpecialCellValueType
-    fullName: Excel.SpecialCellValueType
+  - uid: 'excel!Excel.Range#getSpecialCells~0:complex'
+    name: |-
+      | SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    fullName: |-
+      | Excel.SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellType:enum'
+        name: SpecialCellType
+        fullName: Excel.SpecialCellType
+      - name: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+        fullName: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+  - uid: 'excel!Excel.Range#getSpecialCells~1:complex'
+    name: |-
+      | SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    fullName: |-
+      | Excel.SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellValueType:enum'
+        name: SpecialCellValueType
+        fullName: Excel.SpecialCellValueType
+      - name: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+  - uid: 'excel!Excel.Range#getSpecialCellsOrNullObject~0:complex'
+    name: |-
+      | SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    fullName: |-
+      | Excel.SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellType:enum'
+        name: SpecialCellType
+        fullName: Excel.SpecialCellType
+      - name: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+        fullName: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+  - uid: 'excel!Excel.Range#getSpecialCellsOrNullObject~1:complex'
+    name: |-
+      | SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    fullName: |-
+      | Excel.SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellValueType:enum'
+        name: SpecialCellValueType
+        fullName: Excel.SpecialCellValueType
+      - name: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
   - uid: 'excel!Excel.TableScopedCollection:interface'
     name: TableScopedCollection
     fullName: Excel.TableScopedCollection
   - uid: 'excel!Excel.RangeView:interface'
     name: RangeView
     fullName: Excel.RangeView
-  - uid: 'excel!Excel.GroupOption:enum'
-    name: GroupOption
-    fullName: Excel.GroupOption
+  - uid: 'excel!Excel.Range#group~0:complex'
+    name: GroupOption | "ByRows" | "ByColumns"
+    fullName: Excel.GroupOption | "ByRows" | "ByColumns"
+    spec.typeScript:
+      - uid: 'excel!Excel.GroupOption:enum'
+        name: GroupOption
+        fullName: Excel.GroupOption
+      - name: ' | "ByRows" | "ByColumns"'
+        fullName: ' | "ByRows" | "ByColumns"'
+  - uid: 'excel!Excel.Range#hideGroupDetails~0:complex'
+    name: GroupOption | "ByRows" | "ByColumns"
+    fullName: Excel.GroupOption | "ByRows" | "ByColumns"
+    spec.typeScript:
+      - uid: 'excel!Excel.GroupOption:enum'
+        name: GroupOption
+        fullName: Excel.GroupOption
+      - name: |2-
+           | "ByRows" | "ByColumns"
+                  
+        fullName: |2-
+           | "ByRows" | "ByColumns"
+                  
   - uid: 'excel!Excel.RangeHyperlink:interface'
     name: RangeHyperlink
     fullName: Excel.RangeHyperlink
-  - uid: 'excel!Excel.InsertShiftDirection:enum'
-    name: InsertShiftDirection
-    fullName: Excel.InsertShiftDirection
+  - uid: 'excel!Excel.Range#insert~0:complex'
+    name: InsertShiftDirection | "Down" | "Right"
+    fullName: Excel.InsertShiftDirection | "Down" | "Right"
+    spec.typeScript:
+      - uid: 'excel!Excel.InsertShiftDirection:enum'
+        name: InsertShiftDirection
+        fullName: Excel.InsertShiftDirection
+      - name: ' | "Down" | "Right"'
+        fullName: ' | "Down" | "Right"'
   - uid: 'excel!Excel.Range#linkedDataTypeState~0:complex'
     name: 'LinkedDataTypeState[][]'
     fullName: 'Excel.LinkedDataTypeState[][]'
@@ -1942,12 +2431,43 @@ references:
   - uid: 'excel!Excel.RemoveDuplicatesResult:interface'
     name: RemoveDuplicatesResult
     fullName: Excel.RemoveDuplicatesResult
+  - uid: 'excel!Excel.Range#replaceAll~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.ReplaceCriteria:interface'
     name: ReplaceCriteria
     fullName: Excel.ReplaceCriteria
+  - uid: 'excel!Excel.Range#showGroupDetails~0:complex'
+    name: GroupOption | "ByRows" | "ByColumns"
+    fullName: Excel.GroupOption | "ByRows" | "ByColumns"
+    spec.typeScript:
+      - uid: 'excel!Excel.GroupOption:enum'
+        name: GroupOption
+        fullName: Excel.GroupOption
+      - name: |2-
+           | "ByRows" | "ByColumns"
+                  
+        fullName: |2-
+           | "ByRows" | "ByColumns"
+                  
   - uid: 'excel!Excel.RangeSort:interface'
     name: RangeSort
     fullName: Excel.RangeSort
+  - uid: 'excel!Excel.Range#ungroup~0:complex'
+    name: GroupOption | "ByRows" | "ByColumns"
+    fullName: Excel.GroupOption | "ByRows" | "ByColumns"
+    spec.typeScript:
+      - uid: 'excel!Excel.GroupOption:enum'
+        name: GroupOption
+        fullName: Excel.GroupOption
+      - name: ' | "ByRows" | "ByColumns"'
+        fullName: ' | "ByRows" | "ByColumns"'
   - uid: 'excel!Excel.Range#valueTypes~0:complex'
     name: 'RangeValueType[][]'
     fullName: 'Excel.RangeValueType[][]'

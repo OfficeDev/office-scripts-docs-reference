@@ -136,7 +136,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getPivotItems(axis: PivotAxis, cell: Range | string): PivotItem[];'
+      content: |-
+        getPivotItems(
+                    axis: PivotAxis | "Unknown" | "Row" | "Column" | "Data" | "Filter",
+                    cell: Range | string
+                ): ClientResult<PivotItem[]>;
       return:
         type:
           - 'excel!Excel.PivotLayout#getPivotItems~0:complex'
@@ -145,11 +149,11 @@ items:
         - id: axis
           description: The axis from which to get the PivotItems. Must be either "row" or "column."
           type:
-            - 'excel!Excel.PivotAxis:enum'
+            - 'excel!Excel.PivotLayout#getPivotItems~1:complex'
         - id: cell
           description: A single cell within the PivotTable's data body.
           type:
-            - 'excel!Excel.PivotLayout#getPivotItems~1:complex'
+            - 'excel!Excel.PivotLayout#getPivotItems~2:complex'
   - uid: 'excel!Excel.PivotLayout#getRange:member(1)'
     summary: 'Returns the range the PivotTable exists on, excluding the filter area.'
     name: getRange()
@@ -186,10 +190,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'layoutType: PivotLayoutType;'
+      content: 'layoutType: PivotLayoutType | "Compact" | "Tabular" | "Outline";'
       return:
         type:
-          - 'excel!Excel.PivotLayoutType:enum'
+          - 'excel!Excel.PivotLayout#layoutType~0:complex'
   - uid: 'excel!Excel.PivotLayout#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -234,7 +238,11 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;'
+      content: |-
+        setAutoSortOnCell(
+                    cell: Range | string,
+                    sortBy: SortBy | "Ascending" | "Descending"
+                ): void;
       return:
         type:
           - void
@@ -247,7 +255,7 @@ items:
         - id: sortBy
           description: The direction of the sort.
           type:
-            - 'excel!Excel.SortBy:enum'
+            - 'excel!Excel.PivotLayout#setAutoSortOnCell~1:complex'
   - uid: 'excel!Excel.PivotLayout#showColumnGrandTotals:member'
     summary: Specifies if the PivotTable report shows grand totals for columns.
     name: showColumnGrandTotals
@@ -282,10 +290,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'subtotalLocation: SubtotalLocationType;'
+      content: 'subtotalLocation: SubtotalLocationType | "AtTop" | "AtBottom" | "Off";'
       return:
         type:
-          - 'excel!Excel.SubtotalLocationType:enum'
+          - 'excel!Excel.PivotLayout#subtotalLocation~0:complex'
 references:
   - uid: 'excel!Excel.Range:interface'
     name: Range
@@ -303,29 +311,50 @@ references:
       - name: ' | string'
         fullName: ' | string'
   - uid: 'excel!Excel.PivotLayout#getPivotItems~0:complex'
-    name: 'PivotItem[]'
-    fullName: 'Excel.PivotItem[]'
+    name: 'ClientResult<PivotItem[]>'
+    fullName: 'Excel.ClientResult<Excel.PivotItem[]>'
     spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <
+        fullName: <
       - uid: 'excel!Excel.PivotItem:interface'
         name: PivotItem
         fullName: Excel.PivotItem
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.PivotAxis:enum'
-    name: PivotAxis
-    fullName: Excel.PivotAxis
+      - name: '[]>'
+        fullName: '[]>'
   - uid: 'excel!Excel.PivotLayout#getPivotItems~1:complex'
+    name: PivotAxis | "Unknown" | "Row" | "Column" | "Data" | "Filter"
+    fullName: Excel.PivotAxis | "Unknown" | "Row" | "Column" | "Data" | "Filter"
+    spec.typeScript:
+      - uid: 'excel!Excel.PivotAxis:enum'
+        name: PivotAxis
+        fullName: Excel.PivotAxis
+      - name: ' | "Unknown" | "Row" | "Column" | "Data" | "Filter"'
+        fullName: ' | "Unknown" | "Row" | "Column" | "Data" | "Filter"'
+  - uid: 'excel!Excel.PivotLayout#getPivotItems~2:complex'
     name: Range | string
     fullName: Excel.Range | string
     spec.typeScript:
       - uid: 'excel!Excel.Range:interface'
         name: Range
         fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.PivotLayoutType:enum'
-    name: PivotLayoutType
-    fullName: Excel.PivotLayoutType
+      - name: |2-
+           | string
+                  
+        fullName: |2-
+           | string
+                  
+  - uid: 'excel!Excel.PivotLayout#layoutType~0:complex'
+    name: PivotLayoutType | "Compact" | "Tabular" | "Outline"
+    fullName: Excel.PivotLayoutType | "Compact" | "Tabular" | "Outline"
+    spec.typeScript:
+      - uid: 'excel!Excel.PivotLayoutType:enum'
+        name: PivotLayoutType
+        fullName: Excel.PivotLayoutType
+      - name: ' | "Compact" | "Tabular" | "Outline"'
+        fullName: ' | "Compact" | "Tabular" | "Outline"'
   - uid: 'excel!Excel.PivotLayout#setAutoSortOnCell~0:complex'
     name: Range | string
     fullName: Excel.Range | string
@@ -335,9 +364,25 @@ references:
         fullName: Excel.Range
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.SortBy:enum'
-    name: SortBy
-    fullName: Excel.SortBy
-  - uid: 'excel!Excel.SubtotalLocationType:enum'
-    name: SubtotalLocationType
-    fullName: Excel.SubtotalLocationType
+  - uid: 'excel!Excel.PivotLayout#setAutoSortOnCell~1:complex'
+    name: SortBy | "Ascending" | "Descending"
+    fullName: Excel.SortBy | "Ascending" | "Descending"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortBy:enum'
+        name: SortBy
+        fullName: Excel.SortBy
+      - name: |2-
+           | "Ascending" | "Descending"
+                  
+        fullName: |2-
+           | "Ascending" | "Descending"
+                  
+  - uid: 'excel!Excel.PivotLayout#subtotalLocation~0:complex'
+    name: SubtotalLocationType | "AtTop" | "AtBottom" | "Off"
+    fullName: Excel.SubtotalLocationType | "AtTop" | "AtBottom" | "Off"
+    spec.typeScript:
+      - uid: 'excel!Excel.SubtotalLocationType:enum'
+        name: SubtotalLocationType
+        fullName: Excel.SubtotalLocationType
+      - name: ' | "AtTop" | "AtBottom" | "Off"'
+        fullName: ' | "AtTop" | "AtBottom" | "Off"'

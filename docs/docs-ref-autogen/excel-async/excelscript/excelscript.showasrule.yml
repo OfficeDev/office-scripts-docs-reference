@@ -74,10 +74,28 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'calculation: ShowAsCalculation;'
+      content: |-
+        calculation:
+                    | ShowAsCalculation
+                    | "Unknown"
+                    | "None"
+                    | "PercentOfGrandTotal"
+                    | "PercentOfRowTotal"
+                    | "PercentOfColumnTotal"
+                    | "PercentOfParentRowTotal"
+                    | "PercentOfParentColumnTotal"
+                    | "PercentOfParentTotal"
+                    | "PercentOf"
+                    | "RunningTotal"
+                    | "PercentRunningTotal"
+                    | "DifferenceFrom"
+                    | "PercentDifferenceFrom"
+                    | "RankAscending"
+                    | "RankDecending"
+                    | "Index";
       return:
         type:
-          - 'excel!Excel.ShowAsCalculation:enum'
+          - 'excel!Excel.ShowAsRule#calculation~0:complex'
 references:
   - uid: 'excel!Excel.PivotField:interface'
     name: PivotField
@@ -85,6 +103,82 @@ references:
   - uid: 'excel!Excel.PivotItem:interface'
     name: PivotItem
     fullName: Excel.PivotItem
-  - uid: 'excel!Excel.ShowAsCalculation:enum'
-    name: ShowAsCalculation
-    fullName: Excel.ShowAsCalculation
+  - uid: 'excel!Excel.ShowAsRule#calculation~0:complex'
+    name: |-
+      | ShowAsCalculation
+                  | "Unknown"
+                  | "None"
+                  | "PercentOfGrandTotal"
+                  | "PercentOfRowTotal"
+                  | "PercentOfColumnTotal"
+                  | "PercentOfParentRowTotal"
+                  | "PercentOfParentColumnTotal"
+                  | "PercentOfParentTotal"
+                  | "PercentOf"
+                  | "RunningTotal"
+                  | "PercentRunningTotal"
+                  | "DifferenceFrom"
+                  | "PercentDifferenceFrom"
+                  | "RankAscending"
+                  | "RankDecending"
+                  | "Index"
+    fullName: |-
+      | Excel.ShowAsCalculation
+                  | "Unknown"
+                  | "None"
+                  | "PercentOfGrandTotal"
+                  | "PercentOfRowTotal"
+                  | "PercentOfColumnTotal"
+                  | "PercentOfParentRowTotal"
+                  | "PercentOfParentColumnTotal"
+                  | "PercentOfParentTotal"
+                  | "PercentOf"
+                  | "RunningTotal"
+                  | "PercentRunningTotal"
+                  | "DifferenceFrom"
+                  | "PercentDifferenceFrom"
+                  | "RankAscending"
+                  | "RankDecending"
+                  | "Index"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ShowAsCalculation:enum'
+        name: ShowAsCalculation
+        fullName: Excel.ShowAsCalculation
+      - name: |2-
+
+                      | "Unknown"
+                      | "None"
+                      | "PercentOfGrandTotal"
+                      | "PercentOfRowTotal"
+                      | "PercentOfColumnTotal"
+                      | "PercentOfParentRowTotal"
+                      | "PercentOfParentColumnTotal"
+                      | "PercentOfParentTotal"
+                      | "PercentOf"
+                      | "RunningTotal"
+                      | "PercentRunningTotal"
+                      | "DifferenceFrom"
+                      | "PercentDifferenceFrom"
+                      | "RankAscending"
+                      | "RankDecending"
+                      | "Index"
+        fullName: |2-
+
+                      | "Unknown"
+                      | "None"
+                      | "PercentOfGrandTotal"
+                      | "PercentOfRowTotal"
+                      | "PercentOfColumnTotal"
+                      | "PercentOfParentRowTotal"
+                      | "PercentOfParentColumnTotal"
+                      | "PercentOfParentTotal"
+                      | "PercentOf"
+                      | "RunningTotal"
+                      | "PercentRunningTotal"
+                      | "DifferenceFrom"
+                      | "PercentDifferenceFrom"
+                      | "RankAscending"
+                      | "RankDecending"
+                      | "Index"

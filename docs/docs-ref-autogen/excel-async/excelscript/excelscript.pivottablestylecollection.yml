@@ -48,10 +48,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.PivotTableStyleCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.PivotTableStyleCollection#getDefault:member(1)'
     summary: Gets the default PivotTableStyle for the parent object's scope.
@@ -144,6 +144,15 @@ references:
   - uid: 'excel!Excel.PivotTableStyle:interface'
     name: PivotTableStyle
     fullName: Excel.PivotTableStyle
+  - uid: 'excel!Excel.PivotTableStyleCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.PivotTableStyleCollection#setDefault~0:complex'
     name: PivotTableStyle | string
     fullName: Excel.PivotTableStyle | string

@@ -60,10 +60,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(visibleOnly?: boolean): number;'
+      content: 'getCount(visibleOnly?: boolean): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.WorksheetCollection#getCount~0:complex'
         description: ''
       parameters:
         - id: visibleOnly
@@ -226,3 +226,12 @@ references:
   - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet
+  - uid: 'excel!Excel.WorksheetCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

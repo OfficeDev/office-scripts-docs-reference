@@ -31,11 +31,65 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ConditionalFormatRuleType;'
+      content: |-
+        type:
+                    | ConditionalFormatRuleType
+                    | "Invalid"
+                    | "Automatic"
+                    | "LowestValue"
+                    | "HighestValue"
+                    | "Number"
+                    | "Percent"
+                    | "Formula"
+                    | "Percentile";
       return:
         type:
-          - 'excel!Excel.ConditionalFormatRuleType:enum'
+          - 'excel!Excel.ConditionalDataBarRule#type~0:complex'
 references:
-  - uid: 'excel!Excel.ConditionalFormatRuleType:enum'
-    name: ConditionalFormatRuleType
-    fullName: Excel.ConditionalFormatRuleType
+  - uid: 'excel!Excel.ConditionalDataBarRule#type~0:complex'
+    name: |-
+      | ConditionalFormatRuleType
+                  | "Invalid"
+                  | "Automatic"
+                  | "LowestValue"
+                  | "HighestValue"
+                  | "Number"
+                  | "Percent"
+                  | "Formula"
+                  | "Percentile"
+    fullName: |-
+      | Excel.ConditionalFormatRuleType
+                  | "Invalid"
+                  | "Automatic"
+                  | "LowestValue"
+                  | "HighestValue"
+                  | "Number"
+                  | "Percent"
+                  | "Formula"
+                  | "Percentile"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalFormatRuleType:enum'
+        name: ConditionalFormatRuleType
+        fullName: Excel.ConditionalFormatRuleType
+      - name: |2-
+
+                      | "Invalid"
+                      | "Automatic"
+                      | "LowestValue"
+                      | "HighestValue"
+                      | "Number"
+                      | "Percent"
+                      | "Formula"
+                      | "Percentile"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Automatic"
+                      | "LowestValue"
+                      | "HighestValue"
+                      | "Number"
+                      | "Percent"
+                      | "Formula"
+                      | "Percentile"

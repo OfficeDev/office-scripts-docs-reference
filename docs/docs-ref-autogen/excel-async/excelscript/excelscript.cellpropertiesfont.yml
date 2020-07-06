@@ -216,11 +216,50 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'underline?: RangeUnderlineStyle;'
+      content: |-
+        underline?:
+                    | RangeUnderlineStyle
+                    | "None"
+                    | "Single"
+                    | "Double"
+                    | "SingleAccountant"
+                    | "DoubleAccountant";
       return:
         type:
-          - 'excel!Excel.RangeUnderlineStyle:enum'
+          - 'excel!Excel.CellPropertiesFont#underline~0:complex'
 references:
-  - uid: 'excel!Excel.RangeUnderlineStyle:enum'
-    name: RangeUnderlineStyle
-    fullName: Excel.RangeUnderlineStyle
+  - uid: 'excel!Excel.CellPropertiesFont#underline~0:complex'
+    name: |-
+      | RangeUnderlineStyle
+                  | "None"
+                  | "Single"
+                  | "Double"
+                  | "SingleAccountant"
+                  | "DoubleAccountant"
+    fullName: |-
+      | Excel.RangeUnderlineStyle
+                  | "None"
+                  | "Single"
+                  | "Double"
+                  | "SingleAccountant"
+                  | "DoubleAccountant"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.RangeUnderlineStyle:enum'
+        name: RangeUnderlineStyle
+        fullName: Excel.RangeUnderlineStyle
+      - name: |2-
+
+                      | "None"
+                      | "Single"
+                      | "Double"
+                      | "SingleAccountant"
+                      | "DoubleAccountant"
+        fullName: |2-
+
+                      | "None"
+                      | "Single"
+                      | "Double"
+                      | "SingleAccountant"
+                      | "DoubleAccountant"

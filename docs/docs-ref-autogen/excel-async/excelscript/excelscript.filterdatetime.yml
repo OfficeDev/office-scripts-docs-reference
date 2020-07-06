@@ -33,11 +33,55 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'specificity: FilterDatetimeSpecificity;'
+      content: |-
+        specificity:
+                    | FilterDatetimeSpecificity
+                    | "Year"
+                    | "Month"
+                    | "Day"
+                    | "Hour"
+                    | "Minute"
+                    | "Second";
       return:
         type:
-          - 'excel!Excel.FilterDatetimeSpecificity:enum'
+          - 'excel!Excel.FilterDatetime#specificity~0:complex'
 references:
-  - uid: 'excel!Excel.FilterDatetimeSpecificity:enum'
-    name: FilterDatetimeSpecificity
-    fullName: Excel.FilterDatetimeSpecificity
+  - uid: 'excel!Excel.FilterDatetime#specificity~0:complex'
+    name: |-
+      | FilterDatetimeSpecificity
+                  | "Year"
+                  | "Month"
+                  | "Day"
+                  | "Hour"
+                  | "Minute"
+                  | "Second"
+    fullName: |-
+      | Excel.FilterDatetimeSpecificity
+                  | "Year"
+                  | "Month"
+                  | "Day"
+                  | "Hour"
+                  | "Minute"
+                  | "Second"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.FilterDatetimeSpecificity:enum'
+        name: FilterDatetimeSpecificity
+        fullName: Excel.FilterDatetimeSpecificity
+      - name: |2-
+
+                      | "Year"
+                      | "Month"
+                      | "Day"
+                      | "Hour"
+                      | "Minute"
+                      | "Second"
+        fullName: |2-
+
+                      | "Year"
+                      | "Month"
+                      | "Day"
+                      | "Hour"
+                      | "Minute"
+                      | "Second"

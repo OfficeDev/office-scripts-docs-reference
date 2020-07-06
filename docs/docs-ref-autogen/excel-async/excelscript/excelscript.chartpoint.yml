@@ -118,10 +118,25 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'markerStyle: ChartMarkerStyle;'
+      content: |-
+        markerStyle:
+                    | ChartMarkerStyle
+                    | "Invalid"
+                    | "Automatic"
+                    | "None"
+                    | "Square"
+                    | "Diamond"
+                    | "Triangle"
+                    | "X"
+                    | "Star"
+                    | "Dot"
+                    | "Dash"
+                    | "Circle"
+                    | "Plus"
+                    | "Picture";
       return:
         type:
-          - 'excel!Excel.ChartMarkerStyle:enum'
+          - 'excel!Excel.ChartPoint#markerStyle~0:complex'
   - uid: 'excel!Excel.ChartPoint#value:member'
     summary: Returns the value of a chart point.
     name: value
@@ -141,6 +156,70 @@ references:
   - uid: 'excel!Excel.ChartPointFormat:interface'
     name: ChartPointFormat
     fullName: Excel.ChartPointFormat
-  - uid: 'excel!Excel.ChartMarkerStyle:enum'
-    name: ChartMarkerStyle
-    fullName: Excel.ChartMarkerStyle
+  - uid: 'excel!Excel.ChartPoint#markerStyle~0:complex'
+    name: |-
+      | ChartMarkerStyle
+                  | "Invalid"
+                  | "Automatic"
+                  | "None"
+                  | "Square"
+                  | "Diamond"
+                  | "Triangle"
+                  | "X"
+                  | "Star"
+                  | "Dot"
+                  | "Dash"
+                  | "Circle"
+                  | "Plus"
+                  | "Picture"
+    fullName: |-
+      | Excel.ChartMarkerStyle
+                  | "Invalid"
+                  | "Automatic"
+                  | "None"
+                  | "Square"
+                  | "Diamond"
+                  | "Triangle"
+                  | "X"
+                  | "Star"
+                  | "Dot"
+                  | "Dash"
+                  | "Circle"
+                  | "Plus"
+                  | "Picture"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartMarkerStyle:enum'
+        name: ChartMarkerStyle
+        fullName: Excel.ChartMarkerStyle
+      - name: |2-
+
+                      | "Invalid"
+                      | "Automatic"
+                      | "None"
+                      | "Square"
+                      | "Diamond"
+                      | "Triangle"
+                      | "X"
+                      | "Star"
+                      | "Dot"
+                      | "Dash"
+                      | "Circle"
+                      | "Plus"
+                      | "Picture"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Automatic"
+                      | "None"
+                      | "Square"
+                      | "Diamond"
+                      | "Triangle"
+                      | "X"
+                      | "Star"
+                      | "Dot"
+                      | "Dash"
+                      | "Circle"
+                      | "Plus"
+                      | "Picture"

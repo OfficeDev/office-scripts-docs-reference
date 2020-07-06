@@ -95,7 +95,7 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'sortByLabels(sortBy: SortBy): void;'
+      content: 'sortByLabels(sortBy: SortBy | "Ascending" | "Descending"): void;'
       return:
         type:
           - void
@@ -104,7 +104,7 @@ items:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
           type:
-            - 'excel!Excel.SortBy:enum'
+            - 'excel!Excel.PivotField#sortByLabels~0:complex'
   - uid: 'excel!Excel.PivotField#sortByValues:member(1)'
     summary: >-
       Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to
@@ -117,7 +117,7 @@ items:
     syntax:
       content: |-
         sortByValues(
-                    sortBy: SortBy,
+                    sortBy: SortBy | "Ascending" | "Descending",
                     valuesHierarchy: DataPivotHierarchy,
                     pivotItemScope?: Array<PivotItem | string>
                 ): void;
@@ -129,7 +129,7 @@ items:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
           type:
-            - 'excel!Excel.SortBy:enum'
+            - 'excel!Excel.PivotField#sortByValues~0:complex'
         - id: valuesHierarchy
           description: Specifies the values hierarchy on the data axis to be used for sorting.
           type:
@@ -141,7 +141,7 @@ items:
             the PivotItem. If there are no items other than data hierarchy on the axis you want to sort on, this can be
             empty.
           type:
-            - 'excel!Excel.PivotField#sortByValues~0:complex'
+            - 'excel!Excel.PivotField#sortByValues~1:complex'
   - uid: 'excel!Excel.PivotField#subtotals:member'
     summary: Subtotals of the PivotField.
     name: subtotals
@@ -158,13 +158,28 @@ references:
   - uid: 'excel!Excel.PivotItemCollection:interface'
     name: PivotItemCollection
     fullName: Excel.PivotItemCollection
-  - uid: 'excel!Excel.SortBy:enum'
-    name: SortBy
-    fullName: Excel.SortBy
+  - uid: 'excel!Excel.PivotField#sortByLabels~0:complex'
+    name: SortBy | "Ascending" | "Descending"
+    fullName: Excel.SortBy | "Ascending" | "Descending"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortBy:enum'
+        name: SortBy
+        fullName: Excel.SortBy
+      - name: ' | "Ascending" | "Descending"'
+        fullName: ' | "Ascending" | "Descending"'
+  - uid: 'excel!Excel.PivotField#sortByValues~0:complex'
+    name: SortBy | "Ascending" | "Descending"
+    fullName: Excel.SortBy | "Ascending" | "Descending"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortBy:enum'
+        name: SortBy
+        fullName: Excel.SortBy
+      - name: ' | "Ascending" | "Descending"'
+        fullName: ' | "Ascending" | "Descending"'
   - uid: 'excel!Excel.DataPivotHierarchy:interface'
     name: DataPivotHierarchy
     fullName: Excel.DataPivotHierarchy
-  - uid: 'excel!Excel.PivotField#sortByValues~0:complex'
+  - uid: 'excel!Excel.PivotField#sortByValues~1:complex'
     name: Array<PivotItem | string>
     fullName: Array<Excel.PivotItem | string>
     spec.typeScript:

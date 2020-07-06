@@ -60,10 +60,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'alignment: ChartTickLabelAlignment;'
+      content: 'alignment: ChartTickLabelAlignment | "Center" | "Left" | "Right";'
       return:
         type:
-          - 'excel!Excel.ChartTickLabelAlignment:enum'
+          - 'excel!Excel.ChartAxis#alignment~0:complex'
   - uid: 'excel!Excel.ChartAxis#axisGroup:member'
     summary: Specifies the group for the specified axis. See Excel.ChartAxisGroup for details.
     name: axisGroup
@@ -72,10 +72,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly axisGroup: ChartAxisGroup;'
+      content: 'readonly axisGroup: ChartAxisGroup | "Primary" | "Secondary";'
       return:
         type:
-          - 'excel!Excel.ChartAxisGroup:enum'
+          - 'excel!Excel.ChartAxis#axisGroup~0:complex'
   - uid: 'excel!Excel.ChartAxis#baseTimeUnit:member'
     summary: Specifies the base unit for the specified category axis.
     name: baseTimeUnit
@@ -84,10 +84,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'baseTimeUnit: ChartAxisTimeUnit;'
+      content: 'baseTimeUnit: ChartAxisTimeUnit | "Days" | "Months" | "Years";'
       return:
         type:
-          - 'excel!Excel.ChartAxisTimeUnit:enum'
+          - 'excel!Excel.ChartAxis#baseTimeUnit~0:complex'
   - uid: 'excel!Excel.ChartAxis#categoryType:member'
     summary: Specifies the category axis type.
     name: categoryType
@@ -96,10 +96,15 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'categoryType: ChartAxisCategoryType;'
+      content: |-
+        categoryType:
+                    | ChartAxisCategoryType
+                    | "Automatic"
+                    | "TextAxis"
+                    | "DateAxis";
       return:
         type:
-          - 'excel!Excel.ChartAxisCategoryType:enum'
+          - 'excel!Excel.ChartAxis#categoryType~0:complex'
   - uid: 'excel!Excel.ChartAxis#customDisplayUnit:member'
     summary: >-
       Specifies the custom axis display unit value. To set this property, please use the SetCustomDisplayUnit(double)
@@ -122,10 +127,23 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'displayUnit: ChartAxisDisplayUnit;'
+      content: |-
+        displayUnit:
+                    | ChartAxisDisplayUnit
+                    | "None"
+                    | "Hundreds"
+                    | "Thousands"
+                    | "TenThousands"
+                    | "HundredThousands"
+                    | "Millions"
+                    | "TenMillions"
+                    | "HundredMillions"
+                    | "Billions"
+                    | "Trillions"
+                    | "Custom";
       return:
         type:
-          - 'excel!Excel.ChartAxisDisplayUnit:enum'
+          - 'excel!Excel.ChartAxis#displayUnit~0:complex'
         description: |-
 
 
@@ -263,10 +281,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'majorTickMark: ChartAxisTickMark;'
+      content: |-
+        majorTickMark:
+                    | ChartAxisTickMark
+                    | "None"
+                    | "Cross"
+                    | "Inside"
+                    | "Outside";
       return:
         type:
-          - 'excel!Excel.ChartAxisTickMark:enum'
+          - 'excel!Excel.ChartAxis#majorTickMark~0:complex'
   - uid: 'excel!Excel.ChartAxis#majorTimeUnitScale:member'
     summary: Specifies the major unit scale value for the category axis when the CategoryType property is set to TimeScale.
     name: majorTimeUnitScale
@@ -275,10 +299,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'majorTimeUnitScale: ChartAxisTimeUnit;'
+      content: 'majorTimeUnitScale: ChartAxisTimeUnit | "Days" | "Months" | "Years";'
       return:
         type:
-          - 'excel!Excel.ChartAxisTimeUnit:enum'
+          - 'excel!Excel.ChartAxis#majorTimeUnitScale~0:complex'
   - uid: 'excel!Excel.ChartAxis#majorUnit:member'
     summary: >-
       Represents the interval between two major tick marks. Can be set to a numeric value or an empty string. The
@@ -341,10 +365,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'minorTickMark: ChartAxisTickMark;'
+      content: |-
+        minorTickMark:
+                    | ChartAxisTickMark
+                    | "None"
+                    | "Cross"
+                    | "Inside"
+                    | "Outside";
       return:
         type:
-          - 'excel!Excel.ChartAxisTickMark:enum'
+          - 'excel!Excel.ChartAxis#minorTickMark~0:complex'
   - uid: 'excel!Excel.ChartAxis#minorTimeUnitScale:member'
     summary: Specifies the minor unit scale value for the category axis when the CategoryType property is set to TimeScale.
     name: minorTimeUnitScale
@@ -353,10 +383,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'minorTimeUnitScale: ChartAxisTimeUnit;'
+      content: 'minorTimeUnitScale: ChartAxisTimeUnit | "Days" | "Months" | "Years";'
       return:
         type:
-          - 'excel!Excel.ChartAxisTimeUnit:enum'
+          - 'excel!Excel.ChartAxis#minorTimeUnitScale~0:complex'
   - uid: 'excel!Excel.ChartAxis#minorUnit:member'
     summary: >-
       Represents the interval between two minor tick marks. Can be set to a numeric value or an empty string (for
@@ -417,10 +447,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'position: ChartAxisPosition;'
+      content: |-
+        position:
+                    | ChartAxisPosition
+                    | "Automatic"
+                    | "Maximum"
+                    | "Minimum"
+                    | "Custom";
       return:
         type:
-          - 'excel!Excel.ChartAxisPosition:enum'
+          - 'excel!Excel.ChartAxis#position~0:complex'
   - uid: 'excel!Excel.ChartAxis#positionAt:member'
     summary: >-
       Specifies the specified axis position where the other axis crosses at. You should use the SetPositionAt(double)
@@ -455,10 +491,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'scaleType: ChartAxisScaleType;'
+      content: 'scaleType: ChartAxisScaleType | "Linear" | "Logarithmic";'
       return:
         type:
-          - 'excel!Excel.ChartAxisScaleType:enum'
+          - 'excel!Excel.ChartAxis#scaleType~0:complex'
   - uid: 'excel!Excel.ChartAxis#setCategoryNames:member(1)'
     summary: Sets all the category names for the specified axis.
     name: setCategoryNames(sourceData)
@@ -566,10 +602,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'tickLabelPosition: ChartAxisTickLabelPosition;'
+      content: |-
+        tickLabelPosition:
+                    | ChartAxisTickLabelPosition
+                    | "NextToAxis"
+                    | "High"
+                    | "Low"
+                    | "None";
       return:
         type:
-          - 'excel!Excel.ChartAxisTickLabelPosition:enum'
+          - 'excel!Excel.ChartAxis#tickLabelPosition~0:complex'
   - uid: 'excel!Excel.ChartAxis#tickLabelSpacing:member'
     summary: >-
       Specifies the number of categories or series between tick-mark labels. Can be a value from 1 through 31999 or an
@@ -630,10 +672,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly type: ChartAxisType;'
+      content: |-
+        readonly type:
+                    | ChartAxisType
+                    | "Invalid"
+                    | "Category"
+                    | "Value"
+                    | "Series";
       return:
         type:
-          - 'excel!Excel.ChartAxisType:enum'
+          - 'excel!Excel.ChartAxis#type~0:complex'
   - uid: 'excel!Excel.ChartAxis#visible:member'
     summary: Specifies if the axis is visible.
     name: visible
@@ -659,45 +707,310 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.ChartTickLabelAlignment:enum'
-    name: ChartTickLabelAlignment
-    fullName: Excel.ChartTickLabelAlignment
-  - uid: 'excel!Excel.ChartAxisGroup:enum'
-    name: ChartAxisGroup
-    fullName: Excel.ChartAxisGroup
-  - uid: 'excel!Excel.ChartAxisTimeUnit:enum'
-    name: ChartAxisTimeUnit
-    fullName: Excel.ChartAxisTimeUnit
-  - uid: 'excel!Excel.ChartAxisCategoryType:enum'
-    name: ChartAxisCategoryType
-    fullName: Excel.ChartAxisCategoryType
-  - uid: 'excel!Excel.ChartAxisDisplayUnit:enum'
-    name: ChartAxisDisplayUnit
-    fullName: Excel.ChartAxisDisplayUnit
+  - uid: 'excel!Excel.ChartAxis#alignment~0:complex'
+    name: ChartTickLabelAlignment | "Center" | "Left" | "Right"
+    fullName: Excel.ChartTickLabelAlignment | "Center" | "Left" | "Right"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartTickLabelAlignment:enum'
+        name: ChartTickLabelAlignment
+        fullName: Excel.ChartTickLabelAlignment
+      - name: ' | "Center" | "Left" | "Right"'
+        fullName: ' | "Center" | "Left" | "Right"'
+  - uid: 'excel!Excel.ChartAxis#axisGroup~0:complex'
+    name: ChartAxisGroup | "Primary" | "Secondary"
+    fullName: Excel.ChartAxisGroup | "Primary" | "Secondary"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartAxisGroup:enum'
+        name: ChartAxisGroup
+        fullName: Excel.ChartAxisGroup
+      - name: ' | "Primary" | "Secondary"'
+        fullName: ' | "Primary" | "Secondary"'
+  - uid: 'excel!Excel.ChartAxis#baseTimeUnit~0:complex'
+    name: ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    fullName: Excel.ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartAxisTimeUnit:enum'
+        name: ChartAxisTimeUnit
+        fullName: Excel.ChartAxisTimeUnit
+      - name: ' | "Days" | "Months" | "Years"'
+        fullName: ' | "Days" | "Months" | "Years"'
+  - uid: 'excel!Excel.ChartAxis#categoryType~0:complex'
+    name: |-
+      | ChartAxisCategoryType
+                  | "Automatic"
+                  | "TextAxis"
+                  | "DateAxis"
+    fullName: |-
+      | Excel.ChartAxisCategoryType
+                  | "Automatic"
+                  | "TextAxis"
+                  | "DateAxis"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisCategoryType:enum'
+        name: ChartAxisCategoryType
+        fullName: Excel.ChartAxisCategoryType
+      - name: |2-
+
+                      | "Automatic"
+                      | "TextAxis"
+                      | "DateAxis"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "TextAxis"
+                      | "DateAxis"
+  - uid: 'excel!Excel.ChartAxis#displayUnit~0:complex'
+    name: |-
+      | ChartAxisDisplayUnit
+                  | "None"
+                  | "Hundreds"
+                  | "Thousands"
+                  | "TenThousands"
+                  | "HundredThousands"
+                  | "Millions"
+                  | "TenMillions"
+                  | "HundredMillions"
+                  | "Billions"
+                  | "Trillions"
+                  | "Custom"
+    fullName: |-
+      | Excel.ChartAxisDisplayUnit
+                  | "None"
+                  | "Hundreds"
+                  | "Thousands"
+                  | "TenThousands"
+                  | "HundredThousands"
+                  | "Millions"
+                  | "TenMillions"
+                  | "HundredMillions"
+                  | "Billions"
+                  | "Trillions"
+                  | "Custom"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisDisplayUnit:enum'
+        name: ChartAxisDisplayUnit
+        fullName: Excel.ChartAxisDisplayUnit
+      - name: |2-
+
+                      | "None"
+                      | "Hundreds"
+                      | "Thousands"
+                      | "TenThousands"
+                      | "HundredThousands"
+                      | "Millions"
+                      | "TenMillions"
+                      | "HundredMillions"
+                      | "Billions"
+                      | "Trillions"
+                      | "Custom"
+        fullName: |2-
+
+                      | "None"
+                      | "Hundreds"
+                      | "Thousands"
+                      | "TenThousands"
+                      | "HundredThousands"
+                      | "Millions"
+                      | "TenMillions"
+                      | "HundredMillions"
+                      | "Billions"
+                      | "Trillions"
+                      | "Custom"
   - uid: 'excel!Excel.ChartAxisFormat:interface'
     name: ChartAxisFormat
     fullName: Excel.ChartAxisFormat
   - uid: 'excel!Excel.ChartGridlines:interface'
     name: ChartGridlines
     fullName: Excel.ChartGridlines
-  - uid: 'excel!Excel.ChartAxisTickMark:enum'
-    name: ChartAxisTickMark
-    fullName: Excel.ChartAxisTickMark
-  - uid: 'excel!Excel.ChartAxisPosition:enum'
-    name: ChartAxisPosition
-    fullName: Excel.ChartAxisPosition
-  - uid: 'excel!Excel.ChartAxisScaleType:enum'
-    name: ChartAxisScaleType
-    fullName: Excel.ChartAxisScaleType
+  - uid: 'excel!Excel.ChartAxis#majorTickMark~0:complex'
+    name: |-
+      | ChartAxisTickMark
+                  | "None"
+                  | "Cross"
+                  | "Inside"
+                  | "Outside"
+    fullName: |-
+      | Excel.ChartAxisTickMark
+                  | "None"
+                  | "Cross"
+                  | "Inside"
+                  | "Outside"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisTickMark:enum'
+        name: ChartAxisTickMark
+        fullName: Excel.ChartAxisTickMark
+      - name: |2-
+
+                      | "None"
+                      | "Cross"
+                      | "Inside"
+                      | "Outside"
+        fullName: |2-
+
+                      | "None"
+                      | "Cross"
+                      | "Inside"
+                      | "Outside"
+  - uid: 'excel!Excel.ChartAxis#majorTimeUnitScale~0:complex'
+    name: ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    fullName: Excel.ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartAxisTimeUnit:enum'
+        name: ChartAxisTimeUnit
+        fullName: Excel.ChartAxisTimeUnit
+      - name: ' | "Days" | "Months" | "Years"'
+        fullName: ' | "Days" | "Months" | "Years"'
+  - uid: 'excel!Excel.ChartAxis#minorTickMark~0:complex'
+    name: |-
+      | ChartAxisTickMark
+                  | "None"
+                  | "Cross"
+                  | "Inside"
+                  | "Outside"
+    fullName: |-
+      | Excel.ChartAxisTickMark
+                  | "None"
+                  | "Cross"
+                  | "Inside"
+                  | "Outside"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisTickMark:enum'
+        name: ChartAxisTickMark
+        fullName: Excel.ChartAxisTickMark
+      - name: |2-
+
+                      | "None"
+                      | "Cross"
+                      | "Inside"
+                      | "Outside"
+        fullName: |2-
+
+                      | "None"
+                      | "Cross"
+                      | "Inside"
+                      | "Outside"
+  - uid: 'excel!Excel.ChartAxis#minorTimeUnitScale~0:complex'
+    name: ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    fullName: Excel.ChartAxisTimeUnit | "Days" | "Months" | "Years"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartAxisTimeUnit:enum'
+        name: ChartAxisTimeUnit
+        fullName: Excel.ChartAxisTimeUnit
+      - name: ' | "Days" | "Months" | "Years"'
+        fullName: ' | "Days" | "Months" | "Years"'
+  - uid: 'excel!Excel.ChartAxis#position~0:complex'
+    name: |-
+      | ChartAxisPosition
+                  | "Automatic"
+                  | "Maximum"
+                  | "Minimum"
+                  | "Custom"
+    fullName: |-
+      | Excel.ChartAxisPosition
+                  | "Automatic"
+                  | "Maximum"
+                  | "Minimum"
+                  | "Custom"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisPosition:enum'
+        name: ChartAxisPosition
+        fullName: Excel.ChartAxisPosition
+      - name: |2-
+
+                      | "Automatic"
+                      | "Maximum"
+                      | "Minimum"
+                      | "Custom"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "Maximum"
+                      | "Minimum"
+                      | "Custom"
+  - uid: 'excel!Excel.ChartAxis#scaleType~0:complex'
+    name: ChartAxisScaleType | "Linear" | "Logarithmic"
+    fullName: Excel.ChartAxisScaleType | "Linear" | "Logarithmic"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartAxisScaleType:enum'
+        name: ChartAxisScaleType
+        fullName: Excel.ChartAxisScaleType
+      - name: ' | "Linear" | "Logarithmic"'
+        fullName: ' | "Linear" | "Logarithmic"'
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range
-  - uid: 'excel!Excel.ChartAxisTickLabelPosition:enum'
-    name: ChartAxisTickLabelPosition
-    fullName: Excel.ChartAxisTickLabelPosition
+  - uid: 'excel!Excel.ChartAxis#tickLabelPosition~0:complex'
+    name: |-
+      | ChartAxisTickLabelPosition
+                  | "NextToAxis"
+                  | "High"
+                  | "Low"
+                  | "None"
+    fullName: |-
+      | Excel.ChartAxisTickLabelPosition
+                  | "NextToAxis"
+                  | "High"
+                  | "Low"
+                  | "None"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisTickLabelPosition:enum'
+        name: ChartAxisTickLabelPosition
+        fullName: Excel.ChartAxisTickLabelPosition
+      - name: |2-
+
+                      | "NextToAxis"
+                      | "High"
+                      | "Low"
+                      | "None"
+        fullName: |2-
+
+                      | "NextToAxis"
+                      | "High"
+                      | "Low"
+                      | "None"
   - uid: 'excel!Excel.ChartAxisTitle:interface'
     name: ChartAxisTitle
     fullName: Excel.ChartAxisTitle
-  - uid: 'excel!Excel.ChartAxisType:enum'
-    name: ChartAxisType
-    fullName: Excel.ChartAxisType
+  - uid: 'excel!Excel.ChartAxis#type~0:complex'
+    name: |-
+      | ChartAxisType
+                  | "Invalid"
+                  | "Category"
+                  | "Value"
+                  | "Series"
+    fullName: |-
+      | Excel.ChartAxisType
+                  | "Invalid"
+                  | "Category"
+                  | "Value"
+                  | "Series"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartAxisType:enum'
+        name: ChartAxisType
+        fullName: Excel.ChartAxisType
+      - name: |2-
+
+                      | "Invalid"
+                      | "Category"
+                      | "Value"
+                      | "Series"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Category"
+                      | "Value"
+                      | "Series"

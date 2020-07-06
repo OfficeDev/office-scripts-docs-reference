@@ -55,10 +55,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly sideIndex: ConditionalRangeBorderIndex;'
+      content: |-
+        readonly sideIndex:
+                    | ConditionalRangeBorderIndex
+                    | "EdgeTop"
+                    | "EdgeBottom"
+                    | "EdgeLeft"
+                    | "EdgeRight";
       return:
         type:
-          - 'excel!Excel.ConditionalRangeBorderIndex:enum'
+          - 'excel!Excel.ConditionalRangeBorder#sideIndex~0:complex'
   - uid: 'excel!Excel.ConditionalRangeBorder#style:member'
     summary: >-
       One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for
@@ -69,14 +75,86 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'style: ConditionalRangeBorderLineStyle;'
+      content: |-
+        style:
+                    | ConditionalRangeBorderLineStyle
+                    | "None"
+                    | "Continuous"
+                    | "Dash"
+                    | "DashDot"
+                    | "DashDotDot"
+                    | "Dot";
       return:
         type:
-          - 'excel!Excel.ConditionalRangeBorderLineStyle:enum'
+          - 'excel!Excel.ConditionalRangeBorder#style~0:complex'
 references:
-  - uid: 'excel!Excel.ConditionalRangeBorderIndex:enum'
-    name: ConditionalRangeBorderIndex
-    fullName: Excel.ConditionalRangeBorderIndex
-  - uid: 'excel!Excel.ConditionalRangeBorderLineStyle:enum'
-    name: ConditionalRangeBorderLineStyle
-    fullName: Excel.ConditionalRangeBorderLineStyle
+  - uid: 'excel!Excel.ConditionalRangeBorder#sideIndex~0:complex'
+    name: |-
+      | ConditionalRangeBorderIndex
+                  | "EdgeTop"
+                  | "EdgeBottom"
+                  | "EdgeLeft"
+                  | "EdgeRight"
+    fullName: |-
+      | Excel.ConditionalRangeBorderIndex
+                  | "EdgeTop"
+                  | "EdgeBottom"
+                  | "EdgeLeft"
+                  | "EdgeRight"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalRangeBorderIndex:enum'
+        name: ConditionalRangeBorderIndex
+        fullName: Excel.ConditionalRangeBorderIndex
+      - name: |2-
+
+                      | "EdgeTop"
+                      | "EdgeBottom"
+                      | "EdgeLeft"
+                      | "EdgeRight"
+        fullName: |2-
+
+                      | "EdgeTop"
+                      | "EdgeBottom"
+                      | "EdgeLeft"
+                      | "EdgeRight"
+  - uid: 'excel!Excel.ConditionalRangeBorder#style~0:complex'
+    name: |-
+      | ConditionalRangeBorderLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+    fullName: |-
+      | Excel.ConditionalRangeBorderLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalRangeBorderLineStyle:enum'
+        name: ConditionalRangeBorderLineStyle
+        fullName: Excel.ConditionalRangeBorderLineStyle
+      - name: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+        fullName: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"

@@ -48,10 +48,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.TimelineStyleCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.TimelineStyleCollection#getDefault:member(1)'
     summary: Gets the default TimelineStyle for the parent object's scope.
@@ -144,6 +144,15 @@ references:
   - uid: 'excel!Excel.TimelineStyle:interface'
     name: TimelineStyle
     fullName: Excel.TimelineStyle
+  - uid: 'excel!Excel.TimelineStyleCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.TimelineStyleCollection#setDefault~0:complex'
     name: TimelineStyle | string
     fullName: Excel.TimelineStyle | string

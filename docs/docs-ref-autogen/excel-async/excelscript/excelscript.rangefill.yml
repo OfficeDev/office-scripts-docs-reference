@@ -73,10 +73,33 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'pattern: FillPattern;'
+      content: |-
+        pattern:
+                    | FillPattern
+                    | "None"
+                    | "Solid"
+                    | "Gray50"
+                    | "Gray75"
+                    | "Gray25"
+                    | "Horizontal"
+                    | "Vertical"
+                    | "Down"
+                    | "Up"
+                    | "Checker"
+                    | "SemiGray75"
+                    | "LightHorizontal"
+                    | "LightVertical"
+                    | "LightDown"
+                    | "LightUp"
+                    | "Grid"
+                    | "CrissCross"
+                    | "Gray16"
+                    | "Gray8"
+                    | "LinearGradient"
+                    | "RectangularGradient";
       return:
         type:
-          - 'excel!Excel.FillPattern:enum'
+          - 'excel!Excel.RangeFill#pattern~0:complex'
   - uid: 'excel!Excel.RangeFill#patternColor:member'
     summary: >-
       The HTML color code representing the color of the range pattern, of the form \#RRGGBB (e.g., "FFA500") or as a
@@ -120,6 +143,102 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.FillPattern:enum'
-    name: FillPattern
-    fullName: Excel.FillPattern
+  - uid: 'excel!Excel.RangeFill#pattern~0:complex'
+    name: |-
+      | FillPattern
+                  | "None"
+                  | "Solid"
+                  | "Gray50"
+                  | "Gray75"
+                  | "Gray25"
+                  | "Horizontal"
+                  | "Vertical"
+                  | "Down"
+                  | "Up"
+                  | "Checker"
+                  | "SemiGray75"
+                  | "LightHorizontal"
+                  | "LightVertical"
+                  | "LightDown"
+                  | "LightUp"
+                  | "Grid"
+                  | "CrissCross"
+                  | "Gray16"
+                  | "Gray8"
+                  | "LinearGradient"
+                  | "RectangularGradient"
+    fullName: |-
+      | Excel.FillPattern
+                  | "None"
+                  | "Solid"
+                  | "Gray50"
+                  | "Gray75"
+                  | "Gray25"
+                  | "Horizontal"
+                  | "Vertical"
+                  | "Down"
+                  | "Up"
+                  | "Checker"
+                  | "SemiGray75"
+                  | "LightHorizontal"
+                  | "LightVertical"
+                  | "LightDown"
+                  | "LightUp"
+                  | "Grid"
+                  | "CrissCross"
+                  | "Gray16"
+                  | "Gray8"
+                  | "LinearGradient"
+                  | "RectangularGradient"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.FillPattern:enum'
+        name: FillPattern
+        fullName: Excel.FillPattern
+      - name: |2-
+
+                      | "None"
+                      | "Solid"
+                      | "Gray50"
+                      | "Gray75"
+                      | "Gray25"
+                      | "Horizontal"
+                      | "Vertical"
+                      | "Down"
+                      | "Up"
+                      | "Checker"
+                      | "SemiGray75"
+                      | "LightHorizontal"
+                      | "LightVertical"
+                      | "LightDown"
+                      | "LightUp"
+                      | "Grid"
+                      | "CrissCross"
+                      | "Gray16"
+                      | "Gray8"
+                      | "LinearGradient"
+                      | "RectangularGradient"
+        fullName: |2-
+
+                      | "None"
+                      | "Solid"
+                      | "Gray50"
+                      | "Gray75"
+                      | "Gray25"
+                      | "Horizontal"
+                      | "Vertical"
+                      | "Down"
+                      | "Up"
+                      | "Checker"
+                      | "SemiGray75"
+                      | "LightHorizontal"
+                      | "LightVertical"
+                      | "LightDown"
+                      | "LightUp"
+                      | "Grid"
+                      | "CrissCross"
+                      | "Gray16"
+                      | "Gray8"
+                      | "LinearGradient"
+                      | "RectangularGradient"

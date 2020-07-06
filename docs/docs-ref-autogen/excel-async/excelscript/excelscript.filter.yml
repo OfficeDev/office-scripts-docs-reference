@@ -107,7 +107,7 @@ items:
         applyCustomFilter(
                     criteria1: string,
                     criteria2?: string,
-                    oper?: FilterOperator
+                    oper?: FilterOperator | "And" | "Or"
                 ): void;
       return:
         type:
@@ -125,7 +125,7 @@ items:
         - id: oper
           description: Optional. The operator that describes how the two criteria are joined.
           type:
-            - 'excel!Excel.FilterOperator:enum'
+            - 'excel!Excel.Filter#applyCustomFilter~0:complex'
   - uid: 'excel!Excel.Filter#applyDynamicFilter:member(1)'
     summary: Apply a "Dynamic" filter to the column.
     name: applyDynamicFilter(criteria)
@@ -134,7 +134,46 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'applyDynamicFilter(criteria: DynamicFilterCriteria): void;'
+      content: |-
+        applyDynamicFilter(
+                    criteria:
+                        | DynamicFilterCriteria
+                        | "Unknown"
+                        | "AboveAverage"
+                        | "AllDatesInPeriodApril"
+                        | "AllDatesInPeriodAugust"
+                        | "AllDatesInPeriodDecember"
+                        | "AllDatesInPeriodFebruray"
+                        | "AllDatesInPeriodJanuary"
+                        | "AllDatesInPeriodJuly"
+                        | "AllDatesInPeriodJune"
+                        | "AllDatesInPeriodMarch"
+                        | "AllDatesInPeriodMay"
+                        | "AllDatesInPeriodNovember"
+                        | "AllDatesInPeriodOctober"
+                        | "AllDatesInPeriodQuarter1"
+                        | "AllDatesInPeriodQuarter2"
+                        | "AllDatesInPeriodQuarter3"
+                        | "AllDatesInPeriodQuarter4"
+                        | "AllDatesInPeriodSeptember"
+                        | "BelowAverage"
+                        | "LastMonth"
+                        | "LastQuarter"
+                        | "LastWeek"
+                        | "LastYear"
+                        | "NextMonth"
+                        | "NextQuarter"
+                        | "NextWeek"
+                        | "NextYear"
+                        | "ThisMonth"
+                        | "ThisQuarter"
+                        | "ThisWeek"
+                        | "ThisYear"
+                        | "Today"
+                        | "Tomorrow"
+                        | "YearToDate"
+                        | "Yesterday"
+                ): void;
       return:
         type:
           - void
@@ -143,7 +182,7 @@ items:
         - id: criteria
           description: The dynamic criteria to apply.
           type:
-            - 'excel!Excel.DynamicFilterCriteria:enum'
+            - 'excel!Excel.Filter#applyDynamicFilter~0:complex'
   - uid: 'excel!Excel.Filter#applyFontColorFilter:member(1)'
     summary: Apply a "Font Color" filter to the column for the given color.
     name: applyFontColorFilter(color)
@@ -283,12 +322,176 @@ references:
   - uid: 'excel!Excel.FilterCriteria:interface'
     name: FilterCriteria
     fullName: Excel.FilterCriteria
-  - uid: 'excel!Excel.FilterOperator:enum'
-    name: FilterOperator
-    fullName: Excel.FilterOperator
-  - uid: 'excel!Excel.DynamicFilterCriteria:enum'
-    name: DynamicFilterCriteria
-    fullName: Excel.DynamicFilterCriteria
+  - uid: 'excel!Excel.Filter#applyCustomFilter~0:complex'
+    name: FilterOperator | "And" | "Or"
+    fullName: Excel.FilterOperator | "And" | "Or"
+    spec.typeScript:
+      - uid: 'excel!Excel.FilterOperator:enum'
+        name: FilterOperator
+        fullName: Excel.FilterOperator
+      - name: |2-
+           | "And" | "Or"
+                  
+        fullName: |2-
+           | "And" | "Or"
+                  
+  - uid: 'excel!Excel.Filter#applyDynamicFilter~0:complex'
+    name: |-
+      | DynamicFilterCriteria
+                      | "Unknown"
+                      | "AboveAverage"
+                      | "AllDatesInPeriodApril"
+                      | "AllDatesInPeriodAugust"
+                      | "AllDatesInPeriodDecember"
+                      | "AllDatesInPeriodFebruray"
+                      | "AllDatesInPeriodJanuary"
+                      | "AllDatesInPeriodJuly"
+                      | "AllDatesInPeriodJune"
+                      | "AllDatesInPeriodMarch"
+                      | "AllDatesInPeriodMay"
+                      | "AllDatesInPeriodNovember"
+                      | "AllDatesInPeriodOctober"
+                      | "AllDatesInPeriodQuarter1"
+                      | "AllDatesInPeriodQuarter2"
+                      | "AllDatesInPeriodQuarter3"
+                      | "AllDatesInPeriodQuarter4"
+                      | "AllDatesInPeriodSeptember"
+                      | "BelowAverage"
+                      | "LastMonth"
+                      | "LastQuarter"
+                      | "LastWeek"
+                      | "LastYear"
+                      | "NextMonth"
+                      | "NextQuarter"
+                      | "NextWeek"
+                      | "NextYear"
+                      | "ThisMonth"
+                      | "ThisQuarter"
+                      | "ThisWeek"
+                      | "ThisYear"
+                      | "Today"
+                      | "Tomorrow"
+                      | "YearToDate"
+                      | "Yesterday"
+    fullName: |-
+      | Excel.DynamicFilterCriteria
+                      | "Unknown"
+                      | "AboveAverage"
+                      | "AllDatesInPeriodApril"
+                      | "AllDatesInPeriodAugust"
+                      | "AllDatesInPeriodDecember"
+                      | "AllDatesInPeriodFebruray"
+                      | "AllDatesInPeriodJanuary"
+                      | "AllDatesInPeriodJuly"
+                      | "AllDatesInPeriodJune"
+                      | "AllDatesInPeriodMarch"
+                      | "AllDatesInPeriodMay"
+                      | "AllDatesInPeriodNovember"
+                      | "AllDatesInPeriodOctober"
+                      | "AllDatesInPeriodQuarter1"
+                      | "AllDatesInPeriodQuarter2"
+                      | "AllDatesInPeriodQuarter3"
+                      | "AllDatesInPeriodQuarter4"
+                      | "AllDatesInPeriodSeptember"
+                      | "BelowAverage"
+                      | "LastMonth"
+                      | "LastQuarter"
+                      | "LastWeek"
+                      | "LastYear"
+                      | "NextMonth"
+                      | "NextQuarter"
+                      | "NextWeek"
+                      | "NextYear"
+                      | "ThisMonth"
+                      | "ThisQuarter"
+                      | "ThisWeek"
+                      | "ThisYear"
+                      | "Today"
+                      | "Tomorrow"
+                      | "YearToDate"
+                      | "Yesterday"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.DynamicFilterCriteria:enum'
+        name: DynamicFilterCriteria
+        fullName: Excel.DynamicFilterCriteria
+      - name: |2-
+
+                          | "Unknown"
+                          | "AboveAverage"
+                          | "AllDatesInPeriodApril"
+                          | "AllDatesInPeriodAugust"
+                          | "AllDatesInPeriodDecember"
+                          | "AllDatesInPeriodFebruray"
+                          | "AllDatesInPeriodJanuary"
+                          | "AllDatesInPeriodJuly"
+                          | "AllDatesInPeriodJune"
+                          | "AllDatesInPeriodMarch"
+                          | "AllDatesInPeriodMay"
+                          | "AllDatesInPeriodNovember"
+                          | "AllDatesInPeriodOctober"
+                          | "AllDatesInPeriodQuarter1"
+                          | "AllDatesInPeriodQuarter2"
+                          | "AllDatesInPeriodQuarter3"
+                          | "AllDatesInPeriodQuarter4"
+                          | "AllDatesInPeriodSeptember"
+                          | "BelowAverage"
+                          | "LastMonth"
+                          | "LastQuarter"
+                          | "LastWeek"
+                          | "LastYear"
+                          | "NextMonth"
+                          | "NextQuarter"
+                          | "NextWeek"
+                          | "NextYear"
+                          | "ThisMonth"
+                          | "ThisQuarter"
+                          | "ThisWeek"
+                          | "ThisYear"
+                          | "Today"
+                          | "Tomorrow"
+                          | "YearToDate"
+                          | "Yesterday"
+                  
+        fullName: |2-
+
+                          | "Unknown"
+                          | "AboveAverage"
+                          | "AllDatesInPeriodApril"
+                          | "AllDatesInPeriodAugust"
+                          | "AllDatesInPeriodDecember"
+                          | "AllDatesInPeriodFebruray"
+                          | "AllDatesInPeriodJanuary"
+                          | "AllDatesInPeriodJuly"
+                          | "AllDatesInPeriodJune"
+                          | "AllDatesInPeriodMarch"
+                          | "AllDatesInPeriodMay"
+                          | "AllDatesInPeriodNovember"
+                          | "AllDatesInPeriodOctober"
+                          | "AllDatesInPeriodQuarter1"
+                          | "AllDatesInPeriodQuarter2"
+                          | "AllDatesInPeriodQuarter3"
+                          | "AllDatesInPeriodQuarter4"
+                          | "AllDatesInPeriodSeptember"
+                          | "BelowAverage"
+                          | "LastMonth"
+                          | "LastQuarter"
+                          | "LastWeek"
+                          | "LastYear"
+                          | "NextMonth"
+                          | "NextQuarter"
+                          | "NextWeek"
+                          | "NextYear"
+                          | "ThisMonth"
+                          | "ThisQuarter"
+                          | "ThisWeek"
+                          | "ThisYear"
+                          | "Today"
+                          | "Tomorrow"
+                          | "YearToDate"
+                          | "Yesterday"
+                  
   - uid: 'excel!Excel.Icon:interface'
     name: Icon
     fullName: Excel.Icon

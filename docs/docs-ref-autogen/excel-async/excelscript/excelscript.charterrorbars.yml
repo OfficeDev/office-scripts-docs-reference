@@ -47,10 +47,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'include: ChartErrorBarsInclude;'
+      content: 'include: ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues";'
       return:
         type:
-          - 'excel!Excel.ChartErrorBarsInclude:enum'
+          - 'excel!Excel.ChartErrorBars#include~0:complex'
   - uid: 'excel!Excel.ChartErrorBars#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -79,10 +79,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ChartErrorBarsType;'
+      content: |-
+        type:
+                    | ChartErrorBarsType
+                    | "FixedValue"
+                    | "Percent"
+                    | "StDev"
+                    | "StError"
+                    | "Custom";
       return:
         type:
-          - 'excel!Excel.ChartErrorBarsType:enum'
+          - 'excel!Excel.ChartErrorBars#type~0:complex'
   - uid: 'excel!Excel.ChartErrorBars#visible:member'
     summary: Specifies whether the error bars are displayed.
     name: visible
@@ -99,9 +106,47 @@ references:
   - uid: 'excel!Excel.ChartErrorBarsFormat:interface'
     name: ChartErrorBarsFormat
     fullName: Excel.ChartErrorBarsFormat
-  - uid: 'excel!Excel.ChartErrorBarsInclude:enum'
-    name: ChartErrorBarsInclude
-    fullName: Excel.ChartErrorBarsInclude
-  - uid: 'excel!Excel.ChartErrorBarsType:enum'
-    name: ChartErrorBarsType
-    fullName: Excel.ChartErrorBarsType
+  - uid: 'excel!Excel.ChartErrorBars#include~0:complex'
+    name: ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues"
+    fullName: Excel.ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartErrorBarsInclude:enum'
+        name: ChartErrorBarsInclude
+        fullName: Excel.ChartErrorBarsInclude
+      - name: ' | "Both" | "MinusValues" | "PlusValues"'
+        fullName: ' | "Both" | "MinusValues" | "PlusValues"'
+  - uid: 'excel!Excel.ChartErrorBars#type~0:complex'
+    name: |-
+      | ChartErrorBarsType
+                  | "FixedValue"
+                  | "Percent"
+                  | "StDev"
+                  | "StError"
+                  | "Custom"
+    fullName: |-
+      | Excel.ChartErrorBarsType
+                  | "FixedValue"
+                  | "Percent"
+                  | "StDev"
+                  | "StError"
+                  | "Custom"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartErrorBarsType:enum'
+        name: ChartErrorBarsType
+        fullName: Excel.ChartErrorBarsType
+      - name: |2-
+
+                      | "FixedValue"
+                      | "Percent"
+                      | "StDev"
+                      | "StError"
+                      | "Custom"
+        fullName: |2-
+
+                      | "FixedValue"
+                      | "Percent"
+                      | "StDev"
+                      | "StError"
+                      | "Custom"

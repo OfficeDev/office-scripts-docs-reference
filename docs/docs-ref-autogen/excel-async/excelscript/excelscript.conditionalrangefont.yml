@@ -105,11 +105,40 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'underline: ConditionalRangeFontUnderlineStyle;'
+      content: |-
+        underline:
+                    | ConditionalRangeFontUnderlineStyle
+                    | "None"
+                    | "Single"
+                    | "Double";
       return:
         type:
-          - 'excel!Excel.ConditionalRangeFontUnderlineStyle:enum'
+          - 'excel!Excel.ConditionalRangeFont#underline~0:complex'
 references:
-  - uid: 'excel!Excel.ConditionalRangeFontUnderlineStyle:enum'
-    name: ConditionalRangeFontUnderlineStyle
-    fullName: Excel.ConditionalRangeFontUnderlineStyle
+  - uid: 'excel!Excel.ConditionalRangeFont#underline~0:complex'
+    name: |-
+      | ConditionalRangeFontUnderlineStyle
+                  | "None"
+                  | "Single"
+                  | "Double"
+    fullName: |-
+      | Excel.ConditionalRangeFontUnderlineStyle
+                  | "None"
+                  | "Single"
+                  | "Double"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalRangeFontUnderlineStyle:enum'
+        name: ConditionalRangeFontUnderlineStyle
+        fullName: Excel.ConditionalRangeFontUnderlineStyle
+      - name: |2-
+
+                      | "None"
+                      | "Single"
+                      | "Double"
+        fullName: |2-
+
+                      | "None"
+                      | "Single"
+                      | "Double"

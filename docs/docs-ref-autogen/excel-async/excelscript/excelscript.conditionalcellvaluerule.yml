@@ -61,10 +61,21 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'operator: ConditionalCellValueOperator;'
+      content: |-
+        operator:
+                    | ConditionalCellValueOperator
+                    | "Invalid"
+                    | "Between"
+                    | "NotBetween"
+                    | "EqualTo"
+                    | "NotEqualTo"
+                    | "GreaterThan"
+                    | "LessThan"
+                    | "GreaterThanOrEqual"
+                    | "LessThanOrEqual";
       return:
         type:
-          - 'excel!Excel.ConditionalCellValueOperator:enum'
+          - 'excel!Excel.ConditionalCellValueRule#operator~0:complex'
         description: |-
 
 
@@ -83,6 +94,54 @@ items:
           }
           ```
 references:
-  - uid: 'excel!Excel.ConditionalCellValueOperator:enum'
-    name: ConditionalCellValueOperator
-    fullName: Excel.ConditionalCellValueOperator
+  - uid: 'excel!Excel.ConditionalCellValueRule#operator~0:complex'
+    name: |-
+      | ConditionalCellValueOperator
+                  | "Invalid"
+                  | "Between"
+                  | "NotBetween"
+                  | "EqualTo"
+                  | "NotEqualTo"
+                  | "GreaterThan"
+                  | "LessThan"
+                  | "GreaterThanOrEqual"
+                  | "LessThanOrEqual"
+    fullName: |-
+      | Excel.ConditionalCellValueOperator
+                  | "Invalid"
+                  | "Between"
+                  | "NotBetween"
+                  | "EqualTo"
+                  | "NotEqualTo"
+                  | "GreaterThan"
+                  | "LessThan"
+                  | "GreaterThanOrEqual"
+                  | "LessThanOrEqual"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalCellValueOperator:enum'
+        name: ConditionalCellValueOperator
+        fullName: Excel.ConditionalCellValueOperator
+      - name: |2-
+
+                      | "Invalid"
+                      | "Between"
+                      | "NotBetween"
+                      | "EqualTo"
+                      | "NotEqualTo"
+                      | "GreaterThan"
+                      | "LessThan"
+                      | "GreaterThanOrEqual"
+                      | "LessThanOrEqual"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Between"
+                      | "NotBetween"
+                      | "EqualTo"
+                      | "NotEqualTo"
+                      | "GreaterThan"
+                      | "LessThan"
+                      | "GreaterThanOrEqual"
+                      | "LessThanOrEqual"

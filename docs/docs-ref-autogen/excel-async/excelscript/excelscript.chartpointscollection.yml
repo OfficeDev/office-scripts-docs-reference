@@ -33,10 +33,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.ChartPointsCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.ChartPointsCollection#getItemAt:member(1)'
     summary: Retrieve a point based on its position within the series.
@@ -77,6 +77,15 @@ items:
           type:
             - 'string | string[]'
 references:
+  - uid: 'excel!Excel.ChartPointsCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.ChartPoint:interface'
     name: ChartPoint
     fullName: Excel.ChartPoint

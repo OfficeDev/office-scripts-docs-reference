@@ -58,10 +58,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.ChartSeriesCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.ChartSeriesCollection#getItemAt:member(1)'
     summary: Retrieves a series based on its position in the collection.
@@ -105,3 +105,12 @@ references:
   - uid: 'excel!Excel.ChartSeries:interface'
     name: ChartSeries
     fullName: Excel.ChartSeries
+  - uid: 'excel!Excel.ChartSeriesCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
