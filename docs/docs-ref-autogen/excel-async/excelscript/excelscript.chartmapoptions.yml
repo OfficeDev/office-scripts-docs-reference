@@ -21,10 +21,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'labelStrategy: ChartMapLabelStrategy;'
+      content: 'labelStrategy: ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll";'
       return:
         type:
-          - 'excel!Excel.ChartMapLabelStrategy:enum'
+          - 'excel!Excel.ChartMapOptions#labelStrategy~0:complex'
   - uid: 'excel!Excel.ChartMapOptions#level:member'
     summary: Specifies the series mapping level of a region map chart.
     name: level
@@ -33,10 +33,20 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'level: ChartMapAreaLevel;'
+      content: |-
+        level:
+                    | ChartMapAreaLevel
+                    | "Automatic"
+                    | "DataOnly"
+                    | "City"
+                    | "County"
+                    | "State"
+                    | "Country"
+                    | "Continent"
+                    | "World";
       return:
         type:
-          - 'excel!Excel.ChartMapAreaLevel:enum'
+          - 'excel!Excel.ChartMapOptions#level~0:complex'
   - uid: 'excel!Excel.ChartMapOptions#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -65,17 +75,106 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'projectionType: ChartMapProjectionType;'
+      content: |-
+        projectionType:
+                    | ChartMapProjectionType
+                    | "Automatic"
+                    | "Mercator"
+                    | "Miller"
+                    | "Robinson"
+                    | "Albers";
       return:
         type:
-          - 'excel!Excel.ChartMapProjectionType:enum'
+          - 'excel!Excel.ChartMapOptions#projectionType~0:complex'
 references:
-  - uid: 'excel!Excel.ChartMapLabelStrategy:enum'
-    name: ChartMapLabelStrategy
-    fullName: Excel.ChartMapLabelStrategy
-  - uid: 'excel!Excel.ChartMapAreaLevel:enum'
-    name: ChartMapAreaLevel
-    fullName: Excel.ChartMapAreaLevel
-  - uid: 'excel!Excel.ChartMapProjectionType:enum'
-    name: ChartMapProjectionType
-    fullName: Excel.ChartMapProjectionType
+  - uid: 'excel!Excel.ChartMapOptions#labelStrategy~0:complex'
+    name: ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll"
+    fullName: Excel.ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartMapLabelStrategy:enum'
+        name: ChartMapLabelStrategy
+        fullName: Excel.ChartMapLabelStrategy
+      - name: ' | "None" | "BestFit" | "ShowAll"'
+        fullName: ' | "None" | "BestFit" | "ShowAll"'
+  - uid: 'excel!Excel.ChartMapOptions#level~0:complex'
+    name: |-
+      | ChartMapAreaLevel
+                  | "Automatic"
+                  | "DataOnly"
+                  | "City"
+                  | "County"
+                  | "State"
+                  | "Country"
+                  | "Continent"
+                  | "World"
+    fullName: |-
+      | Excel.ChartMapAreaLevel
+                  | "Automatic"
+                  | "DataOnly"
+                  | "City"
+                  | "County"
+                  | "State"
+                  | "Country"
+                  | "Continent"
+                  | "World"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartMapAreaLevel:enum'
+        name: ChartMapAreaLevel
+        fullName: Excel.ChartMapAreaLevel
+      - name: |2-
+
+                      | "Automatic"
+                      | "DataOnly"
+                      | "City"
+                      | "County"
+                      | "State"
+                      | "Country"
+                      | "Continent"
+                      | "World"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "DataOnly"
+                      | "City"
+                      | "County"
+                      | "State"
+                      | "Country"
+                      | "Continent"
+                      | "World"
+  - uid: 'excel!Excel.ChartMapOptions#projectionType~0:complex'
+    name: |-
+      | ChartMapProjectionType
+                  | "Automatic"
+                  | "Mercator"
+                  | "Miller"
+                  | "Robinson"
+                  | "Albers"
+    fullName: |-
+      | Excel.ChartMapProjectionType
+                  | "Automatic"
+                  | "Mercator"
+                  | "Miller"
+                  | "Robinson"
+                  | "Albers"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartMapProjectionType:enum'
+        name: ChartMapProjectionType
+        fullName: Excel.ChartMapProjectionType
+      - name: |2-
+
+                      | "Automatic"
+                      | "Mercator"
+                      | "Miller"
+                      | "Robinson"
+                      | "Albers"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "Mercator"
+                      | "Miller"
+                      | "Robinson"
+                      | "Albers"

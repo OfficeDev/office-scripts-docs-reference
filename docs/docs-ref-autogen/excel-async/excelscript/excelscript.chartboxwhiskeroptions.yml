@@ -43,10 +43,14 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'quartileCalculation: ChartBoxQuartileCalculation;'
+      content: |-
+        quartileCalculation:
+                    | ChartBoxQuartileCalculation
+                    | "Inclusive"
+                    | "Exclusive";
       return:
         type:
-          - 'excel!Excel.ChartBoxQuartileCalculation:enum'
+          - 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation~0:complex'
   - uid: 'excel!Excel.ChartBoxwhiskerOptions#showInnerPoints:member'
     summary: Specifies if inner points are shown in a box and whisker chart.
     name: showInnerPoints
@@ -96,6 +100,26 @@ items:
         type:
           - boolean
 references:
-  - uid: 'excel!Excel.ChartBoxQuartileCalculation:enum'
-    name: ChartBoxQuartileCalculation
-    fullName: Excel.ChartBoxQuartileCalculation
+  - uid: 'excel!Excel.ChartBoxwhiskerOptions#quartileCalculation~0:complex'
+    name: |-
+      | ChartBoxQuartileCalculation
+                  | "Inclusive"
+                  | "Exclusive"
+    fullName: |-
+      | Excel.ChartBoxQuartileCalculation
+                  | "Inclusive"
+                  | "Exclusive"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartBoxQuartileCalculation:enum'
+        name: ChartBoxQuartileCalculation
+        fullName: Excel.ChartBoxQuartileCalculation
+      - name: |2-
+
+                      | "Inclusive"
+                      | "Exclusive"
+        fullName: |2-
+
+                      | "Inclusive"
+                      | "Exclusive"

@@ -40,10 +40,15 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'axisFormat: ConditionalDataBarAxisFormat;'
+      content: |-
+        axisFormat:
+                    | ConditionalDataBarAxisFormat
+                    | "Automatic"
+                    | "None"
+                    | "CellMidPoint";
       return:
         type:
-          - 'excel!Excel.ConditionalDataBarAxisFormat:enum'
+          - 'excel!Excel.DataBarConditionalFormat#axisFormat~0:complex'
   - uid: 'excel!Excel.DataBarConditionalFormat#barDirection:member'
     summary: Specifies the direction that the data bar graphic should be based on.
     name: barDirection
@@ -52,10 +57,15 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'barDirection: ConditionalDataBarDirection;'
+      content: |-
+        barDirection:
+                    | ConditionalDataBarDirection
+                    | "Context"
+                    | "LeftToRight"
+                    | "RightToLeft";
       return:
         type:
-          - 'excel!Excel.ConditionalDataBarDirection:enum'
+          - 'excel!Excel.DataBarConditionalFormat#barDirection~0:complex'
         description: |-
 
 
@@ -159,12 +169,60 @@ items:
         type:
           - 'excel!Excel.ConditionalDataBarRule:interface'
 references:
-  - uid: 'excel!Excel.ConditionalDataBarAxisFormat:enum'
-    name: ConditionalDataBarAxisFormat
-    fullName: Excel.ConditionalDataBarAxisFormat
-  - uid: 'excel!Excel.ConditionalDataBarDirection:enum'
-    name: ConditionalDataBarDirection
-    fullName: Excel.ConditionalDataBarDirection
+  - uid: 'excel!Excel.DataBarConditionalFormat#axisFormat~0:complex'
+    name: |-
+      | ConditionalDataBarAxisFormat
+                  | "Automatic"
+                  | "None"
+                  | "CellMidPoint"
+    fullName: |-
+      | Excel.ConditionalDataBarAxisFormat
+                  | "Automatic"
+                  | "None"
+                  | "CellMidPoint"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalDataBarAxisFormat:enum'
+        name: ConditionalDataBarAxisFormat
+        fullName: Excel.ConditionalDataBarAxisFormat
+      - name: |2-
+
+                      | "Automatic"
+                      | "None"
+                      | "CellMidPoint"
+        fullName: |2-
+
+                      | "Automatic"
+                      | "None"
+                      | "CellMidPoint"
+  - uid: 'excel!Excel.DataBarConditionalFormat#barDirection~0:complex'
+    name: |-
+      | ConditionalDataBarDirection
+                  | "Context"
+                  | "LeftToRight"
+                  | "RightToLeft"
+    fullName: |-
+      | Excel.ConditionalDataBarDirection
+                  | "Context"
+                  | "LeftToRight"
+                  | "RightToLeft"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalDataBarDirection:enum'
+        name: ConditionalDataBarDirection
+        fullName: Excel.ConditionalDataBarDirection
+      - name: |2-
+
+                      | "Context"
+                      | "LeftToRight"
+                      | "RightToLeft"
+        fullName: |2-
+
+                      | "Context"
+                      | "LeftToRight"
+                      | "RightToLeft"
   - uid: 'excel!Excel.ConditionalDataBarRule:interface'
     name: ConditionalDataBarRule
     fullName: Excel.ConditionalDataBarRule

@@ -93,10 +93,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ChartBinType;'
+      content: 'type: ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount";'
       return:
         type:
-          - 'excel!Excel.ChartBinType:enum'
+          - 'excel!Excel.ChartBinOptions#type~0:complex'
   - uid: 'excel!Excel.ChartBinOptions#underflowValue:member'
     summary: Specifies the bin underflow value of a histogram chart or pareto chart.
     name: underflowValue
@@ -122,6 +122,12 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.ChartBinType:enum'
-    name: ChartBinType
-    fullName: Excel.ChartBinType
+  - uid: 'excel!Excel.ChartBinOptions#type~0:complex'
+    name: ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount"
+    fullName: Excel.ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount"
+    spec.typeScript:
+      - uid: 'excel!Excel.ChartBinType:enum'
+        name: ChartBinType
+        fullName: Excel.ChartBinType
+      - name: ' | "Category" | "Auto" | "BinWidth" | "BinCount"'
+        fullName: ' | "Category" | "Auto" | "BinWidth" | "BinCount"'

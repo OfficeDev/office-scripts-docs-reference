@@ -126,7 +126,16 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'clear(applyTo?: ClearApplyTo): void;'
+      content: |-
+        clear(
+                    applyTo?:
+                        | ClearApplyTo
+                        | "All"
+                        | "Formats"
+                        | "Contents"
+                        | "Hyperlinks"
+                        | "RemoveHyperlinks"
+                ): void;
       return:
         type:
           - void
@@ -135,7 +144,7 @@ items:
         - id: applyTo
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details. Default is "All".
           type:
-            - 'excel!Excel.ClearApplyTo:enum'
+            - 'excel!Excel.RangeAreas#clear~0:complex'
   - uid: 'excel!Excel.RangeAreas#conditionalFormats:member'
     summary: Returns a collection of ConditionalFormats that intersect with any cells in this RangeAreas object.
     name: conditionalFormats
@@ -201,7 +210,12 @@ items:
       content: |-
         copyFrom(
                     sourceRange: Range | RangeAreas | string,
-                    copyType?: RangeCopyType,
+                    copyType?:
+                        | RangeCopyType
+                        | "All"
+                        | "Formulas"
+                        | "Values"
+                        | "Formats",
                     skipBlanks?: boolean,
                     transpose?: boolean
                 ): void;
@@ -219,7 +233,7 @@ items:
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
           type:
-            - 'excel!Excel.RangeCopyType:enum'
+            - 'excel!Excel.RangeAreas#copyFrom~1:complex'
         - id: skipBlanks
           description: True if to skip blank cells in the source range or RangeAreas. Default is false.
           type:
@@ -390,8 +404,33 @@ items:
     syntax:
       content: |-
         getSpecialCells(
-                    cellType: SpecialCellType,
-                    cellValueType?: SpecialCellValueType
+                    cellType:
+                        | SpecialCellType
+                        | "ConditionalFormats"
+                        | "DataValidations"
+                        | "Blanks"
+                        | "Constants"
+                        | "Formulas"
+                        | "SameConditionalFormat"
+                        | "SameDataValidation"
+                        | "Visible",
+                    cellValueType?:
+                        | SpecialCellValueType
+                        | "All"
+                        | "Errors"
+                        | "ErrorsLogical"
+                        | "ErrorsNumbers"
+                        | "ErrorsText"
+                        | "ErrorsLogicalNumber"
+                        | "ErrorsLogicalText"
+                        | "ErrorsNumberText"
+                        | "Logical"
+                        | "LogicalNumbers"
+                        | "LogicalText"
+                        | "LogicalNumbersText"
+                        | "Numbers"
+                        | "NumbersText"
+                        | "Text"
                 ): RangeAreas;
       return:
         type:
@@ -401,14 +440,14 @@ items:
         - id: cellType
           description: The type of cells to include.
           type:
-            - 'excel!Excel.SpecialCellType:enum'
+            - 'excel!Excel.RangeAreas#getSpecialCells~0:complex'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used to determine which types of cells to
             include in the result. These values can be combined together to return more than one type. The default is to
             select all constants or formulas, no matter what the type.
           type:
-            - 'excel!Excel.SpecialCellValueType:enum'
+            - 'excel!Excel.RangeAreas#getSpecialCells~1:complex'
   - uid: 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject:member(1)'
     summary: >-
       Returns a RangeAreas object that represents all the cells that match the specified type and value. Returns a null
@@ -421,8 +460,33 @@ items:
     syntax:
       content: |-
         getSpecialCellsOrNullObject(
-                    cellType: SpecialCellType,
-                    cellValueType?: SpecialCellValueType
+                    cellType:
+                        | SpecialCellType
+                        | "ConditionalFormats"
+                        | "DataValidations"
+                        | "Blanks"
+                        | "Constants"
+                        | "Formulas"
+                        | "SameConditionalFormat"
+                        | "SameDataValidation"
+                        | "Visible",
+                    cellValueType?:
+                        | SpecialCellValueType
+                        | "All"
+                        | "Errors"
+                        | "ErrorsLogical"
+                        | "ErrorsNumbers"
+                        | "ErrorsText"
+                        | "ErrorsLogicalNumber"
+                        | "ErrorsLogicalText"
+                        | "ErrorsNumberText"
+                        | "Logical"
+                        | "LogicalNumbers"
+                        | "LogicalText"
+                        | "LogicalNumbersText"
+                        | "Numbers"
+                        | "NumbersText"
+                        | "Text"
                 ): RangeAreas;
       return:
         type:
@@ -432,14 +496,14 @@ items:
         - id: cellType
           description: The type of cells to include.
           type:
-            - 'excel!Excel.SpecialCellType:enum'
+            - 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject~0:complex'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used to determine which types of cells to
             include in the result. These values can be combined together to return more than one type. The default is to
             select all constants or formulas, no matter what the type.
           type:
-            - 'excel!Excel.SpecialCellValueType:enum'
+            - 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject~1:complex'
   - uid: 'excel!Excel.RangeAreas#getTables:member(1)'
     summary: Returns a scoped collection of tables that overlap with any range in this RangeAreas object.
     name: getTables(fullyContained)
@@ -586,9 +650,43 @@ references:
   - uid: 'excel!Excel.RangeCollection:interface'
     name: RangeCollection
     fullName: Excel.RangeCollection
-  - uid: 'excel!Excel.ClearApplyTo:enum'
-    name: ClearApplyTo
-    fullName: Excel.ClearApplyTo
+  - uid: 'excel!Excel.RangeAreas#clear~0:complex'
+    name: |-
+      | ClearApplyTo
+                      | "All"
+                      | "Formats"
+                      | "Contents"
+                      | "Hyperlinks"
+                      | "RemoveHyperlinks"
+    fullName: |-
+      | Excel.ClearApplyTo
+                      | "All"
+                      | "Formats"
+                      | "Contents"
+                      | "Hyperlinks"
+                      | "RemoveHyperlinks"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ClearApplyTo:enum'
+        name: ClearApplyTo
+        fullName: Excel.ClearApplyTo
+      - name: |2-
+
+                          | "All"
+                          | "Formats"
+                          | "Contents"
+                          | "Hyperlinks"
+                          | "RemoveHyperlinks"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Formats"
+                          | "Contents"
+                          | "Hyperlinks"
+                          | "RemoveHyperlinks"
+                  
   - uid: 'excel!Excel.ConditionalFormatCollection:interface'
     name: ConditionalFormatCollection
     fullName: Excel.ConditionalFormatCollection
@@ -606,9 +704,37 @@ references:
         fullName: Excel.RangeAreas
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.RangeCopyType:enum'
-    name: RangeCopyType
-    fullName: Excel.RangeCopyType
+  - uid: 'excel!Excel.RangeAreas#copyFrom~1:complex'
+    name: |-
+      | RangeCopyType
+                      | "All"
+                      | "Formulas"
+                      | "Values"
+                      | "Formats"
+    fullName: |-
+      | Excel.RangeCopyType
+                      | "All"
+                      | "Formulas"
+                      | "Values"
+                      | "Formats"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.RangeCopyType:enum'
+        name: RangeCopyType
+        fullName: Excel.RangeCopyType
+      - name: |2-
+
+                          | "All"
+                          | "Formulas"
+                          | "Values"
+                          | "Formats"
+        fullName: |2-
+
+                          | "All"
+                          | "Formulas"
+                          | "Values"
+                          | "Formats"
   - uid: 'excel!Excel.DataValidation:interface'
     name: DataValidation
     fullName: Excel.DataValidation
@@ -650,12 +776,254 @@ references:
         fullName: |2-
            | string
                   
-  - uid: 'excel!Excel.SpecialCellType:enum'
-    name: SpecialCellType
-    fullName: Excel.SpecialCellType
-  - uid: 'excel!Excel.SpecialCellValueType:enum'
-    name: SpecialCellValueType
-    fullName: Excel.SpecialCellValueType
+  - uid: 'excel!Excel.RangeAreas#getSpecialCells~0:complex'
+    name: |-
+      | SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    fullName: |-
+      | Excel.SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellType:enum'
+        name: SpecialCellType
+        fullName: Excel.SpecialCellType
+      - name: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+        fullName: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+  - uid: 'excel!Excel.RangeAreas#getSpecialCells~1:complex'
+    name: |-
+      | SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    fullName: |-
+      | Excel.SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellValueType:enum'
+        name: SpecialCellValueType
+        fullName: Excel.SpecialCellValueType
+      - name: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+  - uid: 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject~0:complex'
+    name: |-
+      | SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    fullName: |-
+      | Excel.SpecialCellType
+                      | "ConditionalFormats"
+                      | "DataValidations"
+                      | "Blanks"
+                      | "Constants"
+                      | "Formulas"
+                      | "SameConditionalFormat"
+                      | "SameDataValidation"
+                      | "Visible"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellType:enum'
+        name: SpecialCellType
+        fullName: Excel.SpecialCellType
+      - name: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+        fullName: |2-
+
+                          | "ConditionalFormats"
+                          | "DataValidations"
+                          | "Blanks"
+                          | "Constants"
+                          | "Formulas"
+                          | "SameConditionalFormat"
+                          | "SameDataValidation"
+                          | "Visible"
+  - uid: 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject~1:complex'
+    name: |-
+      | SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    fullName: |-
+      | Excel.SpecialCellValueType
+                      | "All"
+                      | "Errors"
+                      | "ErrorsLogical"
+                      | "ErrorsNumbers"
+                      | "ErrorsText"
+                      | "ErrorsLogicalNumber"
+                      | "ErrorsLogicalText"
+                      | "ErrorsNumberText"
+                      | "Logical"
+                      | "LogicalNumbers"
+                      | "LogicalText"
+                      | "LogicalNumbersText"
+                      | "Numbers"
+                      | "NumbersText"
+                      | "Text"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.SpecialCellValueType:enum'
+        name: SpecialCellValueType
+        fullName: Excel.SpecialCellValueType
+      - name: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
+        fullName: |2-
+
+                          | "All"
+                          | "Errors"
+                          | "ErrorsLogical"
+                          | "ErrorsNumbers"
+                          | "ErrorsText"
+                          | "ErrorsLogicalNumber"
+                          | "ErrorsLogicalText"
+                          | "ErrorsNumberText"
+                          | "Logical"
+                          | "LogicalNumbers"
+                          | "LogicalText"
+                          | "LogicalNumbersText"
+                          | "Numbers"
+                          | "NumbersText"
+                          | "Text"
+                  
   - uid: 'excel!Excel.TableScopedCollection:interface'
     name: TableScopedCollection
     fullName: Excel.TableScopedCollection

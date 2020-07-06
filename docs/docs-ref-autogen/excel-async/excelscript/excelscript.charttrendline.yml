@@ -187,10 +187,18 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ChartTrendlineType;'
+      content: |-
+        type:
+                    | ChartTrendlineType
+                    | "Linear"
+                    | "Exponential"
+                    | "Logarithmic"
+                    | "MovingAverage"
+                    | "Polynomial"
+                    | "Power";
       return:
         type:
-          - 'excel!Excel.ChartTrendlineType:enum'
+          - 'excel!Excel.ChartTrendline#type~0:complex'
         description: |-
 
 
@@ -218,6 +226,42 @@ references:
   - uid: 'excel!Excel.ChartTrendlineLabel:interface'
     name: ChartTrendlineLabel
     fullName: Excel.ChartTrendlineLabel
-  - uid: 'excel!Excel.ChartTrendlineType:enum'
-    name: ChartTrendlineType
-    fullName: Excel.ChartTrendlineType
+  - uid: 'excel!Excel.ChartTrendline#type~0:complex'
+    name: |-
+      | ChartTrendlineType
+                  | "Linear"
+                  | "Exponential"
+                  | "Logarithmic"
+                  | "MovingAverage"
+                  | "Polynomial"
+                  | "Power"
+    fullName: |-
+      | Excel.ChartTrendlineType
+                  | "Linear"
+                  | "Exponential"
+                  | "Logarithmic"
+                  | "MovingAverage"
+                  | "Polynomial"
+                  | "Power"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartTrendlineType:enum'
+        name: ChartTrendlineType
+        fullName: Excel.ChartTrendlineType
+      - name: |2-
+
+                      | "Linear"
+                      | "Exponential"
+                      | "Logarithmic"
+                      | "MovingAverage"
+                      | "Polynomial"
+                      | "Power"
+        fullName: |2-
+
+                      | "Linear"
+                      | "Exponential"
+                      | "Logarithmic"
+                      | "MovingAverage"
+                      | "Polynomial"
+                      | "Power"

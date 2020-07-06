@@ -368,10 +368,20 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly type: ConditionalFormatType;'
+      content: |-
+        readonly type:
+                    | ConditionalFormatType
+                    | "Custom"
+                    | "DataBar"
+                    | "ColorScale"
+                    | "IconSet"
+                    | "TopBottom"
+                    | "PresetCriteria"
+                    | "ContainsText"
+                    | "CellValue";
       return:
         type:
-          - 'excel!Excel.ConditionalFormatType:enum'
+          - 'excel!Excel.ConditionalFormat#type~0:complex'
         description: |-
 
 
@@ -435,6 +445,50 @@ references:
   - uid: 'excel!Excel.TopBottomConditionalFormat:interface'
     name: TopBottomConditionalFormat
     fullName: Excel.TopBottomConditionalFormat
-  - uid: 'excel!Excel.ConditionalFormatType:enum'
-    name: ConditionalFormatType
-    fullName: Excel.ConditionalFormatType
+  - uid: 'excel!Excel.ConditionalFormat#type~0:complex'
+    name: |-
+      | ConditionalFormatType
+                  | "Custom"
+                  | "DataBar"
+                  | "ColorScale"
+                  | "IconSet"
+                  | "TopBottom"
+                  | "PresetCriteria"
+                  | "ContainsText"
+                  | "CellValue"
+    fullName: |-
+      | Excel.ConditionalFormatType
+                  | "Custom"
+                  | "DataBar"
+                  | "ColorScale"
+                  | "IconSet"
+                  | "TopBottom"
+                  | "PresetCriteria"
+                  | "ContainsText"
+                  | "CellValue"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalFormatType:enum'
+        name: ConditionalFormatType
+        fullName: Excel.ConditionalFormatType
+      - name: |2-
+
+                      | "Custom"
+                      | "DataBar"
+                      | "ColorScale"
+                      | "IconSet"
+                      | "TopBottom"
+                      | "PresetCriteria"
+                      | "ContainsText"
+                      | "CellValue"
+        fullName: |2-
+
+                      | "Custom"
+                      | "DataBar"
+                      | "ColorScale"
+                      | "IconSet"
+                      | "TopBottom"
+                      | "PresetCriteria"
+                      | "ContainsText"
+                      | "CellValue"

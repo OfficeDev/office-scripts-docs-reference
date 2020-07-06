@@ -187,11 +187,40 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'selectionMode?: ProtectionSelectionMode;'
+      content: |-
+        selectionMode?:
+                    | ProtectionSelectionMode
+                    | "Normal"
+                    | "Unlocked"
+                    | "None";
       return:
         type:
-          - 'excel!Excel.ProtectionSelectionMode:enum'
+          - 'excel!Excel.WorksheetProtectionOptions#selectionMode~0:complex'
 references:
-  - uid: 'excel!Excel.ProtectionSelectionMode:enum'
-    name: ProtectionSelectionMode
-    fullName: Excel.ProtectionSelectionMode
+  - uid: 'excel!Excel.WorksheetProtectionOptions#selectionMode~0:complex'
+    name: |-
+      | ProtectionSelectionMode
+                  | "Normal"
+                  | "Unlocked"
+                  | "None"
+    fullName: |-
+      | Excel.ProtectionSelectionMode
+                  | "Normal"
+                  | "Unlocked"
+                  | "None"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ProtectionSelectionMode:enum'
+        name: ProtectionSelectionMode
+        fullName: Excel.ProtectionSelectionMode
+      - name: |2-
+
+                      | "Normal"
+                      | "Unlocked"
+                      | "None"
+        fullName: |2-
+
+                      | "Normal"
+                      | "Unlocked"
+                      | "None"

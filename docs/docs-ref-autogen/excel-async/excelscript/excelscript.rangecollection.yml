@@ -19,10 +19,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.RangeCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.RangeCollection#getItemAt:member(1)'
     summary: Returns the range object based on its position in the RangeCollection.
@@ -63,6 +63,15 @@ items:
           type:
             - 'string | string[]'
 references:
+  - uid: 'excel!Excel.RangeCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.Range:interface'
     name: Range
     fullName: Excel.Range

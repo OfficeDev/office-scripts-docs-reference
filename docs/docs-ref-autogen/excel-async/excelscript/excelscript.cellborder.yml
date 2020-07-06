@@ -36,10 +36,20 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'style?: BorderLineStyle;'
+      content: |-
+        style?:
+                    | BorderLineStyle
+                    | "None"
+                    | "Continuous"
+                    | "Dash"
+                    | "DashDot"
+                    | "DashDotDot"
+                    | "Dot"
+                    | "Double"
+                    | "SlantDashDot";
       return:
         type:
-          - 'excel!Excel.BorderLineStyle:enum'
+          - 'excel!Excel.CellBorder#style~0:complex'
   - uid: 'excel!Excel.CellBorder#tintAndShade:member'
     summary: Represents the `tintAndShade` property of a single border.
     name: tintAndShade
@@ -60,14 +70,64 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'weight?: BorderWeight;'
+      content: 'weight?: BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick";'
       return:
         type:
-          - 'excel!Excel.BorderWeight:enum'
+          - 'excel!Excel.CellBorder#weight~0:complex'
 references:
-  - uid: 'excel!Excel.BorderLineStyle:enum'
-    name: BorderLineStyle
-    fullName: Excel.BorderLineStyle
-  - uid: 'excel!Excel.BorderWeight:enum'
-    name: BorderWeight
-    fullName: Excel.BorderWeight
+  - uid: 'excel!Excel.CellBorder#style~0:complex'
+    name: |-
+      | BorderLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+                  | "Double"
+                  | "SlantDashDot"
+    fullName: |-
+      | Excel.BorderLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+                  | "Double"
+                  | "SlantDashDot"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.BorderLineStyle:enum'
+        name: BorderLineStyle
+        fullName: Excel.BorderLineStyle
+      - name: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+                      | "Double"
+                      | "SlantDashDot"
+        fullName: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+                      | "Double"
+                      | "SlantDashDot"
+  - uid: 'excel!Excel.CellBorder#weight~0:complex'
+    name: BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"
+    fullName: Excel.BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick"
+    spec.typeScript:
+      - uid: 'excel!Excel.BorderWeight:enum'
+        name: BorderWeight
+        fullName: Excel.BorderWeight
+      - name: ' | "Hairline" | "Thin" | "Medium" | "Thick"'
+        fullName: ' | "Hairline" | "Thin" | "Medium" | "Thick"'

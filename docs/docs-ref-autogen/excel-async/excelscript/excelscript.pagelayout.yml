@@ -302,10 +302,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'orientation: PageOrientation;'
+      content: 'orientation: PageOrientation | "Portrait" | "Landscape";'
       return:
         type:
-          - 'excel!Excel.PageOrientation:enum'
+          - 'excel!Excel.PageLayout#orientation~0:complex'
         description: |-
 
 
@@ -326,10 +326,53 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'paperSize: PaperType;'
+      content: |-
+        paperSize:
+                    | PaperType
+                    | "Letter"
+                    | "LetterSmall"
+                    | "Tabloid"
+                    | "Ledger"
+                    | "Legal"
+                    | "Statement"
+                    | "Executive"
+                    | "A3"
+                    | "A4"
+                    | "A4Small"
+                    | "A5"
+                    | "B4"
+                    | "B5"
+                    | "Folio"
+                    | "Quatro"
+                    | "Paper10x14"
+                    | "Paper11x17"
+                    | "Note"
+                    | "Envelope9"
+                    | "Envelope10"
+                    | "Envelope11"
+                    | "Envelope12"
+                    | "Envelope14"
+                    | "Csheet"
+                    | "Dsheet"
+                    | "Esheet"
+                    | "EnvelopeDL"
+                    | "EnvelopeC5"
+                    | "EnvelopeC3"
+                    | "EnvelopeC4"
+                    | "EnvelopeC6"
+                    | "EnvelopeC65"
+                    | "EnvelopeB4"
+                    | "EnvelopeB5"
+                    | "EnvelopeB6"
+                    | "EnvelopeItaly"
+                    | "EnvelopeMonarch"
+                    | "EnvelopePersonal"
+                    | "FanfoldUS"
+                    | "FanfoldStdGerman"
+                    | "FanfoldLegalGerman";
       return:
         type:
-          - 'excel!Excel.PaperType:enum'
+          - 'excel!Excel.PageLayout#paperSize~0:complex'
   - uid: 'excel!Excel.PageLayout#printComments:member'
     summary: Specifies if the worksheet's comments should be displayed when printing.
     name: printComments
@@ -338,10 +381,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'printComments: PrintComments;'
+      content: 'printComments: PrintComments | "NoComments" | "EndSheet" | "InPlace";'
       return:
         type:
-          - 'excel!Excel.PrintComments:enum'
+          - 'excel!Excel.PageLayout#printComments~0:complex'
   - uid: 'excel!Excel.PageLayout#printErrors:member'
     summary: The worksheet's print errors option.
     name: printErrors
@@ -350,10 +393,16 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'printErrors: PrintErrorType;'
+      content: |-
+        printErrors:
+                    | PrintErrorType
+                    | "AsDisplayed"
+                    | "Blank"
+                    | "Dash"
+                    | "NotAvailable";
       return:
         type:
-          - 'excel!Excel.PrintErrorType:enum'
+          - 'excel!Excel.PageLayout#printErrors~0:complex'
   - uid: 'excel!Excel.PageLayout#printGridlines:member'
     summary: Specifies if the worksheet's gridlines will be printed.
     name: printGridlines
@@ -386,10 +435,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'printOrder: PrintOrder;'
+      content: 'printOrder: PrintOrder | "DownThenOver" | "OverThenDown";'
       return:
         type:
-          - 'excel!Excel.PrintOrder:enum'
+          - 'excel!Excel.PageLayout#printOrder~0:complex'
   - uid: 'excel!Excel.PageLayout#rightMargin:member'
     summary: 'The worksheet''s right margin, in points, for use when printing.'
     name: rightMargin
@@ -441,7 +490,7 @@ items:
     syntax:
       content: |-
         setPrintMargins(
-                    unit: PrintMarginUnit,
+                    unit: PrintMarginUnit | "Points" | "Inches" | "Centimeters",
                     marginOptions: PageLayoutMarginOptions
                 ): void;
       return:
@@ -452,7 +501,7 @@ items:
         - id: unit
           description: Measurement unit for the margins provided.
           type:
-            - 'excel!Excel.PrintMarginUnit:enum'
+            - 'excel!Excel.PageLayout#setPrintMargins~0:complex'
         - id: marginOptions
           description: 'Margin values to set, margins not provided will remain unchanged.'
           type:
@@ -552,21 +601,243 @@ references:
   - uid: 'excel!Excel.HeaderFooterGroup:interface'
     name: HeaderFooterGroup
     fullName: Excel.HeaderFooterGroup
-  - uid: 'excel!Excel.PageOrientation:enum'
-    name: PageOrientation
-    fullName: Excel.PageOrientation
-  - uid: 'excel!Excel.PaperType:enum'
-    name: PaperType
-    fullName: Excel.PaperType
-  - uid: 'excel!Excel.PrintComments:enum'
-    name: PrintComments
-    fullName: Excel.PrintComments
-  - uid: 'excel!Excel.PrintErrorType:enum'
-    name: PrintErrorType
-    fullName: Excel.PrintErrorType
-  - uid: 'excel!Excel.PrintOrder:enum'
-    name: PrintOrder
-    fullName: Excel.PrintOrder
+  - uid: 'excel!Excel.PageLayout#orientation~0:complex'
+    name: PageOrientation | "Portrait" | "Landscape"
+    fullName: Excel.PageOrientation | "Portrait" | "Landscape"
+    spec.typeScript:
+      - uid: 'excel!Excel.PageOrientation:enum'
+        name: PageOrientation
+        fullName: Excel.PageOrientation
+      - name: ' | "Portrait" | "Landscape"'
+        fullName: ' | "Portrait" | "Landscape"'
+  - uid: 'excel!Excel.PageLayout#paperSize~0:complex'
+    name: |-
+      | PaperType
+                  | "Letter"
+                  | "LetterSmall"
+                  | "Tabloid"
+                  | "Ledger"
+                  | "Legal"
+                  | "Statement"
+                  | "Executive"
+                  | "A3"
+                  | "A4"
+                  | "A4Small"
+                  | "A5"
+                  | "B4"
+                  | "B5"
+                  | "Folio"
+                  | "Quatro"
+                  | "Paper10x14"
+                  | "Paper11x17"
+                  | "Note"
+                  | "Envelope9"
+                  | "Envelope10"
+                  | "Envelope11"
+                  | "Envelope12"
+                  | "Envelope14"
+                  | "Csheet"
+                  | "Dsheet"
+                  | "Esheet"
+                  | "EnvelopeDL"
+                  | "EnvelopeC5"
+                  | "EnvelopeC3"
+                  | "EnvelopeC4"
+                  | "EnvelopeC6"
+                  | "EnvelopeC65"
+                  | "EnvelopeB4"
+                  | "EnvelopeB5"
+                  | "EnvelopeB6"
+                  | "EnvelopeItaly"
+                  | "EnvelopeMonarch"
+                  | "EnvelopePersonal"
+                  | "FanfoldUS"
+                  | "FanfoldStdGerman"
+                  | "FanfoldLegalGerman"
+    fullName: |-
+      | Excel.PaperType
+                  | "Letter"
+                  | "LetterSmall"
+                  | "Tabloid"
+                  | "Ledger"
+                  | "Legal"
+                  | "Statement"
+                  | "Executive"
+                  | "A3"
+                  | "A4"
+                  | "A4Small"
+                  | "A5"
+                  | "B4"
+                  | "B5"
+                  | "Folio"
+                  | "Quatro"
+                  | "Paper10x14"
+                  | "Paper11x17"
+                  | "Note"
+                  | "Envelope9"
+                  | "Envelope10"
+                  | "Envelope11"
+                  | "Envelope12"
+                  | "Envelope14"
+                  | "Csheet"
+                  | "Dsheet"
+                  | "Esheet"
+                  | "EnvelopeDL"
+                  | "EnvelopeC5"
+                  | "EnvelopeC3"
+                  | "EnvelopeC4"
+                  | "EnvelopeC6"
+                  | "EnvelopeC65"
+                  | "EnvelopeB4"
+                  | "EnvelopeB5"
+                  | "EnvelopeB6"
+                  | "EnvelopeItaly"
+                  | "EnvelopeMonarch"
+                  | "EnvelopePersonal"
+                  | "FanfoldUS"
+                  | "FanfoldStdGerman"
+                  | "FanfoldLegalGerman"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.PaperType:enum'
+        name: PaperType
+        fullName: Excel.PaperType
+      - name: |2-
+
+                      | "Letter"
+                      | "LetterSmall"
+                      | "Tabloid"
+                      | "Ledger"
+                      | "Legal"
+                      | "Statement"
+                      | "Executive"
+                      | "A3"
+                      | "A4"
+                      | "A4Small"
+                      | "A5"
+                      | "B4"
+                      | "B5"
+                      | "Folio"
+                      | "Quatro"
+                      | "Paper10x14"
+                      | "Paper11x17"
+                      | "Note"
+                      | "Envelope9"
+                      | "Envelope10"
+                      | "Envelope11"
+                      | "Envelope12"
+                      | "Envelope14"
+                      | "Csheet"
+                      | "Dsheet"
+                      | "Esheet"
+                      | "EnvelopeDL"
+                      | "EnvelopeC5"
+                      | "EnvelopeC3"
+                      | "EnvelopeC4"
+                      | "EnvelopeC6"
+                      | "EnvelopeC65"
+                      | "EnvelopeB4"
+                      | "EnvelopeB5"
+                      | "EnvelopeB6"
+                      | "EnvelopeItaly"
+                      | "EnvelopeMonarch"
+                      | "EnvelopePersonal"
+                      | "FanfoldUS"
+                      | "FanfoldStdGerman"
+                      | "FanfoldLegalGerman"
+        fullName: |2-
+
+                      | "Letter"
+                      | "LetterSmall"
+                      | "Tabloid"
+                      | "Ledger"
+                      | "Legal"
+                      | "Statement"
+                      | "Executive"
+                      | "A3"
+                      | "A4"
+                      | "A4Small"
+                      | "A5"
+                      | "B4"
+                      | "B5"
+                      | "Folio"
+                      | "Quatro"
+                      | "Paper10x14"
+                      | "Paper11x17"
+                      | "Note"
+                      | "Envelope9"
+                      | "Envelope10"
+                      | "Envelope11"
+                      | "Envelope12"
+                      | "Envelope14"
+                      | "Csheet"
+                      | "Dsheet"
+                      | "Esheet"
+                      | "EnvelopeDL"
+                      | "EnvelopeC5"
+                      | "EnvelopeC3"
+                      | "EnvelopeC4"
+                      | "EnvelopeC6"
+                      | "EnvelopeC65"
+                      | "EnvelopeB4"
+                      | "EnvelopeB5"
+                      | "EnvelopeB6"
+                      | "EnvelopeItaly"
+                      | "EnvelopeMonarch"
+                      | "EnvelopePersonal"
+                      | "FanfoldUS"
+                      | "FanfoldStdGerman"
+                      | "FanfoldLegalGerman"
+  - uid: 'excel!Excel.PageLayout#printComments~0:complex'
+    name: PrintComments | "NoComments" | "EndSheet" | "InPlace"
+    fullName: Excel.PrintComments | "NoComments" | "EndSheet" | "InPlace"
+    spec.typeScript:
+      - uid: 'excel!Excel.PrintComments:enum'
+        name: PrintComments
+        fullName: Excel.PrintComments
+      - name: ' | "NoComments" | "EndSheet" | "InPlace"'
+        fullName: ' | "NoComments" | "EndSheet" | "InPlace"'
+  - uid: 'excel!Excel.PageLayout#printErrors~0:complex'
+    name: |-
+      | PrintErrorType
+                  | "AsDisplayed"
+                  | "Blank"
+                  | "Dash"
+                  | "NotAvailable"
+    fullName: |-
+      | Excel.PrintErrorType
+                  | "AsDisplayed"
+                  | "Blank"
+                  | "Dash"
+                  | "NotAvailable"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.PrintErrorType:enum'
+        name: PrintErrorType
+        fullName: Excel.PrintErrorType
+      - name: |2-
+
+                      | "AsDisplayed"
+                      | "Blank"
+                      | "Dash"
+                      | "NotAvailable"
+        fullName: |2-
+
+                      | "AsDisplayed"
+                      | "Blank"
+                      | "Dash"
+                      | "NotAvailable"
+  - uid: 'excel!Excel.PageLayout#printOrder~0:complex'
+    name: PrintOrder | "DownThenOver" | "OverThenDown"
+    fullName: Excel.PrintOrder | "DownThenOver" | "OverThenDown"
+    spec.typeScript:
+      - uid: 'excel!Excel.PrintOrder:enum'
+        name: PrintOrder
+        fullName: Excel.PrintOrder
+      - name: ' | "DownThenOver" | "OverThenDown"'
+        fullName: ' | "DownThenOver" | "OverThenDown"'
   - uid: 'excel!Excel.PageLayout#setPrintArea~0:complex'
     name: Range | RangeAreas | string
     fullName: Excel.Range | Excel.RangeAreas | string
@@ -581,9 +852,15 @@ references:
         fullName: Excel.RangeAreas
       - name: ' | string'
         fullName: ' | string'
-  - uid: 'excel!Excel.PrintMarginUnit:enum'
-    name: PrintMarginUnit
-    fullName: Excel.PrintMarginUnit
+  - uid: 'excel!Excel.PageLayout#setPrintMargins~0:complex'
+    name: PrintMarginUnit | "Points" | "Inches" | "Centimeters"
+    fullName: Excel.PrintMarginUnit | "Points" | "Inches" | "Centimeters"
+    spec.typeScript:
+      - uid: 'excel!Excel.PrintMarginUnit:enum'
+        name: PrintMarginUnit
+        fullName: Excel.PrintMarginUnit
+      - name: ' | "Points" | "Inches" | "Centimeters"'
+        fullName: ' | "Points" | "Inches" | "Centimeters"'
   - uid: 'excel!Excel.PageLayoutMarginOptions:interface'
     name: PageLayoutMarginOptions
     fullName: Excel.PageLayoutMarginOptions

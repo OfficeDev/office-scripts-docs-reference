@@ -42,10 +42,24 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'dashStyle: ShapeLineDashStyle;'
+      content: |-
+        dashStyle:
+                    | ShapeLineDashStyle
+                    | "Dash"
+                    | "DashDot"
+                    | "DashDotDot"
+                    | "LongDash"
+                    | "LongDashDot"
+                    | "RoundDot"
+                    | "Solid"
+                    | "SquareDot"
+                    | "LongDashDotDot"
+                    | "SystemDash"
+                    | "SystemDot"
+                    | "SystemDashDot";
       return:
         type:
-          - 'excel!Excel.ShapeLineDashStyle:enum'
+          - 'excel!Excel.ShapeLineFormat#dashStyle~0:complex'
   - uid: 'excel!Excel.ShapeLineFormat#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -76,10 +90,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'style: ShapeLineStyle;'
+      content: |-
+        style:
+                    | ShapeLineStyle
+                    | "Single"
+                    | "ThickBetweenThin"
+                    | "ThickThin"
+                    | "ThinThick"
+                    | "ThinThin";
       return:
         type:
-          - 'excel!Excel.ShapeLineStyle:enum'
+          - 'excel!Excel.ShapeLineFormat#style~0:complex'
   - uid: 'excel!Excel.ShapeLineFormat#transparency:member'
     summary: >-
       Represents the degree of transparency of the specified line as a value from 0.0 (opaque) through 1.0 (clear).
@@ -123,9 +144,101 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.ShapeLineDashStyle:enum'
-    name: ShapeLineDashStyle
-    fullName: Excel.ShapeLineDashStyle
-  - uid: 'excel!Excel.ShapeLineStyle:enum'
-    name: ShapeLineStyle
-    fullName: Excel.ShapeLineStyle
+  - uid: 'excel!Excel.ShapeLineFormat#dashStyle~0:complex'
+    name: |-
+      | ShapeLineDashStyle
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "LongDash"
+                  | "LongDashDot"
+                  | "RoundDot"
+                  | "Solid"
+                  | "SquareDot"
+                  | "LongDashDotDot"
+                  | "SystemDash"
+                  | "SystemDot"
+                  | "SystemDashDot"
+    fullName: |-
+      | Excel.ShapeLineDashStyle
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "LongDash"
+                  | "LongDashDot"
+                  | "RoundDot"
+                  | "Solid"
+                  | "SquareDot"
+                  | "LongDashDotDot"
+                  | "SystemDash"
+                  | "SystemDot"
+                  | "SystemDashDot"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ShapeLineDashStyle:enum'
+        name: ShapeLineDashStyle
+        fullName: Excel.ShapeLineDashStyle
+      - name: |2-
+
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "LongDash"
+                      | "LongDashDot"
+                      | "RoundDot"
+                      | "Solid"
+                      | "SquareDot"
+                      | "LongDashDotDot"
+                      | "SystemDash"
+                      | "SystemDot"
+                      | "SystemDashDot"
+        fullName: |2-
+
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "LongDash"
+                      | "LongDashDot"
+                      | "RoundDot"
+                      | "Solid"
+                      | "SquareDot"
+                      | "LongDashDotDot"
+                      | "SystemDash"
+                      | "SystemDot"
+                      | "SystemDashDot"
+  - uid: 'excel!Excel.ShapeLineFormat#style~0:complex'
+    name: |-
+      | ShapeLineStyle
+                  | "Single"
+                  | "ThickBetweenThin"
+                  | "ThickThin"
+                  | "ThinThick"
+                  | "ThinThin"
+    fullName: |-
+      | Excel.ShapeLineStyle
+                  | "Single"
+                  | "ThickBetweenThin"
+                  | "ThickThin"
+                  | "ThinThick"
+                  | "ThinThin"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ShapeLineStyle:enum'
+        name: ShapeLineStyle
+        fullName: Excel.ShapeLineStyle
+      - name: |2-
+
+                      | "Single"
+                      | "ThickBetweenThin"
+                      | "ThickThin"
+                      | "ThinThick"
+                      | "ThinThin"
+        fullName: |2-
+
+                      | "Single"
+                      | "ThickBetweenThin"
+                      | "ThickThin"
+                      | "ThinThick"
+                      | "ThinThin"

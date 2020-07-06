@@ -21,10 +21,18 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly format: PictureFormat;'
+      content: |-
+        readonly format:
+                    | PictureFormat
+                    | "Unknown"
+                    | "Bmp"
+                    | "Jpeg"
+                    | "Gif"
+                    | "Png"
+                    | "Svg";
       return:
         type:
-          - 'excel!Excel.PictureFormat:enum'
+          - 'excel!Excel.Image#format~0:complex'
         description: |-
 
 
@@ -86,9 +94,45 @@ items:
         type:
           - 'excel!Excel.Shape:interface'
 references:
-  - uid: 'excel!Excel.PictureFormat:enum'
-    name: PictureFormat
-    fullName: Excel.PictureFormat
+  - uid: 'excel!Excel.Image#format~0:complex'
+    name: |-
+      | PictureFormat
+                  | "Unknown"
+                  | "Bmp"
+                  | "Jpeg"
+                  | "Gif"
+                  | "Png"
+                  | "Svg"
+    fullName: |-
+      | Excel.PictureFormat
+                  | "Unknown"
+                  | "Bmp"
+                  | "Jpeg"
+                  | "Gif"
+                  | "Png"
+                  | "Svg"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.PictureFormat:enum'
+        name: PictureFormat
+        fullName: Excel.PictureFormat
+      - name: |2-
+
+                      | "Unknown"
+                      | "Bmp"
+                      | "Jpeg"
+                      | "Gif"
+                      | "Png"
+                      | "Svg"
+        fullName: |2-
+
+                      | "Unknown"
+                      | "Bmp"
+                      | "Jpeg"
+                      | "Gif"
+                      | "Png"
+                      | "Svg"
   - uid: 'excel!Excel.Shape:interface'
     name: Shape
     fullName: Excel.Shape

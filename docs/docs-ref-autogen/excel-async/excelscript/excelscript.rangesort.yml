@@ -24,8 +24,8 @@ items:
                     fields: SortField[],
                     matchCase?: boolean,
                     hasHeaders?: boolean,
-                    orientation?: SortOrientation,
-                    method?: SortMethod
+                    orientation?: SortOrientation | "Rows" | "Columns",
+                    method?: SortMethod | "PinYin" | "StrokeCount"
                 ): void;
       return:
         type:
@@ -47,11 +47,11 @@ items:
         - id: orientation
           description: Optional. Whether the operation is sorting rows or columns.
           type:
-            - 'excel!Excel.SortOrientation:enum'
+            - 'excel!Excel.RangeSort#apply~1:complex'
         - id: method
           description: Optional. The ordering method used for Chinese characters.
           type:
-            - 'excel!Excel.SortMethod:enum'
+            - 'excel!Excel.RangeSort#apply~2:complex'
   - uid: 'excel!Excel.RangeSort#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -82,9 +82,25 @@ references:
         fullName: Excel.SortField
       - name: '[]'
         fullName: '[]'
-  - uid: 'excel!Excel.SortOrientation:enum'
-    name: SortOrientation
-    fullName: Excel.SortOrientation
-  - uid: 'excel!Excel.SortMethod:enum'
-    name: SortMethod
-    fullName: Excel.SortMethod
+  - uid: 'excel!Excel.RangeSort#apply~1:complex'
+    name: SortOrientation | "Rows" | "Columns"
+    fullName: Excel.SortOrientation | "Rows" | "Columns"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortOrientation:enum'
+        name: SortOrientation
+        fullName: Excel.SortOrientation
+      - name: ' | "Rows" | "Columns"'
+        fullName: ' | "Rows" | "Columns"'
+  - uid: 'excel!Excel.RangeSort#apply~2:complex'
+    name: SortMethod | "PinYin" | "StrokeCount"
+    fullName: Excel.SortMethod | "PinYin" | "StrokeCount"
+    spec.typeScript:
+      - uid: 'excel!Excel.SortMethod:enum'
+        name: SortMethod
+        fullName: Excel.SortMethod
+      - name: |2-
+           | "PinYin" | "StrokeCount"
+                  
+        fullName: |2-
+           | "PinYin" | "StrokeCount"
+                  

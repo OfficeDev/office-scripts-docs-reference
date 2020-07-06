@@ -47,10 +47,23 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'lineStyle: ChartLineStyle;'
+      content: |-
+        lineStyle:
+                    | ChartLineStyle
+                    | "None"
+                    | "Continuous"
+                    | "Dash"
+                    | "DashDot"
+                    | "DashDotDot"
+                    | "Dot"
+                    | "Grey25"
+                    | "Grey50"
+                    | "Grey75"
+                    | "Automatic"
+                    | "RoundDot";
       return:
         type:
-          - 'excel!Excel.ChartLineStyle:enum'
+          - 'excel!Excel.ChartLineFormat#lineStyle~0:complex'
   - uid: 'excel!Excel.ChartLineFormat#load:member(1)'
     summary: >-
       Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
@@ -84,6 +97,62 @@ items:
         type:
           - number
 references:
-  - uid: 'excel!Excel.ChartLineStyle:enum'
-    name: ChartLineStyle
-    fullName: Excel.ChartLineStyle
+  - uid: 'excel!Excel.ChartLineFormat#lineStyle~0:complex'
+    name: |-
+      | ChartLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+                  | "Grey25"
+                  | "Grey50"
+                  | "Grey75"
+                  | "Automatic"
+                  | "RoundDot"
+    fullName: |-
+      | Excel.ChartLineStyle
+                  | "None"
+                  | "Continuous"
+                  | "Dash"
+                  | "DashDot"
+                  | "DashDotDot"
+                  | "Dot"
+                  | "Grey25"
+                  | "Grey50"
+                  | "Grey75"
+                  | "Automatic"
+                  | "RoundDot"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartLineStyle:enum'
+        name: ChartLineStyle
+        fullName: Excel.ChartLineStyle
+      - name: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+                      | "Grey25"
+                      | "Grey50"
+                      | "Grey75"
+                      | "Automatic"
+                      | "RoundDot"
+        fullName: |2-
+
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+                      | "Grey25"
+                      | "Grey50"
+                      | "Grey75"
+                      | "Automatic"
+                      | "RoundDot"

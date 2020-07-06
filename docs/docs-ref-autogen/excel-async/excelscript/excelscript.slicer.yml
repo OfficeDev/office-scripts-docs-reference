@@ -94,10 +94,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getSelectedItems(): string[];'
+      content: 'getSelectedItems(): ClientResult<string[]>;'
       return:
         type:
-          - 'string[]'
+          - 'excel!Excel.Slicer#getSelectedItems~0:complex'
         description: ''
   - uid: 'excel!Excel.Slicer#height:member'
     summary: >-
@@ -236,10 +236,10 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'sortBy: SlicerSortType;'
+      content: 'sortBy: SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending";'
       return:
         type:
-          - 'excel!Excel.SlicerSortType:enum'
+          - 'excel!Excel.Slicer#sortBy~0:complex'
   - uid: 'excel!Excel.Slicer#style:member'
     summary: >-
       Constant value that represents the Slicer style. Possible values are: "SlicerStyleLight1" through
@@ -308,12 +308,27 @@ items:
         type:
           - 'excel!Excel.Worksheet:interface'
 references:
+  - uid: 'excel!Excel.Slicer#getSelectedItems~0:complex'
+    name: 'ClientResult<string[]>'
+    fullName: 'Excel.ClientResult<string[]>'
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: '<string[]>'
+        fullName: '<string[]>'
   - uid: 'excel!Excel.SlicerItemCollection:interface'
     name: SlicerItemCollection
     fullName: Excel.SlicerItemCollection
-  - uid: 'excel!Excel.SlicerSortType:enum'
-    name: SlicerSortType
-    fullName: Excel.SlicerSortType
+  - uid: 'excel!Excel.Slicer#sortBy~0:complex'
+    name: SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending"
+    fullName: Excel.SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending"
+    spec.typeScript:
+      - uid: 'excel!Excel.SlicerSortType:enum'
+        name: SlicerSortType
+        fullName: Excel.SlicerSortType
+      - name: ' | "DataSourceOrder" | "Ascending" | "Descending"'
+        fullName: ' | "DataSourceOrder" | "Ascending" | "Descending"'
   - uid: 'excel!Excel.Worksheet:interface'
     name: Worksheet
     fullName: Excel.Worksheet

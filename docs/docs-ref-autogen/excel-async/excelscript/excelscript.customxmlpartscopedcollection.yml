@@ -25,10 +25,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.CustomXmlPartScopedCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.CustomXmlPartScopedCollection#getItem:member(1)'
     summary: Gets a custom XML part based on its ID.
@@ -148,6 +148,15 @@ items:
           type:
             - 'string | string[]'
 references:
+  - uid: 'excel!Excel.CustomXmlPartScopedCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.CustomXmlPart:interface'
     name: CustomXmlPart
     fullName: Excel.CustomXmlPart

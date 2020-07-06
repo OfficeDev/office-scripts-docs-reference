@@ -31,11 +31,50 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ConditionalTopBottomCriterionType;'
+      content: |-
+        type:
+                    | ConditionalTopBottomCriterionType
+                    | "Invalid"
+                    | "TopItems"
+                    | "TopPercent"
+                    | "BottomItems"
+                    | "BottomPercent";
       return:
         type:
-          - 'excel!Excel.ConditionalTopBottomCriterionType:enum'
+          - 'excel!Excel.ConditionalTopBottomRule#type~0:complex'
 references:
-  - uid: 'excel!Excel.ConditionalTopBottomCriterionType:enum'
-    name: ConditionalTopBottomCriterionType
-    fullName: Excel.ConditionalTopBottomCriterionType
+  - uid: 'excel!Excel.ConditionalTopBottomRule#type~0:complex'
+    name: |-
+      | ConditionalTopBottomCriterionType
+                  | "Invalid"
+                  | "TopItems"
+                  | "TopPercent"
+                  | "BottomItems"
+                  | "BottomPercent"
+    fullName: |-
+      | Excel.ConditionalTopBottomCriterionType
+                  | "Invalid"
+                  | "TopItems"
+                  | "TopPercent"
+                  | "BottomItems"
+                  | "BottomPercent"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalTopBottomCriterionType:enum'
+        name: ConditionalTopBottomCriterionType
+        fullName: Excel.ConditionalTopBottomCriterionType
+      - name: |2-
+
+                      | "Invalid"
+                      | "TopItems"
+                      | "TopPercent"
+                      | "BottomItems"
+                      | "BottomPercent"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "TopItems"
+                      | "TopPercent"
+                      | "BottomItems"
+                      | "BottomPercent"

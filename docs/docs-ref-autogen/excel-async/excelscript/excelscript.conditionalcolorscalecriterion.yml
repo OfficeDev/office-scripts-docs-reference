@@ -44,11 +44,60 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'type: ConditionalFormatColorCriterionType;'
+      content: |-
+        type:
+                    | ConditionalFormatColorCriterionType
+                    | "Invalid"
+                    | "LowestValue"
+                    | "HighestValue"
+                    | "Number"
+                    | "Percent"
+                    | "Formula"
+                    | "Percentile";
       return:
         type:
-          - 'excel!Excel.ConditionalFormatColorCriterionType:enum'
+          - 'excel!Excel.ConditionalColorScaleCriterion#type~0:complex'
 references:
-  - uid: 'excel!Excel.ConditionalFormatColorCriterionType:enum'
-    name: ConditionalFormatColorCriterionType
-    fullName: Excel.ConditionalFormatColorCriterionType
+  - uid: 'excel!Excel.ConditionalColorScaleCriterion#type~0:complex'
+    name: |-
+      | ConditionalFormatColorCriterionType
+                  | "Invalid"
+                  | "LowestValue"
+                  | "HighestValue"
+                  | "Number"
+                  | "Percent"
+                  | "Formula"
+                  | "Percentile"
+    fullName: |-
+      | Excel.ConditionalFormatColorCriterionType
+                  | "Invalid"
+                  | "LowestValue"
+                  | "HighestValue"
+                  | "Number"
+                  | "Percent"
+                  | "Formula"
+                  | "Percentile"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalFormatColorCriterionType:enum'
+        name: ConditionalFormatColorCriterionType
+        fullName: Excel.ConditionalFormatColorCriterionType
+      - name: |2-
+
+                      | "Invalid"
+                      | "LowestValue"
+                      | "HighestValue"
+                      | "Number"
+                      | "Percent"
+                      | "Formula"
+                      | "Percentile"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "LowestValue"
+                      | "HighestValue"
+                      | "Number"
+                      | "Percent"
+                      | "Formula"
+                      | "Percentile"

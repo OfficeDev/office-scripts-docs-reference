@@ -175,10 +175,25 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'summarizeBy: AggregationFunction;'
+      content: |-
+        summarizeBy:
+                    | AggregationFunction
+                    | "Unknown"
+                    | "Automatic"
+                    | "Sum"
+                    | "Count"
+                    | "Average"
+                    | "Max"
+                    | "Min"
+                    | "Product"
+                    | "CountNumbers"
+                    | "StandardDeviation"
+                    | "StandardDeviationP"
+                    | "Variance"
+                    | "VarianceP";
       return:
         type:
-          - 'excel!Excel.AggregationFunction:enum'
+          - 'excel!Excel.DataPivotHierarchy#summarizeBy~0:complex'
 references:
   - uid: 'excel!Excel.PivotField:interface'
     name: PivotField
@@ -186,6 +201,70 @@ references:
   - uid: 'excel!Excel.ShowAsRule:interface'
     name: ShowAsRule
     fullName: Excel.ShowAsRule
-  - uid: 'excel!Excel.AggregationFunction:enum'
-    name: AggregationFunction
-    fullName: Excel.AggregationFunction
+  - uid: 'excel!Excel.DataPivotHierarchy#summarizeBy~0:complex'
+    name: |-
+      | AggregationFunction
+                  | "Unknown"
+                  | "Automatic"
+                  | "Sum"
+                  | "Count"
+                  | "Average"
+                  | "Max"
+                  | "Min"
+                  | "Product"
+                  | "CountNumbers"
+                  | "StandardDeviation"
+                  | "StandardDeviationP"
+                  | "Variance"
+                  | "VarianceP"
+    fullName: |-
+      | Excel.AggregationFunction
+                  | "Unknown"
+                  | "Automatic"
+                  | "Sum"
+                  | "Count"
+                  | "Average"
+                  | "Max"
+                  | "Min"
+                  | "Product"
+                  | "CountNumbers"
+                  | "StandardDeviation"
+                  | "StandardDeviationP"
+                  | "Variance"
+                  | "VarianceP"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.AggregationFunction:enum'
+        name: AggregationFunction
+        fullName: Excel.AggregationFunction
+      - name: |2-
+
+                      | "Unknown"
+                      | "Automatic"
+                      | "Sum"
+                      | "Count"
+                      | "Average"
+                      | "Max"
+                      | "Min"
+                      | "Product"
+                      | "CountNumbers"
+                      | "StandardDeviation"
+                      | "StandardDeviationP"
+                      | "Variance"
+                      | "VarianceP"
+        fullName: |2-
+
+                      | "Unknown"
+                      | "Automatic"
+                      | "Sum"
+                      | "Count"
+                      | "Average"
+                      | "Max"
+                      | "Min"
+                      | "Product"
+                      | "CountNumbers"
+                      | "StandardDeviation"
+                      | "StandardDeviationP"
+                      | "Variance"
+                      | "VarianceP"

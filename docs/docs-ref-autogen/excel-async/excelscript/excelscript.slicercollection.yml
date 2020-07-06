@@ -77,10 +77,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.SlicerCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.SlicerCollection#getItem:member(1)'
     summary: Gets a slicer object using its name or id.
@@ -197,3 +197,12 @@ references:
       - uid: 'excel!Excel.Worksheet:interface'
         name: Worksheet
         fullName: Excel.Worksheet
+  - uid: 'excel!Excel.SlicerCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>

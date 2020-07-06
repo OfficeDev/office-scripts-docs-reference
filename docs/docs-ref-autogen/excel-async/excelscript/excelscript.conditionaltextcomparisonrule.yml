@@ -19,10 +19,17 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'operator: ConditionalTextOperator;'
+      content: |-
+        operator:
+                    | ConditionalTextOperator
+                    | "Invalid"
+                    | "Contains"
+                    | "NotContains"
+                    | "BeginsWith"
+                    | "EndsWith";
       return:
         type:
-          - 'excel!Excel.ConditionalTextOperator:enum'
+          - 'excel!Excel.ConditionalTextComparisonRule#operator~0:complex'
   - uid: 'excel!Excel.ConditionalTextComparisonRule#text:member'
     summary: The Text value of conditional format.
     name: text
@@ -53,6 +60,38 @@ items:
           }
           ```
 references:
-  - uid: 'excel!Excel.ConditionalTextOperator:enum'
-    name: ConditionalTextOperator
-    fullName: Excel.ConditionalTextOperator
+  - uid: 'excel!Excel.ConditionalTextComparisonRule#operator~0:complex'
+    name: |-
+      | ConditionalTextOperator
+                  | "Invalid"
+                  | "Contains"
+                  | "NotContains"
+                  | "BeginsWith"
+                  | "EndsWith"
+    fullName: |-
+      | Excel.ConditionalTextOperator
+                  | "Invalid"
+                  | "Contains"
+                  | "NotContains"
+                  | "BeginsWith"
+                  | "EndsWith"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ConditionalTextOperator:enum'
+        name: ConditionalTextOperator
+        fullName: Excel.ConditionalTextOperator
+      - name: |2-
+
+                      | "Invalid"
+                      | "Contains"
+                      | "NotContains"
+                      | "BeginsWith"
+                      | "EndsWith"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Contains"
+                      | "NotContains"
+                      | "BeginsWith"
+                      | "EndsWith"

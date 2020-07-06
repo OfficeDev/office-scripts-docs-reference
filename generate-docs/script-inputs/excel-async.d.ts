@@ -10,6 +10,17 @@ declare namespace Excel {
     ): Promise<T>;
 
     /**
+     * Contains the result for methods that return primitive types.
+     * The object's value property is retrieved from the document after `context.sync()` is invoked.
+     */
+    interface ClientResult<T> {
+        /**
+         * The value of the result that is retrieved from the document after `context.sync()` is invoked.
+         */
+        value: T;
+    }
+
+    /**
      * The RequestContext object facilitates requests to the Excel workbook.
      * The script and the Excel workbook run in separate processes.
      * The request context is used to synchronize data and actions between the script and the workbook.
@@ -35,12 +46,20 @@ declare namespace Excel {
         /**
          * Returns the calculation mode used in the workbook, as defined by the constants in Excel.CalculationMode. Possible values are: `Automatic`, where Excel controls recalculation; `AutomaticExceptTables`, where Excel controls recalculation but ignores changes in tables; `Manual`, where calculation is done when the user requests it.
          */
-        calculationMode: CalculationMode;
+        calculationMode:
+            | CalculationMode
+            | "Automatic"
+            | "AutomaticExceptTables"
+            | "Manual";
 
         /**
          * Returns the calculation state of the application. See Excel.CalculationState for details.
          */
-        readonly calculationState: CalculationState;
+        readonly calculationState:
+            | CalculationState
+            | "Done"
+            | "Calculating"
+            | "Pending";
 
         /**
          * Provides information based on current system culture settings. This includes the culture names, number formatting, and other culturally dependent settings.
@@ -74,7 +93,13 @@ declare namespace Excel {
          * Recalculate all currently opened workbooks in Excel.
          * @param calculationType Specifies the calculation type to use. See Excel.CalculationType for details.
          */
-        calculate(calculationType: CalculationType): void;
+        calculate(
+            calculationType:
+                | CalculationType
+                | "Recalculate"
+                | "Full"
+                | "FullRebuild"
+        ): void;
 
         /**
          * Suspends calculation until the next "context.sync()" is called. Once set, it is the developer's responsibility to re-calc the workbook, to ensure that any dependencies are propagated.
@@ -450,7 +475,7 @@ declare namespace Excel {
         /**
          * The Visibility of the worksheet.
          */
-        visibility: SheetVisibility;
+        visibility: SheetVisibility | "Visible" | "Hidden" | "VeryHidden";
 
         /**
          * Activate the worksheet in the Excel UI.
@@ -469,7 +494,13 @@ declare namespace Excel {
          * @param relativeTo The existing worksheet which determines the newly created worksheet's position. This is only needed if `positionType` is "Before" or "After".
          */
         copy(
-            positionType?: WorksheetPositionType,
+            positionType?:
+                | WorksheetPositionType
+                | "None"
+                | "Before"
+                | "After"
+                | "Beginning"
+                | "End",
             relativeTo?: Worksheet
         ): Worksheet;
 
@@ -574,7 +605,7 @@ declare namespace Excel {
             text: string,
             replacement: string,
             criteria: ReplaceCriteria
-        ): number;
+        ): ClientResult<number>;
 
         /**
          * Shows row or column groups by their outline levels.
@@ -614,7 +645,7 @@ declare namespace Excel {
          * Gets the number of worksheets in the collection.
          * @param visibleOnly Optional. If true, considers only visible worksheets, skipping over any hidden ones.
          */
-        getCount(visibleOnly?: boolean): number;
+        getCount(visibleOnly?: boolean): ClientResult<number>;
 
         /**
          * Gets the first worksheet in the collection.
@@ -910,7 +941,20 @@ declare namespace Excel {
          */
         autoFill(
             destinationRange?: Range | string,
-            autoFillType?: AutoFillType
+            autoFillType?:
+                | AutoFillType
+                | "FillDefault"
+                | "FillCopy"
+                | "FillSeries"
+                | "FillFormats"
+                | "FillValues"
+                | "FillDays"
+                | "FillWeekdays"
+                | "FillMonths"
+                | "FillYears"
+                | "LinearTrend"
+                | "GrowthTrend"
+                | "FlashFill"
         ): void;
 
         /**
@@ -922,7 +966,15 @@ declare namespace Excel {
          * Clear range values, format, fill, border, etc.
          * @param applyTo Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
          */
-        clear(applyTo?: ClearApplyTo): void;
+        clear(
+            applyTo?:
+                | ClearApplyTo
+                | "All"
+                | "Formats"
+                | "Contents"
+                | "Hyperlinks"
+                | "RemoveHyperlinks"
+        ): void;
 
         /**
          * Converts the range cells with datatypes into text.
@@ -949,7 +1001,12 @@ declare namespace Excel {
          */
         copyFrom(
             sourceRange: Range | RangeAreas | string,
-            copyType?: RangeCopyType,
+            copyType?:
+                | RangeCopyType
+                | "All"
+                | "Formulas"
+                | "Values"
+                | "Formats",
             skipBlanks?: boolean,
             transpose?: boolean
         ): void;
@@ -958,7 +1015,7 @@ declare namespace Excel {
          * Deletes the cells associated with the range.
          * @param shift Specifies which way to shift the cells. See Excel.DeleteShiftDirection for details.
          */
-        delete(shift: DeleteShiftDirection): void;
+        delete(shift: DeleteShiftDirection | "Up" | "Left"): void;
 
         /**
          * Finds the given string based on the criteria specified.
@@ -1033,7 +1090,7 @@ declare namespace Excel {
         /**
          * Renders the range as a base64-encoded png image.
          */
-        getImage(): string;
+        getImage(): ClientResult<string>;
 
         /**
          * Gets the range object that represents the rectangular intersection of the given ranges.
@@ -1107,8 +1164,33 @@ declare namespace Excel {
          * @param cellValueType If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCells(
-            cellType: SpecialCellType,
-            cellValueType?: SpecialCellValueType
+            cellType:
+                | SpecialCellType
+                | "ConditionalFormats"
+                | "DataValidations"
+                | "Blanks"
+                | "Constants"
+                | "Formulas"
+                | "SameConditionalFormat"
+                | "SameDataValidation"
+                | "Visible",
+            cellValueType?:
+                | SpecialCellValueType
+                | "All"
+                | "Errors"
+                | "ErrorsLogical"
+                | "ErrorsNumbers"
+                | "ErrorsText"
+                | "ErrorsLogicalNumber"
+                | "ErrorsLogicalText"
+                | "ErrorsNumberText"
+                | "Logical"
+                | "LogicalNumbers"
+                | "LogicalText"
+                | "LogicalNumbersText"
+                | "Numbers"
+                | "NumbersText"
+                | "Text"
         ): RangeAreas;
 
         /**
@@ -1118,8 +1200,33 @@ declare namespace Excel {
          * @param cellValueType If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCellsOrNullObject(
-            cellType: SpecialCellType,
-            cellValueType?: SpecialCellValueType
+            cellType:
+                | SpecialCellType
+                | "ConditionalFormats"
+                | "DataValidations"
+                | "Blanks"
+                | "Constants"
+                | "Formulas"
+                | "SameConditionalFormat"
+                | "SameDataValidation"
+                | "Visible",
+            cellValueType?:
+                | SpecialCellValueType
+                | "All"
+                | "Errors"
+                | "ErrorsLogical"
+                | "ErrorsNumbers"
+                | "ErrorsText"
+                | "ErrorsLogicalNumber"
+                | "ErrorsLogicalText"
+                | "ErrorsNumberText"
+                | "Logical"
+                | "LogicalNumbers"
+                | "LogicalText"
+                | "LogicalNumbersText"
+                | "Numbers"
+                | "NumbersText"
+                | "Text"
         ): RangeAreas;
 
         /**
@@ -1157,19 +1264,21 @@ declare namespace Excel {
          * `isEntireRow` or `isEntireColumn` property (i.e., `range.isEntireRow` is true and `groupOption` is "ByColumns"
          * or `range.isEntireColumn` is true and `groupOption` is "ByRows").
          */
-        group(groupOption: GroupOption): void;
+        group(groupOption: GroupOption | "ByRows" | "ByColumns"): void;
 
         /**
          * Hide details of the row or column group.
          * @param groupOption Specifies whether to hide details of grouped rows or grouped columns.
          */
-        hideGroupDetails(groupOption: GroupOption): void;
+        hideGroupDetails(
+            groupOption: GroupOption | "ByRows" | "ByColumns"
+        ): void;
 
         /**
          * Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make space. Returns a new Range object at the now blank space.
          * @param shift Specifies which way to shift the cells. See Excel.InsertShiftDirection for details.
          */
-        insert(shift: InsertShiftDirection): Range;
+        insert(shift: InsertShiftDirection | "Down" | "Right"): Range;
 
         /**
          * Merge the range cells into one region in the worksheet.
@@ -1204,7 +1313,7 @@ declare namespace Excel {
             text: string,
             replacement: string,
             criteria: ReplaceCriteria
-        ): number;
+        ): ClientResult<number>;
 
         /**
          * Selects the specified range in the Excel UI.
@@ -1225,13 +1334,15 @@ declare namespace Excel {
          * Show details of the row or column group.
          * @param groupOption Specifies whether to show details of grouped rows or grouped columns.
          */
-        showGroupDetails(groupOption: GroupOption): void;
+        showGroupDetails(
+            groupOption: GroupOption | "ByRows" | "ByColumns"
+        ): void;
 
         /**
          * Ungroups columns and rows for an outline.
          * @param groupOption Specifies how the range can be ungrouped by rows or columns.
          */
-        ungroup(groupOption: GroupOption): void;
+        ungroup(groupOption: GroupOption | "ByRows" | "ByColumns"): void;
 
         /**
          * Unmerge the range cells into separate cells.
@@ -1322,7 +1433,15 @@ declare namespace Excel {
          * Clears values, format, fill, border, etc on each of the areas that comprise this RangeAreas object.
          * @param applyTo Optional. Determines the type of clear action. See Excel.ClearApplyTo for details. Default is "All".
          */
-        clear(applyTo?: ClearApplyTo): void;
+        clear(
+            applyTo?:
+                | ClearApplyTo
+                | "All"
+                | "Formats"
+                | "Contents"
+                | "Hyperlinks"
+                | "RemoveHyperlinks"
+        ): void;
 
         /**
          * Converts all cells in the RangeAreas with datatypes into text.
@@ -1349,7 +1468,12 @@ declare namespace Excel {
          */
         copyFrom(
             sourceRange: Range | RangeAreas | string,
-            copyType?: RangeCopyType,
+            copyType?:
+                | RangeCopyType
+                | "All"
+                | "Formulas"
+                | "Values"
+                | "Formats",
             skipBlanks?: boolean,
             transpose?: boolean
         ): void;
@@ -1394,8 +1518,33 @@ declare namespace Excel {
          * @param cellValueType If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCells(
-            cellType: SpecialCellType,
-            cellValueType?: SpecialCellValueType
+            cellType:
+                | SpecialCellType
+                | "ConditionalFormats"
+                | "DataValidations"
+                | "Blanks"
+                | "Constants"
+                | "Formulas"
+                | "SameConditionalFormat"
+                | "SameDataValidation"
+                | "Visible",
+            cellValueType?:
+                | SpecialCellValueType
+                | "All"
+                | "Errors"
+                | "ErrorsLogical"
+                | "ErrorsNumbers"
+                | "ErrorsText"
+                | "ErrorsLogicalNumber"
+                | "ErrorsLogicalText"
+                | "ErrorsNumberText"
+                | "Logical"
+                | "LogicalNumbers"
+                | "LogicalText"
+                | "LogicalNumbersText"
+                | "Numbers"
+                | "NumbersText"
+                | "Text"
         ): RangeAreas;
 
         /**
@@ -1404,8 +1553,33 @@ declare namespace Excel {
          * @param cellValueType If cellType is either Constants or Formulas, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCellsOrNullObject(
-            cellType: SpecialCellType,
-            cellValueType?: SpecialCellValueType
+            cellType:
+                | SpecialCellType
+                | "ConditionalFormats"
+                | "DataValidations"
+                | "Blanks"
+                | "Constants"
+                | "Formulas"
+                | "SameConditionalFormat"
+                | "SameDataValidation"
+                | "Visible",
+            cellValueType?:
+                | SpecialCellValueType
+                | "All"
+                | "Errors"
+                | "ErrorsLogical"
+                | "ErrorsNumbers"
+                | "ErrorsText"
+                | "ErrorsLogicalNumber"
+                | "ErrorsLogicalText"
+                | "ErrorsNumberText"
+                | "Logical"
+                | "LogicalNumbers"
+                | "LogicalText"
+                | "LogicalNumbersText"
+                | "Numbers"
+                | "NumbersText"
+                | "Text"
         ): RangeAreas;
 
         /**
@@ -1525,7 +1699,7 @@ declare namespace Excel {
         /**
          * Gets the number of RangeView objects in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a RangeView Row via its index. Zero-Indexed.
@@ -1558,7 +1732,7 @@ declare namespace Excel {
         /**
          * Gets the number of Settings in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a Setting entry via the key.
@@ -1638,7 +1812,7 @@ declare namespace Excel {
         /**
          * Gets the number of named items in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a NamedItem object using its name.
@@ -1687,12 +1861,20 @@ declare namespace Excel {
         /**
          * Specifies if the name is scoped to the workbook or to a specific worksheet. Possible values are: Worksheet, Workbook.
          */
-        readonly scope: NamedItemScope;
+        readonly scope: NamedItemScope | "Worksheet" | "Workbook";
 
         /**
          * Specifies the type of the value returned by the name's formula. See Excel.NamedItemType for details.
          */
-        readonly type: NamedItemType;
+        readonly type:
+            | NamedItemType
+            | "String"
+            | "Integer"
+            | "Double"
+            | "Boolean"
+            | "Range"
+            | "Error"
+            | "Array";
 
         /**
          * Represents the value computed by the name's formula. For a named range, will return the range address.
@@ -1771,7 +1953,7 @@ declare namespace Excel {
         /**
          * Returns the type of the binding. See Excel.BindingType for details.
          */
-        readonly type: BindingType;
+        readonly type: BindingType | "Range" | "Table" | "Text";
 
         /**
          * Deletes the binding.
@@ -1791,7 +1973,7 @@ declare namespace Excel {
         /**
          * Returns the text represented by the binding. Will throw an error if binding is not of the correct type.
          */
-        getText(): string;
+        getText(): ClientResult<string>;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -1818,7 +2000,7 @@ declare namespace Excel {
          */
         add(
             range: Range | string,
-            bindingType: BindingType,
+            bindingType: BindingType | "Range" | "Table" | "Text",
             id: string
         ): Binding;
 
@@ -1831,7 +2013,7 @@ declare namespace Excel {
          */
         addFromNamedItem(
             name: string,
-            bindingType: BindingType,
+            bindingType: BindingType | "Range" | "Table" | "Text",
             id: string
         ): Binding;
 
@@ -1841,12 +2023,15 @@ declare namespace Excel {
          * @param bindingType Type of binding. See Excel.BindingType.
          * @param id Name of binding.
          */
-        addFromSelection(bindingType: BindingType, id: string): Binding;
+        addFromSelection(
+            bindingType: BindingType | "Range" | "Table" | "Text",
+            id: string
+        ): Binding;
 
         /**
          * Gets the number of bindings in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a binding object by ID.
@@ -1893,7 +2078,7 @@ declare namespace Excel {
         /**
          * Gets the number of tables in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a table by Name or ID.
@@ -1928,7 +2113,7 @@ declare namespace Excel {
         /**
          * Gets the number of tables in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the first table in the collection. The tables in the collection are sorted top to bottom and left to right, such that top left table is the first table in the collection.
@@ -2112,7 +2297,7 @@ declare namespace Excel {
         /**
          * Gets the number of columns in the table.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a column object by Name or ID.
@@ -2238,7 +2423,7 @@ declare namespace Excel {
         /**
          * Gets the number of rows in the table.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a row based on its position in the collection.
@@ -2319,7 +2504,18 @@ declare namespace Excel {
         /**
          * Type of the data validation, see Excel.DataValidationType for details.
          */
-        readonly type: DataValidationType;
+        readonly type:
+            | DataValidationType
+            | "None"
+            | "WholeNumber"
+            | "Decimal"
+            | "List"
+            | "Date"
+            | "Time"
+            | "TextLength"
+            | "Custom"
+            | "Inconsistent"
+            | "MixedCriteria";
 
         /**
          * Represents if all cell values are valid according to the data validation rules.
@@ -2405,7 +2601,16 @@ declare namespace Excel {
         /**
          * Represents the horizontal alignment for the specified object. See Excel.HorizontalAlignment for details.
          */
-        horizontalAlignment: HorizontalAlignment;
+        horizontalAlignment:
+            | HorizontalAlignment
+            | "General"
+            | "Left"
+            | "Center"
+            | "Right"
+            | "Fill"
+            | "Justify"
+            | "CenterAcrossSelection"
+            | "Distributed";
 
         /**
          * An integer from 0 to 250 that indicates the indent level.
@@ -2420,7 +2625,7 @@ declare namespace Excel {
         /**
          * The reading order for the range.
          */
-        readingOrder: ReadingOrder;
+        readingOrder: ReadingOrder | "Context" | "LeftToRight" | "RightToLeft";
 
         /**
          * The height of all rows in the range. If the row heights are not uniform, null will be returned.
@@ -2458,7 +2663,13 @@ declare namespace Excel {
         /**
          * Represents the vertical alignment for the specified object. See Excel.VerticalAlignment for details.
          */
-        verticalAlignment: VerticalAlignment;
+        verticalAlignment:
+            | VerticalAlignment
+            | "Top"
+            | "Center"
+            | "Bottom"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Specifies if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform wrap setting
@@ -2526,7 +2737,29 @@ declare namespace Excel {
          * The pattern of a range. See Excel.FillPattern for details. LinearGradient and RectangularGradient are not supported.
          * A null value indicates that the entire range doesn't have uniform pattern setting.
          */
-        pattern: FillPattern;
+        pattern:
+            | FillPattern
+            | "None"
+            | "Solid"
+            | "Gray50"
+            | "Gray75"
+            | "Gray25"
+            | "Horizontal"
+            | "Vertical"
+            | "Down"
+            | "Up"
+            | "Checker"
+            | "SemiGray75"
+            | "LightHorizontal"
+            | "LightVertical"
+            | "LightDown"
+            | "LightUp"
+            | "Grid"
+            | "CrissCross"
+            | "Gray16"
+            | "Gray8"
+            | "LinearGradient"
+            | "RectangularGradient";
 
         /**
          * The HTML color code representing the color of the range pattern, of the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
@@ -2570,12 +2803,30 @@ declare namespace Excel {
         /**
          * Constant value that indicates the specific side of the border. See Excel.BorderIndex for details.
          */
-        readonly sideIndex: BorderIndex;
+        readonly sideIndex:
+            | BorderIndex
+            | "EdgeTop"
+            | "EdgeBottom"
+            | "EdgeLeft"
+            | "EdgeRight"
+            | "InsideVertical"
+            | "InsideHorizontal"
+            | "DiagonalDown"
+            | "DiagonalUp";
 
         /**
          * One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for details.
          */
-        style: BorderLineStyle;
+        style:
+            | BorderLineStyle
+            | "None"
+            | "Continuous"
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "Dot"
+            | "Double"
+            | "SlantDashDot";
 
         /**
          * Specifies a double that lightens or darkens a color for Range Border, the value is between -1 (darkest) and 1 (brightest), with 0 for the original color.
@@ -2586,7 +2837,7 @@ declare namespace Excel {
         /**
          * Specifies the weight of the border around a range. See Excel.BorderWeight for details.
          */
-        weight: BorderWeight;
+        weight: BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -2615,7 +2866,18 @@ declare namespace Excel {
          * Gets a border object using its name.
          * @param index Index value of the border object to be retrieved. See Excel.BorderIndex for details.
          */
-        getItem(index: BorderIndex): RangeBorder;
+        getItem(
+            index:
+                | BorderIndex
+                | "EdgeTop"
+                | "EdgeBottom"
+                | "EdgeLeft"
+                | "EdgeRight"
+                | "InsideVertical"
+                | "InsideHorizontal"
+                | "DiagonalDown"
+                | "DiagonalUp"
+        ): RangeBorder;
 
         /**
          * Gets a border object using its index.
@@ -2690,7 +2952,13 @@ declare namespace Excel {
         /**
          * Type of underline applied to the font. See Excel.RangeUnderlineStyle for details.
          */
-        underline: RangeUnderlineStyle;
+        underline:
+            | RangeUnderlineStyle
+            | "None"
+            | "Single"
+            | "Double"
+            | "SingleAccountant"
+            | "DoubleAccountant";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -2716,15 +2984,98 @@ declare namespace Excel {
          * @param seriesBy Optional. Specifies the way columns or rows are used as data series on the chart. See Excel.ChartSeriesBy for details.
          */
         add(
-            type: ChartType,
+            type:
+                | ChartType
+                | "Invalid"
+                | "ColumnClustered"
+                | "ColumnStacked"
+                | "ColumnStacked100"
+                | "3DColumnClustered"
+                | "3DColumnStacked"
+                | "3DColumnStacked100"
+                | "BarClustered"
+                | "BarStacked"
+                | "BarStacked100"
+                | "3DBarClustered"
+                | "3DBarStacked"
+                | "3DBarStacked100"
+                | "LineStacked"
+                | "LineStacked100"
+                | "LineMarkers"
+                | "LineMarkersStacked"
+                | "LineMarkersStacked100"
+                | "PieOfPie"
+                | "PieExploded"
+                | "3DPieExploded"
+                | "BarOfPie"
+                | "XyscatterSmooth"
+                | "XyscatterSmoothNoMarkers"
+                | "XyscatterLines"
+                | "XyscatterLinesNoMarkers"
+                | "AreaStacked"
+                | "AreaStacked100"
+                | "3DAreaStacked"
+                | "3DAreaStacked100"
+                | "DoughnutExploded"
+                | "RadarMarkers"
+                | "RadarFilled"
+                | "Surface"
+                | "SurfaceWireframe"
+                | "SurfaceTopView"
+                | "SurfaceTopViewWireframe"
+                | "Bubble"
+                | "Bubble3DEffect"
+                | "StockHLC"
+                | "StockOHLC"
+                | "StockVHLC"
+                | "StockVOHLC"
+                | "CylinderColClustered"
+                | "CylinderColStacked"
+                | "CylinderColStacked100"
+                | "CylinderBarClustered"
+                | "CylinderBarStacked"
+                | "CylinderBarStacked100"
+                | "CylinderCol"
+                | "ConeColClustered"
+                | "ConeColStacked"
+                | "ConeColStacked100"
+                | "ConeBarClustered"
+                | "ConeBarStacked"
+                | "ConeBarStacked100"
+                | "ConeCol"
+                | "PyramidColClustered"
+                | "PyramidColStacked"
+                | "PyramidColStacked100"
+                | "PyramidBarClustered"
+                | "PyramidBarStacked"
+                | "PyramidBarStacked100"
+                | "PyramidCol"
+                | "3DColumn"
+                | "Line"
+                | "3DLine"
+                | "3DPie"
+                | "Pie"
+                | "Xyscatter"
+                | "3DArea"
+                | "Area"
+                | "Doughnut"
+                | "Radar"
+                | "Histogram"
+                | "Boxwhisker"
+                | "Pareto"
+                | "RegionMap"
+                | "Treemap"
+                | "Waterfall"
+                | "Sunburst"
+                | "Funnel",
             sourceData: Range,
-            seriesBy?: ChartSeriesBy
+            seriesBy?: ChartSeriesBy | "Auto" | "Columns" | "Rows"
         ): Chart;
 
         /**
          * Returns the number of charts in the worksheet.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned.
@@ -2772,7 +3123,90 @@ declare namespace Excel {
         /**
          * Specifies the type of the chart. See Excel.ChartType for details.
          */
-        chartType: ChartType;
+        chartType:
+            | ChartType
+            | "Invalid"
+            | "ColumnClustered"
+            | "ColumnStacked"
+            | "ColumnStacked100"
+            | "3DColumnClustered"
+            | "3DColumnStacked"
+            | "3DColumnStacked100"
+            | "BarClustered"
+            | "BarStacked"
+            | "BarStacked100"
+            | "3DBarClustered"
+            | "3DBarStacked"
+            | "3DBarStacked100"
+            | "LineStacked"
+            | "LineStacked100"
+            | "LineMarkers"
+            | "LineMarkersStacked"
+            | "LineMarkersStacked100"
+            | "PieOfPie"
+            | "PieExploded"
+            | "3DPieExploded"
+            | "BarOfPie"
+            | "XyscatterSmooth"
+            | "XyscatterSmoothNoMarkers"
+            | "XyscatterLines"
+            | "XyscatterLinesNoMarkers"
+            | "AreaStacked"
+            | "AreaStacked100"
+            | "3DAreaStacked"
+            | "3DAreaStacked100"
+            | "DoughnutExploded"
+            | "RadarMarkers"
+            | "RadarFilled"
+            | "Surface"
+            | "SurfaceWireframe"
+            | "SurfaceTopView"
+            | "SurfaceTopViewWireframe"
+            | "Bubble"
+            | "Bubble3DEffect"
+            | "StockHLC"
+            | "StockOHLC"
+            | "StockVHLC"
+            | "StockVOHLC"
+            | "CylinderColClustered"
+            | "CylinderColStacked"
+            | "CylinderColStacked100"
+            | "CylinderBarClustered"
+            | "CylinderBarStacked"
+            | "CylinderBarStacked100"
+            | "CylinderCol"
+            | "ConeColClustered"
+            | "ConeColStacked"
+            | "ConeColStacked100"
+            | "ConeBarClustered"
+            | "ConeBarStacked"
+            | "ConeBarStacked100"
+            | "ConeCol"
+            | "PyramidColClustered"
+            | "PyramidColStacked"
+            | "PyramidColStacked100"
+            | "PyramidBarClustered"
+            | "PyramidBarStacked"
+            | "PyramidBarStacked100"
+            | "PyramidCol"
+            | "3DColumn"
+            | "Line"
+            | "3DLine"
+            | "3DPie"
+            | "Pie"
+            | "Xyscatter"
+            | "3DArea"
+            | "Area"
+            | "Doughnut"
+            | "Radar"
+            | "Histogram"
+            | "Boxwhisker"
+            | "Pareto"
+            | "RegionMap"
+            | "Treemap"
+            | "Waterfall"
+            | "Sunburst"
+            | "Funnel";
 
         /**
          * Represents the datalabels on the chart.
@@ -2782,7 +3216,11 @@ declare namespace Excel {
         /**
          * Specifies the way that blank cells are plotted on a chart.
          */
-        displayBlanksAs: ChartDisplayBlanksAs;
+        displayBlanksAs:
+            | ChartDisplayBlanksAs
+            | "NotPlotted"
+            | "Zero"
+            | "Interplotted";
 
         /**
          * Encapsulates the format properties for the chart area.
@@ -2827,7 +3265,7 @@ declare namespace Excel {
         /**
          * Specifies the way columns or rows are used as data series on the chart.
          */
-        plotBy: ChartPlotBy;
+        plotBy: ChartPlotBy | "Rows" | "Columns";
 
         /**
          * True if only visible cells are plotted. False if both visible and hidden cells are plotted.
@@ -2902,15 +3340,18 @@ declare namespace Excel {
         getImage(
             width?: number,
             height?: number,
-            fittingMode?: ImageFittingMode
-        ): string;
+            fittingMode?: ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
+        ): ClientResult<string>;
 
         /**
          * Resets the source data for the chart.
          * @param sourceData The range object corresponding to the source data.
          * @param seriesBy Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto (default), Rows, and Columns. See Excel.ChartSeriesBy for details.
          */
-        setData(sourceData: Range, seriesBy?: ChartSeriesBy): void;
+        setData(
+            sourceData: Range,
+            seriesBy?: ChartSeriesBy | "Auto" | "Columns" | "Rows"
+        ): void;
 
         /**
          * Positions the chart relative to cells on the worksheet.
@@ -2971,7 +3412,25 @@ declare namespace Excel {
         /**
          * Specifies the color scheme of the chart.
          */
-        colorScheme: ChartColorScheme;
+        colorScheme:
+            | ChartColorScheme
+            | "ColorfulPalette1"
+            | "ColorfulPalette2"
+            | "ColorfulPalette3"
+            | "ColorfulPalette4"
+            | "MonochromaticPalette1"
+            | "MonochromaticPalette2"
+            | "MonochromaticPalette3"
+            | "MonochromaticPalette4"
+            | "MonochromaticPalette5"
+            | "MonochromaticPalette6"
+            | "MonochromaticPalette7"
+            | "MonochromaticPalette8"
+            | "MonochromaticPalette9"
+            | "MonochromaticPalette10"
+            | "MonochromaticPalette11"
+            | "MonochromaticPalette12"
+            | "MonochromaticPalette13";
 
         /**
          * Represents the fill format of an object, which includes background formatting information.
@@ -3015,7 +3474,7 @@ declare namespace Excel {
         /**
          * Returns the number of series in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Retrieves a series based on its position in the collection.
@@ -3038,7 +3497,7 @@ declare namespace Excel {
         /**
          * Specifies the group for the specified series.
          */
-        axisGroup: ChartAxisGroup;
+        axisGroup: ChartAxisGroup | "Primary" | "Secondary";
 
         /**
          * Encapsulates the bin options for histogram charts and pareto charts.
@@ -3058,7 +3517,90 @@ declare namespace Excel {
         /**
          * Represents the chart type of a series. See Excel.ChartType for details.
          */
-        chartType: ChartType;
+        chartType:
+            | ChartType
+            | "Invalid"
+            | "ColumnClustered"
+            | "ColumnStacked"
+            | "ColumnStacked100"
+            | "3DColumnClustered"
+            | "3DColumnStacked"
+            | "3DColumnStacked100"
+            | "BarClustered"
+            | "BarStacked"
+            | "BarStacked100"
+            | "3DBarClustered"
+            | "3DBarStacked"
+            | "3DBarStacked100"
+            | "LineStacked"
+            | "LineStacked100"
+            | "LineMarkers"
+            | "LineMarkersStacked"
+            | "LineMarkersStacked100"
+            | "PieOfPie"
+            | "PieExploded"
+            | "3DPieExploded"
+            | "BarOfPie"
+            | "XyscatterSmooth"
+            | "XyscatterSmoothNoMarkers"
+            | "XyscatterLines"
+            | "XyscatterLinesNoMarkers"
+            | "AreaStacked"
+            | "AreaStacked100"
+            | "3DAreaStacked"
+            | "3DAreaStacked100"
+            | "DoughnutExploded"
+            | "RadarMarkers"
+            | "RadarFilled"
+            | "Surface"
+            | "SurfaceWireframe"
+            | "SurfaceTopView"
+            | "SurfaceTopViewWireframe"
+            | "Bubble"
+            | "Bubble3DEffect"
+            | "StockHLC"
+            | "StockOHLC"
+            | "StockVHLC"
+            | "StockVOHLC"
+            | "CylinderColClustered"
+            | "CylinderColStacked"
+            | "CylinderColStacked100"
+            | "CylinderBarClustered"
+            | "CylinderBarStacked"
+            | "CylinderBarStacked100"
+            | "CylinderCol"
+            | "ConeColClustered"
+            | "ConeColStacked"
+            | "ConeColStacked100"
+            | "ConeBarClustered"
+            | "ConeBarStacked"
+            | "ConeBarStacked100"
+            | "ConeCol"
+            | "PyramidColClustered"
+            | "PyramidColStacked"
+            | "PyramidColStacked100"
+            | "PyramidBarClustered"
+            | "PyramidBarStacked"
+            | "PyramidBarStacked100"
+            | "PyramidCol"
+            | "3DColumn"
+            | "Line"
+            | "3DLine"
+            | "3DPie"
+            | "Pie"
+            | "Xyscatter"
+            | "3DArea"
+            | "Area"
+            | "Doughnut"
+            | "Radar"
+            | "Histogram"
+            | "Boxwhisker"
+            | "Pareto"
+            | "RegionMap"
+            | "Treemap"
+            | "Waterfall"
+            | "Sunburst"
+            | "Funnel";
 
         /**
          * Represents a collection of all dataLabels in the series.
@@ -3105,7 +3647,11 @@ declare namespace Excel {
         /**
          * Specifies the type for maximum value of a region map chart series.
          */
-        gradientMaximumType: ChartGradientStyleType;
+        gradientMaximumType:
+            | ChartGradientStyleType
+            | "ExtremeValue"
+            | "Number"
+            | "Percent";
 
         /**
          * Specifies the maximum value of a region map chart series.
@@ -3120,7 +3666,11 @@ declare namespace Excel {
         /**
          * Specifies the type for midpoint value of a region map chart series.
          */
-        gradientMidpointType: ChartGradientStyleType;
+        gradientMidpointType:
+            | ChartGradientStyleType
+            | "ExtremeValue"
+            | "Number"
+            | "Percent";
 
         /**
          * Specifies the midpoint value of a region map chart series.
@@ -3135,7 +3685,11 @@ declare namespace Excel {
         /**
          * Specifies the type for minimum value of a region map chart series.
          */
-        gradientMinimumType: ChartGradientStyleType;
+        gradientMinimumType:
+            | ChartGradientStyleType
+            | "ExtremeValue"
+            | "Number"
+            | "Percent";
 
         /**
          * Specifies the minimum value of a region map chart series.
@@ -3145,7 +3699,7 @@ declare namespace Excel {
         /**
          * Specifies the series gradient style of a region map chart.
          */
-        gradientStyle: ChartGradientStyle;
+        gradientStyle: ChartGradientStyle | "TwoPhaseColor" | "ThreePhaseColor";
 
         /**
          * Specifies if the series has data labels.
@@ -3185,7 +3739,21 @@ declare namespace Excel {
         /**
          * Specifies the marker style of a chart series. See Excel.ChartMarkerStyle for details.
          */
-        markerStyle: ChartMarkerStyle;
+        markerStyle:
+            | ChartMarkerStyle
+            | "Invalid"
+            | "Automatic"
+            | "None"
+            | "Square"
+            | "Diamond"
+            | "Triangle"
+            | "X"
+            | "Star"
+            | "Dot"
+            | "Dash"
+            | "Circle"
+            | "Plus"
+            | "Picture";
 
         /**
          * Specifies the name of a series in a chart.
@@ -3200,7 +3768,11 @@ declare namespace Excel {
         /**
          * Specifies the series parent label strategy area for a treemap chart.
          */
-        parentLabelStrategy: ChartParentLabelStrategy;
+        parentLabelStrategy:
+            | ChartParentLabelStrategy
+            | "None"
+            | "Banner"
+            | "Overlapping";
 
         /**
          * Specifies the plot order of a chart series within the chart group.
@@ -3240,7 +3812,12 @@ declare namespace Excel {
         /**
          * Specifies the way the two sections of either a pie-of-pie chart or a bar-of-pie chart are split.
          */
-        splitType: ChartSplitType;
+        splitType:
+            | ChartSplitType
+            | "SplitByPosition"
+            | "SplitByValue"
+            | "SplitByPercentValue"
+            | "SplitByCustomSplit";
 
         /**
          * Specifies the threshold value that separates two sections of either a pie-of-pie chart or a bar-of-pie chart.
@@ -3332,7 +3909,7 @@ declare namespace Excel {
         /**
          * Returns the number of chart points in the series.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Retrieve a point based on its position within the series.
@@ -3385,7 +3962,21 @@ declare namespace Excel {
         /**
          * Represents marker style of a chart data point. See Excel.ChartMarkerStyle for details.
          */
-        markerStyle: ChartMarkerStyle;
+        markerStyle:
+            | ChartMarkerStyle
+            | "Invalid"
+            | "Automatic"
+            | "None"
+            | "Square"
+            | "Diamond"
+            | "Triangle"
+            | "X"
+            | "Star"
+            | "Dot"
+            | "Dash"
+            | "Circle"
+            | "Plus"
+            | "Picture";
 
         /**
          * Returns the value of a chart point.
@@ -3446,7 +4037,10 @@ declare namespace Excel {
          * @param type Specifies the axis type. See Excel.ChartAxisType for details.
          * @param group Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
          */
-        getItem(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;
+        getItem(
+            type: ChartAxisType | "Invalid" | "Category" | "Value" | "Series",
+            group?: ChartAxisGroup | "Primary" | "Secondary"
+        ): ChartAxis;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -3463,22 +4057,26 @@ declare namespace Excel {
         /**
          * Specifies the alignment for the specified axis tick label. See Excel.ChartTextHorizontalAlignment for detail.
          */
-        alignment: ChartTickLabelAlignment;
+        alignment: ChartTickLabelAlignment | "Center" | "Left" | "Right";
 
         /**
          * Specifies the group for the specified axis. See Excel.ChartAxisGroup for details.
          */
-        readonly axisGroup: ChartAxisGroup;
+        readonly axisGroup: ChartAxisGroup | "Primary" | "Secondary";
 
         /**
          * Specifies the base unit for the specified category axis.
          */
-        baseTimeUnit: ChartAxisTimeUnit;
+        baseTimeUnit: ChartAxisTimeUnit | "Days" | "Months" | "Years";
 
         /**
          * Specifies the category axis type.
          */
-        categoryType: ChartAxisCategoryType;
+        categoryType:
+            | ChartAxisCategoryType
+            | "Automatic"
+            | "TextAxis"
+            | "DateAxis";
 
         /**
          * Specifies the custom axis display unit value. To set this property, please use the SetCustomDisplayUnit(double) method.
@@ -3488,7 +4086,19 @@ declare namespace Excel {
         /**
          * Represents the axis display unit. See Excel.ChartAxisDisplayUnit for details.
          */
-        displayUnit: ChartAxisDisplayUnit;
+        displayUnit:
+            | ChartAxisDisplayUnit
+            | "None"
+            | "Hundreds"
+            | "Thousands"
+            | "TenThousands"
+            | "HundredThousands"
+            | "Millions"
+            | "TenMillions"
+            | "HundredMillions"
+            | "Billions"
+            | "Trillions"
+            | "Custom";
 
         /**
          * Represents the formatting of a chart object, which includes line and font formatting.
@@ -3528,12 +4138,17 @@ declare namespace Excel {
         /**
          * Specifies the type of major tick mark for the specified axis. See Excel.ChartAxisTickMark for details.
          */
-        majorTickMark: ChartAxisTickMark;
+        majorTickMark:
+            | ChartAxisTickMark
+            | "None"
+            | "Cross"
+            | "Inside"
+            | "Outside";
 
         /**
          * Specifies the major unit scale value for the category axis when the CategoryType property is set to TimeScale.
          */
-        majorTimeUnitScale: ChartAxisTimeUnit;
+        majorTimeUnitScale: ChartAxisTimeUnit | "Days" | "Months" | "Years";
 
         /**
          * Represents the interval between two major tick marks. Can be set to a numeric value or an empty string.  The returned value is always a number.
@@ -3558,12 +4173,17 @@ declare namespace Excel {
         /**
          * Specifies the type of minor tick mark for the specified axis. See Excel.ChartAxisTickMark for details.
          */
-        minorTickMark: ChartAxisTickMark;
+        minorTickMark:
+            | ChartAxisTickMark
+            | "None"
+            | "Cross"
+            | "Inside"
+            | "Outside";
 
         /**
          * Specifies the minor unit scale value for the category axis when the CategoryType property is set to TimeScale.
          */
-        minorTimeUnitScale: ChartAxisTimeUnit;
+        minorTimeUnitScale: ChartAxisTimeUnit | "Days" | "Months" | "Years";
 
         /**
          * Represents the interval between two minor tick marks. Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
@@ -3588,7 +4208,12 @@ declare namespace Excel {
         /**
          * Specifies the specified axis position where the other axis crosses. See Excel.ChartAxisPosition for details.
          */
-        position: ChartAxisPosition;
+        position:
+            | ChartAxisPosition
+            | "Automatic"
+            | "Maximum"
+            | "Minimum"
+            | "Custom";
 
         /**
          * Specifies the specified axis position where the other axis crosses at. You should use the SetPositionAt(double) method to set this property.
@@ -3603,7 +4228,7 @@ declare namespace Excel {
         /**
          * Specifies the value axis scale type. See Excel.ChartAxisScaleType for details.
          */
-        scaleType: ChartAxisScaleType;
+        scaleType: ChartAxisScaleType | "Linear" | "Logarithmic";
 
         /**
          * Specifies if the axis display unit label is visible.
@@ -3618,7 +4243,12 @@ declare namespace Excel {
         /**
          * Specifies the position of tick-mark labels on the specified axis. See Excel.ChartAxisTickLabelPosition for details.
          */
-        tickLabelPosition: ChartAxisTickLabelPosition;
+        tickLabelPosition:
+            | ChartAxisTickLabelPosition
+            | "NextToAxis"
+            | "High"
+            | "Low"
+            | "None";
 
         /**
          * Specifies the number of categories or series between tick-mark labels. Can be a value from 1 through 31999 or an empty string for automatic setting. The returned value is always a number.
@@ -3643,7 +4273,12 @@ declare namespace Excel {
         /**
          * Specifies the axis type. See Excel.ChartAxisType for details.
          */
-        readonly type: ChartAxisType;
+        readonly type:
+            | ChartAxisType
+            | "Invalid"
+            | "Category"
+            | "Value"
+            | "Series";
 
         /**
          * Specifies if the axis is visible.
@@ -3791,7 +4426,13 @@ declare namespace Excel {
          * Specifies the horizontal alignment for chart data label. See Excel.ChartTextHorizontalAlignment for details.
          * This property is valid only when TextOrientation of data label is 0.
          */
-        horizontalAlignment: ChartTextHorizontalAlignment;
+        horizontalAlignment:
+            | ChartTextHorizontalAlignment
+            | "Center"
+            | "Left"
+            | "Right"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Specifies if the number format is linked to the cells. If true, the number format will change in the labels when it changes in the cells.
@@ -3806,7 +4447,20 @@ declare namespace Excel {
         /**
          * DataLabelPosition value that represents the position of the data label. See Excel.ChartDataLabelPosition for details.
          */
-        position: ChartDataLabelPosition;
+        position:
+            | ChartDataLabelPosition
+            | "Invalid"
+            | "None"
+            | "Center"
+            | "InsideEnd"
+            | "InsideBase"
+            | "OutsideEnd"
+            | "Left"
+            | "Right"
+            | "Top"
+            | "Bottom"
+            | "BestFit"
+            | "Callout";
 
         /**
          * String representing the separator used for the data labels on a chart.
@@ -3852,7 +4506,13 @@ declare namespace Excel {
          * Represents the vertical alignment of chart data label. See Excel.ChartTextVerticalAlignment for details.
          * This property is valid only when TextOrientation of data label is -90, 90, or 180.
          */
-        verticalAlignment: ChartTextVerticalAlignment;
+        verticalAlignment:
+            | ChartTextVerticalAlignment
+            | "Center"
+            | "Bottom"
+            | "Top"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -3890,7 +4550,13 @@ declare namespace Excel {
          * Represents the horizontal alignment for chart data label. See Excel.ChartTextHorizontalAlignment for details.
          * This property is valid only when TextOrientation of data label is -90, 90, or 180.
          */
-        horizontalAlignment: ChartTextHorizontalAlignment;
+        horizontalAlignment:
+            | ChartTextHorizontalAlignment
+            | "Center"
+            | "Left"
+            | "Right"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Represents the distance, in points, from the left edge of chart data label to the left edge of chart area. Null if chart data label is not visible.
@@ -3910,7 +4576,20 @@ declare namespace Excel {
         /**
          * DataLabelPosition value that represents the position of the data label. See Excel.ChartDataLabelPosition for details.
          */
-        position: ChartDataLabelPosition;
+        position:
+            | ChartDataLabelPosition
+            | "Invalid"
+            | "None"
+            | "Center"
+            | "InsideEnd"
+            | "InsideBase"
+            | "OutsideEnd"
+            | "Left"
+            | "Right"
+            | "Top"
+            | "Bottom"
+            | "BestFit"
+            | "Callout";
 
         /**
          * String representing the separator used for the data label on a chart.
@@ -3966,7 +4645,13 @@ declare namespace Excel {
          * Represents the vertical alignment of chart data label. See Excel.ChartTextVerticalAlignment for details.
          * This property is valid only when TextOrientation of data label is 0.
          */
-        verticalAlignment: ChartTextVerticalAlignment;
+        verticalAlignment:
+            | ChartTextVerticalAlignment
+            | "Center"
+            | "Bottom"
+            | "Top"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Returns the width, in points, of the chart data label. Null if chart data label is not visible.
@@ -4025,12 +4710,18 @@ declare namespace Excel {
         /**
          * Specifies which parts of the error bars to include.
          */
-        include: ChartErrorBarsInclude;
+        include: ChartErrorBarsInclude | "Both" | "MinusValues" | "PlusValues";
 
         /**
          * The type of range marked by the error bars.
          */
-        type: ChartErrorBarsType;
+        type:
+            | ChartErrorBarsType
+            | "FixedValue"
+            | "Percent"
+            | "StDev"
+            | "StError"
+            | "Custom";
 
         /**
          * Specifies whether the error bars are displayed.
@@ -4133,7 +4824,15 @@ declare namespace Excel {
         /**
          * Specifies the position of the legend on the chart. See Excel.ChartLegendPosition for details.
          */
-        position: ChartLegendPosition;
+        position:
+            | ChartLegendPosition
+            | "Invalid"
+            | "Top"
+            | "Bottom"
+            | "Left"
+            | "Right"
+            | "Corner"
+            | "Custom";
 
         /**
          * Specifies if the legend has a shadow on the chart.
@@ -4212,7 +4911,7 @@ declare namespace Excel {
         /**
          * Returns the number of legendEntry in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Returns a legendEntry at the given index.
@@ -4262,17 +4961,32 @@ declare namespace Excel {
         /**
          * Specifies the series map labels strategy of a region map chart.
          */
-        labelStrategy: ChartMapLabelStrategy;
+        labelStrategy: ChartMapLabelStrategy | "None" | "BestFit" | "ShowAll";
 
         /**
          * Specifies the series mapping level of a region map chart.
          */
-        level: ChartMapAreaLevel;
+        level:
+            | ChartMapAreaLevel
+            | "Automatic"
+            | "DataOnly"
+            | "City"
+            | "County"
+            | "State"
+            | "Country"
+            | "Continent"
+            | "World";
 
         /**
          * Specifies the series projection type of a region map chart.
          */
-        projectionType: ChartMapProjectionType;
+        projectionType:
+            | ChartMapProjectionType
+            | "Automatic"
+            | "Mercator"
+            | "Miller"
+            | "Robinson"
+            | "Albers";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -4299,7 +5013,13 @@ declare namespace Excel {
         /**
          * Specifies the horizontal alignment for chart title.
          */
-        horizontalAlignment: ChartTextHorizontalAlignment;
+        horizontalAlignment:
+            | ChartTextHorizontalAlignment
+            | "Center"
+            | "Left"
+            | "Right"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Specifies the distance, in points, from the left edge of chart title to the left edge of chart area. Null if chart title is not visible.
@@ -4314,7 +5034,13 @@ declare namespace Excel {
         /**
          * Represents the position of chart title. See Excel.ChartTitlePosition for details.
          */
-        position: ChartTitlePosition;
+        position:
+            | ChartTitlePosition
+            | "Automatic"
+            | "Top"
+            | "Bottom"
+            | "Left"
+            | "Right";
 
         /**
          * Represents a boolean value that determines if the chart title has a shadow.
@@ -4339,7 +5065,13 @@ declare namespace Excel {
         /**
          * Specifies the vertical alignment of chart title. See Excel.ChartTextVerticalAlignment for details.
          */
-        verticalAlignment: ChartTextVerticalAlignment;
+        verticalAlignment:
+            | ChartTextVerticalAlignment
+            | "Center"
+            | "Bottom"
+            | "Top"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Specifies if the chart title is visibile.
@@ -4451,7 +5183,19 @@ declare namespace Excel {
         /**
          * Represents the line style of the border. See Excel.ChartLineStyle for details.
          */
-        lineStyle: ChartLineStyle;
+        lineStyle:
+            | ChartLineStyle
+            | "None"
+            | "Continuous"
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "Dot"
+            | "Grey25"
+            | "Grey50"
+            | "Grey75"
+            | "Automatic"
+            | "RoundDot";
 
         /**
          * Represents weight of the border, in points.
@@ -4498,7 +5242,7 @@ declare namespace Excel {
         /**
          * Specifies the bin's type for a histogram chart or pareto chart.
          */
-        type: ChartBinType;
+        type: ChartBinType | "Category" | "Auto" | "BinWidth" | "BinCount";
 
         /**
          * Specifies the bin underflow value of a histogram chart or pareto chart.
@@ -4525,7 +5269,10 @@ declare namespace Excel {
         /**
          * Specifies if the quartile calculation type of a box and whisker chart.
          */
-        quartileCalculation: ChartBoxQuartileCalculation;
+        quartileCalculation:
+            | ChartBoxQuartileCalculation
+            | "Inclusive"
+            | "Exclusive";
 
         /**
          * Specifies if inner points are shown in a box and whisker chart.
@@ -4567,7 +5314,19 @@ declare namespace Excel {
         /**
          * Represents the line style. See Excel.ChartLineStyle for details.
          */
-        lineStyle: ChartLineStyle;
+        lineStyle:
+            | ChartLineStyle
+            | "None"
+            | "Continuous"
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "Dot"
+            | "Grey25"
+            | "Grey50"
+            | "Grey75"
+            | "Automatic"
+            | "RoundDot";
 
         /**
          * Represents weight of the line, in points.
@@ -4619,7 +5378,7 @@ declare namespace Excel {
         /**
          * Type of underline applied to the font. See Excel.ChartUnderlineStyle for details.
          */
-        underline: ChartUnderlineStyle;
+        underline: ChartUnderlineStyle | "None" | "Single";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -4686,7 +5445,14 @@ declare namespace Excel {
         /**
          * Represents the type of a chart trendline.
          */
-        type: ChartTrendlineType;
+        type:
+            | ChartTrendlineType
+            | "Linear"
+            | "Exponential"
+            | "Logarithmic"
+            | "MovingAverage"
+            | "Polynomial"
+            | "Power";
 
         /**
          * Delete the trendline object.
@@ -4709,12 +5475,21 @@ declare namespace Excel {
          * Adds a new trendline to trendline collection.
          * @param type Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
          */
-        add(type?: ChartTrendlineType): ChartTrendline;
+        add(
+            type?:
+                | ChartTrendlineType
+                | "Linear"
+                | "Exponential"
+                | "Logarithmic"
+                | "MovingAverage"
+                | "Polynomial"
+                | "Power"
+        ): ChartTrendline;
 
         /**
          * Returns the number of trendlines in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Get trendline object by index, which is the insertion order in items array.
@@ -4775,7 +5550,13 @@ declare namespace Excel {
          * Represents the horizontal alignment for chart trendline label. See Excel.ChartTextHorizontalAlignment for details.
          * This property is valid only when TextOrientation of trendline label is -90, 90, or 180.
          */
-        horizontalAlignment: ChartTextHorizontalAlignment;
+        horizontalAlignment:
+            | ChartTextHorizontalAlignment
+            | "Center"
+            | "Left"
+            | "Right"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Represents the distance, in points, from the left edge of chart trendline label to the left edge of chart area. Null if chart trendline label is not visible.
@@ -4811,7 +5592,13 @@ declare namespace Excel {
          * Represents the vertical alignment of chart trendline label. See Excel.ChartTextVerticalAlignment for details.
          * This property is valid only when TextOrientation of trendline label is 0.
          */
-        verticalAlignment: ChartTextVerticalAlignment;
+        verticalAlignment:
+            | ChartTextVerticalAlignment
+            | "Center"
+            | "Bottom"
+            | "Top"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Returns the width, in points, of the chart trendline label. Null if chart trendline label is not visible.
@@ -4895,7 +5682,7 @@ declare namespace Excel {
         /**
          * Specifies the position of plotArea.
          */
-        position: ChartPlotAreaPosition;
+        position: ChartPlotAreaPosition | "Automatic" | "Custom";
 
         /**
          * Specifies the top value of plotArea.
@@ -4953,8 +5740,8 @@ declare namespace Excel {
             fields: SortField[],
             matchCase?: boolean,
             hasHeaders?: boolean,
-            orientation?: SortOrientation,
-            method?: SortMethod
+            orientation?: SortOrientation | "Rows" | "Columns",
+            method?: SortMethod | "PinYin" | "StrokeCount"
         ): void;
 
         /**
@@ -4982,7 +5769,7 @@ declare namespace Excel {
         /**
          * Represents Chinese character ordering method last used to sort the table.
          */
-        readonly method: SortMethod;
+        readonly method: SortMethod | "PinYin" | "StrokeCount";
 
         /**
          * Perform a sort operation.
@@ -4993,7 +5780,7 @@ declare namespace Excel {
         apply(
             fields: SortField[],
             matchCase?: boolean,
-            method?: SortMethod
+            method?: SortMethod | "PinYin" | "StrokeCount"
         ): void;
 
         /**
@@ -5056,14 +5843,52 @@ declare namespace Excel {
         applyCustomFilter(
             criteria1: string,
             criteria2?: string,
-            oper?: FilterOperator
+            oper?: FilterOperator | "And" | "Or"
         ): void;
 
         /**
          * Apply a "Dynamic" filter to the column.
          * @param criteria The dynamic criteria to apply.
          */
-        applyDynamicFilter(criteria: DynamicFilterCriteria): void;
+        applyDynamicFilter(
+            criteria:
+                | DynamicFilterCriteria
+                | "Unknown"
+                | "AboveAverage"
+                | "AllDatesInPeriodApril"
+                | "AllDatesInPeriodAugust"
+                | "AllDatesInPeriodDecember"
+                | "AllDatesInPeriodFebruray"
+                | "AllDatesInPeriodJanuary"
+                | "AllDatesInPeriodJuly"
+                | "AllDatesInPeriodJune"
+                | "AllDatesInPeriodMarch"
+                | "AllDatesInPeriodMay"
+                | "AllDatesInPeriodNovember"
+                | "AllDatesInPeriodOctober"
+                | "AllDatesInPeriodQuarter1"
+                | "AllDatesInPeriodQuarter2"
+                | "AllDatesInPeriodQuarter3"
+                | "AllDatesInPeriodQuarter4"
+                | "AllDatesInPeriodSeptember"
+                | "BelowAverage"
+                | "LastMonth"
+                | "LastQuarter"
+                | "LastWeek"
+                | "LastYear"
+                | "NextMonth"
+                | "NextQuarter"
+                | "NextWeek"
+                | "NextYear"
+                | "ThisMonth"
+                | "ThisQuarter"
+                | "ThisWeek"
+                | "ThisYear"
+                | "Today"
+                | "Tomorrow"
+                | "YearToDate"
+                | "Yesterday"
+        ): void;
 
         /**
          * Apply a "Font Color" filter to the column for the given color.
@@ -5227,7 +6052,7 @@ declare namespace Excel {
         /**
          * Gets the number of CustomXML parts in this collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a custom XML part based on its ID.
@@ -5281,7 +6106,7 @@ declare namespace Excel {
         /**
          * Gets the number of CustomXml parts in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a custom XML part based on its ID.
@@ -5326,7 +6151,7 @@ declare namespace Excel {
         /**
          * Gets the custom XML part's full XML content.
          */
-        getXml(): string;
+        getXml(): ClientResult<string>;
 
         /**
          * Sets the custom XML part's full XML content.
@@ -5349,7 +6174,7 @@ declare namespace Excel {
         /**
          * Gets the number of PivotTables in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the first PivotTable in the collection. The PivotTables in the collection are sorted top to bottom and left to right, such that top-left table is the first PivotTable in the collection.
@@ -5395,7 +6220,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot tables in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a PivotTable by name.
@@ -5517,7 +6342,7 @@ declare namespace Excel {
         /**
          * This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this will be null.
          */
-        layoutType: PivotLayoutType;
+        layoutType: PivotLayoutType | "Compact" | "Tabular" | "Outline";
 
         /**
          * Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting, sorting, or changing page field items.
@@ -5537,7 +6362,7 @@ declare namespace Excel {
         /**
          * This property indicates the SubtotalLocationType of all fields on the PivotTable. If fields have different states, this will be null.
          */
-        subtotalLocation: SubtotalLocationType;
+        subtotalLocation: SubtotalLocationType | "AtTop" | "AtBottom" | "Off";
 
         /**
          * Returns the range where the PivotTable's column labels reside.
@@ -5565,7 +6390,10 @@ declare namespace Excel {
          * @param axis The axis from which to get the PivotItems. Must be either "row" or "column."
          * @param cell A single cell within the PivotTable's data body.
          */
-        getPivotItems(axis: PivotAxis, cell: Range | string): PivotItem[];
+        getPivotItems(
+            axis: PivotAxis | "Unknown" | "Row" | "Column" | "Data" | "Filter",
+            cell: Range | string
+        ): ClientResult<PivotItem[]>;
 
         /**
          * Returns the range the PivotTable exists on, excluding the filter area.
@@ -5582,7 +6410,10 @@ declare namespace Excel {
          * @param cell A single cell to use get the criteria from for applying the autosort.
          * @param sortBy The direction of the sort.
          */
-        setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;
+        setAutoSortOnCell(
+            cell: Range | string,
+            sortBy: SortBy | "Ascending" | "Descending"
+        ): void;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -5599,7 +6430,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot hierarchies in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a PivotHierarchy by its name or id.
@@ -5661,7 +6492,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot hierarchies in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a RowColumnPivotHierarchy by its name or id.
@@ -5738,7 +6569,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot hierarchies in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a FilterPivotHierarchy by its name or id.
@@ -5819,7 +6650,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot hierarchies in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a DataPivotHierarchy by its name or id.
@@ -5883,7 +6714,21 @@ declare namespace Excel {
         /**
          * Specifies if all items of the DataPivotHierarchy are shown.
          */
-        summarizeBy: AggregationFunction;
+        summarizeBy:
+            | AggregationFunction
+            | "Unknown"
+            | "Automatic"
+            | "Sum"
+            | "Count"
+            | "Average"
+            | "Max"
+            | "Min"
+            | "Product"
+            | "CountNumbers"
+            | "StandardDeviation"
+            | "StandardDeviationP"
+            | "Variance"
+            | "VarianceP";
 
         /**
          * Reset the DataPivotHierarchy back to its default values.
@@ -5905,7 +6750,7 @@ declare namespace Excel {
         /**
          * Gets the number of pivot fields in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a PivotField by its name or id.
@@ -5960,7 +6805,7 @@ declare namespace Excel {
          * Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort will be based on the PivotField itself.
          * @param sortBy Specifies if the sorting is done in ascending or descending order.
          */
-        sortByLabels(sortBy: SortBy): void;
+        sortByLabels(sortBy: SortBy | "Ascending" | "Descending"): void;
 
         /**
          * Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to sort when
@@ -5973,7 +6818,7 @@ declare namespace Excel {
          * you want to sort on, this can be empty.
          */
         sortByValues(
-            sortBy: SortBy,
+            sortBy: SortBy | "Ascending" | "Descending",
             valuesHierarchy: DataPivotHierarchy,
             pivotItemScope?: Array<PivotItem | string>
         ): void;
@@ -5993,7 +6838,7 @@ declare namespace Excel {
         /**
          * Gets the number of PivotItems in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a PivotItem by its name or id.
@@ -6131,7 +6976,13 @@ declare namespace Excel {
         /**
          * The type of the value used for the custom property.
          */
-        readonly type: DocumentPropertyType;
+        readonly type:
+            | DocumentPropertyType
+            | "Number"
+            | "Boolean"
+            | "Date"
+            | "String"
+            | "Float";
 
         /**
          * The value of the custom property. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
@@ -6170,7 +7021,7 @@ declare namespace Excel {
         /**
          * Gets the count of custom properties.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.
@@ -6200,7 +7051,18 @@ declare namespace Excel {
          * Adds a new conditional format to the collection at the first/top priority.
          * @param type The type of conditional format being added. See Excel.ConditionalFormatType for details.
          */
-        add(type: ConditionalFormatType): ConditionalFormat;
+        add(
+            type:
+                | ConditionalFormatType
+                | "Custom"
+                | "DataBar"
+                | "ColorScale"
+                | "IconSet"
+                | "TopBottom"
+                | "PresetCriteria"
+                | "ContainsText"
+                | "CellValue"
+        ): ConditionalFormat;
 
         /**
          * Clears all conditional formats active on the current specified range.
@@ -6210,7 +7072,7 @@ declare namespace Excel {
         /**
          * Returns the number of conditional formats in the workbook.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Returns a conditional format for the given ID.
@@ -6346,7 +7208,16 @@ declare namespace Excel {
         /**
          * A type of conditional format. Only one can be set at a time.
          */
-        readonly type: ConditionalFormatType;
+        readonly type:
+            | ConditionalFormatType
+            | "Custom"
+            | "DataBar"
+            | "ColorScale"
+            | "IconSet"
+            | "TopBottom"
+            | "PresetCriteria"
+            | "ContainsText"
+            | "CellValue";
 
         /**
          * Deletes this conditional format.
@@ -6389,12 +7260,20 @@ declare namespace Excel {
         /**
          * Representation of how the axis is determined for an Excel data bar.
          */
-        axisFormat: ConditionalDataBarAxisFormat;
+        axisFormat:
+            | ConditionalDataBarAxisFormat
+            | "Automatic"
+            | "None"
+            | "CellMidPoint";
 
         /**
          * Specifies the direction that the data bar graphic should be based on.
          */
-        barDirection: ConditionalDataBarDirection;
+        barDirection:
+            | ConditionalDataBarDirection
+            | "Context"
+            | "LeftToRight"
+            | "RightToLeft";
 
         /**
          * The rule for what consistutes the lower bound (and how to calculate it, if applicable) for a data bar.
@@ -6558,7 +7437,29 @@ declare namespace Excel {
         /**
          * If set, displays the IconSet option for the conditional format.
          */
-        style: IconSet;
+        style:
+            | IconSet
+            | "Invalid"
+            | "ThreeArrows"
+            | "ThreeArrowsGray"
+            | "ThreeFlags"
+            | "ThreeTrafficLights1"
+            | "ThreeTrafficLights2"
+            | "ThreeSigns"
+            | "ThreeSymbols"
+            | "ThreeSymbols2"
+            | "FourArrows"
+            | "FourArrowsGray"
+            | "FourRedToBlack"
+            | "FourRating"
+            | "FourTrafficLights"
+            | "FiveArrows"
+            | "FiveArrowsGray"
+            | "FiveRating"
+            | "FiveQuarters"
+            | "ThreeStars"
+            | "ThreeTriangles"
+            | "FiveBoxes";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -6737,7 +7638,11 @@ declare namespace Excel {
         /**
          * The type of underline applied to the font. See Excel.ConditionalRangeFontUnderlineStyle for details.
          */
-        underline: ConditionalRangeFontUnderlineStyle;
+        underline:
+            | ConditionalRangeFontUnderlineStyle
+            | "None"
+            | "Single"
+            | "Double";
 
         /**
          * Resets the font formats.
@@ -6786,12 +7691,24 @@ declare namespace Excel {
         /**
          * Constant value that indicates the specific side of the border. See Excel.ConditionalRangeBorderIndex for details.
          */
-        readonly sideIndex: ConditionalRangeBorderIndex;
+        readonly sideIndex:
+            | ConditionalRangeBorderIndex
+            | "EdgeTop"
+            | "EdgeBottom"
+            | "EdgeLeft"
+            | "EdgeRight";
 
         /**
          * One of the constants of line style specifying the line style for the border. See Excel.BorderLineStyle for details.
          */
-        style: ConditionalRangeBorderLineStyle;
+        style:
+            | ConditionalRangeBorderLineStyle
+            | "None"
+            | "Continuous"
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "Dot";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -6834,7 +7751,14 @@ declare namespace Excel {
          * Gets a border object using its name.
          * @param index Index value of the border object to be retrieved. See Excel.ConditionalRangeBorderIndex for details.
          */
-        getItem(index: ConditionalRangeBorderIndex): ConditionalRangeBorder;
+        getItem(
+            index:
+                | ConditionalRangeBorderIndex
+                | "EdgeTop"
+                | "EdgeBottom"
+                | "EdgeLeft"
+                | "EdgeRight"
+        ): ConditionalRangeBorder;
 
         /**
          * Gets a border object using its index.
@@ -6887,7 +7811,16 @@ declare namespace Excel {
         /**
          * Represents the horizontal alignment for the style. See Excel.HorizontalAlignment for details.
          */
-        horizontalAlignment: HorizontalAlignment;
+        horizontalAlignment:
+            | HorizontalAlignment
+            | "General"
+            | "Left"
+            | "Center"
+            | "Right"
+            | "Fill"
+            | "Justify"
+            | "CenterAcrossSelection"
+            | "Distributed";
 
         /**
          * Specifies if the style includes the AutoIndent, HorizontalAlignment, VerticalAlignment, WrapText, IndentLevel, and TextOrientation properties.
@@ -6947,7 +7880,7 @@ declare namespace Excel {
         /**
          * The reading order for the style.
          */
-        readingOrder: ReadingOrder;
+        readingOrder: ReadingOrder | "Context" | "LeftToRight" | "RightToLeft";
 
         /**
          * Specifies if text automatically shrinks to fit in the available column width.
@@ -6962,7 +7895,13 @@ declare namespace Excel {
         /**
          * Specifies the vertical alignment for the style. See Excel.VerticalAlignment for details.
          */
-        verticalAlignment: VerticalAlignment;
+        verticalAlignment:
+            | VerticalAlignment
+            | "Top"
+            | "Center"
+            | "Bottom"
+            | "Justify"
+            | "Distributed";
 
         /**
          * Specifies if Excel wraps the text in the object.
@@ -6995,7 +7934,7 @@ declare namespace Excel {
         /**
          * Gets the number of styles in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a style by name.
@@ -7031,7 +7970,7 @@ declare namespace Excel {
         /**
          * Gets the number of table styles in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the default TableStyle for the parent object's scope.
@@ -7110,7 +8049,7 @@ declare namespace Excel {
         /**
          * Gets the number of PivotTable styles in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the default PivotTableStyle for the parent object's scope.
@@ -7189,7 +8128,7 @@ declare namespace Excel {
         /**
          * Gets the number of slicer styles in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the default SlicerStyle for the parent object's scope.
@@ -7268,7 +8207,7 @@ declare namespace Excel {
         /**
          * Gets the number of timeline styles in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets the default TimelineStyle for the parent object's scope.
@@ -7390,22 +8329,69 @@ declare namespace Excel {
         /**
          * The worksheet's orientation of the page.
          */
-        orientation: PageOrientation;
+        orientation: PageOrientation | "Portrait" | "Landscape";
 
         /**
          * The worksheet's paper size of the page.
          */
-        paperSize: PaperType;
+        paperSize:
+            | PaperType
+            | "Letter"
+            | "LetterSmall"
+            | "Tabloid"
+            | "Ledger"
+            | "Legal"
+            | "Statement"
+            | "Executive"
+            | "A3"
+            | "A4"
+            | "A4Small"
+            | "A5"
+            | "B4"
+            | "B5"
+            | "Folio"
+            | "Quatro"
+            | "Paper10x14"
+            | "Paper11x17"
+            | "Note"
+            | "Envelope9"
+            | "Envelope10"
+            | "Envelope11"
+            | "Envelope12"
+            | "Envelope14"
+            | "Csheet"
+            | "Dsheet"
+            | "Esheet"
+            | "EnvelopeDL"
+            | "EnvelopeC5"
+            | "EnvelopeC3"
+            | "EnvelopeC4"
+            | "EnvelopeC6"
+            | "EnvelopeC65"
+            | "EnvelopeB4"
+            | "EnvelopeB5"
+            | "EnvelopeB6"
+            | "EnvelopeItaly"
+            | "EnvelopeMonarch"
+            | "EnvelopePersonal"
+            | "FanfoldUS"
+            | "FanfoldStdGerman"
+            | "FanfoldLegalGerman";
 
         /**
          * Specifies if the worksheet's comments should be displayed when printing.
          */
-        printComments: PrintComments;
+        printComments: PrintComments | "NoComments" | "EndSheet" | "InPlace";
 
         /**
          * The worksheet's print errors option.
          */
-        printErrors: PrintErrorType;
+        printErrors:
+            | PrintErrorType
+            | "AsDisplayed"
+            | "Blank"
+            | "Dash"
+            | "NotAvailable";
 
         /**
          * Specifies if the worksheet's gridlines will be printed.
@@ -7420,7 +8406,7 @@ declare namespace Excel {
         /**
          * The worksheet's page print order option. This specifies the order to use for processing the page number printed.
          */
-        printOrder: PrintOrder;
+        printOrder: PrintOrder | "DownThenOver" | "OverThenDown";
 
         /**
          * The worksheet's right margin, in points, for use when printing.
@@ -7480,7 +8466,7 @@ declare namespace Excel {
          * @param marginOptions Margin values to set, margins not provided will remain unchanged.
          */
         setPrintMargins(
-            unit: PrintMarginUnit,
+            unit: PrintMarginUnit | "Points" | "Inches" | "Centimeters",
             marginOptions: PageLayoutMarginOptions
         ): void;
 
@@ -7573,7 +8559,12 @@ declare namespace Excel {
         /**
          * The state by which headers/footers are set. See Excel.HeaderFooterState for details.
          */
-        state: HeaderFooterState;
+        state:
+            | HeaderFooterState
+            | "Default"
+            | "FirstAndDefault"
+            | "OddAndEven"
+            | "FirstOddAndEven";
 
         /**
          * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
@@ -7627,7 +8618,7 @@ declare namespace Excel {
         /**
          * Gets the number of page breaks in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a page break object via the index.
@@ -7669,7 +8660,7 @@ declare namespace Excel {
         /**
          * Returns the number of ranges in the RangeCollection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Returns the range object based on its position in the RangeCollection.
@@ -7698,13 +8689,13 @@ declare namespace Excel {
         add(
             cellAddress: Range | string,
             content: CommentRichContent | string,
-            contentType?: ContentType
+            contentType?: ContentType | "Plain" | "Mention"
         ): Comment;
 
         /**
          * Gets the number of comments in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a comment from the collection based on its ID.
@@ -7822,13 +8813,13 @@ declare namespace Excel {
          */
         add(
             content: CommentRichContent | string,
-            contentType?: ContentType
+            contentType?: ContentType | "Plain" | "Mention"
         ): CommentReply;
 
         /**
          * Gets the number of comment replies in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Returns a comment reply identified by its ID.
@@ -7931,7 +8922,187 @@ declare namespace Excel {
          * Adds a geometric shape to the worksheet. Returns a Shape object that represents the new shape.
          * @param geometricShapeType Represents the type of the geometric shape. See Excel.GeometricShapeType for details.
          */
-        addGeometricShape(geometricShapeType: GeometricShapeType): Shape;
+        addGeometricShape(
+            geometricShapeType:
+                | GeometricShapeType
+                | "LineInverse"
+                | "Triangle"
+                | "RightTriangle"
+                | "Rectangle"
+                | "Diamond"
+                | "Parallelogram"
+                | "Trapezoid"
+                | "NonIsoscelesTrapezoid"
+                | "Pentagon"
+                | "Hexagon"
+                | "Heptagon"
+                | "Octagon"
+                | "Decagon"
+                | "Dodecagon"
+                | "Star4"
+                | "Star5"
+                | "Star6"
+                | "Star7"
+                | "Star8"
+                | "Star10"
+                | "Star12"
+                | "Star16"
+                | "Star24"
+                | "Star32"
+                | "RoundRectangle"
+                | "Round1Rectangle"
+                | "Round2SameRectangle"
+                | "Round2DiagonalRectangle"
+                | "SnipRoundRectangle"
+                | "Snip1Rectangle"
+                | "Snip2SameRectangle"
+                | "Snip2DiagonalRectangle"
+                | "Plaque"
+                | "Ellipse"
+                | "Teardrop"
+                | "HomePlate"
+                | "Chevron"
+                | "PieWedge"
+                | "Pie"
+                | "BlockArc"
+                | "Donut"
+                | "NoSmoking"
+                | "RightArrow"
+                | "LeftArrow"
+                | "UpArrow"
+                | "DownArrow"
+                | "StripedRightArrow"
+                | "NotchedRightArrow"
+                | "BentUpArrow"
+                | "LeftRightArrow"
+                | "UpDownArrow"
+                | "LeftUpArrow"
+                | "LeftRightUpArrow"
+                | "QuadArrow"
+                | "LeftArrowCallout"
+                | "RightArrowCallout"
+                | "UpArrowCallout"
+                | "DownArrowCallout"
+                | "LeftRightArrowCallout"
+                | "UpDownArrowCallout"
+                | "QuadArrowCallout"
+                | "BentArrow"
+                | "UturnArrow"
+                | "CircularArrow"
+                | "LeftCircularArrow"
+                | "LeftRightCircularArrow"
+                | "CurvedRightArrow"
+                | "CurvedLeftArrow"
+                | "CurvedUpArrow"
+                | "CurvedDownArrow"
+                | "SwooshArrow"
+                | "Cube"
+                | "Can"
+                | "LightningBolt"
+                | "Heart"
+                | "Sun"
+                | "Moon"
+                | "SmileyFace"
+                | "IrregularSeal1"
+                | "IrregularSeal2"
+                | "FoldedCorner"
+                | "Bevel"
+                | "Frame"
+                | "HalfFrame"
+                | "Corner"
+                | "DiagonalStripe"
+                | "Chord"
+                | "Arc"
+                | "LeftBracket"
+                | "RightBracket"
+                | "LeftBrace"
+                | "RightBrace"
+                | "BracketPair"
+                | "BracePair"
+                | "Callout1"
+                | "Callout2"
+                | "Callout3"
+                | "AccentCallout1"
+                | "AccentCallout2"
+                | "AccentCallout3"
+                | "BorderCallout1"
+                | "BorderCallout2"
+                | "BorderCallout3"
+                | "AccentBorderCallout1"
+                | "AccentBorderCallout2"
+                | "AccentBorderCallout3"
+                | "WedgeRectCallout"
+                | "WedgeRRectCallout"
+                | "WedgeEllipseCallout"
+                | "CloudCallout"
+                | "Cloud"
+                | "Ribbon"
+                | "Ribbon2"
+                | "EllipseRibbon"
+                | "EllipseRibbon2"
+                | "LeftRightRibbon"
+                | "VerticalScroll"
+                | "HorizontalScroll"
+                | "Wave"
+                | "DoubleWave"
+                | "Plus"
+                | "FlowChartProcess"
+                | "FlowChartDecision"
+                | "FlowChartInputOutput"
+                | "FlowChartPredefinedProcess"
+                | "FlowChartInternalStorage"
+                | "FlowChartDocument"
+                | "FlowChartMultidocument"
+                | "FlowChartTerminator"
+                | "FlowChartPreparation"
+                | "FlowChartManualInput"
+                | "FlowChartManualOperation"
+                | "FlowChartConnector"
+                | "FlowChartPunchedCard"
+                | "FlowChartPunchedTape"
+                | "FlowChartSummingJunction"
+                | "FlowChartOr"
+                | "FlowChartCollate"
+                | "FlowChartSort"
+                | "FlowChartExtract"
+                | "FlowChartMerge"
+                | "FlowChartOfflineStorage"
+                | "FlowChartOnlineStorage"
+                | "FlowChartMagneticTape"
+                | "FlowChartMagneticDisk"
+                | "FlowChartMagneticDrum"
+                | "FlowChartDisplay"
+                | "FlowChartDelay"
+                | "FlowChartAlternateProcess"
+                | "FlowChartOffpageConnector"
+                | "ActionButtonBlank"
+                | "ActionButtonHome"
+                | "ActionButtonHelp"
+                | "ActionButtonInformation"
+                | "ActionButtonForwardNext"
+                | "ActionButtonBackPrevious"
+                | "ActionButtonEnd"
+                | "ActionButtonBeginning"
+                | "ActionButtonReturn"
+                | "ActionButtonDocument"
+                | "ActionButtonSound"
+                | "ActionButtonMovie"
+                | "Gear6"
+                | "Gear9"
+                | "Funnel"
+                | "MathPlus"
+                | "MathMinus"
+                | "MathMultiply"
+                | "MathDivide"
+                | "MathEqual"
+                | "MathNotEqual"
+                | "CornerTabs"
+                | "SquareTabs"
+                | "PlaqueTabs"
+                | "ChartX"
+                | "ChartStar"
+                | "ChartPlus"
+        ): Shape;
 
         /**
          * Groups a subset of shapes in this collection's worksheet. Returns a Shape object that represents the new group of shapes.
@@ -7958,7 +9129,7 @@ declare namespace Excel {
             startTop: number,
             endLeft: number,
             endTop: number,
-            connectorType?: ConnectorType
+            connectorType?: ConnectorType | "Straight" | "Elbow" | "Curve"
         ): Shape;
 
         /**
@@ -7970,7 +9141,7 @@ declare namespace Excel {
         /**
          * Returns the number of shapes in the worksheet.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a shape using its Name or ID.
@@ -8031,7 +9202,185 @@ declare namespace Excel {
         /**
          * Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null if the shape type is not "GeometricShape".
          */
-        geometricShapeType: GeometricShapeType;
+        geometricShapeType:
+            | GeometricShapeType
+            | "LineInverse"
+            | "Triangle"
+            | "RightTriangle"
+            | "Rectangle"
+            | "Diamond"
+            | "Parallelogram"
+            | "Trapezoid"
+            | "NonIsoscelesTrapezoid"
+            | "Pentagon"
+            | "Hexagon"
+            | "Heptagon"
+            | "Octagon"
+            | "Decagon"
+            | "Dodecagon"
+            | "Star4"
+            | "Star5"
+            | "Star6"
+            | "Star7"
+            | "Star8"
+            | "Star10"
+            | "Star12"
+            | "Star16"
+            | "Star24"
+            | "Star32"
+            | "RoundRectangle"
+            | "Round1Rectangle"
+            | "Round2SameRectangle"
+            | "Round2DiagonalRectangle"
+            | "SnipRoundRectangle"
+            | "Snip1Rectangle"
+            | "Snip2SameRectangle"
+            | "Snip2DiagonalRectangle"
+            | "Plaque"
+            | "Ellipse"
+            | "Teardrop"
+            | "HomePlate"
+            | "Chevron"
+            | "PieWedge"
+            | "Pie"
+            | "BlockArc"
+            | "Donut"
+            | "NoSmoking"
+            | "RightArrow"
+            | "LeftArrow"
+            | "UpArrow"
+            | "DownArrow"
+            | "StripedRightArrow"
+            | "NotchedRightArrow"
+            | "BentUpArrow"
+            | "LeftRightArrow"
+            | "UpDownArrow"
+            | "LeftUpArrow"
+            | "LeftRightUpArrow"
+            | "QuadArrow"
+            | "LeftArrowCallout"
+            | "RightArrowCallout"
+            | "UpArrowCallout"
+            | "DownArrowCallout"
+            | "LeftRightArrowCallout"
+            | "UpDownArrowCallout"
+            | "QuadArrowCallout"
+            | "BentArrow"
+            | "UturnArrow"
+            | "CircularArrow"
+            | "LeftCircularArrow"
+            | "LeftRightCircularArrow"
+            | "CurvedRightArrow"
+            | "CurvedLeftArrow"
+            | "CurvedUpArrow"
+            | "CurvedDownArrow"
+            | "SwooshArrow"
+            | "Cube"
+            | "Can"
+            | "LightningBolt"
+            | "Heart"
+            | "Sun"
+            | "Moon"
+            | "SmileyFace"
+            | "IrregularSeal1"
+            | "IrregularSeal2"
+            | "FoldedCorner"
+            | "Bevel"
+            | "Frame"
+            | "HalfFrame"
+            | "Corner"
+            | "DiagonalStripe"
+            | "Chord"
+            | "Arc"
+            | "LeftBracket"
+            | "RightBracket"
+            | "LeftBrace"
+            | "RightBrace"
+            | "BracketPair"
+            | "BracePair"
+            | "Callout1"
+            | "Callout2"
+            | "Callout3"
+            | "AccentCallout1"
+            | "AccentCallout2"
+            | "AccentCallout3"
+            | "BorderCallout1"
+            | "BorderCallout2"
+            | "BorderCallout3"
+            | "AccentBorderCallout1"
+            | "AccentBorderCallout2"
+            | "AccentBorderCallout3"
+            | "WedgeRectCallout"
+            | "WedgeRRectCallout"
+            | "WedgeEllipseCallout"
+            | "CloudCallout"
+            | "Cloud"
+            | "Ribbon"
+            | "Ribbon2"
+            | "EllipseRibbon"
+            | "EllipseRibbon2"
+            | "LeftRightRibbon"
+            | "VerticalScroll"
+            | "HorizontalScroll"
+            | "Wave"
+            | "DoubleWave"
+            | "Plus"
+            | "FlowChartProcess"
+            | "FlowChartDecision"
+            | "FlowChartInputOutput"
+            | "FlowChartPredefinedProcess"
+            | "FlowChartInternalStorage"
+            | "FlowChartDocument"
+            | "FlowChartMultidocument"
+            | "FlowChartTerminator"
+            | "FlowChartPreparation"
+            | "FlowChartManualInput"
+            | "FlowChartManualOperation"
+            | "FlowChartConnector"
+            | "FlowChartPunchedCard"
+            | "FlowChartPunchedTape"
+            | "FlowChartSummingJunction"
+            | "FlowChartOr"
+            | "FlowChartCollate"
+            | "FlowChartSort"
+            | "FlowChartExtract"
+            | "FlowChartMerge"
+            | "FlowChartOfflineStorage"
+            | "FlowChartOnlineStorage"
+            | "FlowChartMagneticTape"
+            | "FlowChartMagneticDisk"
+            | "FlowChartMagneticDrum"
+            | "FlowChartDisplay"
+            | "FlowChartDelay"
+            | "FlowChartAlternateProcess"
+            | "FlowChartOffpageConnector"
+            | "ActionButtonBlank"
+            | "ActionButtonHome"
+            | "ActionButtonHelp"
+            | "ActionButtonInformation"
+            | "ActionButtonForwardNext"
+            | "ActionButtonBackPrevious"
+            | "ActionButtonEnd"
+            | "ActionButtonBeginning"
+            | "ActionButtonReturn"
+            | "ActionButtonDocument"
+            | "ActionButtonSound"
+            | "ActionButtonMovie"
+            | "Gear6"
+            | "Gear9"
+            | "Funnel"
+            | "MathPlus"
+            | "MathMinus"
+            | "MathMultiply"
+            | "MathDivide"
+            | "MathEqual"
+            | "MathNotEqual"
+            | "CornerTabs"
+            | "SquareTabs"
+            | "PlaqueTabs"
+            | "ChartX"
+            | "ChartStar"
+            | "ChartPlus";
 
         /**
          * Returns the shape group associated with the shape. An error will be thrown if the shape type is not "GroupShape".
@@ -8093,7 +9442,7 @@ declare namespace Excel {
         /**
          * Represents how the object is attached to the cells below it.
          */
-        placement: Placement;
+        placement: Placement | "TwoCell" | "OneCell" | "Absolute";
 
         /**
          * Specifies the rotation, in degrees, of the shape.
@@ -8114,7 +9463,13 @@ declare namespace Excel {
         /**
          * Returns the type of this shape. See Excel.ShapeType for details.
          */
-        readonly type: ShapeType;
+        readonly type:
+            | ShapeType
+            | "Unsupported"
+            | "Image"
+            | "GeometricShape"
+            | "Group"
+            | "Line";
 
         /**
          * Specifies if the shape is visible.
@@ -8148,7 +9503,16 @@ declare namespace Excel {
          * Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported formats are `Excel.PictureFormat.BMP`, `Excel.PictureFormat.PNG`, `Excel.PictureFormat.JPEG`, and `Excel.PictureFormat.GIF`.
          * @param format Specifies the format of the image.
          */
-        getAsImage(format: PictureFormat): string;
+        getAsImage(
+            format:
+                | PictureFormat
+                | "Unknown"
+                | "Bmp"
+                | "Jpeg"
+                | "Gif"
+                | "Png"
+                | "Svg"
+        ): ClientResult<string>;
 
         /**
          * Moves the shape horizontally by the specified number of points.
@@ -8177,8 +9541,12 @@ declare namespace Excel {
          */
         scaleHeight(
             scaleFactor: number,
-            scaleType: ShapeScaleType,
-            scaleFrom?: ShapeScaleFrom
+            scaleType: ShapeScaleType | "CurrentSize" | "OriginalSize",
+            scaleFrom?:
+                | ShapeScaleFrom
+                | "ScaleFromTopLeft"
+                | "ScaleFromMiddle"
+                | "ScaleFromBottomRight"
         ): void;
 
         /**
@@ -8189,15 +9557,26 @@ declare namespace Excel {
          */
         scaleWidth(
             scaleFactor: number,
-            scaleType: ShapeScaleType,
-            scaleFrom?: ShapeScaleFrom
+            scaleType: ShapeScaleType | "CurrentSize" | "OriginalSize",
+            scaleFrom?:
+                | ShapeScaleFrom
+                | "ScaleFromTopLeft"
+                | "ScaleFromMiddle"
+                | "ScaleFromBottomRight"
         ): void;
 
         /**
          * Moves the specified shape up or down the collection's z-order, which shifts it in front of or behind other shapes.
          * @param position Where to move the shape in the z-order stack relative to the other shapes. See Excel.ShapeZOrder for details.
          */
-        setZOrder(position: ShapeZOrder): void;
+        setZOrder(
+            position:
+                | ShapeZOrder
+                | "BringToFront"
+                | "BringForward"
+                | "SendToBack"
+                | "SendBackward"
+        ): void;
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -8246,7 +9625,14 @@ declare namespace Excel {
         /**
          * Returns the format of the image.
          */
-        readonly format: PictureFormat;
+        readonly format:
+            | PictureFormat
+            | "Unknown"
+            | "Bmp"
+            | "Jpeg"
+            | "Gif"
+            | "Png"
+            | "Svg";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -8295,7 +9681,7 @@ declare namespace Excel {
         /**
          * Returns the number of shapes in the shape group.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a shape using its Name or ID.
@@ -8330,17 +9716,24 @@ declare namespace Excel {
         /**
          * Represents the length of the arrowhead at the beginning of the specified line.
          */
-        beginArrowheadLength: ArrowheadLength;
+        beginArrowheadLength: ArrowheadLength | "Short" | "Medium" | "Long";
 
         /**
          * Represents the style of the arrowhead at the beginning of the specified line.
          */
-        beginArrowheadStyle: ArrowheadStyle;
+        beginArrowheadStyle:
+            | ArrowheadStyle
+            | "None"
+            | "Triangle"
+            | "Stealth"
+            | "Diamond"
+            | "Oval"
+            | "Open";
 
         /**
          * Represents the width of the arrowhead at the beginning of the specified line.
          */
-        beginArrowheadWidth: ArrowheadWidth;
+        beginArrowheadWidth: ArrowheadWidth | "Narrow" | "Medium" | "Wide";
 
         /**
          * Represents the shape to which the beginning of the specified line is attached.
@@ -8355,17 +9748,24 @@ declare namespace Excel {
         /**
          * Represents the length of the arrowhead at the end of the specified line.
          */
-        endArrowheadLength: ArrowheadLength;
+        endArrowheadLength: ArrowheadLength | "Short" | "Medium" | "Long";
 
         /**
          * Represents the style of the arrowhead at the end of the specified line.
          */
-        endArrowheadStyle: ArrowheadStyle;
+        endArrowheadStyle:
+            | ArrowheadStyle
+            | "None"
+            | "Triangle"
+            | "Stealth"
+            | "Diamond"
+            | "Oval"
+            | "Open";
 
         /**
          * Represents the width of the arrowhead at the end of the specified line.
          */
-        endArrowheadWidth: ArrowheadWidth;
+        endArrowheadWidth: ArrowheadWidth | "Narrow" | "Medium" | "Wide";
 
         /**
          * Represents the shape to which the end of the specified line is attached.
@@ -8400,7 +9800,7 @@ declare namespace Excel {
         /**
          * Represents the connector type for the line.
          */
-        connectorType: ConnectorType;
+        connectorType: ConnectorType | "Straight" | "Elbow" | "Curve";
 
         /**
          * Attaches the beginning of the specified connector to a specified shape.
@@ -8451,7 +9851,14 @@ declare namespace Excel {
         /**
          * Returns the fill type of the shape. See Excel.ShapeFillType for details.
          */
-        readonly type: ShapeFillType;
+        readonly type:
+            | ShapeFillType
+            | "NoFill"
+            | "Solid"
+            | "Gradient"
+            | "Pattern"
+            | "PictureAndTexture"
+            | "Mixed";
 
         /**
          * Clears the fill formatting of this shape.
@@ -8484,12 +9891,31 @@ declare namespace Excel {
         /**
          * Represents the line style of the shape. Returns null when the line is not visible or there are inconsistent dash styles. See Excel.ShapeLineStyle for details.
          */
-        dashStyle: ShapeLineDashStyle;
+        dashStyle:
+            | ShapeLineDashStyle
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "LongDash"
+            | "LongDashDot"
+            | "RoundDot"
+            | "Solid"
+            | "SquareDot"
+            | "LongDashDotDot"
+            | "SystemDash"
+            | "SystemDot"
+            | "SystemDashDot";
 
         /**
          * Represents the line style of the shape. Returns null when the line is not visible or there are inconsistent styles. See Excel.ShapeLineStyle for details.
          */
-        style: ShapeLineStyle;
+        style:
+            | ShapeLineStyle
+            | "Single"
+            | "ThickBetweenThin"
+            | "ThickThin"
+            | "ThinThick"
+            | "ThinThin";
 
         /**
          * Represents the degree of transparency of the specified line as a value from 0.0 (opaque) through 1.0 (clear). Returns null when the shape has inconsistent transparencies.
@@ -8521,7 +9947,12 @@ declare namespace Excel {
         /**
          * The automatic sizing settings for the text frame. A text frame can be set to automatically fit the text to the text frame, to automatically fit the text frame to the text, or not perform any automatic sizing.
          */
-        autoSizeSetting: ShapeAutoSize;
+        autoSizeSetting:
+            | ShapeAutoSize
+            | "AutoSizeNone"
+            | "AutoSizeTextToFitShape"
+            | "AutoSizeShapeToFitText"
+            | "AutoSizeMixed";
 
         /**
          * Represents the bottom margin, in points, of the text frame.
@@ -8536,12 +9967,20 @@ declare namespace Excel {
         /**
          * Represents the horizontal alignment of the text frame. See Excel.ShapeTextHorizontalAlignment for details.
          */
-        horizontalAlignment: ShapeTextHorizontalAlignment;
+        horizontalAlignment:
+            | ShapeTextHorizontalAlignment
+            | "Left"
+            | "Center"
+            | "Right"
+            | "Justify"
+            | "JustifyLow"
+            | "Distributed"
+            | "ThaiDistributed";
 
         /**
          * Represents the horizontal overflow behavior of the text frame. See Excel.ShapeTextHorizontalOverflow for details.
          */
-        horizontalOverflow: ShapeTextHorizontalOverflow;
+        horizontalOverflow: ShapeTextHorizontalOverflow | "Overflow" | "Clip";
 
         /**
          * Represents the left margin, in points, of the text frame.
@@ -8551,12 +9990,20 @@ declare namespace Excel {
         /**
          * Represents the angle to which the text is oriented for the text frame. See Excel.ShapeTextOrientation for details.
          */
-        orientation: ShapeTextOrientation;
+        orientation:
+            | ShapeTextOrientation
+            | "Horizontal"
+            | "Vertical"
+            | "Vertical270"
+            | "WordArtVertical"
+            | "EastAsianVertical"
+            | "MongolianVertical"
+            | "WordArtVerticalRTL";
 
         /**
          * Represents the reading order of the text frame, either left-to-right or right-to-left. See Excel.ShapeTextReadingOrder for details.
          */
-        readingOrder: ShapeTextReadingOrder;
+        readingOrder: ShapeTextReadingOrder | "LeftToRight" | "RightToLeft";
 
         /**
          * Represents the right margin, in points, of the text frame.
@@ -8576,12 +10023,22 @@ declare namespace Excel {
         /**
          * Represents the vertical alignment of the text frame. See Excel.ShapeTextVerticalAlignment for details.
          */
-        verticalAlignment: ShapeTextVerticalAlignment;
+        verticalAlignment:
+            | ShapeTextVerticalAlignment
+            | "Top"
+            | "Middle"
+            | "Bottom"
+            | "Justified"
+            | "Distributed";
 
         /**
          * Represents the vertical overflow behavior of the text frame. See Excel.ShapeTextVerticalOverflow for details.
          */
-        verticalOverflow: ShapeTextVerticalOverflow;
+        verticalOverflow:
+            | ShapeTextVerticalOverflow
+            | "Overflow"
+            | "Ellipsis"
+            | "Clip";
 
         /**
          * Deletes all the text in the text frame.
@@ -8657,7 +10114,25 @@ declare namespace Excel {
         /**
          * Type of underline applied to the font. Returns null if the TextRange includes text fragments with different underline styles. See Excel.ShapeFontUnderlineStyle for details.
          */
-        underline: ShapeFontUnderlineStyle;
+        underline:
+            | ShapeFontUnderlineStyle
+            | "None"
+            | "Single"
+            | "Double"
+            | "Heavy"
+            | "Dotted"
+            | "DottedHeavy"
+            | "Dash"
+            | "DashHeavy"
+            | "DashLong"
+            | "DashLongHeavy"
+            | "DotDash"
+            | "DotDashHeavy"
+            | "DotDotDash"
+            | "DotDotDashHeavy"
+            | "Wavy"
+            | "WavyHeavy"
+            | "WavyDouble";
 
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
@@ -8711,7 +10186,7 @@ declare namespace Excel {
         /**
          * Represents the sort order of the items in the slicer. Possible values are: "DataSourceOrder", "Ascending", "Descending".
          */
-        sortBy: SlicerSortType;
+        sortBy: SlicerSortType | "DataSourceOrder" | "Ascending" | "Descending";
 
         /**
          * Constant value that represents the Slicer style. Possible values are: "SlicerStyleLight1" through "SlicerStyleLight6", "TableStyleOther1" through "TableStyleOther2", "SlicerStyleDark1" through "SlicerStyleDark6". A custom user-defined style present in the workbook can also be specified.
@@ -8748,7 +10223,7 @@ declare namespace Excel {
         /**
          * Returns an array of selected items' keys.
          */
-        getSelectedItems(): string[];
+        getSelectedItems(): ClientResult<string[]>;
 
         /**
          * Selects slicer items based on their keys. The previous selections are cleared.
@@ -8784,7 +10259,7 @@ declare namespace Excel {
         /**
          * Returns the number of slicers in the collection.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a slicer object using its name or id.
@@ -8853,7 +10328,7 @@ declare namespace Excel {
         /**
          * Returns the number of slicer items in the slicer.
          */
-        getCount(): number;
+        getCount(): ClientResult<number>;
 
         /**
          * Gets a slicer item object using its key or name.
@@ -8944,7 +10419,11 @@ declare namespace Excel {
         /**
          * Represents the worksheet protection option of selection mode.
          */
-        selectionMode?: ProtectionSelectionMode;
+        selectionMode?:
+            | ProtectionSelectionMode
+            | "Normal"
+            | "Unlocked"
+            | "None";
     }
     /**
      * Represents a string reference of the form SheetName!A1:B5, or a global or local named range.
@@ -8993,7 +10472,7 @@ declare namespace Excel {
         /**
          * Specifies the search direction. Default is forward. See Excel.SearchDirection.
          */
-        searchDirection?: SearchDirection;
+        searchDirection?: SearchDirection | "Forward" | "Backwards";
     }
     /**
      * Represents the worksheet search criteria to be used.
@@ -9140,7 +10619,29 @@ declare namespace Excel {
         /**
          * Represents the `format.fill.pattern` property.
          */
-        pattern?: FillPattern;
+        pattern?:
+            | FillPattern
+            | "None"
+            | "Solid"
+            | "Gray50"
+            | "Gray75"
+            | "Gray25"
+            | "Horizontal"
+            | "Vertical"
+            | "Down"
+            | "Up"
+            | "Checker"
+            | "SemiGray75"
+            | "LightHorizontal"
+            | "LightVertical"
+            | "LightDown"
+            | "LightUp"
+            | "Grid"
+            | "CrissCross"
+            | "Gray16"
+            | "Gray8"
+            | "LinearGradient"
+            | "RectangularGradient";
         /**
          * Represents the `format.fill.patternColor` property.
          */
@@ -9197,7 +10698,13 @@ declare namespace Excel {
         /**
          * Represents the `format.font.underline` property.
          */
-        underline?: RangeUnderlineStyle;
+        underline?:
+            | RangeUnderlineStyle
+            | "None"
+            | "Single"
+            | "Double"
+            | "SingleAccountant"
+            | "DoubleAccountant";
     }
     /**
      * Represents the `format.borders` properties of `getCellProperties`, `getRowProperties`, and `getColumnProperties` or the `format.borders` input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
@@ -9247,7 +10754,16 @@ declare namespace Excel {
         /**
          * Represents the `style` property of a single border.
          */
-        style?: BorderLineStyle;
+        style?:
+            | BorderLineStyle
+            | "None"
+            | "Continuous"
+            | "Dash"
+            | "DashDot"
+            | "DashDotDot"
+            | "Dot"
+            | "Double"
+            | "SlantDashDot";
         /**
          * Represents the `tintAndShade` property of a single border.
          */
@@ -9255,7 +10771,7 @@ declare namespace Excel {
         /**
          * Represents the `weight` property of a single border.
          */
-        weight?: BorderWeight;
+        weight?: BorderWeight | "Hairline" | "Thin" | "Medium" | "Thick";
     }
     /**
      * Data validation rule contains different types of data validation. You can only use one of them at a time according the Excel.DataValidationType.
@@ -9310,7 +10826,16 @@ declare namespace Excel {
         /**
          * The operator to use for validating the data.
          */
-        operator: DataValidationOperator;
+        operator:
+            | DataValidationOperator
+            | "Between"
+            | "NotBetween"
+            | "EqualTo"
+            | "NotEqualTo"
+            | "GreaterThan"
+            | "LessThan"
+            | "GreaterThanOrEqualTo"
+            | "LessThanOrEqualTo";
     }
     /**
      * Represents the Date data validation criteria.
@@ -9331,7 +10856,16 @@ declare namespace Excel {
         /**
          * The operator to use for validating the data.
          */
-        operator: DataValidationOperator;
+        operator:
+            | DataValidationOperator
+            | "Between"
+            | "NotBetween"
+            | "EqualTo"
+            | "NotEqualTo"
+            | "GreaterThan"
+            | "LessThan"
+            | "GreaterThanOrEqualTo"
+            | "LessThanOrEqualTo";
     }
     /**
      * Represents the List data validation criteria.
@@ -9371,7 +10905,7 @@ declare namespace Excel {
         /**
          * The data validation alert type, please see Excel.DataValidationAlertStyle for details.
          */
-        style: DataValidationAlertStyle;
+        style: DataValidationAlertStyle | "Stop" | "Warning" | "Information";
         /**
          * Represents error alert dialog title.
          */
@@ -9409,7 +10943,7 @@ declare namespace Excel {
         /**
          * Represents additional sorting options for this field.
          */
-        dataOption?: SortDataOption;
+        dataOption?: SortDataOption | "Normal" | "TextAsNumber";
         /**
          * Specifies the icon that is the target of the condition if the sorting is on the cell's icon.
          */
@@ -9421,7 +10955,7 @@ declare namespace Excel {
         /**
          * Specifies the type of sorting of this condition.
          */
-        sortOn?: SortOn;
+        sortOn?: SortOn | "Value" | "CellColor" | "FontColor" | "Icon";
         /**
          * Specifies the subfield that is the target property name of a rich value to sort on.
          */
@@ -9449,11 +10983,58 @@ declare namespace Excel {
         /**
          * The dynamic criteria from the Excel.DynamicFilterCriteria set to apply on this column. Used with "dynamic" filtering.
          */
-        dynamicCriteria?: DynamicFilterCriteria;
+        dynamicCriteria?:
+            | DynamicFilterCriteria
+            | "Unknown"
+            | "AboveAverage"
+            | "AllDatesInPeriodApril"
+            | "AllDatesInPeriodAugust"
+            | "AllDatesInPeriodDecember"
+            | "AllDatesInPeriodFebruray"
+            | "AllDatesInPeriodJanuary"
+            | "AllDatesInPeriodJuly"
+            | "AllDatesInPeriodJune"
+            | "AllDatesInPeriodMarch"
+            | "AllDatesInPeriodMay"
+            | "AllDatesInPeriodNovember"
+            | "AllDatesInPeriodOctober"
+            | "AllDatesInPeriodQuarter1"
+            | "AllDatesInPeriodQuarter2"
+            | "AllDatesInPeriodQuarter3"
+            | "AllDatesInPeriodQuarter4"
+            | "AllDatesInPeriodSeptember"
+            | "BelowAverage"
+            | "LastMonth"
+            | "LastQuarter"
+            | "LastWeek"
+            | "LastYear"
+            | "NextMonth"
+            | "NextQuarter"
+            | "NextWeek"
+            | "NextYear"
+            | "ThisMonth"
+            | "ThisQuarter"
+            | "ThisWeek"
+            | "ThisYear"
+            | "Today"
+            | "Tomorrow"
+            | "YearToDate"
+            | "Yesterday";
         /**
          * The property used by the filter to determine whether the values should stay visible.
          */
-        filterOn: FilterOn;
+        filterOn:
+            | FilterOn
+            | "BottomItems"
+            | "BottomPercent"
+            | "CellColor"
+            | "Dynamic"
+            | "FontColor"
+            | "Values"
+            | "TopItems"
+            | "TopPercent"
+            | "Icon"
+            | "Custom";
         /**
          * The icon used to filter cells. Used with "icon" filtering.
          */
@@ -9461,7 +11042,7 @@ declare namespace Excel {
         /**
          * The operator used to combine criterion 1 and 2 when using "custom" filtering.
          */
-        operator?: FilterOperator;
+        operator?: FilterOperator | "And" | "Or";
         /**
          * The property used by the filter to do rich filter on richvalues.
          */
@@ -9482,7 +11063,14 @@ declare namespace Excel {
         /**
          * How specific the date should be used to keep data. For example, if the date is 2005-04-02 and the specifity is set to "month", the filter operation will keep all rows with a date in the month of april 2009.
          */
-        specificity: FilterDatetimeSpecificity;
+        specificity:
+            | FilterDatetimeSpecificity
+            | "Year"
+            | "Month"
+            | "Day"
+            | "Hour"
+            | "Minute"
+            | "Second";
     }
     /**
      * Represents a cell icon.
@@ -9495,7 +11083,29 @@ declare namespace Excel {
         /**
          * Specifies the set that the icon is part of.
          */
-        set: IconSet;
+        set:
+            | IconSet
+            | "Invalid"
+            | "ThreeArrows"
+            | "ThreeArrowsGray"
+            | "ThreeFlags"
+            | "ThreeTrafficLights1"
+            | "ThreeTrafficLights2"
+            | "ThreeSigns"
+            | "ThreeSymbols"
+            | "ThreeSymbols2"
+            | "FourArrows"
+            | "FourArrowsGray"
+            | "FourRedToBlack"
+            | "FourRating"
+            | "FourTrafficLights"
+            | "FiveArrows"
+            | "FiveArrowsGray"
+            | "FiveRating"
+            | "FiveQuarters"
+            | "ThreeStars"
+            | "ThreeTriangles"
+            | "FiveBoxes";
     }
     interface ShowAsRule {
         /**
@@ -9509,7 +11119,24 @@ declare namespace Excel {
         /**
          * The ShowAs Calculation to use for the Data PivotField. See Excel.ShowAsCalculation for Details.
          */
-        calculation: ShowAsCalculation;
+        calculation:
+            | ShowAsCalculation
+            | "Unknown"
+            | "None"
+            | "PercentOfGrandTotal"
+            | "PercentOfRowTotal"
+            | "PercentOfColumnTotal"
+            | "PercentOfParentRowTotal"
+            | "PercentOfParentColumnTotal"
+            | "PercentOfParentTotal"
+            | "PercentOf"
+            | "RunningTotal"
+            | "PercentRunningTotal"
+            | "DifferenceFrom"
+            | "PercentDifferenceFrom"
+            | "RankAscending"
+            | "RankDecending"
+            | "Index";
     }
     /**
      * Subtotals for the Pivot Field.
@@ -9575,7 +11202,16 @@ declare namespace Excel {
         /**
          * The type of rule for the databar.
          */
-        type: ConditionalFormatRuleType;
+        type:
+            | ConditionalFormatRuleType
+            | "Invalid"
+            | "Automatic"
+            | "LowestValue"
+            | "HighestValue"
+            | "Number"
+            | "Percent"
+            | "Formula"
+            | "Percentile";
     }
     /**
      * Represents an Icon Criterion which contains a type, value, an Operator, and an optional custom icon, if not using an iconset.
@@ -9592,11 +11228,21 @@ declare namespace Excel {
         /**
          * GreaterThan or GreaterThanOrEqual for each of the rule type for the Icon conditional format.
          */
-        operator: ConditionalIconCriterionOperator;
+        operator:
+            | ConditionalIconCriterionOperator
+            | "Invalid"
+            | "GreaterThan"
+            | "GreaterThanOrEqual";
         /**
          * What the icon conditional formula should be based on.
          */
-        type: ConditionalFormatIconRuleType;
+        type:
+            | ConditionalFormatIconRuleType
+            | "Invalid"
+            | "Number"
+            | "Percent"
+            | "Formula"
+            | "Percentile";
     }
     /**
      * Represents the criteria of the color scale.
@@ -9630,7 +11276,15 @@ declare namespace Excel {
         /**
          * What the criterion conditional formula should be based on.
          */
-        type: ConditionalFormatColorCriterionType;
+        type:
+            | ConditionalFormatColorCriterionType
+            | "Invalid"
+            | "LowestValue"
+            | "HighestValue"
+            | "Number"
+            | "Percent"
+            | "Formula"
+            | "Percentile";
     }
     /**
      * Represents the rule of the top/bottom conditional format.
@@ -9643,7 +11297,13 @@ declare namespace Excel {
         /**
          * Format values based on the top or bottom rank.
          */
-        type: ConditionalTopBottomCriterionType;
+        type:
+            | ConditionalTopBottomCriterionType
+            | "Invalid"
+            | "TopItems"
+            | "TopPercent"
+            | "BottomItems"
+            | "BottomPercent";
     }
     /**
      * Represents the Preset Criteria Conditional Format Rule
@@ -9652,7 +11312,35 @@ declare namespace Excel {
         /**
          * The criterion of the conditional format.
          */
-        criterion: ConditionalFormatPresetCriterion;
+        criterion:
+            | ConditionalFormatPresetCriterion
+            | "Invalid"
+            | "Blanks"
+            | "NonBlanks"
+            | "Errors"
+            | "NonErrors"
+            | "Yesterday"
+            | "Today"
+            | "Tomorrow"
+            | "LastSevenDays"
+            | "LastWeek"
+            | "ThisWeek"
+            | "NextWeek"
+            | "LastMonth"
+            | "ThisMonth"
+            | "NextMonth"
+            | "AboveAverage"
+            | "BelowAverage"
+            | "EqualOrAboveAverage"
+            | "EqualOrBelowAverage"
+            | "OneStdDevAboveAverage"
+            | "OneStdDevBelowAverage"
+            | "TwoStdDevAboveAverage"
+            | "TwoStdDevBelowAverage"
+            | "ThreeStdDevAboveAverage"
+            | "ThreeStdDevBelowAverage"
+            | "UniqueValues"
+            | "DuplicateValues";
     }
     /**
      * Represents a Cell Value Conditional Format Rule
@@ -9661,7 +11349,13 @@ declare namespace Excel {
         /**
          * The operator of the text conditional format.
          */
-        operator: ConditionalTextOperator;
+        operator:
+            | ConditionalTextOperator
+            | "Invalid"
+            | "Contains"
+            | "NotContains"
+            | "BeginsWith"
+            | "EndsWith";
         /**
          * The Text value of conditional format.
          */
@@ -9682,7 +11376,17 @@ declare namespace Excel {
         /**
          * The operator of the cell value conditional format.
          */
-        operator: ConditionalCellValueOperator;
+        operator:
+            | ConditionalCellValueOperator
+            | "Invalid"
+            | "Between"
+            | "NotBetween"
+            | "EqualTo"
+            | "NotEqualTo"
+            | "GreaterThan"
+            | "LessThan"
+            | "GreaterThanOrEqual"
+            | "LessThanOrEqual";
     }
     /**
      * Represents page zoom properties.
@@ -9768,19 +11472,19 @@ declare namespace Excel {
      * Represents the criteria for the top/bottom values filter.
      */
     enum PivotFilterTopBottomCriterion {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        topItems = "topItems",
+        topItems = "TopItems",
 
-        topPercent = "topPercent",
+        topPercent = "TopPercent",
 
-        topSum = "topSum",
+        topSum = "TopSum",
 
-        bottomItems = "bottomItems",
+        bottomItems = "BottomItems",
 
-        bottomPercent = "bottomPercent",
+        bottomPercent = "BottomPercent",
 
-        bottomSum = "bottomSum",
+        bottomSum = "BottomSum",
     }
     /**
      * Represents the sort direction.
@@ -9789,12 +11493,12 @@ declare namespace Excel {
         /**
          * Ascending sort. Smallest to largest or A to Z.
          */
-        ascending = "ascending",
+        ascending = "Ascending",
 
         /**
          * Descending sort. Largest to smallest or Z to A.
          */
-        descending = "descending",
+        descending = "Descending",
     }
     /**
      * Aggregation Function for the Data Pivot Field.
@@ -9803,67 +11507,67 @@ declare namespace Excel {
         /**
          * Aggregation function is unknown or unsupported.
          */
-        unknown = "unknown",
+        unknown = "Unknown",
 
         /**
          * Excel will automatically select the aggregation based on the data items.
          */
-        automatic = "automatic",
+        automatic = "Automatic",
 
         /**
          * Aggregate using the sum of the data, equivalent to the SUM function.
          */
-        sum = "sum",
+        sum = "Sum",
 
         /**
          * Aggregate using the count of items in the data, equivalent to the COUNTA function.
          */
-        count = "count",
+        count = "Count",
 
         /**
          * Aggregate using the average of the data, equivalent to the AVERAGE function.
          */
-        average = "average",
+        average = "Average",
 
         /**
          * Aggregate using the maximum value of the data, equivalent to the MAX function.
          */
-        max = "max",
+        max = "Max",
 
         /**
          * Aggregate using the minimum value of the data, equivalent to the MIN function.
          */
-        min = "min",
+        min = "Min",
 
         /**
          * Aggregate using the product of the data, equivalent to the PRODUCT function.
          */
-        product = "product",
+        product = "Product",
 
         /**
          * Aggregate using the count of numbers in the data, equivalent to the COUNT function.
          */
-        countNumbers = "countNumbers",
+        countNumbers = "CountNumbers",
 
         /**
          * Aggregate using the standard deviation of the data, equivalent to the STDEV function.
          */
-        standardDeviation = "standardDeviation",
+        standardDeviation = "StandardDeviation",
 
         /**
          * Aggregate using the standard deviation of the data, equivalent to the STDEVP function.
          */
-        standardDeviationP = "standardDeviationP",
+        standardDeviationP = "StandardDeviationP",
 
         /**
          * Aggregate using the variance of the data, equivalent to the VAR function.
          */
-        variance = "variance",
+        variance = "Variance",
 
         /**
          * Aggregate using the variance of the data, equivalent to the VARP function.
          */
-        varianceP = "varianceP",
+        varianceP = "VarianceP",
     }
     /**
      * The ShowAs Calculation function for the Data Pivot Field.
@@ -9872,83 +11576,83 @@ declare namespace Excel {
         /**
          * Calculation is unknown or unsupported.
          */
-        unknown = "unknown",
+        unknown = "Unknown",
 
         /**
          * No calculation is applied.
          */
-        none = "none",
+        none = "None",
 
         /**
          * Percent of the grand total.
          */
-        percentOfGrandTotal = "percentOfGrandTotal",
+        percentOfGrandTotal = "PercentOfGrandTotal",
 
         /**
          * Percent of the row total.
          */
-        percentOfRowTotal = "percentOfRowTotal",
+        percentOfRowTotal = "PercentOfRowTotal",
 
         /**
          * Percent of the column total.
          */
-        percentOfColumnTotal = "percentOfColumnTotal",
+        percentOfColumnTotal = "PercentOfColumnTotal",
 
         /**
          * Percent of the row total for the specified Base Field.
          */
-        percentOfParentRowTotal = "percentOfParentRowTotal",
+        percentOfParentRowTotal = "PercentOfParentRowTotal",
 
         /**
          * Percent of the column total for the specified Base Field.
          */
-        percentOfParentColumnTotal = "percentOfParentColumnTotal",
+        percentOfParentColumnTotal = "PercentOfParentColumnTotal",
 
         /**
          * Percent of the grand total for the specified Base Field.
          */
-        percentOfParentTotal = "percentOfParentTotal",
+        percentOfParentTotal = "PercentOfParentTotal",
 
         /**
          * Percent of the specified Base Field and Base Item.
          */
-        percentOf = "percentOf",
+        percentOf = "PercentOf",
 
         /**
          * Running Total of the specified Base Field.
          */
-        runningTotal = "runningTotal",
+        runningTotal = "RunningTotal",
 
         /**
          * Percent Running Total of the specified Base Field.
          */
-        percentRunningTotal = "percentRunningTotal",
+        percentRunningTotal = "PercentRunningTotal",
 
         /**
          * Difference from the specified Base Field and Base Item.
          */
-        differenceFrom = "differenceFrom",
+        differenceFrom = "DifferenceFrom",
 
         /**
          * Difference from the specified Base Field and Base Item.
          */
-        percentDifferenceFrom = "percentDifferenceFrom",
+        percentDifferenceFrom = "PercentDifferenceFrom",
 
         /**
          * Ascending Rank of the specified Base Field.
          */
-        rankAscending = "rankAscending",
+        rankAscending = "RankAscending",
 
         /**
          * Descending Rank of the specified Base Field.
          */
-        rankDecending = "rankDecending",
+        rankDecending = "RankDecending",
 
         /**
          * Calculates the values as follows:
          * ((value in cell) x (Grand Total of Grand Totals)) / ((Grand Row Total) x (Grand Column Total))
          */
-        index = "index",
+        index = "Index",
     }
     /**
      * Represents the axis from which to get the PivotItems.
@@ -9957,73 +11661,73 @@ declare namespace Excel {
         /**
          * The axis or region is unknown or unsupported.
          */
-        unknown = "unknown",
+        unknown = "Unknown",
 
         /**
          * The row axis.
          */
-        row = "row",
+        row = "Row",
 
         /**
          * The column axis.
          */
-        column = "column",
+        column = "Column",
 
         /**
          * The data axis.
          */
-        data = "data",
+        data = "Data",
 
         /**
          * The filter axis.
          */
-        filter = "filter",
+        filter = "Filter",
     }
     enum ChartAxisType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
         /**
          * Axis displays categories.
          */
-        category = "category",
+        category = "Category",
 
         /**
          * Axis displays values.
          */
-        value = "value",
+        value = "Value",
 
         /**
          * Axis displays data series.
          */
-        series = "series",
+        series = "Series",
     }
     enum ChartAxisGroup {
-        primary = "primary",
+        primary = "Primary",
 
-        secondary = "secondary",
+        secondary = "Secondary",
     }
     enum ChartAxisScaleType {
-        linear = "linear",
+        linear = "Linear",
 
-        logarithmic = "logarithmic",
+        logarithmic = "Logarithmic",
     }
     enum ChartAxisPosition {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        maximum = "maximum",
+        maximum = "Maximum",
 
-        minimum = "minimum",
+        minimum = "Minimum",
 
-        custom = "custom",
+        custom = "Custom",
     }
     enum ChartAxisTickMark {
-        none = "none",
+        none = "None",
 
-        cross = "cross",
+        cross = "Cross",
 
-        inside = "inside",
+        inside = "Inside",
 
-        outside = "outside",
+        outside = "Outside",
     }
     /**
      * Represents the state of calculation across the entire Excel application.
@@ -10032,100 +11736,100 @@ declare namespace Excel {
         /**
          * Calculations complete.
          */
-        done = "done",
+        done = "Done",
 
         /**
          * Calculations in progress.
          */
-        calculating = "calculating",
+        calculating = "Calculating",
 
         /**
          * Changes that trigger calculation have been made, but a recalculation has not yet been performed.
          */
-        pending = "pending",
+        pending = "Pending",
     }
     enum ChartAxisTickLabelPosition {
-        nextToAxis = "nextToAxis",
+        nextToAxis = "NextToAxis",
 
-        high = "high",
+        high = "High",
 
-        low = "low",
+        low = "Low",
 
-        none = "none",
+        none = "None",
     }
     enum ChartAxisDisplayUnit {
         /**
          * Default option. This will reset display unit to the axis, and set unit label invisible.
          */
-        none = "none",
+        none = "None",
 
         /**
          * This will set the axis in units of hundreds.
          */
-        hundreds = "hundreds",
+        hundreds = "Hundreds",
 
         /**
          * This will set the axis in units of thousands.
          */
-        thousands = "thousands",
+        thousands = "Thousands",
 
         /**
          * This will set the axis in units of tens of thousands.
          */
-        tenThousands = "tenThousands",
+        tenThousands = "TenThousands",
 
         /**
          * This will set the axis in units of hundreds of thousands.
          */
-        hundredThousands = "hundredThousands",
+        hundredThousands = "HundredThousands",
 
         /**
          * This will set the axis in units of millions.
          */
-        millions = "millions",
+        millions = "Millions",
 
         /**
          * This will set the axis in units of tens of millions.
          */
-        tenMillions = "tenMillions",
+        tenMillions = "TenMillions",
 
         /**
          * This will set the axis in units of hundreds of millions.
          */
-        hundredMillions = "hundredMillions",
+        hundredMillions = "HundredMillions",
 
         /**
          * This will set the axis in units of billions.
          */
-        billions = "billions",
+        billions = "Billions",
 
         /**
          * This will set the axis in units of trillions.
          */
-        trillions = "trillions",
+        trillions = "Trillions",
 
         /**
          * This will set the axis in units of custom value.
          */
-        custom = "custom",
+        custom = "Custom",
     }
     /**
      * Specifies the unit of time for chart axes and data series.
      */
     enum ChartAxisTimeUnit {
-        days = "days",
+        days = "Days",
 
-        months = "months",
+        months = "Months",
 
-        years = "years",
+        years = "Years",
     }
     /**
      * Represents the quartile calculation type of chart series layout. Only applies to a box and whisker chart.
      */
     enum ChartBoxQuartileCalculation {
-        inclusive = "inclusive",
+        inclusive = "Inclusive",
 
-        exclusive = "exclusive",
+        exclusive = "Exclusive",
     }
     /**
      * Specifies the type of the category axis.
@@ -10134,234 +11838,234 @@ declare namespace Excel {
         /**
          * Excel controls the axis type.
          */
-        automatic = "automatic",
+        automatic = "Automatic",
 
         /**
          * Axis groups data by an arbitrary set of categories.
          */
-        textAxis = "textAxis",
+        textAxis = "TextAxis",
 
         /**
          * Axis groups data on a time scale.
          */
-        dateAxis = "dateAxis",
+        dateAxis = "DateAxis",
     }
     /**
      * Specifies the bin's type of a histogram chart or pareto chart series.
      */
     enum ChartBinType {
-        category = "category",
+        category = "Category",
 
-        auto = "auto",
+        auto = "Auto",
 
-        binWidth = "binWidth",
+        binWidth = "BinWidth",
 
-        binCount = "binCount",
+        binCount = "BinCount",
     }
     enum ChartLineStyle {
-        none = "none",
+        none = "None",
 
-        continuous = "continuous",
+        continuous = "Continuous",
 
-        dash = "dash",
+        dash = "Dash",
 
-        dashDot = "dashDot",
+        dashDot = "DashDot",
 
-        dashDotDot = "dashDotDot",
+        dashDotDot = "DashDotDot",
 
-        dot = "dot",
+        dot = "Dot",
 
-        grey25 = "grey25",
+        grey25 = "Grey25",
 
-        grey50 = "grey50",
+        grey50 = "Grey50",
 
-        grey75 = "grey75",
+        grey75 = "Grey75",
 
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        roundDot = "roundDot",
+        roundDot = "RoundDot",
     }
     enum ChartDataLabelPosition {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        none = "none",
+        none = "None",
 
-        center = "center",
+        center = "Center",
 
-        insideEnd = "insideEnd",
+        insideEnd = "InsideEnd",
 
-        insideBase = "insideBase",
+        insideBase = "InsideBase",
 
-        outsideEnd = "outsideEnd",
+        outsideEnd = "OutsideEnd",
 
-        left = "left",
+        left = "Left",
 
-        right = "right",
+        right = "Right",
 
-        top = "top",
+        top = "Top",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        bestFit = "bestFit",
+        bestFit = "BestFit",
 
-        callout = "callout",
+        callout = "Callout",
     }
     /**
      * Represents which parts of the error bar to include.
      */
     enum ChartErrorBarsInclude {
-        both = "both",
+        both = "Both",
 
-        minusValues = "minusValues",
+        minusValues = "MinusValues",
 
-        plusValues = "plusValues",
+        plusValues = "PlusValues",
     }
     /**
      * Represents the range type for error bars.
      */
     enum ChartErrorBarsType {
-        fixedValue = "fixedValue",
+        fixedValue = "FixedValue",
 
-        percent = "percent",
+        percent = "Percent",
 
-        stDev = "stDev",
+        stDev = "StDev",
 
-        stError = "stError",
+        stError = "StError",
 
-        custom = "custom",
+        custom = "Custom",
     }
     /**
      * Represents the mapping level of a chart series. This only applies to region map charts.
      */
     enum ChartMapAreaLevel {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        dataOnly = "dataOnly",
+        dataOnly = "DataOnly",
 
-        city = "city",
+        city = "City",
 
-        county = "county",
+        county = "County",
 
-        state = "state",
+        state = "State",
 
-        country = "country",
+        country = "Country",
 
-        continent = "continent",
+        continent = "Continent",
 
-        world = "world",
+        world = "World",
     }
     /**
      * Represents the gradient style of a chart series. This is only applicable for region map charts.
      */
     enum ChartGradientStyle {
-        twoPhaseColor = "twoPhaseColor",
+        twoPhaseColor = "TwoPhaseColor",
 
-        threePhaseColor = "threePhaseColor",
+        threePhaseColor = "ThreePhaseColor",
     }
     /**
      * Represents the gradient style type of a chart series. This is only applicable for region map charts.
      */
     enum ChartGradientStyleType {
-        extremeValue = "extremeValue",
+        extremeValue = "ExtremeValue",
 
-        number = "number",
+        number = "Number",
 
-        percent = "percent",
+        percent = "Percent",
     }
     /**
      * Represents the position of chart title.
      */
     enum ChartTitlePosition {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        top = "top",
+        top = "Top",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        left = "left",
+        left = "Left",
 
-        right = "right",
+        right = "Right",
     }
     enum ChartLegendPosition {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        top = "top",
+        top = "Top",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        left = "left",
+        left = "Left",
 
-        right = "right",
+        right = "Right",
 
-        corner = "corner",
+        corner = "Corner",
 
-        custom = "custom",
+        custom = "Custom",
     }
     enum ChartMarkerStyle {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        none = "none",
+        none = "None",
 
-        square = "square",
+        square = "Square",
 
-        diamond = "diamond",
+        diamond = "Diamond",
 
-        triangle = "triangle",
+        triangle = "Triangle",
 
-        x = "x",
+        x = "X",
 
-        star = "star",
+        star = "Star",
 
-        dot = "dot",
+        dot = "Dot",
 
-        dash = "dash",
+        dash = "Dash",
 
-        circle = "circle",
+        circle = "Circle",
 
-        plus = "plus",
+        plus = "Plus",
 
-        picture = "picture",
+        picture = "Picture",
     }
     enum ChartPlotAreaPosition {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        custom = "custom",
+        custom = "Custom",
     }
     /**
      * Represents the region level of a chart series layout. This only applies to region map charts.
      */
     enum ChartMapLabelStrategy {
-        none = "none",
+        none = "None",
 
-        bestFit = "bestFit",
+        bestFit = "BestFit",
 
-        showAll = "showAll",
+        showAll = "ShowAll",
     }
     /**
      * Represents the region projection type of a chart series layout. This only applies to region map charts.
      */
     enum ChartMapProjectionType {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        mercator = "mercator",
+        mercator = "Mercator",
 
-        miller = "miller",
+        miller = "Miller",
 
-        robinson = "robinson",
+        robinson = "Robinson",
 
-        albers = "albers",
+        albers = "Albers",
     }
     /**
      * Represents the parent label strategy of the chart series layout. This only applies to treemap charts
      */
     enum ChartParentLabelStrategy {
-        none = "none",
+        none = "None",
 
-        banner = "banner",
+        banner = "Banner",
 
-        overlapping = "overlapping",
+        overlapping = "Overlapping",
     }
     /**
      * Specifies whether the series are by rows or by columns. On Desktop, the "auto" option will inspect the source data shape to automatically guess whether the data is by rows or columns; in Excel on the web, "auto" will simply default to "columns".
@@ -10370,55 +12074,55 @@ declare namespace Excel {
         /**
          * On Desktop, the "auto" option will inspect the source data shape to automatically guess whether the data is by rows or columns; in Excel on the web, "auto" will simply default to "columns".
          */
-        auto = "auto",
+        auto = "Auto",
 
-        columns = "columns",
+        columns = "Columns",
 
-        rows = "rows",
+        rows = "Rows",
     }
     /**
      * Represents the horizontal alignment for the specified object.
      */
     enum ChartTextHorizontalAlignment {
-        center = "center",
+        center = "Center",
 
-        left = "left",
+        left = "Left",
 
-        right = "right",
+        right = "Right",
 
-        justify = "justify",
+        justify = "Justify",
 
-        distributed = "distributed",
+        distributed = "Distributed",
     }
     /**
      * Represents the vertical alignment for the specified object.
      */
     enum ChartTextVerticalAlignment {
-        center = "center",
+        center = "Center",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        top = "top",
+        top = "Top",
 
-        justify = "justify",
+        justify = "Justify",
 
-        distributed = "distributed",
+        distributed = "Distributed",
     }
     enum ChartTickLabelAlignment {
-        center = "center",
+        center = "Center",
 
-        left = "left",
+        left = "Left",
 
-        right = "right",
+        right = "Right",
     }
     enum ChartType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        columnClustered = "columnClustered",
+        columnClustered = "ColumnClustered",
 
-        columnStacked = "columnStacked",
+        columnStacked = "ColumnStacked",
 
-        columnStacked100 = "columnStacked100",
+        columnStacked100 = "ColumnStacked100",
 
         _3DColumnClustered = "3DColumnClustered",
 
@@ -10426,11 +12130,11 @@ declare namespace Excel {
 
         _3DColumnStacked100 = "3DColumnStacked100",
 
-        barClustered = "barClustered",
+        barClustered = "BarClustered",
 
-        barStacked = "barStacked",
+        barStacked = "BarStacked",
 
-        barStacked100 = "barStacked100",
+        barStacked100 = "BarStacked100",
 
         _3DBarClustered = "3DBarClustered",
 
@@ -10438,261 +12142,261 @@ declare namespace Excel {
 
         _3DBarStacked100 = "3DBarStacked100",
 
-        lineStacked = "lineStacked",
+        lineStacked = "LineStacked",
 
-        lineStacked100 = "lineStacked100",
+        lineStacked100 = "LineStacked100",
 
-        lineMarkers = "lineMarkers",
+        lineMarkers = "LineMarkers",
 
-        lineMarkersStacked = "lineMarkersStacked",
+        lineMarkersStacked = "LineMarkersStacked",
 
-        lineMarkersStacked100 = "lineMarkersStacked100",
+        lineMarkersStacked100 = "LineMarkersStacked100",
 
-        pieOfPie = "pieOfPie",
+        pieOfPie = "PieOfPie",
 
-        pieExploded = "pieExploded",
+        pieExploded = "PieExploded",
 
         _3DPieExploded = "3DPieExploded",
 
-        barOfPie = "barOfPie",
+        barOfPie = "BarOfPie",
 
-        xyscatterSmooth = "xyscatterSmooth",
+        xyscatterSmooth = "XyscatterSmooth",
 
-        xyscatterSmoothNoMarkers = "xyscatterSmoothNoMarkers",
+        xyscatterSmoothNoMarkers = "XyscatterSmoothNoMarkers",
 
-        xyscatterLines = "xyscatterLines",
+        xyscatterLines = "XyscatterLines",
 
-        xyscatterLinesNoMarkers = "xyscatterLinesNoMarkers",
+        xyscatterLinesNoMarkers = "XyscatterLinesNoMarkers",
 
-        areaStacked = "areaStacked",
+        areaStacked = "AreaStacked",
 
-        areaStacked100 = "areaStacked100",
+        areaStacked100 = "AreaStacked100",
 
         _3DAreaStacked = "3DAreaStacked",
 
         _3DAreaStacked100 = "3DAreaStacked100",
 
-        doughnutExploded = "doughnutExploded",
+        doughnutExploded = "DoughnutExploded",
 
-        radarMarkers = "radarMarkers",
+        radarMarkers = "RadarMarkers",
 
-        radarFilled = "radarFilled",
+        radarFilled = "RadarFilled",
 
-        surface = "surface",
+        surface = "Surface",
 
-        surfaceWireframe = "surfaceWireframe",
+        surfaceWireframe = "SurfaceWireframe",
 
-        surfaceTopView = "surfaceTopView",
+        surfaceTopView = "SurfaceTopView",
 
-        surfaceTopViewWireframe = "surfaceTopViewWireframe",
+        surfaceTopViewWireframe = "SurfaceTopViewWireframe",
 
-        bubble = "bubble",
+        bubble = "Bubble",
 
-        bubble3DEffect = "bubble3DEffect",
+        bubble3DEffect = "Bubble3DEffect",
 
-        stockHLC = "stockHLC",
+        stockHLC = "StockHLC",
 
-        stockOHLC = "stockOHLC",
+        stockOHLC = "StockOHLC",
 
-        stockVHLC = "stockVHLC",
+        stockVHLC = "StockVHLC",
 
-        stockVOHLC = "stockVOHLC",
+        stockVOHLC = "StockVOHLC",
 
-        cylinderColClustered = "cylinderColClustered",
+        cylinderColClustered = "CylinderColClustered",
 
-        cylinderColStacked = "cylinderColStacked",
+        cylinderColStacked = "CylinderColStacked",
 
-        cylinderColStacked100 = "cylinderColStacked100",
+        cylinderColStacked100 = "CylinderColStacked100",
 
-        cylinderBarClustered = "cylinderBarClustered",
+        cylinderBarClustered = "CylinderBarClustered",
 
-        cylinderBarStacked = "cylinderBarStacked",
+        cylinderBarStacked = "CylinderBarStacked",
 
-        cylinderBarStacked100 = "cylinderBarStacked100",
+        cylinderBarStacked100 = "CylinderBarStacked100",
 
-        cylinderCol = "cylinderCol",
+        cylinderCol = "CylinderCol",
 
-        coneColClustered = "coneColClustered",
+        coneColClustered = "ConeColClustered",
 
-        coneColStacked = "coneColStacked",
+        coneColStacked = "ConeColStacked",
 
-        coneColStacked100 = "coneColStacked100",
+        coneColStacked100 = "ConeColStacked100",
 
-        coneBarClustered = "coneBarClustered",
+        coneBarClustered = "ConeBarClustered",
 
-        coneBarStacked = "coneBarStacked",
+        coneBarStacked = "ConeBarStacked",
 
-        coneBarStacked100 = "coneBarStacked100",
+        coneBarStacked100 = "ConeBarStacked100",
 
-        coneCol = "coneCol",
+        coneCol = "ConeCol",
 
-        pyramidColClustered = "pyramidColClustered",
+        pyramidColClustered = "PyramidColClustered",
 
-        pyramidColStacked = "pyramidColStacked",
+        pyramidColStacked = "PyramidColStacked",
 
-        pyramidColStacked100 = "pyramidColStacked100",
+        pyramidColStacked100 = "PyramidColStacked100",
 
-        pyramidBarClustered = "pyramidBarClustered",
+        pyramidBarClustered = "PyramidBarClustered",
 
-        pyramidBarStacked = "pyramidBarStacked",
+        pyramidBarStacked = "PyramidBarStacked",
 
-        pyramidBarStacked100 = "pyramidBarStacked100",
+        pyramidBarStacked100 = "PyramidBarStacked100",
 
-        pyramidCol = "pyramidCol",
+        pyramidCol = "PyramidCol",
 
         _3DColumn = "3DColumn",
 
-        line = "line",
+        line = "Line",
 
         _3DLine = "3DLine",
 
         _3DPie = "3DPie",
 
-        pie = "pie",
+        pie = "Pie",
 
-        xyscatter = "xyscatter",
+        xyscatter = "Xyscatter",
 
         _3DArea = "3DArea",
 
-        area = "area",
+        area = "Area",
 
-        doughnut = "doughnut",
+        doughnut = "Doughnut",
 
-        radar = "radar",
+        radar = "Radar",
 
-        histogram = "histogram",
+        histogram = "Histogram",
 
-        boxwhisker = "boxwhisker",
+        boxwhisker = "Boxwhisker",
 
-        pareto = "pareto",
+        pareto = "Pareto",
 
-        regionMap = "regionMap",
+        regionMap = "RegionMap",
 
-        treemap = "treemap",
+        treemap = "Treemap",
 
-        waterfall = "waterfall",
+        waterfall = "Waterfall",
 
-        sunburst = "sunburst",
+        sunburst = "Sunburst",
 
-        funnel = "funnel",
+        funnel = "Funnel",
     }
     enum ChartUnderlineStyle {
-        none = "none",
+        none = "None",
 
-        single = "single",
+        single = "Single",
     }
     enum ChartDisplayBlanksAs {
-        notPlotted = "notPlotted",
+        notPlotted = "NotPlotted",
 
-        zero = "zero",
+        zero = "Zero",
 
-        interplotted = "interplotted",
+        interplotted = "Interplotted",
     }
     enum ChartPlotBy {
-        rows = "rows",
+        rows = "Rows",
 
-        columns = "columns",
+        columns = "Columns",
     }
     enum ChartSplitType {
-        splitByPosition = "splitByPosition",
+        splitByPosition = "SplitByPosition",
 
-        splitByValue = "splitByValue",
+        splitByValue = "SplitByValue",
 
-        splitByPercentValue = "splitByPercentValue",
+        splitByPercentValue = "SplitByPercentValue",
 
-        splitByCustomSplit = "splitByCustomSplit",
+        splitByCustomSplit = "SplitByCustomSplit",
     }
     enum ChartColorScheme {
-        colorfulPalette1 = "colorfulPalette1",
+        colorfulPalette1 = "ColorfulPalette1",
 
-        colorfulPalette2 = "colorfulPalette2",
+        colorfulPalette2 = "ColorfulPalette2",
 
-        colorfulPalette3 = "colorfulPalette3",
+        colorfulPalette3 = "ColorfulPalette3",
 
-        colorfulPalette4 = "colorfulPalette4",
+        colorfulPalette4 = "ColorfulPalette4",
 
-        monochromaticPalette1 = "monochromaticPalette1",
+        monochromaticPalette1 = "MonochromaticPalette1",
 
-        monochromaticPalette2 = "monochromaticPalette2",
+        monochromaticPalette2 = "MonochromaticPalette2",
 
-        monochromaticPalette3 = "monochromaticPalette3",
+        monochromaticPalette3 = "MonochromaticPalette3",
 
-        monochromaticPalette4 = "monochromaticPalette4",
+        monochromaticPalette4 = "MonochromaticPalette4",
 
-        monochromaticPalette5 = "monochromaticPalette5",
+        monochromaticPalette5 = "MonochromaticPalette5",
 
-        monochromaticPalette6 = "monochromaticPalette6",
+        monochromaticPalette6 = "MonochromaticPalette6",
 
-        monochromaticPalette7 = "monochromaticPalette7",
+        monochromaticPalette7 = "MonochromaticPalette7",
 
-        monochromaticPalette8 = "monochromaticPalette8",
+        monochromaticPalette8 = "MonochromaticPalette8",
 
-        monochromaticPalette9 = "monochromaticPalette9",
+        monochromaticPalette9 = "MonochromaticPalette9",
 
-        monochromaticPalette10 = "monochromaticPalette10",
+        monochromaticPalette10 = "MonochromaticPalette10",
 
-        monochromaticPalette11 = "monochromaticPalette11",
+        monochromaticPalette11 = "MonochromaticPalette11",
 
-        monochromaticPalette12 = "monochromaticPalette12",
+        monochromaticPalette12 = "MonochromaticPalette12",
 
-        monochromaticPalette13 = "monochromaticPalette13",
+        monochromaticPalette13 = "MonochromaticPalette13",
     }
     enum ChartTrendlineType {
-        linear = "linear",
+        linear = "Linear",
 
-        exponential = "exponential",
+        exponential = "Exponential",
 
-        logarithmic = "logarithmic",
+        logarithmic = "Logarithmic",
 
-        movingAverage = "movingAverage",
+        movingAverage = "MovingAverage",
 
-        polynomial = "polynomial",
+        polynomial = "Polynomial",
 
-        power = "power",
+        power = "Power",
     }
     /**
      * Specifies where in the z-order a shape should be moved relative to other shapes.
      */
     enum ShapeZOrder {
-        bringToFront = "bringToFront",
+        bringToFront = "BringToFront",
 
-        bringForward = "bringForward",
+        bringForward = "BringForward",
 
-        sendToBack = "sendToBack",
+        sendToBack = "SendToBack",
 
-        sendBackward = "sendBackward",
+        sendBackward = "SendBackward",
     }
     /**
      * Specifies the type of a shape.
      */
     enum ShapeType {
-        unsupported = "unsupported",
+        unsupported = "Unsupported",
 
-        image = "image",
+        image = "Image",
 
-        geometricShape = "geometricShape",
+        geometricShape = "GeometricShape",
 
-        group = "group",
+        group = "Group",
 
-        line = "line",
+        line = "Line",
     }
     /**
      * Specifies whether the shape is scaled relative to its original or current size.
      */
     enum ShapeScaleType {
-        currentSize = "currentSize",
+        currentSize = "CurrentSize",
 
-        originalSize = "originalSize",
+        originalSize = "OriginalSize",
     }
     /**
      * Specifies which part of the shape retains its position when the shape is scaled.
      */
     enum ShapeScaleFrom {
-        scaleFromTopLeft = "scaleFromTopLeft",
+        scaleFromTopLeft = "ScaleFromTopLeft",
 
-        scaleFromMiddle = "scaleFromMiddle",
+        scaleFromMiddle = "ScaleFromMiddle",
 
-        scaleFromBottomRight = "scaleFromBottomRight",
+        scaleFromBottomRight = "ScaleFromBottomRight",
     }
     /**
      * Specifies a shape's fill type.
@@ -10701,101 +12405,101 @@ declare namespace Excel {
         /**
          * No fill.
          */
-        noFill = "noFill",
+        noFill = "NoFill",
 
         /**
          * Solid fill.
          */
-        solid = "solid",
+        solid = "Solid",
 
         /**
          * Gradient fill.
          */
-        gradient = "gradient",
+        gradient = "Gradient",
 
         /**
          * Pattern fill.
          */
-        pattern = "pattern",
+        pattern = "Pattern",
 
         /**
          * Picture and texture fill.
          */
-        pictureAndTexture = "pictureAndTexture",
+        pictureAndTexture = "PictureAndTexture",
 
         /**
          * Mixed fill.
          */
-        mixed = "mixed",
+        mixed = "Mixed",
     }
     /**
      * The type of underline applied to a font.
      */
     enum ShapeFontUnderlineStyle {
-        none = "none",
+        none = "None",
 
-        single = "single",
+        single = "Single",
 
-        double = "double",
+        double = "Double",
 
-        heavy = "heavy",
+        heavy = "Heavy",
 
-        dotted = "dotted",
+        dotted = "Dotted",
 
-        dottedHeavy = "dottedHeavy",
+        dottedHeavy = "DottedHeavy",
 
-        dash = "dash",
+        dash = "Dash",
 
-        dashHeavy = "dashHeavy",
+        dashHeavy = "DashHeavy",
 
-        dashLong = "dashLong",
+        dashLong = "DashLong",
 
-        dashLongHeavy = "dashLongHeavy",
+        dashLongHeavy = "DashLongHeavy",
 
-        dotDash = "dotDash",
+        dotDash = "DotDash",
 
-        dotDashHeavy = "dotDashHeavy",
+        dotDashHeavy = "DotDashHeavy",
 
-        dotDotDash = "dotDotDash",
+        dotDotDash = "DotDotDash",
 
-        dotDotDashHeavy = "dotDotDashHeavy",
+        dotDotDashHeavy = "DotDotDashHeavy",
 
-        wavy = "wavy",
+        wavy = "Wavy",
 
-        wavyHeavy = "wavyHeavy",
+        wavyHeavy = "WavyHeavy",
 
-        wavyDouble = "wavyDouble",
+        wavyDouble = "WavyDouble",
     }
     /**
      * The format of the image.
      */
     enum PictureFormat {
-        unknown = "unknown",
+        unknown = "Unknown",
 
         /**
          * Bitmap image.
          */
-        bmp = "bmp",
+        bmp = "Bmp",
 
         /**
          * Joint Photographic Experts Group.
          */
-        jpeg = "jpeg",
+        jpeg = "Jpeg",
 
         /**
          * Graphics Interchange Format.
          */
-        gif = "gif",
+        gif = "Gif",
 
         /**
          * Portable Network Graphics.
          */
-        png = "png",
+        png = "Png",
 
         /**
          * Scalable Vector Graphic.
          */
-        svg = "svg",
+        svg = "Svg",
     }
     /**
      * The style for a line.
@@ -10804,431 +12508,431 @@ declare namespace Excel {
         /**
          * Single line.
          */
-        single = "single",
+        single = "Single",
 
         /**
          * Thick line with a thin line on each side.
          */
-        thickBetweenThin = "thickBetweenThin",
+        thickBetweenThin = "ThickBetweenThin",
 
         /**
          * Thick line next to thin line. For horizontal lines, the thick line is above the thin line. For vertical lines, the thick line is to the left of the thin line.
          */
-        thickThin = "thickThin",
+        thickThin = "ThickThin",
 
         /**
          * Thick line next to thin line. For horizontal lines, the thick line is below the thin line. For vertical lines, the thick line is to the right of the thin line.
          */
-        thinThick = "thinThick",
+        thinThick = "ThinThick",
 
         /**
          * Two thin lines.
          */
-        thinThin = "thinThin",
+        thinThin = "ThinThin",
     }
     /**
      * The dash style for a line.
      */
     enum ShapeLineDashStyle {
-        dash = "dash",
+        dash = "Dash",
 
-        dashDot = "dashDot",
+        dashDot = "DashDot",
 
-        dashDotDot = "dashDotDot",
+        dashDotDot = "DashDotDot",
 
-        longDash = "longDash",
+        longDash = "LongDash",
 
-        longDashDot = "longDashDot",
+        longDashDot = "LongDashDot",
 
-        roundDot = "roundDot",
+        roundDot = "RoundDot",
 
-        solid = "solid",
+        solid = "Solid",
 
-        squareDot = "squareDot",
+        squareDot = "SquareDot",
 
-        longDashDotDot = "longDashDotDot",
+        longDashDotDot = "LongDashDotDot",
 
-        systemDash = "systemDash",
+        systemDash = "SystemDash",
 
-        systemDot = "systemDot",
+        systemDot = "SystemDot",
 
-        systemDashDot = "systemDashDot",
+        systemDashDot = "SystemDashDot",
     }
     enum ArrowheadLength {
-        short = "short",
+        short = "Short",
 
-        medium = "medium",
+        medium = "Medium",
 
-        long = "long",
+        long = "Long",
     }
     enum ArrowheadStyle {
-        none = "none",
+        none = "None",
 
-        triangle = "triangle",
+        triangle = "Triangle",
 
-        stealth = "stealth",
+        stealth = "Stealth",
 
-        diamond = "diamond",
+        diamond = "Diamond",
 
-        oval = "oval",
+        oval = "Oval",
 
-        open = "open",
+        open = "Open",
     }
     enum ArrowheadWidth {
-        narrow = "narrow",
+        narrow = "Narrow",
 
-        medium = "medium",
+        medium = "Medium",
 
-        wide = "wide",
+        wide = "Wide",
     }
     enum BindingType {
-        range = "range",
+        range = "Range",
 
-        table = "table",
+        table = "Table",
 
-        text = "text",
+        text = "Text",
     }
     enum BorderIndex {
-        edgeTop = "edgeTop",
+        edgeTop = "EdgeTop",
 
-        edgeBottom = "edgeBottom",
+        edgeBottom = "EdgeBottom",
 
-        edgeLeft = "edgeLeft",
+        edgeLeft = "EdgeLeft",
 
-        edgeRight = "edgeRight",
+        edgeRight = "EdgeRight",
 
-        insideVertical = "insideVertical",
+        insideVertical = "InsideVertical",
 
-        insideHorizontal = "insideHorizontal",
+        insideHorizontal = "InsideHorizontal",
 
-        diagonalDown = "diagonalDown",
+        diagonalDown = "DiagonalDown",
 
-        diagonalUp = "diagonalUp",
+        diagonalUp = "DiagonalUp",
     }
     enum BorderLineStyle {
-        none = "none",
+        none = "None",
 
-        continuous = "continuous",
+        continuous = "Continuous",
 
-        dash = "dash",
+        dash = "Dash",
 
-        dashDot = "dashDot",
+        dashDot = "DashDot",
 
-        dashDotDot = "dashDotDot",
+        dashDotDot = "DashDotDot",
 
-        dot = "dot",
+        dot = "Dot",
 
-        double = "double",
+        double = "Double",
 
-        slantDashDot = "slantDashDot",
+        slantDashDot = "SlantDashDot",
     }
     enum BorderWeight {
-        hairline = "hairline",
+        hairline = "Hairline",
 
-        thin = "thin",
+        thin = "Thin",
 
-        medium = "medium",
+        medium = "Medium",
 
-        thick = "thick",
+        thick = "Thick",
     }
     enum CalculationMode {
         /**
          * The default recalculation behavior where Excel calculates new formula results every time the relevant data is changed.
          */
-        automatic = "automatic",
+        automatic = "Automatic",
 
         /**
          * Calculates new formula results every time the relevant data is changed, unless the formula is in a data table.
          */
-        automaticExceptTables = "automaticExceptTables",
+        automaticExceptTables = "AutomaticExceptTables",
 
         /**
          * Calculations only occur when the user or add-in requests them.
          */
-        manual = "manual",
+        manual = "Manual",
     }
     enum CalculationType {
         /**
          * Recalculates all cells that Excel has marked as dirty, that is, dependents of volatile or changed data, and cells programmatically marked as dirty.
          */
-        recalculate = "recalculate",
+        recalculate = "Recalculate",
 
         /**
          * This will mark all cells as dirty and then recalculate them.
          */
-        full = "full",
+        full = "Full",
 
         /**
          * This will rebuild the full dependency chain, mark all cells as dirty and then recalculate them.
          */
-        fullRebuild = "fullRebuild",
+        fullRebuild = "FullRebuild",
     }
     enum ClearApplyTo {
-        all = "all",
+        all = "All",
 
         /**
          * Clears all formatting for the range.
          */
-        formats = "formats",
+        formats = "Formats",
 
         /**
          * Clears the contents of the range.
          */
-        contents = "contents",
+        contents = "Contents",
 
         /**
          * Clears all hyperlinks, but leaves all content and formatting intact.
          */
-        hyperlinks = "hyperlinks",
+        hyperlinks = "Hyperlinks",
 
         /**
          * Removes hyperlinks and formatting for the cell but leaves content, conditional formats, and data validation intact.
          */
-        removeHyperlinks = "removeHyperlinks",
+        removeHyperlinks = "RemoveHyperlinks",
     }
     /**
      * Represents the format options for a Data Bar Axis.
      */
     enum ConditionalDataBarAxisFormat {
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        none = "none",
+        none = "None",
 
-        cellMidPoint = "cellMidPoint",
+        cellMidPoint = "CellMidPoint",
     }
     /**
      * Represents the Data Bar direction within a cell.
      */
     enum ConditionalDataBarDirection {
-        context = "context",
+        context = "Context",
 
-        leftToRight = "leftToRight",
+        leftToRight = "LeftToRight",
 
-        rightToLeft = "rightToLeft",
+        rightToLeft = "RightToLeft",
     }
     /**
      * Represents the direction for a selection.
      */
     enum ConditionalFormatDirection {
-        top = "top",
+        top = "Top",
 
-        bottom = "bottom",
+        bottom = "Bottom",
     }
     enum ConditionalFormatType {
-        custom = "custom",
+        custom = "Custom",
 
-        dataBar = "dataBar",
+        dataBar = "DataBar",
 
-        colorScale = "colorScale",
+        colorScale = "ColorScale",
 
-        iconSet = "iconSet",
+        iconSet = "IconSet",
 
-        topBottom = "topBottom",
+        topBottom = "TopBottom",
 
-        presetCriteria = "presetCriteria",
+        presetCriteria = "PresetCriteria",
 
-        containsText = "containsText",
+        containsText = "ContainsText",
 
-        cellValue = "cellValue",
+        cellValue = "CellValue",
     }
     /**
      * Represents the types of conditional format values.
      */
     enum ConditionalFormatRuleType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        automatic = "automatic",
+        automatic = "Automatic",
 
-        lowestValue = "lowestValue",
+        lowestValue = "LowestValue",
 
-        highestValue = "highestValue",
+        highestValue = "HighestValue",
 
-        number = "number",
+        number = "Number",
 
-        percent = "percent",
+        percent = "Percent",
 
-        formula = "formula",
+        formula = "Formula",
 
-        percentile = "percentile",
+        percentile = "Percentile",
     }
     /**
      * Represents the types of icon conditional format.
      */
     enum ConditionalFormatIconRuleType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        number = "number",
+        number = "Number",
 
-        percent = "percent",
+        percent = "Percent",
 
-        formula = "formula",
+        formula = "Formula",
 
-        percentile = "percentile",
+        percentile = "Percentile",
     }
     /**
      * Represents the types of color criterion for conditional formatting.
      */
     enum ConditionalFormatColorCriterionType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        lowestValue = "lowestValue",
+        lowestValue = "LowestValue",
 
-        highestValue = "highestValue",
+        highestValue = "HighestValue",
 
-        number = "number",
+        number = "Number",
 
-        percent = "percent",
+        percent = "Percent",
 
-        formula = "formula",
+        formula = "Formula",
 
-        percentile = "percentile",
+        percentile = "Percentile",
     }
     /**
      * Represents the criteria for the above/below average conditional format type.
      */
     enum ConditionalTopBottomCriterionType {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        topItems = "topItems",
+        topItems = "TopItems",
 
-        topPercent = "topPercent",
+        topPercent = "TopPercent",
 
-        bottomItems = "bottomItems",
+        bottomItems = "BottomItems",
 
-        bottomPercent = "bottomPercent",
+        bottomPercent = "BottomPercent",
     }
     /**
      * Represents the criteria for the Preset Criteria conditional format type.
      */
     enum ConditionalFormatPresetCriterion {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        blanks = "blanks",
+        blanks = "Blanks",
 
-        nonBlanks = "nonBlanks",
+        nonBlanks = "NonBlanks",
 
-        errors = "errors",
+        errors = "Errors",
 
-        nonErrors = "nonErrors",
+        nonErrors = "NonErrors",
 
-        yesterday = "yesterday",
+        yesterday = "Yesterday",
 
-        today = "today",
+        today = "Today",
 
-        tomorrow = "tomorrow",
+        tomorrow = "Tomorrow",
 
-        lastSevenDays = "lastSevenDays",
+        lastSevenDays = "LastSevenDays",
 
-        lastWeek = "lastWeek",
+        lastWeek = "LastWeek",
 
-        thisWeek = "thisWeek",
+        thisWeek = "ThisWeek",
 
-        nextWeek = "nextWeek",
+        nextWeek = "NextWeek",
 
-        lastMonth = "lastMonth",
+        lastMonth = "LastMonth",
 
-        thisMonth = "thisMonth",
+        thisMonth = "ThisMonth",
 
-        nextMonth = "nextMonth",
+        nextMonth = "NextMonth",
 
-        aboveAverage = "aboveAverage",
+        aboveAverage = "AboveAverage",
 
-        belowAverage = "belowAverage",
+        belowAverage = "BelowAverage",
 
-        equalOrAboveAverage = "equalOrAboveAverage",
+        equalOrAboveAverage = "EqualOrAboveAverage",
 
-        equalOrBelowAverage = "equalOrBelowAverage",
+        equalOrBelowAverage = "EqualOrBelowAverage",
 
-        oneStdDevAboveAverage = "oneStdDevAboveAverage",
+        oneStdDevAboveAverage = "OneStdDevAboveAverage",
 
-        oneStdDevBelowAverage = "oneStdDevBelowAverage",
+        oneStdDevBelowAverage = "OneStdDevBelowAverage",
 
-        twoStdDevAboveAverage = "twoStdDevAboveAverage",
+        twoStdDevAboveAverage = "TwoStdDevAboveAverage",
 
-        twoStdDevBelowAverage = "twoStdDevBelowAverage",
+        twoStdDevBelowAverage = "TwoStdDevBelowAverage",
 
-        threeStdDevAboveAverage = "threeStdDevAboveAverage",
+        threeStdDevAboveAverage = "ThreeStdDevAboveAverage",
 
-        threeStdDevBelowAverage = "threeStdDevBelowAverage",
+        threeStdDevBelowAverage = "ThreeStdDevBelowAverage",
 
-        uniqueValues = "uniqueValues",
+        uniqueValues = "UniqueValues",
 
-        duplicateValues = "duplicateValues",
+        duplicateValues = "DuplicateValues",
     }
     /**
      * Represents the operator of the text conditional format type.
      */
     enum ConditionalTextOperator {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        contains = "contains",
+        contains = "Contains",
 
-        notContains = "notContains",
+        notContains = "NotContains",
 
-        beginsWith = "beginsWith",
+        beginsWith = "BeginsWith",
 
-        endsWith = "endsWith",
+        endsWith = "EndsWith",
     }
     /**
      * Represents the operator of the text conditional format type.
      */
     enum ConditionalCellValueOperator {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        between = "between",
+        between = "Between",
 
-        notBetween = "notBetween",
+        notBetween = "NotBetween",
 
-        equalTo = "equalTo",
+        equalTo = "EqualTo",
 
-        notEqualTo = "notEqualTo",
+        notEqualTo = "NotEqualTo",
 
-        greaterThan = "greaterThan",
+        greaterThan = "GreaterThan",
 
-        lessThan = "lessThan",
+        lessThan = "LessThan",
 
-        greaterThanOrEqual = "greaterThanOrEqual",
+        greaterThanOrEqual = "GreaterThanOrEqual",
 
-        lessThanOrEqual = "lessThanOrEqual",
+        lessThanOrEqual = "LessThanOrEqual",
     }
     /**
      * Represents the operator for each icon criteria.
      */
     enum ConditionalIconCriterionOperator {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        greaterThan = "greaterThan",
+        greaterThan = "GreaterThan",
 
-        greaterThanOrEqual = "greaterThanOrEqual",
+        greaterThanOrEqual = "GreaterThanOrEqual",
     }
     enum ConditionalRangeBorderIndex {
-        edgeTop = "edgeTop",
+        edgeTop = "EdgeTop",
 
-        edgeBottom = "edgeBottom",
+        edgeBottom = "EdgeBottom",
 
-        edgeLeft = "edgeLeft",
+        edgeLeft = "EdgeLeft",
 
-        edgeRight = "edgeRight",
+        edgeRight = "EdgeRight",
     }
     enum ConditionalRangeBorderLineStyle {
-        none = "none",
+        none = "None",
 
-        continuous = "continuous",
+        continuous = "Continuous",
 
-        dash = "dash",
+        dash = "Dash",
 
-        dashDot = "dashDot",
+        dashDot = "DashDot",
 
-        dashDotDot = "dashDotDot",
+        dashDotDot = "DashDotDot",
 
-        dot = "dot",
+        dot = "Dot",
     }
     enum ConditionalRangeFontUnderlineStyle {
-        none = "none",
+        none = "None",
 
-        single = "single",
+        single = "Single",
 
-        double = "double",
+        double = "Double",
     }
     /**
      * Represents Data validation type enum.
@@ -11237,324 +12941,324 @@ declare namespace Excel {
         /**
          * None means allow any value and so there is no data validation in the range.
          */
-        none = "none",
+        none = "None",
 
         /**
          * Whole number data validation type
          */
-        wholeNumber = "wholeNumber",
+        wholeNumber = "WholeNumber",
 
         /**
          * Decimal data validation type
          */
-        decimal = "decimal",
+        decimal = "Decimal",
 
         /**
          * List data validation type
          */
-        list = "list",
+        list = "List",
 
         /**
          * Date data validation type
          */
-        date = "date",
+        date = "Date",
 
         /**
          * Time data validation type
          */
-        time = "time",
+        time = "Time",
 
         /**
          * Text length data validation type
          */
-        textLength = "textLength",
+        textLength = "TextLength",
 
         /**
          * Custom data validation type
          */
-        custom = "custom",
+        custom = "Custom",
 
         /**
          * Inconsistent means that the range has inconsistent data validation (there are different rules on different cells)
          */
-        inconsistent = "inconsistent",
+        inconsistent = "Inconsistent",
 
         /**
          * MixedCriteria means that the range has data validation present on some but not all cells
          */
-        mixedCriteria = "mixedCriteria",
+        mixedCriteria = "MixedCriteria",
     }
     /**
      * Represents Data validation operator enum.
      */
     enum DataValidationOperator {
-        between = "between",
+        between = "Between",
 
-        notBetween = "notBetween",
+        notBetween = "NotBetween",
 
-        equalTo = "equalTo",
+        equalTo = "EqualTo",
 
-        notEqualTo = "notEqualTo",
+        notEqualTo = "NotEqualTo",
 
-        greaterThan = "greaterThan",
+        greaterThan = "GreaterThan",
 
-        lessThan = "lessThan",
+        lessThan = "LessThan",
 
-        greaterThanOrEqualTo = "greaterThanOrEqualTo",
+        greaterThanOrEqualTo = "GreaterThanOrEqualTo",
 
-        lessThanOrEqualTo = "lessThanOrEqualTo",
+        lessThanOrEqualTo = "LessThanOrEqualTo",
     }
     /**
      * Represents Data validation error alert style. The default is "Stop".
      */
     enum DataValidationAlertStyle {
-        stop = "stop",
+        stop = "Stop",
 
-        warning = "warning",
+        warning = "Warning",
 
-        information = "information",
+        information = "Information",
     }
     enum DeleteShiftDirection {
-        up = "up",
+        up = "Up",
 
-        left = "left",
+        left = "Left",
     }
     enum DynamicFilterCriteria {
-        unknown = "unknown",
+        unknown = "Unknown",
 
-        aboveAverage = "aboveAverage",
+        aboveAverage = "AboveAverage",
 
-        allDatesInPeriodApril = "allDatesInPeriodApril",
+        allDatesInPeriodApril = "AllDatesInPeriodApril",
 
-        allDatesInPeriodAugust = "allDatesInPeriodAugust",
+        allDatesInPeriodAugust = "AllDatesInPeriodAugust",
 
-        allDatesInPeriodDecember = "allDatesInPeriodDecember",
+        allDatesInPeriodDecember = "AllDatesInPeriodDecember",
 
-        allDatesInPeriodFebruray = "allDatesInPeriodFebruray",
+        allDatesInPeriodFebruray = "AllDatesInPeriodFebruray",
 
-        allDatesInPeriodJanuary = "allDatesInPeriodJanuary",
+        allDatesInPeriodJanuary = "AllDatesInPeriodJanuary",
 
-        allDatesInPeriodJuly = "allDatesInPeriodJuly",
+        allDatesInPeriodJuly = "AllDatesInPeriodJuly",
 
-        allDatesInPeriodJune = "allDatesInPeriodJune",
+        allDatesInPeriodJune = "AllDatesInPeriodJune",
 
-        allDatesInPeriodMarch = "allDatesInPeriodMarch",
+        allDatesInPeriodMarch = "AllDatesInPeriodMarch",
 
-        allDatesInPeriodMay = "allDatesInPeriodMay",
+        allDatesInPeriodMay = "AllDatesInPeriodMay",
 
-        allDatesInPeriodNovember = "allDatesInPeriodNovember",
+        allDatesInPeriodNovember = "AllDatesInPeriodNovember",
 
-        allDatesInPeriodOctober = "allDatesInPeriodOctober",
+        allDatesInPeriodOctober = "AllDatesInPeriodOctober",
 
-        allDatesInPeriodQuarter1 = "allDatesInPeriodQuarter1",
+        allDatesInPeriodQuarter1 = "AllDatesInPeriodQuarter1",
 
-        allDatesInPeriodQuarter2 = "allDatesInPeriodQuarter2",
+        allDatesInPeriodQuarter2 = "AllDatesInPeriodQuarter2",
 
-        allDatesInPeriodQuarter3 = "allDatesInPeriodQuarter3",
+        allDatesInPeriodQuarter3 = "AllDatesInPeriodQuarter3",
 
-        allDatesInPeriodQuarter4 = "allDatesInPeriodQuarter4",
+        allDatesInPeriodQuarter4 = "AllDatesInPeriodQuarter4",
 
-        allDatesInPeriodSeptember = "allDatesInPeriodSeptember",
+        allDatesInPeriodSeptember = "AllDatesInPeriodSeptember",
 
-        belowAverage = "belowAverage",
+        belowAverage = "BelowAverage",
 
-        lastMonth = "lastMonth",
+        lastMonth = "LastMonth",
 
-        lastQuarter = "lastQuarter",
+        lastQuarter = "LastQuarter",
 
-        lastWeek = "lastWeek",
+        lastWeek = "LastWeek",
 
-        lastYear = "lastYear",
+        lastYear = "LastYear",
 
-        nextMonth = "nextMonth",
+        nextMonth = "NextMonth",
 
-        nextQuarter = "nextQuarter",
+        nextQuarter = "NextQuarter",
 
-        nextWeek = "nextWeek",
+        nextWeek = "NextWeek",
 
-        nextYear = "nextYear",
+        nextYear = "NextYear",
 
-        thisMonth = "thisMonth",
+        thisMonth = "ThisMonth",
 
-        thisQuarter = "thisQuarter",
+        thisQuarter = "ThisQuarter",
 
-        thisWeek = "thisWeek",
+        thisWeek = "ThisWeek",
 
-        thisYear = "thisYear",
+        thisYear = "ThisYear",
 
-        today = "today",
+        today = "Today",
 
-        tomorrow = "tomorrow",
+        tomorrow = "Tomorrow",
 
-        yearToDate = "yearToDate",
+        yearToDate = "YearToDate",
 
-        yesterday = "yesterday",
+        yesterday = "Yesterday",
     }
     enum FilterDatetimeSpecificity {
-        year = "year",
+        year = "Year",
 
-        month = "month",
+        month = "Month",
 
-        day = "day",
+        day = "Day",
 
-        hour = "hour",
+        hour = "Hour",
 
-        minute = "minute",
+        minute = "Minute",
 
-        second = "second",
+        second = "Second",
     }
     enum FilterOn {
-        bottomItems = "bottomItems",
+        bottomItems = "BottomItems",
 
-        bottomPercent = "bottomPercent",
+        bottomPercent = "BottomPercent",
 
-        cellColor = "cellColor",
+        cellColor = "CellColor",
 
-        dynamic = "dynamic",
+        dynamic = "Dynamic",
 
-        fontColor = "fontColor",
+        fontColor = "FontColor",
 
-        values = "values",
+        values = "Values",
 
-        topItems = "topItems",
+        topItems = "TopItems",
 
-        topPercent = "topPercent",
+        topPercent = "TopPercent",
 
-        icon = "icon",
+        icon = "Icon",
 
-        custom = "custom",
+        custom = "Custom",
     }
     enum FilterOperator {
-        and = "and",
+        and = "And",
 
-        or = "or",
+        or = "Or",
     }
     enum HorizontalAlignment {
-        general = "general",
+        general = "General",
 
-        left = "left",
+        left = "Left",
 
-        center = "center",
+        center = "Center",
 
-        right = "right",
+        right = "Right",
 
-        fill = "fill",
+        fill = "Fill",
 
-        justify = "justify",
+        justify = "Justify",
 
-        centerAcrossSelection = "centerAcrossSelection",
+        centerAcrossSelection = "CenterAcrossSelection",
 
-        distributed = "distributed",
+        distributed = "Distributed",
     }
     enum IconSet {
-        invalid = "invalid",
+        invalid = "Invalid",
 
-        threeArrows = "threeArrows",
+        threeArrows = "ThreeArrows",
 
-        threeArrowsGray = "threeArrowsGray",
+        threeArrowsGray = "ThreeArrowsGray",
 
-        threeFlags = "threeFlags",
+        threeFlags = "ThreeFlags",
 
-        threeTrafficLights1 = "threeTrafficLights1",
+        threeTrafficLights1 = "ThreeTrafficLights1",
 
-        threeTrafficLights2 = "threeTrafficLights2",
+        threeTrafficLights2 = "ThreeTrafficLights2",
 
-        threeSigns = "threeSigns",
+        threeSigns = "ThreeSigns",
 
-        threeSymbols = "threeSymbols",
+        threeSymbols = "ThreeSymbols",
 
-        threeSymbols2 = "threeSymbols2",
+        threeSymbols2 = "ThreeSymbols2",
 
-        fourArrows = "fourArrows",
+        fourArrows = "FourArrows",
 
-        fourArrowsGray = "fourArrowsGray",
+        fourArrowsGray = "FourArrowsGray",
 
-        fourRedToBlack = "fourRedToBlack",
+        fourRedToBlack = "FourRedToBlack",
 
-        fourRating = "fourRating",
+        fourRating = "FourRating",
 
-        fourTrafficLights = "fourTrafficLights",
+        fourTrafficLights = "FourTrafficLights",
 
-        fiveArrows = "fiveArrows",
+        fiveArrows = "FiveArrows",
 
-        fiveArrowsGray = "fiveArrowsGray",
+        fiveArrowsGray = "FiveArrowsGray",
 
-        fiveRating = "fiveRating",
+        fiveRating = "FiveRating",
 
-        fiveQuarters = "fiveQuarters",
+        fiveQuarters = "FiveQuarters",
 
-        threeStars = "threeStars",
+        threeStars = "ThreeStars",
 
-        threeTriangles = "threeTriangles",
+        threeTriangles = "ThreeTriangles",
 
-        fiveBoxes = "fiveBoxes",
+        fiveBoxes = "FiveBoxes",
     }
     enum ImageFittingMode {
-        fit = "fit",
+        fit = "Fit",
 
-        fitAndCenter = "fitAndCenter",
+        fitAndCenter = "FitAndCenter",
 
-        fill = "fill",
+        fill = "Fill",
     }
     enum InsertShiftDirection {
-        down = "down",
+        down = "Down",
 
-        right = "right",
+        right = "Right",
     }
     enum NamedItemScope {
-        worksheet = "worksheet",
+        worksheet = "Worksheet",
 
-        workbook = "workbook",
+        workbook = "Workbook",
     }
     enum NamedItemType {
-        string = "string",
+        string = "String",
 
-        integer = "integer",
+        integer = "Integer",
 
-        double = "double",
+        double = "Double",
 
-        boolean = "boolean",
+        boolean = "Boolean",
 
-        range = "range",
+        range = "Range",
 
-        error = "error",
+        error = "Error",
 
-        array = "array",
+        array = "Array",
     }
     enum RangeUnderlineStyle {
-        none = "none",
+        none = "None",
 
-        single = "single",
+        single = "Single",
 
-        double = "double",
+        double = "Double",
 
-        singleAccountant = "singleAccountant",
+        singleAccountant = "SingleAccountant",
 
-        doubleAccountant = "doubleAccountant",
+        doubleAccountant = "DoubleAccountant",
     }
     enum SheetVisibility {
-        visible = "visible",
+        visible = "Visible",
 
-        hidden = "hidden",
+        hidden = "Hidden",
 
-        veryHidden = "veryHidden",
+        veryHidden = "VeryHidden",
     }
     enum RangeValueType {
-        unknown = "unknown",
+        unknown = "Unknown",
 
-        empty = "empty",
+        empty = "Empty",
 
-        string = "string",
+        string = "String",
 
-        integer = "integer",
+        integer = "Integer",
 
-        double = "double",
+        double = "Double",
 
-        boolean = "boolean",
+        boolean = "Boolean",
 
-        error = "error",
+        error = "Error",
 
-        richValue = "richValue",
+        richValue = "RichValue",
     }
     /**
      * Specifies the search direction.
@@ -11563,194 +13267,194 @@ declare namespace Excel {
         /**
          * Search in forward order.
          */
-        forward = "forward",
+        forward = "Forward",
 
         /**
          * Search in reverse order.
          */
-        backwards = "backwards",
+        backwards = "Backwards",
     }
     enum SortOrientation {
-        rows = "rows",
+        rows = "Rows",
 
-        columns = "columns",
+        columns = "Columns",
     }
     enum SortOn {
-        value = "value",
+        value = "Value",
 
-        cellColor = "cellColor",
+        cellColor = "CellColor",
 
-        fontColor = "fontColor",
+        fontColor = "FontColor",
 
-        icon = "icon",
+        icon = "Icon",
     }
     enum SortDataOption {
-        normal = "normal",
+        normal = "Normal",
 
-        textAsNumber = "textAsNumber",
+        textAsNumber = "TextAsNumber",
     }
     enum SortMethod {
-        pinYin = "pinYin",
+        pinYin = "PinYin",
 
-        strokeCount = "strokeCount",
+        strokeCount = "StrokeCount",
     }
     enum VerticalAlignment {
-        top = "top",
+        top = "Top",
 
-        center = "center",
+        center = "Center",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        justify = "justify",
+        justify = "Justify",
 
-        distributed = "distributed",
+        distributed = "Distributed",
     }
     enum DocumentPropertyType {
-        number = "number",
+        number = "Number",
 
-        boolean = "boolean",
+        boolean = "Boolean",
 
-        date = "date",
+        date = "Date",
 
-        string = "string",
+        string = "String",
 
-        float = "float",
+        float = "Float",
     }
     enum SubtotalLocationType {
         /**
          * Subtotals are at the top.
          */
-        atTop = "atTop",
+        atTop = "AtTop",
 
         /**
          * Subtotals are at the bottom.
          */
-        atBottom = "atBottom",
+        atBottom = "AtBottom",
 
         /**
          * Subtotals are off.
          */
-        off = "off",
+        off = "Off",
     }
     enum PivotLayoutType {
         /**
          * A horizontally compressed form with labels from the next field in the same column.
          */
-        compact = "compact",
+        compact = "Compact",
 
         /**
          * Inner fields' items are always on a new line relative to the outer fields' items.
          */
-        tabular = "tabular",
+        tabular = "Tabular",
 
         /**
          * Inner fields' items are on same row as outer fields' items and subtotals are always on the bottom.
          */
-        outline = "outline",
+        outline = "Outline",
     }
     enum ProtectionSelectionMode {
         /**
          * Selection is allowed for all cells.
          */
-        normal = "normal",
+        normal = "Normal",
 
         /**
          * Selection is allowed only for cells that are not locked.
          */
-        unlocked = "unlocked",
+        unlocked = "Unlocked",
 
         /**
          * Selection is not allowed for all cells.
          */
-        none = "none",
+        none = "None",
     }
     enum PageOrientation {
-        portrait = "portrait",
+        portrait = "Portrait",
 
-        landscape = "landscape",
+        landscape = "Landscape",
     }
     enum PaperType {
-        letter = "letter",
+        letter = "Letter",
 
-        letterSmall = "letterSmall",
+        letterSmall = "LetterSmall",
 
-        tabloid = "tabloid",
+        tabloid = "Tabloid",
 
-        ledger = "ledger",
+        ledger = "Ledger",
 
-        legal = "legal",
+        legal = "Legal",
 
-        statement = "statement",
+        statement = "Statement",
 
-        executive = "executive",
+        executive = "Executive",
 
-        a3 = "a3",
+        a3 = "A3",
 
-        a4 = "a4",
+        a4 = "A4",
 
-        a4Small = "a4Small",
+        a4Small = "A4Small",
 
-        a5 = "a5",
+        a5 = "A5",
 
-        b4 = "b4",
+        b4 = "B4",
 
-        b5 = "b5",
+        b5 = "B5",
 
-        folio = "folio",
+        folio = "Folio",
 
-        quatro = "quatro",
+        quatro = "Quatro",
 
-        paper10x14 = "paper10x14",
+        paper10x14 = "Paper10x14",
 
-        paper11x17 = "paper11x17",
+        paper11x17 = "Paper11x17",
 
-        note = "note",
+        note = "Note",
 
-        envelope9 = "envelope9",
+        envelope9 = "Envelope9",
 
-        envelope10 = "envelope10",
+        envelope10 = "Envelope10",
 
-        envelope11 = "envelope11",
+        envelope11 = "Envelope11",
 
-        envelope12 = "envelope12",
+        envelope12 = "Envelope12",
 
-        envelope14 = "envelope14",
+        envelope14 = "Envelope14",
 
-        csheet = "csheet",
+        csheet = "Csheet",
 
-        dsheet = "dsheet",
+        dsheet = "Dsheet",
 
-        esheet = "esheet",
+        esheet = "Esheet",
 
-        envelopeDL = "envelopeDL",
+        envelopeDL = "EnvelopeDL",
 
-        envelopeC5 = "envelopeC5",
+        envelopeC5 = "EnvelopeC5",
 
-        envelopeC3 = "envelopeC3",
+        envelopeC3 = "EnvelopeC3",
 
-        envelopeC4 = "envelopeC4",
+        envelopeC4 = "EnvelopeC4",
 
-        envelopeC6 = "envelopeC6",
+        envelopeC6 = "EnvelopeC6",
 
-        envelopeC65 = "envelopeC65",
+        envelopeC65 = "EnvelopeC65",
 
-        envelopeB4 = "envelopeB4",
+        envelopeB4 = "EnvelopeB4",
 
-        envelopeB5 = "envelopeB5",
+        envelopeB5 = "EnvelopeB5",
 
-        envelopeB6 = "envelopeB6",
+        envelopeB6 = "EnvelopeB6",
 
-        envelopeItaly = "envelopeItaly",
+        envelopeItaly = "EnvelopeItaly",
 
-        envelopeMonarch = "envelopeMonarch",
+        envelopeMonarch = "EnvelopeMonarch",
 
-        envelopePersonal = "envelopePersonal",
+        envelopePersonal = "EnvelopePersonal",
 
-        fanfoldUS = "fanfoldUS",
+        fanfoldUS = "FanfoldUS",
 
-        fanfoldStdGerman = "fanfoldStdGerman",
+        fanfoldStdGerman = "FanfoldStdGerman",
 
-        fanfoldLegalGerman = "fanfoldLegalGerman",
+        fanfoldLegalGerman = "FanfoldLegalGerman",
     }
     enum ReadingOrder {
         /**
@@ -11758,206 +13462,206 @@ declare namespace Excel {
          * If a right-to-left language character is entered first, reading order is right to left.
          * If a left-to-right language character is entered first, reading order is left to right.
          */
-        context = "context",
+        context = "Context",
 
         /**
          * Left to right reading order
          */
-        leftToRight = "leftToRight",
+        leftToRight = "LeftToRight",
 
         /**
          * Right to left reading order
          */
-        rightToLeft = "rightToLeft",
+        rightToLeft = "RightToLeft",
     }
     enum BuiltInStyle {
-        normal = "normal",
+        normal = "Normal",
 
-        comma = "comma",
+        comma = "Comma",
 
-        currency = "currency",
+        currency = "Currency",
 
-        percent = "percent",
+        percent = "Percent",
 
-        wholeComma = "wholeComma",
+        wholeComma = "WholeComma",
 
-        wholeDollar = "wholeDollar",
+        wholeDollar = "WholeDollar",
 
-        hlink = "hlink",
+        hlink = "Hlink",
 
-        hlinkTrav = "hlinkTrav",
+        hlinkTrav = "HlinkTrav",
 
-        note = "note",
+        note = "Note",
 
-        warningText = "warningText",
+        warningText = "WarningText",
 
-        emphasis1 = "emphasis1",
+        emphasis1 = "Emphasis1",
 
-        emphasis2 = "emphasis2",
+        emphasis2 = "Emphasis2",
 
-        emphasis3 = "emphasis3",
+        emphasis3 = "Emphasis3",
 
-        sheetTitle = "sheetTitle",
+        sheetTitle = "SheetTitle",
 
-        heading1 = "heading1",
+        heading1 = "Heading1",
 
-        heading2 = "heading2",
+        heading2 = "Heading2",
 
-        heading3 = "heading3",
+        heading3 = "Heading3",
 
-        heading4 = "heading4",
+        heading4 = "Heading4",
 
-        input = "input",
+        input = "Input",
 
-        output = "output",
+        output = "Output",
 
-        calculation = "calculation",
+        calculation = "Calculation",
 
-        checkCell = "checkCell",
+        checkCell = "CheckCell",
 
-        linkedCell = "linkedCell",
+        linkedCell = "LinkedCell",
 
-        total = "total",
+        total = "Total",
 
-        good = "good",
+        good = "Good",
 
-        bad = "bad",
+        bad = "Bad",
 
-        neutral = "neutral",
+        neutral = "Neutral",
 
-        accent1 = "accent1",
+        accent1 = "Accent1",
 
-        accent1_20 = "accent1_20",
+        accent1_20 = "Accent1_20",
 
-        accent1_40 = "accent1_40",
+        accent1_40 = "Accent1_40",
 
-        accent1_60 = "accent1_60",
+        accent1_60 = "Accent1_60",
 
-        accent2 = "accent2",
+        accent2 = "Accent2",
 
-        accent2_20 = "accent2_20",
+        accent2_20 = "Accent2_20",
 
-        accent2_40 = "accent2_40",
+        accent2_40 = "Accent2_40",
 
-        accent2_60 = "accent2_60",
+        accent2_60 = "Accent2_60",
 
-        accent3 = "accent3",
+        accent3 = "Accent3",
 
-        accent3_20 = "accent3_20",
+        accent3_20 = "Accent3_20",
 
-        accent3_40 = "accent3_40",
+        accent3_40 = "Accent3_40",
 
-        accent3_60 = "accent3_60",
+        accent3_60 = "Accent3_60",
 
-        accent4 = "accent4",
+        accent4 = "Accent4",
 
-        accent4_20 = "accent4_20",
+        accent4_20 = "Accent4_20",
 
-        accent4_40 = "accent4_40",
+        accent4_40 = "Accent4_40",
 
-        accent4_60 = "accent4_60",
+        accent4_60 = "Accent4_60",
 
-        accent5 = "accent5",
+        accent5 = "Accent5",
 
-        accent5_20 = "accent5_20",
+        accent5_20 = "Accent5_20",
 
-        accent5_40 = "accent5_40",
+        accent5_40 = "Accent5_40",
 
-        accent5_60 = "accent5_60",
+        accent5_60 = "Accent5_60",
 
-        accent6 = "accent6",
+        accent6 = "Accent6",
 
-        accent6_20 = "accent6_20",
+        accent6_20 = "Accent6_20",
 
-        accent6_40 = "accent6_40",
+        accent6_40 = "Accent6_40",
 
-        accent6_60 = "accent6_60",
+        accent6_60 = "Accent6_60",
 
-        explanatoryText = "explanatoryText",
+        explanatoryText = "ExplanatoryText",
     }
     enum PrintErrorType {
-        asDisplayed = "asDisplayed",
+        asDisplayed = "AsDisplayed",
 
-        blank = "blank",
+        blank = "Blank",
 
-        dash = "dash",
+        dash = "Dash",
 
-        notAvailable = "notAvailable",
+        notAvailable = "NotAvailable",
     }
     enum WorksheetPositionType {
-        none = "none",
+        none = "None",
 
-        before = "before",
+        before = "Before",
 
-        after = "after",
+        after = "After",
 
-        beginning = "beginning",
+        beginning = "Beginning",
 
-        end = "end",
+        end = "End",
     }
     enum PrintComments {
         /**
          * Comments will not be printed.
          */
-        noComments = "noComments",
+        noComments = "NoComments",
 
         /**
          * Comments will be printed as end notes at the end of the worksheet.
          */
-        endSheet = "endSheet",
+        endSheet = "EndSheet",
 
         /**
          * Comments will be printed where they were inserted in the worksheet.
          */
-        inPlace = "inPlace",
+        inPlace = "InPlace",
     }
     enum PrintOrder {
         /**
          * Process down the rows before processing across pages or page fields to the right.
          */
-        downThenOver = "downThenOver",
+        downThenOver = "DownThenOver",
 
         /**
          * Process across pages or page fields to the right before moving down the rows.
          */
-        overThenDown = "overThenDown",
+        overThenDown = "OverThenDown",
     }
     enum PrintMarginUnit {
         /**
          * Assign the page margins in points. A point is 1/72 of an inch.
          */
-        points = "points",
+        points = "Points",
 
         /**
          * Assign the page margins in inches.
          */
-        inches = "inches",
+        inches = "Inches",
 
         /**
          * Assign the page margins in centimeters.
          */
-        centimeters = "centimeters",
+        centimeters = "Centimeters",
     }
     enum HeaderFooterState {
         /**
          * Only one general header/footer is used for all pages printed.
          */
-        default = "default",
+        default = "Default",
 
         /**
          * There is a separate first page header/footer, and a general header/footer used for all other pages.
          */
-        firstAndDefault = "firstAndDefault",
+        firstAndDefault = "FirstAndDefault",
 
         /**
          * There is a different header/footer for odd and even pages.
          */
-        oddAndEven = "oddAndEven",
+        oddAndEven = "OddAndEven",
 
         /**
          * There is a separate first page header/footer, then there is a separate header/footer for odd and even pages.
          */
-        firstOddAndEven = "firstOddAndEven",
+        firstOddAndEven = "FirstOddAndEven",
     }
     /**
      * The behavior types when AutoFill is used on a range in the workbook.
@@ -11966,586 +13670,586 @@ declare namespace Excel {
         /**
          * Populates the adjacent cells with data the selected data.
          */
-        fillDefault = "fillDefault",
+        fillDefault = "FillDefault",
 
         /**
          * Populates the adjacent cells with data the selected data.
          */
-        fillCopy = "fillCopy",
+        fillCopy = "FillCopy",
 
         /**
          * Populates the adjacent cells with data that follows a pattern in the copied cells.
          */
-        fillSeries = "fillSeries",
+        fillSeries = "FillSeries",
 
         /**
          * Populates the adjacent cells with the selected formulas.
          */
-        fillFormats = "fillFormats",
+        fillFormats = "FillFormats",
 
         /**
          * Populates the adjacent cells with the selected values.
          */
-        fillValues = "fillValues",
+        fillValues = "FillValues",
 
         /**
          * A version of "FillSeries" for dates that bases the pattern on either the day of the month or the day of the week, depending on the context.
          */
-        fillDays = "fillDays",
+        fillDays = "FillDays",
 
         /**
          * A version of "FillSeries" for dates that bases the pattern on the day of the week and only includes weekdays.
          */
-        fillWeekdays = "fillWeekdays",
+        fillWeekdays = "FillWeekdays",
 
         /**
          * A version of "FillSeries" for dates that bases the pattern on the month.
          */
-        fillMonths = "fillMonths",
+        fillMonths = "FillMonths",
 
         /**
          * A version of "FillSeries" for dates that bases the pattern on the year.
          */
-        fillYears = "fillYears",
+        fillYears = "FillYears",
 
         /**
          * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a linear trend model.
          */
-        linearTrend = "linearTrend",
+        linearTrend = "LinearTrend",
 
         /**
          * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a growth trend model.
          */
-        growthTrend = "growthTrend",
+        growthTrend = "GrowthTrend",
 
         /**
          * Populates the adjacent cells by using Excel's FlashFill feature.
          */
-        flashFill = "flashFill",
+        flashFill = "FlashFill",
     }
     enum GroupOption {
         /**
          * Group by rows.
          */
-        byRows = "byRows",
+        byRows = "ByRows",
 
         /**
          * Group by columns.
          */
-        byColumns = "byColumns",
+        byColumns = "ByColumns",
     }
     enum RangeCopyType {
-        all = "all",
+        all = "All",
 
-        formulas = "formulas",
+        formulas = "Formulas",
 
-        values = "values",
+        values = "Values",
 
-        formats = "formats",
+        formats = "Formats",
     }
     enum LinkedDataTypeState {
-        none = "none",
+        none = "None",
 
-        validLinkedData = "validLinkedData",
+        validLinkedData = "ValidLinkedData",
 
-        disambiguationNeeded = "disambiguationNeeded",
+        disambiguationNeeded = "DisambiguationNeeded",
 
-        brokenLinkedData = "brokenLinkedData",
+        brokenLinkedData = "BrokenLinkedData",
 
-        fetchingData = "fetchingData",
+        fetchingData = "FetchingData",
     }
     /**
      * Specifies the shape type for a GeometricShape object.
      */
     enum GeometricShapeType {
-        lineInverse = "lineInverse",
+        lineInverse = "LineInverse",
 
-        triangle = "triangle",
+        triangle = "Triangle",
 
-        rightTriangle = "rightTriangle",
+        rightTriangle = "RightTriangle",
 
-        rectangle = "rectangle",
+        rectangle = "Rectangle",
 
-        diamond = "diamond",
+        diamond = "Diamond",
 
-        parallelogram = "parallelogram",
+        parallelogram = "Parallelogram",
 
-        trapezoid = "trapezoid",
+        trapezoid = "Trapezoid",
 
-        nonIsoscelesTrapezoid = "nonIsoscelesTrapezoid",
+        nonIsoscelesTrapezoid = "NonIsoscelesTrapezoid",
 
-        pentagon = "pentagon",
+        pentagon = "Pentagon",
 
-        hexagon = "hexagon",
+        hexagon = "Hexagon",
 
-        heptagon = "heptagon",
+        heptagon = "Heptagon",
 
-        octagon = "octagon",
+        octagon = "Octagon",
 
-        decagon = "decagon",
+        decagon = "Decagon",
 
-        dodecagon = "dodecagon",
+        dodecagon = "Dodecagon",
 
-        star4 = "star4",
+        star4 = "Star4",
 
-        star5 = "star5",
+        star5 = "Star5",
 
-        star6 = "star6",
+        star6 = "Star6",
 
-        star7 = "star7",
+        star7 = "Star7",
 
-        star8 = "star8",
+        star8 = "Star8",
 
-        star10 = "star10",
+        star10 = "Star10",
 
-        star12 = "star12",
+        star12 = "Star12",
 
-        star16 = "star16",
+        star16 = "Star16",
 
-        star24 = "star24",
+        star24 = "Star24",
 
-        star32 = "star32",
+        star32 = "Star32",
 
-        roundRectangle = "roundRectangle",
+        roundRectangle = "RoundRectangle",
 
-        round1Rectangle = "round1Rectangle",
+        round1Rectangle = "Round1Rectangle",
 
-        round2SameRectangle = "round2SameRectangle",
+        round2SameRectangle = "Round2SameRectangle",
 
-        round2DiagonalRectangle = "round2DiagonalRectangle",
+        round2DiagonalRectangle = "Round2DiagonalRectangle",
 
-        snipRoundRectangle = "snipRoundRectangle",
+        snipRoundRectangle = "SnipRoundRectangle",
 
-        snip1Rectangle = "snip1Rectangle",
+        snip1Rectangle = "Snip1Rectangle",
 
-        snip2SameRectangle = "snip2SameRectangle",
+        snip2SameRectangle = "Snip2SameRectangle",
 
-        snip2DiagonalRectangle = "snip2DiagonalRectangle",
+        snip2DiagonalRectangle = "Snip2DiagonalRectangle",
 
-        plaque = "plaque",
+        plaque = "Plaque",
 
-        ellipse = "ellipse",
+        ellipse = "Ellipse",
 
-        teardrop = "teardrop",
+        teardrop = "Teardrop",
 
-        homePlate = "homePlate",
+        homePlate = "HomePlate",
 
-        chevron = "chevron",
+        chevron = "Chevron",
 
-        pieWedge = "pieWedge",
+        pieWedge = "PieWedge",
 
-        pie = "pie",
+        pie = "Pie",
 
-        blockArc = "blockArc",
+        blockArc = "BlockArc",
 
-        donut = "donut",
+        donut = "Donut",
 
-        noSmoking = "noSmoking",
+        noSmoking = "NoSmoking",
 
-        rightArrow = "rightArrow",
+        rightArrow = "RightArrow",
 
-        leftArrow = "leftArrow",
+        leftArrow = "LeftArrow",
 
-        upArrow = "upArrow",
+        upArrow = "UpArrow",
 
-        downArrow = "downArrow",
+        downArrow = "DownArrow",
 
-        stripedRightArrow = "stripedRightArrow",
+        stripedRightArrow = "StripedRightArrow",
 
-        notchedRightArrow = "notchedRightArrow",
+        notchedRightArrow = "NotchedRightArrow",
 
-        bentUpArrow = "bentUpArrow",
+        bentUpArrow = "BentUpArrow",
 
-        leftRightArrow = "leftRightArrow",
+        leftRightArrow = "LeftRightArrow",
 
-        upDownArrow = "upDownArrow",
+        upDownArrow = "UpDownArrow",
 
-        leftUpArrow = "leftUpArrow",
+        leftUpArrow = "LeftUpArrow",
 
-        leftRightUpArrow = "leftRightUpArrow",
+        leftRightUpArrow = "LeftRightUpArrow",
 
-        quadArrow = "quadArrow",
+        quadArrow = "QuadArrow",
 
-        leftArrowCallout = "leftArrowCallout",
+        leftArrowCallout = "LeftArrowCallout",
 
-        rightArrowCallout = "rightArrowCallout",
+        rightArrowCallout = "RightArrowCallout",
 
-        upArrowCallout = "upArrowCallout",
+        upArrowCallout = "UpArrowCallout",
 
-        downArrowCallout = "downArrowCallout",
+        downArrowCallout = "DownArrowCallout",
 
-        leftRightArrowCallout = "leftRightArrowCallout",
+        leftRightArrowCallout = "LeftRightArrowCallout",
 
-        upDownArrowCallout = "upDownArrowCallout",
+        upDownArrowCallout = "UpDownArrowCallout",
 
-        quadArrowCallout = "quadArrowCallout",
+        quadArrowCallout = "QuadArrowCallout",
 
-        bentArrow = "bentArrow",
+        bentArrow = "BentArrow",
 
-        uturnArrow = "uturnArrow",
+        uturnArrow = "UturnArrow",
 
-        circularArrow = "circularArrow",
+        circularArrow = "CircularArrow",
 
-        leftCircularArrow = "leftCircularArrow",
+        leftCircularArrow = "LeftCircularArrow",
 
-        leftRightCircularArrow = "leftRightCircularArrow",
+        leftRightCircularArrow = "LeftRightCircularArrow",
 
-        curvedRightArrow = "curvedRightArrow",
+        curvedRightArrow = "CurvedRightArrow",
 
-        curvedLeftArrow = "curvedLeftArrow",
+        curvedLeftArrow = "CurvedLeftArrow",
 
-        curvedUpArrow = "curvedUpArrow",
+        curvedUpArrow = "CurvedUpArrow",
 
-        curvedDownArrow = "curvedDownArrow",
+        curvedDownArrow = "CurvedDownArrow",
 
-        swooshArrow = "swooshArrow",
+        swooshArrow = "SwooshArrow",
 
-        cube = "cube",
+        cube = "Cube",
 
-        can = "can",
+        can = "Can",
 
-        lightningBolt = "lightningBolt",
+        lightningBolt = "LightningBolt",
 
-        heart = "heart",
+        heart = "Heart",
 
-        sun = "sun",
+        sun = "Sun",
 
-        moon = "moon",
+        moon = "Moon",
 
-        smileyFace = "smileyFace",
+        smileyFace = "SmileyFace",
 
-        irregularSeal1 = "irregularSeal1",
+        irregularSeal1 = "IrregularSeal1",
 
-        irregularSeal2 = "irregularSeal2",
+        irregularSeal2 = "IrregularSeal2",
 
-        foldedCorner = "foldedCorner",
+        foldedCorner = "FoldedCorner",
 
-        bevel = "bevel",
+        bevel = "Bevel",
 
-        frame = "frame",
+        frame = "Frame",
 
-        halfFrame = "halfFrame",
+        halfFrame = "HalfFrame",
 
-        corner = "corner",
+        corner = "Corner",
 
-        diagonalStripe = "diagonalStripe",
+        diagonalStripe = "DiagonalStripe",
 
-        chord = "chord",
+        chord = "Chord",
 
-        arc = "arc",
+        arc = "Arc",
 
-        leftBracket = "leftBracket",
+        leftBracket = "LeftBracket",
 
-        rightBracket = "rightBracket",
+        rightBracket = "RightBracket",
 
-        leftBrace = "leftBrace",
+        leftBrace = "LeftBrace",
 
-        rightBrace = "rightBrace",
+        rightBrace = "RightBrace",
 
-        bracketPair = "bracketPair",
+        bracketPair = "BracketPair",
 
-        bracePair = "bracePair",
+        bracePair = "BracePair",
 
-        callout1 = "callout1",
+        callout1 = "Callout1",
 
-        callout2 = "callout2",
+        callout2 = "Callout2",
 
-        callout3 = "callout3",
+        callout3 = "Callout3",
 
-        accentCallout1 = "accentCallout1",
+        accentCallout1 = "AccentCallout1",
 
-        accentCallout2 = "accentCallout2",
+        accentCallout2 = "AccentCallout2",
 
-        accentCallout3 = "accentCallout3",
+        accentCallout3 = "AccentCallout3",
 
-        borderCallout1 = "borderCallout1",
+        borderCallout1 = "BorderCallout1",
 
-        borderCallout2 = "borderCallout2",
+        borderCallout2 = "BorderCallout2",
 
-        borderCallout3 = "borderCallout3",
+        borderCallout3 = "BorderCallout3",
 
-        accentBorderCallout1 = "accentBorderCallout1",
+        accentBorderCallout1 = "AccentBorderCallout1",
 
-        accentBorderCallout2 = "accentBorderCallout2",
+        accentBorderCallout2 = "AccentBorderCallout2",
 
-        accentBorderCallout3 = "accentBorderCallout3",
+        accentBorderCallout3 = "AccentBorderCallout3",
 
-        wedgeRectCallout = "wedgeRectCallout",
+        wedgeRectCallout = "WedgeRectCallout",
 
-        wedgeRRectCallout = "wedgeRRectCallout",
+        wedgeRRectCallout = "WedgeRRectCallout",
 
-        wedgeEllipseCallout = "wedgeEllipseCallout",
+        wedgeEllipseCallout = "WedgeEllipseCallout",
 
-        cloudCallout = "cloudCallout",
+        cloudCallout = "CloudCallout",
 
-        cloud = "cloud",
+        cloud = "Cloud",
 
-        ribbon = "ribbon",
+        ribbon = "Ribbon",
 
-        ribbon2 = "ribbon2",
+        ribbon2 = "Ribbon2",
 
-        ellipseRibbon = "ellipseRibbon",
+        ellipseRibbon = "EllipseRibbon",
 
-        ellipseRibbon2 = "ellipseRibbon2",
+        ellipseRibbon2 = "EllipseRibbon2",
 
-        leftRightRibbon = "leftRightRibbon",
+        leftRightRibbon = "LeftRightRibbon",
 
-        verticalScroll = "verticalScroll",
+        verticalScroll = "VerticalScroll",
 
-        horizontalScroll = "horizontalScroll",
+        horizontalScroll = "HorizontalScroll",
 
-        wave = "wave",
+        wave = "Wave",
 
-        doubleWave = "doubleWave",
+        doubleWave = "DoubleWave",
 
-        plus = "plus",
+        plus = "Plus",
 
-        flowChartProcess = "flowChartProcess",
+        flowChartProcess = "FlowChartProcess",
 
-        flowChartDecision = "flowChartDecision",
+        flowChartDecision = "FlowChartDecision",
 
-        flowChartInputOutput = "flowChartInputOutput",
+        flowChartInputOutput = "FlowChartInputOutput",
 
-        flowChartPredefinedProcess = "flowChartPredefinedProcess",
+        flowChartPredefinedProcess = "FlowChartPredefinedProcess",
 
-        flowChartInternalStorage = "flowChartInternalStorage",
+        flowChartInternalStorage = "FlowChartInternalStorage",
 
-        flowChartDocument = "flowChartDocument",
+        flowChartDocument = "FlowChartDocument",
 
-        flowChartMultidocument = "flowChartMultidocument",
+        flowChartMultidocument = "FlowChartMultidocument",
 
-        flowChartTerminator = "flowChartTerminator",
+        flowChartTerminator = "FlowChartTerminator",
 
-        flowChartPreparation = "flowChartPreparation",
+        flowChartPreparation = "FlowChartPreparation",
 
-        flowChartManualInput = "flowChartManualInput",
+        flowChartManualInput = "FlowChartManualInput",
 
-        flowChartManualOperation = "flowChartManualOperation",
+        flowChartManualOperation = "FlowChartManualOperation",
 
-        flowChartConnector = "flowChartConnector",
+        flowChartConnector = "FlowChartConnector",
 
-        flowChartPunchedCard = "flowChartPunchedCard",
+        flowChartPunchedCard = "FlowChartPunchedCard",
 
-        flowChartPunchedTape = "flowChartPunchedTape",
+        flowChartPunchedTape = "FlowChartPunchedTape",
 
-        flowChartSummingJunction = "flowChartSummingJunction",
+        flowChartSummingJunction = "FlowChartSummingJunction",
 
-        flowChartOr = "flowChartOr",
+        flowChartOr = "FlowChartOr",
 
-        flowChartCollate = "flowChartCollate",
+        flowChartCollate = "FlowChartCollate",
 
-        flowChartSort = "flowChartSort",
+        flowChartSort = "FlowChartSort",
 
-        flowChartExtract = "flowChartExtract",
+        flowChartExtract = "FlowChartExtract",
 
-        flowChartMerge = "flowChartMerge",
+        flowChartMerge = "FlowChartMerge",
 
-        flowChartOfflineStorage = "flowChartOfflineStorage",
+        flowChartOfflineStorage = "FlowChartOfflineStorage",
 
-        flowChartOnlineStorage = "flowChartOnlineStorage",
+        flowChartOnlineStorage = "FlowChartOnlineStorage",
 
-        flowChartMagneticTape = "flowChartMagneticTape",
+        flowChartMagneticTape = "FlowChartMagneticTape",
 
-        flowChartMagneticDisk = "flowChartMagneticDisk",
+        flowChartMagneticDisk = "FlowChartMagneticDisk",
 
-        flowChartMagneticDrum = "flowChartMagneticDrum",
+        flowChartMagneticDrum = "FlowChartMagneticDrum",
 
-        flowChartDisplay = "flowChartDisplay",
+        flowChartDisplay = "FlowChartDisplay",
 
-        flowChartDelay = "flowChartDelay",
+        flowChartDelay = "FlowChartDelay",
 
-        flowChartAlternateProcess = "flowChartAlternateProcess",
+        flowChartAlternateProcess = "FlowChartAlternateProcess",
 
-        flowChartOffpageConnector = "flowChartOffpageConnector",
+        flowChartOffpageConnector = "FlowChartOffpageConnector",
 
-        actionButtonBlank = "actionButtonBlank",
+        actionButtonBlank = "ActionButtonBlank",
 
-        actionButtonHome = "actionButtonHome",
+        actionButtonHome = "ActionButtonHome",
 
-        actionButtonHelp = "actionButtonHelp",
+        actionButtonHelp = "ActionButtonHelp",
 
-        actionButtonInformation = "actionButtonInformation",
+        actionButtonInformation = "ActionButtonInformation",
 
-        actionButtonForwardNext = "actionButtonForwardNext",
+        actionButtonForwardNext = "ActionButtonForwardNext",
 
-        actionButtonBackPrevious = "actionButtonBackPrevious",
+        actionButtonBackPrevious = "ActionButtonBackPrevious",
 
-        actionButtonEnd = "actionButtonEnd",
+        actionButtonEnd = "ActionButtonEnd",
 
-        actionButtonBeginning = "actionButtonBeginning",
+        actionButtonBeginning = "ActionButtonBeginning",
 
-        actionButtonReturn = "actionButtonReturn",
+        actionButtonReturn = "ActionButtonReturn",
 
-        actionButtonDocument = "actionButtonDocument",
+        actionButtonDocument = "ActionButtonDocument",
 
-        actionButtonSound = "actionButtonSound",
+        actionButtonSound = "ActionButtonSound",
 
-        actionButtonMovie = "actionButtonMovie",
+        actionButtonMovie = "ActionButtonMovie",
 
-        gear6 = "gear6",
+        gear6 = "Gear6",
 
-        gear9 = "gear9",
+        gear9 = "Gear9",
 
-        funnel = "funnel",
+        funnel = "Funnel",
 
-        mathPlus = "mathPlus",
+        mathPlus = "MathPlus",
 
-        mathMinus = "mathMinus",
+        mathMinus = "MathMinus",
 
-        mathMultiply = "mathMultiply",
+        mathMultiply = "MathMultiply",
 
-        mathDivide = "mathDivide",
+        mathDivide = "MathDivide",
 
-        mathEqual = "mathEqual",
+        mathEqual = "MathEqual",
 
-        mathNotEqual = "mathNotEqual",
+        mathNotEqual = "MathNotEqual",
 
-        cornerTabs = "cornerTabs",
+        cornerTabs = "CornerTabs",
 
-        squareTabs = "squareTabs",
+        squareTabs = "SquareTabs",
 
-        plaqueTabs = "plaqueTabs",
+        plaqueTabs = "PlaqueTabs",
 
-        chartX = "chartX",
+        chartX = "ChartX",
 
-        chartStar = "chartStar",
+        chartStar = "ChartStar",
 
-        chartPlus = "chartPlus",
+        chartPlus = "ChartPlus",
     }
     enum ConnectorType {
-        straight = "straight",
+        straight = "Straight",
 
-        elbow = "elbow",
+        elbow = "Elbow",
 
-        curve = "curve",
+        curve = "Curve",
     }
     enum ContentType {
         /**
          * Indicates plain format type of the comment content.
          */
-        plain = "plain",
+        plain = "Plain",
 
         /**
          * Comment content containing mentions.
          */
-        mention = "mention",
+        mention = "Mention",
     }
     enum SpecialCellType {
         /**
          * All cells with conditional formats
          */
-        conditionalFormats = "conditionalFormats",
+        conditionalFormats = "ConditionalFormats",
 
         /**
          * Cells having validation criteria.
          */
-        dataValidations = "dataValidations",
+        dataValidations = "DataValidations",
 
         /**
          * Cells with no content.
          */
-        blanks = "blanks",
+        blanks = "Blanks",
 
         /**
          * Cells containing constants.
          */
-        constants = "constants",
+        constants = "Constants",
 
         /**
          * Cells containing formulas.
          */
-        formulas = "formulas",
+        formulas = "Formulas",
 
         /**
          * Cells having the same conditional format as the first cell in the range.
          */
-        sameConditionalFormat = "sameConditionalFormat",
+        sameConditionalFormat = "SameConditionalFormat",
 
         /**
          * Cells having the same data validation criteria as the first cell in the range.
          */
-        sameDataValidation = "sameDataValidation",
+        sameDataValidation = "SameDataValidation",
 
         /**
          * Cells that are visible.
          */
-        visible = "visible",
+        visible = "Visible",
     }
     enum SpecialCellValueType {
         /**
          * Cells that have errors, true/false, numeric, or a string value.
          */
-        all = "all",
+        all = "All",
 
         /**
          * Cells that have errors.
          */
-        errors = "errors",
+        errors = "Errors",
 
         /**
          * Cells that have errors, or a true/false value.
          */
-        errorsLogical = "errorsLogical",
+        errorsLogical = "ErrorsLogical",
 
         /**
          * Cells that have errors, or a numeric value.
          */
-        errorsNumbers = "errorsNumbers",
+        errorsNumbers = "ErrorsNumbers",
 
         /**
          * Cells that have errors, or a string value.
          */
-        errorsText = "errorsText",
+        errorsText = "ErrorsText",
 
         /**
          * Cells that have errors, true/false, or a numeric value.
          */
-        errorsLogicalNumber = "errorsLogicalNumber",
+        errorsLogicalNumber = "ErrorsLogicalNumber",
 
         /**
          * Cells that have errors, true/false, or a string value.
          */
-        errorsLogicalText = "errorsLogicalText",
+        errorsLogicalText = "ErrorsLogicalText",
 
         /**
          * Cells that have errors, numeric, or a string value.
          */
-        errorsNumberText = "errorsNumberText",
+        errorsNumberText = "ErrorsNumberText",
 
         /**
          * Cells that have a true/false value.
          */
-        logical = "logical",
+        logical = "Logical",
 
         /**
          * Cells that have a true/false, or a numeric value.
          */
-        logicalNumbers = "logicalNumbers",
+        logicalNumbers = "LogicalNumbers",
 
         /**
          * Cells that have a true/false, or a string value.
          */
-        logicalText = "logicalText",
+        logicalText = "LogicalText",
 
         /**
          * Cells that have a true/false, numeric, or a string value.
          */
-        logicalNumbersText = "logicalNumbersText",
+        logicalNumbersText = "LogicalNumbersText",
 
         /**
          * Cells that have a numeric value.
          */
-        numbers = "numbers",
+        numbers = "Numbers",
 
         /**
          * Cells that have a numeric, or a string value.
          */
-        numbersText = "numbersText",
+        numbersText = "NumbersText",
 
         /**
          * Cells that have a string value.
          */
-        text = "text",
+        text = "Text",
     }
     /**
      * Specifies the way that an object is attached to its underlying cells.
@@ -12554,92 +14258,92 @@ declare namespace Excel {
         /**
          * The object is moved with the cells.
          */
-        twoCell = "twoCell",
+        twoCell = "TwoCell",
 
         /**
          * The object is moved and sized with the cells.
          */
-        oneCell = "oneCell",
+        oneCell = "OneCell",
 
         /**
          * The object is free floating.
          */
-        absolute = "absolute",
+        absolute = "Absolute",
     }
     enum FillPattern {
-        none = "none",
+        none = "None",
 
-        solid = "solid",
+        solid = "Solid",
 
-        gray50 = "gray50",
+        gray50 = "Gray50",
 
-        gray75 = "gray75",
+        gray75 = "Gray75",
 
-        gray25 = "gray25",
+        gray25 = "Gray25",
 
-        horizontal = "horizontal",
+        horizontal = "Horizontal",
 
-        vertical = "vertical",
+        vertical = "Vertical",
 
-        down = "down",
+        down = "Down",
 
-        up = "up",
+        up = "Up",
 
-        checker = "checker",
+        checker = "Checker",
 
-        semiGray75 = "semiGray75",
+        semiGray75 = "SemiGray75",
 
-        lightHorizontal = "lightHorizontal",
+        lightHorizontal = "LightHorizontal",
 
-        lightVertical = "lightVertical",
+        lightVertical = "LightVertical",
 
-        lightDown = "lightDown",
+        lightDown = "LightDown",
 
-        lightUp = "lightUp",
+        lightUp = "LightUp",
 
-        grid = "grid",
+        grid = "Grid",
 
-        crissCross = "crissCross",
+        crissCross = "CrissCross",
 
-        gray16 = "gray16",
+        gray16 = "Gray16",
 
-        gray8 = "gray8",
+        gray8 = "Gray8",
 
-        linearGradient = "linearGradient",
+        linearGradient = "LinearGradient",
 
-        rectangularGradient = "rectangularGradient",
+        rectangularGradient = "RectangularGradient",
     }
     /**
      * Specifies the horizontal alignment for the text frame in a shape.
      */
     enum ShapeTextHorizontalAlignment {
-        left = "left",
+        left = "Left",
 
-        center = "center",
+        center = "Center",
 
-        right = "right",
+        right = "Right",
 
-        justify = "justify",
+        justify = "Justify",
 
-        justifyLow = "justifyLow",
+        justifyLow = "JustifyLow",
 
-        distributed = "distributed",
+        distributed = "Distributed",
 
-        thaiDistributed = "thaiDistributed",
+        thaiDistributed = "ThaiDistributed",
     }
     /**
      * Specifies the vertical alignment for the text frame in a shape.
      */
     enum ShapeTextVerticalAlignment {
-        top = "top",
+        top = "Top",
 
-        middle = "middle",
+        middle = "Middle",
 
-        bottom = "bottom",
+        bottom = "Bottom",
 
-        justified = "justified",
+        justified = "Justified",
 
-        distributed = "distributed",
+        distributed = "Distributed",
     }
     /**
      * Specifies the vertical overflow for the text frame in a shape.
@@ -12648,51 +14352,51 @@ declare namespace Excel {
         /**
          * Allow text to overflow the text frame vertically (can be from the top, bottom, or both depending on the text alignment).
          */
-        overflow = "overflow",
+        overflow = "Overflow",
 
         /**
          * Hide text that does not fit vertically within the text frame, and add an ellipsis (...) at the end of the visible text.
          */
-        ellipsis = "ellipsis",
+        ellipsis = "Ellipsis",
 
         /**
          * Hide text that does not fit vertically within the text frame.
          */
-        clip = "clip",
+        clip = "Clip",
     }
     /**
      * Specifies the horizontal overflow for the text frame in a shape.
      */
     enum ShapeTextHorizontalOverflow {
-        overflow = "overflow",
+        overflow = "Overflow",
 
-        clip = "clip",
+        clip = "Clip",
     }
     /**
      * Specifies the reading order for the text frame in a shape.
      */
     enum ShapeTextReadingOrder {
-        leftToRight = "leftToRight",
+        leftToRight = "LeftToRight",
 
-        rightToLeft = "rightToLeft",
+        rightToLeft = "RightToLeft",
     }
     /**
      * Specifies the orientation for the text frame in a shape.
      */
     enum ShapeTextOrientation {
-        horizontal = "horizontal",
+        horizontal = "Horizontal",
 
-        vertical = "vertical",
+        vertical = "Vertical",
 
-        vertical270 = "vertical270",
+        vertical270 = "Vertical270",
 
-        wordArtVertical = "wordArtVertical",
+        wordArtVertical = "WordArtVertical",
 
-        eastAsianVertical = "eastAsianVertical",
+        eastAsianVertical = "EastAsianVertical",
 
-        mongolianVertical = "mongolianVertical",
+        mongolianVertical = "MongolianVertical",
 
-        wordArtVerticalRTL = "wordArtVerticalRTL",
+        wordArtVerticalRTL = "WordArtVerticalRTL",
     }
     /**
      * Determines the type of automatic sizing allowed.
@@ -12701,22 +14405,22 @@ declare namespace Excel {
         /**
          * No autosizing.
          */
-        autoSizeNone = "autoSizeNone",
+        autoSizeNone = "AutoSizeNone",
 
         /**
          * The text is adjusted to fit the shape.
          */
-        autoSizeTextToFitShape = "autoSizeTextToFitShape",
+        autoSizeTextToFitShape = "AutoSizeTextToFitShape",
 
         /**
          * The shape is adjusted to fit the text.
          */
-        autoSizeShapeToFitText = "autoSizeShapeToFitText",
+        autoSizeShapeToFitText = "AutoSizeShapeToFitText",
 
         /**
          * A combination of automatic sizing schemes are used.
          */
-        autoSizeMixed = "autoSizeMixed",
+        autoSizeMixed = "AutoSizeMixed",
     }
     /**
      * Specifies the slicer sort behavior for Slicer.sortBy API.
@@ -12725,16 +14429,16 @@ declare namespace Excel {
         /**
          * Sort slicer items in the order provided by the data source.
          */
-        dataSourceOrder = "dataSourceOrder",
+        dataSourceOrder = "DataSourceOrder",
 
         /**
          * Sort slicer items in ascending order by item captions.
          */
-        ascending = "ascending",
+        ascending = "Ascending",
 
         /**
          * Sort slicer items in descending order by item captions.
          */
-        descending = "descending",
+        descending = "Descending",
     }
 }

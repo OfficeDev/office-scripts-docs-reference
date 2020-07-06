@@ -105,11 +105,55 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'readonly type: ShapeFillType;'
+      content: |-
+        readonly type:
+                    | ShapeFillType
+                    | "NoFill"
+                    | "Solid"
+                    | "Gradient"
+                    | "Pattern"
+                    | "PictureAndTexture"
+                    | "Mixed";
       return:
         type:
-          - 'excel!Excel.ShapeFillType:enum'
+          - 'excel!Excel.ShapeFill#type~0:complex'
 references:
-  - uid: 'excel!Excel.ShapeFillType:enum'
-    name: ShapeFillType
-    fullName: Excel.ShapeFillType
+  - uid: 'excel!Excel.ShapeFill#type~0:complex'
+    name: |-
+      | ShapeFillType
+                  | "NoFill"
+                  | "Solid"
+                  | "Gradient"
+                  | "Pattern"
+                  | "PictureAndTexture"
+                  | "Mixed"
+    fullName: |-
+      | Excel.ShapeFillType
+                  | "NoFill"
+                  | "Solid"
+                  | "Gradient"
+                  | "Pattern"
+                  | "PictureAndTexture"
+                  | "Mixed"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ShapeFillType:enum'
+        name: ShapeFillType
+        fullName: Excel.ShapeFillType
+      - name: |2-
+
+                      | "NoFill"
+                      | "Solid"
+                      | "Gradient"
+                      | "Pattern"
+                      | "PictureAndTexture"
+                      | "Mixed"
+        fullName: |2-
+
+                      | "NoFill"
+                      | "Solid"
+                      | "Gradient"
+                      | "Pattern"
+                      | "PictureAndTexture"
+                      | "Mixed"

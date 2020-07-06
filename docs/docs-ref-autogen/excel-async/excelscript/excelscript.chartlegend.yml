@@ -108,10 +108,19 @@ items:
       - typeScript
     type: property
     syntax:
-      content: 'position: ChartLegendPosition;'
+      content: |-
+        position:
+                    | ChartLegendPosition
+                    | "Invalid"
+                    | "Top"
+                    | "Bottom"
+                    | "Left"
+                    | "Right"
+                    | "Corner"
+                    | "Custom";
       return:
         type:
-          - 'excel!Excel.ChartLegendPosition:enum'
+          - 'excel!Excel.ChartLegend#position~0:complex'
   - uid: 'excel!Excel.ChartLegend#showShadow:member'
     summary: Specifies if the legend has a shadow on the chart.
     name: showShadow
@@ -167,6 +176,46 @@ references:
   - uid: 'excel!Excel.ChartLegendEntryCollection:interface'
     name: ChartLegendEntryCollection
     fullName: Excel.ChartLegendEntryCollection
-  - uid: 'excel!Excel.ChartLegendPosition:enum'
-    name: ChartLegendPosition
-    fullName: Excel.ChartLegendPosition
+  - uid: 'excel!Excel.ChartLegend#position~0:complex'
+    name: |-
+      | ChartLegendPosition
+                  | "Invalid"
+                  | "Top"
+                  | "Bottom"
+                  | "Left"
+                  | "Right"
+                  | "Corner"
+                  | "Custom"
+    fullName: |-
+      | Excel.ChartLegendPosition
+                  | "Invalid"
+                  | "Top"
+                  | "Bottom"
+                  | "Left"
+                  | "Right"
+                  | "Corner"
+                  | "Custom"
+    spec.typeScript:
+      - name: '| '
+        fullName: '| '
+      - uid: 'excel!Excel.ChartLegendPosition:enum'
+        name: ChartLegendPosition
+        fullName: Excel.ChartLegendPosition
+      - name: |2-
+
+                      | "Invalid"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+                      | "Corner"
+                      | "Custom"
+        fullName: |2-
+
+                      | "Invalid"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+                      | "Corner"
+                      | "Custom"

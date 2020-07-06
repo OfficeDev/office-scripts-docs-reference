@@ -21,10 +21,10 @@ items:
       - typeScript
     type: method
     syntax:
-      content: 'getCount(): number;'
+      content: 'getCount(): ClientResult<number>;'
       return:
         type:
-          - number
+          - 'excel!Excel.PivotHierarchyCollection#getCount~0:complex'
         description: ''
   - uid: 'excel!Excel.PivotHierarchyCollection#getItem:member(1)'
     summary: Gets a PivotHierarchy by its name or id.
@@ -83,6 +83,15 @@ items:
           type:
             - 'string | string[]'
 references:
+  - uid: 'excel!Excel.PivotHierarchyCollection#getCount~0:complex'
+    name: ClientResult<number>
+    fullName: Excel.ClientResult<number>
+    spec.typeScript:
+      - uid: 'excel!Excel.ClientResult:interface'
+        name: ClientResult
+        fullName: Excel.ClientResult
+      - name: <number>
+        fullName: <number>
   - uid: 'excel!Excel.PivotHierarchy:interface'
     name: PivotHierarchy
     fullName: Excel.PivotHierarchy
