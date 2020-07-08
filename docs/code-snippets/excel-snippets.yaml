@@ -172,9 +172,9 @@
 'ExcelScript.Range#getResizedRange:member(1)':
   - |-
     /**
-    * This script copies the formatting in the active cell to the neighboring cells.
-    * Note that this script only works when the active cell isn't on an edge of the worksheet.
-    */
+     * This script copies the formatting in the active cell to the neighboring cells.
+     * Note that this script only works when the active cell isn't on an edge of the worksheet.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the active cell.
       let activeCell = workbook.getActiveCell();
@@ -224,8 +224,8 @@
 'ExcelScript.Range#getValue:member(1)':
   - |-
     /**
-      * This sample reads the value of A1 and prints it to the console.
-      */
+     * This sample reads the value of A1 and prints it to the console.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       let selectedSheet = workbook.getActiveWorksheet();
@@ -236,11 +236,47 @@
       // Print the value of A1.
       console.log(range.getValue());
     }
+'ExcelScript.Range#setValues:member(1)':
+  - |-
+   /**
+    * This sample inserts some pre-loaded data into a range.
+    * It also shows how to get a range that fits the data.
+    */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      let currentCell = workbook.getActiveCell();
+      
+      // Calculate the range needed to fit the given data.
+      let targetRange = currentCell.getResizedRange(DATA.length - 1, DATA[0].length - 1);
+
+      // Set range values to the data.
+      targetRange.setValues(DATA);
+
+      // Autofit the columns so the worksheet is readable. 
+      targetRange.getFormat().autofitColumns();
+    }
+
+    /* 
+     * This sample's data is in a static 2-dimensional array.
+     * You could also get the input from other ranges or sources.
+     * Note that each row must have the same number of columns to be valid. 
+     */
+    const DATA = [
+      ['Date', 'Salesperson', 'Product', 'Amount']
+      , ['3/2/2020', 'Anne', 'Pizza', '$1400']
+      , ['3/2/2020', 'Mariya', 'Pizza', '$1700']
+      , ['3/7/2020', 'Mark', 'Sandwiches', '$1010']
+      , ['3/24/2020', 'Anne', 'Pizza', '$750']
+      , ['3/28/2020', 'Mark', 'Salads', '$510']
+      , ['4/17/2020', 'Laura', 'Salads', '$900']
+      , ['4/17/2020', 'Mariya', 'Salads', '$1600']
+      , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
+    ];
 'ExcelScript.TableSort#apply:member(1)':
   - |-
     /**
-      * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
-      */
+     * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       let selectedSheet = workbook.getActiveWorksheet();
@@ -255,9 +291,9 @@
 'ExcelScript.TopBottomConditionalFormat#setRule:member(1)':
   - |-
     /**
-      * This sample applies conditional formatting to the currently used range in the worksheet. 
-      * The conditional formatting is a green fill for the top 10% of values.
-      */
+     * This sample applies conditional formatting to the currently used range in the worksheet. 
+     * The conditional formatting is a green fill for the top 10% of values.
+     */
     function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       let selectedSheet = workbook.getActiveWorksheet();
