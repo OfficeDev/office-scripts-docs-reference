@@ -1913,7 +1913,38 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /** 
+           * This scripts inserts a hyperlink to the first cell of the last worksheet in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            let cell = workbook.getActiveCell();
+
+            // Get the last worksheet in the workbook.
+            // Note that this might be the current sheet if there's only one worksheet.
+            let lastSheet = workbook.getLastWorksheet();
+
+            // Get sheet name. 
+            let linkedSheetName = lastSheet.getName();
+            console.log(`Setting hyperlink of ${cell.getAddress()} to the ${linkedSheetName} sheet's A1 cell`);
+
+            // Set the text for the hyperlink.
+            let value = `Click to go to: ${linkedSheetName}`;
+
+            // Create the hyperlink using that cell's value.
+            cell.setHyperlink({
+              textToDisplay: value.toString(),
+              screenTip: `Navigate to ${linkedSheetName}`,
+              documentReference: `${linkedSheetName}!A1`
+            });
+          }
+          ```
       parameters:
         - id: hyperlink
           description: ''
