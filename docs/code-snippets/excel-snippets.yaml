@@ -112,6 +112,18 @@
         type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
       });
     }
+'ExcelScript.Range#clear:member(1)':
+  - |-
+    /**
+     * This script removes all the formatting from the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      let range = workbook.getSelectedRange();
+
+      // Clear all the formatting in that range.
+      range.clear(ExcelScript.ClearApplyTo.formats);
+    }
 'ExcelScript.Range#getColumnCount:member(1)':
   - |-
     /**
@@ -347,6 +359,22 @@
       let cell = workbook.getActiveCell();
       console.log(`The current cell's value is ${cell.getValue()}`);
     }
+'ExcelScript.Workbook#getWorksheets:member(1)':
+  - |-
+    /**
+     * This script logs the names of all the worksheets in the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get all the worksheets in the workbook. 
+      let sheets = workbook.getWorksheets();
+
+      // Get a list of all the worksheet names.
+      let names = sheets.map ((sheet) => sheet.getName());
+
+      // Write in the console all the worksheet names and the total count.
+      console.log(names);
+      console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
 'ExcelScript.Worksheet#addTable:member(1)':
   - |-
     /**
@@ -407,4 +435,19 @@
       
       // Print the value of A1.
       console.log(range.getValue());
+    }
+'ExcelScript.Worksheet#setTabColor:member(1)':
+  - |-
+    /**
+     * This script sets the tab color of every worksheet in the workbook to red.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get all the worksheets in the workbook. 
+      let sheets = workbook.getWorksheets();
+      
+      // Set the tab color of each worksheet to a random color.
+      for (let sheet of sheets) {    
+        // Set the color of the current worksheet's tab to red.
+        sheet.setTabColor("red");
+      }
     }
