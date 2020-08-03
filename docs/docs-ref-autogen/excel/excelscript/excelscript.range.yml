@@ -226,7 +226,23 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script removes all the formatting from the selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected range.
+            let range = workbook.getSelectedRange();
+
+            // Clear all the formatting in that range.
+            range.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
       parameters:
         - id: applyTo
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
