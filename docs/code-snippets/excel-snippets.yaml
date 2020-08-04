@@ -154,6 +154,26 @@
       // Log the negative number count to the console.
       console.log(negativeCount);
     }
+'ExcelScript.Range#getFormula:member(1)':
+  - |-
+    /*
+     * This script sets a cell's formula, 
+     * then displays how Excel stores the cell's formula and value separately.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Set A1 to 2.
+      let a1 = selectedSheet.getRange("A1");
+      a1.setValue(2);
+
+      // Set B1 to the formula =(2*A1), which should equal 4.
+      let b1 = selectedSheet.getRange("B1")
+      b1.setFormula("=(2*A1)");
+
+      // Log the current results for `getFormula` and `getValue` at B1.
+      console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+    }
 'ExcelScript.Range#getOffsetRange:member(1)':
   - |-
     /**
@@ -247,6 +267,26 @@
       
       // Print the value of A1.
       console.log(range.getValue());
+    }
+'ExcelScript.Range#setFormula:member(1)':
+  - |-
+    /*
+     * This script sets a cell's formula, 
+     * then displays how Excel stores the cell's formula and value separately.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Set A1 to 2.
+      let a1 = selectedSheet.getRange("A1");
+      a1.setValue(2);
+
+      // Set B1 to the formula =(2*A1), which should equal 4.
+      let b1 = selectedSheet.getRange("B1")
+      b1.setFormula("=(2*A1)");
+
+      // Log the current results for `getFormula` and `getValue` at B1.
+      console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
     }
 'ExcelScript.Range#setHyperlink:member(1)':
   - |-
