@@ -1338,7 +1338,27 @@ items:
       return:
         type:
           - 'ExcelScript!ExcelScript.Workbook#getWorksheets~0:complex'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script logs the names of all the worksheets in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the worksheets in the workbook. 
+            let sheets = workbook.getWorksheets();
+
+            // Get a list of all the worksheet names.
+            let names = sheets.map ((sheet) => sheet.getName());
+
+            // Write in the console all the worksheet names and the total count.
+            console.log(names);
+            console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+          }
+          ```
   - uid: 'ExcelScript!ExcelScript.Workbook#refreshAllDataConnections:member(1)'
     summary: Refreshes all the Data Connections.
     name: refreshAllDataConnections()

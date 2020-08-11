@@ -226,7 +226,23 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script removes all the formatting from the selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected range.
+            let range = workbook.getSelectedRange();
+
+            // Clear all the formatting in that range.
+            range.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
       parameters:
         - id: applyTo
           description: Optional. Determines the type of clear action. See Excel.ClearApplyTo for details.
@@ -729,7 +745,31 @@ items:
       return:
         type:
           - string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /*
+           * This script sets a cell's formula, 
+           * then displays how Excel stores the cell's formula and value separately.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Set A1 to 2.
+            let a1 = selectedSheet.getRange("A1");
+            a1.setValue(2);
+
+            // Set B1 to the formula =(2*A1), which should equal 4.
+            let b1 = selectedSheet.getRange("B1")
+            b1.setFormula("=(2*A1)");
+
+            // Log the current results for `getFormula` and `getValue` at B1.
+            console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+          }
+          ```
   - uid: 'ExcelScript!ExcelScript.Range#getFormulaLocal:member(1)'
     summary: >-
       Represents the cell formula in A1-style notation, in the user's language and number-formatting locale. For
@@ -1798,7 +1838,31 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /*
+           * This script sets a cell's formula, 
+           * then displays how Excel stores the cell's formula and value separately.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Set A1 to 2.
+            let a1 = selectedSheet.getRange("A1");
+            a1.setValue(2);
+
+            // Set B1 to the formula =(2*A1), which should equal 4.
+            let b1 = selectedSheet.getRange("B1")
+            b1.setFormula("=(2*A1)");
+
+            // Log the current results for `getFormula` and `getValue` at B1.
+            console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+          }
+          ```
       parameters:
         - id: formula
           description: ''
@@ -1913,7 +1977,38 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /** 
+           * This script inserts a hyperlink to the first cell of the last worksheet in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            let cell = workbook.getActiveCell();
+
+            // Get the last worksheet in the workbook.
+            // Note that this might be the current sheet if there's only one worksheet.
+            let lastSheet = workbook.getLastWorksheet();
+
+            // Get sheet name. 
+            let linkedSheetName = lastSheet.getName();
+            console.log(`Setting hyperlink of ${cell.getAddress()} to the ${linkedSheetName} sheet's A1 cell`);
+
+            // Set the text for the hyperlink.
+            let value = `Click to go to: ${linkedSheetName}`;
+
+            // Create the hyperlink using that cell's value.
+            cell.setHyperlink({
+              textToDisplay: value.toString(),
+              screenTip: `Navigate to ${linkedSheetName}`,
+              documentReference: `${linkedSheetName}!A1`
+            });
+          }
+          ```
       parameters:
         - id: hyperlink
           description: ''

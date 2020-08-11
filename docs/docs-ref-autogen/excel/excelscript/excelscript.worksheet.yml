@@ -1497,7 +1497,26 @@ items:
       return:
         type:
           - void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script sets the tab color of every worksheet in the workbook to red.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the worksheets in the workbook. 
+            let sheets = workbook.getWorksheets();
+            
+            // Set the tab color of each worksheet to a random color.
+            for (let sheet of sheets) {    
+              // Set the color of the current worksheet's tab to red.
+              sheet.setTabColor("red");
+            }
+          }
+          ```
       parameters:
         - id: tabColor
           description: ''
