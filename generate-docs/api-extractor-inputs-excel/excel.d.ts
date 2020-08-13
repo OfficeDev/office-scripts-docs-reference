@@ -1405,16 +1405,6 @@ export declare namespace ExcelScript {
         convertDataTypeToText(): void;
 
         /**
-         * Converts the range cells into linked datatype in the worksheet.
-         * @param serviceID - The Service ID which will be used to query the data.
-         * @param languageCulture - Language Culture to query the service for.
-         */
-        convertToLinkedDataType(
-            serviceID: number,
-            languageCulture: string
-        ): void;
-
-        /**
          * Copies cell data or formatting from the source range or RangeAreas to the current range.
          * The destination range can be a different size than the source range or RangeAreas. The destination will be expanded automatically if it is smaller than the source.
          * @param sourceRange - The source range or RangeAreas to copy from. When the source RangeAreas has multiple ranges, their form must be able to be created by removing full rows or columns from a rectangular range.
@@ -1878,16 +1868,6 @@ export declare namespace ExcelScript {
          * Converts all cells in the RangeAreas with datatypes into text.
          */
         convertDataTypeToText(): void;
-
-        /**
-         * Converts all cells in the RangeAreas into linked datatype.
-         * @param serviceID - The Service ID which will be used to query the data.
-         * @param languageCulture - Language Culture to query the service for.
-         */
-        convertToLinkedDataType(
-            serviceID: number,
-            languageCulture: string
-        ): void;
 
         /**
          * Copies cell data or formatting from the source range or RangeAreas to the current RangeAreas.
@@ -12119,7 +12099,7 @@ export declare namespace ExcelScript {
 
         allDatesInPeriodDecember,
 
-        allDatesInPeriodFebruray,
+        allDatesInPeriodFebruary,
 
         allDatesInPeriodJanuary,
 
