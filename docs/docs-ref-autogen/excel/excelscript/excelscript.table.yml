@@ -1,9 +1,7 @@
 ### YamlMime:UniversalReference
 items:
   - uid: 'ExcelScript!ExcelScript.Table:interface'
-    summary: >-
-      Represents an Excel table. To learn more about the table object model, read [Work with tables using the Excel
-      JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-tables)<!-- -->.
+    summary: Represents an Excel table.
     name: ExcelScript.Table
     fullName: ExcelScript.Table
     langs:
@@ -32,6 +30,7 @@ items:
       - 'ExcelScript!ExcelScript.Table#getPredefinedTableStyle:member(1)'
       - 'ExcelScript!ExcelScript.Table#getRange:member(1)'
       - 'ExcelScript!ExcelScript.Table#getRangeBetweenHeaderAndTotal:member(1)'
+      - 'ExcelScript!ExcelScript.Table#getRowCount:member(1)'
       - 'ExcelScript!ExcelScript.Table#getShowBandedColumns:member(1)'
       - 'ExcelScript!ExcelScript.Table#getShowBandedRows:member(1)'
       - 'ExcelScript!ExcelScript.Table#getShowFilterButton:member(1)'
@@ -342,12 +341,7 @@ items:
           - string
         description: ''
   - uid: 'ExcelScript!ExcelScript.Table#getName:member(1)'
-    summary: >-
-      Name of the table.
-
-
-      The set name of the table must follow the guidelines specified in the [Rename an Excel
-      table](https://support.office.com/article/Rename-an-Excel-table-FBF49A4F-82A3-43EB-8BA2-44D21233B114) article.
+    summary: Name of the table.
     name: getName()
     fullName: getName()
     langs:
@@ -400,6 +394,19 @@ items:
       return:
         type:
           - 'ExcelScript!ExcelScript.Range:interface'
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.Table#getRowCount:member(1)'
+    summary: Gets the number of rows in the table.
+    name: getRowCount()
+    fullName: getRowCount()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getRowCount(): number;'
+      return:
+        type:
+          - number
         description: ''
   - uid: 'ExcelScript!ExcelScript.Table#getShowBandedColumns:member(1)'
     summary: >-
@@ -561,12 +568,7 @@ items:
           type:
             - boolean
   - uid: 'ExcelScript!ExcelScript.Table#setName:member(1)'
-    summary: >-
-      Name of the table.
-
-
-      The set name of the table must follow the guidelines specified in the [Rename an Excel
-      table](https://support.office.com/article/Rename-an-Excel-table-FBF49A4F-82A3-43EB-8BA2-44D21233B114) article.
+    summary: Name of the table.
     name: setName(name)
     fullName: setName(name)
     langs:

@@ -9,17 +9,86 @@ items:
     type: interface
     package: ExcelScript!
     children:
+      - 'ExcelScript!ExcelScript.PivotField#applyFilter:member(1)'
+      - 'ExcelScript!ExcelScript.PivotField#clearAllFilters:member(1)'
+      - 'ExcelScript!ExcelScript.PivotField#clearFilter:member(1)'
+      - 'ExcelScript!ExcelScript.PivotField#getFilters:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getId:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getItems:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getName:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getPivotItem:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getShowAllItems:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#getSubtotals:member(1)'
+      - 'ExcelScript!ExcelScript.PivotField#isFiltered:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#setName:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#setShowAllItems:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#setSubtotals:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#sortByLabels:member(1)'
       - 'ExcelScript!ExcelScript.PivotField#sortByValues:member(1)'
+  - uid: 'ExcelScript!ExcelScript.PivotField#applyFilter:member(1)'
+    summary: >-
+      Sets one or more of the field's current PivotFilters and applies them to the field. If the provided filters are
+      invalid or cannot be applied, an exception is thrown.
+    name: applyFilter(filter)
+    fullName: applyFilter(filter)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'applyFilter(filter: PivotFilters): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: filter
+          description: A configured specific PivotFilter or a PivotFilters interface containing multiple configured filters.
+          type:
+            - 'ExcelScript!ExcelScript.PivotFilters:interface'
+  - uid: 'ExcelScript!ExcelScript.PivotField#clearAllFilters:member(1)'
+    summary: Clears all criteria from all of the field's filters. This removes any active filtering on the field.
+    name: clearAllFilters()
+    fullName: clearAllFilters()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'clearAllFilters(): void;'
+      return:
+        type:
+          - void
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.PivotField#clearFilter:member(1)'
+    summary: Clears all existing criteria from the field's filter of the given type (if one is currently applied).
+    name: clearFilter(filterType)
+    fullName: clearFilter(filterType)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'clearFilter(filterType: PivotFilterType): void;'
+      return:
+        type:
+          - void
+        description: ''
+      parameters:
+        - id: filterType
+          description: The type of filter on the field of which to clear all criteria.
+          type:
+            - 'ExcelScript!ExcelScript.PivotFilterType:enum'
+  - uid: 'ExcelScript!ExcelScript.PivotField#getFilters:member(1)'
+    summary: Gets all filters currently applied on the field.
+    name: getFilters()
+    fullName: getFilters()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getFilters(): PivotFilters;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.PivotFilters:interface'
+        description: ''
   - uid: 'ExcelScript!ExcelScript.PivotField#getId:member(1)'
     summary: Id of the PivotField.
     name: getId()
@@ -103,6 +172,24 @@ items:
         type:
           - 'ExcelScript!ExcelScript.Subtotals:interface'
         description: ''
+  - uid: 'ExcelScript!ExcelScript.PivotField#isFiltered:member(1)'
+    summary: Checks if there are any applied filters on the field.
+    name: isFiltered(filterType)
+    fullName: isFiltered(filterType)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'isFiltered(filterType?: PivotFilterType): boolean;'
+      return:
+        type:
+          - boolean
+        description: ''
+      parameters:
+        - id: filterType
+          description: 'The filter type to check. If no type is provided, this method will check if any filter is applied.'
+          type:
+            - 'ExcelScript!ExcelScript.PivotFilterType:enum'
   - uid: 'ExcelScript!ExcelScript.PivotField#setName:member(1)'
     summary: Name of the PivotField.
     name: setName(name)
@@ -215,6 +302,12 @@ items:
           type:
             - 'ExcelScript!ExcelScript.PivotField#sortByValues~0:complex'
 references:
+  - uid: 'ExcelScript!ExcelScript.PivotFilters:interface'
+    name: PivotFilters
+    fullName: ExcelScript.PivotFilters
+  - uid: 'ExcelScript!ExcelScript.PivotFilterType:enum'
+    name: PivotFilterType
+    fullName: ExcelScript.PivotFilterType
   - uid: 'ExcelScript!ExcelScript.PivotField#getItems~0:complex'
     name: 'PivotItem[]'
     fullName: 'ExcelScript.PivotItem[]'
