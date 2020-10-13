@@ -92,6 +92,7 @@ items:
       - 'ExcelScript!ExcelScript.ChartPointFormat:interface'
       - 'ExcelScript!ExcelScript.ChartSeries:interface'
       - 'ExcelScript!ExcelScript.ChartSeriesBy:enum'
+      - 'ExcelScript!ExcelScript.ChartSeriesDimension:enum'
       - 'ExcelScript!ExcelScript.ChartSeriesFormat:interface'
       - 'ExcelScript!ExcelScript.ChartSplitType:enum'
       - 'ExcelScript!ExcelScript.ChartTextHorizontalAlignment:enum'
@@ -160,7 +161,9 @@ items:
       - 'ExcelScript!ExcelScript.DataValidationPrompt:interface'
       - 'ExcelScript!ExcelScript.DataValidationRule:interface'
       - 'ExcelScript!ExcelScript.DataValidationType:enum'
+      - 'ExcelScript!ExcelScript.DateFilterCondition:enum'
       - 'ExcelScript!ExcelScript.DateTimeDataValidation:interface'
+      - 'ExcelScript!ExcelScript.DatetimeFormatInfo:interface'
       - 'ExcelScript!ExcelScript.DeleteShiftDirection:enum'
       - 'ExcelScript!ExcelScript.DocumentProperties:interface'
       - 'ExcelScript!ExcelScript.DocumentPropertyType:enum'
@@ -188,6 +191,7 @@ items:
       - 'ExcelScript!ExcelScript.ImageFittingMode:enum'
       - 'ExcelScript!ExcelScript.InsertShiftDirection:enum'
       - 'ExcelScript!ExcelScript.IterativeCalculation:interface'
+      - 'ExcelScript!ExcelScript.LabelFilterCondition:enum'
       - 'ExcelScript!ExcelScript.Line:interface'
       - 'ExcelScript!ExcelScript.LinkedDataTypeState:enum'
       - 'ExcelScript!ExcelScript.ListDataValidation:interface'
@@ -195,6 +199,7 @@ items:
       - 'ExcelScript!ExcelScript.NamedItemArrayValues:interface'
       - 'ExcelScript!ExcelScript.NamedItemScope:enum'
       - 'ExcelScript!ExcelScript.NamedItemType:enum'
+      - 'ExcelScript!ExcelScript.NumberFormatCategory:enum'
       - 'ExcelScript!ExcelScript.NumberFormatInfo:interface'
       - 'ExcelScript!ExcelScript.PageBreak:interface'
       - 'ExcelScript!ExcelScript.PageLayout:interface'
@@ -204,14 +209,20 @@ items:
       - 'ExcelScript!ExcelScript.PaperType:enum'
       - 'ExcelScript!ExcelScript.PictureFormat:enum'
       - 'ExcelScript!ExcelScript.PivotAxis:enum'
+      - 'ExcelScript!ExcelScript.PivotDateFilter:interface'
       - 'ExcelScript!ExcelScript.PivotField:interface'
+      - 'ExcelScript!ExcelScript.PivotFilters:interface'
       - 'ExcelScript!ExcelScript.PivotFilterTopBottomCriterion:enum'
+      - 'ExcelScript!ExcelScript.PivotFilterType:enum'
       - 'ExcelScript!ExcelScript.PivotHierarchy:interface'
       - 'ExcelScript!ExcelScript.PivotItem:interface'
+      - 'ExcelScript!ExcelScript.PivotLabelFilter:interface'
       - 'ExcelScript!ExcelScript.PivotLayout:interface'
       - 'ExcelScript!ExcelScript.PivotLayoutType:enum'
+      - 'ExcelScript!ExcelScript.PivotManualFilter:interface'
       - 'ExcelScript!ExcelScript.PivotTable:interface'
       - 'ExcelScript!ExcelScript.PivotTableStyle:interface'
+      - 'ExcelScript!ExcelScript.PivotValueFilter:interface'
       - 'ExcelScript!ExcelScript.Placement:enum'
       - 'ExcelScript!ExcelScript.PredefinedCellStyle:interface'
       - 'ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface'
@@ -288,10 +299,14 @@ items:
       - 'ExcelScript!ExcelScript.TextRange:interface'
       - 'ExcelScript!ExcelScript.TimelineStyle:interface'
       - 'ExcelScript!ExcelScript.TopBottomConditionalFormat:interface'
+      - 'ExcelScript!ExcelScript.TopBottomSelectionType:enum'
+      - 'ExcelScript!ExcelScript.ValueFilterCondition:enum'
       - 'ExcelScript!ExcelScript.VerticalAlignment:enum'
       - 'ExcelScript!ExcelScript.Workbook:interface'
       - 'ExcelScript!ExcelScript.WorkbookProtection:interface'
+      - 'ExcelScript!ExcelScript.WorkbookRangeAreas:interface'
       - 'ExcelScript!ExcelScript.Worksheet:interface'
+      - 'ExcelScript!ExcelScript.WorksheetCustomProperty:interface'
       - 'ExcelScript!ExcelScript.WorksheetFreezePanes:interface'
       - 'ExcelScript!ExcelScript.WorksheetPositionType:enum'
       - 'ExcelScript!ExcelScript.WorksheetProtection:interface'
@@ -499,6 +514,8 @@ references:
     name: ExcelScript.ChartSeries
   - uid: 'ExcelScript!ExcelScript.ChartSeriesBy:enum'
     name: ExcelScript.ChartSeriesBy
+  - uid: 'ExcelScript!ExcelScript.ChartSeriesDimension:enum'
+    name: ExcelScript.ChartSeriesDimension
   - uid: 'ExcelScript!ExcelScript.ChartSeriesFormat:interface'
     name: ExcelScript.ChartSeriesFormat
   - uid: 'ExcelScript!ExcelScript.ChartSplitType:enum'
@@ -635,8 +652,12 @@ references:
     name: ExcelScript.DataValidationRule
   - uid: 'ExcelScript!ExcelScript.DataValidationType:enum'
     name: ExcelScript.DataValidationType
+  - uid: 'ExcelScript!ExcelScript.DateFilterCondition:enum'
+    name: ExcelScript.DateFilterCondition
   - uid: 'ExcelScript!ExcelScript.DateTimeDataValidation:interface'
     name: ExcelScript.DateTimeDataValidation
+  - uid: 'ExcelScript!ExcelScript.DatetimeFormatInfo:interface'
+    name: ExcelScript.DatetimeFormatInfo
   - uid: 'ExcelScript!ExcelScript.DeleteShiftDirection:enum'
     name: ExcelScript.DeleteShiftDirection
   - uid: 'ExcelScript!ExcelScript.DocumentProperties:interface'
@@ -691,6 +712,8 @@ references:
     name: ExcelScript.InsertShiftDirection
   - uid: 'ExcelScript!ExcelScript.IterativeCalculation:interface'
     name: ExcelScript.IterativeCalculation
+  - uid: 'ExcelScript!ExcelScript.LabelFilterCondition:enum'
+    name: ExcelScript.LabelFilterCondition
   - uid: 'ExcelScript!ExcelScript.Line:interface'
     name: ExcelScript.Line
   - uid: 'ExcelScript!ExcelScript.LinkedDataTypeState:enum'
@@ -705,6 +728,8 @@ references:
     name: ExcelScript.NamedItemScope
   - uid: 'ExcelScript!ExcelScript.NamedItemType:enum'
     name: ExcelScript.NamedItemType
+  - uid: 'ExcelScript!ExcelScript.NumberFormatCategory:enum'
+    name: ExcelScript.NumberFormatCategory
   - uid: 'ExcelScript!ExcelScript.NumberFormatInfo:interface'
     name: ExcelScript.NumberFormatInfo
   - uid: 'ExcelScript!ExcelScript.PageBreak:interface'
@@ -723,22 +748,34 @@ references:
     name: ExcelScript.PictureFormat
   - uid: 'ExcelScript!ExcelScript.PivotAxis:enum'
     name: ExcelScript.PivotAxis
+  - uid: 'ExcelScript!ExcelScript.PivotDateFilter:interface'
+    name: ExcelScript.PivotDateFilter
   - uid: 'ExcelScript!ExcelScript.PivotField:interface'
     name: ExcelScript.PivotField
+  - uid: 'ExcelScript!ExcelScript.PivotFilters:interface'
+    name: ExcelScript.PivotFilters
   - uid: 'ExcelScript!ExcelScript.PivotFilterTopBottomCriterion:enum'
     name: ExcelScript.PivotFilterTopBottomCriterion
+  - uid: 'ExcelScript!ExcelScript.PivotFilterType:enum'
+    name: ExcelScript.PivotFilterType
   - uid: 'ExcelScript!ExcelScript.PivotHierarchy:interface'
     name: ExcelScript.PivotHierarchy
   - uid: 'ExcelScript!ExcelScript.PivotItem:interface'
     name: ExcelScript.PivotItem
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter:interface'
+    name: ExcelScript.PivotLabelFilter
   - uid: 'ExcelScript!ExcelScript.PivotLayout:interface'
     name: ExcelScript.PivotLayout
   - uid: 'ExcelScript!ExcelScript.PivotLayoutType:enum'
     name: ExcelScript.PivotLayoutType
+  - uid: 'ExcelScript!ExcelScript.PivotManualFilter:interface'
+    name: ExcelScript.PivotManualFilter
   - uid: 'ExcelScript!ExcelScript.PivotTable:interface'
     name: ExcelScript.PivotTable
   - uid: 'ExcelScript!ExcelScript.PivotTableStyle:interface'
     name: ExcelScript.PivotTableStyle
+  - uid: 'ExcelScript!ExcelScript.PivotValueFilter:interface'
+    name: ExcelScript.PivotValueFilter
   - uid: 'ExcelScript!ExcelScript.Placement:enum'
     name: ExcelScript.Placement
   - uid: 'ExcelScript!ExcelScript.PredefinedCellStyle:interface'
@@ -916,14 +953,22 @@ references:
     name: ExcelScript.TimelineStyle
   - uid: 'ExcelScript!ExcelScript.TopBottomConditionalFormat:interface'
     name: ExcelScript.TopBottomConditionalFormat
+  - uid: 'ExcelScript!ExcelScript.TopBottomSelectionType:enum'
+    name: ExcelScript.TopBottomSelectionType
+  - uid: 'ExcelScript!ExcelScript.ValueFilterCondition:enum'
+    name: ExcelScript.ValueFilterCondition
   - uid: 'ExcelScript!ExcelScript.VerticalAlignment:enum'
     name: ExcelScript.VerticalAlignment
   - uid: 'ExcelScript!ExcelScript.Workbook:interface'
     name: ExcelScript.Workbook
   - uid: 'ExcelScript!ExcelScript.WorkbookProtection:interface'
     name: ExcelScript.WorkbookProtection
+  - uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas:interface'
+    name: ExcelScript.WorkbookRangeAreas
   - uid: 'ExcelScript!ExcelScript.Worksheet:interface'
     name: ExcelScript.Worksheet
+  - uid: 'ExcelScript!ExcelScript.WorksheetCustomProperty:interface'
+    name: ExcelScript.WorksheetCustomProperty
   - uid: 'ExcelScript!ExcelScript.WorksheetFreezePanes:interface'
     name: ExcelScript.WorksheetFreezePanes
   - uid: 'ExcelScript!ExcelScript.WorksheetPositionType:enum'
