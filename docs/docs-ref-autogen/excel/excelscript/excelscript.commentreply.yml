@@ -13,6 +13,7 @@ items:
       - 'ExcelScript!ExcelScript.CommentReply#getAuthorEmail:member(1)'
       - 'ExcelScript!ExcelScript.CommentReply#getAuthorName:member(1)'
       - 'ExcelScript!ExcelScript.CommentReply#getContent:member(1)'
+      - 'ExcelScript!ExcelScript.CommentReply#getContentType:member(1)'
       - 'ExcelScript!ExcelScript.CommentReply#getCreationDate:member(1)'
       - 'ExcelScript!ExcelScript.CommentReply#getId:member(1)'
       - 'ExcelScript!ExcelScript.CommentReply#getLocation:member(1)'
@@ -73,6 +74,19 @@ items:
       return:
         type:
           - string
+        description: ''
+  - uid: 'ExcelScript!ExcelScript.CommentReply#getContentType:member(1)'
+    summary: The content type of the reply.
+    name: getContentType()
+    fullName: getContentType()
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getContentType(): ContentType;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.ContentType:enum'
         description: ''
   - uid: 'ExcelScript!ExcelScript.CommentReply#getCreationDate:member(1)'
     summary: Gets the creation time of the comment reply.
@@ -206,6 +220,9 @@ items:
           type:
             - 'ExcelScript!ExcelScript.CommentRichContent:interface'
 references:
+  - uid: 'ExcelScript!ExcelScript.ContentType:enum'
+    name: ContentType
+    fullName: ExcelScript.ContentType
   - uid: '!Date:interface'
     name: Date
   - uid: 'ExcelScript!ExcelScript.Range:interface'

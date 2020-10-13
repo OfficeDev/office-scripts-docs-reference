@@ -18,6 +18,7 @@ items:
       - 'ExcelScript!ExcelScript.ChartSeries#getChartTrendline:member(1)'
       - 'ExcelScript!ExcelScript.ChartSeries#getChartType:member(1)'
       - 'ExcelScript!ExcelScript.ChartSeries#getDataLabels:member(1)'
+      - 'ExcelScript!ExcelScript.ChartSeries#getDimensionValues:member(1)'
       - 'ExcelScript!ExcelScript.ChartSeries#getDoughnutHoleSize:member(1)'
       - 'ExcelScript!ExcelScript.ChartSeries#getExplosion:member(1)'
       - 'ExcelScript!ExcelScript.ChartSeries#getFiltered:member(1)'
@@ -113,7 +114,7 @@ items:
         description: ''
       parameters:
         - id: type
-          description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
+          description: Specifies the trendline type. The default value is "Linear". See ExcelScript.ChartTrendline for details.
           type:
             - 'ExcelScript!ExcelScript.ChartTrendlineType:enum'
   - uid: 'ExcelScript!ExcelScript.ChartSeries#delete:member(1)'
@@ -202,7 +203,7 @@ items:
           type:
             - number
   - uid: 'ExcelScript!ExcelScript.ChartSeries#getChartType:member(1)'
-    summary: Represents the chart type of a series. See Excel.ChartType for details.
+    summary: Represents the chart type of a series. See ExcelScript.ChartType for details.
     name: getChartType()
     fullName: getChartType()
     langs:
@@ -227,6 +228,26 @@ items:
         type:
           - 'ExcelScript!ExcelScript.ChartDataLabels:interface'
         description: ''
+  - uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionValues:member(1)'
+    summary: >-
+      Gets the values from a single dimension of the chart series. These could be either category values or data values,
+      depending on the dimension specified and how the data is mapped for the chart series.
+    name: getDimensionValues(dimension)
+    fullName: getDimensionValues(dimension)
+    langs:
+      - typeScript
+    type: method
+    syntax:
+      content: 'getDimensionValues(dimension: ChartSeriesDimension): string[];'
+      return:
+        type:
+          - 'string[]'
+        description: ''
+      parameters:
+        - id: dimension
+          description: the dimension of axis where the data from
+          type:
+            - 'ExcelScript!ExcelScript.ChartSeriesDimension:enum'
   - uid: 'ExcelScript!ExcelScript.ChartSeries#getDoughnutHoleSize:member(1)'
     summary: >-
       Represents the doughnut hole size of a chart series. Only valid on doughnut and doughnutExploded charts. Throws an
@@ -535,7 +556,7 @@ items:
           - number
         description: ''
   - uid: 'ExcelScript!ExcelScript.ChartSeries#getMarkerStyle:member(1)'
-    summary: Specifies the marker style of a chart series. See Excel.ChartMarkerStyle for details.
+    summary: Specifies the marker style of a chart series. See ExcelScript.ChartMarkerStyle for details.
     name: getMarkerStyle()
     fullName: getMarkerStyle()
     langs:
@@ -548,7 +569,7 @@ items:
           - 'ExcelScript!ExcelScript.ChartMarkerStyle:enum'
         description: ''
   - uid: 'ExcelScript!ExcelScript.ChartSeries#getName:member(1)'
-    summary: Specifies the name of a series in a chart.
+    summary: Specifies the name of a series in a chart. The name's length should not be greater than 255 characters.
     name: getName()
     fullName: getName()
     langs:
@@ -816,7 +837,7 @@ items:
           type:
             - 'ExcelScript!ExcelScript.Range:interface'
   - uid: 'ExcelScript!ExcelScript.ChartSeries#setChartType:member(1)'
-    summary: Represents the chart type of a series. See Excel.ChartType for details.
+    summary: Represents the chart type of a series. See ExcelScript.ChartType for details.
     name: setChartType(chartType)
     fullName: setChartType(chartType)
     langs:
@@ -1229,7 +1250,7 @@ items:
           type:
             - number
   - uid: 'ExcelScript!ExcelScript.ChartSeries#setMarkerStyle:member(1)'
-    summary: Specifies the marker style of a chart series. See Excel.ChartMarkerStyle for details.
+    summary: Specifies the marker style of a chart series. See ExcelScript.ChartMarkerStyle for details.
     name: setMarkerStyle(markerStyle)
     fullName: setMarkerStyle(markerStyle)
     langs:
@@ -1247,7 +1268,7 @@ items:
           type:
             - 'ExcelScript!ExcelScript.ChartMarkerStyle:enum'
   - uid: 'ExcelScript!ExcelScript.ChartSeries#setName:member(1)'
-    summary: Specifies the name of a series in a chart.
+    summary: Specifies the name of a series in a chart. The name's length should not be greater than 255 characters.
     name: setName(name)
     fullName: setName(name)
     langs:
@@ -1527,6 +1548,9 @@ references:
   - uid: 'ExcelScript!ExcelScript.ChartDataLabels:interface'
     name: ChartDataLabels
     fullName: ExcelScript.ChartDataLabels
+  - uid: 'ExcelScript!ExcelScript.ChartSeriesDimension:enum'
+    name: ChartSeriesDimension
+    fullName: ExcelScript.ChartSeriesDimension
   - uid: 'ExcelScript!ExcelScript.ChartSeriesFormat:interface'
     name: ChartSeriesFormat
     fullName: ExcelScript.ChartSeriesFormat

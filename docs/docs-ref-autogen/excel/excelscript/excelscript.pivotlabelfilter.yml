@@ -1,0 +1,88 @@
+### YamlMime:UniversalReference
+items:
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter:interface'
+    summary: >-
+      Configurable template for a label filter to apply to a PivotField. The `condition` defines what criteria need to
+      be set in order for the filter to operate.
+    name: ExcelScript.PivotLabelFilter
+    fullName: ExcelScript.PivotLabelFilter
+    langs:
+      - typeScript
+    type: interface
+    package: ExcelScript!
+    children:
+      - 'ExcelScript!ExcelScript.PivotLabelFilter#condition:member'
+      - 'ExcelScript!ExcelScript.PivotLabelFilter#exclusive:member'
+      - 'ExcelScript!ExcelScript.PivotLabelFilter#lowerBound:member'
+      - 'ExcelScript!ExcelScript.PivotLabelFilter#substring:member'
+      - 'ExcelScript!ExcelScript.PivotLabelFilter#upperBound:member'
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter#condition:member'
+    summary: 'Specifies the condition for the filter, which defines the necessary filtering criteria.'
+    name: condition
+    fullName: condition
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'condition: LabelFilterCondition;'
+      return:
+        type:
+          - 'ExcelScript!ExcelScript.LabelFilterCondition:enum'
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter#exclusive:member'
+    summary: >-
+      If true, filter *excludes* items that meet criteria. The default is false (filter to include items that meet
+      criteria).
+    name: exclusive
+    fullName: exclusive
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'exclusive?: boolean;'
+      return:
+        type:
+          - boolean
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter#lowerBound:member'
+    summary: >-
+      The lower-bound of the range for the Between filter condition. Note: A numeric string is treated as a number when
+      being compared against other numeric strings.
+    name: lowerBound
+    fullName: lowerBound
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'lowerBound?: string;'
+      return:
+        type:
+          - string
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter#substring:member'
+    summary: 'The substring used for `BeginsWith`<!-- -->, `EndsWith`<!-- -->, and `Contains` filter conditions.'
+    name: substring
+    fullName: substring
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'substring?: string;'
+      return:
+        type:
+          - string
+  - uid: 'ExcelScript!ExcelScript.PivotLabelFilter#upperBound:member'
+    summary: >-
+      The upper-bound of the range for the Between filter condition. Note: A numeric string is treated as a number when
+      being compared against other numeric strings.
+    name: upperBound
+    fullName: upperBound
+    langs:
+      - typeScript
+    type: property
+    syntax:
+      content: 'upperBound?: string;'
+      return:
+        type:
+          - string
+references:
+  - uid: 'ExcelScript!ExcelScript.LabelFilterCondition:enum'
+    name: LabelFilterCondition
+    fullName: ExcelScript.LabelFilterCondition
