@@ -2147,31 +2147,6 @@ export declare namespace ExcelScript {
     }
 
     /**
-     * Setting represents a key-value pair of a setting persisted to the document (per file per add-in). These custom key-value pair can be used to store state or lifecycle information needed by the content or task-pane add-in. Note that settings are persisted in the document and hence it is not a place to store any sensitive or protected information such as user information and password.
-     */
-    export interface Setting {
-        /**
-         * The key that represents the id of the Setting.
-         */
-        getKey(): string;
-
-        /**
-         * Represents the value stored for this setting.
-         */
-        getValue(): any;
-
-        /**
-         * Represents the value stored for this setting.
-         */
-        setValue(value: any): void;
-
-        /**
-         * Deletes the setting.
-         */
-        delete(): void;
-    }
-
-    /**
      * Represents a defined name for a range of cells or value. Names can be primitive named objects (as seen in the type below), range object, or a reference to a range. This object can be used to obtain range object associated with names.
      */
     export interface NamedItem {
