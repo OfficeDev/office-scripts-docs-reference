@@ -26,9 +26,9 @@ methods:
           description: >-
             The type of conditional format being added. See
             ExcelScript.ConditionalFormatType for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormatType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
         description: ''
   - name: calculate()
     uid: 'ExcelScript!ExcelScript.RangeAreas#calculate:member(1)'
@@ -60,7 +60,7 @@ methods:
           description: >-
             Optional. Determines the type of clear action. See
             ExcelScript.ClearApplyTo for details. Default is "All".
-          type: 'ExcelScript!ExcelScript.<xref uid="ClearApplyTo:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
         description: ''
@@ -117,11 +117,11 @@ methods:
             RangeAreas has multiple ranges, their form must able to be created
             by removing full rows or columns from a rectangular range.
           type: >-
-            ExcelScript!ExcelScript.<xref uid="Range:interface" /> |
-            ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" /> | string
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
-          type: 'ExcelScript!ExcelScript.<xref uid="RangeCopyType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.RangeCopyType:enum" />'
         - id: skipBlanks
           description: >-
             True if to skip blank cells in the source range or RangeAreas.
@@ -192,7 +192,7 @@ methods:
     syntax:
       content: 'getAreas(): Range[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />[]'
         description: ''
   - name: getCellCount()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getCellCount:member(1)'
@@ -225,7 +225,7 @@ methods:
           description: The id of the conditional format.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
         description: ''
   - name: getConditionalFormats()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getConditionalFormats:member(1)'
@@ -240,7 +240,7 @@ methods:
     syntax:
       content: 'getConditionalFormats(): ConditionalFormat[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />[]'
         description: ''
   - name: getDataValidation()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getDataValidation:member(1)'
@@ -253,7 +253,7 @@ methods:
     syntax:
       content: 'getDataValidation(): DataValidation;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="DataValidation:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.DataValidation:interface" />'
         description: ''
   - name: getEntireColumn()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getEntireColumn:member(1)'
@@ -269,7 +269,7 @@ methods:
     syntax:
       content: 'getEntireColumn(): RangeAreas;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getEntireRow()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getEntireRow:member(1)'
@@ -285,7 +285,7 @@ methods:
     syntax:
       content: 'getEntireRow(): RangeAreas;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getFormat()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getFormat:member(1)'
@@ -300,7 +300,7 @@ methods:
     syntax:
       content: 'getFormat(): RangeFormat;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeFormat:interface" />'
         description: ''
   - name: getIntersection(anotherRange)
     uid: 'ExcelScript!ExcelScript.RangeAreas#getIntersection:member(1)'
@@ -321,10 +321,10 @@ methods:
             The range, RangeAreas, or address that will be used to determine the
             intersection.
           type: >-
-            ExcelScript!ExcelScript.<xref uid="Range:interface" /> |
-            ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" /> | string
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getIsEntireColumn()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getIsEntireColumn:member(1)'
@@ -388,7 +388,7 @@ methods:
             and negative values are offset to the left.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getPredefinedCellStyle()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getPredefinedCellStyle:member(1)'
@@ -427,7 +427,7 @@ methods:
       parameters:
         - id: cellType
           description: The type of cells to include.
-          type: 'ExcelScript!ExcelScript.<xref uid="SpecialCellType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used
@@ -435,9 +435,9 @@ methods:
             values can be combined together to return more than one type. The
             default is to select all constants or formulas, no matter what the
             type.
-          type: 'ExcelScript!ExcelScript.<xref uid="SpecialCellValueType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getTables(fullyContained)
     uid: 'ExcelScript!ExcelScript.RangeAreas#getTables:member(1)'
@@ -458,7 +458,7 @@ methods:
             range bounds. Default is false.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Table:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
         description: ''
   - name: getUsedRangeAreas(valuesOnly)
     uid: 'ExcelScript!ExcelScript.RangeAreas#getUsedRangeAreas:member(1)'
@@ -478,7 +478,7 @@ methods:
           description: Whether to only consider cells with values as used cells.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getWorksheet()
     uid: 'ExcelScript!ExcelScript.RangeAreas#getWorksheet:member(1)'
@@ -491,7 +491,7 @@ methods:
     syntax:
       content: 'getWorksheet(): Worksheet;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
         description: ''
   - name: setDirty()
     uid: 'ExcelScript!ExcelScript.RangeAreas#setDirty:member(1)'

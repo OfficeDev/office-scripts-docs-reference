@@ -44,17 +44,17 @@ methods:
           description: >-
             Represents the type of a chart. See ExcelScript.ChartType for
             details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ChartType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ChartType:enum" />'
         - id: sourceData
           description: The Range object corresponding to the source data.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         - id: seriesBy
           description: >-
             Optional. Specifies the way columns or rows are used as data series
             on the chart. See ExcelScript.ChartSeriesBy for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ChartSeriesBy:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesBy:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Chart:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Chart:interface" />'
         description: ''
   - name: 'addComment(cellAddress, content, contentType)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addComment:member(1)'
@@ -81,7 +81,7 @@ methods:
             or a string. If it's a string, it must contain the full address,
             including the sheet name. An `InvalidArgument` error is thrown if
             the provided range is larger than one cell.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: content
           description: >-
             The comment's content. This can be either a string or
@@ -89,15 +89,15 @@ methods:
             CommentRichContent objects allow for other comment features, such as
             mentions.
           type: >-
-            ExcelScript!ExcelScript.<xref uid="CommentRichContent:interface" />
+            <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
             | string
         - id: contentType
           description: >-
             Optional. The type of content contained within the comment. The
             default value is enum `ContentType.Plain`<!-- -->.
-          type: 'ExcelScript!ExcelScript.<xref uid="ContentType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ContentType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
         description: ''
   - name: addGeometricShape(geometricShapeType)
     uid: 'ExcelScript!ExcelScript.Worksheet#addGeometricShape:member(1)'
@@ -116,9 +116,9 @@ methods:
           description: >-
             Represents the type of the geometric shape. See
             ExcelScript.GeometricShapeType for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="GeometricShapeType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: addGroup(values)
     uid: 'ExcelScript!ExcelScript.Worksheet#addGroup:member(1)'
@@ -136,10 +136,10 @@ methods:
         - id: values
           description: An array of shape ID or shape objects.
           type: >-
-            Array&lt;string | ExcelScript!ExcelScript.<xref
-            uid="Shape:interface" />&gt;
+            Array&lt;string | <xref
+            uid="ExcelScript!ExcelScript.Shape:interface" />&gt;
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: addHorizontalPageBreak(pageBreakRange)
     uid: 'ExcelScript!ExcelScript.Worksheet#addHorizontalPageBreak:member(1)'
@@ -154,9 +154,9 @@ methods:
       parameters:
         - id: pageBreakRange
           description: The range immediately after the page break to be added.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PageBreak:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PageBreak:interface" />'
         description: ''
   - name: addImage(base64ImageString)
     uid: 'ExcelScript!ExcelScript.Worksheet#addImage:member(1)'
@@ -177,7 +177,7 @@ methods:
             format.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: 'addLine(startLeft, startTop, endLeft, endTop, connectorType)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addLine:member(1)'
@@ -223,9 +223,9 @@ methods:
           description: >-
             Represents the connector type. See ExcelScript.ConnectorType for
             details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ConnectorType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: 'addNamedItem(name, reference, comment)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addNamedItem:member(1)'
@@ -248,12 +248,12 @@ methods:
           type: string
         - id: reference
           description: The formula or the range that the name will refer to.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: comment
           description: Optional. The comment associated with the named item.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="NamedItem:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />'
         description: ''
   - name: 'addNamedItemFormulaLocal(name, formula, comment)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addNamedItemFormulaLocal:member(1)'
@@ -283,7 +283,7 @@ methods:
           description: Optional. The comment associated with the named item.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="NamedItem:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />'
         description: ''
   - name: 'addPivotTable(name, source, destination)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addPivotTable:member(1)'
@@ -311,18 +311,18 @@ methods:
             The source data for the new PivotTable, this can either be a range
             (or string address including the worksheet name) or a table.
           type: >-
-            ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string |
-            ExcelScript!ExcelScript.<xref uid="Table:interface" />
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string |
+            <xref uid="ExcelScript!ExcelScript.Table:interface" />
         - id: destination
           description: >-
             The cell in the upper-left corner of the PivotTable report's
             destination range (the range on the worksheet where the resulting
             report will be placed).
           type: |-
-            ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
                     
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotTable:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />'
         description: ''
   - name: 'addSlicer(slicerSource, sourceField, slicerDestination)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addSlicer:member(1)'
@@ -349,16 +349,16 @@ methods:
             object. When a string is passed, it is interpreted as the name/id of
             a PivotTable/Table.
           type: >-
-            string | ExcelScript!ExcelScript.<xref uid="PivotTable:interface" />
-            | ExcelScript!ExcelScript.<xref uid="Table:interface" />
+            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />
+            | <xref uid="ExcelScript!ExcelScript.Table:interface" />
         - id: sourceField
           description: >-
             The field in the data source to filter by. It can be a PivotField
             object, a TableColumn object, the id of a PivotField or the id/name
             of TableColumn.
           type: >-
-            string | ExcelScript!ExcelScript.<xref uid="PivotField:interface" />
-            | number | ExcelScript!ExcelScript.<xref uid="TableColumn:interface"
+            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" />
+            | number | <xref uid="ExcelScript!ExcelScript.TableColumn:interface"
             />
         - id: slicerDestination
           description: >-
@@ -366,9 +366,9 @@ methods:
             can be a Worksheet object or the name/id of a worksheet. This
             parameter can be omitted if the slicer collection is retrieved from
             worksheet.
-          type: 'string | ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+          type: 'string | <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Slicer:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" />'
         description: ''
   - name: 'addTable(address, hasHeaders)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addTable:member(1)'
@@ -390,7 +390,7 @@ methods:
             A Range object, or a string address or name of the range
             representing the data source. If the address does not contain a
             sheet name, the currently-active sheet is used.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: hasHeaders
           description: >-
             Boolean value that indicates whether the data being imported has
@@ -399,7 +399,7 @@ methods:
             header shifting the data down by one row.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Table:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />'
         description: |-
 
 
@@ -438,7 +438,7 @@ methods:
           description: Represents the text that will be shown in the created text box.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: addVerticalPageBreak(pageBreakRange)
     uid: 'ExcelScript!ExcelScript.Worksheet#addVerticalPageBreak:member(1)'
@@ -453,9 +453,9 @@ methods:
       parameters:
         - id: pageBreakRange
           description: The range immediately after the page break to be added.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PageBreak:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PageBreak:interface" />'
         description: ''
   - name: 'addWorksheetCustomProperty(key, value)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addWorksheetCustomProperty:member(1)'
@@ -485,7 +485,7 @@ methods:
           type: string
       return:
         type: >-
-          ExcelScript!ExcelScript.<xref uid="WorksheetCustomProperty:interface"
+          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
           />
         description: ''
   - name: calculate(markAllDirty)
@@ -525,15 +525,15 @@ methods:
             The location in the workbook to place the newly created worksheet.
             The default value is "None", which inserts the worksheet at the
             beginning of the worksheet.
-          type: 'ExcelScript!ExcelScript.<xref uid="WorksheetPositionType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.WorksheetPositionType:enum" />'
         - id: relativeTo
           description: >-
             The existing worksheet which determines the newly created
             worksheet's position. This is only needed if `positionType` is
             "Before" or "After".
-          type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
         description: ''
   - name: delete()
     uid: 'ExcelScript!ExcelScript.Worksheet#delete:member(1)'
@@ -590,10 +590,10 @@ methods:
             Additional search criteria, including whether the search needs to
             match the entire cell or be case sensitive.
           type: >-
-            ExcelScript!ExcelScript.<xref
-            uid="WorksheetSearchCriteria:interface" />
+            <xref
+            uid="ExcelScript!ExcelScript.WorksheetSearchCriteria:interface" />
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getAutoFilter()
     uid: 'ExcelScript!ExcelScript.Worksheet#getAutoFilter:member(1)'
@@ -606,7 +606,7 @@ methods:
     syntax:
       content: 'getAutoFilter(): AutoFilter;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="AutoFilter:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.AutoFilter:interface" />'
         description: ''
   - name: 'getCell(row, column)'
     uid: 'ExcelScript!ExcelScript.Worksheet#getCell:member(1)'
@@ -629,7 +629,7 @@ methods:
           description: the column number of the cell to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getChart(name)
     uid: 'ExcelScript!ExcelScript.Worksheet#getChart:member(1)'
@@ -649,7 +649,7 @@ methods:
           description: Name of the chart to be retrieved.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Chart:interface" /> | undefined'
+        type: '<xref uid="ExcelScript!ExcelScript.Chart:interface" /> | undefined'
         description: ''
   - name: getCharts()
     uid: 'ExcelScript!ExcelScript.Worksheet#getCharts:member(1)'
@@ -662,7 +662,7 @@ methods:
     syntax:
       content: 'getCharts(): Chart[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Chart:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Chart:interface" />[]'
         description: ''
   - name: getComment(commentId)
     uid: 'ExcelScript!ExcelScript.Worksheet#getComment:member(1)'
@@ -679,7 +679,7 @@ methods:
           description: The identifier for the comment.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
         description: ''
   - name: getCommentByCell(cellAddress)
     uid: 'ExcelScript!ExcelScript.Worksheet#getCommentByCell:member(1)'
@@ -698,9 +698,9 @@ methods:
             string. If it's a string, it must contain the full address,
             including the sheet name. An `InvalidArgument` error is thrown if
             the provided range is larger than one cell.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
         description: ''
   - name: getCommentByReplyId(replyId)
     uid: 'ExcelScript!ExcelScript.Worksheet#getCommentByReplyId:member(1)'
@@ -717,7 +717,7 @@ methods:
           description: The identifier of comment reply.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
         description: ''
   - name: getComments()
     uid: 'ExcelScript!ExcelScript.Worksheet#getComments:member(1)'
@@ -730,7 +730,7 @@ methods:
     syntax:
       content: 'getComments(): Comment[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Comment:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />[]'
         description: ''
   - name: getCustomProperties()
     uid: 'ExcelScript!ExcelScript.Worksheet#getCustomProperties:member(1)'
@@ -744,7 +744,7 @@ methods:
       content: 'getCustomProperties(): WorksheetCustomProperty[];'
       return:
         type: >-
-          ExcelScript!ExcelScript.<xref uid="WorksheetCustomProperty:interface"
+          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
           />[]
         description: ''
   - name: getEnableCalculation()
@@ -776,7 +776,7 @@ methods:
     syntax:
       content: 'getFreezePanes(): WorksheetFreezePanes;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="WorksheetFreezePanes:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.WorksheetFreezePanes:interface" />'
         description: ''
   - name: getHorizontalPageBreaks()
     uid: 'ExcelScript!ExcelScript.Worksheet#getHorizontalPageBreaks:member(1)'
@@ -791,7 +791,7 @@ methods:
     syntax:
       content: 'getHorizontalPageBreaks(): PageBreak[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PageBreak:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.PageBreak:interface" />[]'
         description: ''
   - name: getId()
     uid: 'ExcelScript!ExcelScript.Worksheet#getId:member(1)'
@@ -861,7 +861,7 @@ methods:
           description: Nameditem name.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="NamedItem:interface" /> | undefined'
+        type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" /> | undefined'
         description: ''
   - name: getNames()
     uid: 'ExcelScript!ExcelScript.Worksheet#getNames:member(1)'
@@ -874,7 +874,7 @@ methods:
     syntax:
       content: 'getNames(): NamedItem[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="NamedItem:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />[]'
         description: ''
   - name: getNext(visibleOnly)
     uid: 'ExcelScript!ExcelScript.Worksheet#getNext:member(1)'
@@ -895,7 +895,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
         description: ''
   - name: getPageLayout()
     uid: 'ExcelScript!ExcelScript.Worksheet#getPageLayout:member(1)'
@@ -908,7 +908,7 @@ methods:
     syntax:
       content: 'getPageLayout(): PageLayout;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PageLayout:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PageLayout:interface" />'
         description: ''
   - name: getPivotTable(name)
     uid: 'ExcelScript!ExcelScript.Worksheet#getPivotTable:member(1)'
@@ -928,7 +928,7 @@ methods:
           type: string
       return:
         type: >-
-          ExcelScript!ExcelScript.<xref uid="PivotTable:interface" /> |
+          <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> |
           undefined
         description: ''
   - name: getPivotTables()
@@ -942,7 +942,7 @@ methods:
     syntax:
       content: 'getPivotTables(): PivotTable[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotTable:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]'
         description: ''
   - name: getPosition()
     uid: 'ExcelScript!ExcelScript.Worksheet#getPosition:member(1)'
@@ -976,7 +976,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
         description: ''
   - name: getProtection()
     uid: 'ExcelScript!ExcelScript.Worksheet#getProtection:member(1)'
@@ -989,7 +989,7 @@ methods:
     syntax:
       content: 'getProtection(): WorksheetProtection;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="WorksheetProtection:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtection:interface" />'
         description: ''
   - name: getRange(address)
     uid: 'ExcelScript!ExcelScript.Worksheet#getRange:member(1)'
@@ -1011,7 +1011,7 @@ methods:
             is returned.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: |-
 
 
@@ -1064,7 +1064,7 @@ methods:
           description: Number of columns to include in the range.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getRanges(address)
     uid: 'ExcelScript!ExcelScript.Worksheet#getRanges:member(1)'
@@ -1086,7 +1086,7 @@ methods:
             specified, an RangeArea object for the entire worksheet is returned.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getShape(key)
     uid: 'ExcelScript!ExcelScript.Worksheet#getShape:member(1)'
@@ -1103,7 +1103,7 @@ methods:
           description: Name or ID of the shape to be retrieved.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
   - name: getShapes()
     uid: 'ExcelScript!ExcelScript.Worksheet#getShapes:member(1)'
@@ -1116,7 +1116,7 @@ methods:
     syntax:
       content: 'getShapes(): Shape[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />[]'
         description: ''
   - name: getShowGridlines()
     uid: 'ExcelScript!ExcelScript.Worksheet#getShowGridlines:member(1)'
@@ -1161,7 +1161,7 @@ methods:
           description: Name or Id of the slicer to be retrieved.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Slicer:interface" /> | undefined'
+        type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" /> | undefined'
         description: ''
   - name: getSlicers()
     uid: 'ExcelScript!ExcelScript.Worksheet#getSlicers:member(1)'
@@ -1174,7 +1174,7 @@ methods:
     syntax:
       content: 'getSlicers(): Slicer[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Slicer:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" />[]'
         description: ''
   - name: getStandardHeight()
     uid: 'ExcelScript!ExcelScript.Worksheet#getStandardHeight:member(1)'
@@ -1244,7 +1244,7 @@ methods:
           description: Name or ID of the table to be retrieved.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Table:interface" /> | undefined'
+        type: '<xref uid="ExcelScript!ExcelScript.Table:interface" /> | undefined'
         description: ''
   - name: getTables()
     uid: 'ExcelScript!ExcelScript.Worksheet#getTables:member(1)'
@@ -1257,7 +1257,7 @@ methods:
     syntax:
       content: 'getTables(): Table[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Table:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
         description: ''
   - name: getUsedRange(valuesOnly)
     uid: 'ExcelScript!ExcelScript.Worksheet#getUsedRange:member(1)'
@@ -1277,7 +1277,7 @@ methods:
           description: Optional. Considers only cells with values as used cells.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getVerticalPageBreaks()
     uid: 'ExcelScript!ExcelScript.Worksheet#getVerticalPageBreaks:member(1)'
@@ -1292,7 +1292,7 @@ methods:
     syntax:
       content: 'getVerticalPageBreaks(): PageBreak[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PageBreak:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.PageBreak:interface" />[]'
         description: ''
   - name: getVisibility()
     uid: 'ExcelScript!ExcelScript.Worksheet#getVisibility:member(1)'
@@ -1305,7 +1305,7 @@ methods:
     syntax:
       content: 'getVisibility(): SheetVisibility;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="SheetVisibility:enum" />'
+        type: '<xref uid="ExcelScript!ExcelScript.SheetVisibility:enum" />'
         description: ''
   - name: getWorksheetCustomProperty(key)
     uid: 'ExcelScript!ExcelScript.Worksheet#getWorksheetCustomProperty:member(1)'
@@ -1330,7 +1330,7 @@ methods:
           type: string
       return:
         type: >-
-          ExcelScript!ExcelScript.<xref uid="WorksheetCustomProperty:interface"
+          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
           /> | undefined
         description: ''
   - name: refreshAllPivotTables()
@@ -1398,7 +1398,7 @@ methods:
           type: string
         - id: criteria
           description: Additional Replace Criteria.
-          type: 'ExcelScript!ExcelScript.<xref uid="ReplaceCriteria:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ReplaceCriteria:interface" />'
       return:
         type: number
         description: ''
@@ -1566,7 +1566,7 @@ methods:
       parameters:
         - id: visibility
           description: ''
-          type: 'ExcelScript!ExcelScript.<xref uid="SheetVisibility:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SheetVisibility:enum" />'
       return:
         type: void
         description: ''

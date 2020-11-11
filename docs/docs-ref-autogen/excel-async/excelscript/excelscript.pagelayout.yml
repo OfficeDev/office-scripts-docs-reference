@@ -153,7 +153,7 @@ properties:
     syntax:
       content: 'readonly headersFooters: HeaderFooterGroup;'
       return:
-        type: 'excel!Excel.<xref uid="HeaderFooterGroup:interface" />'
+        type: '<xref uid="excel!Excel.HeaderFooterGroup:interface" />'
   - name: leftMargin
     uid: 'excel!Excel.PageLayout#leftMargin:member'
     package: excel!
@@ -178,7 +178,7 @@ properties:
       content: 'orientation: PageOrientation | "Portrait" | "Landscape";'
       return:
         type: >-
-          excel!Excel.<xref uid="PageOrientation:enum" /> | "Portrait" |
+          <xref uid="excel!Excel.PageOrientation:enum" /> | "Portrait" |
           "Landscape"
         description: |-
 
@@ -247,7 +247,7 @@ properties:
                     | "FanfoldLegalGerman";
       return:
         type: |-
-          | excel!Excel.<xref uid="PaperType:enum" />
+          | <xref uid="excel!Excel.PaperType:enum" />
                       | "Letter"
                       | "LetterSmall"
                       | "Tabloid"
@@ -301,7 +301,7 @@ properties:
       content: 'printComments: PrintComments | "NoComments" | "EndSheet" | "InPlace";'
       return:
         type: >-
-          excel!Excel.<xref uid="PrintComments:enum" /> | "NoComments" |
+          <xref uid="excel!Excel.PrintComments:enum" /> | "NoComments" |
           "EndSheet" | "InPlace"
   - name: printErrors
     uid: 'excel!Excel.PageLayout#printErrors:member'
@@ -321,7 +321,7 @@ properties:
                     | "NotAvailable";
       return:
         type: |-
-          | excel!Excel.<xref uid="PrintErrorType:enum" />
+          | <xref uid="excel!Excel.PrintErrorType:enum" />
                       | "AsDisplayed"
                       | "Blank"
                       | "Dash"
@@ -364,7 +364,7 @@ properties:
       content: 'printOrder: PrintOrder | "DownThenOver" | "OverThenDown";'
       return:
         type: >-
-          excel!Excel.<xref uid="PrintOrder:enum" /> | "DownThenOver" |
+          <xref uid="excel!Excel.PrintOrder:enum" /> | "DownThenOver" |
           "OverThenDown"
   - name: rightMargin
     uid: 'excel!Excel.PageLayout#rightMargin:member'
@@ -404,7 +404,7 @@ properties:
     syntax:
       content: 'zoom: PageLayoutZoomOptions;'
       return:
-        type: 'excel!Excel.<xref uid="PageLayoutZoomOptions:interface" />'
+        type: '<xref uid="excel!Excel.PageLayoutZoomOptions:interface" />'
         description: |-
 
 
@@ -432,7 +432,7 @@ methods:
     syntax:
       content: 'getPrintArea(): RangeAreas;'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getPrintAreaOrNullObject()
     uid: 'excel!Excel.PageLayout#getPrintAreaOrNullObject:member(1)'
@@ -448,7 +448,7 @@ methods:
     syntax:
       content: 'getPrintAreaOrNullObject(): RangeAreas;'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getPrintTitleColumns()
     uid: 'excel!Excel.PageLayout#getPrintTitleColumns:member(1)'
@@ -461,7 +461,7 @@ methods:
     syntax:
       content: 'getPrintTitleColumns(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getPrintTitleColumnsOrNullObject()
     uid: 'excel!Excel.PageLayout#getPrintTitleColumnsOrNullObject:member(1)'
@@ -476,7 +476,7 @@ methods:
     syntax:
       content: 'getPrintTitleColumnsOrNullObject(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getPrintTitleRows()
     uid: 'excel!Excel.PageLayout#getPrintTitleRows:member(1)'
@@ -489,7 +489,7 @@ methods:
     syntax:
       content: 'getPrintTitleRows(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getPrintTitleRowsOrNullObject()
     uid: 'excel!Excel.PageLayout#getPrintTitleRowsOrNullObject:member(1)'
@@ -504,7 +504,7 @@ methods:
     syntax:
       content: 'getPrintTitleRowsOrNullObject(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.PageLayout#load:member(1)'
@@ -541,8 +541,8 @@ methods:
         - id: printArea
           description: 'The range, or RangeAreas of the content to print.'
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | excel!Excel.<xref
-            uid="RangeAreas:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | <xref
+            uid="excel!Excel.RangeAreas:interface" /> | string
       return:
         type: void
         description: |-
@@ -575,11 +575,11 @@ methods:
         - id: unit
           description: Measurement unit for the margins provided.
           type: >-
-            excel!Excel.<xref uid="PrintMarginUnit:enum" /> | "Points" |
+            <xref uid="excel!Excel.PrintMarginUnit:enum" /> | "Points" |
             "Inches" | "Centimeters"
         - id: marginOptions
           description: 'Margin values to set, margins not provided will remain unchanged.'
-          type: 'excel!Excel.<xref uid="PageLayoutMarginOptions:interface" />'
+          type: '<xref uid="excel!Excel.PageLayoutMarginOptions:interface" />'
       return:
         type: void
         description: ''
@@ -600,7 +600,7 @@ methods:
           description: >-
             The columns to be repeated to the left of each page, range must span
             the entire column to be valid.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
         type: void
         description: ''
@@ -621,7 +621,7 @@ methods:
           description: >-
             The rows to be repeated at the top of each page, range must span the
             entire row to be valid.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
         type: void
         description: |-

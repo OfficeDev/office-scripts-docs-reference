@@ -32,7 +32,7 @@ properties:
     syntax:
       content: 'readonly items: PivotItemCollection;'
       return:
-        type: 'excel!Excel.<xref uid="PivotItemCollection:interface" />'
+        type: '<xref uid="excel!Excel.PivotItemCollection:interface" />'
   - name: name
     uid: 'excel!Excel.PivotField#name:member'
     package: excel!
@@ -68,7 +68,7 @@ properties:
     syntax:
       content: 'subtotals: Subtotals;'
       return:
-        type: 'excel!Excel.<xref uid="Subtotals:interface" />'
+        type: '<xref uid="excel!Excel.Subtotals:interface" />'
 methods:
   - name: load(propertyNames)
     uid: 'excel!Excel.PivotField#load:member(1)'
@@ -107,7 +107,7 @@ methods:
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type: 'excel!Excel.<xref uid="SortBy:enum" /> | "Ascending" | "Descending"'
+          type: '<xref uid="excel!Excel.SortBy:enum" /> | "Ascending" | "Descending"'
       return:
         type: void
         description: ''
@@ -132,12 +132,12 @@ methods:
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type: 'excel!Excel.<xref uid="SortBy:enum" /> | "Ascending" | "Descending"'
+          type: '<xref uid="excel!Excel.SortBy:enum" /> | "Ascending" | "Descending"'
         - id: valuesHierarchy
           description: >-
             Specifies the values hierarchy on the data axis to be used for
             sorting.
-          type: 'excel!Excel.<xref uid="DataPivotHierarchy:interface" />'
+          type: '<xref uid="excel!Excel.DataPivotHierarchy:interface" />'
         - id: pivotItemScope
           description: >-
             The items that should be used for the scope of the sorting. These
@@ -146,7 +146,7 @@ methods:
             represents the ID of the PivotItem. If there are no items other than
             data hierarchy on the axis you want to sort on, this can be empty.
           type: |-
-            Array&lt;excel!Excel.<xref uid="PivotItem:interface" /> | string&gt;
+            Array&lt;<xref uid="excel!Excel.PivotItem:interface" /> | string&gt;
                     
       return:
         type: void

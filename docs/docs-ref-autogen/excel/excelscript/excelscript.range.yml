@@ -26,9 +26,9 @@ methods:
           description: >-
             The type of conditional format being added. See
             ExcelScript.ConditionalFormatType for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormatType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
         description: |-
 
 
@@ -79,13 +79,13 @@ methods:
             The destination range to autofill. If the destination range is null,
             data is filled out based on the surrounding cells (which is the
             behavior when double-clicking the UI’s range fill handle).
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: autoFillType
           description: >-
             The type of autofill. Specifies how the destination range is to be
             filled, based on the contents of the current range. Default is
             "FillDefault".
-          type: 'ExcelScript!ExcelScript.<xref uid="AutoFillType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.AutoFillType:enum" />'
       return:
         type: void
         description: ''
@@ -117,7 +117,7 @@ methods:
           description: >-
             Optional. Determines the type of clear action. See
             ExcelScript.ClearApplyTo for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="ClearApplyTo:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
         description: |-
@@ -190,11 +190,11 @@ methods:
             RangeAreas has multiple ranges, their form must be able to be
             created by removing full rows or columns from a rectangular range.
           type: >-
-            ExcelScript!ExcelScript.<xref uid="Range:interface" /> |
-            ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" /> | string
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
-          type: 'ExcelScript!ExcelScript.<xref uid="RangeCopyType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.RangeCopyType:enum" />'
         - id: skipBlanks
           description: True if to skip blank cells in the source range. Default is false.
           type: boolean
@@ -221,7 +221,7 @@ methods:
           description: >-
             Specifies which way to shift the cells. See
             ExcelScript.DeleteShiftDirection for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="DeleteShiftDirection:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.DeleteShiftDirection:enum" />'
       return:
         type: void
         description: ''
@@ -249,9 +249,9 @@ methods:
             Additional search criteria, including the search direction and
             whether the search needs to match the entire cell or be case
             sensitive.
-          type: 'ExcelScript!ExcelScript.<xref uid="SearchCriteria:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SearchCriteria:interface" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: flashFill()
     uid: 'ExcelScript!ExcelScript.Range#flashFill:member(1)'
@@ -289,7 +289,7 @@ methods:
           description: The number of columns of the new range size.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getAddress()
     uid: 'ExcelScript!ExcelScript.Range#getAddress:member(1)'
@@ -336,9 +336,9 @@ methods:
       parameters:
         - id: anotherRange
           description: The range object or address or range name.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: 'getCell(row, column)'
     uid: 'ExcelScript!ExcelScript.Range#getCell:member(1)'
@@ -362,7 +362,7 @@ methods:
           description: Column number of the cell to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getCellCount()
     uid: 'ExcelScript!ExcelScript.Range#getCellCount:member(1)'
@@ -394,7 +394,7 @@ methods:
           description: Column number of the range to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getColumnCount()
     uid: 'ExcelScript!ExcelScript.Range#getColumnCount:member(1)'
@@ -488,7 +488,7 @@ methods:
             within the current range. The default value is 1.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getColumnsBefore(count)
     uid: 'ExcelScript!ExcelScript.Range#getColumnsBefore:member(1)'
@@ -509,7 +509,7 @@ methods:
             within the current range. The default value is 1.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getConditionalFormat(id)
     uid: 'ExcelScript!ExcelScript.Range#getConditionalFormat:member(1)'
@@ -526,7 +526,7 @@ methods:
           description: The id of the conditional format.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
         description: ''
   - name: getConditionalFormats()
     uid: 'ExcelScript!ExcelScript.Range#getConditionalFormats:member(1)'
@@ -539,7 +539,7 @@ methods:
     syntax:
       content: 'getConditionalFormats(): ConditionalFormat[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ConditionalFormat:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />[]'
         description: ''
   - name: getDataValidation()
     uid: 'ExcelScript!ExcelScript.Range#getDataValidation:member(1)'
@@ -552,7 +552,7 @@ methods:
     syntax:
       content: 'getDataValidation(): DataValidation;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="DataValidation:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.DataValidation:interface" />'
         description: ''
   - name: getDirectPrecedents()
     uid: 'ExcelScript!ExcelScript.Range#getDirectPrecedents:member(1)'
@@ -568,7 +568,7 @@ methods:
     syntax:
       content: 'getDirectPrecedents(): WorkbookRangeAreas;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="WorkbookRangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />'
         description: ''
   - name: getEntireColumn()
     uid: 'ExcelScript!ExcelScript.Range#getEntireColumn:member(1)'
@@ -584,7 +584,7 @@ methods:
     syntax:
       content: 'getEntireColumn(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getEntireRow()
     uid: 'ExcelScript!ExcelScript.Range#getEntireRow:member(1)'
@@ -600,7 +600,7 @@ methods:
     syntax:
       content: 'getEntireRow(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getFormat()
     uid: 'ExcelScript!ExcelScript.Range#getFormat:member(1)'
@@ -615,7 +615,7 @@ methods:
     syntax:
       content: 'getFormat(): RangeFormat;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeFormat:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeFormat:interface" />'
         description: ''
   - name: getFormula()
     uid: 'ExcelScript!ExcelScript.Range#getFormula:member(1)'
@@ -794,7 +794,7 @@ methods:
     syntax:
       content: 'getHyperlink(): RangeHyperlink;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeHyperlink:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeHyperlink:interface" />'
         description: ''
   - name: getImage()
     uid: 'ExcelScript!ExcelScript.Range#getImage:member(1)'
@@ -830,9 +830,9 @@ methods:
           description: >-
             The range object or range address that will be used to determine the
             intersection of ranges.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getIsEntireColumn()
     uid: 'ExcelScript!ExcelScript.Range#getIsEntireColumn:member(1)'
@@ -873,7 +873,7 @@ methods:
     syntax:
       content: 'getLastCell(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getLastColumn()
     uid: 'ExcelScript!ExcelScript.Range#getLastColumn:member(1)'
@@ -888,7 +888,7 @@ methods:
     syntax:
       content: 'getLastColumn(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getLastRow()
     uid: 'ExcelScript!ExcelScript.Range#getLastRow:member(1)'
@@ -903,7 +903,7 @@ methods:
     syntax:
       content: 'getLastRow(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getLeft()
     uid: 'ExcelScript!ExcelScript.Range#getLeft:member(1)'
@@ -931,7 +931,7 @@ methods:
     syntax:
       content: 'getLinkedDataTypeState(): LinkedDataTypeState;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="LinkedDataTypeState:enum" />'
+        type: '<xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />'
         description: ''
   - name: getLinkedDataTypeStates()
     uid: 'ExcelScript!ExcelScript.Range#getLinkedDataTypeStates:member(1)'
@@ -944,7 +944,7 @@ methods:
     syntax:
       content: 'getLinkedDataTypeStates(): LinkedDataTypeState[][];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="LinkedDataTypeState:enum" />[][]'
+        type: '<xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />[][]'
         description: ''
   - name: getMergedAreas()
     uid: 'ExcelScript!ExcelScript.Range#getMergedAreas:member(1)'
@@ -960,7 +960,7 @@ methods:
     syntax:
       content: 'getMergedAreas(): RangeAreas;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getNumberFormat()
     uid: 'ExcelScript!ExcelScript.Range#getNumberFormat:member(1)'
@@ -989,7 +989,7 @@ methods:
     syntax:
       content: 'getNumberFormatCategories(): NumberFormatCategory[][];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="NumberFormatCategory:enum" />[][]'
+        type: '<xref uid="ExcelScript!ExcelScript.NumberFormatCategory:enum" />[][]'
         description: ''
   - name: getNumberFormatLocal()
     uid: 'ExcelScript!ExcelScript.Range#getNumberFormatLocal:member(1)'
@@ -1070,7 +1070,7 @@ methods:
             negative values are offset to the left.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: |-
 
 
@@ -1120,7 +1120,7 @@ methods:
             the range bounds. The default value is false.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotTable:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]'
         description: ''
   - name: getPredefinedCellStyle()
     uid: 'ExcelScript!ExcelScript.Range#getPredefinedCellStyle:member(1)'
@@ -1166,7 +1166,7 @@ methods:
             range, or a negative number to decrease it.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: |-
 
 
@@ -1209,7 +1209,7 @@ methods:
           description: Row number of the range to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getRowCount()
     uid: 'ExcelScript!ExcelScript.Range#getRowCount:member(1)'
@@ -1303,7 +1303,7 @@ methods:
             the current range. The default value is 1.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getRowsBelow(count)
     uid: 'ExcelScript!ExcelScript.Range#getRowsBelow:member(1)'
@@ -1324,7 +1324,7 @@ methods:
             the current range. The default value is 1.
           type: number
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getSavedAsArray()
     uid: 'ExcelScript!ExcelScript.Range#getSavedAsArray:member(1)'
@@ -1354,7 +1354,7 @@ methods:
     syntax:
       content: 'getSort(): RangeSort;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeSort:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeSort:interface" />'
         description: ''
   - name: 'getSpecialCells(cellType, cellValueType)'
     uid: 'ExcelScript!ExcelScript.Range#getSpecialCells:member(1)'
@@ -1376,7 +1376,7 @@ methods:
       parameters:
         - id: cellType
           description: The type of cells to include.
-          type: 'ExcelScript!ExcelScript.<xref uid="SpecialCellType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />'
         - id: cellValueType
           description: >-
             If cellType is either Constants or Formulas, this argument is used
@@ -1384,9 +1384,9 @@ methods:
             values can be combined together to return more than one type. The
             default is to select all constants or formulas, no matter what the
             type.
-          type: 'ExcelScript!ExcelScript.<xref uid="SpecialCellValueType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
   - name: getSpillingToRange()
     uid: 'ExcelScript!ExcelScript.Range#getSpillingToRange:member(1)'
@@ -1402,7 +1402,7 @@ methods:
     syntax:
       content: 'getSpillingToRange(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getSpillParent()
     uid: 'ExcelScript!ExcelScript.Range#getSpillParent:member(1)'
@@ -1418,7 +1418,7 @@ methods:
     syntax:
       content: 'getSpillParent(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getSurroundingRegion()
     uid: 'ExcelScript!ExcelScript.Range#getSurroundingRegion:member(1)'
@@ -1434,7 +1434,7 @@ methods:
     syntax:
       content: 'getSurroundingRegion(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getTables(fullyContained)
     uid: 'ExcelScript!ExcelScript.Range#getTables:member(1)'
@@ -1453,7 +1453,7 @@ methods:
             range bounds. The default value is false.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Table:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
         description: ''
   - name: getText()
     uid: 'ExcelScript!ExcelScript.Range#getText:member(1)'
@@ -1521,7 +1521,7 @@ methods:
           description: Considers only cells with values as used cells.
           type: boolean
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getValue()
     uid: 'ExcelScript!ExcelScript.Range#getValue:member(1)'
@@ -1590,7 +1590,7 @@ methods:
     syntax:
       content: 'getValueType(): RangeValueType;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeValueType:enum" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeValueType:enum" />'
         description: ''
   - name: getValueTypes()
     uid: 'ExcelScript!ExcelScript.Range#getValueTypes:member(1)'
@@ -1603,7 +1603,7 @@ methods:
     syntax:
       content: 'getValueTypes(): RangeValueType[][];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeValueType:enum" />[][]'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeValueType:enum" />[][]'
         description: ''
   - name: getVisibleView()
     uid: 'ExcelScript!ExcelScript.Range#getVisibleView:member(1)'
@@ -1616,7 +1616,7 @@ methods:
     syntax:
       content: 'getVisibleView(): RangeView;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="RangeView:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.RangeView:interface" />'
         description: ''
   - name: getWidth()
     uid: 'ExcelScript!ExcelScript.Range#getWidth:member(1)'
@@ -1644,7 +1644,7 @@ methods:
     syntax:
       content: 'getWorksheet(): Worksheet;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
         description: ''
   - name: group(groupOption)
     uid: 'ExcelScript!ExcelScript.Range#group:member(1)'
@@ -1664,7 +1664,7 @@ methods:
             the range's `isEntireRow` or `isEntireColumn` property (i.e.,
             `range.isEntireRow` is true and `groupOption` is "ByColumns" or
             `range.isEntireColumn` is true and `groupOption` is "ByRows").
-          type: 'ExcelScript!ExcelScript.<xref uid="GroupOption:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
         description: ''
@@ -1683,7 +1683,7 @@ methods:
           description: >-
             Specifies whether to hide details of grouped rows or grouped
             columns.
-          type: 'ExcelScript!ExcelScript.<xref uid="GroupOption:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
         description: ''
@@ -1705,9 +1705,9 @@ methods:
           description: >-
             Specifies which way to shift the cells. See
             ExcelScript.InsertShiftDirection for details.
-          type: 'ExcelScript!ExcelScript.<xref uid="InsertShiftDirection:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.InsertShiftDirection:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: merge(across)
     uid: 'ExcelScript!ExcelScript.Range#merge:member(1)'
@@ -1748,7 +1748,7 @@ methods:
           description: >-
             destinationRange Specifies the range to where the information in
             this range will be moved.
-          type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void
         description: ''
@@ -1777,7 +1777,7 @@ methods:
           type: boolean
       return:
         type: >-
-          ExcelScript!ExcelScript.<xref uid="RemoveDuplicatesResult:interface"
+          <xref uid="ExcelScript!ExcelScript.RemoveDuplicatesResult:interface"
           />
         description: ''
   - name: 'replaceAll(text, replacement, criteria)'
@@ -1806,7 +1806,7 @@ methods:
           type: string
         - id: criteria
           description: Additional Replace Criteria.
-          type: 'ExcelScript!ExcelScript.<xref uid="ReplaceCriteria:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ReplaceCriteria:interface" />'
       return:
         type: number
         description: ''
@@ -2009,7 +2009,7 @@ methods:
       parameters:
         - id: hyperlink
           description: ''
-          type: 'ExcelScript!ExcelScript.<xref uid="RangeHyperlink:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.RangeHyperlink:interface" />'
       return:
         type: void
         description: |-
@@ -2273,7 +2273,7 @@ methods:
           description: >-
             Specifies whether to show details of grouped rows or grouped
             columns.
-          type: 'ExcelScript!ExcelScript.<xref uid="GroupOption:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
         description: ''
@@ -2290,7 +2290,7 @@ methods:
       parameters:
         - id: groupOption
           description: Specifies how the range can be ungrouped by rows or columns.
-          type: 'ExcelScript!ExcelScript.<xref uid="GroupOption:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
         description: ''

@@ -20,7 +20,7 @@ properties:
     syntax:
       content: 'readonly categoryAxis: ChartAxis;'
       return:
-        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+        type: '<xref uid="excel!Excel.ChartAxis:interface" />'
   - name: seriesAxis
     uid: 'excel!Excel.ChartAxes#seriesAxis:member'
     package: excel!
@@ -32,7 +32,7 @@ properties:
     syntax:
       content: 'readonly seriesAxis: ChartAxis;'
       return:
-        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+        type: '<xref uid="excel!Excel.ChartAxis:interface" />'
   - name: valueAxis
     uid: 'excel!Excel.ChartAxes#valueAxis:member'
     package: excel!
@@ -44,7 +44,7 @@ properties:
     syntax:
       content: 'readonly valueAxis: ChartAxis;'
       return:
-        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+        type: '<xref uid="excel!Excel.ChartAxis:interface" />'
 methods:
   - name: 'getItem(type, group)'
     uid: 'excel!Excel.ChartAxes#getItem:member(1)'
@@ -64,18 +64,18 @@ methods:
         - id: type
           description: Specifies the axis type. See Excel.ChartAxisType for details.
           type: >-
-            excel!Excel.<xref uid="ChartAxisType:enum" /> | "Invalid" |
+            <xref uid="excel!Excel.ChartAxisType:enum" /> | "Invalid" |
             "Category" | "Value" | "Series"
         - id: group
           description: >-
             Optional. Specifies the axis group. See Excel.ChartAxisGroup for
             details.
           type: >-
-            excel!Excel.<xref uid="ChartAxisGroup:enum" /> | "Primary" |
+            <xref uid="excel!Excel.ChartAxisGroup:enum" /> | "Primary" |
             "Secondary"
                     
       return:
-        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+        type: '<xref uid="excel!Excel.ChartAxis:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.ChartAxes#load:member(1)'

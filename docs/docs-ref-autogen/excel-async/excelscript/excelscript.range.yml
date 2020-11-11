@@ -105,7 +105,7 @@ properties:
     syntax:
       content: 'readonly conditionalFormats: ConditionalFormatCollection;'
       return:
-        type: 'excel!Excel.<xref uid="ConditionalFormatCollection:interface" />'
+        type: '<xref uid="excel!Excel.ConditionalFormatCollection:interface" />'
   - name: dataValidation
     uid: 'excel!Excel.Range#dataValidation:member'
     package: excel!
@@ -117,7 +117,7 @@ properties:
     syntax:
       content: 'readonly dataValidation: DataValidation;'
       return:
-        type: 'excel!Excel.<xref uid="DataValidation:interface" />'
+        type: '<xref uid="excel!Excel.DataValidation:interface" />'
   - name: format
     uid: 'excel!Excel.Range#format:member'
     package: excel!
@@ -131,7 +131,7 @@ properties:
     syntax:
       content: 'readonly format: RangeFormat;'
       return:
-        type: 'excel!Excel.<xref uid="RangeFormat:interface" />'
+        type: '<xref uid="excel!Excel.RangeFormat:interface" />'
   - name: formulas
     uid: 'excel!Excel.Range#formulas:member'
     package: excel!
@@ -208,7 +208,7 @@ properties:
     syntax:
       content: 'hyperlink: RangeHyperlink;'
       return:
-        type: 'excel!Excel.<xref uid="RangeHyperlink:interface" />'
+        type: '<xref uid="excel!Excel.RangeHyperlink:interface" />'
         description: |-
 
 
@@ -289,7 +289,7 @@ properties:
     syntax:
       content: 'readonly linkedDataTypeState: LinkedDataTypeState[][];'
       return:
-        type: 'excel!Excel.<xref uid="LinkedDataTypeState:enum" />[][]'
+        type: '<xref uid="excel!Excel.LinkedDataTypeState:enum" />[][]'
   - name: numberFormat
     uid: 'excel!Excel.Range#numberFormat:member'
     package: excel!
@@ -366,7 +366,7 @@ properties:
     syntax:
       content: 'readonly sort: RangeSort;'
       return:
-        type: 'excel!Excel.<xref uid="RangeSort:interface" />'
+        type: '<xref uid="excel!Excel.RangeSort:interface" />'
         description: |-
 
 
@@ -485,7 +485,7 @@ properties:
     syntax:
       content: 'readonly valueTypes: RangeValueType[][];'
       return:
-        type: 'excel!Excel.<xref uid="RangeValueType:enum" />[][]'
+        type: '<xref uid="excel!Excel.RangeValueType:enum" />[][]'
   - name: width
     uid: 'excel!Excel.Range#width:member'
     package: excel!
@@ -511,7 +511,7 @@ properties:
     syntax:
       content: 'readonly worksheet: Worksheet;'
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
 methods:
   - name: 'autoFill(destinationRange, autoFillType)'
     uid: 'excel!Excel.Range#autoFill:member(1)'
@@ -555,14 +555,14 @@ methods:
             The destination range to autofill. If the destination range is null,
             data is filled out based on the surrounding cells (which is the
             behavior when double-clicking the UI’s range fill handle).
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: autoFillType
           description: >-
             The type of autofill. Specifies how the destination range is to be
             filled, based on the contents of the current range. Default is
             "FillDefault".
           type: |-
-            | excel!Excel.<xref uid="AutoFillType:enum" />
+            | <xref uid="excel!Excel.AutoFillType:enum" />
                             | "FillDefault"
                             | "FillCopy"
                             | "FillSeries"
@@ -632,7 +632,7 @@ methods:
             Optional. Determines the type of clear action. See
             Excel.ClearApplyTo for details.
           type: |-
-            | excel!Excel.<xref uid="ClearApplyTo:enum" />
+            | <xref uid="excel!Excel.ClearApplyTo:enum" />
                             | "All"
                             | "Formats"
                             | "Contents"
@@ -711,12 +711,12 @@ methods:
             RangeAreas has multiple ranges, their form must be able to be
             created by removing full rows or columns from a rectangular range.
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | excel!Excel.<xref
-            uid="RangeAreas:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | <xref
+            uid="excel!Excel.RangeAreas:interface" /> | string
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
           type: |-
-            | excel!Excel.<xref uid="RangeCopyType:enum" />
+            | <xref uid="excel!Excel.RangeCopyType:enum" />
                             | "All"
                             | "Formulas"
                             | "Values"
@@ -763,7 +763,7 @@ methods:
           description: >-
             Specifies which way to shift the cells. See
             Excel.DeleteShiftDirection for details.
-          type: 'excel!Excel.<xref uid="DeleteShiftDirection:enum" /> | "Up" | "Left"'
+          type: '<xref uid="excel!Excel.DeleteShiftDirection:enum" /> | "Up" | "Left"'
       return:
         type: void
         description: ''
@@ -790,9 +790,9 @@ methods:
             Additional search criteria, including the search direction and
             whether the search needs to match the entire cell or be case
             sensitive.
-          type: 'excel!Excel.<xref uid="SearchCriteria:interface" />'
+          type: '<xref uid="excel!Excel.SearchCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'findOrNullObject(text, criteria)'
     uid: 'excel!Excel.Range#findOrNullObject:member(1)'
@@ -818,9 +818,9 @@ methods:
             Additional search criteria, including the search direction and
             whether the search needs to match the entire cell or be case
             sensitive.
-          type: 'excel!Excel.<xref uid="SearchCriteria:interface" />'
+          type: '<xref uid="excel!Excel.SearchCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: |-
 
 
@@ -883,7 +883,7 @@ methods:
           description: The number of columns of the new range size.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getBoundingRect(anotherRange)
     uid: 'excel!Excel.Range#getBoundingRect:member(1)'
@@ -900,9 +900,9 @@ methods:
       parameters:
         - id: anotherRange
           description: The range object or address or range name.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'getCell(row, column)'
     uid: 'excel!Excel.Range#getCell:member(1)'
@@ -926,7 +926,7 @@ methods:
           description: Column number of the cell to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getColumn(column)
     uid: 'excel!Excel.Range#getColumn:member(1)'
@@ -943,7 +943,7 @@ methods:
           description: Column number of the range to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getColumnsAfter(count)
     uid: 'excel!Excel.Range#getColumnsAfter:member(1)'
@@ -964,7 +964,7 @@ methods:
             within the current range. The default value is 1.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getColumnsBefore(count)
     uid: 'excel!Excel.Range#getColumnsBefore:member(1)'
@@ -985,7 +985,7 @@ methods:
             within the current range. The default value is 1.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getEntireColumn()
     uid: 'excel!Excel.Range#getEntireColumn:member(1)'
@@ -1001,7 +1001,7 @@ methods:
     syntax:
       content: 'getEntireColumn(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getEntireRow()
     uid: 'excel!Excel.Range#getEntireRow:member(1)'
@@ -1017,7 +1017,7 @@ methods:
     syntax:
       content: 'getEntireRow(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getImage()
     uid: 'excel!Excel.Range#getImage:member(1)'
@@ -1030,7 +1030,7 @@ methods:
     syntax:
       content: 'getImage(): ClientResult<string>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;string&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;string&gt;'
         description: ''
   - name: getIntersection(anotherRange)
     uid: 'excel!Excel.Range#getIntersection:member(1)'
@@ -1049,9 +1049,9 @@ methods:
           description: >-
             The range object or range address that will be used to determine the
             intersection of ranges.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getIntersectionOrNullObject(anotherRange)
     uid: 'excel!Excel.Range#getIntersectionOrNullObject:member(1)'
@@ -1070,9 +1070,9 @@ methods:
           description: >-
             The range object or range address that will be used to determine the
             intersection of ranges.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: |-
 
 
@@ -1147,7 +1147,7 @@ methods:
     syntax:
       content: 'getLastCell(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getLastColumn()
     uid: 'excel!Excel.Range#getLastColumn:member(1)'
@@ -1162,7 +1162,7 @@ methods:
     syntax:
       content: 'getLastColumn(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getLastRow()
     uid: 'excel!Excel.Range#getLastRow:member(1)'
@@ -1177,7 +1177,7 @@ methods:
     syntax:
       content: 'getLastRow(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'getOffsetRange(rowOffset, columnOffset)'
     uid: 'excel!Excel.Range#getOffsetRange:member(1)'
@@ -1207,7 +1207,7 @@ methods:
             negative values are offset to the left.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getPivotTables(fullyContained)
     uid: 'excel!Excel.Range#getPivotTables:member(1)'
@@ -1226,7 +1226,7 @@ methods:
             the range bounds. The default value is false.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="PivotTableScopedCollection:interface" />'
+        type: '<xref uid="excel!Excel.PivotTableScopedCollection:interface" />'
         description: ''
   - name: 'getResizedRange(deltaRows, deltaColumns)'
     uid: 'excel!Excel.Range#getResizedRange:member(1)'
@@ -1255,7 +1255,7 @@ methods:
             range, or a negative number to decrease it.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getRow(row)
     uid: 'excel!Excel.Range#getRow:member(1)'
@@ -1272,7 +1272,7 @@ methods:
           description: Row number of the range to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getRowsAbove(count)
     uid: 'excel!Excel.Range#getRowsAbove:member(1)'
@@ -1293,7 +1293,7 @@ methods:
             the current range. The default value is 1.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getRowsBelow(count)
     uid: 'excel!Excel.Range#getRowsBelow:member(1)'
@@ -1314,7 +1314,7 @@ methods:
             the current range. The default value is 1.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'getSpecialCells(cellType, cellValueType)'
     uid: 'excel!Excel.Range#getSpecialCells:member(1)'
@@ -1362,7 +1362,7 @@ methods:
         - id: cellType
           description: The type of cells to include.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellType:enum" />
+            | <xref uid="excel!Excel.SpecialCellType:enum" />
                             | "ConditionalFormats"
                             | "DataValidations"
                             | "Blanks"
@@ -1379,7 +1379,7 @@ methods:
             default is to select all constants or formulas, no matter what the
             type.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellValueType:enum" />
+            | <xref uid="excel!Excel.SpecialCellValueType:enum" />
                             | "All"
                             | "Errors"
                             | "ErrorsLogical"
@@ -1397,7 +1397,7 @@ methods:
                             | "Text"
                     
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: 'getSpecialCellsOrNullObject(cellType, cellValueType)'
     uid: 'excel!Excel.Range#getSpecialCellsOrNullObject:member(1)'
@@ -1445,7 +1445,7 @@ methods:
         - id: cellType
           description: The type of cells to include.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellType:enum" />
+            | <xref uid="excel!Excel.SpecialCellType:enum" />
                             | "ConditionalFormats"
                             | "DataValidations"
                             | "Blanks"
@@ -1462,7 +1462,7 @@ methods:
             default is to select all constants or formulas, no matter what the
             type.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellValueType:enum" />
+            | <xref uid="excel!Excel.SpecialCellValueType:enum" />
                             | "All"
                             | "Errors"
                             | "ErrorsLogical"
@@ -1480,7 +1480,7 @@ methods:
                             | "Text"
                     
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getSurroundingRegion()
     uid: 'excel!Excel.Range#getSurroundingRegion:member(1)'
@@ -1496,7 +1496,7 @@ methods:
     syntax:
       content: 'getSurroundingRegion(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getTables(fullyContained)
     uid: 'excel!Excel.Range#getTables:member(1)'
@@ -1515,7 +1515,7 @@ methods:
             range bounds. The default value is false.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="TableScopedCollection:interface" />'
+        type: '<xref uid="excel!Excel.TableScopedCollection:interface" />'
         description: ''
   - name: getUsedRange(valuesOnly)
     uid: 'excel!Excel.Range#getUsedRange:member(1)'
@@ -1534,7 +1534,7 @@ methods:
           description: Considers only cells with values as used cells.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getUsedRangeOrNullObject(valuesOnly)
     uid: 'excel!Excel.Range#getUsedRangeOrNullObject:member(1)'
@@ -1553,7 +1553,7 @@ methods:
           description: Considers only cells with values as used cells.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: |-
 
 
@@ -1604,7 +1604,7 @@ methods:
     syntax:
       content: 'getVisibleView(): RangeView;'
       return:
-        type: 'excel!Excel.<xref uid="RangeView:interface" />'
+        type: '<xref uid="excel!Excel.RangeView:interface" />'
         description: ''
   - name: group(groupOption)
     uid: 'excel!Excel.Range#group:member(1)'
@@ -1624,7 +1624,7 @@ methods:
             the range's `isEntireRow` or `isEntireColumn` property (i.e.,
             `range.isEntireRow` is true and `groupOption` is "ByColumns" or
             `range.isEntireColumn` is true and `groupOption` is "ByRows").
-          type: 'excel!Excel.<xref uid="GroupOption:enum" /> | "ByRows" | "ByColumns"'
+          type: '<xref uid="excel!Excel.GroupOption:enum" /> | "ByRows" | "ByColumns"'
       return:
         type: void
         description: |-
@@ -1666,7 +1666,7 @@ methods:
             Specifies whether to hide details of grouped rows or grouped
             columns.
           type: |-
-            excel!Excel.<xref uid="GroupOption:enum" /> | "ByRows" | "ByColumns"
+            <xref uid="excel!Excel.GroupOption:enum" /> | "ByRows" | "ByColumns"
                     
       return:
         type: void
@@ -1690,10 +1690,10 @@ methods:
             Specifies which way to shift the cells. See
             Excel.InsertShiftDirection for details.
           type: >-
-            excel!Excel.<xref uid="InsertShiftDirection:enum" /> | "Down" |
+            <xref uid="excel!Excel.InsertShiftDirection:enum" /> | "Down" |
             "Right"
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.Range#load:member(1)'
@@ -1755,7 +1755,7 @@ methods:
           description: >-
             destinationRange Specifies the range to where the information in
             this range will be moved.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
         type: void
         description: ''
@@ -1783,7 +1783,7 @@ methods:
           description: True if the input data contains header. Default is false.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="RemoveDuplicatesResult:interface" />'
+        type: '<xref uid="excel!Excel.RemoveDuplicatesResult:interface" />'
         description: |-
 
 
@@ -1828,9 +1828,9 @@ methods:
           type: string
         - id: criteria
           description: Additional Replace Criteria.
-          type: 'excel!Excel.<xref uid="ReplaceCriteria:interface" />'
+          type: '<xref uid="excel!Excel.ReplaceCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: select()
     uid: 'excel!Excel.Range#select:member(1)'
@@ -1890,7 +1890,7 @@ methods:
             Specifies whether to show details of grouped rows or grouped
             columns.
           type: |-
-            excel!Excel.<xref uid="GroupOption:enum" /> | "ByRows" | "ByColumns"
+            <xref uid="excel!Excel.GroupOption:enum" /> | "ByRows" | "ByColumns"
                     
       return:
         type: void
@@ -1908,7 +1908,7 @@ methods:
       parameters:
         - id: groupOption
           description: Specifies how the range can be ungrouped by rows or columns.
-          type: 'excel!Excel.<xref uid="GroupOption:enum" /> | "ByRows" | "ByColumns"'
+          type: '<xref uid="excel!Excel.GroupOption:enum" /> | "ByRows" | "ByColumns"'
       return:
         type: void
         description: |-

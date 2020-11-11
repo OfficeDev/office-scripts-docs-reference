@@ -36,25 +36,25 @@ methods:
             object. When a string is passed, it is interpreted as the name/id of
             a PivotTable/Table.
           type: >-
-            string | excel!Excel.<xref uid="PivotTable:interface" /> |
-            excel!Excel.<xref uid="Table:interface" />
+            string | <xref uid="excel!Excel.PivotTable:interface" /> | <xref
+            uid="excel!Excel.Table:interface" />
         - id: sourceField
           description: >-
             The field in the data source to filter by. It can be a PivotField
             object, a TableColumn object, the id of a PivotField or the id/name
             of TableColumn.
           type: >-
-            string | excel!Excel.<xref uid="PivotField:interface" /> | number |
-            excel!Excel.<xref uid="TableColumn:interface" />
+            string | <xref uid="excel!Excel.PivotField:interface" /> | number |
+            <xref uid="excel!Excel.TableColumn:interface" />
         - id: slicerDestination
           description: >-
             Optional. The worksheet where the new slicer will be created in. It
             can be a Worksheet object or the name/id of a worksheet. This
             parameter can be omitted if the slicer collection is retrieved from
             worksheet.
-          type: 'string | excel!Excel.<xref uid="Worksheet:interface" />'
+          type: 'string | <xref uid="excel!Excel.Worksheet:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="Slicer:interface" />'
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
         description: |-
 
 
@@ -82,7 +82,7 @@ methods:
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: getItem(key)
     uid: 'excel!Excel.SlicerCollection#getItem:member(1)'
@@ -99,7 +99,7 @@ methods:
           description: The name or id of the slicer.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Slicer:interface" />'
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
         description: ''
   - name: getItemAt(index)
     uid: 'excel!Excel.SlicerCollection#getItemAt:member(1)'
@@ -116,7 +116,7 @@ methods:
           description: Index value of the object to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Slicer:interface" />'
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
         description: ''
   - name: getItemOrNullObject(key)
     uid: 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
@@ -135,7 +135,7 @@ methods:
           description: Name or Id of the slicer to be retrieved.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Slicer:interface" />'
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.SlicerCollection#load:member(1)'

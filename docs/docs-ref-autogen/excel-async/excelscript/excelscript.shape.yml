@@ -61,7 +61,7 @@ properties:
     syntax:
       content: 'readonly fill: ShapeFill;'
       return:
-        type: 'excel!Excel.<xref uid="ShapeFill:interface" />'
+        type: '<xref uid="excel!Excel.ShapeFill:interface" />'
         description: |-
 
 
@@ -92,7 +92,7 @@ properties:
     syntax:
       content: 'readonly geometricShape: GeometricShape;'
       return:
-        type: 'excel!Excel.<xref uid="GeometricShape:interface" />'
+        type: '<xref uid="excel!Excel.GeometricShape:interface" />'
   - name: geometricShapeType
     uid: 'excel!Excel.Shape#geometricShapeType:member'
     package: excel!
@@ -287,7 +287,7 @@ properties:
                     | "ChartPlus";
       return:
         type: |-
-          | excel!Excel.<xref uid="GeometricShapeType:enum" />
+          | <xref uid="excel!Excel.GeometricShapeType:enum" />
                       | "LineInverse"
                       | "Triangle"
                       | "RightTriangle"
@@ -478,7 +478,7 @@ properties:
     syntax:
       content: 'readonly group: ShapeGroup;'
       return:
-        type: 'excel!Excel.<xref uid="ShapeGroup:interface" />'
+        type: '<xref uid="excel!Excel.ShapeGroup:interface" />'
         description: |-
 
 
@@ -534,7 +534,7 @@ properties:
     syntax:
       content: 'readonly image: Image;'
       return:
-        type: 'excel!Excel.<xref uid="Image:interface" />'
+        type: '<xref uid="excel!Excel.Image:interface" />'
   - name: left
     uid: 'excel!Excel.Shape#left:member'
     package: excel!
@@ -579,7 +579,7 @@ properties:
     syntax:
       content: 'readonly line: Line;'
       return:
-        type: 'excel!Excel.<xref uid="Line:interface" />'
+        type: '<xref uid="excel!Excel.Line:interface" />'
         description: |-
 
 
@@ -611,7 +611,7 @@ properties:
     syntax:
       content: 'readonly lineFormat: ShapeLineFormat;'
       return:
-        type: 'excel!Excel.<xref uid="ShapeLineFormat:interface" />'
+        type: '<xref uid="excel!Excel.ShapeLineFormat:interface" />'
   - name: lockAspectRatio
     uid: 'excel!Excel.Shape#lockAspectRatio:member'
     package: excel!
@@ -661,7 +661,7 @@ properties:
     syntax:
       content: 'readonly parentGroup: Shape;'
       return:
-        type: 'excel!Excel.<xref uid="Shape:interface" />'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
   - name: placement
     uid: 'excel!Excel.Shape#placement:member'
     package: excel!
@@ -674,7 +674,7 @@ properties:
       content: 'placement: Placement | "TwoCell" | "OneCell" | "Absolute";'
       return:
         type: >-
-          excel!Excel.<xref uid="Placement:enum" /> | "TwoCell" | "OneCell" |
+          <xref uid="excel!Excel.Placement:enum" /> | "TwoCell" | "OneCell" |
           "Absolute"
   - name: rotation
     uid: 'excel!Excel.Shape#rotation:member'
@@ -717,7 +717,7 @@ properties:
     syntax:
       content: 'readonly textFrame: TextFrame;'
       return:
-        type: 'excel!Excel.<xref uid="TextFrame:interface" />'
+        type: '<xref uid="excel!Excel.TextFrame:interface" />'
   - name: top
     uid: 'excel!Excel.Shape#top:member'
     package: excel!
@@ -752,7 +752,7 @@ properties:
                     | "Line";
       return:
         type: |-
-          | excel!Excel.<xref uid="ShapeType:enum" />
+          | <xref uid="excel!Excel.ShapeType:enum" />
                       | "Unsupported"
                       | "Image"
                       | "GeometricShape"
@@ -816,9 +816,9 @@ methods:
           description: >-
             The sheet to which the shape object will be pasted. The default
             value is the copied Shape's worksheet.
-          type: 'excel!Excel.<xref uid="Worksheet:interface" /> | string'
+          type: '<xref uid="excel!Excel.Worksheet:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="Shape:interface" />'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
         description: ''
   - name: delete()
     uid: 'excel!Excel.Shape#delete:member(1)'
@@ -880,7 +880,7 @@ methods:
         - id: format
           description: Specifies the format of the image.
           type: |-
-            | excel!Excel.<xref uid="PictureFormat:enum" />
+            | <xref uid="excel!Excel.PictureFormat:enum" />
                             | "Unknown"
                             | "Bmp"
                             | "Jpeg"
@@ -889,7 +889,7 @@ methods:
                             | "Svg"
                     
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;string&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;string&gt;'
         description: |-
 
 
@@ -1063,7 +1063,7 @@ methods:
             current size. The original size scaling option only works for
             images.
           type: >-
-            excel!Excel.<xref uid="ShapeScaleType:enum" /> | "CurrentSize" |
+            <xref uid="excel!Excel.ShapeScaleType:enum" /> | "CurrentSize" |
             "OriginalSize"
         - id: scaleFrom
           description: >-
@@ -1071,7 +1071,7 @@ methods:
             when the shape is scaled. If omitted, it represents the shape's
             upper left corner retains its position.
           type: |-
-            | excel!Excel.<xref uid="ShapeScaleFrom:enum" />
+            | <xref uid="excel!Excel.ShapeScaleFrom:enum" />
                             | "ScaleFromTopLeft"
                             | "ScaleFromMiddle"
                             | "ScaleFromBottomRight"
@@ -1127,7 +1127,7 @@ methods:
             current size. The original size scaling option only works for
             images.
           type: >-
-            excel!Excel.<xref uid="ShapeScaleType:enum" /> | "CurrentSize" |
+            <xref uid="excel!Excel.ShapeScaleType:enum" /> | "CurrentSize" |
             "OriginalSize"
         - id: scaleFrom
           description: >-
@@ -1135,7 +1135,7 @@ methods:
             when the shape is scaled. If omitted, it represents the shape's
             upper left corner retains its position.
           type: |-
-            | excel!Excel.<xref uid="ShapeScaleFrom:enum" />
+            | <xref uid="excel!Excel.ShapeScaleFrom:enum" />
                             | "ScaleFromTopLeft"
                             | "ScaleFromMiddle"
                             | "ScaleFromBottomRight"
@@ -1169,7 +1169,7 @@ methods:
             Where to move the shape in the z-order stack relative to the other
             shapes. See Excel.ShapeZOrder for details.
           type: |-
-            | excel!Excel.<xref uid="ShapeZOrder:enum" />
+            | <xref uid="excel!Excel.ShapeZOrder:enum" />
                             | "BringToFront"
                             | "BringForward"
                             | "SendToBack"

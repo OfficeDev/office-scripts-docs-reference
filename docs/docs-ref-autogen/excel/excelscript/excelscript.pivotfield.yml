@@ -27,7 +27,7 @@ methods:
           description: >-
             A configured specific PivotFilter or a PivotFilters interface
             containing multiple configured filters.
-          type: 'ExcelScript!ExcelScript.<xref uid="PivotFilters:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.PivotFilters:interface" />'
       return:
         type: void
         description: ''
@@ -61,7 +61,7 @@ methods:
       parameters:
         - id: filterType
           description: The type of filter on the field of which to clear all criteria.
-          type: 'ExcelScript!ExcelScript.<xref uid="PivotFilterType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.PivotFilterType:enum" />'
       return:
         type: void
         description: ''
@@ -76,7 +76,7 @@ methods:
     syntax:
       content: 'getFilters(): PivotFilters;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotFilters:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotFilters:interface" />'
         description: ''
   - name: getId()
     uid: 'ExcelScript!ExcelScript.PivotField#getId:member(1)'
@@ -102,7 +102,7 @@ methods:
     syntax:
       content: 'getItems(): PivotItem[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotItem:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotItem:interface" />[]'
         description: ''
   - name: getName()
     uid: 'ExcelScript!ExcelScript.PivotField#getName:member(1)'
@@ -134,7 +134,7 @@ methods:
           description: Name of the PivotItem to be retrieved.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="PivotItem:interface" /> | undefined'
+        type: '<xref uid="ExcelScript!ExcelScript.PivotItem:interface" /> | undefined'
         description: ''
   - name: getShowAllItems()
     uid: 'ExcelScript!ExcelScript.PivotField#getShowAllItems:member(1)'
@@ -160,7 +160,7 @@ methods:
     syntax:
       content: 'getSubtotals(): Subtotals;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Subtotals:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Subtotals:interface" />'
         description: ''
   - name: isFiltered(filterType)
     uid: 'ExcelScript!ExcelScript.PivotField#isFiltered:member(1)'
@@ -177,7 +177,7 @@ methods:
           description: >-
             The filter type to check. If no type is provided, this method will
             check if any filter is applied.
-          type: 'ExcelScript!ExcelScript.<xref uid="PivotFilterType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.PivotFilterType:enum" />'
       return:
         type: boolean
         description: ''
@@ -228,7 +228,7 @@ methods:
       parameters:
         - id: subtotals
           description: ''
-          type: 'ExcelScript!ExcelScript.<xref uid="Subtotals:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.Subtotals:interface" />'
       return:
         type: void
         description: ''
@@ -248,7 +248,7 @@ methods:
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type: 'ExcelScript!ExcelScript.<xref uid="SortBy:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SortBy:enum" />'
       return:
         type: void
         description: ''
@@ -273,12 +273,12 @@ methods:
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type: 'ExcelScript!ExcelScript.<xref uid="SortBy:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.SortBy:enum" />'
         - id: valuesHierarchy
           description: >-
             Specifies the values hierarchy on the data axis to be used for
             sorting.
-          type: 'ExcelScript!ExcelScript.<xref uid="DataPivotHierarchy:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />'
         - id: pivotItemScope
           description: >-
             The items that should be used for the scope of the sorting. These
@@ -287,7 +287,7 @@ methods:
             represents the ID of the PivotItem. If there are no items other than
             data hierarchy on the axis you want to sort on, this can be empty.
           type: >-
-            Array&lt;ExcelScript!ExcelScript.<xref uid="PivotItem:interface" />
+            Array&lt;<xref uid="ExcelScript!ExcelScript.PivotItem:interface" />
             | string&gt;
                     
       return:

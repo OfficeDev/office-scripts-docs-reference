@@ -29,15 +29,15 @@ methods:
             The comment's content. This can be either a string or Interface
             CommentRichContent (e.g., for comments with mentions).
           type: >-
-            ExcelScript!ExcelScript.<xref uid="CommentRichContent:interface" />
+            <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
             | string
         - id: contentType
           description: >-
             Optional. The type of content contained within the comment. The
             default value is enum `ContentType.Plain`<!-- -->.
-          type: 'ExcelScript!ExcelScript.<xref uid="ContentType:enum" />'
+          type: '<xref uid="ExcelScript!ExcelScript.ContentType:enum" />'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="CommentReply:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.CommentReply:interface" />'
         description: ''
   - name: delete()
     uid: 'ExcelScript!ExcelScript.Comment#delete:member(1)'
@@ -93,7 +93,7 @@ methods:
           description: The identifier for the comment reply.
           type: string
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="CommentReply:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.CommentReply:interface" />'
         description: ''
   - name: getContent()
     uid: 'ExcelScript!ExcelScript.Comment#getContent:member(1)'
@@ -119,7 +119,7 @@ methods:
     syntax:
       content: 'getContentType(): ContentType;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="ContentType:enum" />'
+        type: '<xref uid="ExcelScript!ExcelScript.ContentType:enum" />'
         description: ''
   - name: getCreationDate()
     uid: 'ExcelScript!ExcelScript.Comment#getCreationDate:member(1)'
@@ -160,7 +160,7 @@ methods:
     syntax:
       content: 'getLocation(): Range;'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="Range:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: getMentions()
     uid: 'ExcelScript!ExcelScript.Comment#getMentions:member(1)'
@@ -173,7 +173,7 @@ methods:
     syntax:
       content: 'getMentions(): CommentMention[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="CommentMention:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.CommentMention:interface" />[]'
         description: ''
   - name: getReplies()
     uid: 'ExcelScript!ExcelScript.Comment#getReplies:member(1)'
@@ -186,7 +186,7 @@ methods:
     syntax:
       content: 'getReplies(): CommentReply[];'
       return:
-        type: 'ExcelScript!ExcelScript.<xref uid="CommentReply:interface" />[]'
+        type: '<xref uid="ExcelScript!ExcelScript.CommentReply:interface" />[]'
         description: ''
   - name: getResolved()
     uid: 'ExcelScript!ExcelScript.Comment#getResolved:member(1)'
@@ -273,7 +273,7 @@ methods:
             The content for the comment. This contains a specially formatted
             string and a list of mentions that will be parsed into the string
             when displayed by Excel.
-          type: 'ExcelScript!ExcelScript.<xref uid="CommentRichContent:interface" />'
+          type: '<xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />'
       return:
         type: void
         description: ''

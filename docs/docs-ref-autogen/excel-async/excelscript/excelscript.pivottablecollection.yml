@@ -37,18 +37,18 @@ methods:
             The source data for the new PivotTable, this can either be a range
             (or string address including the worksheet name) or a table.
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | string |
-            excel!Excel.<xref uid="Table:interface" />
+            <xref uid="excel!Excel.Range:interface" /> | string | <xref
+            uid="excel!Excel.Table:interface" />
         - id: destination
           description: >-
             The cell in the upper-left corner of the PivotTable report's
             destination range (the range on the worksheet where the resulting
             report will be placed).
           type: |-
-            excel!Excel.<xref uid="Range:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | string
                     
       return:
-        type: 'excel!Excel.<xref uid="PivotTable:interface" />'
+        type: '<xref uid="excel!Excel.PivotTable:interface" />'
         description: |-
 
 
@@ -74,7 +74,7 @@ methods:
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: getItem(name)
     uid: 'excel!Excel.PivotTableCollection#getItem:member(1)'
@@ -91,7 +91,7 @@ methods:
           description: Name of the PivotTable to be retrieved.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="PivotTable:interface" />'
+        type: '<xref uid="excel!Excel.PivotTable:interface" />'
         description: ''
   - name: getItemOrNullObject(name)
     uid: 'excel!Excel.PivotTableCollection#getItemOrNullObject:member(1)'
@@ -110,7 +110,7 @@ methods:
           description: Name of the PivotTable to be retrieved.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="PivotTable:interface" />'
+        type: '<xref uid="excel!Excel.PivotTable:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.PivotTableCollection#load:member(1)'

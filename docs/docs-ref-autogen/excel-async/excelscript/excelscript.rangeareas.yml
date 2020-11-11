@@ -68,7 +68,7 @@ properties:
     syntax:
       content: 'readonly areas: RangeCollection;'
       return:
-        type: 'excel!Excel.<xref uid="RangeCollection:interface" />'
+        type: '<xref uid="excel!Excel.RangeCollection:interface" />'
   - name: cellCount
     uid: 'excel!Excel.RangeAreas#cellCount:member'
     package: excel!
@@ -97,7 +97,7 @@ properties:
     syntax:
       content: 'readonly conditionalFormats: ConditionalFormatCollection;'
       return:
-        type: 'excel!Excel.<xref uid="ConditionalFormatCollection:interface" />'
+        type: '<xref uid="excel!Excel.ConditionalFormatCollection:interface" />'
   - name: dataValidation
     uid: 'excel!Excel.RangeAreas#dataValidation:member'
     package: excel!
@@ -109,7 +109,7 @@ properties:
     syntax:
       content: 'readonly dataValidation: DataValidation;'
       return:
-        type: 'excel!Excel.<xref uid="DataValidation:interface" />'
+        type: '<xref uid="excel!Excel.DataValidation:interface" />'
   - name: format
     uid: 'excel!Excel.RangeAreas#format:member'
     package: excel!
@@ -123,7 +123,7 @@ properties:
     syntax:
       content: 'readonly format: RangeFormat;'
       return:
-        type: 'excel!Excel.<xref uid="RangeFormat:interface" />'
+        type: '<xref uid="excel!Excel.RangeFormat:interface" />'
         description: |-
 
 
@@ -197,7 +197,7 @@ properties:
     syntax:
       content: 'readonly worksheet: Worksheet;'
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
 methods:
   - name: calculate()
     uid: 'excel!Excel.RangeAreas#calculate:member(1)'
@@ -239,7 +239,7 @@ methods:
             Optional. Determines the type of clear action. See
             Excel.ClearApplyTo for details. Default is "All".
           type: |-
-            | excel!Excel.<xref uid="ClearApplyTo:enum" />
+            | <xref uid="excel!Excel.ClearApplyTo:enum" />
                             | "All"
                             | "Formats"
                             | "Contents"
@@ -318,12 +318,12 @@ methods:
             RangeAreas has multiple ranges, their form must able to be created
             by removing full rows or columns from a rectangular range.
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | excel!Excel.<xref
-            uid="RangeAreas:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | <xref
+            uid="excel!Excel.RangeAreas:interface" /> | string
         - id: copyType
           description: The type of cell data or formatting to copy over. Default is "All".
           type: |-
-            | excel!Excel.<xref uid="RangeCopyType:enum" />
+            | <xref uid="excel!Excel.RangeCopyType:enum" />
                             | "All"
                             | "Formulas"
                             | "Values"
@@ -355,7 +355,7 @@ methods:
     syntax:
       content: 'getEntireColumn(): RangeAreas;'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getEntireRow()
     uid: 'excel!Excel.RangeAreas#getEntireRow:member(1)'
@@ -371,7 +371,7 @@ methods:
     syntax:
       content: 'getEntireRow(): RangeAreas;'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getIntersection(anotherRange)
     uid: 'excel!Excel.RangeAreas#getIntersection:member(1)'
@@ -392,10 +392,10 @@ methods:
             The range, RangeAreas object or range address that will be used to
             determine the intersection.
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | excel!Excel.<xref
-            uid="RangeAreas:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | <xref
+            uid="excel!Excel.RangeAreas:interface" /> | string
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getIntersectionOrNullObject(anotherRange)
     uid: 'excel!Excel.RangeAreas#getIntersectionOrNullObject:member(1)'
@@ -419,11 +419,11 @@ methods:
             The range, RangeAreas, or address that will be used to determine the
             intersection.
           type: >-
-            excel!Excel.<xref uid="Range:interface" /> | excel!Excel.<xref
-            uid="RangeAreas:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | <xref
+            uid="excel!Excel.RangeAreas:interface" /> | string
                     
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: 'getOffsetRangeAreas(rowOffset, columnOffset)'
     uid: 'excel!Excel.RangeAreas#getOffsetRangeAreas:member(1)'
@@ -457,7 +457,7 @@ methods:
             and negative values are offset to the left.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: 'getSpecialCells(cellType, cellValueType)'
     uid: 'excel!Excel.RangeAreas#getSpecialCells:member(1)'
@@ -505,7 +505,7 @@ methods:
         - id: cellType
           description: The type of cells to include.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellType:enum" />
+            | <xref uid="excel!Excel.SpecialCellType:enum" />
                             | "ConditionalFormats"
                             | "DataValidations"
                             | "Blanks"
@@ -522,7 +522,7 @@ methods:
             default is to select all constants or formulas, no matter what the
             type.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellValueType:enum" />
+            | <xref uid="excel!Excel.SpecialCellValueType:enum" />
                             | "All"
                             | "Errors"
                             | "ErrorsLogical"
@@ -540,7 +540,7 @@ methods:
                             | "Text"
                     
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: 'getSpecialCellsOrNullObject(cellType, cellValueType)'
     uid: 'excel!Excel.RangeAreas#getSpecialCellsOrNullObject:member(1)'
@@ -588,7 +588,7 @@ methods:
         - id: cellType
           description: The type of cells to include.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellType:enum" />
+            | <xref uid="excel!Excel.SpecialCellType:enum" />
                             | "ConditionalFormats"
                             | "DataValidations"
                             | "Blanks"
@@ -605,7 +605,7 @@ methods:
             default is to select all constants or formulas, no matter what the
             type.
           type: |-
-            | excel!Excel.<xref uid="SpecialCellValueType:enum" />
+            | <xref uid="excel!Excel.SpecialCellValueType:enum" />
                             | "All"
                             | "Errors"
                             | "ErrorsLogical"
@@ -623,7 +623,7 @@ methods:
                             | "Text"
                     
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getTables(fullyContained)
     uid: 'excel!Excel.RangeAreas#getTables:member(1)'
@@ -644,7 +644,7 @@ methods:
             range bounds. Default is false.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="TableScopedCollection:interface" />'
+        type: '<xref uid="excel!Excel.TableScopedCollection:interface" />'
         description: ''
   - name: getUsedRangeAreas(valuesOnly)
     uid: 'excel!Excel.RangeAreas#getUsedRangeAreas:member(1)'
@@ -666,7 +666,7 @@ methods:
             false.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: getUsedRangeAreasOrNullObject(valuesOnly)
     uid: 'excel!Excel.RangeAreas#getUsedRangeAreasOrNullObject:member(1)'
@@ -686,7 +686,7 @@ methods:
           description: Whether to only consider cells with values as used cells.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.RangeAreas#load:member(1)'

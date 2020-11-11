@@ -49,7 +49,7 @@ properties:
       content: 'layoutType: PivotLayoutType | "Compact" | "Tabular" | "Outline";'
       return:
         type: >-
-          excel!Excel.<xref uid="PivotLayoutType:enum" /> | "Compact" |
+          <xref uid="excel!Excel.PivotLayoutType:enum" /> | "Compact" |
           "Tabular" | "Outline"
   - name: preserveFormatting
     uid: 'excel!Excel.PivotLayout#preserveFormatting:member'
@@ -104,7 +104,7 @@ properties:
       content: 'subtotalLocation: SubtotalLocationType | "AtTop" | "AtBottom" | "Off";'
       return:
         type: >-
-          excel!Excel.<xref uid="SubtotalLocationType:enum" /> | "AtTop" |
+          <xref uid="excel!Excel.SubtotalLocationType:enum" /> | "AtTop" |
           "AtBottom" | "Off"
 methods:
   - name: getColumnLabelRange()
@@ -118,7 +118,7 @@ methods:
     syntax:
       content: 'getColumnLabelRange(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getDataBodyRange()
     uid: 'excel!Excel.PivotLayout#getDataBodyRange:member(1)'
@@ -131,7 +131,7 @@ methods:
     syntax:
       content: 'getDataBodyRange(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: |-
 
 
@@ -170,9 +170,9 @@ methods:
       parameters:
         - id: cell
           description: A single cell within the PivotTable data body.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="DataPivotHierarchy:interface" />'
+        type: '<xref uid="excel!Excel.DataPivotHierarchy:interface" />'
         description: ''
   - name: getFilterAxisRange()
     uid: 'excel!Excel.PivotLayout#getFilterAxisRange:member(1)'
@@ -185,7 +185,7 @@ methods:
     syntax:
       content: 'getFilterAxisRange(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'getPivotItems(axis, cell)'
     uid: 'excel!Excel.PivotLayout#getPivotItems:member(1)'
@@ -209,17 +209,17 @@ methods:
             The axis from which to get the PivotItems. Must be either "row" or
             "column."
           type: >-
-            excel!Excel.<xref uid="PivotAxis:enum" /> | "Unknown" | "Row" |
+            <xref uid="excel!Excel.PivotAxis:enum" /> | "Unknown" | "Row" |
             "Column" | "Data" | "Filter"
         - id: cell
           description: A single cell within the PivotTable's data body.
           type: |-
-            excel!Excel.<xref uid="Range:interface" /> | string
+            <xref uid="excel!Excel.Range:interface" /> | string
                     
       return:
         type: >-
-          excel!Excel.<xref uid="ClientResult:interface" />&lt;excel!Excel.<xref
-          uid="PivotItem:interface" />[]&gt;
+          <xref uid="excel!Excel.ClientResult:interface" />&lt;<xref
+          uid="excel!Excel.PivotItem:interface" />[]&gt;
         description: ''
   - name: getRange()
     uid: 'excel!Excel.PivotLayout#getRange:member(1)'
@@ -232,7 +232,7 @@ methods:
     syntax:
       content: 'getRange(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getRowLabelRange()
     uid: 'excel!Excel.PivotLayout#getRowLabelRange:member(1)'
@@ -245,7 +245,7 @@ methods:
     syntax:
       content: 'getRowLabelRange(): Range;'
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.PivotLayout#load:member(1)'
@@ -290,11 +290,11 @@ methods:
           description: >-
             A single cell to use get the criteria from for applying the
             autosort.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: sortBy
           description: The direction of the sort.
           type: |-
-            excel!Excel.<xref uid="SortBy:enum" /> | "Ascending" | "Descending"
+            <xref uid="excel!Excel.SortBy:enum" /> | "Ascending" | "Descending"
                     
       return:
         type: void

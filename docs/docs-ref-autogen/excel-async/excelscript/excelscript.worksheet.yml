@@ -25,7 +25,7 @@ properties:
     syntax:
       content: 'readonly autoFilter: AutoFilter;'
       return:
-        type: 'excel!Excel.<xref uid="AutoFilter:interface" />'
+        type: '<xref uid="excel!Excel.AutoFilter:interface" />'
         description: |-
 
 
@@ -52,7 +52,7 @@ properties:
     syntax:
       content: 'readonly charts: ChartCollection;'
       return:
-        type: 'excel!Excel.<xref uid="ChartCollection:interface" />'
+        type: '<xref uid="excel!Excel.ChartCollection:interface" />'
   - name: comments
     uid: 'excel!Excel.Worksheet#comments:member'
     package: excel!
@@ -64,7 +64,7 @@ properties:
     syntax:
       content: 'readonly comments: CommentCollection;'
       return:
-        type: 'excel!Excel.<xref uid="CommentCollection:interface" />'
+        type: '<xref uid="excel!Excel.CommentCollection:interface" />'
   - name: enableCalculation
     uid: 'excel!Excel.Worksheet#enableCalculation:member'
     package: excel!
@@ -93,7 +93,7 @@ properties:
     syntax:
       content: 'readonly freezePanes: WorksheetFreezePanes;'
       return:
-        type: 'excel!Excel.<xref uid="WorksheetFreezePanes:interface" />'
+        type: '<xref uid="excel!Excel.WorksheetFreezePanes:interface" />'
   - name: horizontalPageBreaks
     uid: 'excel!Excel.Worksheet#horizontalPageBreaks:member'
     package: excel!
@@ -107,7 +107,7 @@ properties:
     syntax:
       content: 'readonly horizontalPageBreaks: PageBreakCollection;'
       return:
-        type: 'excel!Excel.<xref uid="PageBreakCollection:interface" />'
+        type: '<xref uid="excel!Excel.PageBreakCollection:interface" />'
   - name: id
     uid: 'excel!Excel.Worksheet#id:member'
     package: excel!
@@ -146,7 +146,7 @@ properties:
     syntax:
       content: 'readonly names: NamedItemCollection;'
       return:
-        type: 'excel!Excel.<xref uid="NamedItemCollection:interface" />'
+        type: '<xref uid="excel!Excel.NamedItemCollection:interface" />'
   - name: pageLayout
     uid: 'excel!Excel.Worksheet#pageLayout:member'
     package: excel!
@@ -158,7 +158,7 @@ properties:
     syntax:
       content: 'readonly pageLayout: PageLayout;'
       return:
-        type: 'excel!Excel.<xref uid="PageLayout:interface" />'
+        type: '<xref uid="excel!Excel.PageLayout:interface" />'
   - name: pivotTables
     uid: 'excel!Excel.Worksheet#pivotTables:member'
     package: excel!
@@ -170,7 +170,7 @@ properties:
     syntax:
       content: 'readonly pivotTables: PivotTableCollection;'
       return:
-        type: 'excel!Excel.<xref uid="PivotTableCollection:interface" />'
+        type: '<xref uid="excel!Excel.PivotTableCollection:interface" />'
   - name: position
     uid: 'excel!Excel.Worksheet#position:member'
     package: excel!
@@ -194,7 +194,7 @@ properties:
     syntax:
       content: 'readonly protection: WorksheetProtection;'
       return:
-        type: 'excel!Excel.<xref uid="WorksheetProtection:interface" />'
+        type: '<xref uid="excel!Excel.WorksheetProtection:interface" />'
   - name: shapes
     uid: 'excel!Excel.Worksheet#shapes:member'
     package: excel!
@@ -206,7 +206,7 @@ properties:
     syntax:
       content: 'readonly shapes: ShapeCollection;'
       return:
-        type: 'excel!Excel.<xref uid="ShapeCollection:interface" />'
+        type: '<xref uid="excel!Excel.ShapeCollection:interface" />'
   - name: showGridlines
     uid: 'excel!Excel.Worksheet#showGridlines:member'
     package: excel!
@@ -255,7 +255,7 @@ properties:
     syntax:
       content: 'readonly slicers: SlicerCollection;'
       return:
-        type: 'excel!Excel.<xref uid="SlicerCollection:interface" />'
+        type: '<xref uid="excel!Excel.SlicerCollection:interface" />'
         description: |-
 
 
@@ -344,7 +344,7 @@ properties:
     syntax:
       content: 'readonly tables: TableCollection;'
       return:
-        type: 'excel!Excel.<xref uid="TableCollection:interface" />'
+        type: '<xref uid="excel!Excel.TableCollection:interface" />'
   - name: verticalPageBreaks
     uid: 'excel!Excel.Worksheet#verticalPageBreaks:member'
     package: excel!
@@ -358,7 +358,7 @@ properties:
     syntax:
       content: 'readonly verticalPageBreaks: PageBreakCollection;'
       return:
-        type: 'excel!Excel.<xref uid="PageBreakCollection:interface" />'
+        type: '<xref uid="excel!Excel.PageBreakCollection:interface" />'
   - name: visibility
     uid: 'excel!Excel.Worksheet#visibility:member'
     package: excel!
@@ -371,7 +371,7 @@ properties:
       content: 'visibility: SheetVisibility | "Visible" | "Hidden" | "VeryHidden";'
       return:
         type: >-
-          excel!Excel.<xref uid="SheetVisibility:enum" /> | "Visible" | "Hidden"
+          <xref uid="excel!Excel.SheetVisibility:enum" /> | "Visible" | "Hidden"
           | "VeryHidden"
 methods:
   - name: activate()
@@ -431,7 +431,7 @@ methods:
             The default value is "None", which inserts the worksheet at the
             beginning of the worksheet.
           type: |-
-            | excel!Excel.<xref uid="WorksheetPositionType:enum" />
+            | <xref uid="excel!Excel.WorksheetPositionType:enum" />
                             | "None"
                             | "Before"
                             | "After"
@@ -442,9 +442,9 @@ methods:
             The existing worksheet which determines the newly created
             worksheet's position. This is only needed if `positionType` is
             "Before" or "After".
-          type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+          type: '<xref uid="excel!Excel.Worksheet:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
         description: |-
 
 
@@ -502,9 +502,9 @@ methods:
           description: >-
             Additional search criteria, including whether the search needs to
             match the entire cell or be case sensitive.
-          type: 'excel!Excel.<xref uid="WorksheetSearchCriteria:interface" />'
+          type: '<xref uid="excel!Excel.WorksheetSearchCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: ''
   - name: 'findAllOrNullObject(text, criteria)'
     uid: 'excel!Excel.Worksheet#findAllOrNullObject:member(1)'
@@ -531,9 +531,9 @@ methods:
           description: >-
             Additional search criteria, including whether the search needs to
             match the entire cell or be case sensitive.
-          type: 'excel!Excel.<xref uid="WorksheetSearchCriteria:interface" />'
+          type: '<xref uid="excel!Excel.WorksheetSearchCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: |-
 
 
@@ -577,7 +577,7 @@ methods:
           description: the column number of the cell to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getNext(visibleOnly)
     uid: 'excel!Excel.Worksheet#getNext:member(1)'
@@ -598,7 +598,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
         description: ''
   - name: getNextOrNullObject(visibleOnly)
     uid: 'excel!Excel.Worksheet#getNextOrNullObject:member(1)'
@@ -619,7 +619,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
         description: ''
   - name: getPrevious(visibleOnly)
     uid: 'excel!Excel.Worksheet#getPrevious:member(1)'
@@ -640,7 +640,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
         description: ''
   - name: getPreviousOrNullObject(visibleOnly)
     uid: 'excel!Excel.Worksheet#getPreviousOrNullObject:member(1)'
@@ -661,7 +661,7 @@ methods:
             any hidden ones.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Worksheet:interface" />'
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
         description: ''
   - name: getRange(address)
     uid: 'excel!Excel.Worksheet#getRange:member(1)'
@@ -683,7 +683,7 @@ methods:
             is returned.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
     uid: 'excel!Excel.Worksheet#getRangeByIndexes:member(1)'
@@ -717,7 +717,7 @@ methods:
           description: Number of columns to include in the range.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getRanges(address)
     uid: 'excel!Excel.Worksheet#getRanges:member(1)'
@@ -739,7 +739,7 @@ methods:
             specified, an RangeArea object for the entire worksheet is returned.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="RangeAreas:interface" />'
+        type: '<xref uid="excel!Excel.RangeAreas:interface" />'
         description: |-
 
 
@@ -776,7 +776,7 @@ methods:
             (ignoring formatting).
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: getUsedRangeOrNullObject(valuesOnly)
     uid: 'excel!Excel.Worksheet#getUsedRangeOrNullObject:member(1)'
@@ -796,7 +796,7 @@ methods:
           description: Optional. Considers only cells with values as used cells.
           type: boolean
       return:
-        type: 'excel!Excel.<xref uid="Range:interface" />'
+        type: '<xref uid="excel!Excel.Range:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.Worksheet#load:member(1)'
@@ -845,9 +845,9 @@ methods:
           type: string
         - id: criteria
           description: Additional Replace Criteria.
-          type: 'excel!Excel.<xref uid="ReplaceCriteria:interface" />'
+          type: '<xref uid="excel!Excel.ReplaceCriteria:interface" />'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: 'showOutlineLevels(rowLevels, columnLevels)'
     uid: 'excel!Excel.Worksheet#showOutlineLevels:member(1)'

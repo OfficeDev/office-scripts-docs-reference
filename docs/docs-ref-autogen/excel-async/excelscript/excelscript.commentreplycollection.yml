@@ -28,16 +28,16 @@ methods:
           description: >-
             The comment's content. This can be either a string or Interface
             CommentRichContent (e.g., for comments with mentions).
-          type: 'excel!Excel.<xref uid="CommentRichContent:interface" /> | string'
+          type: '<xref uid="excel!Excel.CommentRichContent:interface" /> | string'
         - id: contentType
           description: >-
             Optional. The type of content contained within the comment. The
             default value is enum `ContentType.Plain`<!-- -->.
           type: |-
-            excel!Excel.<xref uid="ContentType:enum" /> | "Plain" | "Mention"
+            <xref uid="excel!Excel.ContentType:enum" /> | "Plain" | "Mention"
                     
       return:
-        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
+        type: '<xref uid="excel!Excel.CommentReply:interface" />'
         description: |-
 
 
@@ -63,7 +63,7 @@ methods:
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: getItem(commentReplyId)
     uid: 'excel!Excel.CommentReplyCollection#getItem:member(1)'
@@ -80,7 +80,7 @@ methods:
           description: The identifier for the comment reply.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
+        type: '<xref uid="excel!Excel.CommentReply:interface" />'
         description: ''
   - name: getItemAt(index)
     uid: 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
@@ -99,7 +99,7 @@ methods:
             uses zero-based indexing.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
+        type: '<xref uid="excel!Excel.CommentReply:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.CommentReplyCollection#load:member(1)'

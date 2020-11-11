@@ -20,7 +20,7 @@ properties:
     syntax:
       content: 'readonly criteria: FilterCriteria;'
       return:
-        type: 'excel!Excel.<xref uid="FilterCriteria:interface" />'
+        type: '<xref uid="excel!Excel.FilterCriteria:interface" />'
 methods:
   - name: apply(criteria)
     uid: 'excel!Excel.Filter#apply:member(1)'
@@ -35,7 +35,7 @@ methods:
       parameters:
         - id: criteria
           description: The criteria to apply.
-          type: 'excel!Excel.<xref uid="FilterCriteria:interface" />'
+          type: '<xref uid="excel!Excel.FilterCriteria:interface" />'
       return:
         type: void
         description: ''
@@ -121,7 +121,7 @@ methods:
             Optional. The operator that describes how the two criteria are
             joined.
           type: |-
-            excel!Excel.<xref uid="FilterOperator:enum" /> | "And" | "Or"
+            <xref uid="excel!Excel.FilterOperator:enum" /> | "And" | "Or"
                     
       return:
         type: void
@@ -179,7 +179,7 @@ methods:
         - id: criteria
           description: The dynamic criteria to apply.
           type: |-
-            | excel!Excel.<xref uid="DynamicFilterCriteria:enum" />
+            | <xref uid="excel!Excel.DynamicFilterCriteria:enum" />
                             | "Unknown"
                             | "AboveAverage"
                             | "AllDatesInPeriodApril"
@@ -249,7 +249,7 @@ methods:
       parameters:
         - id: icon
           description: The icons of the cells to show.
-          type: 'excel!Excel.<xref uid="Icon:interface" />'
+          type: '<xref uid="excel!Excel.Icon:interface" />'
       return:
         type: void
         description: ''
@@ -305,7 +305,7 @@ methods:
             The list of values to show. This must be an array of strings or an
             array of Excel.FilterDateTime objects.
           type: >-
-            Array&lt;string | excel!Excel.<xref uid="FilterDatetime:interface"
+            Array&lt;string | <xref uid="excel!Excel.FilterDatetime:interface"
             />&gt;
       return:
         type: void

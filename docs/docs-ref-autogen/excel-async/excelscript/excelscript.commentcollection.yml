@@ -34,23 +34,23 @@ methods:
             or a string. If it's a string, it must contain the full address,
             including the sheet name. An `InvalidArgument` error is thrown if
             the provided range is larger than one cell.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: content
           description: >-
             The comment's content. This can be either a string or
             CommentRichContent object. Strings are used for plain text.
             CommentRichContent objects allow for other comment features, such as
             mentions.
-          type: 'excel!Excel.<xref uid="CommentRichContent:interface" /> | string'
+          type: '<xref uid="excel!Excel.CommentRichContent:interface" /> | string'
         - id: contentType
           description: >-
             Optional. The type of content contained within the comment. The
             default value is enum `ContentType.Plain`<!-- -->.
           type: |-
-            excel!Excel.<xref uid="ContentType:enum" /> | "Plain" | "Mention"
+            <xref uid="excel!Excel.ContentType:enum" /> | "Plain" | "Mention"
                     
       return:
-        type: 'excel!Excel.<xref uid="Comment:interface" />'
+        type: '<xref uid="excel!Excel.Comment:interface" />'
         description: |-
 
 
@@ -76,7 +76,7 @@ methods:
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: getItem(commentId)
     uid: 'excel!Excel.CommentCollection#getItem:member(1)'
@@ -93,7 +93,7 @@ methods:
           description: The identifier for the comment.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Comment:interface" />'
+        type: '<xref uid="excel!Excel.Comment:interface" />'
         description: ''
   - name: getItemAt(index)
     uid: 'excel!Excel.CommentCollection#getItemAt:member(1)'
@@ -110,7 +110,7 @@ methods:
           description: Index value of the object to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Comment:interface" />'
+        type: '<xref uid="excel!Excel.Comment:interface" />'
         description: ''
   - name: getItemByCell(cellAddress)
     uid: 'excel!Excel.CommentCollection#getItemByCell:member(1)'
@@ -129,9 +129,9 @@ methods:
             string. If it's a string, it must contain the full address,
             including the sheet name. An `InvalidArgument` error is thrown if
             the provided range is larger than one cell.
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type: 'excel!Excel.<xref uid="Comment:interface" />'
+        type: '<xref uid="excel!Excel.Comment:interface" />'
         description: ''
   - name: getItemByReplyId(replyId)
     uid: 'excel!Excel.CommentCollection#getItemByReplyId:member(1)'
@@ -148,7 +148,7 @@ methods:
           description: The identifier of comment reply.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Comment:interface" />'
+        type: '<xref uid="excel!Excel.Comment:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.CommentCollection#load:member(1)'

@@ -45,17 +45,17 @@ methods:
             Range to bind the binding to. May be an Excel Range object, or a
             string. If string, must contain the full address, including the
             sheet name
-          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
           type: >-
-            excel!Excel.<xref uid="BindingType:enum" /> | "Range" | "Table" |
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
             "Text"
         - id: id
           description: Name of binding.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: 'addFromNamedItem(name, bindingType, id)'
     uid: 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
@@ -82,13 +82,13 @@ methods:
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
           type: >-
-            excel!Excel.<xref uid="BindingType:enum" /> | "Range" | "Table" |
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
             "Text"
         - id: id
           description: Name of binding.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: 'addFromSelection(bindingType, id)'
     uid: 'excel!Excel.BindingCollection#addFromSelection:member(1)'
@@ -110,13 +110,13 @@ methods:
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
           type: >-
-            excel!Excel.<xref uid="BindingType:enum" /> | "Range" | "Table" |
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
             "Text"
         - id: id
           description: Name of binding.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: getCount()
     uid: 'excel!Excel.BindingCollection#getCount:member(1)'
@@ -129,7 +129,7 @@ methods:
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
   - name: getItem(id)
     uid: 'excel!Excel.BindingCollection#getItem:member(1)'
@@ -146,7 +146,7 @@ methods:
           description: Id of the binding object to be retrieved.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: getItemAt(index)
     uid: 'excel!Excel.BindingCollection#getItemAt:member(1)'
@@ -163,7 +163,7 @@ methods:
           description: Index value of the object to be retrieved. Zero-indexed.
           type: number
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: getItemOrNullObject(id)
     uid: 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
@@ -182,7 +182,7 @@ methods:
           description: Id of the binding object to be retrieved.
           type: string
       return:
-        type: 'excel!Excel.<xref uid="Binding:interface" />'
+        type: '<xref uid="excel!Excel.Binding:interface" />'
         description: ''
   - name: load(propertyNames)
     uid: 'excel!Excel.BindingCollection#load:member(1)'
