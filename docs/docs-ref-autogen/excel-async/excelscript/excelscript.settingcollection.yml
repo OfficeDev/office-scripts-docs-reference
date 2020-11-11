@@ -1,90 +1,91 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SettingCollection:interface'
-    summary: >-
-      Represents a collection of key-value pair setting objects that are part of the workbook. The scope is limited to
-      per file and add-in (task-pane or content) combination.
-    name: Excel.SettingCollection
-    fullName: Excel.SettingCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SettingCollection
+uid: 'excel!Excel.SettingCollection:interface'
+package: excel!
+fullName: Excel.SettingCollection
+summary: >-
+  Represents a collection of key-value pair setting objects that are part of the
+  workbook. The scope is limited to per file and add-in (task-pane or content)
+  combination.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(key, value)'
+    uid: 'excel!Excel.SettingCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.SettingCollection#add:member(1)'
-      - 'excel!Excel.SettingCollection#getCount:member(1)'
-      - 'excel!Excel.SettingCollection#getItem:member(1)'
-      - 'excel!Excel.SettingCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SettingCollection#load:member(1)'
-  - uid: 'excel!Excel.SettingCollection#add:member(1)'
-    summary: Sets or adds the specified setting to the workbook.
-    name: 'add(key, value)'
     fullName: 'add(key, value)'
-    langs:
-      - typeScript
-    type: method
+    summary: Sets or adds the specified setting to the workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
                     key: string,
                     value: string | number | boolean | Date | Array<any> | any
                 ): Setting;
-      return:
-        type:
-          - 'excel!Excel.Setting:interface'
-        description: ''
       parameters:
         - id: key
           description: The Key of the new setting.
-          type:
-            - string
+          type: string
         - id: value
           description: The Value for the new setting.
-          type:
-            - 'excel!Excel.SettingCollection#add~0:complex'
-  - uid: 'excel!Excel.SettingCollection#getCount:member(1)'
-    summary: Gets the number of Settings in the collection.
-    name: getCount()
+          type: |-
+            string | number | boolean | Date | Array&lt;any&gt; | any
+                    
+      return:
+        type: 'excel!Excel.<xref uid="Setting:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.SettingCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of Settings in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.SettingCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.SettingCollection#getItem:member(1)'
-    summary: Gets a Setting entry via the key.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.SettingCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a Setting entry via the key.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): Setting;'
-      return:
-        type:
-          - 'excel!Excel.Setting:interface'
-        description: ''
       parameters:
         - id: key
           description: Key of the setting.
-          type:
-            - string
-  - uid: 'excel!Excel.SettingCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a Setting entry via the key. If the Setting does not exist, will return a null object.'
-    name: getItemOrNullObject(key)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="Setting:interface" />'
+        description: ''
+  - name: getItemOrNullObject(key)
+    uid: 'excel!Excel.SettingCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a Setting entry via the key. If the Setting does not exist, will
+      return a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(key: string): Setting;'
+      parameters:
+        - id: key
+          description: The key of the setting.
+          type: string
       return:
-        type:
-          - 'excel!Excel.Setting:interface'
+        type: 'excel!Excel.<xref uid="Setting:interface" />'
         description: |-
 
 
@@ -108,61 +109,24 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: key
-          description: The key of the setting.
-          type:
-            - string
-  - uid: 'excel!Excel.SettingCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SettingCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Setting:interface'
-    name: Setting
-    fullName: Excel.Setting
-  - uid: 'excel!Excel.SettingCollection#add~0:complex'
-    name: string | number | boolean | Date | Array<any> | any
-    fullName: string | number | boolean | Date | Array<any> | any
-    spec.typeScript:
-      - name: 'string | number | boolean | '
-        fullName: 'string | number | boolean | '
-      - uid: '!Date:interface'
-        name: Date
-        fullName: Date
-      - name: ' | '
-        fullName: ' | '
-      - uid: '!Array:interface'
-        name: Array
-        fullName: Array
-      - name: |-
-          <any> | any
-                  
-        fullName: |-
-          <any> | any
-                  
-  - uid: 'excel!Excel.SettingCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

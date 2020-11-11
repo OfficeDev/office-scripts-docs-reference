@@ -1,139 +1,117 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.Binding:interface'
-    summary: Represents an Office.js binding that is defined in the workbook.
-    name: Excel.Binding
-    fullName: Excel.Binding
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.Binding
+uid: 'excel!Excel.Binding:interface'
+package: excel!
+fullName: Excel.Binding
+summary: Represents an Office.js binding that is defined in the workbook.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: id
+    uid: 'excel!Excel.Binding#id:member'
     package: excel!
-    children:
-      - 'excel!Excel.Binding#delete:member(1)'
-      - 'excel!Excel.Binding#getRange:member(1)'
-      - 'excel!Excel.Binding#getTable:member(1)'
-      - 'excel!Excel.Binding#getText:member(1)'
-      - 'excel!Excel.Binding#id:member'
-      - 'excel!Excel.Binding#load:member(1)'
-      - 'excel!Excel.Binding#type:member'
-  - uid: 'excel!Excel.Binding#delete:member(1)'
-    summary: Deletes the binding.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.Binding#getRange:member(1)'
-    summary: Returns the range represented by the binding. Will throw an error if binding is not of the correct type.
-    name: getRange()
-    fullName: getRange()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getRange(): Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:interface'
-        description: ''
-  - uid: 'excel!Excel.Binding#getTable:member(1)'
-    summary: Returns the table represented by the binding. Will throw an error if binding is not of the correct type.
-    name: getTable()
-    fullName: getTable()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getTable(): Table;'
-      return:
-        type:
-          - 'excel!Excel.Table:interface'
-        description: ''
-  - uid: 'excel!Excel.Binding#getText:member(1)'
-    summary: Returns the text represented by the binding. Will throw an error if binding is not of the correct type.
-    name: getText()
-    fullName: getText()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getText(): ClientResult<string>;'
-      return:
-        type:
-          - 'excel!Excel.Binding#getText~0:complex'
-        description: ''
-  - uid: 'excel!Excel.Binding#id:member'
-    summary: Represents binding identifier.
-    name: id
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Represents binding identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Binding#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.Binding#type:member'
-    summary: Returns the type of the binding. See Excel.BindingType for details.
-    name: type
+        type: string
+  - name: type
+    uid: 'excel!Excel.Binding#type:member'
+    package: excel!
     fullName: type
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the type of the binding. See Excel.BindingType for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly type: BindingType | "Range" | "Table" | "Text";'
       return:
-        type:
-          - 'excel!Excel.Binding#type~0:complex'
-references:
-  - uid: 'excel!Excel.Range:interface'
-    name: Range
-    fullName: Excel.Range
-  - uid: 'excel!Excel.Table:interface'
-    name: Table
-    fullName: Excel.Table
-  - uid: 'excel!Excel.Binding#getText~0:complex'
-    name: ClientResult<string>
-    fullName: Excel.ClientResult<string>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <string>
-        fullName: <string>
-  - uid: 'excel!Excel.Binding#type~0:complex'
-    name: BindingType | "Range" | "Table" | "Text"
-    fullName: Excel.BindingType | "Range" | "Table" | "Text"
-    spec.typeScript:
-      - uid: 'excel!Excel.BindingType:enum'
-        name: BindingType
-        fullName: Excel.BindingType
-      - name: ' | "Range" | "Table" | "Text"'
-        fullName: ' | "Range" | "Table" | "Text"'
+        type: >-
+          excel!Excel.<xref uid="BindingType:enum" /> | "Range" | "Table" |
+          "Text"
+methods:
+  - name: delete()
+    uid: 'excel!Excel.Binding#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Deletes the binding.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getRange()
+    uid: 'excel!Excel.Binding#getRange:member(1)'
+    package: excel!
+    fullName: getRange()
+    summary: >-
+      Returns the range represented by the binding. Will throw an error if
+      binding is not of the correct type.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type: 'excel!Excel.<xref uid="Range:interface" />'
+        description: ''
+  - name: getTable()
+    uid: 'excel!Excel.Binding#getTable:member(1)'
+    package: excel!
+    fullName: getTable()
+    summary: >-
+      Returns the table represented by the binding. Will throw an error if
+      binding is not of the correct type.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTable(): Table;'
+      return:
+        type: 'excel!Excel.<xref uid="Table:interface" />'
+        description: ''
+  - name: getText()
+    uid: 'excel!Excel.Binding#getText:member(1)'
+    package: excel!
+    fullName: getText()
+    summary: >-
+      Returns the text represented by the binding. Will throw an error if
+      binding is not of the correct type.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getText(): ClientResult<string>;'
+      return:
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;string&gt;'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.Binding#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

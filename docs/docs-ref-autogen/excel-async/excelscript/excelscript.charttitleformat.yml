@@ -1,81 +1,75 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartTitleFormat:interface'
-    summary: Provides access to the office art formatting for chart title.
-    name: Excel.ChartTitleFormat
-    fullName: Excel.ChartTitleFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartTitleFormat
+uid: 'excel!Excel.ChartTitleFormat:interface'
+package: excel!
+fullName: Excel.ChartTitleFormat
+summary: Provides access to the office art formatting for chart title.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: border
+    uid: 'excel!Excel.ChartTitleFormat#border:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartTitleFormat#border:member'
-      - 'excel!Excel.ChartTitleFormat#fill:member'
-      - 'excel!Excel.ChartTitleFormat#font:member'
-      - 'excel!Excel.ChartTitleFormat#load:member(1)'
-  - uid: 'excel!Excel.ChartTitleFormat#border:member'
-    summary: 'Represents the border format of chart title, which includes color, linestyle, and weight.'
-    name: border
     fullName: border
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the border format of chart title, which includes color,
+      linestyle, and weight.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly border: ChartBorder;'
       return:
-        type:
-          - 'excel!Excel.ChartBorder:interface'
-  - uid: 'excel!Excel.ChartTitleFormat#fill:member'
-    summary: 'Represents the fill format of an object, which includes background formatting information.'
-    name: fill
+        type: 'excel!Excel.<xref uid="ChartBorder:interface" />'
+  - name: fill
+    uid: 'excel!Excel.ChartTitleFormat#fill:member'
+    package: excel!
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the fill format of an object, which includes background
+      formatting information.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ChartFill;'
       return:
-        type:
-          - 'excel!Excel.ChartFill:interface'
-  - uid: 'excel!Excel.ChartTitleFormat#font:member'
-    summary: 'Represents the font attributes (font name, font size, color, etc.) for an object.'
-    name: font
+        type: 'excel!Excel.<xref uid="ChartFill:interface" />'
+  - name: font
+    uid: 'excel!Excel.ChartTitleFormat#font:member'
+    package: excel!
     fullName: font
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the font attributes (font name, font size, color, etc.) for an
+      object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly font: ChartFont;'
       return:
-        type:
-          - 'excel!Excel.ChartFont:interface'
-  - uid: 'excel!Excel.ChartTitleFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: 'excel!Excel.<xref uid="ChartFont:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartTitleFormat#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartBorder:interface'
-    name: ChartBorder
-    fullName: Excel.ChartBorder
-  - uid: 'excel!Excel.ChartFill:interface'
-    name: ChartFill
-    fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:interface'
-    name: ChartFont
-    fullName: Excel.ChartFont
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

@@ -1,38 +1,51 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.RangeBorderCollection:interface'
-    summary: Represents the border objects that make up the range border.
-    name: Excel.RangeBorderCollection
-    fullName: Excel.RangeBorderCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.RangeBorderCollection
+uid: 'excel!Excel.RangeBorderCollection:interface'
+package: excel!
+fullName: Excel.RangeBorderCollection
+summary: Represents the border objects that make up the range border.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: count
+    uid: 'excel!Excel.RangeBorderCollection#count:member'
     package: excel!
-    children:
-      - 'excel!Excel.RangeBorderCollection#count:member'
-      - 'excel!Excel.RangeBorderCollection#getItem:member(1)'
-      - 'excel!Excel.RangeBorderCollection#getItemAt:member(1)'
-      - 'excel!Excel.RangeBorderCollection#load:member(1)'
-      - 'excel!Excel.RangeBorderCollection#tintAndShade:member'
-  - uid: 'excel!Excel.RangeBorderCollection#count:member'
-    summary: Number of border objects in the collection.
-    name: count
     fullName: count
-    langs:
-      - typeScript
-    type: property
+    summary: Number of border objects in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly count: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.RangeBorderCollection#getItem:member(1)'
-    summary: Gets a border object using its name.
-    name: getItem(index)
+        type: number
+  - name: tintAndShade
+    uid: 'excel!Excel.RangeBorderCollection#tintAndShade:member'
+    package: excel!
+    fullName: tintAndShade
+    summary: >-
+      Specifies a double that lightens or darkens a color for Range Borders, the
+      value is between -1 (darkest) and 1 (brightest), with 0 for the original
+      color. A null value indicates that the entire border collections don't
+      have uniform tintAndShade setting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'tintAndShade: number;'
+      return:
+        type: number
+methods:
+  - name: getItem(index)
+    uid: 'excel!Excel.RangeBorderCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a border object using its name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         getItem(
@@ -47,118 +60,60 @@ items:
                         | "DiagonalDown"
                         | "DiagonalUp"
                 ): RangeBorder;
-      return:
-        type:
-          - 'excel!Excel.RangeBorder:interface'
-        description: ''
       parameters:
         - id: index
-          description: Index value of the border object to be retrieved. See Excel.BorderIndex for details.
-          type:
-            - 'excel!Excel.RangeBorderCollection#getItem~0:complex'
-  - uid: 'excel!Excel.RangeBorderCollection#getItemAt:member(1)'
-    summary: Gets a border object using its index.
-    name: getItemAt(index)
+          description: >-
+            Index value of the border object to be retrieved. See
+            Excel.BorderIndex for details.
+          type: |-
+            | excel!Excel.<xref uid="BorderIndex:enum" />
+                            | "EdgeTop"
+                            | "EdgeBottom"
+                            | "EdgeLeft"
+                            | "EdgeRight"
+                            | "InsideVertical"
+                            | "InsideHorizontal"
+                            | "DiagonalDown"
+                            | "DiagonalUp"
+                    
+      return:
+        type: 'excel!Excel.<xref uid="RangeBorder:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.RangeBorderCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a border object using its index.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): RangeBorder;'
-      return:
-        type:
-          - 'excel!Excel.RangeBorder:interface'
-        description: ''
       parameters:
         - id: index
           description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.RangeBorderCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: 'excel!Excel.<xref uid="RangeBorder:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.RangeBorderCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.RangeBorderCollection#tintAndShade:member'
-    summary: >-
-      Specifies a double that lightens or darkens a color for Range Borders, the value is between -1 (darkest) and 1
-      (brightest), with 0 for the original color. A null value indicates that the entire border collections don't have
-      uniform tintAndShade setting.
-    name: tintAndShade
-    fullName: tintAndShade
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'tintAndShade: number;'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
       return:
-        type:
-          - number
-references:
-  - uid: 'excel!Excel.RangeBorder:interface'
-    name: RangeBorder
-    fullName: Excel.RangeBorder
-  - uid: 'excel!Excel.RangeBorderCollection#getItem~0:complex'
-    name: |-
-      | BorderIndex
-                      | "EdgeTop"
-                      | "EdgeBottom"
-                      | "EdgeLeft"
-                      | "EdgeRight"
-                      | "InsideVertical"
-                      | "InsideHorizontal"
-                      | "DiagonalDown"
-                      | "DiagonalUp"
-    fullName: |-
-      | Excel.BorderIndex
-                      | "EdgeTop"
-                      | "EdgeBottom"
-                      | "EdgeLeft"
-                      | "EdgeRight"
-                      | "InsideVertical"
-                      | "InsideHorizontal"
-                      | "DiagonalDown"
-                      | "DiagonalUp"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.BorderIndex:enum'
-        name: BorderIndex
-        fullName: Excel.BorderIndex
-      - name: |2-
-
-                          | "EdgeTop"
-                          | "EdgeBottom"
-                          | "EdgeLeft"
-                          | "EdgeRight"
-                          | "InsideVertical"
-                          | "InsideHorizontal"
-                          | "DiagonalDown"
-                          | "DiagonalUp"
-                  
-        fullName: |2-
-
-                          | "EdgeTop"
-                          | "EdgeBottom"
-                          | "EdgeLeft"
-                          | "EdgeRight"
-                          | "InsideVertical"
-                          | "InsideHorizontal"
-                          | "DiagonalDown"
-                          | "DiagonalUp"
-                  
+        type: void
+        description: ''

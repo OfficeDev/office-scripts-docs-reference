@@ -1,49 +1,38 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'ExcelScript!ExcelScript.ListDataValidation:interface'
-    summary: Represents the List data validation criteria.
-    name: ExcelScript.ListDataValidation
-    fullName: ExcelScript.ListDataValidation
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: ExcelScript.ListDataValidation
+uid: 'ExcelScript!ExcelScript.ListDataValidation:interface'
+package: ExcelScript!
+fullName: ExcelScript.ListDataValidation
+summary: Represents the List data validation criteria.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: inCellDropDown
+    uid: 'ExcelScript!ExcelScript.ListDataValidation#inCellDropDown:member'
     package: ExcelScript!
-    children:
-      - 'ExcelScript!ExcelScript.ListDataValidation#inCellDropDown:member'
-      - 'ExcelScript!ExcelScript.ListDataValidation#source:member'
-  - uid: 'ExcelScript!ExcelScript.ListDataValidation#inCellDropDown:member'
-    summary: 'Displays the list in cell drop down or not, it defaults to true.'
-    name: inCellDropDown
     fullName: inCellDropDown
-    langs:
-      - typeScript
-    type: property
+    summary: 'Displays the list in cell drop down or not, it defaults to true.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'inCellDropDown: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'ExcelScript!ExcelScript.ListDataValidation#source:member'
-    summary: >-
-      Source of the list for data validation When setting the value, it can be passed in as a Excel Range object, or a
-      string that contains comma separated number, boolean or date.
-    name: source
+        type: boolean
+  - name: source
+    uid: 'ExcelScript!ExcelScript.ListDataValidation#source:member'
+    package: ExcelScript!
     fullName: source
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Source of the list for data validation When setting the value, it can be
+      passed in as a Excel Range object, or a string that contains comma
+      separated number, boolean or date.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'source: string | Range;'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.ListDataValidation#source~0:complex'
-references:
-  - uid: 'ExcelScript!ExcelScript.ListDataValidation#source~0:complex'
-    name: string | Range
-    fullName: string | ExcelScript.Range
-    spec.typeScript:
-      - name: 'string | '
-        fullName: 'string | '
-      - uid: 'ExcelScript!ExcelScript.Range:interface'
-        name: Range
-        fullName: ExcelScript.Range
+        type: 'string | ExcelScript!ExcelScript.<xref uid="Range:interface" />'

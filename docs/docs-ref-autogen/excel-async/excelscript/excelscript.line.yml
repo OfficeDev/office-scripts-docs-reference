@@ -1,53 +1,42 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.Line:interface'
-    summary: 'Represents a line inside a worksheet. To get the corresponding Shape object, use `Line.shape`<!-- -->.'
-    name: Excel.Line
-    fullName: Excel.Line
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.Line
+uid: 'excel!Excel.Line:interface'
+package: excel!
+fullName: Excel.Line
+summary: >-
+  Represents a line inside a worksheet. To get the corresponding Shape object,
+  use `Line.shape`<!-- -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: beginArrowheadLength
+    uid: 'excel!Excel.Line#beginArrowheadLength:member'
     package: excel!
-    children:
-      - 'excel!Excel.Line#beginArrowheadLength:member'
-      - 'excel!Excel.Line#beginArrowheadStyle:member'
-      - 'excel!Excel.Line#beginArrowheadWidth:member'
-      - 'excel!Excel.Line#beginConnectedShape:member'
-      - 'excel!Excel.Line#beginConnectedSite:member'
-      - 'excel!Excel.Line#connectBeginShape:member(1)'
-      - 'excel!Excel.Line#connectEndShape:member(1)'
-      - 'excel!Excel.Line#connectorType:member'
-      - 'excel!Excel.Line#disconnectBeginShape:member(1)'
-      - 'excel!Excel.Line#disconnectEndShape:member(1)'
-      - 'excel!Excel.Line#endArrowheadLength:member'
-      - 'excel!Excel.Line#endArrowheadStyle:member'
-      - 'excel!Excel.Line#endArrowheadWidth:member'
-      - 'excel!Excel.Line#endConnectedShape:member'
-      - 'excel!Excel.Line#endConnectedSite:member'
-      - 'excel!Excel.Line#id:member'
-      - 'excel!Excel.Line#isBeginConnected:member'
-      - 'excel!Excel.Line#isEndConnected:member'
-      - 'excel!Excel.Line#load:member(1)'
-      - 'excel!Excel.Line#shape:member'
-  - uid: 'excel!Excel.Line#beginArrowheadLength:member'
-    summary: Represents the length of the arrowhead at the beginning of the specified line.
-    name: beginArrowheadLength
     fullName: beginArrowheadLength
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the length of the arrowhead at the beginning of the specified
+      line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'beginArrowheadLength: ArrowheadLength | "Short" | "Medium" | "Long";'
       return:
-        type:
-          - 'excel!Excel.Line#beginArrowheadLength~0:complex'
-  - uid: 'excel!Excel.Line#beginArrowheadStyle:member'
-    summary: Represents the style of the arrowhead at the beginning of the specified line.
-    name: beginArrowheadStyle
+        type: >-
+          excel!Excel.<xref uid="ArrowheadLength:enum" /> | "Short" | "Medium" |
+          "Long"
+  - name: beginArrowheadStyle
+    uid: 'excel!Excel.Line#beginArrowheadStyle:member'
+    package: excel!
     fullName: beginArrowheadStyle
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the style of the arrowhead at the beginning of the specified
+      line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         beginArrowheadStyle:
@@ -59,203 +48,95 @@ items:
                     | "Oval"
                     | "Open";
       return:
-        type:
-          - 'excel!Excel.Line#beginArrowheadStyle~0:complex'
-  - uid: 'excel!Excel.Line#beginArrowheadWidth:member'
-    summary: Represents the width of the arrowhead at the beginning of the specified line.
-    name: beginArrowheadWidth
+        type: |-
+          | excel!Excel.<xref uid="ArrowheadStyle:enum" />
+                      | "None"
+                      | "Triangle"
+                      | "Stealth"
+                      | "Diamond"
+                      | "Oval"
+                      | "Open"
+  - name: beginArrowheadWidth
+    uid: 'excel!Excel.Line#beginArrowheadWidth:member'
+    package: excel!
     fullName: beginArrowheadWidth
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the width of the arrowhead at the beginning of the specified
+      line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'beginArrowheadWidth: ArrowheadWidth | "Narrow" | "Medium" | "Wide";'
       return:
-        type:
-          - 'excel!Excel.Line#beginArrowheadWidth~0:complex'
-  - uid: 'excel!Excel.Line#beginConnectedShape:member'
-    summary: Represents the shape to which the beginning of the specified line is attached.
-    name: beginConnectedShape
+        type: >-
+          excel!Excel.<xref uid="ArrowheadWidth:enum" /> | "Narrow" | "Medium" |
+          "Wide"
+  - name: beginConnectedShape
+    uid: 'excel!Excel.Line#beginConnectedShape:member'
+    package: excel!
     fullName: beginConnectedShape
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the shape to which the beginning of the specified line is
+      attached.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly beginConnectedShape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-  - uid: 'excel!Excel.Line#beginConnectedSite:member'
-    summary: >-
-      Represents the connection site to which the beginning of a connector is connected. Returns null when the beginning
-      of the line is not attached to any shape.
-    name: beginConnectedSite
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+  - name: beginConnectedSite
+    uid: 'excel!Excel.Line#beginConnectedSite:member'
+    package: excel!
     fullName: beginConnectedSite
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the connection site to which the beginning of a connector is
+      connected. Returns null when the beginning of the line is not attached to
+      any shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly beginConnectedSite: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Line#connectBeginShape:member(1)'
-    summary: Attaches the beginning of the specified connector to a specified shape.
-    name: 'connectBeginShape(shape, connectionSite)'
-    fullName: 'connectBeginShape(shape, connectionSite)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'connectBeginShape(shape: Shape, connectionSite: number): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              let line = shapes.getItem("StraightLine").line;
-              line.connectBeginShape(shapes.getItem("Left"), 2);
-              line.connectEndShape(shapes.getItem("Right"), 0);
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: shape
-          description: The shape to connect.
-          type:
-            - 'excel!Excel.Shape:interface'
-        - id: connectionSite
-          description: >-
-            The connection site on the shape to which the beginning of the connector is attached. Must be an integer
-            between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
-          type:
-            - number
-  - uid: 'excel!Excel.Line#connectEndShape:member(1)'
-    summary: Attaches the end of the specified connector to a specified shape.
-    name: 'connectEndShape(shape, connectionSite)'
-    fullName: 'connectEndShape(shape, connectionSite)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'connectEndShape(shape: Shape, connectionSite: number): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              let line = shapes.getItem("StraightLine").line;
-              line.connectBeginShape(shapes.getItem("Left"), 2);
-              line.connectEndShape(shapes.getItem("Right"), 0);
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: shape
-          description: The shape to connect.
-          type:
-            - 'excel!Excel.Shape:interface'
-        - id: connectionSite
-          description: >-
-            The connection site on the shape to which the end of the connector is attached. Must be an integer between 0
-            (inclusive) and the connection-site count of the specified shape (exclusive).
-          type:
-            - number
-  - uid: 'excel!Excel.Line#connectorType:member'
-    summary: Represents the connector type for the line.
-    name: connectorType
+        type: number
+  - name: connectorType
+    uid: 'excel!Excel.Line#connectorType:member'
+    package: excel!
     fullName: connectorType
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the connector type for the line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'connectorType: ConnectorType | "Straight" | "Elbow" | "Curve";'
       return:
-        type:
-          - 'excel!Excel.Line#connectorType~0:complex'
-  - uid: 'excel!Excel.Line#disconnectBeginShape:member(1)'
-    summary: Detaches the beginning of the specified connector from a shape.
-    name: disconnectBeginShape()
-    fullName: disconnectBeginShape()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'disconnectBeginShape(): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              let line = shapes.getItem("StraightLine").line;
-              line.disconnectBeginShape();
-              line.disconnectEndShape();
-              await context.sync();
-          }
-          ```
-  - uid: 'excel!Excel.Line#disconnectEndShape:member(1)'
-    summary: Detaches the end of the specified connector from a shape.
-    name: disconnectEndShape()
-    fullName: disconnectEndShape()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'disconnectEndShape(): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
-              let line = shapes.getItem("StraightLine").line;
-              line.disconnectBeginShape();
-              line.disconnectEndShape();
-              await context.sync();
-          }
-          ```
-  - uid: 'excel!Excel.Line#endArrowheadLength:member'
-    summary: Represents the length of the arrowhead at the end of the specified line.
-    name: endArrowheadLength
+        type: >-
+          excel!Excel.<xref uid="ConnectorType:enum" /> | "Straight" | "Elbow" |
+          "Curve"
+  - name: endArrowheadLength
+    uid: 'excel!Excel.Line#endArrowheadLength:member'
+    package: excel!
     fullName: endArrowheadLength
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the length of the arrowhead at the end of the specified line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'endArrowheadLength: ArrowheadLength | "Short" | "Medium" | "Long";'
       return:
-        type:
-          - 'excel!Excel.Line#endArrowheadLength~0:complex'
-  - uid: 'excel!Excel.Line#endArrowheadStyle:member'
-    summary: Represents the style of the arrowhead at the end of the specified line.
-    name: endArrowheadStyle
+        type: >-
+          excel!Excel.<xref uid="ArrowheadLength:enum" /> | "Short" | "Medium" |
+          "Long"
+  - name: endArrowheadStyle
+    uid: 'excel!Excel.Line#endArrowheadStyle:member'
+    package: excel!
     fullName: endArrowheadStyle
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the style of the arrowhead at the end of the specified line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         endArrowheadStyle:
@@ -267,238 +148,246 @@ items:
                     | "Oval"
                     | "Open";
       return:
-        type:
-          - 'excel!Excel.Line#endArrowheadStyle~0:complex'
-  - uid: 'excel!Excel.Line#endArrowheadWidth:member'
-    summary: Represents the width of the arrowhead at the end of the specified line.
-    name: endArrowheadWidth
+        type: |-
+          | excel!Excel.<xref uid="ArrowheadStyle:enum" />
+                      | "None"
+                      | "Triangle"
+                      | "Stealth"
+                      | "Diamond"
+                      | "Oval"
+                      | "Open"
+  - name: endArrowheadWidth
+    uid: 'excel!Excel.Line#endArrowheadWidth:member'
+    package: excel!
     fullName: endArrowheadWidth
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the width of the arrowhead at the end of the specified line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'endArrowheadWidth: ArrowheadWidth | "Narrow" | "Medium" | "Wide";'
       return:
-        type:
-          - 'excel!Excel.Line#endArrowheadWidth~0:complex'
-  - uid: 'excel!Excel.Line#endConnectedShape:member'
-    summary: Represents the shape to which the end of the specified line is attached.
-    name: endConnectedShape
+        type: >-
+          excel!Excel.<xref uid="ArrowheadWidth:enum" /> | "Narrow" | "Medium" |
+          "Wide"
+  - name: endConnectedShape
+    uid: 'excel!Excel.Line#endConnectedShape:member'
+    package: excel!
     fullName: endConnectedShape
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the shape to which the end of the specified line is attached.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly endConnectedShape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-  - uid: 'excel!Excel.Line#endConnectedSite:member'
-    summary: >-
-      Represents the connection site to which the end of a connector is connected. Returns null when the end of the line
-      is not attached to any shape.
-    name: endConnectedSite
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+  - name: endConnectedSite
+    uid: 'excel!Excel.Line#endConnectedSite:member'
+    package: excel!
     fullName: endConnectedSite
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the connection site to which the end of a connector is
+      connected. Returns null when the end of the line is not attached to any
+      shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly endConnectedSite: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Line#id:member'
-    summary: Specifies the shape identifier.
-    name: id
+        type: number
+  - name: id
+    uid: 'excel!Excel.Line#id:member'
+    package: excel!
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the shape identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Line#isBeginConnected:member'
-    summary: Specifies if the beginning of the specified line is connected to a shape.
-    name: isBeginConnected
+        type: string
+  - name: isBeginConnected
+    uid: 'excel!Excel.Line#isBeginConnected:member'
+    package: excel!
     fullName: isBeginConnected
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the beginning of the specified line is connected to a shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly isBeginConnected: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Line#isEndConnected:member'
-    summary: Specifies if the end of the specified line is connected to a shape.
-    name: isEndConnected
+        type: boolean
+  - name: isEndConnected
+    uid: 'excel!Excel.Line#isEndConnected:member'
+    package: excel!
     fullName: isEndConnected
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the end of the specified line is connected to a shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly isEndConnected: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Line#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.Line#shape:member'
-    summary: Returns the Shape object associated with the line.
-    name: shape
+        type: boolean
+  - name: shape
+    uid: 'excel!Excel.Line#shape:member'
+    package: excel!
     fullName: shape
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the Shape object associated with the line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly shape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-references:
-  - uid: 'excel!Excel.Line#beginArrowheadLength~0:complex'
-    name: ArrowheadLength | "Short" | "Medium" | "Long"
-    fullName: Excel.ArrowheadLength | "Short" | "Medium" | "Long"
-    spec.typeScript:
-      - uid: 'excel!Excel.ArrowheadLength:enum'
-        name: ArrowheadLength
-        fullName: Excel.ArrowheadLength
-      - name: ' | "Short" | "Medium" | "Long"'
-        fullName: ' | "Short" | "Medium" | "Long"'
-  - uid: 'excel!Excel.Line#beginArrowheadStyle~0:complex'
-    name: |-
-      | ArrowheadStyle
-                  | "None"
-                  | "Triangle"
-                  | "Stealth"
-                  | "Diamond"
-                  | "Oval"
-                  | "Open"
-    fullName: |-
-      | Excel.ArrowheadStyle
-                  | "None"
-                  | "Triangle"
-                  | "Stealth"
-                  | "Diamond"
-                  | "Oval"
-                  | "Open"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ArrowheadStyle:enum'
-        name: ArrowheadStyle
-        fullName: Excel.ArrowheadStyle
-      - name: |2-
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+methods:
+  - name: 'connectBeginShape(shape, connectionSite)'
+    uid: 'excel!Excel.Line#connectBeginShape:member(1)'
+    package: excel!
+    fullName: 'connectBeginShape(shape, connectionSite)'
+    summary: Attaches the beginning of the specified connector to a specified shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'connectBeginShape(shape: Shape, connectionSite: number): void;'
+      parameters:
+        - id: shape
+          description: The shape to connect.
+          type: 'excel!Excel.<xref uid="Shape:interface" />'
+        - id: connectionSite
+          description: >-
+            The connection site on the shape to which the beginning of the
+            connector is attached. Must be an integer between 0 (inclusive) and
+            the connection-site count of the specified shape (exclusive).
+          type: number
+      return:
+        type: void
+        description: |-
 
-                      | "None"
-                      | "Triangle"
-                      | "Stealth"
-                      | "Diamond"
-                      | "Oval"
-                      | "Open"
-        fullName: |2-
 
-                      | "None"
-                      | "Triangle"
-                      | "Stealth"
-                      | "Diamond"
-                      | "Oval"
-                      | "Open"
-  - uid: 'excel!Excel.Line#beginArrowheadWidth~0:complex'
-    name: ArrowheadWidth | "Narrow" | "Medium" | "Wide"
-    fullName: Excel.ArrowheadWidth | "Narrow" | "Medium" | "Wide"
-    spec.typeScript:
-      - uid: 'excel!Excel.ArrowheadWidth:enum'
-        name: ArrowheadWidth
-        fullName: Excel.ArrowheadWidth
-      - name: ' | "Narrow" | "Medium" | "Wide"'
-        fullName: ' | "Narrow" | "Medium" | "Wide"'
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
-  - uid: 'excel!Excel.Line#connectorType~0:complex'
-    name: ConnectorType | "Straight" | "Elbow" | "Curve"
-    fullName: Excel.ConnectorType | "Straight" | "Elbow" | "Curve"
-    spec.typeScript:
-      - uid: 'excel!Excel.ConnectorType:enum'
-        name: ConnectorType
-        fullName: Excel.ConnectorType
-      - name: ' | "Straight" | "Elbow" | "Curve"'
-        fullName: ' | "Straight" | "Elbow" | "Curve"'
-  - uid: 'excel!Excel.Line#endArrowheadLength~0:complex'
-    name: ArrowheadLength | "Short" | "Medium" | "Long"
-    fullName: Excel.ArrowheadLength | "Short" | "Medium" | "Long"
-    spec.typeScript:
-      - uid: 'excel!Excel.ArrowheadLength:enum'
-        name: ArrowheadLength
-        fullName: Excel.ArrowheadLength
-      - name: ' | "Short" | "Medium" | "Long"'
-        fullName: ' | "Short" | "Medium" | "Long"'
-  - uid: 'excel!Excel.Line#endArrowheadStyle~0:complex'
-    name: |-
-      | ArrowheadStyle
-                  | "None"
-                  | "Triangle"
-                  | "Stealth"
-                  | "Diamond"
-                  | "Oval"
-                  | "Open"
-    fullName: |-
-      | Excel.ArrowheadStyle
-                  | "None"
-                  | "Triangle"
-                  | "Stealth"
-                  | "Diamond"
-                  | "Oval"
-                  | "Open"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ArrowheadStyle:enum'
-        name: ArrowheadStyle
-        fullName: Excel.ArrowheadStyle
-      - name: |2-
+          #### Examples
 
-                      | "None"
-                      | "Triangle"
-                      | "Stealth"
-                      | "Diamond"
-                      | "Oval"
-                      | "Open"
-        fullName: |2-
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
+              line.connectBeginShape(shapes.getItem("Left"), 2);
+              line.connectEndShape(shapes.getItem("Right"), 0);
+              await context.sync();
+          }
+          ```
+  - name: 'connectEndShape(shape, connectionSite)'
+    uid: 'excel!Excel.Line#connectEndShape:member(1)'
+    package: excel!
+    fullName: 'connectEndShape(shape, connectionSite)'
+    summary: Attaches the end of the specified connector to a specified shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'connectEndShape(shape: Shape, connectionSite: number): void;'
+      parameters:
+        - id: shape
+          description: The shape to connect.
+          type: 'excel!Excel.<xref uid="Shape:interface" />'
+        - id: connectionSite
+          description: >-
+            The connection site on the shape to which the end of the connector
+            is attached. Must be an integer between 0 (inclusive) and the
+            connection-site count of the specified shape (exclusive).
+          type: number
+      return:
+        type: void
+        description: |-
 
-                      | "None"
-                      | "Triangle"
-                      | "Stealth"
-                      | "Diamond"
-                      | "Oval"
-                      | "Open"
-  - uid: 'excel!Excel.Line#endArrowheadWidth~0:complex'
-    name: ArrowheadWidth | "Narrow" | "Medium" | "Wide"
-    fullName: Excel.ArrowheadWidth | "Narrow" | "Medium" | "Wide"
-    spec.typeScript:
-      - uid: 'excel!Excel.ArrowheadWidth:enum'
-        name: ArrowheadWidth
-        fullName: Excel.ArrowheadWidth
-      - name: ' | "Narrow" | "Medium" | "Wide"'
-        fullName: ' | "Narrow" | "Medium" | "Wide"'
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
+              line.connectBeginShape(shapes.getItem("Left"), 2);
+              line.connectEndShape(shapes.getItem("Right"), 0);
+              await context.sync();
+          }
+          ```
+  - name: disconnectBeginShape()
+    uid: 'excel!Excel.Line#disconnectBeginShape:member(1)'
+    package: excel!
+    fullName: disconnectBeginShape()
+    summary: Detaches the beginning of the specified connector from a shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'disconnectBeginShape(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
+              line.disconnectBeginShape();
+              line.disconnectEndShape();
+              await context.sync();
+          }
+          ```
+  - name: disconnectEndShape()
+    uid: 'excel!Excel.Line#disconnectEndShape:member(1)'
+    package: excel!
+    fullName: disconnectEndShape()
+    summary: Detaches the end of the specified connector from a shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'disconnectEndShape(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let shapes = context.workbook.worksheets.getItem("Shapes").shapes;
+              let line = shapes.getItem("StraightLine").line;
+              line.disconnectBeginShape();
+              line.disconnectEndShape();
+              await context.sync();
+          }
+          ```
+  - name: load(propertyNames)
+    uid: 'excel!Excel.Line#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

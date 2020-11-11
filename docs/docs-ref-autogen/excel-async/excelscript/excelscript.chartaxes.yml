@@ -1,124 +1,100 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartAxes:interface'
-    summary: Represents the chart axes.
-    name: Excel.ChartAxes
-    fullName: Excel.ChartAxes
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartAxes
+uid: 'excel!Excel.ChartAxes:interface'
+package: excel!
+fullName: Excel.ChartAxes
+summary: Represents the chart axes.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: categoryAxis
+    uid: 'excel!Excel.ChartAxes#categoryAxis:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartAxes#categoryAxis:member'
-      - 'excel!Excel.ChartAxes#getItem:member(1)'
-      - 'excel!Excel.ChartAxes#load:member(1)'
-      - 'excel!Excel.ChartAxes#seriesAxis:member'
-      - 'excel!Excel.ChartAxes#valueAxis:member'
-  - uid: 'excel!Excel.ChartAxes#categoryAxis:member'
-    summary: Represents the category axis in a chart.
-    name: categoryAxis
     fullName: categoryAxis
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the category axis in a chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly categoryAxis: ChartAxis;'
       return:
-        type:
-          - 'excel!Excel.ChartAxis:interface'
-  - uid: 'excel!Excel.ChartAxes#getItem:member(1)'
-    summary: Returns the specific axis identified by type and group.
-    name: 'getItem(type, group)'
+        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+  - name: seriesAxis
+    uid: 'excel!Excel.ChartAxes#seriesAxis:member'
+    package: excel!
+    fullName: seriesAxis
+    summary: Represents the series axis of a 3-dimensional chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly seriesAxis: ChartAxis;'
+      return:
+        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+  - name: valueAxis
+    uid: 'excel!Excel.ChartAxes#valueAxis:member'
+    package: excel!
+    fullName: valueAxis
+    summary: Represents the value axis in an axis.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly valueAxis: ChartAxis;'
+      return:
+        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+methods:
+  - name: 'getItem(type, group)'
+    uid: 'excel!Excel.ChartAxes#getItem:member(1)'
+    package: excel!
     fullName: 'getItem(type, group)'
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the specific axis identified by type and group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         getItem(
                     type: ChartAxisType | "Invalid" | "Category" | "Value" | "Series",
                     group?: ChartAxisGroup | "Primary" | "Secondary"
                 ): ChartAxis;
-      return:
-        type:
-          - 'excel!Excel.ChartAxis:interface'
-        description: ''
       parameters:
         - id: type
           description: Specifies the axis type. See Excel.ChartAxisType for details.
-          type:
-            - 'excel!Excel.ChartAxes#getItem~0:complex'
+          type: >-
+            excel!Excel.<xref uid="ChartAxisType:enum" /> | "Invalid" |
+            "Category" | "Value" | "Series"
         - id: group
-          description: Optional. Specifies the axis group. See Excel.ChartAxisGroup for details.
-          type:
-            - 'excel!Excel.ChartAxes#getItem~1:complex'
-  - uid: 'excel!Excel.ChartAxes#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          description: >-
+            Optional. Specifies the axis group. See Excel.ChartAxisGroup for
+            details.
+          type: >-
+            excel!Excel.<xref uid="ChartAxisGroup:enum" /> | "Primary" |
+            "Secondary"
+                    
+      return:
+        type: 'excel!Excel.<xref uid="ChartAxis:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartAxes#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartAxes#seriesAxis:member'
-    summary: Represents the series axis of a 3-dimensional chart.
-    name: seriesAxis
-    fullName: seriesAxis
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly seriesAxis: ChartAxis;'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
       return:
-        type:
-          - 'excel!Excel.ChartAxis:interface'
-  - uid: 'excel!Excel.ChartAxes#valueAxis:member'
-    summary: Represents the value axis in an axis.
-    name: valueAxis
-    fullName: valueAxis
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly valueAxis: ChartAxis;'
-      return:
-        type:
-          - 'excel!Excel.ChartAxis:interface'
-references:
-  - uid: 'excel!Excel.ChartAxis:interface'
-    name: ChartAxis
-    fullName: Excel.ChartAxis
-  - uid: 'excel!Excel.ChartAxes#getItem~0:complex'
-    name: ChartAxisType | "Invalid" | "Category" | "Value" | "Series"
-    fullName: Excel.ChartAxisType | "Invalid" | "Category" | "Value" | "Series"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartAxisType:enum'
-        name: ChartAxisType
-        fullName: Excel.ChartAxisType
-      - name: ' | "Invalid" | "Category" | "Value" | "Series"'
-        fullName: ' | "Invalid" | "Category" | "Value" | "Series"'
-  - uid: 'excel!Excel.ChartAxes#getItem~1:complex'
-    name: ChartAxisGroup | "Primary" | "Secondary"
-    fullName: Excel.ChartAxisGroup | "Primary" | "Secondary"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartAxisGroup:enum'
-        name: ChartAxisGroup
-        fullName: Excel.ChartAxisGroup
-      - name: |2-
-           | "Primary" | "Secondary"
-                  
-        fullName: |2-
-           | "Primary" | "Secondary"
-                  
+        type: void
+        description: ''

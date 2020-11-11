@@ -1,25 +1,22 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartTrendlineCollection:interface'
-    summary: Represents a collection of Chart Trendlines.
-    name: Excel.ChartTrendlineCollection
-    fullName: Excel.ChartTrendlineCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartTrendlineCollection
+uid: 'excel!Excel.ChartTrendlineCollection:interface'
+package: excel!
+fullName: Excel.ChartTrendlineCollection
+summary: Represents a collection of Chart Trendlines.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: add(type)
+    uid: 'excel!Excel.ChartTrendlineCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.ChartTrendlineCollection#add:member(1)'
-      - 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
-      - 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
-      - 'excel!Excel.ChartTrendlineCollection#load:member(1)'
-  - uid: 'excel!Excel.ChartTrendlineCollection#add:member(1)'
-    summary: Adds a new trendline to trendline collection.
-    name: add(type)
     fullName: add(type)
-    langs:
-      - typeScript
-    type: method
+    summary: Adds a new trendline to trendline collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
@@ -32,9 +29,22 @@ items:
                         | "Polynomial"
                         | "Power"
                 ): ChartTrendline;
+      parameters:
+        - id: type
+          description: >-
+            Specifies the trendline type. The default value is "Linear". See
+            Excel.ChartTrendline for details.
+          type: |-
+            | excel!Excel.<xref uid="ChartTrendlineType:enum" />
+                            | "Linear"
+                            | "Exponential"
+                            | "Logarithmic"
+                            | "MovingAverage"
+                            | "Polynomial"
+                            | "Power"
+                    
       return:
-        type:
-          - 'excel!Excel.ChartTrendline:interface'
+        type: 'excel!Excel.<xref uid="ChartTrendline:interface" />'
         description: |-
 
 
@@ -52,113 +62,56 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: type
-          description: Specifies the trendline type. The default value is "Linear". See Excel.ChartTrendline for details.
-          type:
-            - 'excel!Excel.ChartTrendlineCollection#add~0:complex'
-  - uid: 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
-    summary: Returns the number of trendlines in the collection.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.ChartTrendlineCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of trendlines in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
-    summary: 'Get trendline object by index, which is the insertion order in items array.'
-    name: getItem(index)
+  - name: getItem(index)
+    uid: 'excel!Excel.ChartTrendlineCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(index)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Get trendline object by index, which is the insertion order in items
+      array.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(index: number): ChartTrendline;'
-      return:
-        type:
-          - 'excel!Excel.ChartTrendline:interface'
-        description: ''
       parameters:
         - id: index
           description: Represents the insertion order in items array.
-          type:
-            - number
-  - uid: 'excel!Excel.ChartTrendlineCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: 'excel!Excel.<xref uid="ChartTrendline:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartTrendlineCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartTrendline:interface'
-    name: ChartTrendline
-    fullName: Excel.ChartTrendline
-  - uid: 'excel!Excel.ChartTrendlineCollection#add~0:complex'
-    name: |-
-      | ChartTrendlineType
-                      | "Linear"
-                      | "Exponential"
-                      | "Logarithmic"
-                      | "MovingAverage"
-                      | "Polynomial"
-                      | "Power"
-    fullName: |-
-      | Excel.ChartTrendlineType
-                      | "Linear"
-                      | "Exponential"
-                      | "Logarithmic"
-                      | "MovingAverage"
-                      | "Polynomial"
-                      | "Power"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartTrendlineType:enum'
-        name: ChartTrendlineType
-        fullName: Excel.ChartTrendlineType
-      - name: |2-
-
-                          | "Linear"
-                          | "Exponential"
-                          | "Logarithmic"
-                          | "MovingAverage"
-                          | "Polynomial"
-                          | "Power"
-                  
-        fullName: |2-
-
-                          | "Linear"
-                          | "Exponential"
-                          | "Logarithmic"
-                          | "MovingAverage"
-                          | "Polynomial"
-                          | "Power"
-                  
-  - uid: 'excel!Excel.ChartTrendlineCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

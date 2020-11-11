@@ -1,90 +1,87 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SlicerStyle:interface'
-    summary: 'Represents a Slicer Style, which defines style elements by region of the slicer.'
-    name: Excel.SlicerStyle
-    fullName: Excel.SlicerStyle
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SlicerStyle
+uid: 'excel!Excel.SlicerStyle:interface'
+package: excel!
+fullName: Excel.SlicerStyle
+summary: >-
+  Represents a Slicer Style, which defines style elements by region of the
+  slicer.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: name
+    uid: 'excel!Excel.SlicerStyle#name:member'
     package: excel!
-    children:
-      - 'excel!Excel.SlicerStyle#delete:member(1)'
-      - 'excel!Excel.SlicerStyle#duplicate:member(1)'
-      - 'excel!Excel.SlicerStyle#load:member(1)'
-      - 'excel!Excel.SlicerStyle#name:member'
-      - 'excel!Excel.SlicerStyle#readOnly:member'
-  - uid: 'excel!Excel.SlicerStyle#delete:member(1)'
-    summary: Deletes the SlicerStyle.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.SlicerStyle#duplicate:member(1)'
-    summary: Creates a duplicate of this SlicerStyle with copies of all the style elements.
-    name: duplicate()
-    fullName: duplicate()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'duplicate(): SlicerStyle;'
-      return:
-        type:
-          - 'excel!Excel.SlicerStyle:interface'
-        description: ''
-  - uid: 'excel!Excel.SlicerStyle#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.SlicerStyle#name:member'
-    summary: Gets the name of the SlicerStyle.
-    name: name
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Gets the name of the SlicerStyle.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.SlicerStyle#readOnly:member'
-    summary: Specifies if this SlicerStyle object is read-only.
-    name: readOnly
+        type: string
+  - name: readOnly
+    uid: 'excel!Excel.SlicerStyle#readOnly:member'
+    package: excel!
     fullName: readOnly
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if this SlicerStyle object is read-only.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly readOnly: boolean;'
       return:
-        type:
-          - boolean
-references:
-  - uid: 'excel!Excel.SlicerStyle:interface'
-    name: SlicerStyle
-    fullName: Excel.SlicerStyle
+        type: boolean
+methods:
+  - name: delete()
+    uid: 'excel!Excel.SlicerStyle#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Deletes the SlicerStyle.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: duplicate()
+    uid: 'excel!Excel.SlicerStyle#duplicate:member(1)'
+    package: excel!
+    fullName: duplicate()
+    summary: >-
+      Creates a duplicate of this SlicerStyle with copies of all the style
+      elements.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'duplicate(): SlicerStyle;'
+      return:
+        type: 'excel!Excel.<xref uid="SlicerStyle:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SlicerStyle#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

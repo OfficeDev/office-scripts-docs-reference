@@ -1,84 +1,69 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation:interface'
-    summary: Represents the Basic Type data validation criteria.
-    name: ExcelScript.BasicDataValidation
-    fullName: ExcelScript.BasicDataValidation
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: ExcelScript.BasicDataValidation
+uid: 'ExcelScript!ExcelScript.BasicDataValidation:interface'
+package: ExcelScript!
+fullName: ExcelScript.BasicDataValidation
+summary: Represents the Basic Type data validation criteria.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: formula1
+    uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula1:member'
     package: ExcelScript!
-    children:
-      - 'ExcelScript!ExcelScript.BasicDataValidation#formula1:member'
-      - 'ExcelScript!ExcelScript.BasicDataValidation#formula2:member'
-      - 'ExcelScript!ExcelScript.BasicDataValidation#operator:member'
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula1:member'
-    summary: >-
-      Specifies the right-hand operand when the operator property is set to a binary operator such as GreaterThan (the
-      left-hand operand is the value the user tries to enter in the cell). With the ternary operators Between and
-      NotBetween, specifies the lower bound operand. For example, setting formula1 to 10 and operator to GreaterThan
-      means that valid data for the range must be greater than 10. When setting the value, it can be passed in as a
-      number, a range object, or a string formula (where the string is either a stringified number, a cell reference
-      like "=A1", or a formula like "=MIN(A1, B1)"). When retrieving the value, it will always be returned as a string
-      formula, for example: "=10", "=A1", "=SUM(A1:B5)", etc.
-    name: formula1
     fullName: formula1
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the right-hand operand when the operator property is set to a
+      binary operator such as GreaterThan (the left-hand operand is the value
+      the user tries to enter in the cell). With the ternary operators Between
+      and NotBetween, specifies the lower bound operand. For example, setting
+      formula1 to 10 and operator to GreaterThan means that valid data for the
+      range must be greater than 10. When setting the value, it can be passed in
+      as a number, a range object, or a string formula (where the string is
+      either a stringified number, a cell reference like "=A1", or a formula
+      like "=MIN(A1, B1)"). When retrieving the value, it will always be
+      returned as a string formula, for example: "=10", "=A1", "=SUM(A1:B5)",
+      etc.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formula1: string | number | Range;'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.BasicDataValidation#formula1~0:complex'
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula2:member'
-    summary: >-
-      With the ternary operators Between and NotBetween, specifies the upper bound operand. Is not used with the binary
-      operators, such as GreaterThan. When setting the value, it can be passed in as a number, a range object, or a
-      string formula (where the string is either a stringified number, a cell reference like "=A1", or a formula like
-      "=MIN(A1, B1)"). When retrieving the value, it will always be returned as a string formula, for example: "=10",
-      "=A1", "=SUM(A1:B5)", etc.
-    name: formula2
+        type: >-
+          string | number | ExcelScript!ExcelScript.<xref uid="Range:interface"
+          />
+  - name: formula2
+    uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula2:member'
+    package: ExcelScript!
     fullName: formula2
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      With the ternary operators Between and NotBetween, specifies the upper
+      bound operand. Is not used with the binary operators, such as GreaterThan.
+      When setting the value, it can be passed in as a number, a range object,
+      or a string formula (where the string is either a stringified number, a
+      cell reference like "=A1", or a formula like "=MIN(A1, B1)"). When
+      retrieving the value, it will always be returned as a string formula, for
+      example: "=10", "=A1", "=SUM(A1:B5)", etc.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formula2?: string | number | Range;'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.BasicDataValidation#formula2~0:complex'
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation#operator:member'
-    summary: The operator to use for validating the data.
-    name: operator
+        type: >-
+          string | number | ExcelScript!ExcelScript.<xref uid="Range:interface"
+          />
+  - name: operator
+    uid: 'ExcelScript!ExcelScript.BasicDataValidation#operator:member'
+    package: ExcelScript!
     fullName: operator
-    langs:
-      - typeScript
-    type: property
+    summary: The operator to use for validating the data.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'operator: DataValidationOperator;'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.DataValidationOperator:enum'
-references:
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula1~0:complex'
-    name: string | number | Range
-    fullName: string | number | ExcelScript.Range
-    spec.typeScript:
-      - name: 'string | number | '
-        fullName: 'string | number | '
-      - uid: 'ExcelScript!ExcelScript.Range:interface'
-        name: Range
-        fullName: ExcelScript.Range
-  - uid: 'ExcelScript!ExcelScript.BasicDataValidation#formula2~0:complex'
-    name: string | number | Range
-    fullName: string | number | ExcelScript.Range
-    spec.typeScript:
-      - name: 'string | number | '
-        fullName: 'string | number | '
-      - uid: 'ExcelScript!ExcelScript.Range:interface'
-        name: Range
-        fullName: ExcelScript.Range
-  - uid: 'ExcelScript!ExcelScript.DataValidationOperator:enum'
-    name: DataValidationOperator
-    fullName: ExcelScript.DataValidationOperator
+        type: 'ExcelScript!ExcelScript.<xref uid="DataValidationOperator:enum" />'

@@ -1,119 +1,127 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.PivotField:interface'
-    summary: Represents the Excel PivotField.
-    name: Excel.PivotField
-    fullName: Excel.PivotField
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.PivotField
+uid: 'excel!Excel.PivotField:interface'
+package: excel!
+fullName: Excel.PivotField
+summary: Represents the Excel PivotField.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: id
+    uid: 'excel!Excel.PivotField#id:member'
     package: excel!
-    children:
-      - 'excel!Excel.PivotField#id:member'
-      - 'excel!Excel.PivotField#items:member'
-      - 'excel!Excel.PivotField#load:member(1)'
-      - 'excel!Excel.PivotField#name:member'
-      - 'excel!Excel.PivotField#showAllItems:member'
-      - 'excel!Excel.PivotField#sortByLabels:member(1)'
-      - 'excel!Excel.PivotField#sortByValues:member(1)'
-      - 'excel!Excel.PivotField#subtotals:member'
-  - uid: 'excel!Excel.PivotField#id:member'
-    summary: Id of the PivotField.
-    name: id
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Id of the PivotField.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.PivotField#items:member'
-    summary: Returns the PivotFields associated with the PivotField.
-    name: items
+        type: string
+  - name: items
+    uid: 'excel!Excel.PivotField#items:member'
+    package: excel!
     fullName: items
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the PivotFields associated with the PivotField.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly items: PivotItemCollection;'
       return:
-        type:
-          - 'excel!Excel.PivotItemCollection:interface'
-  - uid: 'excel!Excel.PivotField#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.PivotField#name:member'
-    summary: Name of the PivotField.
-    name: name
+        type: 'excel!Excel.<xref uid="PivotItemCollection:interface" />'
+  - name: name
+    uid: 'excel!Excel.PivotField#name:member'
+    package: excel!
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Name of the PivotField.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.PivotField#showAllItems:member'
-    summary: Determines whether to show all items of the PivotField.
-    name: showAllItems
+        type: string
+  - name: showAllItems
+    uid: 'excel!Excel.PivotField#showAllItems:member'
+    package: excel!
     fullName: showAllItems
-    langs:
-      - typeScript
-    type: property
+    summary: Determines whether to show all items of the PivotField.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'showAllItems: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.PivotField#sortByLabels:member(1)'
+        type: boolean
+  - name: subtotals
+    uid: 'excel!Excel.PivotField#subtotals:member'
+    package: excel!
+    fullName: subtotals
+    summary: Subtotals of the PivotField.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'subtotals: Subtotals;'
+      return:
+        type: 'excel!Excel.<xref uid="Subtotals:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.PivotField#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
     summary: >-
-      Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort
-      will be based on the PivotField itself.
-    name: sortByLabels(sortBy)
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: sortByLabels(sortBy)
+    uid: 'excel!Excel.PivotField#sortByLabels:member(1)'
+    package: excel!
     fullName: sortByLabels(sortBy)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will
+      be applied based on it, if not sort will be based on the PivotField
+      itself.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'sortByLabels(sortBy: SortBy | "Ascending" | "Descending"): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type:
-            - 'excel!Excel.PivotField#sortByLabels~0:complex'
-  - uid: 'excel!Excel.PivotField#sortByValues:member(1)'
-    summary: >-
-      Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to
-      sort when there are multiple values from the same DataPivotHierarchy.
-    name: 'sortByValues(sortBy, valuesHierarchy, pivotItemScope)'
+          type: 'excel!Excel.<xref uid="SortBy:enum" /> | "Ascending" | "Descending"'
+      return:
+        type: void
+        description: ''
+  - name: 'sortByValues(sortBy, valuesHierarchy, pivotItemScope)'
+    uid: 'excel!Excel.PivotField#sortByValues:member(1)'
+    package: excel!
     fullName: 'sortByValues(sortBy, valuesHierarchy, pivotItemScope)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Sorts the PivotField by specified values in a given scope. The scope
+      defines which specific values will be used to sort when there are multiple
+      values from the same DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         sortByValues(
@@ -121,82 +129,25 @@ items:
                     valuesHierarchy: DataPivotHierarchy,
                     pivotItemScope?: Array<PivotItem | string>
                 ): void;
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: sortBy
           description: Specifies if the sorting is done in ascending or descending order.
-          type:
-            - 'excel!Excel.PivotField#sortByValues~0:complex'
+          type: 'excel!Excel.<xref uid="SortBy:enum" /> | "Ascending" | "Descending"'
         - id: valuesHierarchy
-          description: Specifies the values hierarchy on the data axis to be used for sorting.
-          type:
-            - 'excel!Excel.DataPivotHierarchy:interface'
+          description: >-
+            Specifies the values hierarchy on the data axis to be used for
+            sorting.
+          type: 'excel!Excel.<xref uid="DataPivotHierarchy:interface" />'
         - id: pivotItemScope
           description: >-
-            The items that should be used for the scope of the sorting. These will be the items that make up the row or
-            column that you want to sort on. If a string is used instead of a PivotItem, the string represents the ID of
-            the PivotItem. If there are no items other than data hierarchy on the axis you want to sort on, this can be
-            empty.
-          type:
-            - 'excel!Excel.PivotField#sortByValues~1:complex'
-  - uid: 'excel!Excel.PivotField#subtotals:member'
-    summary: Subtotals of the PivotField.
-    name: subtotals
-    fullName: subtotals
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'subtotals: Subtotals;'
+            The items that should be used for the scope of the sorting. These
+            will be the items that make up the row or column that you want to
+            sort on. If a string is used instead of a PivotItem, the string
+            represents the ID of the PivotItem. If there are no items other than
+            data hierarchy on the axis you want to sort on, this can be empty.
+          type: |-
+            Array&lt;excel!Excel.<xref uid="PivotItem:interface" /> | string&gt;
+                    
       return:
-        type:
-          - 'excel!Excel.Subtotals:interface'
-references:
-  - uid: 'excel!Excel.PivotItemCollection:interface'
-    name: PivotItemCollection
-    fullName: Excel.PivotItemCollection
-  - uid: 'excel!Excel.PivotField#sortByLabels~0:complex'
-    name: SortBy | "Ascending" | "Descending"
-    fullName: Excel.SortBy | "Ascending" | "Descending"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortBy:enum'
-        name: SortBy
-        fullName: Excel.SortBy
-      - name: ' | "Ascending" | "Descending"'
-        fullName: ' | "Ascending" | "Descending"'
-  - uid: 'excel!Excel.PivotField#sortByValues~0:complex'
-    name: SortBy | "Ascending" | "Descending"
-    fullName: Excel.SortBy | "Ascending" | "Descending"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortBy:enum'
-        name: SortBy
-        fullName: Excel.SortBy
-      - name: ' | "Ascending" | "Descending"'
-        fullName: ' | "Ascending" | "Descending"'
-  - uid: 'excel!Excel.DataPivotHierarchy:interface'
-    name: DataPivotHierarchy
-    fullName: Excel.DataPivotHierarchy
-  - uid: 'excel!Excel.PivotField#sortByValues~1:complex'
-    name: Array<PivotItem | string>
-    fullName: Array<Excel.PivotItem | string>
-    spec.typeScript:
-      - uid: '!Array:interface'
-        name: Array
-        fullName: Array
-      - name: <
-        fullName: <
-      - uid: 'excel!Excel.PivotItem:interface'
-        name: PivotItem
-        fullName: Excel.PivotItem
-      - name: |2-
-           | string>
-                  
-        fullName: |2-
-           | string>
-                  
-  - uid: 'excel!Excel.Subtotals:interface'
-    name: Subtotals
-    fullName: Excel.Subtotals
+        type: void
+        description: ''

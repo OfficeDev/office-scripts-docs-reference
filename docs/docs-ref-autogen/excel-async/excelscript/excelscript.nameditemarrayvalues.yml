@@ -1,68 +1,57 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.NamedItemArrayValues:interface'
-    summary: Represents an object containing values and types of a named item.
-    name: Excel.NamedItemArrayValues
-    fullName: Excel.NamedItemArrayValues
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.NamedItemArrayValues
+uid: 'excel!Excel.NamedItemArrayValues:interface'
+package: excel!
+fullName: Excel.NamedItemArrayValues
+summary: Represents an object containing values and types of a named item.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: types
+    uid: 'excel!Excel.NamedItemArrayValues#types:member'
     package: excel!
-    children:
-      - 'excel!Excel.NamedItemArrayValues#load:member(1)'
-      - 'excel!Excel.NamedItemArrayValues#types:member'
-      - 'excel!Excel.NamedItemArrayValues#values:member'
-  - uid: 'excel!Excel.NamedItemArrayValues#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.NamedItemArrayValues#types:member'
-    summary: Represents the types for each item in the named item array
-    name: types
     fullName: types
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the types for each item in the named item array
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly types: RangeValueType[][];'
       return:
-        type:
-          - 'excel!Excel.NamedItemArrayValues#types~0:complex'
-  - uid: 'excel!Excel.NamedItemArrayValues#values:member'
-    summary: Represents the values of each item in the named item array.
-    name: values
+        type: 'excel!Excel.<xref uid="RangeValueType:enum" />[][]'
+  - name: values
+    uid: 'excel!Excel.NamedItemArrayValues#values:member'
+    package: excel!
     fullName: values
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the values of each item in the named item array.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly values: any[][];'
       return:
-        type:
-          - 'any[][]'
-references:
-  - uid: 'excel!Excel.NamedItemArrayValues#types~0:complex'
-    name: 'RangeValueType[][]'
-    fullName: 'Excel.RangeValueType[][]'
-    spec.typeScript:
-      - uid: 'excel!Excel.RangeValueType:enum'
-        name: RangeValueType
-        fullName: Excel.RangeValueType
-      - name: '[][]'
-        fullName: '[][]'
+        type: 'any[][]'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.NamedItemArrayValues#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

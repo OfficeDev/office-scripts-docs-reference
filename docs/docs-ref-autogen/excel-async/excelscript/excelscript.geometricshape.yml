@@ -1,64 +1,60 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.GeometricShape:interface'
-    summary: >-
-      Represents a geometric shape inside a worksheet. A geometric shape can be a rectangle, block arrow, equation
-      symbol, flowchart item, star, banner, callout, or any other basic shape in Excel.
-    name: Excel.GeometricShape
-    fullName: Excel.GeometricShape
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.GeometricShape
+uid: 'excel!Excel.GeometricShape:interface'
+package: excel!
+fullName: Excel.GeometricShape
+summary: >-
+  Represents a geometric shape inside a worksheet. A geometric shape can be a
+  rectangle, block arrow, equation symbol, flowchart item, star, banner,
+  callout, or any other basic shape in Excel.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: id
+    uid: 'excel!Excel.GeometricShape#id:member'
     package: excel!
-    children:
-      - 'excel!Excel.GeometricShape#id:member'
-      - 'excel!Excel.GeometricShape#load:member(1)'
-      - 'excel!Excel.GeometricShape#shape:member'
-  - uid: 'excel!Excel.GeometricShape#id:member'
-    summary: Returns the shape identifier.
-    name: id
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the shape identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.GeometricShape#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.GeometricShape#shape:member'
-    summary: Returns the Shape object for the geometric shape.
-    name: shape
+        type: string
+  - name: shape
+    uid: 'excel!Excel.GeometricShape#shape:member'
+    package: excel!
     fullName: shape
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the Shape object for the geometric shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly shape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-references:
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.GeometricShape#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

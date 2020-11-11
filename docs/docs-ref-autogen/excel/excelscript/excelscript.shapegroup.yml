@@ -1,101 +1,82 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup:interface'
-    summary: >-
-      Represents a shape group inside a worksheet. To get the corresponding Shape object, use `ShapeGroup.shape`<!--
-      -->.
-    name: ExcelScript.ShapeGroup
-    fullName: ExcelScript.ShapeGroup
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: ExcelScript.ShapeGroup
+uid: 'ExcelScript!ExcelScript.ShapeGroup:interface'
+package: ExcelScript!
+fullName: ExcelScript.ShapeGroup
+summary: >-
+  Represents a shape group inside a worksheet. To get the corresponding Shape
+  object, use `ShapeGroup.shape`<!-- -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getGroupShape()
+    uid: 'ExcelScript!ExcelScript.ShapeGroup#getGroupShape:member(1)'
     package: ExcelScript!
-    children:
-      - 'ExcelScript!ExcelScript.ShapeGroup#getGroupShape:member(1)'
-      - 'ExcelScript!ExcelScript.ShapeGroup#getId:member(1)'
-      - 'ExcelScript!ExcelScript.ShapeGroup#getShape:member(1)'
-      - 'ExcelScript!ExcelScript.ShapeGroup#getShapes:member(1)'
-      - 'ExcelScript!ExcelScript.ShapeGroup#ungroup:member(1)'
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#getGroupShape:member(1)'
-    summary: Returns the Shape object associated with the group.
-    name: getGroupShape()
     fullName: getGroupShape()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the Shape object associated with the group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getGroupShape(): Shape;'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.Shape:interface'
+        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
         description: ''
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#getId:member(1)'
-    summary: Specifies the shape identifier.
-    name: getId()
+  - name: getId()
+    uid: 'ExcelScript!ExcelScript.ShapeGroup#getId:member(1)'
+    package: ExcelScript!
     fullName: getId()
-    langs:
-      - typeScript
-    type: method
+    summary: Specifies the shape identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getId(): string;'
       return:
-        type:
-          - string
+        type: string
         description: ''
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#getShape:member(1)'
-    summary: Gets a shape using its Name or ID.
-    name: getShape(key)
+  - name: getShape(key)
+    uid: 'ExcelScript!ExcelScript.ShapeGroup#getShape:member(1)'
+    package: ExcelScript!
     fullName: getShape(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a shape using its Name or ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getShape(key: string): Shape;'
-      return:
-        type:
-          - 'ExcelScript!ExcelScript.Shape:interface'
-        description: ''
       parameters:
         - id: key
           description: The Name or ID of the shape to be retrieved.
-          type:
-            - string
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#getShapes:member(1)'
-    summary: Returns the collection of Shape objects.
-    name: getShapes()
+          type: string
+      return:
+        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />'
+        description: ''
+  - name: getShapes()
+    uid: 'ExcelScript!ExcelScript.ShapeGroup#getShapes:member(1)'
+    package: ExcelScript!
     fullName: getShapes()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the collection of Shape objects.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getShapes(): Shape[];'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.ShapeGroup#getShapes~0:complex'
+        type: 'ExcelScript!ExcelScript.<xref uid="Shape:interface" />[]'
         description: ''
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#ungroup:member(1)'
-    summary: Ungroups any grouped shapes in the specified shape group.
-    name: ungroup()
+  - name: ungroup()
+    uid: 'ExcelScript!ExcelScript.ShapeGroup#ungroup:member(1)'
+    package: ExcelScript!
     fullName: ungroup()
-    langs:
-      - typeScript
-    type: method
+    summary: Ungroups any grouped shapes in the specified shape group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'ungroup(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''
-references:
-  - uid: 'ExcelScript!ExcelScript.Shape:interface'
-    name: Shape
-    fullName: ExcelScript.Shape
-  - uid: 'ExcelScript!ExcelScript.ShapeGroup#getShapes~0:complex'
-    name: 'Shape[]'
-    fullName: 'ExcelScript.Shape[]'
-    spec.typeScript:
-      - uid: 'ExcelScript!ExcelScript.Shape:interface'
-        name: Shape
-        fullName: ExcelScript.Shape
-      - name: '[]'
-        fullName: '[]'

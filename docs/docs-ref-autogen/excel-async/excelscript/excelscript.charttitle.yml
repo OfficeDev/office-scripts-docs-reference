@@ -1,54 +1,264 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartTitle:interface'
-    summary: Represents a chart title object of a chart.
-    name: Excel.ChartTitle
-    fullName: Excel.ChartTitle
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartTitle
+uid: 'excel!Excel.ChartTitle:interface'
+package: excel!
+fullName: Excel.ChartTitle
+summary: Represents a chart title object of a chart.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: format
+    uid: 'excel!Excel.ChartTitle#format:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartTitle#format:member'
-      - 'excel!Excel.ChartTitle#getSubstring:member(1)'
-      - 'excel!Excel.ChartTitle#height:member'
-      - 'excel!Excel.ChartTitle#horizontalAlignment:member'
-      - 'excel!Excel.ChartTitle#left:member'
-      - 'excel!Excel.ChartTitle#load:member(1)'
-      - 'excel!Excel.ChartTitle#overlay:member'
-      - 'excel!Excel.ChartTitle#position:member'
-      - 'excel!Excel.ChartTitle#setFormula:member(1)'
-      - 'excel!Excel.ChartTitle#showShadow:member'
-      - 'excel!Excel.ChartTitle#text:member'
-      - 'excel!Excel.ChartTitle#textOrientation:member'
-      - 'excel!Excel.ChartTitle#top:member'
-      - 'excel!Excel.ChartTitle#verticalAlignment:member'
-      - 'excel!Excel.ChartTitle#visible:member'
-      - 'excel!Excel.ChartTitle#width:member'
-  - uid: 'excel!Excel.ChartTitle#format:member'
-    summary: 'Represents the formatting of a chart title, which includes fill and font formatting.'
-    name: format
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the formatting of a chart title, which includes fill and font
+      formatting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ChartTitleFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartTitleFormat:interface'
-  - uid: 'excel!Excel.ChartTitle#getSubstring:member(1)'
-    summary: Get the substring of a chart title. Line break '<!-- -->\\<!-- -->n' also counts one character.
-    name: 'getSubstring(start, length)'
+        type: 'excel!Excel.<xref uid="ChartTitleFormat:interface" />'
+  - name: height
+    uid: 'excel!Excel.ChartTitle#height:member'
+    package: excel!
+    fullName: height
+    summary: >-
+      Returns the height, in points, of the chart title. Null if chart title is
+      not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly height: number;'
+      return:
+        type: number
+  - name: horizontalAlignment
+    uid: 'excel!Excel.ChartTitle#horizontalAlignment:member'
+    package: excel!
+    fullName: horizontalAlignment
+    summary: Specifies the horizontal alignment for chart title.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        horizontalAlignment:
+                    | ChartTextHorizontalAlignment
+                    | "Center"
+                    | "Left"
+                    | "Right"
+                    | "Justify"
+                    | "Distributed";
+      return:
+        type: |-
+          | excel!Excel.<xref uid="ChartTextHorizontalAlignment:enum" />
+                      | "Center"
+                      | "Left"
+                      | "Right"
+                      | "Justify"
+                      | "Distributed"
+  - name: left
+    uid: 'excel!Excel.ChartTitle#left:member'
+    package: excel!
+    fullName: left
+    summary: >-
+      Specifies the distance, in points, from the left edge of chart title to
+      the left edge of chart area. Null if chart title is not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'left: number;'
+      return:
+        type: number
+  - name: overlay
+    uid: 'excel!Excel.ChartTitle#overlay:member'
+    package: excel!
+    fullName: overlay
+    summary: Specifies if the chart title will overlay the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'overlay: boolean;'
+      return:
+        type: boolean
+  - name: position
+    uid: 'excel!Excel.ChartTitle#position:member'
+    package: excel!
+    fullName: position
+    summary: >-
+      Represents the position of chart title. See Excel.ChartTitlePosition for
+      details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        position:
+                    | ChartTitlePosition
+                    | "Automatic"
+                    | "Top"
+                    | "Bottom"
+                    | "Left"
+                    | "Right";
+      return:
+        type: |-
+          | excel!Excel.<xref uid="ChartTitlePosition:enum" />
+                      | "Automatic"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+  - name: showShadow
+    uid: 'excel!Excel.ChartTitle#showShadow:member'
+    package: excel!
+    fullName: showShadow
+    summary: >-
+      Represents a boolean value that determines if the chart title has a
+      shadow.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'showShadow: boolean;'
+      return:
+        type: boolean
+  - name: text
+    uid: 'excel!Excel.ChartTitle#text:member'
+    package: excel!
+    fullName: text
+    summary: Specifies the chart's title text.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'text: string;'
+      return:
+        type: string
+  - name: textOrientation
+    uid: 'excel!Excel.ChartTitle#textOrientation:member'
+    package: excel!
+    fullName: textOrientation
+    summary: >-
+      Specifies the angle to which the text is oriented for the chart title. The
+      value should either be an integer from -90 to 90 or the integer 180 for
+      vertically-oriented text.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'textOrientation: number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Sample");
+              let title = sheet.charts.getItemAt(0).title;
+              title.textOrientation = -45;
+
+              await context.sync();
+          }
+          ```
+  - name: top
+    uid: 'excel!Excel.ChartTitle#top:member'
+    package: excel!
+    fullName: top
+    summary: >-
+      Specifies the distance, in points, from the top edge of chart title to the
+      top of chart area. Null if chart title is not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'top: number;'
+      return:
+        type: number
+  - name: verticalAlignment
+    uid: 'excel!Excel.ChartTitle#verticalAlignment:member'
+    package: excel!
+    fullName: verticalAlignment
+    summary: >-
+      Specifies the vertical alignment of chart title. See
+      Excel.ChartTextVerticalAlignment for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        verticalAlignment:
+                    | ChartTextVerticalAlignment
+                    | "Center"
+                    | "Bottom"
+                    | "Top"
+                    | "Justify"
+                    | "Distributed";
+      return:
+        type: |-
+          | excel!Excel.<xref uid="ChartTextVerticalAlignment:enum" />
+                      | "Center"
+                      | "Bottom"
+                      | "Top"
+                      | "Justify"
+                      | "Distributed"
+  - name: visible
+    uid: 'excel!Excel.ChartTitle#visible:member'
+    package: excel!
+    fullName: visible
+    summary: Specifies if the chart title is visibile.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'visible: boolean;'
+      return:
+        type: boolean
+  - name: width
+    uid: 'excel!Excel.ChartTitle#width:member'
+    package: excel!
+    fullName: width
+    summary: >-
+      Specifies the width, in points, of the chart title. Null if chart title is
+      not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly width: number;'
+      return:
+        type: number
+methods:
+  - name: 'getSubstring(start, length)'
+    uid: 'excel!Excel.ChartTitle#getSubstring:member(1)'
+    package: excel!
     fullName: 'getSubstring(start, length)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Get the substring of a chart title. Line break '<!-- -->\\<!-- -->n' also
+      counts one character.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getSubstring(start: number, length: number): ChartFormatString;'
+      parameters:
+        - id: start
+          description: Start position of substring to be retrieved. Position start with 0.
+          type: number
+        - id: length
+          description: Length of substring to be retrieved.
+          type: number
       return:
-        type:
-          - 'excel!Excel.ChartFormatString:interface'
+        type: 'excel!Excel.<xref uid="ChartFormatString:interface" />'
         description: |-
 
 
@@ -64,347 +274,43 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: start
-          description: Start position of substring to be retrieved. Position start with 0.
-          type:
-            - number
-        - id: length
-          description: Length of substring to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ChartTitle#height:member'
-    summary: 'Returns the height, in points, of the chart title. Null if chart title is not visible.'
-    name: height
-    fullName: height
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly height: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartTitle#horizontalAlignment:member'
-    summary: Specifies the horizontal alignment for chart title.
-    name: horizontalAlignment
-    fullName: horizontalAlignment
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: |-
-        horizontalAlignment:
-                    | ChartTextHorizontalAlignment
-                    | "Center"
-                    | "Left"
-                    | "Right"
-                    | "Justify"
-                    | "Distributed";
-      return:
-        type:
-          - 'excel!Excel.ChartTitle#horizontalAlignment~0:complex'
-  - uid: 'excel!Excel.ChartTitle#left:member'
-    summary: >-
-      Specifies the distance, in points, from the left edge of chart title to the left edge of chart area. Null if chart
-      title is not visible.
-    name: left
-    fullName: left
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'left: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartTitle#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartTitle#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartTitle#overlay:member'
-    summary: Specifies if the chart title will overlay the chart.
-    name: overlay
-    fullName: overlay
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'overlay: boolean;'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartTitle#position:member'
-    summary: Represents the position of chart title. See Excel.ChartTitlePosition for details.
-    name: position
-    fullName: position
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: |-
-        position:
-                    | ChartTitlePosition
-                    | "Automatic"
-                    | "Top"
-                    | "Bottom"
-                    | "Left"
-                    | "Right";
-      return:
-        type:
-          - 'excel!Excel.ChartTitle#position~0:complex'
-  - uid: 'excel!Excel.ChartTitle#setFormula:member(1)'
-    summary: Sets a string value that represents the formula of chart title using A1-style notation.
-    name: setFormula(formula)
+        type: void
+        description: ''
+  - name: setFormula(formula)
+    uid: 'excel!Excel.ChartTitle#setFormula:member(1)'
+    package: excel!
     fullName: setFormula(formula)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Sets a string value that represents the formula of chart title using
+      A1-style notation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'setFormula(formula: string): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: formula
           description: A string that represents the formula to set.
-          type:
-            - string
-  - uid: 'excel!Excel.ChartTitle#showShadow:member'
-    summary: Represents a boolean value that determines if the chart title has a shadow.
-    name: showShadow
-    fullName: showShadow
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'showShadow: boolean;'
+          type: string
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartTitle#text:member'
-    summary: Specifies the chart's title text.
-    name: text
-    fullName: text
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'text: string;'
-      return:
-        type:
-          - string
-  - uid: 'excel!Excel.ChartTitle#textOrientation:member'
-    summary: >-
-      Specifies the angle to which the text is oriented for the chart title. The value should either be an integer from
-      -90 to 90 or the integer 180 for vertically-oriented text.
-    name: textOrientation
-    fullName: textOrientation
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'textOrientation: number;'
-      return:
-        type:
-          - number
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Sample");
-              let title = sheet.charts.getItemAt(0).title;
-              title.textOrientation = -45;
-
-              await context.sync();
-          }
-          ```
-  - uid: 'excel!Excel.ChartTitle#top:member'
-    summary: >-
-      Specifies the distance, in points, from the top edge of chart title to the top of chart area. Null if chart title
-      is not visible.
-    name: top
-    fullName: top
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'top: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartTitle#verticalAlignment:member'
-    summary: Specifies the vertical alignment of chart title. See Excel.ChartTextVerticalAlignment for details.
-    name: verticalAlignment
-    fullName: verticalAlignment
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: |-
-        verticalAlignment:
-                    | ChartTextVerticalAlignment
-                    | "Center"
-                    | "Bottom"
-                    | "Top"
-                    | "Justify"
-                    | "Distributed";
-      return:
-        type:
-          - 'excel!Excel.ChartTitle#verticalAlignment~0:complex'
-  - uid: 'excel!Excel.ChartTitle#visible:member'
-    summary: Specifies if the chart title is visibile.
-    name: visible
-    fullName: visible
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'visible: boolean;'
-      return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartTitle#width:member'
-    summary: 'Specifies the width, in points, of the chart title. Null if chart title is not visible.'
-    name: width
-    fullName: width
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly width: number;'
-      return:
-        type:
-          - number
-references:
-  - uid: 'excel!Excel.ChartTitleFormat:interface'
-    name: ChartTitleFormat
-    fullName: Excel.ChartTitleFormat
-  - uid: 'excel!Excel.ChartFormatString:interface'
-    name: ChartFormatString
-    fullName: Excel.ChartFormatString
-  - uid: 'excel!Excel.ChartTitle#horizontalAlignment~0:complex'
-    name: |-
-      | ChartTextHorizontalAlignment
-                  | "Center"
-                  | "Left"
-                  | "Right"
-                  | "Justify"
-                  | "Distributed"
-    fullName: |-
-      | Excel.ChartTextHorizontalAlignment
-                  | "Center"
-                  | "Left"
-                  | "Right"
-                  | "Justify"
-                  | "Distributed"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartTextHorizontalAlignment:enum'
-        name: ChartTextHorizontalAlignment
-        fullName: Excel.ChartTextHorizontalAlignment
-      - name: |2-
-
-                      | "Center"
-                      | "Left"
-                      | "Right"
-                      | "Justify"
-                      | "Distributed"
-        fullName: |2-
-
-                      | "Center"
-                      | "Left"
-                      | "Right"
-                      | "Justify"
-                      | "Distributed"
-  - uid: 'excel!Excel.ChartTitle#position~0:complex'
-    name: |-
-      | ChartTitlePosition
-                  | "Automatic"
-                  | "Top"
-                  | "Bottom"
-                  | "Left"
-                  | "Right"
-    fullName: |-
-      | Excel.ChartTitlePosition
-                  | "Automatic"
-                  | "Top"
-                  | "Bottom"
-                  | "Left"
-                  | "Right"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartTitlePosition:enum'
-        name: ChartTitlePosition
-        fullName: Excel.ChartTitlePosition
-      - name: |2-
-
-                      | "Automatic"
-                      | "Top"
-                      | "Bottom"
-                      | "Left"
-                      | "Right"
-        fullName: |2-
-
-                      | "Automatic"
-                      | "Top"
-                      | "Bottom"
-                      | "Left"
-                      | "Right"
-  - uid: 'excel!Excel.ChartTitle#verticalAlignment~0:complex'
-    name: |-
-      | ChartTextVerticalAlignment
-                  | "Center"
-                  | "Bottom"
-                  | "Top"
-                  | "Justify"
-                  | "Distributed"
-    fullName: |-
-      | Excel.ChartTextVerticalAlignment
-                  | "Center"
-                  | "Bottom"
-                  | "Top"
-                  | "Justify"
-                  | "Distributed"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartTextVerticalAlignment:enum'
-        name: ChartTextVerticalAlignment
-        fullName: Excel.ChartTextVerticalAlignment
-      - name: |2-
-
-                      | "Center"
-                      | "Bottom"
-                      | "Top"
-                      | "Justify"
-                      | "Distributed"
-        fullName: |2-
-
-                      | "Center"
-                      | "Bottom"
-                      | "Top"
-                      | "Justify"
-                      | "Distributed"
+        type: void
+        description: ''

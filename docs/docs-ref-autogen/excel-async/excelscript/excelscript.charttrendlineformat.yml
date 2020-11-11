@@ -1,28 +1,26 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartTrendlineFormat:interface'
-    summary: Represents the format properties for chart trendline.
-    name: Excel.ChartTrendlineFormat
-    fullName: Excel.ChartTrendlineFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartTrendlineFormat
+uid: 'excel!Excel.ChartTrendlineFormat:interface'
+package: excel!
+fullName: Excel.ChartTrendlineFormat
+summary: Represents the format properties for chart trendline.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: line
+    uid: 'excel!Excel.ChartTrendlineFormat#line:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartTrendlineFormat#line:member'
-      - 'excel!Excel.ChartTrendlineFormat#load:member(1)'
-  - uid: 'excel!Excel.ChartTrendlineFormat#line:member'
-    summary: Represents chart line formatting.
-    name: line
     fullName: line
-    langs:
-      - typeScript
-    type: property
+    summary: Represents chart line formatting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly line: ChartLineFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartLineFormat:interface'
+        type: 'excel!Excel.<xref uid="ChartLineFormat:interface" />'
         description: |-
 
 
@@ -61,27 +59,25 @@ items:
               console.log("The trendline color has been set to:" + line.color);
           }
           ```
-  - uid: 'excel!Excel.ChartTrendlineFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartTrendlineFormat#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartLineFormat:interface'
-    name: ChartLineFormat
-    fullName: Excel.ChartLineFormat
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

@@ -1,44 +1,37 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.DataBarConditionalFormat:interface'
-    summary: Represents an Excel Conditional Data Bar Type.
-    name: Excel.DataBarConditionalFormat
-    fullName: Excel.DataBarConditionalFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.DataBarConditionalFormat
+uid: 'excel!Excel.DataBarConditionalFormat:interface'
+package: excel!
+fullName: Excel.DataBarConditionalFormat
+summary: Represents an Excel Conditional Data Bar Type.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: axisColor
+    uid: 'excel!Excel.DataBarConditionalFormat#axisColor:member'
     package: excel!
-    children:
-      - 'excel!Excel.DataBarConditionalFormat#axisColor:member'
-      - 'excel!Excel.DataBarConditionalFormat#axisFormat:member'
-      - 'excel!Excel.DataBarConditionalFormat#barDirection:member'
-      - 'excel!Excel.DataBarConditionalFormat#load:member(1)'
-      - 'excel!Excel.DataBarConditionalFormat#lowerBoundRule:member'
-      - 'excel!Excel.DataBarConditionalFormat#negativeFormat:member'
-      - 'excel!Excel.DataBarConditionalFormat#positiveFormat:member'
-      - 'excel!Excel.DataBarConditionalFormat#showDataBarOnly:member'
-      - 'excel!Excel.DataBarConditionalFormat#upperBoundRule:member'
-  - uid: 'excel!Excel.DataBarConditionalFormat#axisColor:member'
-    summary: >-
-      HTML color code representing the color of the Axis line, of the form \#RRGGBB (e.g., "FFA500") or as a named HTML
-      color (e.g., "orange"). "" (empty string) if no axis is present or set.
-    name: axisColor
     fullName: axisColor
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      HTML color code representing the color of the Axis line, of the form
+      \#RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange"). ""
+      (empty string) if no axis is present or set.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'axisColor: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.DataBarConditionalFormat#axisFormat:member'
-    summary: Representation of how the axis is determined for an Excel data bar.
-    name: axisFormat
+        type: string
+  - name: axisFormat
+    uid: 'excel!Excel.DataBarConditionalFormat#axisFormat:member'
+    package: excel!
     fullName: axisFormat
-    langs:
-      - typeScript
-    type: property
+    summary: Representation of how the axis is determined for an Excel data bar.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         axisFormat:
@@ -47,15 +40,19 @@ items:
                     | "None"
                     | "CellMidPoint";
       return:
-        type:
-          - 'excel!Excel.DataBarConditionalFormat#axisFormat~0:complex'
-  - uid: 'excel!Excel.DataBarConditionalFormat#barDirection:member'
-    summary: Specifies the direction that the data bar graphic should be based on.
-    name: barDirection
+        type: |-
+          | excel!Excel.<xref uid="ConditionalDataBarAxisFormat:enum" />
+                      | "Automatic"
+                      | "None"
+                      | "CellMidPoint"
+  - name: barDirection
+    uid: 'excel!Excel.DataBarConditionalFormat#barDirection:member'
+    package: excel!
     fullName: barDirection
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the direction that the data bar graphic should be based on.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         barDirection:
@@ -64,8 +61,11 @@ items:
                     | "LeftToRight"
                     | "RightToLeft";
       return:
-        type:
-          - 'excel!Excel.DataBarConditionalFormat#barDirection~0:complex'
+        type: |-
+          | excel!Excel.<xref uid="ConditionalDataBarDirection:enum" />
+                      | "Context"
+                      | "LeftToRight"
+                      | "RightToLeft"
         description: |-
 
 
@@ -82,153 +82,95 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.DataBarConditionalFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.DataBarConditionalFormat#lowerBoundRule:member'
-    summary: >-
-      The rule for what consistutes the lower bound (and how to calculate it, if applicable) for a data bar. The
-      `ConditionalDataBarRule` object must be set as a JSON object (use `x.lowerBoundRule = {...}` instead of
-      `x.lowerBoundRule.formula = ...`<!-- -->).
-    name: lowerBoundRule
+  - name: lowerBoundRule
+    uid: 'excel!Excel.DataBarConditionalFormat#lowerBoundRule:member'
+    package: excel!
     fullName: lowerBoundRule
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      The rule for what consistutes the lower bound (and how to calculate it, if
+      applicable) for a data bar. The `ConditionalDataBarRule` object must be
+      set as a JSON object (use `x.lowerBoundRule = {...}` instead of
+      `x.lowerBoundRule.formula = ...`<!-- -->).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'lowerBoundRule: ConditionalDataBarRule;'
       return:
-        type:
-          - 'excel!Excel.ConditionalDataBarRule:interface'
-  - uid: 'excel!Excel.DataBarConditionalFormat#negativeFormat:member'
-    summary: Representation of all values to the left of the axis in an Excel data bar.
-    name: negativeFormat
+        type: 'excel!Excel.<xref uid="ConditionalDataBarRule:interface" />'
+  - name: negativeFormat
+    uid: 'excel!Excel.DataBarConditionalFormat#negativeFormat:member'
+    package: excel!
     fullName: negativeFormat
-    langs:
-      - typeScript
-    type: property
+    summary: Representation of all values to the left of the axis in an Excel data bar.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly negativeFormat: ConditionalDataBarNegativeFormat;'
       return:
-        type:
-          - 'excel!Excel.ConditionalDataBarNegativeFormat:interface'
-  - uid: 'excel!Excel.DataBarConditionalFormat#positiveFormat:member'
-    summary: Representation of all values to the right of the axis in an Excel data bar.
-    name: positiveFormat
+        type: 'excel!Excel.<xref uid="ConditionalDataBarNegativeFormat:interface" />'
+  - name: positiveFormat
+    uid: 'excel!Excel.DataBarConditionalFormat#positiveFormat:member'
+    package: excel!
     fullName: positiveFormat
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Representation of all values to the right of the axis in an Excel data
+      bar.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly positiveFormat: ConditionalDataBarPositiveFormat;'
       return:
-        type:
-          - 'excel!Excel.ConditionalDataBarPositiveFormat:interface'
-  - uid: 'excel!Excel.DataBarConditionalFormat#showDataBarOnly:member'
-    summary: 'If true, hides the values from the cells where the data bar is applied.'
-    name: showDataBarOnly
+        type: 'excel!Excel.<xref uid="ConditionalDataBarPositiveFormat:interface" />'
+  - name: showDataBarOnly
+    uid: 'excel!Excel.DataBarConditionalFormat#showDataBarOnly:member'
+    package: excel!
     fullName: showDataBarOnly
-    langs:
-      - typeScript
-    type: property
+    summary: 'If true, hides the values from the cells where the data bar is applied.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'showDataBarOnly: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.DataBarConditionalFormat#upperBoundRule:member'
-    summary: >-
-      The rule for what constitutes the upper bound (and how to calculate it, if applicable) for a data bar. The
-      `ConditionalDataBarRule` object must be set as a JSON object (use `x.upperBoundRule = {...}` instead of
-      `x.upperBoundRule.formula = ...`<!-- -->).
-    name: upperBoundRule
+        type: boolean
+  - name: upperBoundRule
+    uid: 'excel!Excel.DataBarConditionalFormat#upperBoundRule:member'
+    package: excel!
     fullName: upperBoundRule
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      The rule for what constitutes the upper bound (and how to calculate it, if
+      applicable) for a data bar. The `ConditionalDataBarRule` object must be
+      set as a JSON object (use `x.upperBoundRule = {...}` instead of
+      `x.upperBoundRule.formula = ...`<!-- -->).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'upperBoundRule: ConditionalDataBarRule;'
       return:
-        type:
-          - 'excel!Excel.ConditionalDataBarRule:interface'
-references:
-  - uid: 'excel!Excel.DataBarConditionalFormat#axisFormat~0:complex'
-    name: |-
-      | ConditionalDataBarAxisFormat
-                  | "Automatic"
-                  | "None"
-                  | "CellMidPoint"
-    fullName: |-
-      | Excel.ConditionalDataBarAxisFormat
-                  | "Automatic"
-                  | "None"
-                  | "CellMidPoint"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ConditionalDataBarAxisFormat:enum'
-        name: ConditionalDataBarAxisFormat
-        fullName: Excel.ConditionalDataBarAxisFormat
-      - name: |2-
-
-                      | "Automatic"
-                      | "None"
-                      | "CellMidPoint"
-        fullName: |2-
-
-                      | "Automatic"
-                      | "None"
-                      | "CellMidPoint"
-  - uid: 'excel!Excel.DataBarConditionalFormat#barDirection~0:complex'
-    name: |-
-      | ConditionalDataBarDirection
-                  | "Context"
-                  | "LeftToRight"
-                  | "RightToLeft"
-    fullName: |-
-      | Excel.ConditionalDataBarDirection
-                  | "Context"
-                  | "LeftToRight"
-                  | "RightToLeft"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ConditionalDataBarDirection:enum'
-        name: ConditionalDataBarDirection
-        fullName: Excel.ConditionalDataBarDirection
-      - name: |2-
-
-                      | "Context"
-                      | "LeftToRight"
-                      | "RightToLeft"
-        fullName: |2-
-
-                      | "Context"
-                      | "LeftToRight"
-                      | "RightToLeft"
-  - uid: 'excel!Excel.ConditionalDataBarRule:interface'
-    name: ConditionalDataBarRule
-    fullName: Excel.ConditionalDataBarRule
-  - uid: 'excel!Excel.ConditionalDataBarNegativeFormat:interface'
-    name: ConditionalDataBarNegativeFormat
-    fullName: Excel.ConditionalDataBarNegativeFormat
-  - uid: 'excel!Excel.ConditionalDataBarPositiveFormat:interface'
-    name: ConditionalDataBarPositiveFormat
-    fullName: Excel.ConditionalDataBarPositiveFormat
+        type: 'excel!Excel.<xref uid="ConditionalDataBarRule:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.DataBarConditionalFormat#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

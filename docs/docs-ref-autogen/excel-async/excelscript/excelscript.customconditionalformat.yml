@@ -1,29 +1,28 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.CustomConditionalFormat:interface'
-    summary: Represents a custom conditional format type.
-    name: Excel.CustomConditionalFormat
-    fullName: Excel.CustomConditionalFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.CustomConditionalFormat
+uid: 'excel!Excel.CustomConditionalFormat:interface'
+package: excel!
+fullName: Excel.CustomConditionalFormat
+summary: Represents a custom conditional format type.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: format
+    uid: 'excel!Excel.CustomConditionalFormat#format:member'
     package: excel!
-    children:
-      - 'excel!Excel.CustomConditionalFormat#format:member'
-      - 'excel!Excel.CustomConditionalFormat#load:member(1)'
-      - 'excel!Excel.CustomConditionalFormat#rule:member'
-  - uid: 'excel!Excel.CustomConditionalFormat#format:member'
-    summary: 'Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.'
-    name: format
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Returns a format object, encapsulating the conditional formats font, fill,
+      borders, and other properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ConditionalRangeFormat;'
       return:
-        type:
-          - 'excel!Excel.ConditionalRangeFormat:interface'
+        type: 'excel!Excel.<xref uid="ConditionalRangeFormat:interface" />'
         description: |-
 
 
@@ -40,42 +39,37 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.CustomConditionalFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.CustomConditionalFormat#rule:member'
-    summary: Specifies the Rule object on this conditional format.
-    name: rule
+  - name: rule
+    uid: 'excel!Excel.CustomConditionalFormat#rule:member'
+    package: excel!
     fullName: rule
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the Rule object on this conditional format.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly rule: ConditionalFormatRule;'
       return:
-        type:
-          - 'excel!Excel.ConditionalFormatRule:interface'
-references:
-  - uid: 'excel!Excel.ConditionalRangeFormat:interface'
-    name: ConditionalRangeFormat
-    fullName: Excel.ConditionalRangeFormat
-  - uid: 'excel!Excel.ConditionalFormatRule:interface'
-    name: ConditionalFormatRule
-    fullName: Excel.ConditionalFormatRule
+        type: 'excel!Excel.<xref uid="ConditionalFormatRule:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.CustomConditionalFormat#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

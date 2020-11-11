@@ -1,171 +1,144 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.TableCollection:interface'
-    summary: >-
-      Represents a collection of all the tables that are part of the workbook or worksheet, depending on how it was
-      reached.
-    name: Excel.TableCollection
-    fullName: Excel.TableCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.TableCollection
+uid: 'excel!Excel.TableCollection:interface'
+package: excel!
+fullName: Excel.TableCollection
+summary: >-
+  Represents a collection of all the tables that are part of the workbook or
+  worksheet, depending on how it was reached.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: count
+    uid: 'excel!Excel.TableCollection#count:member'
     package: excel!
-    children:
-      - 'excel!Excel.TableCollection#add:member(1)'
-      - 'excel!Excel.TableCollection#count:member'
-      - 'excel!Excel.TableCollection#getCount:member(1)'
-      - 'excel!Excel.TableCollection#getItem:member(1)'
-      - 'excel!Excel.TableCollection#getItemAt:member(1)'
-      - 'excel!Excel.TableCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.TableCollection#load:member(1)'
-  - uid: 'excel!Excel.TableCollection#add:member(1)'
-    summary: >-
-      Create a new table. The range object or source address determines the worksheet under which the table will be
-      added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another
-      table), an error will be thrown.
-    name: 'add(address, hasHeaders)'
-    fullName: 'add(address, hasHeaders)'
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'add(address: Range | string, hasHeaders: boolean): Table;'
-      return:
-        type:
-          - 'excel!Excel.Table:interface'
-        description: ''
-      parameters:
-        - id: address
-          description: >-
-            A Range object, or a string address or name of the range representing the data source. If the address does
-            not contain a sheet name, the currently-active sheet is used.
-          type:
-            - 'excel!Excel.TableCollection#add~0:complex'
-        - id: hasHeaders
-          description: >-
-            Boolean value that indicates whether the data being imported has column labels. If the source does not
-            contain headers (i.e,. when this property set to false), Excel will automatically generate header shifting
-            the data down by one row.
-          type:
-            - boolean
-  - uid: 'excel!Excel.TableCollection#count:member'
-    summary: Returns the number of tables in the workbook.
-    name: count
     fullName: count
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the number of tables in the workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly count: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.TableCollection#getCount:member(1)'
-    summary: Gets the number of tables in the collection.
-    name: getCount()
+        type: number
+methods:
+  - name: 'add(address, hasHeaders)'
+    uid: 'excel!Excel.TableCollection#add:member(1)'
+    package: excel!
+    fullName: 'add(address, hasHeaders)'
+    summary: >-
+      Create a new table. The range object or source address determines the
+      worksheet under which the table will be added. If the table cannot be
+      added (e.g., because the address is invalid, or the table would overlap
+      with another table), an error will be thrown.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'add(address: Range | string, hasHeaders: boolean): Table;'
+      parameters:
+        - id: address
+          description: >-
+            A Range object, or a string address or name of the range
+            representing the data source. If the address does not contain a
+            sheet name, the currently-active sheet is used.
+          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+        - id: hasHeaders
+          description: >-
+            Boolean value that indicates whether the data being imported has
+            column labels. If the source does not contain headers (i.e,. when
+            this property set to false), Excel will automatically generate
+            header shifting the data down by one row.
+          type: boolean
+      return:
+        type: 'excel!Excel.<xref uid="Table:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.TableCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of tables in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.TableCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.TableCollection#getItem:member(1)'
-    summary: Gets a table by Name or ID.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.TableCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a table by Name or ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): Table;'
-      return:
-        type:
-          - 'excel!Excel.Table:interface'
-        description: ''
       parameters:
         - id: key
           description: Name or ID of the table to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.TableCollection#getItemAt:member(1)'
-    summary: Gets a table based on its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="Table:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.TableCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a table based on its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): Table;'
-      return:
-        type:
-          - 'excel!Excel.Table:interface'
-        description: ''
       parameters:
         - id: index
           description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.TableCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a table by Name or ID. If the table does not exist, will return a null object.'
-    name: getItemOrNullObject(key)
+          type: number
+      return:
+        type: 'excel!Excel.<xref uid="Table:interface" />'
+        description: ''
+  - name: getItemOrNullObject(key)
+    uid: 'excel!Excel.TableCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a table by Name or ID. If the table does not exist, will return a
+      null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(key: string): Table;'
-      return:
-        type:
-          - 'excel!Excel.Table:interface'
-        description: ''
       parameters:
         - id: key
           description: Name or ID of the table to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.TableCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="Table:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.TableCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Table:interface'
-    name: Table
-    fullName: Excel.Table
-  - uid: 'excel!Excel.TableCollection#add~0:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.TableCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

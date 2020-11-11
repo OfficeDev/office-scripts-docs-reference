@@ -1,22 +1,22 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'ExcelScript!ExcelScript.RangeSort:interface'
-    summary: Manages sorting operations on Range objects.
-    name: ExcelScript.RangeSort
-    fullName: ExcelScript.RangeSort
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: ExcelScript.RangeSort
+uid: 'ExcelScript!ExcelScript.RangeSort:interface'
+package: ExcelScript!
+fullName: ExcelScript.RangeSort
+summary: Manages sorting operations on Range objects.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'apply(fields, matchCase, hasHeaders, orientation, method)'
+    uid: 'ExcelScript!ExcelScript.RangeSort#apply:member(1)'
     package: ExcelScript!
-    children:
-      - 'ExcelScript!ExcelScript.RangeSort#apply:member(1)'
-  - uid: 'ExcelScript!ExcelScript.RangeSort#apply:member(1)'
-    summary: Perform a sort operation.
-    name: 'apply(fields, matchCase, hasHeaders, orientation, method)'
     fullName: 'apply(fields, matchCase, hasHeaders, orientation, method)'
-    langs:
-      - typeScript
-    type: method
+    summary: Perform a sort operation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         apply(
@@ -26,44 +26,22 @@ items:
                     orientation?: SortOrientation,
                     method?: SortMethod
                 ): void;
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: fields
           description: The list of conditions to sort on.
-          type:
-            - 'ExcelScript!ExcelScript.RangeSort#apply~0:complex'
+          type: 'ExcelScript!ExcelScript.<xref uid="SortField:interface" />[]'
         - id: matchCase
           description: Optional. Whether to have the casing impact string ordering.
-          type:
-            - boolean
+          type: boolean
         - id: hasHeaders
           description: Optional. Whether the range has a header.
-          type:
-            - boolean
+          type: boolean
         - id: orientation
           description: Optional. Whether the operation is sorting rows or columns.
-          type:
-            - 'ExcelScript!ExcelScript.SortOrientation:enum'
+          type: 'ExcelScript!ExcelScript.<xref uid="SortOrientation:enum" />'
         - id: method
           description: Optional. The ordering method used for Chinese characters.
-          type:
-            - 'ExcelScript!ExcelScript.SortMethod:enum'
-references:
-  - uid: 'ExcelScript!ExcelScript.RangeSort#apply~0:complex'
-    name: 'SortField[]'
-    fullName: 'ExcelScript.SortField[]'
-    spec.typeScript:
-      - uid: 'ExcelScript!ExcelScript.SortField:interface'
-        name: SortField
-        fullName: ExcelScript.SortField
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'ExcelScript!ExcelScript.SortOrientation:enum'
-    name: SortOrientation
-    fullName: ExcelScript.SortOrientation
-  - uid: 'ExcelScript!ExcelScript.SortMethod:enum'
-    name: SortMethod
-    fullName: ExcelScript.SortMethod
+          type: 'ExcelScript!ExcelScript.<xref uid="SortMethod:enum" />'
+      return:
+        type: void
+        description: ''

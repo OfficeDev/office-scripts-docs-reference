@@ -1,29 +1,24 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.NamedItemCollection:interface'
-    summary: >-
-      A collection of all the NamedItem objects that are part of the workbook or worksheet, depending on how it was
-      reached.
-    name: Excel.NamedItemCollection
-    fullName: Excel.NamedItemCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.NamedItemCollection
+uid: 'excel!Excel.NamedItemCollection:interface'
+package: excel!
+fullName: Excel.NamedItemCollection
+summary: >-
+  A collection of all the NamedItem objects that are part of the workbook or
+  worksheet, depending on how it was reached.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(name, reference, comment)'
+    uid: 'excel!Excel.NamedItemCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.NamedItemCollection#add:member(1)'
-      - 'excel!Excel.NamedItemCollection#addFormulaLocal:member(1)'
-      - 'excel!Excel.NamedItemCollection#getCount:member(1)'
-      - 'excel!Excel.NamedItemCollection#getItem:member(1)'
-      - 'excel!Excel.NamedItemCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.NamedItemCollection#load:member(1)'
-  - uid: 'excel!Excel.NamedItemCollection#add:member(1)'
-    summary: Adds a new name to the collection of the given scope.
-    name: 'add(name, reference, comment)'
     fullName: 'add(name, reference, comment)'
-    langs:
-      - typeScript
-    type: method
+    summary: Adds a new name to the collection of the given scope.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
@@ -31,9 +26,18 @@ items:
                     reference: Range | string,
                     comment?: string
                 ): NamedItem;
+      parameters:
+        - id: name
+          description: The name of the named item.
+          type: string
+        - id: reference
+          description: The formula or the range that the name will refer to.
+          type: 'excel!Excel.<xref uid="Range:interface" /> | string'
+        - id: comment
+          description: Optional. The comment associated with the named item.
+          type: string
       return:
-        type:
-          - 'excel!Excel.NamedItem:interface'
+        type: 'excel!Excel.<xref uid="NamedItem:interface" />'
         description: |-
 
 
@@ -50,26 +54,16 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: name
-          description: The name of the named item.
-          type:
-            - string
-        - id: reference
-          description: The formula or the range that the name will refer to.
-          type:
-            - 'excel!Excel.NamedItemCollection#add~0:complex'
-        - id: comment
-          description: Optional. The comment associated with the named item.
-          type:
-            - string
-  - uid: 'excel!Excel.NamedItemCollection#addFormulaLocal:member(1)'
-    summary: Adds a new name to the collection of the given scope using the user's locale for the formula.
-    name: 'addFormulaLocal(name, formula, comment)'
+  - name: 'addFormulaLocal(name, formula, comment)'
+    uid: 'excel!Excel.NamedItemCollection#addFormulaLocal:member(1)'
+    package: excel!
     fullName: 'addFormulaLocal(name, formula, comment)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Adds a new name to the collection of the given scope using the user's
+      locale for the formula.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         addFormulaLocal(
@@ -77,111 +71,86 @@ items:
                     formula: string,
                     comment?: string
                 ): NamedItem;
-      return:
-        type:
-          - 'excel!Excel.NamedItem:interface'
-        description: ''
       parameters:
         - id: name
           description: The "name" of the named item.
-          type:
-            - string
+          type: string
         - id: formula
           description: The formula in the user's locale that the name will refer to.
-          type:
-            - string
+          type: string
         - id: comment
           description: Optional. The comment associated with the named item.
-          type:
-            - string
-  - uid: 'excel!Excel.NamedItemCollection#getCount:member(1)'
-    summary: Gets the number of named items in the collection.
-    name: getCount()
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="NamedItem:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.NamedItemCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of named items in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.NamedItemCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.NamedItemCollection#getItem:member(1)'
-    summary: Gets a NamedItem object using its name.
-    name: getItem(name)
+  - name: getItem(name)
+    uid: 'excel!Excel.NamedItemCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a NamedItem object using its name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(name: string): NamedItem;'
-      return:
-        type:
-          - 'excel!Excel.NamedItem:interface'
-        description: ''
       parameters:
         - id: name
           description: Nameditem name.
-          type:
-            - string
-  - uid: 'excel!Excel.NamedItemCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a NamedItem object using its name. If the nameditem object does not exist, will return a null object.'
-    name: getItemOrNullObject(name)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="NamedItem:interface" />'
+        description: ''
+  - name: getItemOrNullObject(name)
+    uid: 'excel!Excel.NamedItemCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(name)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a NamedItem object using its name. If the nameditem object does not
+      exist, will return a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(name: string): NamedItem;'
-      return:
-        type:
-          - 'excel!Excel.NamedItem:interface'
-        description: ''
       parameters:
         - id: name
           description: Nameditem name.
-          type:
-            - string
-  - uid: 'excel!Excel.NamedItemCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="NamedItem:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.NamedItemCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.NamedItem:interface'
-    name: NamedItem
-    fullName: Excel.NamedItem
-  - uid: 'excel!Excel.NamedItemCollection#add~0:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.NamedItemCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

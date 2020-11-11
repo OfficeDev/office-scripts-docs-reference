@@ -1,97 +1,83 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.PivotFieldCollection:interface'
-    summary: Represents a collection of all the PivotFields that are part of a PivotTable's hierarchy.
-    name: Excel.PivotFieldCollection
-    fullName: Excel.PivotFieldCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.PivotFieldCollection
+uid: 'excel!Excel.PivotFieldCollection:interface'
+package: excel!
+fullName: Excel.PivotFieldCollection
+summary: >-
+  Represents a collection of all the PivotFields that are part of a PivotTable's
+  hierarchy.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getCount()
+    uid: 'excel!Excel.PivotFieldCollection#getCount:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.PivotFieldCollection#getCount:member(1)'
-      - 'excel!Excel.PivotFieldCollection#getItem:member(1)'
-      - 'excel!Excel.PivotFieldCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.PivotFieldCollection#load:member(1)'
-  - uid: 'excel!Excel.PivotFieldCollection#getCount:member(1)'
-    summary: Gets the number of pivot fields in the collection.
-    name: getCount()
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of pivot fields in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.PivotFieldCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.PivotFieldCollection#getItem:member(1)'
-    summary: Gets a PivotField by its name or id.
-    name: getItem(name)
+  - name: getItem(name)
+    uid: 'excel!Excel.PivotFieldCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a PivotField by its name or id.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(name: string): PivotField;'
-      return:
-        type:
-          - 'excel!Excel.PivotField:interface'
-        description: ''
       parameters:
         - id: name
           description: Name of the PivotField to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.PivotFieldCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a PivotField by name. If the PivotField does not exist, will return a null object.'
-    name: getItemOrNullObject(name)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="PivotField:interface" />'
+        description: ''
+  - name: getItemOrNullObject(name)
+    uid: 'excel!Excel.PivotFieldCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(name)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a PivotField by name. If the PivotField does not exist, will return a
+      null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(name: string): PivotField;'
-      return:
-        type:
-          - 'excel!Excel.PivotField:interface'
-        description: ''
       parameters:
         - id: name
           description: Name of the PivotField to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.PivotFieldCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="PivotField:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.PivotFieldCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.PivotFieldCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.PivotField:interface'
-    name: PivotField
-    fullName: Excel.PivotField
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

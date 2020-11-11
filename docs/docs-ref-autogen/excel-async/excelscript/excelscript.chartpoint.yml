@@ -1,122 +1,102 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartPoint:interface'
-    summary: Represents a point of a series in a chart.
-    name: Excel.ChartPoint
-    fullName: Excel.ChartPoint
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartPoint
+uid: 'excel!Excel.ChartPoint:interface'
+package: excel!
+fullName: Excel.ChartPoint
+summary: Represents a point of a series in a chart.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: dataLabel
+    uid: 'excel!Excel.ChartPoint#dataLabel:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartPoint#dataLabel:member'
-      - 'excel!Excel.ChartPoint#format:member'
-      - 'excel!Excel.ChartPoint#hasDataLabel:member'
-      - 'excel!Excel.ChartPoint#load:member(1)'
-      - 'excel!Excel.ChartPoint#markerBackgroundColor:member'
-      - 'excel!Excel.ChartPoint#markerForegroundColor:member'
-      - 'excel!Excel.ChartPoint#markerSize:member'
-      - 'excel!Excel.ChartPoint#markerStyle:member'
-      - 'excel!Excel.ChartPoint#value:member'
-  - uid: 'excel!Excel.ChartPoint#dataLabel:member'
-    summary: Returns the data label of a chart point.
-    name: dataLabel
     fullName: dataLabel
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the data label of a chart point.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly dataLabel: ChartDataLabel;'
       return:
-        type:
-          - 'excel!Excel.ChartDataLabel:interface'
-  - uid: 'excel!Excel.ChartPoint#format:member'
-    summary: Encapsulates the format properties chart point.
-    name: format
+        type: 'excel!Excel.<xref uid="ChartDataLabel:interface" />'
+  - name: format
+    uid: 'excel!Excel.ChartPoint#format:member'
+    package: excel!
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: Encapsulates the format properties chart point.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ChartPointFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartPointFormat:interface'
-  - uid: 'excel!Excel.ChartPoint#hasDataLabel:member'
-    summary: Represents whether a data point has a data label. Not applicable for surface charts.
-    name: hasDataLabel
+        type: 'excel!Excel.<xref uid="ChartPointFormat:interface" />'
+  - name: hasDataLabel
+    uid: 'excel!Excel.ChartPoint#hasDataLabel:member'
+    package: excel!
     fullName: hasDataLabel
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents whether a data point has a data label. Not applicable for
+      surface charts.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'hasDataLabel: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartPoint#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartPoint#markerBackgroundColor:member'
-    summary: 'HTML color code representation of the marker background color of data point (e.g., \#FF0000 represents Red).'
-    name: markerBackgroundColor
+        type: boolean
+  - name: markerBackgroundColor
+    uid: 'excel!Excel.ChartPoint#markerBackgroundColor:member'
+    package: excel!
     fullName: markerBackgroundColor
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      HTML color code representation of the marker background color of data
+      point (e.g., \#FF0000 represents Red).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'markerBackgroundColor: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ChartPoint#markerForegroundColor:member'
-    summary: 'HTML color code representation of the marker foreground color of data point (e.g., \#FF0000 represents Red).'
-    name: markerForegroundColor
+        type: string
+  - name: markerForegroundColor
+    uid: 'excel!Excel.ChartPoint#markerForegroundColor:member'
+    package: excel!
     fullName: markerForegroundColor
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      HTML color code representation of the marker foreground color of data
+      point (e.g., \#FF0000 represents Red).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'markerForegroundColor: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ChartPoint#markerSize:member'
-    summary: Represents marker size of data point.
-    name: markerSize
+        type: string
+  - name: markerSize
+    uid: 'excel!Excel.ChartPoint#markerSize:member'
+    package: excel!
     fullName: markerSize
-    langs:
-      - typeScript
-    type: property
+    summary: Represents marker size of data point.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'markerSize: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartPoint#markerStyle:member'
-    summary: Represents marker style of a chart data point. See Excel.ChartMarkerStyle for details.
-    name: markerStyle
+        type: number
+  - name: markerStyle
+    uid: 'excel!Excel.ChartPoint#markerStyle:member'
+    package: excel!
     fullName: markerStyle
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents marker style of a chart data point. See Excel.ChartMarkerStyle
+      for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         markerStyle:
@@ -135,91 +115,52 @@ items:
                     | "Plus"
                     | "Picture";
       return:
-        type:
-          - 'excel!Excel.ChartPoint#markerStyle~0:complex'
-  - uid: 'excel!Excel.ChartPoint#value:member'
-    summary: Returns the value of a chart point.
-    name: value
+        type: |-
+          | excel!Excel.<xref uid="ChartMarkerStyle:enum" />
+                      | "Invalid"
+                      | "Automatic"
+                      | "None"
+                      | "Square"
+                      | "Diamond"
+                      | "Triangle"
+                      | "X"
+                      | "Star"
+                      | "Dot"
+                      | "Dash"
+                      | "Circle"
+                      | "Plus"
+                      | "Picture"
+  - name: value
+    uid: 'excel!Excel.ChartPoint#value:member'
+    package: excel!
     fullName: value
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the value of a chart point.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly value: any;'
       return:
-        type:
-          - any
-references:
-  - uid: 'excel!Excel.ChartDataLabel:interface'
-    name: ChartDataLabel
-    fullName: Excel.ChartDataLabel
-  - uid: 'excel!Excel.ChartPointFormat:interface'
-    name: ChartPointFormat
-    fullName: Excel.ChartPointFormat
-  - uid: 'excel!Excel.ChartPoint#markerStyle~0:complex'
-    name: |-
-      | ChartMarkerStyle
-                  | "Invalid"
-                  | "Automatic"
-                  | "None"
-                  | "Square"
-                  | "Diamond"
-                  | "Triangle"
-                  | "X"
-                  | "Star"
-                  | "Dot"
-                  | "Dash"
-                  | "Circle"
-                  | "Plus"
-                  | "Picture"
-    fullName: |-
-      | Excel.ChartMarkerStyle
-                  | "Invalid"
-                  | "Automatic"
-                  | "None"
-                  | "Square"
-                  | "Diamond"
-                  | "Triangle"
-                  | "X"
-                  | "Star"
-                  | "Dot"
-                  | "Dash"
-                  | "Circle"
-                  | "Plus"
-                  | "Picture"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartMarkerStyle:enum'
-        name: ChartMarkerStyle
-        fullName: Excel.ChartMarkerStyle
-      - name: |2-
-
-                      | "Invalid"
-                      | "Automatic"
-                      | "None"
-                      | "Square"
-                      | "Diamond"
-                      | "Triangle"
-                      | "X"
-                      | "Star"
-                      | "Dot"
-                      | "Dash"
-                      | "Circle"
-                      | "Plus"
-                      | "Picture"
-        fullName: |2-
-
-                      | "Invalid"
-                      | "Automatic"
-                      | "None"
-                      | "Square"
-                      | "Diamond"
-                      | "Triangle"
-                      | "X"
-                      | "Star"
-                      | "Dot"
-                      | "Dash"
-                      | "Circle"
-                      | "Plus"
-                      | "Picture"
+        type: any
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartPoint#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

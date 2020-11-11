@@ -1,35 +1,43 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.CommentReplyCollection:interface'
-    summary: Represents a collection of comment reply objects that are part of the comment.
-    name: Excel.CommentReplyCollection
-    fullName: Excel.CommentReplyCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.CommentReplyCollection
+uid: 'excel!Excel.CommentReplyCollection:interface'
+package: excel!
+fullName: Excel.CommentReplyCollection
+summary: Represents a collection of comment reply objects that are part of the comment.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(content, contentType)'
+    uid: 'excel!Excel.CommentReplyCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.CommentReplyCollection#add:member(1)'
-      - 'excel!Excel.CommentReplyCollection#getCount:member(1)'
-      - 'excel!Excel.CommentReplyCollection#getItem:member(1)'
-      - 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
-      - 'excel!Excel.CommentReplyCollection#load:member(1)'
-  - uid: 'excel!Excel.CommentReplyCollection#add:member(1)'
-    summary: Creates a comment reply for comment.
-    name: 'add(content, contentType)'
     fullName: 'add(content, contentType)'
-    langs:
-      - typeScript
-    type: method
+    summary: Creates a comment reply for comment.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
                     content: CommentRichContent | string,
                     contentType?: ContentType | "Plain" | "Mention"
                 ): CommentReply;
+      parameters:
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or Interface
+            CommentRichContent (e.g., for comments with mentions).
+          type: 'excel!Excel.<xref uid="CommentRichContent:interface" /> | string'
+        - id: contentType
+          description: >-
+            Optional. The type of content contained within the comment. The
+            default value is enum `ContentType.Plain`<!-- -->.
+          type: |-
+            excel!Excel.<xref uid="ContentType:enum" /> | "Plain" | "Mention"
+                    
       return:
-        type:
-          - 'excel!Excel.CommentReply:interface'
+        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
         description: |-
 
 
@@ -44,120 +52,73 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: content
-          description: >-
-            The comment's content. This can be either a string or Interface CommentRichContent (e.g., for comments with
-            mentions).
-          type:
-            - 'excel!Excel.CommentReplyCollection#add~0:complex'
-        - id: contentType
-          description: >-
-            Optional. The type of content contained within the comment. The default value is enum
-            `ContentType.Plain`<!-- -->.
-          type:
-            - 'excel!Excel.CommentReplyCollection#add~1:complex'
-  - uid: 'excel!Excel.CommentReplyCollection#getCount:member(1)'
-    summary: Gets the number of comment replies in the collection.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.CommentReplyCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of comment replies in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.CommentReplyCollection#getCount~0:complex'
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.CommentReplyCollection#getItem:member(1)'
-    summary: Returns a comment reply identified by its ID.
-    name: getItem(commentReplyId)
+  - name: getItem(commentReplyId)
+    uid: 'excel!Excel.CommentReplyCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(commentReplyId)
-    langs:
-      - typeScript
-    type: method
+    summary: Returns a comment reply identified by its ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(commentReplyId: string): CommentReply;'
-      return:
-        type:
-          - 'excel!Excel.CommentReply:interface'
-        description: ''
       parameters:
         - id: commentReplyId
           description: The identifier for the comment reply.
-          type:
-            - string
-  - uid: 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
-    summary: Gets a comment reply based on its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.CommentReplyCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a comment reply based on its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): CommentReply;'
-      return:
-        type:
-          - 'excel!Excel.CommentReply:interface'
-        description: ''
       parameters:
         - id: index
-          description: The index value of the comment reply to be retrieved. The collection uses zero-based indexing.
-          type:
-            - number
-  - uid: 'excel!Excel.CommentReplyCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          description: >-
+            The index value of the comment reply to be retrieved. The collection
+            uses zero-based indexing.
+          type: number
+      return:
+        type: 'excel!Excel.<xref uid="CommentReply:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.CommentReplyCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.CommentReply:interface'
-    name: CommentReply
-    fullName: Excel.CommentReply
-  - uid: 'excel!Excel.CommentReplyCollection#add~0:complex'
-    name: CommentRichContent | string
-    fullName: Excel.CommentRichContent | string
-    spec.typeScript:
-      - uid: 'excel!Excel.CommentRichContent:interface'
-        name: CommentRichContent
-        fullName: Excel.CommentRichContent
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.CommentReplyCollection#add~1:complex'
-    name: ContentType | "Plain" | "Mention"
-    fullName: Excel.ContentType | "Plain" | "Mention"
-    spec.typeScript:
-      - uid: 'excel!Excel.ContentType:enum'
-        name: ContentType
-        fullName: Excel.ContentType
-      - name: |2-
-           | "Plain" | "Mention"
-                  
-        fullName: |2-
-           | "Plain" | "Mention"
-                  
-  - uid: 'excel!Excel.CommentReplyCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

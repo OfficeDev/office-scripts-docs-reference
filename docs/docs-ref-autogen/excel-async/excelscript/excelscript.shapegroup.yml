@@ -1,89 +1,86 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ShapeGroup:interface'
-    summary: >-
-      Represents a shape group inside a worksheet. To get the corresponding Shape object, use `ShapeGroup.shape`<!--
-      -->.
-    name: Excel.ShapeGroup
-    fullName: Excel.ShapeGroup
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ShapeGroup
+uid: 'excel!Excel.ShapeGroup:interface'
+package: excel!
+fullName: Excel.ShapeGroup
+summary: >-
+  Represents a shape group inside a worksheet. To get the corresponding Shape
+  object, use `ShapeGroup.shape`<!-- -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: id
+    uid: 'excel!Excel.ShapeGroup#id:member'
     package: excel!
-    children:
-      - 'excel!Excel.ShapeGroup#id:member'
-      - 'excel!Excel.ShapeGroup#load:member(1)'
-      - 'excel!Excel.ShapeGroup#shape:member'
-      - 'excel!Excel.ShapeGroup#shapes:member'
-      - 'excel!Excel.ShapeGroup#ungroup:member(1)'
-  - uid: 'excel!Excel.ShapeGroup#id:member'
-    summary: Specifies the shape identifier.
-    name: id
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the shape identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ShapeGroup#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ShapeGroup#shape:member'
-    summary: Returns the Shape object associated with the group.
-    name: shape
+        type: string
+  - name: shape
+    uid: 'excel!Excel.ShapeGroup#shape:member'
+    package: excel!
     fullName: shape
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the Shape object associated with the group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly shape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-  - uid: 'excel!Excel.ShapeGroup#shapes:member'
-    summary: Returns the collection of Shape objects.
-    name: shapes
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+  - name: shapes
+    uid: 'excel!Excel.ShapeGroup#shapes:member'
+    package: excel!
     fullName: shapes
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the collection of Shape objects.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly shapes: GroupShapeCollection;'
       return:
-        type:
-          - 'excel!Excel.GroupShapeCollection:interface'
-  - uid: 'excel!Excel.ShapeGroup#ungroup:member(1)'
-    summary: Ungroups any grouped shapes in the specified shape group.
-    name: ungroup()
+        type: 'excel!Excel.<xref uid="GroupShapeCollection:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ShapeGroup#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: ungroup()
+    uid: 'excel!Excel.ShapeGroup#ungroup:member(1)'
+    package: excel!
     fullName: ungroup()
-    langs:
-      - typeScript
-    type: method
+    summary: Ungroups any grouped shapes in the specified shape group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'ungroup(): void;'
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -100,10 +97,3 @@ items:
               await context.sync();
           }
           ```
-references:
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
-  - uid: 'excel!Excel.GroupShapeCollection:interface'
-    name: GroupShapeCollection
-    fullName: Excel.GroupShapeCollection

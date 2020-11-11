@@ -1,44 +1,46 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'ExcelScript!ExcelScript.CommentRichContent:interface'
-    summary: >-
-      Represents the content contained within a comment or comment reply. Rich content incudes the text string and any
-      other objects contained within the comment body, such as mentions.
-    name: ExcelScript.CommentRichContent
-    fullName: ExcelScript.CommentRichContent
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: ExcelScript.CommentRichContent
+uid: 'ExcelScript!ExcelScript.CommentRichContent:interface'
+package: ExcelScript!
+fullName: ExcelScript.CommentRichContent
+summary: >-
+  Represents the content contained within a comment or comment reply. Rich
+  content incudes the text string and any other objects contained within the
+  comment body, such as mentions.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: mentions
+    uid: 'ExcelScript!ExcelScript.CommentRichContent#mentions:member'
     package: ExcelScript!
-    children:
-      - 'ExcelScript!ExcelScript.CommentRichContent#mentions:member'
-      - 'ExcelScript!ExcelScript.CommentRichContent#richContent:member'
-  - uid: 'ExcelScript!ExcelScript.CommentRichContent#mentions:member'
-    summary: 'An array containing all the entities (e.g., people) mentioned within the comment.'
-    name: mentions
     fullName: mentions
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      An array containing all the entities (e.g., people) mentioned within the
+      comment.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'mentions?: CommentMention[];'
       return:
-        type:
-          - 'ExcelScript!ExcelScript.CommentRichContent#mentions~0:complex'
-  - uid: 'ExcelScript!ExcelScript.CommentRichContent#richContent:member'
-    summary: >-
-      Specifies the rich content of the comment (e.g., comment content with mentions, the first mentioned entity has an
-      id attribute of 0, and the second mentioned entity has an id attribute of 1).
-    name: richContent
+        type: 'ExcelScript!ExcelScript.<xref uid="CommentMention:interface" />[]'
+  - name: richContent
+    uid: 'ExcelScript!ExcelScript.CommentRichContent#richContent:member'
+    package: ExcelScript!
     fullName: richContent
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the rich content of the comment (e.g., comment content with
+      mentions, the first mentioned entity has an id attribute of 0, and the
+      second mentioned entity has an id attribute of 1).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'richContent: string;'
       return:
-        type:
-          - string
+        type: string
         description: |-
 
 
@@ -113,13 +115,3 @@ items:
             }
           }
           ```
-references:
-  - uid: 'ExcelScript!ExcelScript.CommentRichContent#mentions~0:complex'
-    name: 'CommentMention[]'
-    fullName: 'ExcelScript.CommentMention[]'
-    spec.typeScript:
-      - uid: 'ExcelScript!ExcelScript.CommentMention:interface'
-        name: CommentMention
-        fullName: ExcelScript.CommentMention
-      - name: '[]'
-        fullName: '[]'

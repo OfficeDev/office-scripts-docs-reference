@@ -1,150 +1,67 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.Shape:interface'
-    summary: >-
-      Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes,
-      etc. To learn more about the shape object model, read [Work with shapes using the Excel JavaScript
-      API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-shapes)<!-- -->.
-    name: Excel.Shape
-    fullName: Excel.Shape
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.Shape
+uid: 'excel!Excel.Shape:interface'
+package: excel!
+fullName: Excel.Shape
+summary: >-
+  Represents a generic shape object in the worksheet. A shape could be a
+  geometric shape, a line, a group of shapes, etc. To learn more about the shape
+  object model, read [Work with shapes using the Excel JavaScript
+  API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-shapes)<!--
+  -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: altTextDescription
+    uid: 'excel!Excel.Shape#altTextDescription:member'
     package: excel!
-    children:
-      - 'excel!Excel.Shape#altTextDescription:member'
-      - 'excel!Excel.Shape#altTextTitle:member'
-      - 'excel!Excel.Shape#connectionSiteCount:member'
-      - 'excel!Excel.Shape#copyTo:member(1)'
-      - 'excel!Excel.Shape#delete:member(1)'
-      - 'excel!Excel.Shape#fill:member'
-      - 'excel!Excel.Shape#geometricShape:member'
-      - 'excel!Excel.Shape#geometricShapeType:member'
-      - 'excel!Excel.Shape#getAsImage:member(1)'
-      - 'excel!Excel.Shape#group:member'
-      - 'excel!Excel.Shape#height:member'
-      - 'excel!Excel.Shape#id:member'
-      - 'excel!Excel.Shape#image:member'
-      - 'excel!Excel.Shape#incrementLeft:member(1)'
-      - 'excel!Excel.Shape#incrementRotation:member(1)'
-      - 'excel!Excel.Shape#incrementTop:member(1)'
-      - 'excel!Excel.Shape#left:member'
-      - 'excel!Excel.Shape#level:member'
-      - 'excel!Excel.Shape#line:member'
-      - 'excel!Excel.Shape#lineFormat:member'
-      - 'excel!Excel.Shape#load:member(1)'
-      - 'excel!Excel.Shape#lockAspectRatio:member'
-      - 'excel!Excel.Shape#name:member'
-      - 'excel!Excel.Shape#parentGroup:member'
-      - 'excel!Excel.Shape#placement:member'
-      - 'excel!Excel.Shape#rotation:member'
-      - 'excel!Excel.Shape#scaleHeight:member(1)'
-      - 'excel!Excel.Shape#scaleWidth:member(1)'
-      - 'excel!Excel.Shape#setZOrder:member(1)'
-      - 'excel!Excel.Shape#textFrame:member'
-      - 'excel!Excel.Shape#top:member'
-      - 'excel!Excel.Shape#type:member'
-      - 'excel!Excel.Shape#visible:member'
-      - 'excel!Excel.Shape#width:member'
-      - 'excel!Excel.Shape#zOrderPosition:member'
-  - uid: 'excel!Excel.Shape#altTextDescription:member'
-    summary: Specifies the alternative description text for a Shape object.
-    name: altTextDescription
     fullName: altTextDescription
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the alternative description text for a Shape object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'altTextDescription: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Shape#altTextTitle:member'
-    summary: Specifies the alternative title text for a Shape object.
-    name: altTextTitle
+        type: string
+  - name: altTextTitle
+    uid: 'excel!Excel.Shape#altTextTitle:member'
+    package: excel!
     fullName: altTextTitle
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the alternative title text for a Shape object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'altTextTitle: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Shape#connectionSiteCount:member'
-    summary: Returns the number of connection sites on this shape.
-    name: connectionSiteCount
+        type: string
+  - name: connectionSiteCount
+    uid: 'excel!Excel.Shape#connectionSiteCount:member'
+    package: excel!
     fullName: connectionSiteCount
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the number of connection sites on this shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly connectionSiteCount: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#copyTo:member(1)'
-    summary: Copies and pastes a Shape object. The pasted shape is copied to the same pixel location as this shape.
-    name: copyTo(destinationSheet)
-    fullName: copyTo(destinationSheet)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'copyTo(destinationSheet?: Worksheet | string): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
-      parameters:
-        - id: destinationSheet
-          description: The sheet to which the shape object will be pasted. The default value is the copied Shape's worksheet.
-          type:
-            - 'excel!Excel.Shape#copyTo~0:complex'
-  - uid: 'excel!Excel.Shape#delete:member(1)'
-    summary: Removes the shape from the worksheet.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              context.workbook.worksheets.getItemOrNullObject("Shapes").delete();
-              let sheet = context.workbook.worksheets.add("Shapes");
-
-              let shapes = sheet.shapes;
-
-              // load all the shapes in the collection without loading their properties
-              shapes.load("items/$none");
-              await context.sync();
-
-              shapes.items.forEach((shape) => shape.delete());
-              await context.sync();
-          }
-          ```
-  - uid: 'excel!Excel.Shape#fill:member'
-    summary: Returns the fill formatting of this shape.
-    name: fill
+        type: number
+  - name: fill
+    uid: 'excel!Excel.Shape#fill:member'
+    package: excel!
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the fill formatting of this shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ShapeFill;'
       return:
-        type:
-          - 'excel!Excel.ShapeFill:interface'
+        type: 'excel!Excel.<xref uid="ShapeFill:interface" />'
         description: |-
 
 
@@ -162,29 +79,31 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Shape#geometricShape:member'
-    summary: >-
-      Returns the geometric shape associated with the shape. An error will be thrown if the shape type is not
-      "GeometricShape".
-    name: geometricShape
+  - name: geometricShape
+    uid: 'excel!Excel.Shape#geometricShape:member'
+    package: excel!
     fullName: geometricShape
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Returns the geometric shape associated with the shape. An error will be
+      thrown if the shape type is not "GeometricShape".
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly geometricShape: GeometricShape;'
       return:
-        type:
-          - 'excel!Excel.GeometricShape:interface'
-  - uid: 'excel!Excel.Shape#geometricShapeType:member'
-    summary: >-
-      Specifies the geometric shape type of this geometric shape. See Excel.GeometricShapeType for details. Returns null
-      if the shape type is not "GeometricShape".
-    name: geometricShapeType
+        type: 'excel!Excel.<xref uid="GeometricShape:interface" />'
+  - name: geometricShapeType
+    uid: 'excel!Excel.Shape#geometricShapeType:member'
+    package: excel!
     fullName: geometricShapeType
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the geometric shape type of this geometric shape. See
+      Excel.GeometricShapeType for details. Returns null if the shape type is
+      not "GeometricShape".
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         geometricShapeType:
@@ -367,67 +286,199 @@ items:
                     | "ChartStar"
                     | "ChartPlus";
       return:
-        type:
-          - 'excel!Excel.Shape#geometricShapeType~0:complex'
-  - uid: 'excel!Excel.Shape#getAsImage:member(1)'
-    summary: >-
-      Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
-      formats are `Excel.PictureFormat.BMP`<!-- -->, `Excel.PictureFormat.PNG`<!-- -->, `Excel.PictureFormat.JPEG`<!--
-      -->, and `Excel.PictureFormat.GIF`<!-- -->.
-    name: getAsImage(format)
-    fullName: getAsImage(format)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: |-
-        getAsImage(
-                    format:
-                        | PictureFormat
-                        | "Unknown"
-                        | "Bmp"
-                        | "Jpeg"
-                        | "Gif"
-                        | "Png"
-                        | "Svg"
-                ): ClientResult<string>;
-      return:
-        type:
-          - 'excel!Excel.Shape#getAsImage~0:complex'
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Shapes");
-              let shape = sheet.shapes.getItem("Image");
-              let result = shape.getAsImage(Excel.PictureFormat.png);
-              await context.sync();
-
-              let imageString = result.value;
-              // Your add-in would save this string as a .png file.
-              console.log("The image's base64-encoded string: " + imageString);
-          }
-          ```
-      parameters:
-        - id: format
-          description: Specifies the format of the image.
-          type:
-            - 'excel!Excel.Shape#getAsImage~1:complex'
-  - uid: 'excel!Excel.Shape#group:member'
-    summary: Returns the shape group associated with the shape. An error will be thrown if the shape type is not "GroupShape".
-    name: group
+        type: |-
+          | excel!Excel.<xref uid="GeometricShapeType:enum" />
+                      | "LineInverse"
+                      | "Triangle"
+                      | "RightTriangle"
+                      | "Rectangle"
+                      | "Diamond"
+                      | "Parallelogram"
+                      | "Trapezoid"
+                      | "NonIsoscelesTrapezoid"
+                      | "Pentagon"
+                      | "Hexagon"
+                      | "Heptagon"
+                      | "Octagon"
+                      | "Decagon"
+                      | "Dodecagon"
+                      | "Star4"
+                      | "Star5"
+                      | "Star6"
+                      | "Star7"
+                      | "Star8"
+                      | "Star10"
+                      | "Star12"
+                      | "Star16"
+                      | "Star24"
+                      | "Star32"
+                      | "RoundRectangle"
+                      | "Round1Rectangle"
+                      | "Round2SameRectangle"
+                      | "Round2DiagonalRectangle"
+                      | "SnipRoundRectangle"
+                      | "Snip1Rectangle"
+                      | "Snip2SameRectangle"
+                      | "Snip2DiagonalRectangle"
+                      | "Plaque"
+                      | "Ellipse"
+                      | "Teardrop"
+                      | "HomePlate"
+                      | "Chevron"
+                      | "PieWedge"
+                      | "Pie"
+                      | "BlockArc"
+                      | "Donut"
+                      | "NoSmoking"
+                      | "RightArrow"
+                      | "LeftArrow"
+                      | "UpArrow"
+                      | "DownArrow"
+                      | "StripedRightArrow"
+                      | "NotchedRightArrow"
+                      | "BentUpArrow"
+                      | "LeftRightArrow"
+                      | "UpDownArrow"
+                      | "LeftUpArrow"
+                      | "LeftRightUpArrow"
+                      | "QuadArrow"
+                      | "LeftArrowCallout"
+                      | "RightArrowCallout"
+                      | "UpArrowCallout"
+                      | "DownArrowCallout"
+                      | "LeftRightArrowCallout"
+                      | "UpDownArrowCallout"
+                      | "QuadArrowCallout"
+                      | "BentArrow"
+                      | "UturnArrow"
+                      | "CircularArrow"
+                      | "LeftCircularArrow"
+                      | "LeftRightCircularArrow"
+                      | "CurvedRightArrow"
+                      | "CurvedLeftArrow"
+                      | "CurvedUpArrow"
+                      | "CurvedDownArrow"
+                      | "SwooshArrow"
+                      | "Cube"
+                      | "Can"
+                      | "LightningBolt"
+                      | "Heart"
+                      | "Sun"
+                      | "Moon"
+                      | "SmileyFace"
+                      | "IrregularSeal1"
+                      | "IrregularSeal2"
+                      | "FoldedCorner"
+                      | "Bevel"
+                      | "Frame"
+                      | "HalfFrame"
+                      | "Corner"
+                      | "DiagonalStripe"
+                      | "Chord"
+                      | "Arc"
+                      | "LeftBracket"
+                      | "RightBracket"
+                      | "LeftBrace"
+                      | "RightBrace"
+                      | "BracketPair"
+                      | "BracePair"
+                      | "Callout1"
+                      | "Callout2"
+                      | "Callout3"
+                      | "AccentCallout1"
+                      | "AccentCallout2"
+                      | "AccentCallout3"
+                      | "BorderCallout1"
+                      | "BorderCallout2"
+                      | "BorderCallout3"
+                      | "AccentBorderCallout1"
+                      | "AccentBorderCallout2"
+                      | "AccentBorderCallout3"
+                      | "WedgeRectCallout"
+                      | "WedgeRRectCallout"
+                      | "WedgeEllipseCallout"
+                      | "CloudCallout"
+                      | "Cloud"
+                      | "Ribbon"
+                      | "Ribbon2"
+                      | "EllipseRibbon"
+                      | "EllipseRibbon2"
+                      | "LeftRightRibbon"
+                      | "VerticalScroll"
+                      | "HorizontalScroll"
+                      | "Wave"
+                      | "DoubleWave"
+                      | "Plus"
+                      | "FlowChartProcess"
+                      | "FlowChartDecision"
+                      | "FlowChartInputOutput"
+                      | "FlowChartPredefinedProcess"
+                      | "FlowChartInternalStorage"
+                      | "FlowChartDocument"
+                      | "FlowChartMultidocument"
+                      | "FlowChartTerminator"
+                      | "FlowChartPreparation"
+                      | "FlowChartManualInput"
+                      | "FlowChartManualOperation"
+                      | "FlowChartConnector"
+                      | "FlowChartPunchedCard"
+                      | "FlowChartPunchedTape"
+                      | "FlowChartSummingJunction"
+                      | "FlowChartOr"
+                      | "FlowChartCollate"
+                      | "FlowChartSort"
+                      | "FlowChartExtract"
+                      | "FlowChartMerge"
+                      | "FlowChartOfflineStorage"
+                      | "FlowChartOnlineStorage"
+                      | "FlowChartMagneticTape"
+                      | "FlowChartMagneticDisk"
+                      | "FlowChartMagneticDrum"
+                      | "FlowChartDisplay"
+                      | "FlowChartDelay"
+                      | "FlowChartAlternateProcess"
+                      | "FlowChartOffpageConnector"
+                      | "ActionButtonBlank"
+                      | "ActionButtonHome"
+                      | "ActionButtonHelp"
+                      | "ActionButtonInformation"
+                      | "ActionButtonForwardNext"
+                      | "ActionButtonBackPrevious"
+                      | "ActionButtonEnd"
+                      | "ActionButtonBeginning"
+                      | "ActionButtonReturn"
+                      | "ActionButtonDocument"
+                      | "ActionButtonSound"
+                      | "ActionButtonMovie"
+                      | "Gear6"
+                      | "Gear9"
+                      | "Funnel"
+                      | "MathPlus"
+                      | "MathMinus"
+                      | "MathMultiply"
+                      | "MathDivide"
+                      | "MathEqual"
+                      | "MathNotEqual"
+                      | "CornerTabs"
+                      | "SquareTabs"
+                      | "PlaqueTabs"
+                      | "ChartX"
+                      | "ChartStar"
+                      | "ChartPlus"
+  - name: group
+    uid: 'excel!Excel.Shape#group:member'
+    package: excel!
     fullName: group
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Returns the shape group associated with the shape. An error will be thrown
+      if the shape type is not "GroupShape".
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly group: ShapeGroup;'
       return:
-        type:
-          - 'excel!Excel.ShapeGroup:interface'
+        type: 'excel!Excel.<xref uid="ShapeGroup:interface" />'
         description: |-
 
 
@@ -444,184 +495,91 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Shape#height:member'
-    summary: >-
-      Specifies the height, in points, of the shape. Throws an invalid argument exception when set with a negative value
-      or zero as input.
-    name: height
+  - name: height
+    uid: 'excel!Excel.Shape#height:member'
+    package: excel!
     fullName: height
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the height, in points, of the shape. Throws an invalid argument
+      exception when set with a negative value or zero as input.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'height: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#id:member'
-    summary: Specifies the shape identifier.
-    name: id
+        type: number
+  - name: id
+    uid: 'excel!Excel.Shape#id:member'
+    package: excel!
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the shape identifier.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Shape#image:member'
-    summary: Returns the image associated with the shape. An error will be thrown if the shape type is not "Image".
-    name: image
+        type: string
+  - name: image
+    uid: 'excel!Excel.Shape#image:member'
+    package: excel!
     fullName: image
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Returns the image associated with the shape. An error will be thrown if
+      the shape type is not "Image".
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly image: Image;'
       return:
-        type:
-          - 'excel!Excel.Image:interface'
-  - uid: 'excel!Excel.Shape#incrementLeft:member(1)'
-    summary: Moves the shape horizontally by the specified number of points.
-    name: incrementLeft(increment)
-    fullName: incrementLeft(increment)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'incrementLeft(increment: number): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Shapes");
-              let shape = sheet.shapes.getItem("Square")
-              shape.incrementLeft(-25);
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: increment
-          description: >-
-            The increment, in points, the shape will be horizontally moved. A positive value moves the shape to the
-            right and a negative value moves it to the left. If the sheet is right-to-left oriented, this is reversed:
-            positive values will move the shape to the left and negative values will move it to the right.
-          type:
-            - number
-  - uid: 'excel!Excel.Shape#incrementRotation:member(1)'
-    summary: >-
-      Rotates the shape clockwise around the z-axis by the specified number of degrees. Use the `rotation` property to
-      set the absolute rotation of the shape.
-    name: incrementRotation(increment)
-    fullName: incrementRotation(increment)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'incrementRotation(increment: number): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Shapes");
-              let shape = sheet.shapes.getItem("Image");
-              shape.incrementRotation(180);
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: increment
-          description: >-
-            How many degrees the shape will be rotated. A positive value rotates the shape clockwise; a negative value
-            rotates it counterclockwise.
-          type:
-            - number
-  - uid: 'excel!Excel.Shape#incrementTop:member(1)'
-    summary: Moves the shape vertically by the specified number of points.
-    name: incrementTop(increment)
-    fullName: incrementTop(increment)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'incrementTop(increment: number): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              let sheet = context.workbook.worksheets.getItem("Shapes");
-              let shape = sheet.shapes.getItem("Pentagon")
-              shape.incrementTop(25);
-              await context.sync();
-          }
-          ```
-      parameters:
-        - id: increment
-          description: >-
-            The increment, in points, the shape will be vertically moved. in points. A positive value moves the shape
-            down and a negative value moves it up.
-          type:
-            - number
-  - uid: 'excel!Excel.Shape#left:member'
-    summary: >-
-      The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an invalid
-      argument exception when set with a negative value as input.
-    name: left
+        type: 'excel!Excel.<xref uid="Image:interface" />'
+  - name: left
+    uid: 'excel!Excel.Shape#left:member'
+    package: excel!
     fullName: left
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      The distance, in points, from the left side of the shape to the left side
+      of the worksheet. Throws an invalid argument exception when set with a
+      negative value as input.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'left: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#level:member'
-    summary: >-
-      Specifies the level of the specified shape. For example, a level of 0 means that the shape is not part of any
-      groups, a level of 1 means the shape is part of a top-level group, and a level of 2 means the shape is part of a
-      sub-group of the top level.
-    name: level
+        type: number
+  - name: level
+    uid: 'excel!Excel.Shape#level:member'
+    package: excel!
     fullName: level
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the level of the specified shape. For example, a level of 0
+      means that the shape is not part of any groups, a level of 1 means the
+      shape is part of a top-level group, and a level of 2 means the shape is
+      part of a sub-group of the top level.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly level: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#line:member'
-    summary: Returns the line associated with the shape. An error will be thrown if the shape type is not "Line".
-    name: line
+        type: number
+  - name: line
+    uid: 'excel!Excel.Shape#line:member'
+    package: excel!
     fullName: line
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Returns the line associated with the shape. An error will be thrown if the
+      shape type is not "Line".
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly line: Line;'
       return:
-        type:
-          - 'excel!Excel.Line:interface'
+        type: 'excel!Excel.<xref uid="Line:interface" />'
         description: |-
 
 
@@ -642,50 +600,30 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Shape#lineFormat:member'
-    summary: Returns the line formatting of this shape.
-    name: lineFormat
+  - name: lineFormat
+    uid: 'excel!Excel.Shape#lineFormat:member'
+    package: excel!
     fullName: lineFormat
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the line formatting of this shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly lineFormat: ShapeLineFormat;'
       return:
-        type:
-          - 'excel!Excel.ShapeLineFormat:interface'
-  - uid: 'excel!Excel.Shape#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.Shape#lockAspectRatio:member'
-    summary: Specifies if the aspect ratio of this shape is locked.
-    name: lockAspectRatio
+        type: 'excel!Excel.<xref uid="ShapeLineFormat:interface" />'
+  - name: lockAspectRatio
+    uid: 'excel!Excel.Shape#lockAspectRatio:member'
+    package: excel!
     fullName: lockAspectRatio
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the aspect ratio of this shape is locked.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'lockAspectRatio: boolean;'
       return:
-        type:
-          - boolean
+        type: boolean
         description: |-
 
 
@@ -700,54 +638,56 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Shape#name:member'
-    summary: Specifies the name of the shape.
-    name: name
+  - name: name
+    uid: 'excel!Excel.Shape#name:member'
+    package: excel!
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the name of the shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Shape#parentGroup:member'
-    summary: Specifies the parent group of this shape.
-    name: parentGroup
+        type: string
+  - name: parentGroup
+    uid: 'excel!Excel.Shape#parentGroup:member'
+    package: excel!
     fullName: parentGroup
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the parent group of this shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly parentGroup: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-  - uid: 'excel!Excel.Shape#placement:member'
-    summary: Represents how the object is attached to the cells below it.
-    name: placement
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+  - name: placement
+    uid: 'excel!Excel.Shape#placement:member'
+    package: excel!
     fullName: placement
-    langs:
-      - typeScript
-    type: property
+    summary: Represents how the object is attached to the cells below it.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'placement: Placement | "TwoCell" | "OneCell" | "Absolute";'
       return:
-        type:
-          - 'excel!Excel.Shape#placement~0:complex'
-  - uid: 'excel!Excel.Shape#rotation:member'
-    summary: 'Specifies the rotation, in degrees, of the shape.'
-    name: rotation
+        type: >-
+          excel!Excel.<xref uid="Placement:enum" /> | "TwoCell" | "OneCell" |
+          "Absolute"
+  - name: rotation
+    uid: 'excel!Excel.Shape#rotation:member'
+    package: excel!
     fullName: rotation
-    langs:
-      - typeScript
-    type: property
+    summary: 'Specifies the rotation, in degrees, of the shape.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'rotation: number;'
       return:
-        type:
-          - number
+        type: number
         description: |-
 
 
@@ -766,16 +706,340 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Shape#scaleHeight:member(1)'
+  - name: textFrame
+    uid: 'excel!Excel.Shape#textFrame:member'
+    package: excel!
+    fullName: textFrame
+    summary: Returns the text frame object of this shape. Read only.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly textFrame: TextFrame;'
+      return:
+        type: 'excel!Excel.<xref uid="TextFrame:interface" />'
+  - name: top
+    uid: 'excel!Excel.Shape#top:member'
+    package: excel!
+    fullName: top
     summary: >-
-      Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the
-      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
-      current height.
-    name: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
+      The distance, in points, from the top edge of the shape to the top edge of
+      the worksheet. Throws an invalid argument exception when set with a
+      negative value as input.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'top: number;'
+      return:
+        type: number
+  - name: type
+    uid: 'excel!Excel.Shape#type:member'
+    package: excel!
+    fullName: type
+    summary: Returns the type of this shape. See Excel.ShapeType for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        readonly type:
+                    | ShapeType
+                    | "Unsupported"
+                    | "Image"
+                    | "GeometricShape"
+                    | "Group"
+                    | "Line";
+      return:
+        type: |-
+          | excel!Excel.<xref uid="ShapeType:enum" />
+                      | "Unsupported"
+                      | "Image"
+                      | "GeometricShape"
+                      | "Group"
+                      | "Line"
+  - name: visible
+    uid: 'excel!Excel.Shape#visible:member'
+    package: excel!
+    fullName: visible
+    summary: Specifies if the shape is visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'visible: boolean;'
+      return:
+        type: boolean
+  - name: width
+    uid: 'excel!Excel.Shape#width:member'
+    package: excel!
+    fullName: width
+    summary: >-
+      Specifies the width, in points, of the shape. Throws an invalid argument
+      exception when set with a negative value or zero as input.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'width: number;'
+      return:
+        type: number
+  - name: zOrderPosition
+    uid: 'excel!Excel.Shape#zOrderPosition:member'
+    package: excel!
+    fullName: zOrderPosition
+    summary: >-
+      Returns the position of the specified shape in the z-order, with 0
+      representing the bottom of the order stack.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly zOrderPosition: number;'
+      return:
+        type: number
+methods:
+  - name: copyTo(destinationSheet)
+    uid: 'excel!Excel.Shape#copyTo:member(1)'
+    package: excel!
+    fullName: copyTo(destinationSheet)
+    summary: >-
+      Copies and pastes a Shape object. The pasted shape is copied to the same
+      pixel location as this shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'copyTo(destinationSheet?: Worksheet | string): Shape;'
+      parameters:
+        - id: destinationSheet
+          description: >-
+            The sheet to which the shape object will be pasted. The default
+            value is the copied Shape's worksheet.
+          type: 'excel!Excel.<xref uid="Worksheet:interface" /> | string'
+      return:
+        type: 'excel!Excel.<xref uid="Shape:interface" />'
+        description: ''
+  - name: delete()
+    uid: 'excel!Excel.Shape#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Removes the shape from the worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              context.workbook.worksheets.getItemOrNullObject("Shapes").delete();
+              let sheet = context.workbook.worksheets.add("Shapes");
+
+              let shapes = sheet.shapes;
+
+              // load all the shapes in the collection without loading their properties
+              shapes.load("items/$none");
+              await context.sync();
+
+              shapes.items.forEach((shape) => shape.delete());
+              await context.sync();
+          }
+          ```
+  - name: getAsImage(format)
+    uid: 'excel!Excel.Shape#getAsImage:member(1)'
+    package: excel!
+    fullName: getAsImage(format)
+    summary: >-
+      Converts the shape to an image and returns the image as a base64-encoded
+      string. The DPI is 96. The only supported formats are
+      `Excel.PictureFormat.BMP`<!-- -->, `Excel.PictureFormat.PNG`<!-- -->,
+      `Excel.PictureFormat.JPEG`<!-- -->, and `Excel.PictureFormat.GIF`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getAsImage(
+                    format:
+                        | PictureFormat
+                        | "Unknown"
+                        | "Bmp"
+                        | "Jpeg"
+                        | "Gif"
+                        | "Png"
+                        | "Svg"
+                ): ClientResult<string>;
+      parameters:
+        - id: format
+          description: Specifies the format of the image.
+          type: |-
+            | excel!Excel.<xref uid="PictureFormat:enum" />
+                            | "Unknown"
+                            | "Bmp"
+                            | "Jpeg"
+                            | "Gif"
+                            | "Png"
+                            | "Svg"
+                    
+      return:
+        type: 'excel!Excel.<xref uid="ClientResult:interface" />&lt;string&gt;'
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Image");
+              let result = shape.getAsImage(Excel.PictureFormat.png);
+              await context.sync();
+
+              let imageString = result.value;
+              // Your add-in would save this string as a .png file.
+              console.log("The image's base64-encoded string: " + imageString);
+          }
+          ```
+  - name: incrementLeft(increment)
+    uid: 'excel!Excel.Shape#incrementLeft:member(1)'
+    package: excel!
+    fullName: incrementLeft(increment)
+    summary: Moves the shape horizontally by the specified number of points.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'incrementLeft(increment: number): void;'
+      parameters:
+        - id: increment
+          description: >-
+            The increment, in points, the shape will be horizontally moved. A
+            positive value moves the shape to the right and a negative value
+            moves it to the left. If the sheet is right-to-left oriented, this
+            is reversed: positive values will move the shape to the left and
+            negative values will move it to the right.
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Square")
+              shape.incrementLeft(-25);
+              await context.sync();
+          }
+          ```
+  - name: incrementRotation(increment)
+    uid: 'excel!Excel.Shape#incrementRotation:member(1)'
+    package: excel!
+    fullName: incrementRotation(increment)
+    summary: >-
+      Rotates the shape clockwise around the z-axis by the specified number of
+      degrees. Use the `rotation` property to set the absolute rotation of the
+      shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'incrementRotation(increment: number): void;'
+      parameters:
+        - id: increment
+          description: >-
+            How many degrees the shape will be rotated. A positive value rotates
+            the shape clockwise; a negative value rotates it counterclockwise.
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Image");
+              shape.incrementRotation(180);
+              await context.sync();
+          }
+          ```
+  - name: incrementTop(increment)
+    uid: 'excel!Excel.Shape#incrementTop:member(1)'
+    package: excel!
+    fullName: incrementTop(increment)
+    summary: Moves the shape vertically by the specified number of points.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'incrementTop(increment: number): void;'
+      parameters:
+        - id: increment
+          description: >-
+            The increment, in points, the shape will be vertically moved. in
+            points. A positive value moves the shape down and a negative value
+            moves it up.
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              let sheet = context.workbook.worksheets.getItem("Shapes");
+              let shape = sheet.shapes.getItem("Pentagon")
+              shape.incrementTop(25);
+              await context.sync();
+          }
+          ```
+  - name: load(propertyNames)
+    uid: 'excel!Excel.Shape#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
+    uid: 'excel!Excel.Shape#scaleHeight:member(1)'
+    package: excel!
     fullName: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Scales the height of the shape by a specified factor. For images, you can
+      indicate whether you want to scale the shape relative to the original or
+      the current size. Shapes other than pictures are always scaled relative to
+      their current height.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         scaleHeight(
@@ -787,9 +1051,33 @@ items:
                         | "ScaleFromMiddle"
                         | "ScaleFromBottomRight"
                 ): void;
+      parameters:
+        - id: scaleFactor
+          description: >-
+            Specifies the ratio between the height of the shape after you resize
+            it and the current or original height.
+          type: number
+        - id: scaleType
+          description: >-
+            Specifies whether the shape is scaled relative to its original or
+            current size. The original size scaling option only works for
+            images.
+          type: >-
+            excel!Excel.<xref uid="ShapeScaleType:enum" /> | "CurrentSize" |
+            "OriginalSize"
+        - id: scaleFrom
+          description: >-
+            Optional. Specifies which part of the shape retains its position
+            when the shape is scaled. If omitted, it represents the shape's
+            upper left corner retains its position.
+          type: |-
+            | excel!Excel.<xref uid="ShapeScaleFrom:enum" />
+                            | "ScaleFromTopLeft"
+                            | "ScaleFromMiddle"
+                            | "ScaleFromBottomRight"
+                    
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -804,33 +1092,18 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: scaleFactor
-          description: Specifies the ratio between the height of the shape after you resize it and the current or original height.
-          type:
-            - number
-        - id: scaleType
-          description: >-
-            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
-            option only works for images.
-          type:
-            - 'excel!Excel.Shape#scaleHeight~0:complex'
-        - id: scaleFrom
-          description: >-
-            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
-            represents the shape's upper left corner retains its position.
-          type:
-            - 'excel!Excel.Shape#scaleHeight~1:complex'
-  - uid: 'excel!Excel.Shape#scaleWidth:member(1)'
-    summary: >-
-      Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the
-      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
-      current width.
-    name: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
+  - name: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
+    uid: 'excel!Excel.Shape#scaleWidth:member(1)'
+    package: excel!
     fullName: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Scales the width of the shape by a specified factor. For images, you can
+      indicate whether you want to scale the shape relative to the original or
+      the current size. Shapes other than pictures are always scaled relative to
+      their current width.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         scaleWidth(
@@ -842,34 +1115,44 @@ items:
                         | "ScaleFromMiddle"
                         | "ScaleFromBottomRight"
                 ): void;
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: scaleFactor
-          description: Specifies the ratio between the width of the shape after you resize it and the current or original width.
-          type:
-            - number
+          description: >-
+            Specifies the ratio between the width of the shape after you resize
+            it and the current or original width.
+          type: number
         - id: scaleType
           description: >-
-            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
-            option only works for images.
-          type:
-            - 'excel!Excel.Shape#scaleWidth~0:complex'
+            Specifies whether the shape is scaled relative to its original or
+            current size. The original size scaling option only works for
+            images.
+          type: >-
+            excel!Excel.<xref uid="ShapeScaleType:enum" /> | "CurrentSize" |
+            "OriginalSize"
         - id: scaleFrom
           description: >-
-            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
-            represents the shape's upper left corner retains its position.
-          type:
-            - 'excel!Excel.Shape#scaleWidth~1:complex'
-  - uid: 'excel!Excel.Shape#setZOrder:member(1)'
-    summary: 'Moves the specified shape up or down the collection''s z-order, which shifts it in front of or behind other shapes.'
-    name: setZOrder(position)
+            Optional. Specifies which part of the shape retains its position
+            when the shape is scaled. If omitted, it represents the shape's
+            upper left corner retains its position.
+          type: |-
+            | excel!Excel.<xref uid="ShapeScaleFrom:enum" />
+                            | "ScaleFromTopLeft"
+                            | "ScaleFromMiddle"
+                            | "ScaleFromBottomRight"
+                    
+      return:
+        type: void
+        description: ''
+  - name: setZOrder(position)
+    uid: 'excel!Excel.Shape#setZOrder:member(1)'
+    package: excel!
     fullName: setZOrder(position)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Moves the specified shape up or down the collection's z-order, which
+      shifts it in front of or behind other shapes.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         setZOrder(
@@ -880,9 +1163,20 @@ items:
                         | "SendToBack"
                         | "SendBackward"
                 ): void;
+      parameters:
+        - id: position
+          description: >-
+            Where to move the shape in the z-order stack relative to the other
+            shapes. See Excel.ShapeZOrder for details.
+          type: |-
+            | excel!Excel.<xref uid="ShapeZOrder:enum" />
+                            | "BringToFront"
+                            | "BringForward"
+                            | "SendToBack"
+                            | "SendBackward"
+                    
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -896,1053 +1190,3 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: position
-          description: >-
-            Where to move the shape in the z-order stack relative to the other shapes. See Excel.ShapeZOrder for
-            details.
-          type:
-            - 'excel!Excel.Shape#setZOrder~0:complex'
-  - uid: 'excel!Excel.Shape#textFrame:member'
-    summary: Returns the text frame object of this shape. Read only.
-    name: textFrame
-    fullName: textFrame
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly textFrame: TextFrame;'
-      return:
-        type:
-          - 'excel!Excel.TextFrame:interface'
-  - uid: 'excel!Excel.Shape#top:member'
-    summary: >-
-      The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an invalid
-      argument exception when set with a negative value as input.
-    name: top
-    fullName: top
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'top: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#type:member'
-    summary: Returns the type of this shape. See Excel.ShapeType for details.
-    name: type
-    fullName: type
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: |-
-        readonly type:
-                    | ShapeType
-                    | "Unsupported"
-                    | "Image"
-                    | "GeometricShape"
-                    | "Group"
-                    | "Line";
-      return:
-        type:
-          - 'excel!Excel.Shape#type~0:complex'
-  - uid: 'excel!Excel.Shape#visible:member'
-    summary: Specifies if the shape is visible.
-    name: visible
-    fullName: visible
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'visible: boolean;'
-      return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Shape#width:member'
-    summary: >-
-      Specifies the width, in points, of the shape. Throws an invalid argument exception when set with a negative value
-      or zero as input.
-    name: width
-    fullName: width
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'width: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Shape#zOrderPosition:member'
-    summary: 'Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.'
-    name: zOrderPosition
-    fullName: zOrderPosition
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly zOrderPosition: number;'
-      return:
-        type:
-          - number
-references:
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
-  - uid: 'excel!Excel.Shape#copyTo~0:complex'
-    name: Worksheet | string
-    fullName: Excel.Worksheet | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Worksheet:interface'
-        name: Worksheet
-        fullName: Excel.Worksheet
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.ShapeFill:interface'
-    name: ShapeFill
-    fullName: Excel.ShapeFill
-  - uid: 'excel!Excel.GeometricShape:interface'
-    name: GeometricShape
-    fullName: Excel.GeometricShape
-  - uid: 'excel!Excel.Shape#geometricShapeType~0:complex'
-    name: |-
-      | GeometricShapeType
-                  | "LineInverse"
-                  | "Triangle"
-                  | "RightTriangle"
-                  | "Rectangle"
-                  | "Diamond"
-                  | "Parallelogram"
-                  | "Trapezoid"
-                  | "NonIsoscelesTrapezoid"
-                  | "Pentagon"
-                  | "Hexagon"
-                  | "Heptagon"
-                  | "Octagon"
-                  | "Decagon"
-                  | "Dodecagon"
-                  | "Star4"
-                  | "Star5"
-                  | "Star6"
-                  | "Star7"
-                  | "Star8"
-                  | "Star10"
-                  | "Star12"
-                  | "Star16"
-                  | "Star24"
-                  | "Star32"
-                  | "RoundRectangle"
-                  | "Round1Rectangle"
-                  | "Round2SameRectangle"
-                  | "Round2DiagonalRectangle"
-                  | "SnipRoundRectangle"
-                  | "Snip1Rectangle"
-                  | "Snip2SameRectangle"
-                  | "Snip2DiagonalRectangle"
-                  | "Plaque"
-                  | "Ellipse"
-                  | "Teardrop"
-                  | "HomePlate"
-                  | "Chevron"
-                  | "PieWedge"
-                  | "Pie"
-                  | "BlockArc"
-                  | "Donut"
-                  | "NoSmoking"
-                  | "RightArrow"
-                  | "LeftArrow"
-                  | "UpArrow"
-                  | "DownArrow"
-                  | "StripedRightArrow"
-                  | "NotchedRightArrow"
-                  | "BentUpArrow"
-                  | "LeftRightArrow"
-                  | "UpDownArrow"
-                  | "LeftUpArrow"
-                  | "LeftRightUpArrow"
-                  | "QuadArrow"
-                  | "LeftArrowCallout"
-                  | "RightArrowCallout"
-                  | "UpArrowCallout"
-                  | "DownArrowCallout"
-                  | "LeftRightArrowCallout"
-                  | "UpDownArrowCallout"
-                  | "QuadArrowCallout"
-                  | "BentArrow"
-                  | "UturnArrow"
-                  | "CircularArrow"
-                  | "LeftCircularArrow"
-                  | "LeftRightCircularArrow"
-                  | "CurvedRightArrow"
-                  | "CurvedLeftArrow"
-                  | "CurvedUpArrow"
-                  | "CurvedDownArrow"
-                  | "SwooshArrow"
-                  | "Cube"
-                  | "Can"
-                  | "LightningBolt"
-                  | "Heart"
-                  | "Sun"
-                  | "Moon"
-                  | "SmileyFace"
-                  | "IrregularSeal1"
-                  | "IrregularSeal2"
-                  | "FoldedCorner"
-                  | "Bevel"
-                  | "Frame"
-                  | "HalfFrame"
-                  | "Corner"
-                  | "DiagonalStripe"
-                  | "Chord"
-                  | "Arc"
-                  | "LeftBracket"
-                  | "RightBracket"
-                  | "LeftBrace"
-                  | "RightBrace"
-                  | "BracketPair"
-                  | "BracePair"
-                  | "Callout1"
-                  | "Callout2"
-                  | "Callout3"
-                  | "AccentCallout1"
-                  | "AccentCallout2"
-                  | "AccentCallout3"
-                  | "BorderCallout1"
-                  | "BorderCallout2"
-                  | "BorderCallout3"
-                  | "AccentBorderCallout1"
-                  | "AccentBorderCallout2"
-                  | "AccentBorderCallout3"
-                  | "WedgeRectCallout"
-                  | "WedgeRRectCallout"
-                  | "WedgeEllipseCallout"
-                  | "CloudCallout"
-                  | "Cloud"
-                  | "Ribbon"
-                  | "Ribbon2"
-                  | "EllipseRibbon"
-                  | "EllipseRibbon2"
-                  | "LeftRightRibbon"
-                  | "VerticalScroll"
-                  | "HorizontalScroll"
-                  | "Wave"
-                  | "DoubleWave"
-                  | "Plus"
-                  | "FlowChartProcess"
-                  | "FlowChartDecision"
-                  | "FlowChartInputOutput"
-                  | "FlowChartPredefinedProcess"
-                  | "FlowChartInternalStorage"
-                  | "FlowChartDocument"
-                  | "FlowChartMultidocument"
-                  | "FlowChartTerminator"
-                  | "FlowChartPreparation"
-                  | "FlowChartManualInput"
-                  | "FlowChartManualOperation"
-                  | "FlowChartConnector"
-                  | "FlowChartPunchedCard"
-                  | "FlowChartPunchedTape"
-                  | "FlowChartSummingJunction"
-                  | "FlowChartOr"
-                  | "FlowChartCollate"
-                  | "FlowChartSort"
-                  | "FlowChartExtract"
-                  | "FlowChartMerge"
-                  | "FlowChartOfflineStorage"
-                  | "FlowChartOnlineStorage"
-                  | "FlowChartMagneticTape"
-                  | "FlowChartMagneticDisk"
-                  | "FlowChartMagneticDrum"
-                  | "FlowChartDisplay"
-                  | "FlowChartDelay"
-                  | "FlowChartAlternateProcess"
-                  | "FlowChartOffpageConnector"
-                  | "ActionButtonBlank"
-                  | "ActionButtonHome"
-                  | "ActionButtonHelp"
-                  | "ActionButtonInformation"
-                  | "ActionButtonForwardNext"
-                  | "ActionButtonBackPrevious"
-                  | "ActionButtonEnd"
-                  | "ActionButtonBeginning"
-                  | "ActionButtonReturn"
-                  | "ActionButtonDocument"
-                  | "ActionButtonSound"
-                  | "ActionButtonMovie"
-                  | "Gear6"
-                  | "Gear9"
-                  | "Funnel"
-                  | "MathPlus"
-                  | "MathMinus"
-                  | "MathMultiply"
-                  | "MathDivide"
-                  | "MathEqual"
-                  | "MathNotEqual"
-                  | "CornerTabs"
-                  | "SquareTabs"
-                  | "PlaqueTabs"
-                  | "ChartX"
-                  | "ChartStar"
-                  | "ChartPlus"
-    fullName: |-
-      | Excel.GeometricShapeType
-                  | "LineInverse"
-                  | "Triangle"
-                  | "RightTriangle"
-                  | "Rectangle"
-                  | "Diamond"
-                  | "Parallelogram"
-                  | "Trapezoid"
-                  | "NonIsoscelesTrapezoid"
-                  | "Pentagon"
-                  | "Hexagon"
-                  | "Heptagon"
-                  | "Octagon"
-                  | "Decagon"
-                  | "Dodecagon"
-                  | "Star4"
-                  | "Star5"
-                  | "Star6"
-                  | "Star7"
-                  | "Star8"
-                  | "Star10"
-                  | "Star12"
-                  | "Star16"
-                  | "Star24"
-                  | "Star32"
-                  | "RoundRectangle"
-                  | "Round1Rectangle"
-                  | "Round2SameRectangle"
-                  | "Round2DiagonalRectangle"
-                  | "SnipRoundRectangle"
-                  | "Snip1Rectangle"
-                  | "Snip2SameRectangle"
-                  | "Snip2DiagonalRectangle"
-                  | "Plaque"
-                  | "Ellipse"
-                  | "Teardrop"
-                  | "HomePlate"
-                  | "Chevron"
-                  | "PieWedge"
-                  | "Pie"
-                  | "BlockArc"
-                  | "Donut"
-                  | "NoSmoking"
-                  | "RightArrow"
-                  | "LeftArrow"
-                  | "UpArrow"
-                  | "DownArrow"
-                  | "StripedRightArrow"
-                  | "NotchedRightArrow"
-                  | "BentUpArrow"
-                  | "LeftRightArrow"
-                  | "UpDownArrow"
-                  | "LeftUpArrow"
-                  | "LeftRightUpArrow"
-                  | "QuadArrow"
-                  | "LeftArrowCallout"
-                  | "RightArrowCallout"
-                  | "UpArrowCallout"
-                  | "DownArrowCallout"
-                  | "LeftRightArrowCallout"
-                  | "UpDownArrowCallout"
-                  | "QuadArrowCallout"
-                  | "BentArrow"
-                  | "UturnArrow"
-                  | "CircularArrow"
-                  | "LeftCircularArrow"
-                  | "LeftRightCircularArrow"
-                  | "CurvedRightArrow"
-                  | "CurvedLeftArrow"
-                  | "CurvedUpArrow"
-                  | "CurvedDownArrow"
-                  | "SwooshArrow"
-                  | "Cube"
-                  | "Can"
-                  | "LightningBolt"
-                  | "Heart"
-                  | "Sun"
-                  | "Moon"
-                  | "SmileyFace"
-                  | "IrregularSeal1"
-                  | "IrregularSeal2"
-                  | "FoldedCorner"
-                  | "Bevel"
-                  | "Frame"
-                  | "HalfFrame"
-                  | "Corner"
-                  | "DiagonalStripe"
-                  | "Chord"
-                  | "Arc"
-                  | "LeftBracket"
-                  | "RightBracket"
-                  | "LeftBrace"
-                  | "RightBrace"
-                  | "BracketPair"
-                  | "BracePair"
-                  | "Callout1"
-                  | "Callout2"
-                  | "Callout3"
-                  | "AccentCallout1"
-                  | "AccentCallout2"
-                  | "AccentCallout3"
-                  | "BorderCallout1"
-                  | "BorderCallout2"
-                  | "BorderCallout3"
-                  | "AccentBorderCallout1"
-                  | "AccentBorderCallout2"
-                  | "AccentBorderCallout3"
-                  | "WedgeRectCallout"
-                  | "WedgeRRectCallout"
-                  | "WedgeEllipseCallout"
-                  | "CloudCallout"
-                  | "Cloud"
-                  | "Ribbon"
-                  | "Ribbon2"
-                  | "EllipseRibbon"
-                  | "EllipseRibbon2"
-                  | "LeftRightRibbon"
-                  | "VerticalScroll"
-                  | "HorizontalScroll"
-                  | "Wave"
-                  | "DoubleWave"
-                  | "Plus"
-                  | "FlowChartProcess"
-                  | "FlowChartDecision"
-                  | "FlowChartInputOutput"
-                  | "FlowChartPredefinedProcess"
-                  | "FlowChartInternalStorage"
-                  | "FlowChartDocument"
-                  | "FlowChartMultidocument"
-                  | "FlowChartTerminator"
-                  | "FlowChartPreparation"
-                  | "FlowChartManualInput"
-                  | "FlowChartManualOperation"
-                  | "FlowChartConnector"
-                  | "FlowChartPunchedCard"
-                  | "FlowChartPunchedTape"
-                  | "FlowChartSummingJunction"
-                  | "FlowChartOr"
-                  | "FlowChartCollate"
-                  | "FlowChartSort"
-                  | "FlowChartExtract"
-                  | "FlowChartMerge"
-                  | "FlowChartOfflineStorage"
-                  | "FlowChartOnlineStorage"
-                  | "FlowChartMagneticTape"
-                  | "FlowChartMagneticDisk"
-                  | "FlowChartMagneticDrum"
-                  | "FlowChartDisplay"
-                  | "FlowChartDelay"
-                  | "FlowChartAlternateProcess"
-                  | "FlowChartOffpageConnector"
-                  | "ActionButtonBlank"
-                  | "ActionButtonHome"
-                  | "ActionButtonHelp"
-                  | "ActionButtonInformation"
-                  | "ActionButtonForwardNext"
-                  | "ActionButtonBackPrevious"
-                  | "ActionButtonEnd"
-                  | "ActionButtonBeginning"
-                  | "ActionButtonReturn"
-                  | "ActionButtonDocument"
-                  | "ActionButtonSound"
-                  | "ActionButtonMovie"
-                  | "Gear6"
-                  | "Gear9"
-                  | "Funnel"
-                  | "MathPlus"
-                  | "MathMinus"
-                  | "MathMultiply"
-                  | "MathDivide"
-                  | "MathEqual"
-                  | "MathNotEqual"
-                  | "CornerTabs"
-                  | "SquareTabs"
-                  | "PlaqueTabs"
-                  | "ChartX"
-                  | "ChartStar"
-                  | "ChartPlus"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.GeometricShapeType:enum'
-        name: GeometricShapeType
-        fullName: Excel.GeometricShapeType
-      - name: |2-
-
-                      | "LineInverse"
-                      | "Triangle"
-                      | "RightTriangle"
-                      | "Rectangle"
-                      | "Diamond"
-                      | "Parallelogram"
-                      | "Trapezoid"
-                      | "NonIsoscelesTrapezoid"
-                      | "Pentagon"
-                      | "Hexagon"
-                      | "Heptagon"
-                      | "Octagon"
-                      | "Decagon"
-                      | "Dodecagon"
-                      | "Star4"
-                      | "Star5"
-                      | "Star6"
-                      | "Star7"
-                      | "Star8"
-                      | "Star10"
-                      | "Star12"
-                      | "Star16"
-                      | "Star24"
-                      | "Star32"
-                      | "RoundRectangle"
-                      | "Round1Rectangle"
-                      | "Round2SameRectangle"
-                      | "Round2DiagonalRectangle"
-                      | "SnipRoundRectangle"
-                      | "Snip1Rectangle"
-                      | "Snip2SameRectangle"
-                      | "Snip2DiagonalRectangle"
-                      | "Plaque"
-                      | "Ellipse"
-                      | "Teardrop"
-                      | "HomePlate"
-                      | "Chevron"
-                      | "PieWedge"
-                      | "Pie"
-                      | "BlockArc"
-                      | "Donut"
-                      | "NoSmoking"
-                      | "RightArrow"
-                      | "LeftArrow"
-                      | "UpArrow"
-                      | "DownArrow"
-                      | "StripedRightArrow"
-                      | "NotchedRightArrow"
-                      | "BentUpArrow"
-                      | "LeftRightArrow"
-                      | "UpDownArrow"
-                      | "LeftUpArrow"
-                      | "LeftRightUpArrow"
-                      | "QuadArrow"
-                      | "LeftArrowCallout"
-                      | "RightArrowCallout"
-                      | "UpArrowCallout"
-                      | "DownArrowCallout"
-                      | "LeftRightArrowCallout"
-                      | "UpDownArrowCallout"
-                      | "QuadArrowCallout"
-                      | "BentArrow"
-                      | "UturnArrow"
-                      | "CircularArrow"
-                      | "LeftCircularArrow"
-                      | "LeftRightCircularArrow"
-                      | "CurvedRightArrow"
-                      | "CurvedLeftArrow"
-                      | "CurvedUpArrow"
-                      | "CurvedDownArrow"
-                      | "SwooshArrow"
-                      | "Cube"
-                      | "Can"
-                      | "LightningBolt"
-                      | "Heart"
-                      | "Sun"
-                      | "Moon"
-                      | "SmileyFace"
-                      | "IrregularSeal1"
-                      | "IrregularSeal2"
-                      | "FoldedCorner"
-                      | "Bevel"
-                      | "Frame"
-                      | "HalfFrame"
-                      | "Corner"
-                      | "DiagonalStripe"
-                      | "Chord"
-                      | "Arc"
-                      | "LeftBracket"
-                      | "RightBracket"
-                      | "LeftBrace"
-                      | "RightBrace"
-                      | "BracketPair"
-                      | "BracePair"
-                      | "Callout1"
-                      | "Callout2"
-                      | "Callout3"
-                      | "AccentCallout1"
-                      | "AccentCallout2"
-                      | "AccentCallout3"
-                      | "BorderCallout1"
-                      | "BorderCallout2"
-                      | "BorderCallout3"
-                      | "AccentBorderCallout1"
-                      | "AccentBorderCallout2"
-                      | "AccentBorderCallout3"
-                      | "WedgeRectCallout"
-                      | "WedgeRRectCallout"
-                      | "WedgeEllipseCallout"
-                      | "CloudCallout"
-                      | "Cloud"
-                      | "Ribbon"
-                      | "Ribbon2"
-                      | "EllipseRibbon"
-                      | "EllipseRibbon2"
-                      | "LeftRightRibbon"
-                      | "VerticalScroll"
-                      | "HorizontalScroll"
-                      | "Wave"
-                      | "DoubleWave"
-                      | "Plus"
-                      | "FlowChartProcess"
-                      | "FlowChartDecision"
-                      | "FlowChartInputOutput"
-                      | "FlowChartPredefinedProcess"
-                      | "FlowChartInternalStorage"
-                      | "FlowChartDocument"
-                      | "FlowChartMultidocument"
-                      | "FlowChartTerminator"
-                      | "FlowChartPreparation"
-                      | "FlowChartManualInput"
-                      | "FlowChartManualOperation"
-                      | "FlowChartConnector"
-                      | "FlowChartPunchedCard"
-                      | "FlowChartPunchedTape"
-                      | "FlowChartSummingJunction"
-                      | "FlowChartOr"
-                      | "FlowChartCollate"
-                      | "FlowChartSort"
-                      | "FlowChartExtract"
-                      | "FlowChartMerge"
-                      | "FlowChartOfflineStorage"
-                      | "FlowChartOnlineStorage"
-                      | "FlowChartMagneticTape"
-                      | "FlowChartMagneticDisk"
-                      | "FlowChartMagneticDrum"
-                      | "FlowChartDisplay"
-                      | "FlowChartDelay"
-                      | "FlowChartAlternateProcess"
-                      | "FlowChartOffpageConnector"
-                      | "ActionButtonBlank"
-                      | "ActionButtonHome"
-                      | "ActionButtonHelp"
-                      | "ActionButtonInformation"
-                      | "ActionButtonForwardNext"
-                      | "ActionButtonBackPrevious"
-                      | "ActionButtonEnd"
-                      | "ActionButtonBeginning"
-                      | "ActionButtonReturn"
-                      | "ActionButtonDocument"
-                      | "ActionButtonSound"
-                      | "ActionButtonMovie"
-                      | "Gear6"
-                      | "Gear9"
-                      | "Funnel"
-                      | "MathPlus"
-                      | "MathMinus"
-                      | "MathMultiply"
-                      | "MathDivide"
-                      | "MathEqual"
-                      | "MathNotEqual"
-                      | "CornerTabs"
-                      | "SquareTabs"
-                      | "PlaqueTabs"
-                      | "ChartX"
-                      | "ChartStar"
-                      | "ChartPlus"
-        fullName: |2-
-
-                      | "LineInverse"
-                      | "Triangle"
-                      | "RightTriangle"
-                      | "Rectangle"
-                      | "Diamond"
-                      | "Parallelogram"
-                      | "Trapezoid"
-                      | "NonIsoscelesTrapezoid"
-                      | "Pentagon"
-                      | "Hexagon"
-                      | "Heptagon"
-                      | "Octagon"
-                      | "Decagon"
-                      | "Dodecagon"
-                      | "Star4"
-                      | "Star5"
-                      | "Star6"
-                      | "Star7"
-                      | "Star8"
-                      | "Star10"
-                      | "Star12"
-                      | "Star16"
-                      | "Star24"
-                      | "Star32"
-                      | "RoundRectangle"
-                      | "Round1Rectangle"
-                      | "Round2SameRectangle"
-                      | "Round2DiagonalRectangle"
-                      | "SnipRoundRectangle"
-                      | "Snip1Rectangle"
-                      | "Snip2SameRectangle"
-                      | "Snip2DiagonalRectangle"
-                      | "Plaque"
-                      | "Ellipse"
-                      | "Teardrop"
-                      | "HomePlate"
-                      | "Chevron"
-                      | "PieWedge"
-                      | "Pie"
-                      | "BlockArc"
-                      | "Donut"
-                      | "NoSmoking"
-                      | "RightArrow"
-                      | "LeftArrow"
-                      | "UpArrow"
-                      | "DownArrow"
-                      | "StripedRightArrow"
-                      | "NotchedRightArrow"
-                      | "BentUpArrow"
-                      | "LeftRightArrow"
-                      | "UpDownArrow"
-                      | "LeftUpArrow"
-                      | "LeftRightUpArrow"
-                      | "QuadArrow"
-                      | "LeftArrowCallout"
-                      | "RightArrowCallout"
-                      | "UpArrowCallout"
-                      | "DownArrowCallout"
-                      | "LeftRightArrowCallout"
-                      | "UpDownArrowCallout"
-                      | "QuadArrowCallout"
-                      | "BentArrow"
-                      | "UturnArrow"
-                      | "CircularArrow"
-                      | "LeftCircularArrow"
-                      | "LeftRightCircularArrow"
-                      | "CurvedRightArrow"
-                      | "CurvedLeftArrow"
-                      | "CurvedUpArrow"
-                      | "CurvedDownArrow"
-                      | "SwooshArrow"
-                      | "Cube"
-                      | "Can"
-                      | "LightningBolt"
-                      | "Heart"
-                      | "Sun"
-                      | "Moon"
-                      | "SmileyFace"
-                      | "IrregularSeal1"
-                      | "IrregularSeal2"
-                      | "FoldedCorner"
-                      | "Bevel"
-                      | "Frame"
-                      | "HalfFrame"
-                      | "Corner"
-                      | "DiagonalStripe"
-                      | "Chord"
-                      | "Arc"
-                      | "LeftBracket"
-                      | "RightBracket"
-                      | "LeftBrace"
-                      | "RightBrace"
-                      | "BracketPair"
-                      | "BracePair"
-                      | "Callout1"
-                      | "Callout2"
-                      | "Callout3"
-                      | "AccentCallout1"
-                      | "AccentCallout2"
-                      | "AccentCallout3"
-                      | "BorderCallout1"
-                      | "BorderCallout2"
-                      | "BorderCallout3"
-                      | "AccentBorderCallout1"
-                      | "AccentBorderCallout2"
-                      | "AccentBorderCallout3"
-                      | "WedgeRectCallout"
-                      | "WedgeRRectCallout"
-                      | "WedgeEllipseCallout"
-                      | "CloudCallout"
-                      | "Cloud"
-                      | "Ribbon"
-                      | "Ribbon2"
-                      | "EllipseRibbon"
-                      | "EllipseRibbon2"
-                      | "LeftRightRibbon"
-                      | "VerticalScroll"
-                      | "HorizontalScroll"
-                      | "Wave"
-                      | "DoubleWave"
-                      | "Plus"
-                      | "FlowChartProcess"
-                      | "FlowChartDecision"
-                      | "FlowChartInputOutput"
-                      | "FlowChartPredefinedProcess"
-                      | "FlowChartInternalStorage"
-                      | "FlowChartDocument"
-                      | "FlowChartMultidocument"
-                      | "FlowChartTerminator"
-                      | "FlowChartPreparation"
-                      | "FlowChartManualInput"
-                      | "FlowChartManualOperation"
-                      | "FlowChartConnector"
-                      | "FlowChartPunchedCard"
-                      | "FlowChartPunchedTape"
-                      | "FlowChartSummingJunction"
-                      | "FlowChartOr"
-                      | "FlowChartCollate"
-                      | "FlowChartSort"
-                      | "FlowChartExtract"
-                      | "FlowChartMerge"
-                      | "FlowChartOfflineStorage"
-                      | "FlowChartOnlineStorage"
-                      | "FlowChartMagneticTape"
-                      | "FlowChartMagneticDisk"
-                      | "FlowChartMagneticDrum"
-                      | "FlowChartDisplay"
-                      | "FlowChartDelay"
-                      | "FlowChartAlternateProcess"
-                      | "FlowChartOffpageConnector"
-                      | "ActionButtonBlank"
-                      | "ActionButtonHome"
-                      | "ActionButtonHelp"
-                      | "ActionButtonInformation"
-                      | "ActionButtonForwardNext"
-                      | "ActionButtonBackPrevious"
-                      | "ActionButtonEnd"
-                      | "ActionButtonBeginning"
-                      | "ActionButtonReturn"
-                      | "ActionButtonDocument"
-                      | "ActionButtonSound"
-                      | "ActionButtonMovie"
-                      | "Gear6"
-                      | "Gear9"
-                      | "Funnel"
-                      | "MathPlus"
-                      | "MathMinus"
-                      | "MathMultiply"
-                      | "MathDivide"
-                      | "MathEqual"
-                      | "MathNotEqual"
-                      | "CornerTabs"
-                      | "SquareTabs"
-                      | "PlaqueTabs"
-                      | "ChartX"
-                      | "ChartStar"
-                      | "ChartPlus"
-  - uid: 'excel!Excel.Shape#getAsImage~0:complex'
-    name: ClientResult<string>
-    fullName: Excel.ClientResult<string>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <string>
-        fullName: <string>
-  - uid: 'excel!Excel.Shape#getAsImage~1:complex'
-    name: |-
-      | PictureFormat
-                      | "Unknown"
-                      | "Bmp"
-                      | "Jpeg"
-                      | "Gif"
-                      | "Png"
-                      | "Svg"
-    fullName: |-
-      | Excel.PictureFormat
-                      | "Unknown"
-                      | "Bmp"
-                      | "Jpeg"
-                      | "Gif"
-                      | "Png"
-                      | "Svg"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.PictureFormat:enum'
-        name: PictureFormat
-        fullName: Excel.PictureFormat
-      - name: |2-
-
-                          | "Unknown"
-                          | "Bmp"
-                          | "Jpeg"
-                          | "Gif"
-                          | "Png"
-                          | "Svg"
-                  
-        fullName: |2-
-
-                          | "Unknown"
-                          | "Bmp"
-                          | "Jpeg"
-                          | "Gif"
-                          | "Png"
-                          | "Svg"
-                  
-  - uid: 'excel!Excel.ShapeGroup:interface'
-    name: ShapeGroup
-    fullName: Excel.ShapeGroup
-  - uid: 'excel!Excel.Image:interface'
-    name: Image
-    fullName: Excel.Image
-  - uid: 'excel!Excel.Line:interface'
-    name: Line
-    fullName: Excel.Line
-  - uid: 'excel!Excel.ShapeLineFormat:interface'
-    name: ShapeLineFormat
-    fullName: Excel.ShapeLineFormat
-  - uid: 'excel!Excel.Shape#placement~0:complex'
-    name: Placement | "TwoCell" | "OneCell" | "Absolute"
-    fullName: Excel.Placement | "TwoCell" | "OneCell" | "Absolute"
-    spec.typeScript:
-      - uid: 'excel!Excel.Placement:enum'
-        name: Placement
-        fullName: Excel.Placement
-      - name: ' | "TwoCell" | "OneCell" | "Absolute"'
-        fullName: ' | "TwoCell" | "OneCell" | "Absolute"'
-  - uid: 'excel!Excel.Shape#scaleHeight~0:complex'
-    name: ShapeScaleType | "CurrentSize" | "OriginalSize"
-    fullName: Excel.ShapeScaleType | "CurrentSize" | "OriginalSize"
-    spec.typeScript:
-      - uid: 'excel!Excel.ShapeScaleType:enum'
-        name: ShapeScaleType
-        fullName: Excel.ShapeScaleType
-      - name: ' | "CurrentSize" | "OriginalSize"'
-        fullName: ' | "CurrentSize" | "OriginalSize"'
-  - uid: 'excel!Excel.Shape#scaleHeight~1:complex'
-    name: |-
-      | ShapeScaleFrom
-                      | "ScaleFromTopLeft"
-                      | "ScaleFromMiddle"
-                      | "ScaleFromBottomRight"
-    fullName: |-
-      | Excel.ShapeScaleFrom
-                      | "ScaleFromTopLeft"
-                      | "ScaleFromMiddle"
-                      | "ScaleFromBottomRight"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ShapeScaleFrom:enum'
-        name: ShapeScaleFrom
-        fullName: Excel.ShapeScaleFrom
-      - name: |2-
-
-                          | "ScaleFromTopLeft"
-                          | "ScaleFromMiddle"
-                          | "ScaleFromBottomRight"
-                  
-        fullName: |2-
-
-                          | "ScaleFromTopLeft"
-                          | "ScaleFromMiddle"
-                          | "ScaleFromBottomRight"
-                  
-  - uid: 'excel!Excel.Shape#scaleWidth~0:complex'
-    name: ShapeScaleType | "CurrentSize" | "OriginalSize"
-    fullName: Excel.ShapeScaleType | "CurrentSize" | "OriginalSize"
-    spec.typeScript:
-      - uid: 'excel!Excel.ShapeScaleType:enum'
-        name: ShapeScaleType
-        fullName: Excel.ShapeScaleType
-      - name: ' | "CurrentSize" | "OriginalSize"'
-        fullName: ' | "CurrentSize" | "OriginalSize"'
-  - uid: 'excel!Excel.Shape#scaleWidth~1:complex'
-    name: |-
-      | ShapeScaleFrom
-                      | "ScaleFromTopLeft"
-                      | "ScaleFromMiddle"
-                      | "ScaleFromBottomRight"
-    fullName: |-
-      | Excel.ShapeScaleFrom
-                      | "ScaleFromTopLeft"
-                      | "ScaleFromMiddle"
-                      | "ScaleFromBottomRight"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ShapeScaleFrom:enum'
-        name: ShapeScaleFrom
-        fullName: Excel.ShapeScaleFrom
-      - name: |2-
-
-                          | "ScaleFromTopLeft"
-                          | "ScaleFromMiddle"
-                          | "ScaleFromBottomRight"
-                  
-        fullName: |2-
-
-                          | "ScaleFromTopLeft"
-                          | "ScaleFromMiddle"
-                          | "ScaleFromBottomRight"
-                  
-  - uid: 'excel!Excel.Shape#setZOrder~0:complex'
-    name: |-
-      | ShapeZOrder
-                      | "BringToFront"
-                      | "BringForward"
-                      | "SendToBack"
-                      | "SendBackward"
-    fullName: |-
-      | Excel.ShapeZOrder
-                      | "BringToFront"
-                      | "BringForward"
-                      | "SendToBack"
-                      | "SendBackward"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ShapeZOrder:enum'
-        name: ShapeZOrder
-        fullName: Excel.ShapeZOrder
-      - name: |2-
-
-                          | "BringToFront"
-                          | "BringForward"
-                          | "SendToBack"
-                          | "SendBackward"
-                  
-        fullName: |2-
-
-                          | "BringToFront"
-                          | "BringForward"
-                          | "SendToBack"
-                          | "SendBackward"
-                  
-  - uid: 'excel!Excel.TextFrame:interface'
-    name: TextFrame
-    fullName: Excel.TextFrame
-  - uid: 'excel!Excel.Shape#type~0:complex'
-    name: |-
-      | ShapeType
-                  | "Unsupported"
-                  | "Image"
-                  | "GeometricShape"
-                  | "Group"
-                  | "Line"
-    fullName: |-
-      | Excel.ShapeType
-                  | "Unsupported"
-                  | "Image"
-                  | "GeometricShape"
-                  | "Group"
-                  | "Line"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ShapeType:enum'
-        name: ShapeType
-        fullName: Excel.ShapeType
-      - name: |2-
-
-                      | "Unsupported"
-                      | "Image"
-                      | "GeometricShape"
-                      | "Group"
-                      | "Line"
-        fullName: |2-
-
-                      | "Unsupported"
-                      | "Image"
-                      | "GeometricShape"
-                      | "Group"
-                      | "Line"

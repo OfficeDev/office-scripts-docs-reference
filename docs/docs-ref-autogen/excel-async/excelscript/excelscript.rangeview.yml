@@ -1,224 +1,199 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.RangeView:interface'
-    summary: RangeView represents a set of visible cells of the parent range.
-    name: Excel.RangeView
-    fullName: Excel.RangeView
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.RangeView
+uid: 'excel!Excel.RangeView:interface'
+package: excel!
+fullName: Excel.RangeView
+summary: RangeView represents a set of visible cells of the parent range.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: cellAddresses
+    uid: 'excel!Excel.RangeView#cellAddresses:member'
     package: excel!
-    children:
-      - 'excel!Excel.RangeView#cellAddresses:member'
-      - 'excel!Excel.RangeView#columnCount:member'
-      - 'excel!Excel.RangeView#formulas:member'
-      - 'excel!Excel.RangeView#formulasLocal:member'
-      - 'excel!Excel.RangeView#formulasR1C1:member'
-      - 'excel!Excel.RangeView#getRange:member(1)'
-      - 'excel!Excel.RangeView#index:member'
-      - 'excel!Excel.RangeView#load:member(1)'
-      - 'excel!Excel.RangeView#numberFormat:member'
-      - 'excel!Excel.RangeView#rowCount:member'
-      - 'excel!Excel.RangeView#rows:member'
-      - 'excel!Excel.RangeView#text:member'
-      - 'excel!Excel.RangeView#values:member'
-      - 'excel!Excel.RangeView#valueTypes:member'
-  - uid: 'excel!Excel.RangeView#cellAddresses:member'
-    summary: Represents the cell addresses of the RangeView.
-    name: cellAddresses
     fullName: cellAddresses
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the cell addresses of the RangeView.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly cellAddresses: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#columnCount:member'
-    summary: The number of visible columns.
-    name: columnCount
+        type: 'any[][]'
+  - name: columnCount
+    uid: 'excel!Excel.RangeView#columnCount:member'
+    package: excel!
     fullName: columnCount
-    langs:
-      - typeScript
-    type: property
+    summary: The number of visible columns.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly columnCount: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.RangeView#formulas:member'
-    summary: Represents the formula in A1-style notation.
-    name: formulas
+        type: number
+  - name: formulas
+    uid: 'excel!Excel.RangeView#formulas:member'
+    package: excel!
     fullName: formulas
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the formula in A1-style notation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formulas: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#formulasLocal:member'
-    summary: >-
-      Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the
-      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German.
-    name: formulasLocal
+        type: 'any[][]'
+  - name: formulasLocal
+    uid: 'excel!Excel.RangeView#formulasLocal:member'
+    package: excel!
     fullName: formulasLocal
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the formula in A1-style notation, in the user's language and
+      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
+      would become "=SUMME(A1; 1,5)" in German.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formulasLocal: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#formulasR1C1:member'
-    summary: Represents the formula in R1C1-style notation.
-    name: formulasR1C1
+        type: 'any[][]'
+  - name: formulasR1C1
+    uid: 'excel!Excel.RangeView#formulasR1C1:member'
+    package: excel!
     fullName: formulasR1C1
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the formula in R1C1-style notation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formulasR1C1: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#getRange:member(1)'
-    summary: Gets the parent range associated with the current RangeView.
-    name: getRange()
-    fullName: getRange()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'getRange(): Range;'
-      return:
-        type:
-          - 'excel!Excel.Range:interface'
-        description: ''
-  - uid: 'excel!Excel.RangeView#index:member'
-    summary: Returns a value that represents the index of the RangeView.
-    name: index
+        type: 'any[][]'
+  - name: index
+    uid: 'excel!Excel.RangeView#index:member'
+    package: excel!
     fullName: index
-    langs:
-      - typeScript
-    type: property
+    summary: Returns a value that represents the index of the RangeView.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly index: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.RangeView#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.RangeView#numberFormat:member'
-    summary: Represents Excel's number format code for the given cell.
-    name: numberFormat
+        type: number
+  - name: numberFormat
+    uid: 'excel!Excel.RangeView#numberFormat:member'
+    package: excel!
     fullName: numberFormat
-    langs:
-      - typeScript
-    type: property
+    summary: Represents Excel's number format code for the given cell.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'numberFormat: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#rowCount:member'
-    summary: The number of visible rows.
-    name: rowCount
+        type: 'any[][]'
+  - name: rowCount
+    uid: 'excel!Excel.RangeView#rowCount:member'
+    package: excel!
     fullName: rowCount
-    langs:
-      - typeScript
-    type: property
+    summary: The number of visible rows.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly rowCount: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.RangeView#rows:member'
-    summary: Represents a collection of range views associated with the range.
-    name: rows
+        type: number
+  - name: rows
+    uid: 'excel!Excel.RangeView#rows:member'
+    package: excel!
     fullName: rows
-    langs:
-      - typeScript
-    type: property
+    summary: Represents a collection of range views associated with the range.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly rows: RangeViewCollection;'
       return:
-        type:
-          - 'excel!Excel.RangeViewCollection:interface'
-  - uid: 'excel!Excel.RangeView#text:member'
-    summary: >-
-      Text values of the specified range. The Text value will not depend on the cell width. The \# sign substitution
-      that happens in Excel UI will not affect the text value returned by the API.
-    name: text
+        type: 'excel!Excel.<xref uid="RangeViewCollection:interface" />'
+  - name: text
+    uid: 'excel!Excel.RangeView#text:member'
+    package: excel!
     fullName: text
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Text values of the specified range. The Text value will not depend on the
+      cell width. The \# sign substitution that happens in Excel UI will not
+      affect the text value returned by the API.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly text: string[][];'
       return:
-        type:
-          - 'string[][]'
-  - uid: 'excel!Excel.RangeView#values:member'
-    summary: >-
-      Represents the raw values of the specified range view. The data returned could be of type string, number, or a
-      boolean. Cells that contain an error will return the error string.
-    name: values
+        type: 'string[][]'
+  - name: values
+    uid: 'excel!Excel.RangeView#values:member'
+    package: excel!
     fullName: values
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the raw values of the specified range view. The data returned
+      could be of type string, number, or a boolean. Cells that contain an error
+      will return the error string.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'values: any[][];'
       return:
-        type:
-          - 'any[][]'
-  - uid: 'excel!Excel.RangeView#valueTypes:member'
-    summary: Represents the type of data of each cell.
-    name: valueTypes
+        type: 'any[][]'
+  - name: valueTypes
+    uid: 'excel!Excel.RangeView#valueTypes:member'
+    package: excel!
     fullName: valueTypes
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the type of data of each cell.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly valueTypes: RangeValueType[][];'
       return:
-        type:
-          - 'excel!Excel.RangeView#valueTypes~0:complex'
-references:
-  - uid: 'excel!Excel.Range:interface'
-    name: Range
-    fullName: Excel.Range
-  - uid: 'excel!Excel.RangeViewCollection:interface'
-    name: RangeViewCollection
-    fullName: Excel.RangeViewCollection
-  - uid: 'excel!Excel.RangeView#valueTypes~0:complex'
-    name: 'RangeValueType[][]'
-    fullName: 'Excel.RangeValueType[][]'
-    spec.typeScript:
-      - uid: 'excel!Excel.RangeValueType:enum'
-        name: RangeValueType
-        fullName: Excel.RangeValueType
-      - name: '[][]'
-        fullName: '[][]'
+        type: 'excel!Excel.<xref uid="RangeValueType:enum" />[][]'
+methods:
+  - name: getRange()
+    uid: 'excel!Excel.RangeView#getRange:member(1)'
+    package: excel!
+    fullName: getRange()
+    summary: Gets the parent range associated with the current RangeView.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type: 'excel!Excel.<xref uid="Range:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.RangeView#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
