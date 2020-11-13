@@ -122,46 +122,30 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
 
     // create folders for Excel subcategories
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
-    let excelFilter: string[] = ["Interfaces"];
+    let excelFilter: string[] = ["Interfaces"].concat(excelEnumFilter);
 
     // process all packages except 'office' (Common "Shared" API)
     origToc.items.forEach((rootItem, rootIndex) => {
         rootItem.items.forEach((packageItem, packageIndex) => {
-            if (packageItem.name !== 'office') {
-                // fix host capitalization
-                let packageName = (packageItem.name.substr(0, 1).toUpperCase() + packageItem.name.substr(1)).replace(/\-/g, ' ');
-                membersToMove.items = packageItem.items;
+            // fix host capitalization
+            let packageName = (packageItem.name.substr(0, 1).toUpperCase() + packageItem.name.substr(1)).replace(/\-/g, ' ');
+            membersToMove.items = packageItem.items;
 
-                if (packageName.toLocaleLowerCase().includes('excel')) {
-                    let enumList = membersToMove.items.filter(item => {
-                            return excelEnumFilter.indexOf(item.name) >= 0;
-                        });
-                    let primaryList = membersToMove.items.filter(item => {
-                        return excelFilter.indexOf(item.name) < 0;
-                    });
+            if (packageName.toLocaleLowerCase().includes('excel')) {
+                let enumList = membersToMove.items.filter(item => {
+                    return excelEnumFilter.indexOf(item.name) >= 0;
+                });
+                let primaryList = membersToMove.items.filter(item => {
+                    return excelFilter.indexOf(item.name) < 0;
+                });
 
-                    let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                    primaryList.unshift(excelEnumRoot);
-                    newToc.items[0].items.push({
-                        "name": packageName,
-                        "uid": packageItem.uid,
-                        "items": primaryList as any
-                    });
-                } else {
-                    if (membersToMove.items) {
-                        newToc.items[0].items.push({
-                            "name": packageName,
-                            "uid": packageItem.uid,
-                            "items": membersToMove.items as any
-                        });
-                    } else {
-                        newToc.items[0].items.push({
-                            "name": packageName,
-                            "uid": packageItem.uid,
-                            "items": [] as any
-                        });
-                    }
-                }
+                let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
+                primaryList.unshift(excelEnumRoot);
+                newToc.items[0].items.push({
+                    "name": packageName,
+                    "uid": packageItem.uid,
+                    "items": primaryList as any
+                });
             }
         });
     });
