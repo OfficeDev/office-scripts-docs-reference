@@ -1,79 +1,50 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.DataPivotHierarchy:interface'
-    summary: Represents the Excel DataPivotHierarchy.
-    name: Excel.DataPivotHierarchy
-    fullName: Excel.DataPivotHierarchy
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.DataPivotHierarchy
+uid: 'excel!Excel.DataPivotHierarchy:interface'
+package: excel!
+fullName: Excel.DataPivotHierarchy
+summary: Represents the Excel DataPivotHierarchy.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: field
+    uid: 'excel!Excel.DataPivotHierarchy#field:member'
     package: excel!
-    children:
-      - 'excel!Excel.DataPivotHierarchy#field:member'
-      - 'excel!Excel.DataPivotHierarchy#id:member'
-      - 'excel!Excel.DataPivotHierarchy#load:member(1)'
-      - 'excel!Excel.DataPivotHierarchy#name:member'
-      - 'excel!Excel.DataPivotHierarchy#numberFormat:member'
-      - 'excel!Excel.DataPivotHierarchy#position:member'
-      - 'excel!Excel.DataPivotHierarchy#setToDefault:member(1)'
-      - 'excel!Excel.DataPivotHierarchy#showAs:member'
-      - 'excel!Excel.DataPivotHierarchy#summarizeBy:member'
-  - uid: 'excel!Excel.DataPivotHierarchy#field:member'
-    summary: Returns the PivotFields associated with the DataPivotHierarchy.
-    name: field
     fullName: field
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the PivotFields associated with the DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly field: PivotField;'
       return:
-        type:
-          - 'excel!Excel.PivotField:interface'
-  - uid: 'excel!Excel.DataPivotHierarchy#id:member'
-    summary: Id of the DataPivotHierarchy.
-    name: id
+        type: '<xref uid="excel!Excel.PivotField:interface" />'
+  - name: id
+    uid: 'excel!Excel.DataPivotHierarchy#id:member'
+    package: excel!
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Id of the DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.DataPivotHierarchy#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.DataPivotHierarchy#name:member'
-    summary: Name of the DataPivotHierarchy.
-    name: name
+        type: string
+  - name: name
+    uid: 'excel!Excel.DataPivotHierarchy#name:member'
+    package: excel!
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Name of the DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
+        type: string
         description: |-
 
 
@@ -90,55 +61,42 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.DataPivotHierarchy#numberFormat:member'
-    summary: Number format of the DataPivotHierarchy.
-    name: numberFormat
+  - name: numberFormat
+    uid: 'excel!Excel.DataPivotHierarchy#numberFormat:member'
+    package: excel!
     fullName: numberFormat
-    langs:
-      - typeScript
-    type: property
+    summary: Number format of the DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'numberFormat: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.DataPivotHierarchy#position:member'
-    summary: Position of the DataPivotHierarchy.
-    name: position
+        type: string
+  - name: position
+    uid: 'excel!Excel.DataPivotHierarchy#position:member'
+    package: excel!
     fullName: position
-    langs:
-      - typeScript
-    type: property
+    summary: Position of the DataPivotHierarchy.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'position: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.DataPivotHierarchy#setToDefault:member(1)'
-    summary: Reset the DataPivotHierarchy back to its default values.
-    name: setToDefault()
-    fullName: setToDefault()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'setToDefault(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.DataPivotHierarchy#showAs:member'
-    summary: Specifies if the data should be shown as a specific summary calculation.
-    name: showAs
+        type: number
+  - name: showAs
+    uid: 'excel!Excel.DataPivotHierarchy#showAs:member'
+    package: excel!
     fullName: showAs
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the data should be shown as a specific summary calculation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'showAs: ShowAsRule;'
       return:
-        type:
-          - 'excel!Excel.ShowAsRule:interface'
+        type: '<xref uid="excel!Excel.ShowAsRule:interface" />'
         description: |-
 
 
@@ -167,13 +125,14 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.DataPivotHierarchy#summarizeBy:member'
-    summary: Specifies if all items of the DataPivotHierarchy are shown.
-    name: summarizeBy
+  - name: summarizeBy
+    uid: 'excel!Excel.DataPivotHierarchy#summarizeBy:member'
+    package: excel!
     fullName: summarizeBy
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if all items of the DataPivotHierarchy are shown.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         summarizeBy:
@@ -192,54 +151,8 @@ items:
                     | "Variance"
                     | "VarianceP";
       return:
-        type:
-          - 'excel!Excel.DataPivotHierarchy#summarizeBy~0:complex'
-references:
-  - uid: 'excel!Excel.PivotField:interface'
-    name: PivotField
-    fullName: Excel.PivotField
-  - uid: 'excel!Excel.ShowAsRule:interface'
-    name: ShowAsRule
-    fullName: Excel.ShowAsRule
-  - uid: 'excel!Excel.DataPivotHierarchy#summarizeBy~0:complex'
-    name: |-
-      | AggregationFunction
-                  | "Unknown"
-                  | "Automatic"
-                  | "Sum"
-                  | "Count"
-                  | "Average"
-                  | "Max"
-                  | "Min"
-                  | "Product"
-                  | "CountNumbers"
-                  | "StandardDeviation"
-                  | "StandardDeviationP"
-                  | "Variance"
-                  | "VarianceP"
-    fullName: |-
-      | Excel.AggregationFunction
-                  | "Unknown"
-                  | "Automatic"
-                  | "Sum"
-                  | "Count"
-                  | "Average"
-                  | "Max"
-                  | "Min"
-                  | "Product"
-                  | "CountNumbers"
-                  | "StandardDeviation"
-                  | "StandardDeviationP"
-                  | "Variance"
-                  | "VarianceP"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.AggregationFunction:enum'
-        name: AggregationFunction
-        fullName: Excel.AggregationFunction
-      - name: |2-
-
+        type: |-
+          | <xref uid="excel!Excel.AggregationFunction:enum" />
                       | "Unknown"
                       | "Automatic"
                       | "Sum"
@@ -253,18 +166,38 @@ references:
                       | "StandardDeviationP"
                       | "Variance"
                       | "VarianceP"
-        fullName: |2-
-
-                      | "Unknown"
-                      | "Automatic"
-                      | "Sum"
-                      | "Count"
-                      | "Average"
-                      | "Max"
-                      | "Min"
-                      | "Product"
-                      | "CountNumbers"
-                      | "StandardDeviation"
-                      | "StandardDeviationP"
-                      | "Variance"
-                      | "VarianceP"
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.DataPivotHierarchy#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: setToDefault()
+    uid: 'excel!Excel.DataPivotHierarchy#setToDefault:member(1)'
+    package: excel!
+    fullName: setToDefault()
+    summary: Reset the DataPivotHierarchy back to its default values.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setToDefault(): void;'
+      return:
+        type: void
+        description: ''

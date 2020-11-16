@@ -1,30 +1,30 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.PageBreakCollection:interface'
-    name: Excel.PageBreakCollection
-    fullName: Excel.PageBreakCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.PageBreakCollection
+uid: 'excel!Excel.PageBreakCollection:interface'
+package: excel!
+fullName: Excel.PageBreakCollection
+summary: ''
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: add(pageBreakRange)
+    uid: 'excel!Excel.PageBreakCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.PageBreakCollection#add:member(1)'
-      - 'excel!Excel.PageBreakCollection#getCount:member(1)'
-      - 'excel!Excel.PageBreakCollection#getItem:member(1)'
-      - 'excel!Excel.PageBreakCollection#load:member(1)'
-      - 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
-  - uid: 'excel!Excel.PageBreakCollection#add:member(1)'
-    summary: Adds a page break before the top-left cell of the range specified.
-    name: add(pageBreakRange)
     fullName: add(pageBreakRange)
-    langs:
-      - typeScript
-    type: method
+    summary: Adds a page break before the top-left cell of the range specified.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'add(pageBreakRange: Range | string): PageBreak;'
+      parameters:
+        - id: pageBreakRange
+          description: The range immediately after the page break to be added.
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type:
-          - 'excel!Excel.PageBreak:interface'
+        type: '<xref uid="excel!Excel.PageBreak:interface" />'
         description: |-
 
 
@@ -37,94 +37,67 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: pageBreakRange
-          description: The range immediately after the page break to be added.
-          type:
-            - 'excel!Excel.PageBreakCollection#add~0:complex'
-  - uid: 'excel!Excel.PageBreakCollection#getCount:member(1)'
-    summary: Gets the number of page breaks in the collection.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.PageBreakCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of page breaks in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.PageBreakCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.PageBreakCollection#getItem:member(1)'
-    summary: Gets a page break object via the index.
-    name: getItem(index)
+  - name: getItem(index)
+    uid: 'excel!Excel.PageBreakCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a page break object via the index.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(index: number): PageBreak;'
-      return:
-        type:
-          - 'excel!Excel.PageBreak:interface'
-        description: ''
       parameters:
         - id: index
           description: Index of the page break.
-          type:
-            - number
-  - uid: 'excel!Excel.PageBreakCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.PageBreak:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.PageBreakCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
-    summary: Resets all manual page breaks in the collection.
-    name: removePageBreaks()
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: removePageBreaks()
+    uid: 'excel!Excel.PageBreakCollection#removePageBreaks:member(1)'
+    package: excel!
     fullName: removePageBreaks()
-    langs:
-      - typeScript
-    type: method
+    summary: Resets all manual page breaks in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'removePageBreaks(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''
-references:
-  - uid: 'excel!Excel.PageBreak:interface'
-    name: PageBreak
-    fullName: Excel.PageBreak
-  - uid: 'excel!Excel.PageBreakCollection#add~0:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.PageBreakCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>

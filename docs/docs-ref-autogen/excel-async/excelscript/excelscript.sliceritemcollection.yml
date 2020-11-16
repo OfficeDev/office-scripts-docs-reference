@@ -1,116 +1,98 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SlicerItemCollection:interface'
-    summary: Represents a collection of all the slicer item objects on the slicer.
-    name: Excel.SlicerItemCollection
-    fullName: Excel.SlicerItemCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SlicerItemCollection
+uid: 'excel!Excel.SlicerItemCollection:interface'
+package: excel!
+fullName: Excel.SlicerItemCollection
+summary: Represents a collection of all the slicer item objects on the slicer.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getCount()
+    uid: 'excel!Excel.SlicerItemCollection#getCount:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.SlicerItemCollection#getCount:member(1)'
-      - 'excel!Excel.SlicerItemCollection#getItem:member(1)'
-      - 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
-      - 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SlicerItemCollection#load:member(1)'
-  - uid: 'excel!Excel.SlicerItemCollection#getCount:member(1)'
-    summary: Returns the number of slicer items in the slicer.
-    name: getCount()
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of slicer items in the slicer.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.SlicerItemCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.SlicerItemCollection#getItem:member(1)'
-    summary: Gets a slicer item object using its key or name.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.SlicerItemCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a slicer item object using its key or name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): SlicerItem;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:interface'
-        description: ''
       parameters:
         - id: key
           description: The key or name of the slicer item.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
-    summary: Gets a slicer item based on its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.SlicerItem:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.SlicerItemCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a slicer item based on its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): SlicerItem;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:interface'
-        description: ''
       parameters:
         - id: index
           description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a slicer item using its key or name. If the slicer item does not exist, will return a null object.'
-    name: getItemOrNullObject(key)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.SlicerItem:interface" />'
+        description: ''
+  - name: getItemOrNullObject(key)
+    uid: 'excel!Excel.SlicerItemCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a slicer item using its key or name. If the slicer item does not
+      exist, will return a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(key: string): SlicerItem;'
-      return:
-        type:
-          - 'excel!Excel.SlicerItem:interface'
-        description: ''
       parameters:
         - id: key
           description: Key or name of the slicer to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerItemCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.SlicerItem:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SlicerItemCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.SlicerItemCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.SlicerItem:interface'
-    name: SlicerItem
-    fullName: Excel.SlicerItem
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

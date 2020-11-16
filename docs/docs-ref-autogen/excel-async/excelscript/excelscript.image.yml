@@ -1,25 +1,24 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.Image:interface'
-    summary: 'Represents an image in the worksheet. To get the corresponding Shape object, use Image.shape.'
-    name: Excel.Image
-    fullName: Excel.Image
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.Image
+uid: 'excel!Excel.Image:interface'
+package: excel!
+fullName: Excel.Image
+summary: >-
+  Represents an image in the worksheet. To get the corresponding Shape object,
+  use Image.shape.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: format
+    uid: 'excel!Excel.Image#format:member'
     package: excel!
-    children:
-      - 'excel!Excel.Image#format:member'
-      - 'excel!Excel.Image#id:member'
-      - 'excel!Excel.Image#load:member(1)'
-      - 'excel!Excel.Image#shape:member'
-  - uid: 'excel!Excel.Image#format:member'
-    summary: Returns the format of the image.
-    name: format
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the format of the image.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         readonly format:
@@ -31,8 +30,14 @@ items:
                     | "Png"
                     | "Svg";
       return:
-        type:
-          - 'excel!Excel.Image#format~0:complex'
+        type: |-
+          | <xref uid="excel!Excel.PictureFormat:enum" />
+                      | "Unknown"
+                      | "Bmp"
+                      | "Jpeg"
+                      | "Gif"
+                      | "Png"
+                      | "Svg"
         description: |-
 
 
@@ -49,90 +54,49 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.Image#id:member'
-    summary: Specifies the shape identifier for the image object.
-    name: id
+  - name: id
+    uid: 'excel!Excel.Image#id:member'
+    package: excel!
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the shape identifier for the image object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Image#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.Image#shape:member'
-    summary: Returns the Shape object associated with the image.
-    name: shape
+        type: string
+  - name: shape
+    uid: 'excel!Excel.Image#shape:member'
+    package: excel!
     fullName: shape
-    langs:
-      - typeScript
-    type: property
+    summary: Returns the Shape object associated with the image.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly shape: Shape;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-references:
-  - uid: 'excel!Excel.Image#format~0:complex'
-    name: |-
-      | PictureFormat
-                  | "Unknown"
-                  | "Bmp"
-                  | "Jpeg"
-                  | "Gif"
-                  | "Png"
-                  | "Svg"
-    fullName: |-
-      | Excel.PictureFormat
-                  | "Unknown"
-                  | "Bmp"
-                  | "Jpeg"
-                  | "Gif"
-                  | "Png"
-                  | "Svg"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.PictureFormat:enum'
-        name: PictureFormat
-        fullName: Excel.PictureFormat
-      - name: |2-
-
-                      | "Unknown"
-                      | "Bmp"
-                      | "Jpeg"
-                      | "Gif"
-                      | "Png"
-                      | "Svg"
-        fullName: |2-
-
-                      | "Unknown"
-                      | "Bmp"
-                      | "Jpeg"
-                      | "Gif"
-                      | "Png"
-                      | "Svg"
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.Image#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

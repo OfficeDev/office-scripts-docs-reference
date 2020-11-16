@@ -1,46 +1,47 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.DataConnectionCollection:interface'
-    summary: Represents a collection of all the Data Connections that are part of the workbook or worksheet.
-    name: Excel.DataConnectionCollection
-    fullName: Excel.DataConnectionCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.DataConnectionCollection
+uid: 'excel!Excel.DataConnectionCollection:interface'
+package: excel!
+fullName: Excel.DataConnectionCollection
+summary: >-
+  Represents a collection of all the Data Connections that are part of the
+  workbook or worksheet.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.DataConnectionCollection#load:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.DataConnectionCollection#load:member(1)'
-      - 'excel!Excel.DataConnectionCollection#refreshAll:member(1)'
-  - uid: 'excel!Excel.DataConnectionCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.DataConnectionCollection#refreshAll:member(1)'
-    summary: Refreshes all the Data Connections in the collection.
-    name: refreshAll()
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: refreshAll()
+    uid: 'excel!Excel.DataConnectionCollection#refreshAll:member(1)'
+    package: excel!
     fullName: refreshAll()
-    langs:
-      - typeScript
-    type: method
+    summary: Refreshes all the Data Connections in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'refreshAll(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''

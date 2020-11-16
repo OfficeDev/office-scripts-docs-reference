@@ -1,27 +1,24 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SlicerCollection:interface'
-    summary: Represents a collection of all the slicer objects on the workbook or a worksheet.
-    name: Excel.SlicerCollection
-    fullName: Excel.SlicerCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SlicerCollection
+uid: 'excel!Excel.SlicerCollection:interface'
+package: excel!
+fullName: Excel.SlicerCollection
+summary: >-
+  Represents a collection of all the slicer objects on the workbook or a
+  worksheet.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(slicerSource, sourceField, slicerDestination)'
+    uid: 'excel!Excel.SlicerCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.SlicerCollection#add:member(1)'
-      - 'excel!Excel.SlicerCollection#getCount:member(1)'
-      - 'excel!Excel.SlicerCollection#getItem:member(1)'
-      - 'excel!Excel.SlicerCollection#getItemAt:member(1)'
-      - 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SlicerCollection#load:member(1)'
-  - uid: 'excel!Excel.SlicerCollection#add:member(1)'
-    summary: Adds a new slicer to the workbook.
-    name: 'add(slicerSource, sourceField, slicerDestination)'
     fullName: 'add(slicerSource, sourceField, slicerDestination)'
-    langs:
-      - typeScript
-    type: method
+    summary: Adds a new slicer to the workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
@@ -29,9 +26,35 @@ items:
                     sourceField: string | PivotField | number | TableColumn,
                     slicerDestination?: string | Worksheet
                 ): Slicer;
+      parameters:
+        - id: slicerSource
+          description: >-
+            The data source that the new slicer will be based on. It can be a
+            PivotTable object, a Table object or a string. When a PivotTable
+            object is passed, the data source is the source of the PivotTable
+            object. When a Table object is passed, the data source is the Table
+            object. When a string is passed, it is interpreted as the name/id of
+            a PivotTable/Table.
+          type: >-
+            string | <xref uid="excel!Excel.PivotTable:interface" /> | <xref
+            uid="excel!Excel.Table:interface" />
+        - id: sourceField
+          description: >-
+            The field in the data source to filter by. It can be a PivotField
+            object, a TableColumn object, the id of a PivotField or the id/name
+            of TableColumn.
+          type: >-
+            string | <xref uid="excel!Excel.PivotField:interface" /> | number |
+            <xref uid="excel!Excel.TableColumn:interface" />
+        - id: slicerDestination
+          description: >-
+            Optional. The worksheet where the new slicer will be created in. It
+            can be a Worksheet object or the name/id of a worksheet. This
+            parameter can be omitted if the slicer collection is retrieved from
+            worksheet.
+          type: 'string | <xref uid="excel!Excel.Worksheet:interface" />'
       return:
-        type:
-          - 'excel!Excel.Slicer:interface'
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
         description: |-
 
 
@@ -48,161 +71,90 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: slicerSource
-          description: >-
-            The data source that the new slicer will be based on. It can be a PivotTable object, a Table object or a
-            string. When a PivotTable object is passed, the data source is the source of the PivotTable object. When a
-            Table object is passed, the data source is the Table object. When a string is passed, it is interpreted as
-            the name/id of a PivotTable/Table.
-          type:
-            - 'excel!Excel.SlicerCollection#add~0:complex'
-        - id: sourceField
-          description: >-
-            The field in the data source to filter by. It can be a PivotField object, a TableColumn object, the id of a
-            PivotField or the id/name of TableColumn.
-          type:
-            - 'excel!Excel.SlicerCollection#add~1:complex'
-        - id: slicerDestination
-          description: >-
-            Optional. The worksheet where the new slicer will be created in. It can be a Worksheet object or the name/id
-            of a worksheet. This parameter can be omitted if the slicer collection is retrieved from worksheet.
-          type:
-            - 'excel!Excel.SlicerCollection#add~2:complex'
-  - uid: 'excel!Excel.SlicerCollection#getCount:member(1)'
-    summary: Returns the number of slicers in the collection.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.SlicerCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of slicers in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.SlicerCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.SlicerCollection#getItem:member(1)'
-    summary: Gets a slicer object using its name or id.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.SlicerCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a slicer object using its name or id.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:interface'
-        description: ''
       parameters:
         - id: key
           description: The name or id of the slicer.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerCollection#getItemAt:member(1)'
-    summary: Gets a slicer based on its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.SlicerCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a slicer based on its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:interface'
-        description: ''
       parameters:
         - id: index
           description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a slicer using its name or id. If the slicer does not exist, will return a null object.'
-    name: getItemOrNullObject(key)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
+        description: ''
+  - name: getItemOrNullObject(key)
+    uid: 'excel!Excel.SlicerCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a slicer using its name or id. If the slicer does not exist, will
+      return a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(key: string): Slicer;'
-      return:
-        type:
-          - 'excel!Excel.Slicer:interface'
-        description: ''
       parameters:
         - id: key
           description: Name or Id of the slicer to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Slicer:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SlicerCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Slicer:interface'
-    name: Slicer
-    fullName: Excel.Slicer
-  - uid: 'excel!Excel.SlicerCollection#add~0:complex'
-    name: string | PivotTable | Table
-    fullName: string | Excel.PivotTable | Excel.Table
-    spec.typeScript:
-      - name: 'string | '
-        fullName: 'string | '
-      - uid: 'excel!Excel.PivotTable:interface'
-        name: PivotTable
-        fullName: Excel.PivotTable
-      - name: ' | '
-        fullName: ' | '
-      - uid: 'excel!Excel.Table:interface'
-        name: Table
-        fullName: Excel.Table
-  - uid: 'excel!Excel.SlicerCollection#add~1:complex'
-    name: string | PivotField | number | TableColumn
-    fullName: string | Excel.PivotField | number | Excel.TableColumn
-    spec.typeScript:
-      - name: 'string | '
-        fullName: 'string | '
-      - uid: 'excel!Excel.PivotField:interface'
-        name: PivotField
-        fullName: Excel.PivotField
-      - name: ' | number | '
-        fullName: ' | number | '
-      - uid: 'excel!Excel.TableColumn:interface'
-        name: TableColumn
-        fullName: Excel.TableColumn
-  - uid: 'excel!Excel.SlicerCollection#add~2:complex'
-    name: string | Worksheet
-    fullName: string | Excel.Worksheet
-    spec.typeScript:
-      - name: 'string | '
-        fullName: 'string | '
-      - uid: 'excel!Excel.Worksheet:interface'
-        name: Worksheet
-        fullName: Excel.Worksheet
-  - uid: 'excel!Excel.SlicerCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

@@ -1,28 +1,59 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.TableSort:interface'
-    summary: Manages sorting operations on Table objects.
-    name: Excel.TableSort
-    fullName: Excel.TableSort
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.TableSort
+uid: 'excel!Excel.TableSort:interface'
+package: excel!
+fullName: Excel.TableSort
+summary: Manages sorting operations on Table objects.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: fields
+    uid: 'excel!Excel.TableSort#fields:member'
     package: excel!
-    children:
-      - 'excel!Excel.TableSort#apply:member(1)'
-      - 'excel!Excel.TableSort#clear:member(1)'
-      - 'excel!Excel.TableSort#fields:member'
-      - 'excel!Excel.TableSort#load:member(1)'
-      - 'excel!Excel.TableSort#matchCase:member'
-      - 'excel!Excel.TableSort#method:member'
-      - 'excel!Excel.TableSort#reapply:member(1)'
-  - uid: 'excel!Excel.TableSort#apply:member(1)'
-    summary: Perform a sort operation.
-    name: 'apply(fields, matchCase, method)'
+    fullName: fields
+    summary: Specifies the current conditions used to last sort the table.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly fields: SortField[];'
+      return:
+        type: '<xref uid="excel!Excel.SortField:interface" />[]'
+  - name: matchCase
+    uid: 'excel!Excel.TableSort#matchCase:member'
+    package: excel!
+    fullName: matchCase
+    summary: Specifies if the casing impacts the last sort of the table.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly matchCase: boolean;'
+      return:
+        type: boolean
+  - name: method
+    uid: 'excel!Excel.TableSort#method:member'
+    package: excel!
+    fullName: method
+    summary: Represents Chinese character ordering method last used to sort the table.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly method: SortMethod | "PinYin" | "StrokeCount";'
+      return:
+        type: '<xref uid="excel!Excel.SortMethod:enum" /> | "PinYin" | "StrokeCount"'
+methods:
+  - name: 'apply(fields, matchCase, method)'
+    uid: 'excel!Excel.TableSort#apply:member(1)'
+    package: excel!
     fullName: 'apply(fields, matchCase, method)'
-    langs:
-      - typeScript
-    type: method
+    summary: Perform a sort operation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         apply(
@@ -30,9 +61,21 @@ items:
                     matchCase?: boolean,
                     method?: SortMethod | "PinYin" | "StrokeCount"
                 ): void;
+      parameters:
+        - id: fields
+          description: The list of conditions to sort on.
+          type: '<xref uid="excel!Excel.SortField:interface" />[]'
+        - id: matchCase
+          description: Optional. Whether to have the casing impact string ordering.
+          type: boolean
+        - id: method
+          description: Optional. The ordering method used for Chinese characters.
+          type: >-
+            <xref uid="excel!Excel.SortMethod:enum" /> | "PinYin" |
+            "StrokeCount"
+                    
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -51,141 +94,52 @@ items:
           // Sort the table using the first column.
           newTable.sort.apply([{ key: 0, ascending: true }]);
           ```
-      parameters:
-        - id: fields
-          description: The list of conditions to sort on.
-          type:
-            - 'excel!Excel.TableSort#apply~0:complex'
-        - id: matchCase
-          description: Optional. Whether to have the casing impact string ordering.
-          type:
-            - boolean
-        - id: method
-          description: Optional. The ordering method used for Chinese characters.
-          type:
-            - 'excel!Excel.TableSort#apply~1:complex'
-  - uid: 'excel!Excel.TableSort#clear:member(1)'
-    summary: >-
-      Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the
-      state of the header buttons.
-    name: clear()
+  - name: clear()
+    uid: 'excel!Excel.TableSort#clear:member(1)'
+    package: excel!
     fullName: clear()
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Clears the sorting that is currently on the table. While this doesn't
+      modify the table's ordering, it clears the state of the header buttons.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'clear(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''
-  - uid: 'excel!Excel.TableSort#fields:member'
-    summary: Specifies the current conditions used to last sort the table.
-    name: fields
-    fullName: fields
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly fields: SortField[];'
-      return:
-        type:
-          - 'excel!Excel.TableSort#fields~0:complex'
-  - uid: 'excel!Excel.TableSort#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+  - name: load(propertyNames)
+    uid: 'excel!Excel.TableSort#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.TableSort#matchCase:member'
-    summary: Specifies if the casing impacts the last sort of the table.
-    name: matchCase
-    fullName: matchCase
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly matchCase: boolean;'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.TableSort#method:member'
-    summary: Represents Chinese character ordering method last used to sort the table.
-    name: method
-    fullName: method
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly method: SortMethod | "PinYin" | "StrokeCount";'
-      return:
-        type:
-          - 'excel!Excel.TableSort#method~0:complex'
-  - uid: 'excel!Excel.TableSort#reapply:member(1)'
-    summary: Reapplies the current sorting parameters to the table.
-    name: reapply()
+        type: void
+        description: ''
+  - name: reapply()
+    uid: 'excel!Excel.TableSort#reapply:member(1)'
+    package: excel!
     fullName: reapply()
-    langs:
-      - typeScript
-    type: method
+    summary: Reapplies the current sorting parameters to the table.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'reapply(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''
-references:
-  - uid: 'excel!Excel.TableSort#apply~0:complex'
-    name: 'SortField[]'
-    fullName: 'Excel.SortField[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.SortField:interface'
-        name: SortField
-        fullName: Excel.SortField
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.TableSort#apply~1:complex'
-    name: SortMethod | "PinYin" | "StrokeCount"
-    fullName: Excel.SortMethod | "PinYin" | "StrokeCount"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortMethod:enum'
-        name: SortMethod
-        fullName: Excel.SortMethod
-      - name: |2-
-           | "PinYin" | "StrokeCount"
-                  
-        fullName: |2-
-           | "PinYin" | "StrokeCount"
-                  
-  - uid: 'excel!Excel.TableSort#fields~0:complex'
-    name: 'SortField[]'
-    fullName: 'Excel.SortField[]'
-    spec.typeScript:
-      - uid: 'excel!Excel.SortField:interface'
-        name: SortField
-        fullName: Excel.SortField
-      - name: '[]'
-        fullName: '[]'
-  - uid: 'excel!Excel.TableSort#method~0:complex'
-    name: SortMethod | "PinYin" | "StrokeCount"
-    fullName: Excel.SortMethod | "PinYin" | "StrokeCount"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortMethod:enum'
-        name: SortMethod
-        fullName: Excel.SortMethod
-      - name: ' | "PinYin" | "StrokeCount"'
-        fullName: ' | "PinYin" | "StrokeCount"'

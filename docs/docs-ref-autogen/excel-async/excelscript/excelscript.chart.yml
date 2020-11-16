@@ -1,92 +1,52 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.Chart:interface'
-    summary: >-
-      Represents a chart object in a workbook. To learn more about the Chart object model, see [Work with charts using
-      the Excel JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-charts)<!-- -->.
-    name: Excel.Chart
-    fullName: Excel.Chart
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.Chart
+uid: 'excel!Excel.Chart:interface'
+package: excel!
+fullName: Excel.Chart
+summary: >-
+  Represents a chart object in a workbook. To learn more about the Chart object
+  model, see [Work with charts using the Excel JavaScript
+  API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-charts)<!--
+  -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: axes
+    uid: 'excel!Excel.Chart#axes:member'
     package: excel!
-    children:
-      - 'excel!Excel.Chart#activate:member(1)'
-      - 'excel!Excel.Chart#axes:member'
-      - 'excel!Excel.Chart#categoryLabelLevel:member'
-      - 'excel!Excel.Chart#chartType:member'
-      - 'excel!Excel.Chart#dataLabels:member'
-      - 'excel!Excel.Chart#delete:member(1)'
-      - 'excel!Excel.Chart#displayBlanksAs:member'
-      - 'excel!Excel.Chart#format:member'
-      - 'excel!Excel.Chart#getImage:member(1)'
-      - 'excel!Excel.Chart#height:member'
-      - 'excel!Excel.Chart#id:member'
-      - 'excel!Excel.Chart#left:member'
-      - 'excel!Excel.Chart#legend:member'
-      - 'excel!Excel.Chart#load:member(1)'
-      - 'excel!Excel.Chart#name:member'
-      - 'excel!Excel.Chart#pivotOptions:member'
-      - 'excel!Excel.Chart#plotArea:member'
-      - 'excel!Excel.Chart#plotBy:member'
-      - 'excel!Excel.Chart#plotVisibleOnly:member'
-      - 'excel!Excel.Chart#series:member'
-      - 'excel!Excel.Chart#seriesNameLevel:member'
-      - 'excel!Excel.Chart#setData:member(1)'
-      - 'excel!Excel.Chart#setPosition:member(1)'
-      - 'excel!Excel.Chart#showAllFieldButtons:member'
-      - 'excel!Excel.Chart#showDataLabelsOverMaximum:member'
-      - 'excel!Excel.Chart#style:member'
-      - 'excel!Excel.Chart#title:member'
-      - 'excel!Excel.Chart#top:member'
-      - 'excel!Excel.Chart#width:member'
-      - 'excel!Excel.Chart#worksheet:member'
-  - uid: 'excel!Excel.Chart#activate:member(1)'
-    summary: Activates the chart in the Excel UI.
-    name: activate()
-    fullName: activate()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'activate(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.Chart#axes:member'
-    summary: Represents chart axes.
-    name: axes
     fullName: axes
-    langs:
-      - typeScript
-    type: property
+    summary: Represents chart axes.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly axes: ChartAxes;'
       return:
-        type:
-          - 'excel!Excel.ChartAxes:interface'
-  - uid: 'excel!Excel.Chart#categoryLabelLevel:member'
-    summary: >-
-      Specifies a ChartCategoryLabelLevel enumeration constant referring to the level of where the category labels are
-      being sourced from.
-    name: categoryLabelLevel
+        type: '<xref uid="excel!Excel.ChartAxes:interface" />'
+  - name: categoryLabelLevel
+    uid: 'excel!Excel.Chart#categoryLabelLevel:member'
+    package: excel!
     fullName: categoryLabelLevel
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies a ChartCategoryLabelLevel enumeration constant referring to the
+      level of where the category labels are being sourced from.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'categoryLabelLevel: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#chartType:member'
-    summary: Specifies the type of the chart. See Excel.ChartType for details.
-    name: chartType
+        type: number
+  - name: chartType
+    uid: 'excel!Excel.Chart#chartType:member'
+    package: excel!
     fullName: chartType
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the type of the chart. See Excel.ChartType for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         chartType:
@@ -174,40 +134,110 @@ items:
                     | "Sunburst"
                     | "Funnel";
       return:
-        type:
-          - 'excel!Excel.Chart#chartType~0:complex'
-  - uid: 'excel!Excel.Chart#dataLabels:member'
-    summary: Represents the datalabels on the chart.
-    name: dataLabels
+        type: |-
+          | <xref uid="excel!Excel.ChartType:enum" />
+                      | "Invalid"
+                      | "ColumnClustered"
+                      | "ColumnStacked"
+                      | "ColumnStacked100"
+                      | "3DColumnClustered"
+                      | "3DColumnStacked"
+                      | "3DColumnStacked100"
+                      | "BarClustered"
+                      | "BarStacked"
+                      | "BarStacked100"
+                      | "3DBarClustered"
+                      | "3DBarStacked"
+                      | "3DBarStacked100"
+                      | "LineStacked"
+                      | "LineStacked100"
+                      | "LineMarkers"
+                      | "LineMarkersStacked"
+                      | "LineMarkersStacked100"
+                      | "PieOfPie"
+                      | "PieExploded"
+                      | "3DPieExploded"
+                      | "BarOfPie"
+                      | "XyscatterSmooth"
+                      | "XyscatterSmoothNoMarkers"
+                      | "XyscatterLines"
+                      | "XyscatterLinesNoMarkers"
+                      | "AreaStacked"
+                      | "AreaStacked100"
+                      | "3DAreaStacked"
+                      | "3DAreaStacked100"
+                      | "DoughnutExploded"
+                      | "RadarMarkers"
+                      | "RadarFilled"
+                      | "Surface"
+                      | "SurfaceWireframe"
+                      | "SurfaceTopView"
+                      | "SurfaceTopViewWireframe"
+                      | "Bubble"
+                      | "Bubble3DEffect"
+                      | "StockHLC"
+                      | "StockOHLC"
+                      | "StockVHLC"
+                      | "StockVOHLC"
+                      | "CylinderColClustered"
+                      | "CylinderColStacked"
+                      | "CylinderColStacked100"
+                      | "CylinderBarClustered"
+                      | "CylinderBarStacked"
+                      | "CylinderBarStacked100"
+                      | "CylinderCol"
+                      | "ConeColClustered"
+                      | "ConeColStacked"
+                      | "ConeColStacked100"
+                      | "ConeBarClustered"
+                      | "ConeBarStacked"
+                      | "ConeBarStacked100"
+                      | "ConeCol"
+                      | "PyramidColClustered"
+                      | "PyramidColStacked"
+                      | "PyramidColStacked100"
+                      | "PyramidBarClustered"
+                      | "PyramidBarStacked"
+                      | "PyramidBarStacked100"
+                      | "PyramidCol"
+                      | "3DColumn"
+                      | "Line"
+                      | "3DLine"
+                      | "3DPie"
+                      | "Pie"
+                      | "Xyscatter"
+                      | "3DArea"
+                      | "Area"
+                      | "Doughnut"
+                      | "Radar"
+                      | "Histogram"
+                      | "Boxwhisker"
+                      | "Pareto"
+                      | "RegionMap"
+                      | "Treemap"
+                      | "Waterfall"
+                      | "Sunburst"
+                      | "Funnel"
+  - name: dataLabels
+    uid: 'excel!Excel.Chart#dataLabels:member'
+    package: excel!
     fullName: dataLabels
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the datalabels on the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly dataLabels: ChartDataLabels;'
       return:
-        type:
-          - 'excel!Excel.ChartDataLabels:interface'
-  - uid: 'excel!Excel.Chart#delete:member(1)'
-    summary: Deletes the chart object.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.Chart#displayBlanksAs:member'
-    summary: Specifies the way that blank cells are plotted on a chart.
-    name: displayBlanksAs
+        type: '<xref uid="excel!Excel.ChartDataLabels:interface" />'
+  - name: displayBlanksAs
+    uid: 'excel!Excel.Chart#displayBlanksAs:member'
+    package: excel!
     fullName: displayBlanksAs
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the way that blank cells are plotted on a chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         displayBlanksAs:
@@ -216,29 +246,291 @@ items:
                     | "Zero"
                     | "Interplotted";
       return:
-        type:
-          - 'excel!Excel.Chart#displayBlanksAs~0:complex'
-  - uid: 'excel!Excel.Chart#format:member'
-    summary: Encapsulates the format properties for the chart area.
-    name: format
+        type: |-
+          | <xref uid="excel!Excel.ChartDisplayBlanksAs:enum" />
+                      | "NotPlotted"
+                      | "Zero"
+                      | "Interplotted"
+  - name: format
+    uid: 'excel!Excel.Chart#format:member'
+    package: excel!
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: Encapsulates the format properties for the chart area.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ChartAreaFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartAreaFormat:interface'
-  - uid: 'excel!Excel.Chart#getImage:member(1)'
+        type: '<xref uid="excel!Excel.ChartAreaFormat:interface" />'
+  - name: height
+    uid: 'excel!Excel.Chart#height:member'
+    package: excel!
+    fullName: height
+    summary: 'Specifies the height, in points, of the chart object.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'height: number;'
+      return:
+        type: number
+  - name: id
+    uid: 'excel!Excel.Chart#id:member'
+    package: excel!
+    fullName: id
+    summary: The unique id of chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly id: string;'
+      return:
+        type: string
+  - name: left
+    uid: 'excel!Excel.Chart#left:member'
+    package: excel!
+    fullName: left
     summary: >-
-      Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions. The aspect ratio
-      is preserved as part of the resizing.
-    name: 'getImage(width, height, fittingMode)'
+      The distance, in points, from the left side of the chart to the worksheet
+      origin.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'left: number;'
+      return:
+        type: number
+  - name: legend
+    uid: 'excel!Excel.Chart#legend:member'
+    package: excel!
+    fullName: legend
+    summary: Represents the legend for the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly legend: ChartLegend;'
+      return:
+        type: '<xref uid="excel!Excel.ChartLegend:interface" />'
+  - name: name
+    uid: 'excel!Excel.Chart#name:member'
+    package: excel!
+    fullName: name
+    summary: Specifies the name of a chart object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'name: string;'
+      return:
+        type: string
+  - name: pivotOptions
+    uid: 'excel!Excel.Chart#pivotOptions:member'
+    package: excel!
+    fullName: pivotOptions
+    summary: Encapsulates the options for a pivot chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly pivotOptions: ChartPivotOptions;'
+      return:
+        type: '<xref uid="excel!Excel.ChartPivotOptions:interface" />'
+  - name: plotArea
+    uid: 'excel!Excel.Chart#plotArea:member'
+    package: excel!
+    fullName: plotArea
+    summary: Represents the plotArea for the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly plotArea: ChartPlotArea;'
+      return:
+        type: '<xref uid="excel!Excel.ChartPlotArea:interface" />'
+  - name: plotBy
+    uid: 'excel!Excel.Chart#plotBy:member'
+    package: excel!
+    fullName: plotBy
+    summary: Specifies the way columns or rows are used as data series on the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'plotBy: ChartPlotBy | "Rows" | "Columns";'
+      return:
+        type: '<xref uid="excel!Excel.ChartPlotBy:enum" /> | "Rows" | "Columns"'
+  - name: plotVisibleOnly
+    uid: 'excel!Excel.Chart#plotVisibleOnly:member'
+    package: excel!
+    fullName: plotVisibleOnly
+    summary: >-
+      True if only visible cells are plotted. False if both visible and hidden
+      cells are plotted.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'plotVisibleOnly: boolean;'
+      return:
+        type: boolean
+  - name: series
+    uid: 'excel!Excel.Chart#series:member'
+    package: excel!
+    fullName: series
+    summary: Represents either a single series or collection of series in the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly series: ChartSeriesCollection;'
+      return:
+        type: '<xref uid="excel!Excel.ChartSeriesCollection:interface" />'
+  - name: seriesNameLevel
+    uid: 'excel!Excel.Chart#seriesNameLevel:member'
+    package: excel!
+    fullName: seriesNameLevel
+    summary: >-
+      Specifies a ChartSeriesNameLevel enumeration constant referring to the
+      level of where the series names are being sourced from.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'seriesNameLevel: number;'
+      return:
+        type: number
+  - name: showAllFieldButtons
+    uid: 'excel!Excel.Chart#showAllFieldButtons:member'
+    package: excel!
+    fullName: showAllFieldButtons
+    summary: Specifies whether to display all field buttons on a PivotChart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'showAllFieldButtons: boolean;'
+      return:
+        type: boolean
+  - name: showDataLabelsOverMaximum
+    uid: 'excel!Excel.Chart#showDataLabelsOverMaximum:member'
+    package: excel!
+    fullName: showDataLabelsOverMaximum
+    summary: >-
+      Specifies whether to show the data labels when the value is greater than
+      the maximum value on the value axis. If value axis became smaller than the
+      size of data points, you can use this property to set whether to show the
+      data labels. This property applies to 2-D charts only.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'showDataLabelsOverMaximum: boolean;'
+      return:
+        type: boolean
+  - name: style
+    uid: 'excel!Excel.Chart#style:member'
+    package: excel!
+    fullName: style
+    summary: Specifies the chart style for the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'style: number;'
+      return:
+        type: number
+  - name: title
+    uid: 'excel!Excel.Chart#title:member'
+    package: excel!
+    fullName: title
+    summary: >-
+      Specifies the title of the specified chart, including the text,
+      visibility, position, and formatting of the title.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly title: ChartTitle;'
+      return:
+        type: '<xref uid="excel!Excel.ChartTitle:interface" />'
+  - name: top
+    uid: 'excel!Excel.Chart#top:member'
+    package: excel!
+    fullName: top
+    summary: >-
+      Specifies the distance, in points, from the top edge of the object to the
+      top of row 1 (on a worksheet) or the top of the chart area (on a chart).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'top: number;'
+      return:
+        type: number
+  - name: width
+    uid: 'excel!Excel.Chart#width:member'
+    package: excel!
+    fullName: width
+    summary: 'Specifies the width, in points, of the chart object.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'width: number;'
+      return:
+        type: number
+  - name: worksheet
+    uid: 'excel!Excel.Chart#worksheet:member'
+    package: excel!
+    fullName: worksheet
+    summary: The worksheet containing the current chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly worksheet: Worksheet;'
+      return:
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
+methods:
+  - name: activate()
+    uid: 'excel!Excel.Chart#activate:member(1)'
+    package: excel!
+    fullName: activate()
+    summary: Activates the chart in the Excel UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'activate(): void;'
+      return:
+        type: void
+        description: ''
+  - name: delete()
+    uid: 'excel!Excel.Chart#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Deletes the chart object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: 'getImage(width, height, fittingMode)'
+    uid: 'excel!Excel.Chart#getImage:member(1)'
+    package: excel!
     fullName: 'getImage(width, height, fittingMode)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Renders the chart as a base64-encoded image by scaling the chart to fit
+      the specified dimensions. The aspect ratio is preserved as part of the
+      resizing.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         getImage(
@@ -246,782 +538,97 @@ items:
                     height?: number,
                     fittingMode?: ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
                 ): ClientResult<string>;
-      return:
-        type:
-          - 'excel!Excel.Chart#getImage~0:complex'
-        description: ''
       parameters:
         - id: width
           description: (Optional) The desired width of the resulting image.
-          type:
-            - number
+          type: number
         - id: height
           description: (Optional) The desired height of the resulting image.
-          type:
-            - number
+          type: number
         - id: fittingMode
           description: >-
-            (Optional) The method used to scale the chart to the specified to the specified dimensions (if both height
-            and width are set).
-          type:
-            - 'excel!Excel.Chart#getImage~1:complex'
-  - uid: 'excel!Excel.Chart#height:member'
-    summary: 'Specifies the height, in points, of the chart object.'
-    name: height
-    fullName: height
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'height: number;'
+            (Optional) The method used to scale the chart to the specified to
+            the specified dimensions (if both height and width are set).
+          type: >-
+            <xref uid="excel!Excel.ImageFittingMode:enum" /> | "Fit" |
+            "FitAndCenter" | "Fill"
+                    
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#id:member'
-    summary: The unique id of chart.
-    name: id
-    fullName: id
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly id: string;'
-      return:
-        type:
-          - string
-  - uid: 'excel!Excel.Chart#left:member'
-    summary: 'The distance, in points, from the left side of the chart to the worksheet origin.'
-    name: left
-    fullName: left
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'left: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#legend:member'
-    summary: Represents the legend for the chart.
-    name: legend
-    fullName: legend
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly legend: ChartLegend;'
-      return:
-        type:
-          - 'excel!Excel.ChartLegend:interface'
-  - uid: 'excel!Excel.Chart#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;string&gt;'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.Chart#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.Chart#name:member'
-    summary: Specifies the name of a chart object.
-    name: name
-    fullName: name
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'name: string;'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.Chart#pivotOptions:member'
-    summary: Encapsulates the options for a pivot chart.
-    name: pivotOptions
-    fullName: pivotOptions
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly pivotOptions: ChartPivotOptions;'
-      return:
-        type:
-          - 'excel!Excel.ChartPivotOptions:interface'
-  - uid: 'excel!Excel.Chart#plotArea:member'
-    summary: Represents the plotArea for the chart.
-    name: plotArea
-    fullName: plotArea
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly plotArea: ChartPlotArea;'
-      return:
-        type:
-          - 'excel!Excel.ChartPlotArea:interface'
-  - uid: 'excel!Excel.Chart#plotBy:member'
-    summary: Specifies the way columns or rows are used as data series on the chart.
-    name: plotBy
-    fullName: plotBy
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'plotBy: ChartPlotBy | "Rows" | "Columns";'
-      return:
-        type:
-          - 'excel!Excel.Chart#plotBy~0:complex'
-  - uid: 'excel!Excel.Chart#plotVisibleOnly:member'
-    summary: True if only visible cells are plotted. False if both visible and hidden cells are plotted.
-    name: plotVisibleOnly
-    fullName: plotVisibleOnly
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'plotVisibleOnly: boolean;'
-      return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Chart#series:member'
-    summary: Represents either a single series or collection of series in the chart.
-    name: series
-    fullName: series
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly series: ChartSeriesCollection;'
-      return:
-        type:
-          - 'excel!Excel.ChartSeriesCollection:interface'
-  - uid: 'excel!Excel.Chart#seriesNameLevel:member'
-    summary: >-
-      Specifies a ChartSeriesNameLevel enumeration constant referring to the level of where the series names are being
-      sourced from.
-    name: seriesNameLevel
-    fullName: seriesNameLevel
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'seriesNameLevel: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#setData:member(1)'
-    summary: Resets the source data for the chart.
-    name: 'setData(sourceData, seriesBy)'
+        type: void
+        description: ''
+  - name: 'setData(sourceData, seriesBy)'
+    uid: 'excel!Excel.Chart#setData:member(1)'
+    package: excel!
     fullName: 'setData(sourceData, seriesBy)'
-    langs:
-      - typeScript
-    type: method
+    summary: Resets the source data for the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         setData(
                     sourceData: Range,
                     seriesBy?: ChartSeriesBy | "Auto" | "Columns" | "Rows"
                 ): void;
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: sourceData
           description: The range object corresponding to the source data.
-          type:
-            - 'excel!Excel.Range:interface'
+          type: '<xref uid="excel!Excel.Range:interface" />'
         - id: seriesBy
           description: >-
-            Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto
-            (default), Rows, and Columns. See Excel.ChartSeriesBy for details.
-          type:
-            - 'excel!Excel.Chart#setData~0:complex'
-  - uid: 'excel!Excel.Chart#setPosition:member(1)'
-    summary: Positions the chart relative to cells on the worksheet.
-    name: 'setPosition(startCell, endCell)'
+            Specifies the way columns or rows are used as data series on the
+            chart. Can be one of the following: Auto (default), Rows, and
+            Columns. See Excel.ChartSeriesBy for details.
+          type: >-
+            <xref uid="excel!Excel.ChartSeriesBy:enum" /> | "Auto" | "Columns" |
+            "Rows"
+                    
+      return:
+        type: void
+        description: ''
+  - name: 'setPosition(startCell, endCell)'
+    uid: 'excel!Excel.Chart#setPosition:member(1)'
+    package: excel!
     fullName: 'setPosition(startCell, endCell)'
-    langs:
-      - typeScript
-    type: method
+    summary: Positions the chart relative to cells on the worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'setPosition(startCell: Range | string, endCell?: Range | string): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: startCell
           description: >-
-            The start cell. This is where the chart will be moved to. The start cell is the top-left or top-right cell,
-            depending on the user's right-to-left display settings.
-          type:
-            - 'excel!Excel.Chart#setPosition~0:complex'
+            The start cell. This is where the chart will be moved to. The start
+            cell is the top-left or top-right cell, depending on the user's
+            right-to-left display settings.
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: endCell
           description: >-
-            (Optional) The end cell. If specified, the chart's width and height will be set to fully cover up this
-            cell/range.
-          type:
-            - 'excel!Excel.Chart#setPosition~1:complex'
-  - uid: 'excel!Excel.Chart#showAllFieldButtons:member'
-    summary: Specifies whether to display all field buttons on a PivotChart.
-    name: showAllFieldButtons
-    fullName: showAllFieldButtons
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'showAllFieldButtons: boolean;'
+            (Optional) The end cell. If specified, the chart's width and height
+            will be set to fully cover up this cell/range.
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Chart#showDataLabelsOverMaximum:member'
-    summary: >-
-      Specifies whether to show the data labels when the value is greater than the maximum value on the value axis. If
-      value axis became smaller than the size of data points, you can use this property to set whether to show the data
-      labels. This property applies to 2-D charts only.
-    name: showDataLabelsOverMaximum
-    fullName: showDataLabelsOverMaximum
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'showDataLabelsOverMaximum: boolean;'
-      return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.Chart#style:member'
-    summary: Specifies the chart style for the chart.
-    name: style
-    fullName: style
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'style: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#title:member'
-    summary: 'Specifies the title of the specified chart, including the text, visibility, position, and formatting of the title.'
-    name: title
-    fullName: title
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly title: ChartTitle;'
-      return:
-        type:
-          - 'excel!Excel.ChartTitle:interface'
-  - uid: 'excel!Excel.Chart#top:member'
-    summary: >-
-      Specifies the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the top
-      of the chart area (on a chart).
-    name: top
-    fullName: top
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'top: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#width:member'
-    summary: 'Specifies the width, in points, of the chart object.'
-    name: width
-    fullName: width
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'width: number;'
-      return:
-        type:
-          - number
-  - uid: 'excel!Excel.Chart#worksheet:member'
-    summary: The worksheet containing the current chart.
-    name: worksheet
-    fullName: worksheet
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly worksheet: Worksheet;'
-      return:
-        type:
-          - 'excel!Excel.Worksheet:interface'
-references:
-  - uid: 'excel!Excel.ChartAxes:interface'
-    name: ChartAxes
-    fullName: Excel.ChartAxes
-  - uid: 'excel!Excel.Chart#chartType~0:complex'
-    name: |-
-      | ChartType
-                  | "Invalid"
-                  | "ColumnClustered"
-                  | "ColumnStacked"
-                  | "ColumnStacked100"
-                  | "3DColumnClustered"
-                  | "3DColumnStacked"
-                  | "3DColumnStacked100"
-                  | "BarClustered"
-                  | "BarStacked"
-                  | "BarStacked100"
-                  | "3DBarClustered"
-                  | "3DBarStacked"
-                  | "3DBarStacked100"
-                  | "LineStacked"
-                  | "LineStacked100"
-                  | "LineMarkers"
-                  | "LineMarkersStacked"
-                  | "LineMarkersStacked100"
-                  | "PieOfPie"
-                  | "PieExploded"
-                  | "3DPieExploded"
-                  | "BarOfPie"
-                  | "XyscatterSmooth"
-                  | "XyscatterSmoothNoMarkers"
-                  | "XyscatterLines"
-                  | "XyscatterLinesNoMarkers"
-                  | "AreaStacked"
-                  | "AreaStacked100"
-                  | "3DAreaStacked"
-                  | "3DAreaStacked100"
-                  | "DoughnutExploded"
-                  | "RadarMarkers"
-                  | "RadarFilled"
-                  | "Surface"
-                  | "SurfaceWireframe"
-                  | "SurfaceTopView"
-                  | "SurfaceTopViewWireframe"
-                  | "Bubble"
-                  | "Bubble3DEffect"
-                  | "StockHLC"
-                  | "StockOHLC"
-                  | "StockVHLC"
-                  | "StockVOHLC"
-                  | "CylinderColClustered"
-                  | "CylinderColStacked"
-                  | "CylinderColStacked100"
-                  | "CylinderBarClustered"
-                  | "CylinderBarStacked"
-                  | "CylinderBarStacked100"
-                  | "CylinderCol"
-                  | "ConeColClustered"
-                  | "ConeColStacked"
-                  | "ConeColStacked100"
-                  | "ConeBarClustered"
-                  | "ConeBarStacked"
-                  | "ConeBarStacked100"
-                  | "ConeCol"
-                  | "PyramidColClustered"
-                  | "PyramidColStacked"
-                  | "PyramidColStacked100"
-                  | "PyramidBarClustered"
-                  | "PyramidBarStacked"
-                  | "PyramidBarStacked100"
-                  | "PyramidCol"
-                  | "3DColumn"
-                  | "Line"
-                  | "3DLine"
-                  | "3DPie"
-                  | "Pie"
-                  | "Xyscatter"
-                  | "3DArea"
-                  | "Area"
-                  | "Doughnut"
-                  | "Radar"
-                  | "Histogram"
-                  | "Boxwhisker"
-                  | "Pareto"
-                  | "RegionMap"
-                  | "Treemap"
-                  | "Waterfall"
-                  | "Sunburst"
-                  | "Funnel"
-    fullName: |-
-      | Excel.ChartType
-                  | "Invalid"
-                  | "ColumnClustered"
-                  | "ColumnStacked"
-                  | "ColumnStacked100"
-                  | "3DColumnClustered"
-                  | "3DColumnStacked"
-                  | "3DColumnStacked100"
-                  | "BarClustered"
-                  | "BarStacked"
-                  | "BarStacked100"
-                  | "3DBarClustered"
-                  | "3DBarStacked"
-                  | "3DBarStacked100"
-                  | "LineStacked"
-                  | "LineStacked100"
-                  | "LineMarkers"
-                  | "LineMarkersStacked"
-                  | "LineMarkersStacked100"
-                  | "PieOfPie"
-                  | "PieExploded"
-                  | "3DPieExploded"
-                  | "BarOfPie"
-                  | "XyscatterSmooth"
-                  | "XyscatterSmoothNoMarkers"
-                  | "XyscatterLines"
-                  | "XyscatterLinesNoMarkers"
-                  | "AreaStacked"
-                  | "AreaStacked100"
-                  | "3DAreaStacked"
-                  | "3DAreaStacked100"
-                  | "DoughnutExploded"
-                  | "RadarMarkers"
-                  | "RadarFilled"
-                  | "Surface"
-                  | "SurfaceWireframe"
-                  | "SurfaceTopView"
-                  | "SurfaceTopViewWireframe"
-                  | "Bubble"
-                  | "Bubble3DEffect"
-                  | "StockHLC"
-                  | "StockOHLC"
-                  | "StockVHLC"
-                  | "StockVOHLC"
-                  | "CylinderColClustered"
-                  | "CylinderColStacked"
-                  | "CylinderColStacked100"
-                  | "CylinderBarClustered"
-                  | "CylinderBarStacked"
-                  | "CylinderBarStacked100"
-                  | "CylinderCol"
-                  | "ConeColClustered"
-                  | "ConeColStacked"
-                  | "ConeColStacked100"
-                  | "ConeBarClustered"
-                  | "ConeBarStacked"
-                  | "ConeBarStacked100"
-                  | "ConeCol"
-                  | "PyramidColClustered"
-                  | "PyramidColStacked"
-                  | "PyramidColStacked100"
-                  | "PyramidBarClustered"
-                  | "PyramidBarStacked"
-                  | "PyramidBarStacked100"
-                  | "PyramidCol"
-                  | "3DColumn"
-                  | "Line"
-                  | "3DLine"
-                  | "3DPie"
-                  | "Pie"
-                  | "Xyscatter"
-                  | "3DArea"
-                  | "Area"
-                  | "Doughnut"
-                  | "Radar"
-                  | "Histogram"
-                  | "Boxwhisker"
-                  | "Pareto"
-                  | "RegionMap"
-                  | "Treemap"
-                  | "Waterfall"
-                  | "Sunburst"
-                  | "Funnel"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartType:enum'
-        name: ChartType
-        fullName: Excel.ChartType
-      - name: |2-
-
-                      | "Invalid"
-                      | "ColumnClustered"
-                      | "ColumnStacked"
-                      | "ColumnStacked100"
-                      | "3DColumnClustered"
-                      | "3DColumnStacked"
-                      | "3DColumnStacked100"
-                      | "BarClustered"
-                      | "BarStacked"
-                      | "BarStacked100"
-                      | "3DBarClustered"
-                      | "3DBarStacked"
-                      | "3DBarStacked100"
-                      | "LineStacked"
-                      | "LineStacked100"
-                      | "LineMarkers"
-                      | "LineMarkersStacked"
-                      | "LineMarkersStacked100"
-                      | "PieOfPie"
-                      | "PieExploded"
-                      | "3DPieExploded"
-                      | "BarOfPie"
-                      | "XyscatterSmooth"
-                      | "XyscatterSmoothNoMarkers"
-                      | "XyscatterLines"
-                      | "XyscatterLinesNoMarkers"
-                      | "AreaStacked"
-                      | "AreaStacked100"
-                      | "3DAreaStacked"
-                      | "3DAreaStacked100"
-                      | "DoughnutExploded"
-                      | "RadarMarkers"
-                      | "RadarFilled"
-                      | "Surface"
-                      | "SurfaceWireframe"
-                      | "SurfaceTopView"
-                      | "SurfaceTopViewWireframe"
-                      | "Bubble"
-                      | "Bubble3DEffect"
-                      | "StockHLC"
-                      | "StockOHLC"
-                      | "StockVHLC"
-                      | "StockVOHLC"
-                      | "CylinderColClustered"
-                      | "CylinderColStacked"
-                      | "CylinderColStacked100"
-                      | "CylinderBarClustered"
-                      | "CylinderBarStacked"
-                      | "CylinderBarStacked100"
-                      | "CylinderCol"
-                      | "ConeColClustered"
-                      | "ConeColStacked"
-                      | "ConeColStacked100"
-                      | "ConeBarClustered"
-                      | "ConeBarStacked"
-                      | "ConeBarStacked100"
-                      | "ConeCol"
-                      | "PyramidColClustered"
-                      | "PyramidColStacked"
-                      | "PyramidColStacked100"
-                      | "PyramidBarClustered"
-                      | "PyramidBarStacked"
-                      | "PyramidBarStacked100"
-                      | "PyramidCol"
-                      | "3DColumn"
-                      | "Line"
-                      | "3DLine"
-                      | "3DPie"
-                      | "Pie"
-                      | "Xyscatter"
-                      | "3DArea"
-                      | "Area"
-                      | "Doughnut"
-                      | "Radar"
-                      | "Histogram"
-                      | "Boxwhisker"
-                      | "Pareto"
-                      | "RegionMap"
-                      | "Treemap"
-                      | "Waterfall"
-                      | "Sunburst"
-                      | "Funnel"
-        fullName: |2-
-
-                      | "Invalid"
-                      | "ColumnClustered"
-                      | "ColumnStacked"
-                      | "ColumnStacked100"
-                      | "3DColumnClustered"
-                      | "3DColumnStacked"
-                      | "3DColumnStacked100"
-                      | "BarClustered"
-                      | "BarStacked"
-                      | "BarStacked100"
-                      | "3DBarClustered"
-                      | "3DBarStacked"
-                      | "3DBarStacked100"
-                      | "LineStacked"
-                      | "LineStacked100"
-                      | "LineMarkers"
-                      | "LineMarkersStacked"
-                      | "LineMarkersStacked100"
-                      | "PieOfPie"
-                      | "PieExploded"
-                      | "3DPieExploded"
-                      | "BarOfPie"
-                      | "XyscatterSmooth"
-                      | "XyscatterSmoothNoMarkers"
-                      | "XyscatterLines"
-                      | "XyscatterLinesNoMarkers"
-                      | "AreaStacked"
-                      | "AreaStacked100"
-                      | "3DAreaStacked"
-                      | "3DAreaStacked100"
-                      | "DoughnutExploded"
-                      | "RadarMarkers"
-                      | "RadarFilled"
-                      | "Surface"
-                      | "SurfaceWireframe"
-                      | "SurfaceTopView"
-                      | "SurfaceTopViewWireframe"
-                      | "Bubble"
-                      | "Bubble3DEffect"
-                      | "StockHLC"
-                      | "StockOHLC"
-                      | "StockVHLC"
-                      | "StockVOHLC"
-                      | "CylinderColClustered"
-                      | "CylinderColStacked"
-                      | "CylinderColStacked100"
-                      | "CylinderBarClustered"
-                      | "CylinderBarStacked"
-                      | "CylinderBarStacked100"
-                      | "CylinderCol"
-                      | "ConeColClustered"
-                      | "ConeColStacked"
-                      | "ConeColStacked100"
-                      | "ConeBarClustered"
-                      | "ConeBarStacked"
-                      | "ConeBarStacked100"
-                      | "ConeCol"
-                      | "PyramidColClustered"
-                      | "PyramidColStacked"
-                      | "PyramidColStacked100"
-                      | "PyramidBarClustered"
-                      | "PyramidBarStacked"
-                      | "PyramidBarStacked100"
-                      | "PyramidCol"
-                      | "3DColumn"
-                      | "Line"
-                      | "3DLine"
-                      | "3DPie"
-                      | "Pie"
-                      | "Xyscatter"
-                      | "3DArea"
-                      | "Area"
-                      | "Doughnut"
-                      | "Radar"
-                      | "Histogram"
-                      | "Boxwhisker"
-                      | "Pareto"
-                      | "RegionMap"
-                      | "Treemap"
-                      | "Waterfall"
-                      | "Sunburst"
-                      | "Funnel"
-  - uid: 'excel!Excel.ChartDataLabels:interface'
-    name: ChartDataLabels
-    fullName: Excel.ChartDataLabels
-  - uid: 'excel!Excel.Chart#displayBlanksAs~0:complex'
-    name: |-
-      | ChartDisplayBlanksAs
-                  | "NotPlotted"
-                  | "Zero"
-                  | "Interplotted"
-    fullName: |-
-      | Excel.ChartDisplayBlanksAs
-                  | "NotPlotted"
-                  | "Zero"
-                  | "Interplotted"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartDisplayBlanksAs:enum'
-        name: ChartDisplayBlanksAs
-        fullName: Excel.ChartDisplayBlanksAs
-      - name: |2-
-
-                      | "NotPlotted"
-                      | "Zero"
-                      | "Interplotted"
-        fullName: |2-
-
-                      | "NotPlotted"
-                      | "Zero"
-                      | "Interplotted"
-  - uid: 'excel!Excel.ChartAreaFormat:interface'
-    name: ChartAreaFormat
-    fullName: Excel.ChartAreaFormat
-  - uid: 'excel!Excel.Chart#getImage~0:complex'
-    name: ClientResult<string>
-    fullName: Excel.ClientResult<string>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <string>
-        fullName: <string>
-  - uid: 'excel!Excel.Chart#getImage~1:complex'
-    name: ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
-    fullName: Excel.ImageFittingMode | "Fit" | "FitAndCenter" | "Fill"
-    spec.typeScript:
-      - uid: 'excel!Excel.ImageFittingMode:enum'
-        name: ImageFittingMode
-        fullName: Excel.ImageFittingMode
-      - name: |2-
-           | "Fit" | "FitAndCenter" | "Fill"
-                  
-        fullName: |2-
-           | "Fit" | "FitAndCenter" | "Fill"
-                  
-  - uid: 'excel!Excel.ChartLegend:interface'
-    name: ChartLegend
-    fullName: Excel.ChartLegend
-  - uid: 'excel!Excel.ChartPivotOptions:interface'
-    name: ChartPivotOptions
-    fullName: Excel.ChartPivotOptions
-  - uid: 'excel!Excel.ChartPlotArea:interface'
-    name: ChartPlotArea
-    fullName: Excel.ChartPlotArea
-  - uid: 'excel!Excel.Chart#plotBy~0:complex'
-    name: ChartPlotBy | "Rows" | "Columns"
-    fullName: Excel.ChartPlotBy | "Rows" | "Columns"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartPlotBy:enum'
-        name: ChartPlotBy
-        fullName: Excel.ChartPlotBy
-      - name: ' | "Rows" | "Columns"'
-        fullName: ' | "Rows" | "Columns"'
-  - uid: 'excel!Excel.ChartSeriesCollection:interface'
-    name: ChartSeriesCollection
-    fullName: Excel.ChartSeriesCollection
-  - uid: 'excel!Excel.Range:interface'
-    name: Range
-    fullName: Excel.Range
-  - uid: 'excel!Excel.Chart#setData~0:complex'
-    name: ChartSeriesBy | "Auto" | "Columns" | "Rows"
-    fullName: Excel.ChartSeriesBy | "Auto" | "Columns" | "Rows"
-    spec.typeScript:
-      - uid: 'excel!Excel.ChartSeriesBy:enum'
-        name: ChartSeriesBy
-        fullName: Excel.ChartSeriesBy
-      - name: |2-
-           | "Auto" | "Columns" | "Rows"
-                  
-        fullName: |2-
-           | "Auto" | "Columns" | "Rows"
-                  
-  - uid: 'excel!Excel.Chart#setPosition~0:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.Chart#setPosition~1:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.ChartTitle:interface'
-    name: ChartTitle
-    fullName: Excel.ChartTitle
-  - uid: 'excel!Excel.Worksheet:interface'
-    name: Worksheet
-    fullName: Excel.Worksheet
+        type: void
+        description: ''

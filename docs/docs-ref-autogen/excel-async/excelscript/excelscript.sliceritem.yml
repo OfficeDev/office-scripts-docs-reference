@@ -1,86 +1,84 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SlicerItem:interface'
-    summary: Represents a slicer item in a slicer.
-    name: Excel.SlicerItem
-    fullName: Excel.SlicerItem
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SlicerItem
+uid: 'excel!Excel.SlicerItem:interface'
+package: excel!
+fullName: Excel.SlicerItem
+summary: Represents a slicer item in a slicer.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: hasData
+    uid: 'excel!Excel.SlicerItem#hasData:member'
     package: excel!
-    children:
-      - 'excel!Excel.SlicerItem#hasData:member'
-      - 'excel!Excel.SlicerItem#isSelected:member'
-      - 'excel!Excel.SlicerItem#key:member'
-      - 'excel!Excel.SlicerItem#load:member(1)'
-      - 'excel!Excel.SlicerItem#name:member'
-  - uid: 'excel!Excel.SlicerItem#hasData:member'
-    summary: True if the slicer item has data.
-    name: hasData
     fullName: hasData
-    langs:
-      - typeScript
-    type: property
+    summary: True if the slicer item has data.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly hasData: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.SlicerItem#isSelected:member'
-    summary: >-
-      True if the slicer item is selected. Setting this value will not clear other SlicerItems' selected state. By
-      default, if the slicer item is the only one selected, when it is deselected, all items will be selected.
-    name: isSelected
+        type: boolean
+  - name: isSelected
+    uid: 'excel!Excel.SlicerItem#isSelected:member'
+    package: excel!
     fullName: isSelected
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      True if the slicer item is selected. Setting this value will not clear
+      other SlicerItems' selected state. By default, if the slicer item is the
+      only one selected, when it is deselected, all items will be selected.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'isSelected: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.SlicerItem#key:member'
-    summary: Represents the unique value representing the slicer item.
-    name: key
+        type: boolean
+  - name: key
+    uid: 'excel!Excel.SlicerItem#key:member'
+    package: excel!
     fullName: key
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the unique value representing the slicer item.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly key: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.SlicerItem#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.SlicerItem#name:member'
-    summary: Represents the title displayed in the UI.
-    name: name
+        type: string
+  - name: name
+    uid: 'excel!Excel.SlicerItem#name:member'
+    package: excel!
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the title displayed in the UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly name: string;'
       return:
-        type:
-          - string
+        type: string
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SlicerItem#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
