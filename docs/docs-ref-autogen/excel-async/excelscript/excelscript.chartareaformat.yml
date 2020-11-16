@@ -1,39 +1,36 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartAreaFormat:interface'
-    summary: Encapsulates the format properties for the overall chart area.
-    name: Excel.ChartAreaFormat
-    fullName: Excel.ChartAreaFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartAreaFormat
+uid: 'excel!Excel.ChartAreaFormat:interface'
+package: excel!
+fullName: Excel.ChartAreaFormat
+summary: Encapsulates the format properties for the overall chart area.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: border
+    uid: 'excel!Excel.ChartAreaFormat#border:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartAreaFormat#border:member'
-      - 'excel!Excel.ChartAreaFormat#colorScheme:member'
-      - 'excel!Excel.ChartAreaFormat#fill:member'
-      - 'excel!Excel.ChartAreaFormat#font:member'
-      - 'excel!Excel.ChartAreaFormat#load:member(1)'
-      - 'excel!Excel.ChartAreaFormat#roundedCorners:member'
-  - uid: 'excel!Excel.ChartAreaFormat#border:member'
-    summary: 'Represents the border format of chart area, which includes color, linestyle, and weight.'
-    name: border
     fullName: border
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the border format of chart area, which includes color,
+      linestyle, and weight.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly border: ChartBorder;'
       return:
-        type:
-          - 'excel!Excel.ChartBorder:interface'
-  - uid: 'excel!Excel.ChartAreaFormat#colorScheme:member'
-    summary: Specifies the color scheme of the chart.
-    name: colorScheme
+        type: '<xref uid="excel!Excel.ChartBorder:interface" />'
+  - name: colorScheme
+    uid: 'excel!Excel.ChartAreaFormat#colorScheme:member'
+    package: excel!
     fullName: colorScheme
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the color scheme of the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         colorScheme:
@@ -56,154 +53,84 @@ items:
                     | "MonochromaticPalette12"
                     | "MonochromaticPalette13";
       return:
-        type:
-          - 'excel!Excel.ChartAreaFormat#colorScheme~0:complex'
-  - uid: 'excel!Excel.ChartAreaFormat#fill:member'
-    summary: 'Represents the fill format of an object, which includes background formatting information.'
-    name: fill
+        type: |-
+          | <xref uid="excel!Excel.ChartColorScheme:enum" />
+                      | "ColorfulPalette1"
+                      | "ColorfulPalette2"
+                      | "ColorfulPalette3"
+                      | "ColorfulPalette4"
+                      | "MonochromaticPalette1"
+                      | "MonochromaticPalette2"
+                      | "MonochromaticPalette3"
+                      | "MonochromaticPalette4"
+                      | "MonochromaticPalette5"
+                      | "MonochromaticPalette6"
+                      | "MonochromaticPalette7"
+                      | "MonochromaticPalette8"
+                      | "MonochromaticPalette9"
+                      | "MonochromaticPalette10"
+                      | "MonochromaticPalette11"
+                      | "MonochromaticPalette12"
+                      | "MonochromaticPalette13"
+  - name: fill
+    uid: 'excel!Excel.ChartAreaFormat#fill:member'
+    package: excel!
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the fill format of an object, which includes background
+      formatting information.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ChartFill;'
       return:
-        type:
-          - 'excel!Excel.ChartFill:interface'
-  - uid: 'excel!Excel.ChartAreaFormat#font:member'
-    summary: 'Represents the font attributes (font name, font size, color, etc.) for the current object.'
-    name: font
+        type: '<xref uid="excel!Excel.ChartFill:interface" />'
+  - name: font
+    uid: 'excel!Excel.ChartAreaFormat#font:member'
+    package: excel!
     fullName: font
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the font attributes (font name, font size, color, etc.) for the
+      current object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly font: ChartFont;'
       return:
-        type:
-          - 'excel!Excel.ChartFont:interface'
-  - uid: 'excel!Excel.ChartAreaFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartAreaFormat#roundedCorners:member'
-    summary: Specifies if the chart area of the chart has rounded corners.
-    name: roundedCorners
+        type: '<xref uid="excel!Excel.ChartFont:interface" />'
+  - name: roundedCorners
+    uid: 'excel!Excel.ChartAreaFormat#roundedCorners:member'
+    package: excel!
     fullName: roundedCorners
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the chart area of the chart has rounded corners.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'roundedCorners: boolean;'
       return:
-        type:
-          - boolean
-references:
-  - uid: 'excel!Excel.ChartBorder:interface'
-    name: ChartBorder
-    fullName: Excel.ChartBorder
-  - uid: 'excel!Excel.ChartAreaFormat#colorScheme~0:complex'
-    name: |-
-      | ChartColorScheme
-                  | "ColorfulPalette1"
-                  | "ColorfulPalette2"
-                  | "ColorfulPalette3"
-                  | "ColorfulPalette4"
-                  | "MonochromaticPalette1"
-                  | "MonochromaticPalette2"
-                  | "MonochromaticPalette3"
-                  | "MonochromaticPalette4"
-                  | "MonochromaticPalette5"
-                  | "MonochromaticPalette6"
-                  | "MonochromaticPalette7"
-                  | "MonochromaticPalette8"
-                  | "MonochromaticPalette9"
-                  | "MonochromaticPalette10"
-                  | "MonochromaticPalette11"
-                  | "MonochromaticPalette12"
-                  | "MonochromaticPalette13"
-    fullName: |-
-      | Excel.ChartColorScheme
-                  | "ColorfulPalette1"
-                  | "ColorfulPalette2"
-                  | "ColorfulPalette3"
-                  | "ColorfulPalette4"
-                  | "MonochromaticPalette1"
-                  | "MonochromaticPalette2"
-                  | "MonochromaticPalette3"
-                  | "MonochromaticPalette4"
-                  | "MonochromaticPalette5"
-                  | "MonochromaticPalette6"
-                  | "MonochromaticPalette7"
-                  | "MonochromaticPalette8"
-                  | "MonochromaticPalette9"
-                  | "MonochromaticPalette10"
-                  | "MonochromaticPalette11"
-                  | "MonochromaticPalette12"
-                  | "MonochromaticPalette13"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartColorScheme:enum'
-        name: ChartColorScheme
-        fullName: Excel.ChartColorScheme
-      - name: |2-
-
-                      | "ColorfulPalette1"
-                      | "ColorfulPalette2"
-                      | "ColorfulPalette3"
-                      | "ColorfulPalette4"
-                      | "MonochromaticPalette1"
-                      | "MonochromaticPalette2"
-                      | "MonochromaticPalette3"
-                      | "MonochromaticPalette4"
-                      | "MonochromaticPalette5"
-                      | "MonochromaticPalette6"
-                      | "MonochromaticPalette7"
-                      | "MonochromaticPalette8"
-                      | "MonochromaticPalette9"
-                      | "MonochromaticPalette10"
-                      | "MonochromaticPalette11"
-                      | "MonochromaticPalette12"
-                      | "MonochromaticPalette13"
-        fullName: |2-
-
-                      | "ColorfulPalette1"
-                      | "ColorfulPalette2"
-                      | "ColorfulPalette3"
-                      | "ColorfulPalette4"
-                      | "MonochromaticPalette1"
-                      | "MonochromaticPalette2"
-                      | "MonochromaticPalette3"
-                      | "MonochromaticPalette4"
-                      | "MonochromaticPalette5"
-                      | "MonochromaticPalette6"
-                      | "MonochromaticPalette7"
-                      | "MonochromaticPalette8"
-                      | "MonochromaticPalette9"
-                      | "MonochromaticPalette10"
-                      | "MonochromaticPalette11"
-                      | "MonochromaticPalette12"
-                      | "MonochromaticPalette13"
-  - uid: 'excel!Excel.ChartFill:interface'
-    name: ChartFill
-    fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:interface'
-    name: ChartFont
-    fullName: Excel.ChartFont
+        type: boolean
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartAreaFormat#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

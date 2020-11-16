@@ -1,61 +1,60 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ConditionalRangeFill:interface'
-    summary: Represents the background of a conditional range object.
-    name: Excel.ConditionalRangeFill
-    fullName: Excel.ConditionalRangeFill
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ConditionalRangeFill
+uid: 'excel!Excel.ConditionalRangeFill:interface'
+package: excel!
+fullName: Excel.ConditionalRangeFill
+summary: Represents the background of a conditional range object.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: color
+    uid: 'excel!Excel.ConditionalRangeFill#color:member'
     package: excel!
-    children:
-      - 'excel!Excel.ConditionalRangeFill#clear:member(1)'
-      - 'excel!Excel.ConditionalRangeFill#color:member'
-      - 'excel!Excel.ConditionalRangeFill#load:member(1)'
-  - uid: 'excel!Excel.ConditionalRangeFill#clear:member(1)'
-    summary: Resets the fill.
-    name: clear()
-    fullName: clear()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'clear(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.ConditionalRangeFill#color:member'
-    summary: >-
-      HTML color code representing the color of the fill, of the form \#RRGGBB (e.g., "FFA500") or as a named HTML color
-      (e.g., "orange").
-    name: color
     fullName: color
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      HTML color code representing the color of the fill, of the form \#RRGGBB
+      (e.g., "FFA500") or as a named HTML color (e.g., "orange").
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'color: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ConditionalRangeFill#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: string
+methods:
+  - name: clear()
+    uid: 'excel!Excel.ConditionalRangeFill#clear:member(1)'
+    package: excel!
+    fullName: clear()
+    summary: Resets the fill.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type: void
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ConditionalRangeFill#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

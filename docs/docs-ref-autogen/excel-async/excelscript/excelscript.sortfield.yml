@@ -1,126 +1,107 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SortField:interface'
-    summary: Represents a condition in a sorting operation.
-    name: Excel.SortField
-    fullName: Excel.SortField
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SortField
+uid: 'excel!Excel.SortField:interface'
+package: excel!
+fullName: Excel.SortField
+summary: Represents a condition in a sorting operation.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: ascending
+    uid: 'excel!Excel.SortField#ascending:member'
     package: excel!
-    children:
-      - 'excel!Excel.SortField#ascending:member'
-      - 'excel!Excel.SortField#color:member'
-      - 'excel!Excel.SortField#dataOption:member'
-      - 'excel!Excel.SortField#icon:member'
-      - 'excel!Excel.SortField#key:member'
-      - 'excel!Excel.SortField#sortOn:member'
-      - 'excel!Excel.SortField#subField:member'
-  - uid: 'excel!Excel.SortField#ascending:member'
-    summary: Specifies if the sorting is done in an ascending fashion.
-    name: ascending
     fullName: ascending
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the sorting is done in an ascending fashion.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'ascending?: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.SortField#color:member'
-    summary: Specifies the color that is the target of the condition if the sorting is on font or cell color.
-    name: color
+        type: boolean
+  - name: color
+    uid: 'excel!Excel.SortField#color:member'
+    package: excel!
     fullName: color
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the color that is the target of the condition if the sorting is
+      on font or cell color.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'color?: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.SortField#dataOption:member'
-    summary: Represents additional sorting options for this field.
-    name: dataOption
+        type: string
+  - name: dataOption
+    uid: 'excel!Excel.SortField#dataOption:member'
+    package: excel!
     fullName: dataOption
-    langs:
-      - typeScript
-    type: property
+    summary: Represents additional sorting options for this field.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'dataOption?: SortDataOption | "Normal" | "TextAsNumber";'
       return:
-        type:
-          - 'excel!Excel.SortField#dataOption~0:complex'
-  - uid: 'excel!Excel.SortField#icon:member'
-    summary: Specifies the icon that is the target of the condition if the sorting is on the cell's icon.
-    name: icon
+        type: >-
+          <xref uid="excel!Excel.SortDataOption:enum" /> | "Normal" |
+          "TextAsNumber"
+  - name: icon
+    uid: 'excel!Excel.SortField#icon:member'
+    package: excel!
     fullName: icon
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the icon that is the target of the condition if the sorting is
+      on the cell's icon.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'icon?: Icon;'
       return:
-        type:
-          - 'excel!Excel.Icon:interface'
-  - uid: 'excel!Excel.SortField#key:member'
-    summary: >-
-      Specifies the column (or row, depending on the sort orientation) that the condition is on. Represented as an
-      offset from the first column (or row).
-    name: key
+        type: '<xref uid="excel!Excel.Icon:interface" />'
+  - name: key
+    uid: 'excel!Excel.SortField#key:member'
+    package: excel!
     fullName: key
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the column (or row, depending on the sort orientation) that the
+      condition is on. Represented as an offset from the first column (or row).
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'key: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.SortField#sortOn:member'
-    summary: Specifies the type of sorting of this condition.
-    name: sortOn
+        type: number
+  - name: sortOn
+    uid: 'excel!Excel.SortField#sortOn:member'
+    package: excel!
     fullName: sortOn
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the type of sorting of this condition.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'sortOn?: SortOn | "Value" | "CellColor" | "FontColor" | "Icon";'
       return:
-        type:
-          - 'excel!Excel.SortField#sortOn~0:complex'
-  - uid: 'excel!Excel.SortField#subField:member'
-    summary: Specifies the subfield that is the target property name of a rich value to sort on.
-    name: subField
+        type: >-
+          <xref uid="excel!Excel.SortOn:enum" /> | "Value" | "CellColor" |
+          "FontColor" | "Icon"
+  - name: subField
+    uid: 'excel!Excel.SortField#subField:member'
+    package: excel!
     fullName: subField
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the subfield that is the target property name of a rich value to
+      sort on.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'subField?: string;'
       return:
-        type:
-          - string
-references:
-  - uid: 'excel!Excel.SortField#dataOption~0:complex'
-    name: SortDataOption | "Normal" | "TextAsNumber"
-    fullName: Excel.SortDataOption | "Normal" | "TextAsNumber"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortDataOption:enum'
-        name: SortDataOption
-        fullName: Excel.SortDataOption
-      - name: ' | "Normal" | "TextAsNumber"'
-        fullName: ' | "Normal" | "TextAsNumber"'
-  - uid: 'excel!Excel.Icon:interface'
-    name: Icon
-    fullName: Excel.Icon
-  - uid: 'excel!Excel.SortField#sortOn~0:complex'
-    name: SortOn | "Value" | "CellColor" | "FontColor" | "Icon"
-    fullName: Excel.SortOn | "Value" | "CellColor" | "FontColor" | "Icon"
-    spec.typeScript:
-      - uid: 'excel!Excel.SortOn:enum'
-        name: SortOn
-        fullName: Excel.SortOn
-      - name: ' | "Value" | "CellColor" | "FontColor" | "Icon"'
-        fullName: ' | "Value" | "CellColor" | "FontColor" | "Icon"'
+        type: string

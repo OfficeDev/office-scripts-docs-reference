@@ -1,27 +1,24 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ConditionalFormatCollection:interface'
-    summary: Represents a collection of all the conditional formats that are overlap the range.
-    name: Excel.ConditionalFormatCollection
-    fullName: Excel.ConditionalFormatCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ConditionalFormatCollection
+uid: 'excel!Excel.ConditionalFormatCollection:interface'
+package: excel!
+fullName: Excel.ConditionalFormatCollection
+summary: >-
+  Represents a collection of all the conditional formats that are overlap the
+  range.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: add(type)
+    uid: 'excel!Excel.ConditionalFormatCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.ConditionalFormatCollection#add:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
-      - 'excel!Excel.ConditionalFormatCollection#load:member(1)'
-  - uid: 'excel!Excel.ConditionalFormatCollection#add:member(1)'
-    summary: Adds a new conditional format to the collection at the first/top priority.
-    name: add(type)
     fullName: add(type)
-    langs:
-      - typeScript
-    type: method
+    summary: Adds a new conditional format to the collection at the first/top priority.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
@@ -36,9 +33,24 @@ items:
                         | "ContainsText"
                         | "CellValue"
                 ): ConditionalFormat;
+      parameters:
+        - id: type
+          description: >-
+            The type of conditional format being added. See
+            Excel.ConditionalFormatType for details.
+          type: |-
+            | <xref uid="excel!Excel.ConditionalFormatType:enum" />
+                            | "Custom"
+                            | "DataBar"
+                            | "ColorScale"
+                            | "IconSet"
+                            | "TopBottom"
+                            | "PresetCriteria"
+                            | "ContainsText"
+                            | "CellValue"
+                    
       return:
-        type:
-          - 'excel!Excel.ConditionalFormat:interface'
+        type: '<xref uid="excel!Excel.ConditionalFormat:interface" />'
         description: |-
 
 
@@ -60,23 +72,18 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: type
-          description: The type of conditional format being added. See Excel.ConditionalFormatType for details.
-          type:
-            - 'excel!Excel.ConditionalFormatCollection#add~0:complex'
-  - uid: 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
-    summary: Clears all conditional formats active on the current specified range.
-    name: clearAll()
+  - name: clearAll()
+    uid: 'excel!Excel.ConditionalFormatCollection#clearAll:member(1)'
+    package: excel!
     fullName: clearAll()
-    langs:
-      - typeScript
-    type: method
+    summary: Clears all conditional formats active on the current specified range.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'clearAll(): void;'
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -93,134 +100,71 @@ items:
               $(".conditional-formats").hide();
           }
           ```
-  - uid: 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
-    summary: Returns the number of conditional formats in the workbook.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.ConditionalFormatCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of conditional formats in the workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.ConditionalFormatCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
-    summary: Returns a conditional format for the given ID.
-    name: getItem(id)
+  - name: getItem(id)
+    uid: 'excel!Excel.ConditionalFormatCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(id)
-    langs:
-      - typeScript
-    type: method
+    summary: Returns a conditional format for the given ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(id: string): ConditionalFormat;'
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormat:interface'
-        description: ''
       parameters:
         - id: id
           description: The id of the conditional format.
-          type:
-            - string
-  - uid: 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
-    summary: Returns a conditional format at the given index.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.ConditionalFormat:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.ConditionalFormatCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Returns a conditional format at the given index.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): ConditionalFormat;'
-      return:
-        type:
-          - 'excel!Excel.ConditionalFormat:interface'
-        description: ''
       parameters:
         - id: index
           description: Index of the conditional formats to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ConditionalFormatCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.ConditionalFormat:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ConditionalFormatCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ConditionalFormat:interface'
-    name: ConditionalFormat
-    fullName: Excel.ConditionalFormat
-  - uid: 'excel!Excel.ConditionalFormatCollection#add~0:complex'
-    name: |-
-      | ConditionalFormatType
-                      | "Custom"
-                      | "DataBar"
-                      | "ColorScale"
-                      | "IconSet"
-                      | "TopBottom"
-                      | "PresetCriteria"
-                      | "ContainsText"
-                      | "CellValue"
-    fullName: |-
-      | Excel.ConditionalFormatType
-                      | "Custom"
-                      | "DataBar"
-                      | "ColorScale"
-                      | "IconSet"
-                      | "TopBottom"
-                      | "PresetCriteria"
-                      | "ContainsText"
-                      | "CellValue"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ConditionalFormatType:enum'
-        name: ConditionalFormatType
-        fullName: Excel.ConditionalFormatType
-      - name: |2-
-
-                          | "Custom"
-                          | "DataBar"
-                          | "ColorScale"
-                          | "IconSet"
-                          | "TopBottom"
-                          | "PresetCriteria"
-                          | "ContainsText"
-                          | "CellValue"
-                  
-        fullName: |2-
-
-                          | "Custom"
-                          | "DataBar"
-                          | "ColorScale"
-                          | "IconSet"
-                          | "TopBottom"
-                          | "PresetCriteria"
-                          | "ContainsText"
-                          | "CellValue"
-                  
-  - uid: 'excel!Excel.ConditionalFormatCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

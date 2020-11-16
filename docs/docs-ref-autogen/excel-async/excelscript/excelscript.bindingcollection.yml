@@ -1,30 +1,37 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.BindingCollection:interface'
-    summary: Represents the collection of all the binding objects that are part of the workbook.
-    name: Excel.BindingCollection
-    fullName: Excel.BindingCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.BindingCollection
+uid: 'excel!Excel.BindingCollection:interface'
+package: excel!
+fullName: Excel.BindingCollection
+summary: >-
+  Represents the collection of all the binding objects that are part of the
+  workbook.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: count
+    uid: 'excel!Excel.BindingCollection#count:member'
     package: excel!
-    children:
-      - 'excel!Excel.BindingCollection#add:member(1)'
-      - 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
-      - 'excel!Excel.BindingCollection#addFromSelection:member(1)'
-      - 'excel!Excel.BindingCollection#count:member'
-      - 'excel!Excel.BindingCollection#getCount:member(1)'
-      - 'excel!Excel.BindingCollection#getItem:member(1)'
-      - 'excel!Excel.BindingCollection#getItemAt:member(1)'
-      - 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.BindingCollection#load:member(1)'
-  - uid: 'excel!Excel.BindingCollection#add:member(1)'
-    summary: Add a new binding to a particular Range.
-    name: 'add(range, bindingType, id)'
+    fullName: count
+    summary: Returns the number of bindings in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly count: number;'
+      return:
+        type: number
+methods:
+  - name: 'add(range, bindingType, id)'
+    uid: 'excel!Excel.BindingCollection#add:member(1)'
+    package: excel!
     fullName: 'add(range, bindingType, id)'
-    langs:
-      - typeScript
-    type: method
+    summary: Add a new binding to a particular Range.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         add(
@@ -32,34 +39,35 @@ items:
                     bindingType: BindingType | "Range" | "Table" | "Text",
                     id: string
                 ): Binding;
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: range
           description: >-
-            Range to bind the binding to. May be an Excel Range object, or a string. If string, must contain the full
-            address, including the sheet name
-          type:
-            - 'excel!Excel.BindingCollection#add~0:complex'
+            Range to bind the binding to. May be an Excel Range object, or a
+            string. If string, must contain the full address, including the
+            sheet name
+          type: '<xref uid="excel!Excel.Range:interface" /> | string'
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
-          type:
-            - 'excel!Excel.BindingCollection#add~1:complex'
+          type: >-
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
+            "Text"
         - id: id
           description: Name of binding.
-          type:
-            - string
-  - uid: 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
-    summary: >-
-      Add a new binding based on a named item in the workbook. If the named item references to multiple areas, the
-      "InvalidReference" error will be returned.
-    name: 'addFromNamedItem(name, bindingType, id)'
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: 'addFromNamedItem(name, bindingType, id)'
+    uid: 'excel!Excel.BindingCollection#addFromNamedItem:member(1)'
+    package: excel!
     fullName: 'addFromNamedItem(name, bindingType, id)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Add a new binding based on a named item in the workbook. If the named item
+      references to multiple areas, the "InvalidReference" error will be
+      returned.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         addFromNamedItem(
@@ -67,196 +75,133 @@ items:
                     bindingType: BindingType | "Range" | "Table" | "Text",
                     id: string
                 ): Binding;
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: name
           description: Name from which to create binding.
-          type:
-            - string
+          type: string
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
-          type:
-            - 'excel!Excel.BindingCollection#addFromNamedItem~0:complex'
+          type: >-
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
+            "Text"
         - id: id
           description: Name of binding.
-          type:
-            - string
-  - uid: 'excel!Excel.BindingCollection#addFromSelection:member(1)'
-    summary: >-
-      Add a new binding based on the current selection. If the selection has multiple areas, the "InvalidReference"
-      error will be returned.
-    name: 'addFromSelection(bindingType, id)'
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: 'addFromSelection(bindingType, id)'
+    uid: 'excel!Excel.BindingCollection#addFromSelection:member(1)'
+    package: excel!
     fullName: 'addFromSelection(bindingType, id)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Add a new binding based on the current selection. If the selection has
+      multiple areas, the "InvalidReference" error will be returned.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         addFromSelection(
                     bindingType: BindingType | "Range" | "Table" | "Text",
                     id: string
                 ): Binding;
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: bindingType
           description: Type of binding. See Excel.BindingType.
-          type:
-            - 'excel!Excel.BindingCollection#addFromSelection~0:complex'
+          type: >-
+            <xref uid="excel!Excel.BindingType:enum" /> | "Range" | "Table" |
+            "Text"
         - id: id
           description: Name of binding.
-          type:
-            - string
-  - uid: 'excel!Excel.BindingCollection#count:member'
-    summary: Returns the number of bindings in the collection.
-    name: count
-    fullName: count
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly count: number;'
+          type: string
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.BindingCollection#getCount:member(1)'
-    summary: Gets the number of bindings in the collection.
-    name: getCount()
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.BindingCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of bindings in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.BindingCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.BindingCollection#getItem:member(1)'
-    summary: Gets a binding object by ID.
-    name: getItem(id)
+  - name: getItem(id)
+    uid: 'excel!Excel.BindingCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(id)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a binding object by ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(id: string): Binding;'
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: id
           description: Id of the binding object to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.BindingCollection#getItemAt:member(1)'
-    summary: Gets a binding object based on its position in the items array.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.BindingCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a binding object based on its position in the items array.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): Binding;'
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: index
           description: Index value of the object to be retrieved. Zero-indexed.
-          type:
-            - number
-  - uid: 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a binding object by ID. If the binding object does not exist, will return a null object.'
-    name: getItemOrNullObject(id)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: getItemOrNullObject(id)
+    uid: 'excel!Excel.BindingCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(id)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a binding object by ID. If the binding object does not exist, will
+      return a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(id: string): Binding;'
-      return:
-        type:
-          - 'excel!Excel.Binding:interface'
-        description: ''
       parameters:
         - id: id
           description: Id of the binding object to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.BindingCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Binding:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.BindingCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Binding:interface'
-    name: Binding
-    fullName: Excel.Binding
-  - uid: 'excel!Excel.BindingCollection#add~0:complex'
-    name: Range | string
-    fullName: Excel.Range | string
-    spec.typeScript:
-      - uid: 'excel!Excel.Range:interface'
-        name: Range
-        fullName: Excel.Range
-      - name: ' | string'
-        fullName: ' | string'
-  - uid: 'excel!Excel.BindingCollection#add~1:complex'
-    name: BindingType | "Range" | "Table" | "Text"
-    fullName: Excel.BindingType | "Range" | "Table" | "Text"
-    spec.typeScript:
-      - uid: 'excel!Excel.BindingType:enum'
-        name: BindingType
-        fullName: Excel.BindingType
-      - name: ' | "Range" | "Table" | "Text"'
-        fullName: ' | "Range" | "Table" | "Text"'
-  - uid: 'excel!Excel.BindingCollection#addFromNamedItem~0:complex'
-    name: BindingType | "Range" | "Table" | "Text"
-    fullName: Excel.BindingType | "Range" | "Table" | "Text"
-    spec.typeScript:
-      - uid: 'excel!Excel.BindingType:enum'
-        name: BindingType
-        fullName: Excel.BindingType
-      - name: ' | "Range" | "Table" | "Text"'
-        fullName: ' | "Range" | "Table" | "Text"'
-  - uid: 'excel!Excel.BindingCollection#addFromSelection~0:complex'
-    name: BindingType | "Range" | "Table" | "Text"
-    fullName: Excel.BindingType | "Range" | "Table" | "Text"
-    spec.typeScript:
-      - uid: 'excel!Excel.BindingType:enum'
-        name: BindingType
-        fullName: Excel.BindingType
-      - name: ' | "Range" | "Table" | "Text"'
-        fullName: ' | "Range" | "Table" | "Text"'
-  - uid: 'excel!Excel.BindingCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

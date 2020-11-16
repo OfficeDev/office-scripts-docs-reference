@@ -1,81 +1,71 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat:interface'
-    summary: Encapsulates the format properties for the chart trendline label.
-    name: Excel.ChartTrendlineLabelFormat
-    fullName: Excel.ChartTrendlineLabelFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartTrendlineLabelFormat
+uid: 'excel!Excel.ChartTrendlineLabelFormat:interface'
+package: excel!
+fullName: Excel.ChartTrendlineLabelFormat
+summary: Encapsulates the format properties for the chart trendline label.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: border
+    uid: 'excel!Excel.ChartTrendlineLabelFormat#border:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartTrendlineLabelFormat#border:member'
-      - 'excel!Excel.ChartTrendlineLabelFormat#fill:member'
-      - 'excel!Excel.ChartTrendlineLabelFormat#font:member'
-      - 'excel!Excel.ChartTrendlineLabelFormat#load:member(1)'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#border:member'
-    summary: 'Specifies the border format, which includes color, linestyle, and weight.'
-    name: border
     fullName: border
-    langs:
-      - typeScript
-    type: property
+    summary: 'Specifies the border format, which includes color, linestyle, and weight.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly border: ChartBorder;'
       return:
-        type:
-          - 'excel!Excel.ChartBorder:interface'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#fill:member'
-    summary: Specifies the fill format of the current chart trendline label.
-    name: fill
+        type: '<xref uid="excel!Excel.ChartBorder:interface" />'
+  - name: fill
+    uid: 'excel!Excel.ChartTrendlineLabelFormat#fill:member'
+    package: excel!
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the fill format of the current chart trendline label.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ChartFill;'
       return:
-        type:
-          - 'excel!Excel.ChartFill:interface'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#font:member'
-    summary: 'Specifies the font attributes (font name, font size, color, etc.) for a chart trendline label.'
-    name: font
+        type: '<xref uid="excel!Excel.ChartFill:interface" />'
+  - name: font
+    uid: 'excel!Excel.ChartTrendlineLabelFormat#font:member'
+    package: excel!
     fullName: font
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the font attributes (font name, font size, color, etc.) for a
+      chart trendline label.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly font: ChartFont;'
       return:
-        type:
-          - 'excel!Excel.ChartFont:interface'
-  - uid: 'excel!Excel.ChartTrendlineLabelFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: '<xref uid="excel!Excel.ChartFont:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartTrendlineLabelFormat#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartBorder:interface'
-    name: ChartBorder
-    fullName: Excel.ChartBorder
-  - uid: 'excel!Excel.ChartFill:interface'
-    name: ChartFill
-    fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:interface'
-    name: ChartFont
-    fullName: Excel.ChartFont
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

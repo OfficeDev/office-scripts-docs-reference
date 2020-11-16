@@ -1,112 +1,92 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartLegend:interface'
-    summary: Represents the legend in a chart.
-    name: Excel.ChartLegend
-    fullName: Excel.ChartLegend
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartLegend
+uid: 'excel!Excel.ChartLegend:interface'
+package: excel!
+fullName: Excel.ChartLegend
+summary: Represents the legend in a chart.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: format
+    uid: 'excel!Excel.ChartLegend#format:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartLegend#format:member'
-      - 'excel!Excel.ChartLegend#height:member'
-      - 'excel!Excel.ChartLegend#left:member'
-      - 'excel!Excel.ChartLegend#legendEntries:member'
-      - 'excel!Excel.ChartLegend#load:member(1)'
-      - 'excel!Excel.ChartLegend#overlay:member'
-      - 'excel!Excel.ChartLegend#position:member'
-      - 'excel!Excel.ChartLegend#showShadow:member'
-      - 'excel!Excel.ChartLegend#top:member'
-      - 'excel!Excel.ChartLegend#visible:member'
-      - 'excel!Excel.ChartLegend#width:member'
-  - uid: 'excel!Excel.ChartLegend#format:member'
-    summary: 'Represents the formatting of a chart legend, which includes fill and font formatting.'
-    name: format
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the formatting of a chart legend, which includes fill and font
+      formatting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ChartLegendFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartLegendFormat:interface'
-  - uid: 'excel!Excel.ChartLegend#height:member'
-    summary: 'Specifies the height, in points, of the legend on the chart. Null if legend is not visible.'
-    name: height
+        type: '<xref uid="excel!Excel.ChartLegendFormat:interface" />'
+  - name: height
+    uid: 'excel!Excel.ChartLegend#height:member'
+    package: excel!
     fullName: height
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the height, in points, of the legend on the chart. Null if
+      legend is not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'height: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartLegend#left:member'
-    summary: 'Specifies the left, in points, of the legend on the chart. Null if legend is not visible.'
-    name: left
+        type: number
+  - name: left
+    uid: 'excel!Excel.ChartLegend#left:member'
+    package: excel!
     fullName: left
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the left, in points, of the legend on the chart. Null if legend
+      is not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'left: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartLegend#legendEntries:member'
-    summary: Represents a collection of legendEntries in the legend.
-    name: legendEntries
+        type: number
+  - name: legendEntries
+    uid: 'excel!Excel.ChartLegend#legendEntries:member'
+    package: excel!
     fullName: legendEntries
-    langs:
-      - typeScript
-    type: property
+    summary: Represents a collection of legendEntries in the legend.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly legendEntries: ChartLegendEntryCollection;'
       return:
-        type:
-          - 'excel!Excel.ChartLegendEntryCollection:interface'
-  - uid: 'excel!Excel.ChartLegend#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartLegend#overlay:member'
-    summary: Specifies if the chart legend should overlap with the main body of the chart.
-    name: overlay
+        type: '<xref uid="excel!Excel.ChartLegendEntryCollection:interface" />'
+  - name: overlay
+    uid: 'excel!Excel.ChartLegend#overlay:member'
+    package: excel!
     fullName: overlay
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies if the chart legend should overlap with the main body of the
+      chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'overlay: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartLegend#position:member'
-    summary: Specifies the position of the legend on the chart. See Excel.ChartLegendPosition for details.
-    name: position
+        type: boolean
+  - name: position
+    uid: 'excel!Excel.ChartLegend#position:member'
+    package: excel!
     fullName: position
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the position of the legend on the chart. See
+      Excel.ChartLegendPosition for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         position:
@@ -119,103 +99,84 @@ items:
                     | "Corner"
                     | "Custom";
       return:
-        type:
-          - 'excel!Excel.ChartLegend#position~0:complex'
-  - uid: 'excel!Excel.ChartLegend#showShadow:member'
-    summary: Specifies if the legend has a shadow on the chart.
-    name: showShadow
+        type: |-
+          | <xref uid="excel!Excel.ChartLegendPosition:enum" />
+                      | "Invalid"
+                      | "Top"
+                      | "Bottom"
+                      | "Left"
+                      | "Right"
+                      | "Corner"
+                      | "Custom"
+  - name: showShadow
+    uid: 'excel!Excel.ChartLegend#showShadow:member'
+    package: excel!
     fullName: showShadow
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the legend has a shadow on the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'showShadow: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartLegend#top:member'
-    summary: Specifies the top of a chart legend.
-    name: top
+        type: boolean
+  - name: top
+    uid: 'excel!Excel.ChartLegend#top:member'
+    package: excel!
     fullName: top
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the top of a chart legend.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'top: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartLegend#visible:member'
-    summary: Specifies if the ChartLegend is visible.
-    name: visible
+        type: number
+  - name: visible
+    uid: 'excel!Excel.ChartLegend#visible:member'
+    package: excel!
     fullName: visible
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the ChartLegend is visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'visible: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.ChartLegend#width:member'
-    summary: 'Specifies the width, in points, of the legend on the chart. Null if legend is not visible.'
-    name: width
+        type: boolean
+  - name: width
+    uid: 'excel!Excel.ChartLegend#width:member'
+    package: excel!
     fullName: width
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the width, in points, of the legend on the chart. Null if legend
+      is not visible.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'width: number;'
       return:
-        type:
-          - number
-references:
-  - uid: 'excel!Excel.ChartLegendFormat:interface'
-    name: ChartLegendFormat
-    fullName: Excel.ChartLegendFormat
-  - uid: 'excel!Excel.ChartLegendEntryCollection:interface'
-    name: ChartLegendEntryCollection
-    fullName: Excel.ChartLegendEntryCollection
-  - uid: 'excel!Excel.ChartLegend#position~0:complex'
-    name: |-
-      | ChartLegendPosition
-                  | "Invalid"
-                  | "Top"
-                  | "Bottom"
-                  | "Left"
-                  | "Right"
-                  | "Corner"
-                  | "Custom"
-    fullName: |-
-      | Excel.ChartLegendPosition
-                  | "Invalid"
-                  | "Top"
-                  | "Bottom"
-                  | "Left"
-                  | "Right"
-                  | "Corner"
-                  | "Custom"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartLegendPosition:enum'
-        name: ChartLegendPosition
-        fullName: Excel.ChartLegendPosition
-      - name: |2-
-
-                      | "Invalid"
-                      | "Top"
-                      | "Bottom"
-                      | "Left"
-                      | "Right"
-                      | "Corner"
-                      | "Custom"
-        fullName: |2-
-
-                      | "Invalid"
-                      | "Top"
-                      | "Bottom"
-                      | "Left"
-                      | "Right"
-                      | "Corner"
-                      | "Custom"
+        type: number
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartLegend#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

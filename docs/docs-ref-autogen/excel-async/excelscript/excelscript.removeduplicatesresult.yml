@@ -1,61 +1,38 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.RemoveDuplicatesResult:interface'
-    summary: Represents the results from the removeDuplicates method on range
-    name: Excel.RemoveDuplicatesResult
-    fullName: Excel.RemoveDuplicatesResult
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.RemoveDuplicatesResult
+uid: 'excel!Excel.RemoveDuplicatesResult:interface'
+package: excel!
+fullName: Excel.RemoveDuplicatesResult
+summary: Represents the results from the removeDuplicates method on range
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: removed
+    uid: 'excel!Excel.RemoveDuplicatesResult#removed:member'
     package: excel!
-    children:
-      - 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
-      - 'excel!Excel.RemoveDuplicatesResult#removed:member'
-      - 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
-  - uid: 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.RemoveDuplicatesResult#removed:member'
-    summary: Number of duplicated rows removed by the operation.
-    name: removed
     fullName: removed
-    langs:
-      - typeScript
-    type: property
+    summary: Number of duplicated rows removed by the operation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly removed: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
-    summary: Number of remaining unique rows present in the resulting range.
-    name: uniqueRemaining
+        type: number
+  - name: uniqueRemaining
+    uid: 'excel!Excel.RemoveDuplicatesResult#uniqueRemaining:member'
+    package: excel!
     fullName: uniqueRemaining
-    langs:
-      - typeScript
-    type: property
+    summary: Number of remaining unique rows present in the resulting range.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly uniqueRemaining: number;'
       return:
-        type:
-          - number
+        type: number
         description: |-
 
 
@@ -74,3 +51,25 @@ items:
               console.log(deleteResult.uniqueRemaining + " entries with unique names remain in the range.");
           }
           ```
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.RemoveDuplicatesResult#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

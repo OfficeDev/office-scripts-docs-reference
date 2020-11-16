@@ -1,49 +1,41 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ShapeCollection:interface'
-    summary: Represents a collection of all the shapes in the worksheet.
-    name: Excel.ShapeCollection
-    fullName: Excel.ShapeCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ShapeCollection
+uid: 'excel!Excel.ShapeCollection:interface'
+package: excel!
+fullName: Excel.ShapeCollection
+summary: Represents a collection of all the shapes in the worksheet.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: _GetItem(shapeId)
+    uid: 'excel!Excel.ShapeCollection#_GetItem:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.ShapeCollection#_GetItem:member(1)'
-      - 'excel!Excel.ShapeCollection#addGeometricShape:member(1)'
-      - 'excel!Excel.ShapeCollection#addGroup:member(1)'
-      - 'excel!Excel.ShapeCollection#addImage:member(1)'
-      - 'excel!Excel.ShapeCollection#addLine:member(1)'
-      - 'excel!Excel.ShapeCollection#addTextBox:member(1)'
-      - 'excel!Excel.ShapeCollection#getCount:member(1)'
-      - 'excel!Excel.ShapeCollection#getItem:member(1)'
-      - 'excel!Excel.ShapeCollection#getItemAt:member(1)'
-      - 'excel!Excel.ShapeCollection#load:member(1)'
-  - uid: 'excel!Excel.ShapeCollection#_GetItem:member(1)'
-    summary: Returns a shape identified by the shape id.
-    name: _GetItem(shapeId)
     fullName: _GetItem(shapeId)
-    langs:
-      - typeScript
-    type: method
+    summary: Returns a shape identified by the shape id.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: '_GetItem(shapeId: string): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: shapeId
           description: The identifier for the shape.
-          type:
-            - string
-  - uid: 'excel!Excel.ShapeCollection#addGeometricShape:member(1)'
-    summary: Adds a geometric shape to the worksheet. Returns a Shape object that represents the new shape.
-    name: addGeometricShape(geometricShapeType)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: addGeometricShape(geometricShapeType)
+    uid: 'excel!Excel.ShapeCollection#addGeometricShape:member(1)'
+    package: excel!
     fullName: addGeometricShape(geometricShapeType)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Adds a geometric shape to the worksheet. Returns a Shape object that
+      represents the new shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         addGeometricShape(
@@ -227,9 +219,193 @@ items:
                         | "ChartStar"
                         | "ChartPlus"
                 ): Shape;
+      parameters:
+        - id: geometricShapeType
+          description: >-
+            Represents the type of the geometric shape. See
+            Excel.GeometricShapeType for details.
+          type: |-
+            | <xref uid="excel!Excel.GeometricShapeType:enum" />
+                            | "LineInverse"
+                            | "Triangle"
+                            | "RightTriangle"
+                            | "Rectangle"
+                            | "Diamond"
+                            | "Parallelogram"
+                            | "Trapezoid"
+                            | "NonIsoscelesTrapezoid"
+                            | "Pentagon"
+                            | "Hexagon"
+                            | "Heptagon"
+                            | "Octagon"
+                            | "Decagon"
+                            | "Dodecagon"
+                            | "Star4"
+                            | "Star5"
+                            | "Star6"
+                            | "Star7"
+                            | "Star8"
+                            | "Star10"
+                            | "Star12"
+                            | "Star16"
+                            | "Star24"
+                            | "Star32"
+                            | "RoundRectangle"
+                            | "Round1Rectangle"
+                            | "Round2SameRectangle"
+                            | "Round2DiagonalRectangle"
+                            | "SnipRoundRectangle"
+                            | "Snip1Rectangle"
+                            | "Snip2SameRectangle"
+                            | "Snip2DiagonalRectangle"
+                            | "Plaque"
+                            | "Ellipse"
+                            | "Teardrop"
+                            | "HomePlate"
+                            | "Chevron"
+                            | "PieWedge"
+                            | "Pie"
+                            | "BlockArc"
+                            | "Donut"
+                            | "NoSmoking"
+                            | "RightArrow"
+                            | "LeftArrow"
+                            | "UpArrow"
+                            | "DownArrow"
+                            | "StripedRightArrow"
+                            | "NotchedRightArrow"
+                            | "BentUpArrow"
+                            | "LeftRightArrow"
+                            | "UpDownArrow"
+                            | "LeftUpArrow"
+                            | "LeftRightUpArrow"
+                            | "QuadArrow"
+                            | "LeftArrowCallout"
+                            | "RightArrowCallout"
+                            | "UpArrowCallout"
+                            | "DownArrowCallout"
+                            | "LeftRightArrowCallout"
+                            | "UpDownArrowCallout"
+                            | "QuadArrowCallout"
+                            | "BentArrow"
+                            | "UturnArrow"
+                            | "CircularArrow"
+                            | "LeftCircularArrow"
+                            | "LeftRightCircularArrow"
+                            | "CurvedRightArrow"
+                            | "CurvedLeftArrow"
+                            | "CurvedUpArrow"
+                            | "CurvedDownArrow"
+                            | "SwooshArrow"
+                            | "Cube"
+                            | "Can"
+                            | "LightningBolt"
+                            | "Heart"
+                            | "Sun"
+                            | "Moon"
+                            | "SmileyFace"
+                            | "IrregularSeal1"
+                            | "IrregularSeal2"
+                            | "FoldedCorner"
+                            | "Bevel"
+                            | "Frame"
+                            | "HalfFrame"
+                            | "Corner"
+                            | "DiagonalStripe"
+                            | "Chord"
+                            | "Arc"
+                            | "LeftBracket"
+                            | "RightBracket"
+                            | "LeftBrace"
+                            | "RightBrace"
+                            | "BracketPair"
+                            | "BracePair"
+                            | "Callout1"
+                            | "Callout2"
+                            | "Callout3"
+                            | "AccentCallout1"
+                            | "AccentCallout2"
+                            | "AccentCallout3"
+                            | "BorderCallout1"
+                            | "BorderCallout2"
+                            | "BorderCallout3"
+                            | "AccentBorderCallout1"
+                            | "AccentBorderCallout2"
+                            | "AccentBorderCallout3"
+                            | "WedgeRectCallout"
+                            | "WedgeRRectCallout"
+                            | "WedgeEllipseCallout"
+                            | "CloudCallout"
+                            | "Cloud"
+                            | "Ribbon"
+                            | "Ribbon2"
+                            | "EllipseRibbon"
+                            | "EllipseRibbon2"
+                            | "LeftRightRibbon"
+                            | "VerticalScroll"
+                            | "HorizontalScroll"
+                            | "Wave"
+                            | "DoubleWave"
+                            | "Plus"
+                            | "FlowChartProcess"
+                            | "FlowChartDecision"
+                            | "FlowChartInputOutput"
+                            | "FlowChartPredefinedProcess"
+                            | "FlowChartInternalStorage"
+                            | "FlowChartDocument"
+                            | "FlowChartMultidocument"
+                            | "FlowChartTerminator"
+                            | "FlowChartPreparation"
+                            | "FlowChartManualInput"
+                            | "FlowChartManualOperation"
+                            | "FlowChartConnector"
+                            | "FlowChartPunchedCard"
+                            | "FlowChartPunchedTape"
+                            | "FlowChartSummingJunction"
+                            | "FlowChartOr"
+                            | "FlowChartCollate"
+                            | "FlowChartSort"
+                            | "FlowChartExtract"
+                            | "FlowChartMerge"
+                            | "FlowChartOfflineStorage"
+                            | "FlowChartOnlineStorage"
+                            | "FlowChartMagneticTape"
+                            | "FlowChartMagneticDisk"
+                            | "FlowChartMagneticDrum"
+                            | "FlowChartDisplay"
+                            | "FlowChartDelay"
+                            | "FlowChartAlternateProcess"
+                            | "FlowChartOffpageConnector"
+                            | "ActionButtonBlank"
+                            | "ActionButtonHome"
+                            | "ActionButtonHelp"
+                            | "ActionButtonInformation"
+                            | "ActionButtonForwardNext"
+                            | "ActionButtonBackPrevious"
+                            | "ActionButtonEnd"
+                            | "ActionButtonBeginning"
+                            | "ActionButtonReturn"
+                            | "ActionButtonDocument"
+                            | "ActionButtonSound"
+                            | "ActionButtonMovie"
+                            | "Gear6"
+                            | "Gear9"
+                            | "Funnel"
+                            | "MathPlus"
+                            | "MathMinus"
+                            | "MathMultiply"
+                            | "MathDivide"
+                            | "MathEqual"
+                            | "MathNotEqual"
+                            | "CornerTabs"
+                            | "SquareTabs"
+                            | "PlaqueTabs"
+                            | "ChartX"
+                            | "ChartStar"
+                            | "ChartPlus"
+                    
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
         description: |-
 
 
@@ -246,25 +422,24 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: geometricShapeType
-          description: Represents the type of the geometric shape. See Excel.GeometricShapeType for details.
-          type:
-            - 'excel!Excel.ShapeCollection#addGeometricShape~0:complex'
-  - uid: 'excel!Excel.ShapeCollection#addGroup:member(1)'
-    summary: >-
-      Groups a subset of shapes in this collection's worksheet. Returns a Shape object that represents the new group of
-      shapes.
-    name: addGroup(values)
+  - name: addGroup(values)
+    uid: 'excel!Excel.ShapeCollection#addGroup:member(1)'
+    package: excel!
     fullName: addGroup(values)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Groups a subset of shapes in this collection's worksheet. Returns a Shape
+      object that represents the new group of shapes.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'addGroup(values: Array<string | Shape>): Shape;'
+      parameters:
+        - id: values
+          description: An array of shape ID or shape objects.
+          type: 'Array&lt;string | <xref uid="excel!Excel.Shape:interface" />&gt;'
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
         description: |-
 
 
@@ -284,33 +459,39 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: values
-          description: An array of shape ID or shape objects.
-          type:
-            - 'excel!Excel.ShapeCollection#addGroup~0:complex'
-  - uid: 'excel!Excel.ShapeCollection#addImage:member(1)'
-    summary: >-
-      Creates an image from a base64-encoded string and adds it to the worksheet. Returns the Shape object that
-      represents the new image.
-    name: addImage(base64ImageString)
+  - name: addImage(base64ImageString)
+    uid: 'excel!Excel.ShapeCollection#addImage:member(1)'
+    package: excel!
     fullName: addImage(base64ImageString)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Creates an image from a base64-encoded string and adds it to the
+      worksheet. Returns the Shape object that represents the new image.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'addImage(base64ImageString: string): Shape;'
+      parameters:
+        - id: base64ImageString
+          description: >-
+            A base64-encoded string representing an image in either JPEG or PNG
+            format.
+          type: string
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: |-
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: >-
 
 
           #### Examples
 
+
           ```javascript
-          let myFile = <HTMLInputElement>document.getElementById("selectedFile");
+
+          let myFile =
+          <HTMLInputElement>document.getElementById("selectedFile");
+
           let reader = new FileReader();
+
 
           reader.onload = (event) => {
               Excel.run((context) => {
@@ -323,21 +504,22 @@ items:
               });
           };
 
+
           // Read in the image file as a data URL.
+
           reader.readAsDataURL(myFile.files[0]);
+
           ```
-      parameters:
-        - id: base64ImageString
-          description: A base64-encoded string representing an image in either JPEG or PNG format.
-          type:
-            - string
-  - uid: 'excel!Excel.ShapeCollection#addLine:member(1)'
-    summary: Adds a line to worksheet. Returns a Shape object that represents the new line.
-    name: 'addLine(startLeft, startTop, endLeft, endTop, connectorType)'
+  - name: 'addLine(startLeft, startTop, endLeft, endTop, connectorType)'
+    uid: 'excel!Excel.ShapeCollection#addLine:member(1)'
+    package: excel!
     fullName: 'addLine(startLeft, startTop, endLeft, endTop, connectorType)'
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Adds a line to worksheet. Returns a Shape object that represents the new
+      line.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         addLine(
@@ -347,9 +529,35 @@ items:
                     endTop: number,
                     connectorType?: ConnectorType | "Straight" | "Elbow" | "Curve"
                 ): Shape;
+      parameters:
+        - id: startLeft
+          description: >-
+            The distance, in points, from the start of the line to the left side
+            of the worksheet.
+          type: number
+        - id: startTop
+          description: >-
+            The distance, in points, from the start of the line to the top of
+            the worksheet.
+          type: number
+        - id: endLeft
+          description: >-
+            The distance, in points, from the end of the line to the left of the
+            worksheet.
+          type: number
+        - id: endTop
+          description: >-
+            The distance, in points, from the end of the line to the top of the
+            worksheet.
+          type: number
+        - id: connectorType
+          description: Represents the connector type. See Excel.ConnectorType for details.
+          type: >-
+            <xref uid="excel!Excel.ConnectorType:enum" /> | "Straight" | "Elbow"
+            | "Curve"
+                    
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
         description: |-
 
 
@@ -363,41 +571,24 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: startLeft
-          description: 'The distance, in points, from the start of the line to the left side of the worksheet.'
-          type:
-            - number
-        - id: startTop
-          description: 'The distance, in points, from the start of the line to the top of the worksheet.'
-          type:
-            - number
-        - id: endLeft
-          description: 'The distance, in points, from the end of the line to the left of the worksheet.'
-          type:
-            - number
-        - id: endTop
-          description: 'The distance, in points, from the end of the line to the top of the worksheet.'
-          type:
-            - number
-        - id: connectorType
-          description: Represents the connector type. See Excel.ConnectorType for details.
-          type:
-            - 'excel!Excel.ShapeCollection#addLine~0:complex'
-  - uid: 'excel!Excel.ShapeCollection#addTextBox:member(1)'
-    summary: >-
-      Adds a text box to the worksheet with the provided text as the content. Returns a Shape object that represents the
-      new text box.
-    name: addTextBox(text)
+  - name: addTextBox(text)
+    uid: 'excel!Excel.ShapeCollection#addTextBox:member(1)'
+    package: excel!
     fullName: addTextBox(text)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Adds a text box to the worksheet with the provided text as the content.
+      Returns a Shape object that represents the new text box.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'addTextBox(text?: string): Shape;'
+      parameters:
+        - id: text
+          description: Represents the text that will be shown in the created text box.
+          type: string
       return:
-        type:
-          - 'excel!Excel.Shape:interface'
+        type: '<xref uid="excel!Excel.Shape:interface" />'
         description: |-
 
 
@@ -415,842 +606,71 @@ items:
               await context.sync();
           }
           ```
-      parameters:
-        - id: text
-          description: Represents the text that will be shown in the created text box.
-          type:
-            - string
-  - uid: 'excel!Excel.ShapeCollection#getCount:member(1)'
-    summary: Returns the number of shapes in the worksheet.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.ShapeCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of shapes in the worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.ShapeCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.ShapeCollection#getItem:member(1)'
-    summary: Gets a shape using its Name or ID.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.ShapeCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a shape using its Name or ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: key
           description: Name or ID of the shape to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.ShapeCollection#getItemAt:member(1)'
-    summary: Gets a shape using its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.ShapeCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a shape using its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: index
           description: The zero-based index of the shape to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.ShapeCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ShapeCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
-  - uid: 'excel!Excel.ShapeCollection#addGeometricShape~0:complex'
-    name: |-
-      | GeometricShapeType
-                      | "LineInverse"
-                      | "Triangle"
-                      | "RightTriangle"
-                      | "Rectangle"
-                      | "Diamond"
-                      | "Parallelogram"
-                      | "Trapezoid"
-                      | "NonIsoscelesTrapezoid"
-                      | "Pentagon"
-                      | "Hexagon"
-                      | "Heptagon"
-                      | "Octagon"
-                      | "Decagon"
-                      | "Dodecagon"
-                      | "Star4"
-                      | "Star5"
-                      | "Star6"
-                      | "Star7"
-                      | "Star8"
-                      | "Star10"
-                      | "Star12"
-                      | "Star16"
-                      | "Star24"
-                      | "Star32"
-                      | "RoundRectangle"
-                      | "Round1Rectangle"
-                      | "Round2SameRectangle"
-                      | "Round2DiagonalRectangle"
-                      | "SnipRoundRectangle"
-                      | "Snip1Rectangle"
-                      | "Snip2SameRectangle"
-                      | "Snip2DiagonalRectangle"
-                      | "Plaque"
-                      | "Ellipse"
-                      | "Teardrop"
-                      | "HomePlate"
-                      | "Chevron"
-                      | "PieWedge"
-                      | "Pie"
-                      | "BlockArc"
-                      | "Donut"
-                      | "NoSmoking"
-                      | "RightArrow"
-                      | "LeftArrow"
-                      | "UpArrow"
-                      | "DownArrow"
-                      | "StripedRightArrow"
-                      | "NotchedRightArrow"
-                      | "BentUpArrow"
-                      | "LeftRightArrow"
-                      | "UpDownArrow"
-                      | "LeftUpArrow"
-                      | "LeftRightUpArrow"
-                      | "QuadArrow"
-                      | "LeftArrowCallout"
-                      | "RightArrowCallout"
-                      | "UpArrowCallout"
-                      | "DownArrowCallout"
-                      | "LeftRightArrowCallout"
-                      | "UpDownArrowCallout"
-                      | "QuadArrowCallout"
-                      | "BentArrow"
-                      | "UturnArrow"
-                      | "CircularArrow"
-                      | "LeftCircularArrow"
-                      | "LeftRightCircularArrow"
-                      | "CurvedRightArrow"
-                      | "CurvedLeftArrow"
-                      | "CurvedUpArrow"
-                      | "CurvedDownArrow"
-                      | "SwooshArrow"
-                      | "Cube"
-                      | "Can"
-                      | "LightningBolt"
-                      | "Heart"
-                      | "Sun"
-                      | "Moon"
-                      | "SmileyFace"
-                      | "IrregularSeal1"
-                      | "IrregularSeal2"
-                      | "FoldedCorner"
-                      | "Bevel"
-                      | "Frame"
-                      | "HalfFrame"
-                      | "Corner"
-                      | "DiagonalStripe"
-                      | "Chord"
-                      | "Arc"
-                      | "LeftBracket"
-                      | "RightBracket"
-                      | "LeftBrace"
-                      | "RightBrace"
-                      | "BracketPair"
-                      | "BracePair"
-                      | "Callout1"
-                      | "Callout2"
-                      | "Callout3"
-                      | "AccentCallout1"
-                      | "AccentCallout2"
-                      | "AccentCallout3"
-                      | "BorderCallout1"
-                      | "BorderCallout2"
-                      | "BorderCallout3"
-                      | "AccentBorderCallout1"
-                      | "AccentBorderCallout2"
-                      | "AccentBorderCallout3"
-                      | "WedgeRectCallout"
-                      | "WedgeRRectCallout"
-                      | "WedgeEllipseCallout"
-                      | "CloudCallout"
-                      | "Cloud"
-                      | "Ribbon"
-                      | "Ribbon2"
-                      | "EllipseRibbon"
-                      | "EllipseRibbon2"
-                      | "LeftRightRibbon"
-                      | "VerticalScroll"
-                      | "HorizontalScroll"
-                      | "Wave"
-                      | "DoubleWave"
-                      | "Plus"
-                      | "FlowChartProcess"
-                      | "FlowChartDecision"
-                      | "FlowChartInputOutput"
-                      | "FlowChartPredefinedProcess"
-                      | "FlowChartInternalStorage"
-                      | "FlowChartDocument"
-                      | "FlowChartMultidocument"
-                      | "FlowChartTerminator"
-                      | "FlowChartPreparation"
-                      | "FlowChartManualInput"
-                      | "FlowChartManualOperation"
-                      | "FlowChartConnector"
-                      | "FlowChartPunchedCard"
-                      | "FlowChartPunchedTape"
-                      | "FlowChartSummingJunction"
-                      | "FlowChartOr"
-                      | "FlowChartCollate"
-                      | "FlowChartSort"
-                      | "FlowChartExtract"
-                      | "FlowChartMerge"
-                      | "FlowChartOfflineStorage"
-                      | "FlowChartOnlineStorage"
-                      | "FlowChartMagneticTape"
-                      | "FlowChartMagneticDisk"
-                      | "FlowChartMagneticDrum"
-                      | "FlowChartDisplay"
-                      | "FlowChartDelay"
-                      | "FlowChartAlternateProcess"
-                      | "FlowChartOffpageConnector"
-                      | "ActionButtonBlank"
-                      | "ActionButtonHome"
-                      | "ActionButtonHelp"
-                      | "ActionButtonInformation"
-                      | "ActionButtonForwardNext"
-                      | "ActionButtonBackPrevious"
-                      | "ActionButtonEnd"
-                      | "ActionButtonBeginning"
-                      | "ActionButtonReturn"
-                      | "ActionButtonDocument"
-                      | "ActionButtonSound"
-                      | "ActionButtonMovie"
-                      | "Gear6"
-                      | "Gear9"
-                      | "Funnel"
-                      | "MathPlus"
-                      | "MathMinus"
-                      | "MathMultiply"
-                      | "MathDivide"
-                      | "MathEqual"
-                      | "MathNotEqual"
-                      | "CornerTabs"
-                      | "SquareTabs"
-                      | "PlaqueTabs"
-                      | "ChartX"
-                      | "ChartStar"
-                      | "ChartPlus"
-    fullName: |-
-      | Excel.GeometricShapeType
-                      | "LineInverse"
-                      | "Triangle"
-                      | "RightTriangle"
-                      | "Rectangle"
-                      | "Diamond"
-                      | "Parallelogram"
-                      | "Trapezoid"
-                      | "NonIsoscelesTrapezoid"
-                      | "Pentagon"
-                      | "Hexagon"
-                      | "Heptagon"
-                      | "Octagon"
-                      | "Decagon"
-                      | "Dodecagon"
-                      | "Star4"
-                      | "Star5"
-                      | "Star6"
-                      | "Star7"
-                      | "Star8"
-                      | "Star10"
-                      | "Star12"
-                      | "Star16"
-                      | "Star24"
-                      | "Star32"
-                      | "RoundRectangle"
-                      | "Round1Rectangle"
-                      | "Round2SameRectangle"
-                      | "Round2DiagonalRectangle"
-                      | "SnipRoundRectangle"
-                      | "Snip1Rectangle"
-                      | "Snip2SameRectangle"
-                      | "Snip2DiagonalRectangle"
-                      | "Plaque"
-                      | "Ellipse"
-                      | "Teardrop"
-                      | "HomePlate"
-                      | "Chevron"
-                      | "PieWedge"
-                      | "Pie"
-                      | "BlockArc"
-                      | "Donut"
-                      | "NoSmoking"
-                      | "RightArrow"
-                      | "LeftArrow"
-                      | "UpArrow"
-                      | "DownArrow"
-                      | "StripedRightArrow"
-                      | "NotchedRightArrow"
-                      | "BentUpArrow"
-                      | "LeftRightArrow"
-                      | "UpDownArrow"
-                      | "LeftUpArrow"
-                      | "LeftRightUpArrow"
-                      | "QuadArrow"
-                      | "LeftArrowCallout"
-                      | "RightArrowCallout"
-                      | "UpArrowCallout"
-                      | "DownArrowCallout"
-                      | "LeftRightArrowCallout"
-                      | "UpDownArrowCallout"
-                      | "QuadArrowCallout"
-                      | "BentArrow"
-                      | "UturnArrow"
-                      | "CircularArrow"
-                      | "LeftCircularArrow"
-                      | "LeftRightCircularArrow"
-                      | "CurvedRightArrow"
-                      | "CurvedLeftArrow"
-                      | "CurvedUpArrow"
-                      | "CurvedDownArrow"
-                      | "SwooshArrow"
-                      | "Cube"
-                      | "Can"
-                      | "LightningBolt"
-                      | "Heart"
-                      | "Sun"
-                      | "Moon"
-                      | "SmileyFace"
-                      | "IrregularSeal1"
-                      | "IrregularSeal2"
-                      | "FoldedCorner"
-                      | "Bevel"
-                      | "Frame"
-                      | "HalfFrame"
-                      | "Corner"
-                      | "DiagonalStripe"
-                      | "Chord"
-                      | "Arc"
-                      | "LeftBracket"
-                      | "RightBracket"
-                      | "LeftBrace"
-                      | "RightBrace"
-                      | "BracketPair"
-                      | "BracePair"
-                      | "Callout1"
-                      | "Callout2"
-                      | "Callout3"
-                      | "AccentCallout1"
-                      | "AccentCallout2"
-                      | "AccentCallout3"
-                      | "BorderCallout1"
-                      | "BorderCallout2"
-                      | "BorderCallout3"
-                      | "AccentBorderCallout1"
-                      | "AccentBorderCallout2"
-                      | "AccentBorderCallout3"
-                      | "WedgeRectCallout"
-                      | "WedgeRRectCallout"
-                      | "WedgeEllipseCallout"
-                      | "CloudCallout"
-                      | "Cloud"
-                      | "Ribbon"
-                      | "Ribbon2"
-                      | "EllipseRibbon"
-                      | "EllipseRibbon2"
-                      | "LeftRightRibbon"
-                      | "VerticalScroll"
-                      | "HorizontalScroll"
-                      | "Wave"
-                      | "DoubleWave"
-                      | "Plus"
-                      | "FlowChartProcess"
-                      | "FlowChartDecision"
-                      | "FlowChartInputOutput"
-                      | "FlowChartPredefinedProcess"
-                      | "FlowChartInternalStorage"
-                      | "FlowChartDocument"
-                      | "FlowChartMultidocument"
-                      | "FlowChartTerminator"
-                      | "FlowChartPreparation"
-                      | "FlowChartManualInput"
-                      | "FlowChartManualOperation"
-                      | "FlowChartConnector"
-                      | "FlowChartPunchedCard"
-                      | "FlowChartPunchedTape"
-                      | "FlowChartSummingJunction"
-                      | "FlowChartOr"
-                      | "FlowChartCollate"
-                      | "FlowChartSort"
-                      | "FlowChartExtract"
-                      | "FlowChartMerge"
-                      | "FlowChartOfflineStorage"
-                      | "FlowChartOnlineStorage"
-                      | "FlowChartMagneticTape"
-                      | "FlowChartMagneticDisk"
-                      | "FlowChartMagneticDrum"
-                      | "FlowChartDisplay"
-                      | "FlowChartDelay"
-                      | "FlowChartAlternateProcess"
-                      | "FlowChartOffpageConnector"
-                      | "ActionButtonBlank"
-                      | "ActionButtonHome"
-                      | "ActionButtonHelp"
-                      | "ActionButtonInformation"
-                      | "ActionButtonForwardNext"
-                      | "ActionButtonBackPrevious"
-                      | "ActionButtonEnd"
-                      | "ActionButtonBeginning"
-                      | "ActionButtonReturn"
-                      | "ActionButtonDocument"
-                      | "ActionButtonSound"
-                      | "ActionButtonMovie"
-                      | "Gear6"
-                      | "Gear9"
-                      | "Funnel"
-                      | "MathPlus"
-                      | "MathMinus"
-                      | "MathMultiply"
-                      | "MathDivide"
-                      | "MathEqual"
-                      | "MathNotEqual"
-                      | "CornerTabs"
-                      | "SquareTabs"
-                      | "PlaqueTabs"
-                      | "ChartX"
-                      | "ChartStar"
-                      | "ChartPlus"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.GeometricShapeType:enum'
-        name: GeometricShapeType
-        fullName: Excel.GeometricShapeType
-      - name: |2-
-
-                          | "LineInverse"
-                          | "Triangle"
-                          | "RightTriangle"
-                          | "Rectangle"
-                          | "Diamond"
-                          | "Parallelogram"
-                          | "Trapezoid"
-                          | "NonIsoscelesTrapezoid"
-                          | "Pentagon"
-                          | "Hexagon"
-                          | "Heptagon"
-                          | "Octagon"
-                          | "Decagon"
-                          | "Dodecagon"
-                          | "Star4"
-                          | "Star5"
-                          | "Star6"
-                          | "Star7"
-                          | "Star8"
-                          | "Star10"
-                          | "Star12"
-                          | "Star16"
-                          | "Star24"
-                          | "Star32"
-                          | "RoundRectangle"
-                          | "Round1Rectangle"
-                          | "Round2SameRectangle"
-                          | "Round2DiagonalRectangle"
-                          | "SnipRoundRectangle"
-                          | "Snip1Rectangle"
-                          | "Snip2SameRectangle"
-                          | "Snip2DiagonalRectangle"
-                          | "Plaque"
-                          | "Ellipse"
-                          | "Teardrop"
-                          | "HomePlate"
-                          | "Chevron"
-                          | "PieWedge"
-                          | "Pie"
-                          | "BlockArc"
-                          | "Donut"
-                          | "NoSmoking"
-                          | "RightArrow"
-                          | "LeftArrow"
-                          | "UpArrow"
-                          | "DownArrow"
-                          | "StripedRightArrow"
-                          | "NotchedRightArrow"
-                          | "BentUpArrow"
-                          | "LeftRightArrow"
-                          | "UpDownArrow"
-                          | "LeftUpArrow"
-                          | "LeftRightUpArrow"
-                          | "QuadArrow"
-                          | "LeftArrowCallout"
-                          | "RightArrowCallout"
-                          | "UpArrowCallout"
-                          | "DownArrowCallout"
-                          | "LeftRightArrowCallout"
-                          | "UpDownArrowCallout"
-                          | "QuadArrowCallout"
-                          | "BentArrow"
-                          | "UturnArrow"
-                          | "CircularArrow"
-                          | "LeftCircularArrow"
-                          | "LeftRightCircularArrow"
-                          | "CurvedRightArrow"
-                          | "CurvedLeftArrow"
-                          | "CurvedUpArrow"
-                          | "CurvedDownArrow"
-                          | "SwooshArrow"
-                          | "Cube"
-                          | "Can"
-                          | "LightningBolt"
-                          | "Heart"
-                          | "Sun"
-                          | "Moon"
-                          | "SmileyFace"
-                          | "IrregularSeal1"
-                          | "IrregularSeal2"
-                          | "FoldedCorner"
-                          | "Bevel"
-                          | "Frame"
-                          | "HalfFrame"
-                          | "Corner"
-                          | "DiagonalStripe"
-                          | "Chord"
-                          | "Arc"
-                          | "LeftBracket"
-                          | "RightBracket"
-                          | "LeftBrace"
-                          | "RightBrace"
-                          | "BracketPair"
-                          | "BracePair"
-                          | "Callout1"
-                          | "Callout2"
-                          | "Callout3"
-                          | "AccentCallout1"
-                          | "AccentCallout2"
-                          | "AccentCallout3"
-                          | "BorderCallout1"
-                          | "BorderCallout2"
-                          | "BorderCallout3"
-                          | "AccentBorderCallout1"
-                          | "AccentBorderCallout2"
-                          | "AccentBorderCallout3"
-                          | "WedgeRectCallout"
-                          | "WedgeRRectCallout"
-                          | "WedgeEllipseCallout"
-                          | "CloudCallout"
-                          | "Cloud"
-                          | "Ribbon"
-                          | "Ribbon2"
-                          | "EllipseRibbon"
-                          | "EllipseRibbon2"
-                          | "LeftRightRibbon"
-                          | "VerticalScroll"
-                          | "HorizontalScroll"
-                          | "Wave"
-                          | "DoubleWave"
-                          | "Plus"
-                          | "FlowChartProcess"
-                          | "FlowChartDecision"
-                          | "FlowChartInputOutput"
-                          | "FlowChartPredefinedProcess"
-                          | "FlowChartInternalStorage"
-                          | "FlowChartDocument"
-                          | "FlowChartMultidocument"
-                          | "FlowChartTerminator"
-                          | "FlowChartPreparation"
-                          | "FlowChartManualInput"
-                          | "FlowChartManualOperation"
-                          | "FlowChartConnector"
-                          | "FlowChartPunchedCard"
-                          | "FlowChartPunchedTape"
-                          | "FlowChartSummingJunction"
-                          | "FlowChartOr"
-                          | "FlowChartCollate"
-                          | "FlowChartSort"
-                          | "FlowChartExtract"
-                          | "FlowChartMerge"
-                          | "FlowChartOfflineStorage"
-                          | "FlowChartOnlineStorage"
-                          | "FlowChartMagneticTape"
-                          | "FlowChartMagneticDisk"
-                          | "FlowChartMagneticDrum"
-                          | "FlowChartDisplay"
-                          | "FlowChartDelay"
-                          | "FlowChartAlternateProcess"
-                          | "FlowChartOffpageConnector"
-                          | "ActionButtonBlank"
-                          | "ActionButtonHome"
-                          | "ActionButtonHelp"
-                          | "ActionButtonInformation"
-                          | "ActionButtonForwardNext"
-                          | "ActionButtonBackPrevious"
-                          | "ActionButtonEnd"
-                          | "ActionButtonBeginning"
-                          | "ActionButtonReturn"
-                          | "ActionButtonDocument"
-                          | "ActionButtonSound"
-                          | "ActionButtonMovie"
-                          | "Gear6"
-                          | "Gear9"
-                          | "Funnel"
-                          | "MathPlus"
-                          | "MathMinus"
-                          | "MathMultiply"
-                          | "MathDivide"
-                          | "MathEqual"
-                          | "MathNotEqual"
-                          | "CornerTabs"
-                          | "SquareTabs"
-                          | "PlaqueTabs"
-                          | "ChartX"
-                          | "ChartStar"
-                          | "ChartPlus"
-                  
-        fullName: |2-
-
-                          | "LineInverse"
-                          | "Triangle"
-                          | "RightTriangle"
-                          | "Rectangle"
-                          | "Diamond"
-                          | "Parallelogram"
-                          | "Trapezoid"
-                          | "NonIsoscelesTrapezoid"
-                          | "Pentagon"
-                          | "Hexagon"
-                          | "Heptagon"
-                          | "Octagon"
-                          | "Decagon"
-                          | "Dodecagon"
-                          | "Star4"
-                          | "Star5"
-                          | "Star6"
-                          | "Star7"
-                          | "Star8"
-                          | "Star10"
-                          | "Star12"
-                          | "Star16"
-                          | "Star24"
-                          | "Star32"
-                          | "RoundRectangle"
-                          | "Round1Rectangle"
-                          | "Round2SameRectangle"
-                          | "Round2DiagonalRectangle"
-                          | "SnipRoundRectangle"
-                          | "Snip1Rectangle"
-                          | "Snip2SameRectangle"
-                          | "Snip2DiagonalRectangle"
-                          | "Plaque"
-                          | "Ellipse"
-                          | "Teardrop"
-                          | "HomePlate"
-                          | "Chevron"
-                          | "PieWedge"
-                          | "Pie"
-                          | "BlockArc"
-                          | "Donut"
-                          | "NoSmoking"
-                          | "RightArrow"
-                          | "LeftArrow"
-                          | "UpArrow"
-                          | "DownArrow"
-                          | "StripedRightArrow"
-                          | "NotchedRightArrow"
-                          | "BentUpArrow"
-                          | "LeftRightArrow"
-                          | "UpDownArrow"
-                          | "LeftUpArrow"
-                          | "LeftRightUpArrow"
-                          | "QuadArrow"
-                          | "LeftArrowCallout"
-                          | "RightArrowCallout"
-                          | "UpArrowCallout"
-                          | "DownArrowCallout"
-                          | "LeftRightArrowCallout"
-                          | "UpDownArrowCallout"
-                          | "QuadArrowCallout"
-                          | "BentArrow"
-                          | "UturnArrow"
-                          | "CircularArrow"
-                          | "LeftCircularArrow"
-                          | "LeftRightCircularArrow"
-                          | "CurvedRightArrow"
-                          | "CurvedLeftArrow"
-                          | "CurvedUpArrow"
-                          | "CurvedDownArrow"
-                          | "SwooshArrow"
-                          | "Cube"
-                          | "Can"
-                          | "LightningBolt"
-                          | "Heart"
-                          | "Sun"
-                          | "Moon"
-                          | "SmileyFace"
-                          | "IrregularSeal1"
-                          | "IrregularSeal2"
-                          | "FoldedCorner"
-                          | "Bevel"
-                          | "Frame"
-                          | "HalfFrame"
-                          | "Corner"
-                          | "DiagonalStripe"
-                          | "Chord"
-                          | "Arc"
-                          | "LeftBracket"
-                          | "RightBracket"
-                          | "LeftBrace"
-                          | "RightBrace"
-                          | "BracketPair"
-                          | "BracePair"
-                          | "Callout1"
-                          | "Callout2"
-                          | "Callout3"
-                          | "AccentCallout1"
-                          | "AccentCallout2"
-                          | "AccentCallout3"
-                          | "BorderCallout1"
-                          | "BorderCallout2"
-                          | "BorderCallout3"
-                          | "AccentBorderCallout1"
-                          | "AccentBorderCallout2"
-                          | "AccentBorderCallout3"
-                          | "WedgeRectCallout"
-                          | "WedgeRRectCallout"
-                          | "WedgeEllipseCallout"
-                          | "CloudCallout"
-                          | "Cloud"
-                          | "Ribbon"
-                          | "Ribbon2"
-                          | "EllipseRibbon"
-                          | "EllipseRibbon2"
-                          | "LeftRightRibbon"
-                          | "VerticalScroll"
-                          | "HorizontalScroll"
-                          | "Wave"
-                          | "DoubleWave"
-                          | "Plus"
-                          | "FlowChartProcess"
-                          | "FlowChartDecision"
-                          | "FlowChartInputOutput"
-                          | "FlowChartPredefinedProcess"
-                          | "FlowChartInternalStorage"
-                          | "FlowChartDocument"
-                          | "FlowChartMultidocument"
-                          | "FlowChartTerminator"
-                          | "FlowChartPreparation"
-                          | "FlowChartManualInput"
-                          | "FlowChartManualOperation"
-                          | "FlowChartConnector"
-                          | "FlowChartPunchedCard"
-                          | "FlowChartPunchedTape"
-                          | "FlowChartSummingJunction"
-                          | "FlowChartOr"
-                          | "FlowChartCollate"
-                          | "FlowChartSort"
-                          | "FlowChartExtract"
-                          | "FlowChartMerge"
-                          | "FlowChartOfflineStorage"
-                          | "FlowChartOnlineStorage"
-                          | "FlowChartMagneticTape"
-                          | "FlowChartMagneticDisk"
-                          | "FlowChartMagneticDrum"
-                          | "FlowChartDisplay"
-                          | "FlowChartDelay"
-                          | "FlowChartAlternateProcess"
-                          | "FlowChartOffpageConnector"
-                          | "ActionButtonBlank"
-                          | "ActionButtonHome"
-                          | "ActionButtonHelp"
-                          | "ActionButtonInformation"
-                          | "ActionButtonForwardNext"
-                          | "ActionButtonBackPrevious"
-                          | "ActionButtonEnd"
-                          | "ActionButtonBeginning"
-                          | "ActionButtonReturn"
-                          | "ActionButtonDocument"
-                          | "ActionButtonSound"
-                          | "ActionButtonMovie"
-                          | "Gear6"
-                          | "Gear9"
-                          | "Funnel"
-                          | "MathPlus"
-                          | "MathMinus"
-                          | "MathMultiply"
-                          | "MathDivide"
-                          | "MathEqual"
-                          | "MathNotEqual"
-                          | "CornerTabs"
-                          | "SquareTabs"
-                          | "PlaqueTabs"
-                          | "ChartX"
-                          | "ChartStar"
-                          | "ChartPlus"
-                  
-  - uid: 'excel!Excel.ShapeCollection#addGroup~0:complex'
-    name: Array<string | Shape>
-    fullName: Array<string | Excel.Shape>
-    spec.typeScript:
-      - uid: '!Array:interface'
-        name: Array
-        fullName: Array
-      - name: '<string | '
-        fullName: '<string | '
-      - uid: 'excel!Excel.Shape:interface'
-        name: Shape
-        fullName: Excel.Shape
-      - name: '>'
-        fullName: '>'
-  - uid: 'excel!Excel.ShapeCollection#addLine~0:complex'
-    name: ConnectorType | "Straight" | "Elbow" | "Curve"
-    fullName: Excel.ConnectorType | "Straight" | "Elbow" | "Curve"
-    spec.typeScript:
-      - uid: 'excel!Excel.ConnectorType:enum'
-        name: ConnectorType
-        fullName: Excel.ConnectorType
-      - name: |2-
-           | "Straight" | "Elbow" | "Curve"
-                  
-        fullName: |2-
-           | "Straight" | "Elbow" | "Curve"
-                  
-  - uid: 'excel!Excel.ShapeCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

@@ -1,116 +1,96 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.GroupShapeCollection:interface'
-    summary: Represents the shape collection inside a shape group.
-    name: Excel.GroupShapeCollection
-    fullName: Excel.GroupShapeCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.GroupShapeCollection
+uid: 'excel!Excel.GroupShapeCollection:interface'
+package: excel!
+fullName: Excel.GroupShapeCollection
+summary: Represents the shape collection inside a shape group.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: _GetItem(shapeId)
+    uid: 'excel!Excel.GroupShapeCollection#_GetItem:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.GroupShapeCollection#_GetItem:member(1)'
-      - 'excel!Excel.GroupShapeCollection#getCount:member(1)'
-      - 'excel!Excel.GroupShapeCollection#getItem:member(1)'
-      - 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
-      - 'excel!Excel.GroupShapeCollection#load:member(1)'
-  - uid: 'excel!Excel.GroupShapeCollection#_GetItem:member(1)'
-    summary: Returns a shape identified by the shape id.
-    name: _GetItem(shapeId)
     fullName: _GetItem(shapeId)
-    langs:
-      - typeScript
-    type: method
+    summary: Returns a shape identified by the shape id.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: '_GetItem(shapeId: string): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: shapeId
           description: The identifier for the shape.
-          type:
-            - string
-  - uid: 'excel!Excel.GroupShapeCollection#getCount:member(1)'
-    summary: Returns the number of shapes in the shape group.
-    name: getCount()
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.GroupShapeCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Returns the number of shapes in the shape group.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.GroupShapeCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.GroupShapeCollection#getItem:member(1)'
-    summary: Gets a shape using its Name or ID.
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.GroupShapeCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a shape using its Name or ID.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: key
           description: The Name or ID of the shape to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
-    summary: Gets a shape based on its position in the collection.
-    name: getItemAt(index)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: getItemAt(index)
+    uid: 'excel!Excel.GroupShapeCollection#getItemAt:member(1)'
+    package: excel!
     fullName: getItemAt(index)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a shape based on its position in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemAt(index: number): Shape;'
-      return:
-        type:
-          - 'excel!Excel.Shape:interface'
-        description: ''
       parameters:
         - id: index
           description: The zero-based index value of the object to be retrieved.
-          type:
-            - number
-  - uid: 'excel!Excel.GroupShapeCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: number
+      return:
+        type: '<xref uid="excel!Excel.Shape:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.GroupShapeCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.Shape:interface'
-    name: Shape
-    fullName: Excel.Shape
-  - uid: 'excel!Excel.GroupShapeCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

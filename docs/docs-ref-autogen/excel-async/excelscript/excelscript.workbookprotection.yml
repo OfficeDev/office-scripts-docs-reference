@@ -1,50 +1,64 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.WorkbookProtection:interface'
-    summary: Represents the protection of a workbook object.
-    name: Excel.WorkbookProtection
-    fullName: Excel.WorkbookProtection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.WorkbookProtection
+uid: 'excel!Excel.WorkbookProtection:interface'
+package: excel!
+fullName: Excel.WorkbookProtection
+summary: Represents the protection of a workbook object.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: protected
+    uid: 'excel!Excel.WorkbookProtection#protected:member'
     package: excel!
-    children:
-      - 'excel!Excel.WorkbookProtection#load:member(1)'
-      - 'excel!Excel.WorkbookProtection#protect:member(1)'
-      - 'excel!Excel.WorkbookProtection#protected:member'
-      - 'excel!Excel.WorkbookProtection#unprotect:member(1)'
-  - uid: 'excel!Excel.WorkbookProtection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+    fullName: protected
+    summary: Specifies if the workbook is protected.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly protected: boolean;'
+      return:
+        type: boolean
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.WorkbookProtection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.WorkbookProtection#protect:member(1)'
-    summary: Protects a workbook. Fails if the workbook has been protected.
-    name: protect(password)
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: protect(password)
+    uid: 'excel!Excel.WorkbookProtection#protect:member(1)'
+    package: excel!
     fullName: protect(password)
-    langs:
-      - typeScript
-    type: method
+    summary: Protects a workbook. Fails if the workbook has been protected.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'protect(password?: string): void;'
+      parameters:
+        - id: password
+          description: workbook protection password.
+          type: string
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -76,35 +90,22 @@ items:
               }
           }
           ```
+  - name: unprotect(password)
+    uid: 'excel!Excel.WorkbookProtection#unprotect:member(1)'
+    package: excel!
+    fullName: unprotect(password)
+    summary: Unprotects a workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'unprotect(password?: string): void;'
       parameters:
         - id: password
           description: workbook protection password.
-          type:
-            - string
-  - uid: 'excel!Excel.WorkbookProtection#protected:member'
-    summary: Specifies if the workbook is protected.
-    name: protected
-    fullName: protected
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly protected: boolean;'
+          type: string
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.WorkbookProtection#unprotect:member(1)'
-    summary: Unprotects a workbook.
-    name: unprotect(password)
-    fullName: unprotect(password)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'unprotect(password?: string): void;'
-      return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -124,8 +125,3 @@ items:
               workbook.protection.unprotect(password);
           }
           ```
-      parameters:
-        - id: password
-          description: workbook protection password.
-          type:
-            - string

@@ -1,42 +1,30 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.PivotTable:interface'
-    summary: >-
-      Represents an Excel PivotTable. To learn more about the PivotTable object model, read [Work with PivotTables using
-      the Excel JavaScript API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-pivottables)<!-- -->.
-    name: Excel.PivotTable
-    fullName: Excel.PivotTable
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.PivotTable
+uid: 'excel!Excel.PivotTable:interface'
+package: excel!
+fullName: Excel.PivotTable
+summary: >-
+  Represents an Excel PivotTable. To learn more about the PivotTable object
+  model, read [Work with PivotTables using the Excel JavaScript
+  API](https://docs.microsoft.com/office/dev/add-ins/excel/excel-add-ins-pivottables)<!--
+  -->.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: columnHierarchies
+    uid: 'excel!Excel.PivotTable#columnHierarchies:member'
     package: excel!
-    children:
-      - 'excel!Excel.PivotTable#columnHierarchies:member'
-      - 'excel!Excel.PivotTable#dataHierarchies:member'
-      - 'excel!Excel.PivotTable#delete:member(1)'
-      - 'excel!Excel.PivotTable#enableDataValueEditing:member'
-      - 'excel!Excel.PivotTable#filterHierarchies:member'
-      - 'excel!Excel.PivotTable#hierarchies:member'
-      - 'excel!Excel.PivotTable#id:member'
-      - 'excel!Excel.PivotTable#layout:member'
-      - 'excel!Excel.PivotTable#load:member(1)'
-      - 'excel!Excel.PivotTable#name:member'
-      - 'excel!Excel.PivotTable#refresh:member(1)'
-      - 'excel!Excel.PivotTable#rowHierarchies:member'
-      - 'excel!Excel.PivotTable#useCustomSortLists:member'
-      - 'excel!Excel.PivotTable#worksheet:member'
-  - uid: 'excel!Excel.PivotTable#columnHierarchies:member'
-    summary: The Column Pivot Hierarchies of the PivotTable.
-    name: columnHierarchies
     fullName: columnHierarchies
-    langs:
-      - typeScript
-    type: property
+    summary: The Column Pivot Hierarchies of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly columnHierarchies: RowColumnPivotHierarchyCollection;'
       return:
-        type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
+        type: '<xref uid="excel!Excel.RowColumnPivotHierarchyCollection:interface" />'
         description: |-
 
 
@@ -61,18 +49,18 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.PivotTable#dataHierarchies:member'
-    summary: The Data Pivot Hierarchies of the PivotTable.
-    name: dataHierarchies
+  - name: dataHierarchies
+    uid: 'excel!Excel.PivotTable#dataHierarchies:member'
+    package: excel!
     fullName: dataHierarchies
-    langs:
-      - typeScript
-    type: property
+    summary: The Data Pivot Hierarchies of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly dataHierarchies: DataPivotHierarchyCollection;'
       return:
-        type:
-          - 'excel!Excel.DataPivotHierarchyCollection:interface'
+        type: '<xref uid="excel!Excel.DataPivotHierarchyCollection:interface" />'
         description: |-
 
 
@@ -87,54 +75,32 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.PivotTable#delete:member(1)'
-    summary: Deletes the PivotTable.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: |-
-
-
-          #### Examples
-
-          ```typescript
-          async function main(context: Excel.RequestContext) {
-              context.workbook.worksheets.getItem("Pivot").pivotTables.getItem("Farm Sales").delete();
-
-              await context.sync();
-          }
-          ```
-  - uid: 'excel!Excel.PivotTable#enableDataValueEditing:member'
-    summary: Specifies if the PivotTable allows values in the data body to be edited by the user.
-    name: enableDataValueEditing
+  - name: enableDataValueEditing
+    uid: 'excel!Excel.PivotTable#enableDataValueEditing:member'
+    package: excel!
     fullName: enableDataValueEditing
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies if the PivotTable allows values in the data body to be edited by
+      the user.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'enableDataValueEditing: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.PivotTable#filterHierarchies:member'
-    summary: The Filter Pivot Hierarchies of the PivotTable.
-    name: filterHierarchies
+        type: boolean
+  - name: filterHierarchies
+    uid: 'excel!Excel.PivotTable#filterHierarchies:member'
+    package: excel!
     fullName: filterHierarchies
-    langs:
-      - typeScript
-    type: property
+    summary: The Filter Pivot Hierarchies of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly filterHierarchies: FilterPivotHierarchyCollection;'
       return:
-        type:
-          - 'excel!Excel.FilterPivotHierarchyCollection:interface'
+        type: '<xref uid="excel!Excel.FilterPivotHierarchyCollection:interface" />'
         description: |-
 
 
@@ -157,42 +123,44 @@ items:
               }
           }
           ```
-  - uid: 'excel!Excel.PivotTable#hierarchies:member'
-    summary: The Pivot Hierarchies of the PivotTable.
-    name: hierarchies
+  - name: hierarchies
+    uid: 'excel!Excel.PivotTable#hierarchies:member'
+    package: excel!
     fullName: hierarchies
-    langs:
-      - typeScript
-    type: property
+    summary: The Pivot Hierarchies of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly hierarchies: PivotHierarchyCollection;'
       return:
-        type:
-          - 'excel!Excel.PivotHierarchyCollection:interface'
-  - uid: 'excel!Excel.PivotTable#id:member'
-    summary: Id of the PivotTable.
-    name: id
+        type: '<xref uid="excel!Excel.PivotHierarchyCollection:interface" />'
+  - name: id
+    uid: 'excel!Excel.PivotTable#id:member'
+    package: excel!
     fullName: id
-    langs:
-      - typeScript
-    type: property
+    summary: Id of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly id: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.PivotTable#layout:member'
-    summary: The PivotLayout describing the layout and visual structure of the PivotTable.
-    name: layout
+        type: string
+  - name: layout
+    uid: 'excel!Excel.PivotTable#layout:member'
+    package: excel!
     fullName: layout
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      The PivotLayout describing the layout and visual structure of the
+      PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly layout: PivotLayout;'
       return:
-        type:
-          - 'excel!Excel.PivotLayout:interface'
+        type: '<xref uid="excel!Excel.PivotLayout:interface" />'
         description: |-
 
 
@@ -216,103 +184,110 @@ items:
               console.log("Pivot layout is now " + pivotTable.layout.layoutType);
           }
           ```
-  - uid: 'excel!Excel.PivotTable#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.PivotTable#name:member'
-    summary: Name of the PivotTable.
-    name: name
+  - name: name
+    uid: 'excel!Excel.PivotTable#name:member'
+    package: excel!
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Name of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.PivotTable#refresh:member(1)'
-    summary: Refreshes the PivotTable.
-    name: refresh()
-    fullName: refresh()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'refresh(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.PivotTable#rowHierarchies:member'
-    summary: The Row Pivot Hierarchies of the PivotTable.
-    name: rowHierarchies
+        type: string
+  - name: rowHierarchies
+    uid: 'excel!Excel.PivotTable#rowHierarchies:member'
+    package: excel!
     fullName: rowHierarchies
-    langs:
-      - typeScript
-    type: property
+    summary: The Row Pivot Hierarchies of the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly rowHierarchies: RowColumnPivotHierarchyCollection;'
       return:
-        type:
-          - 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
-  - uid: 'excel!Excel.PivotTable#useCustomSortLists:member'
-    summary: Specifies if the PivotTable uses custom lists when sorting.
-    name: useCustomSortLists
+        type: '<xref uid="excel!Excel.RowColumnPivotHierarchyCollection:interface" />'
+  - name: useCustomSortLists
+    uid: 'excel!Excel.PivotTable#useCustomSortLists:member'
+    package: excel!
     fullName: useCustomSortLists
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the PivotTable uses custom lists when sorting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'useCustomSortLists: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.PivotTable#worksheet:member'
-    summary: The worksheet containing the current PivotTable.
-    name: worksheet
+        type: boolean
+  - name: worksheet
+    uid: 'excel!Excel.PivotTable#worksheet:member'
+    package: excel!
     fullName: worksheet
-    langs:
-      - typeScript
-    type: property
+    summary: The worksheet containing the current PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly worksheet: Worksheet;'
       return:
-        type:
-          - 'excel!Excel.Worksheet:interface'
-references:
-  - uid: 'excel!Excel.RowColumnPivotHierarchyCollection:interface'
-    name: RowColumnPivotHierarchyCollection
-    fullName: Excel.RowColumnPivotHierarchyCollection
-  - uid: 'excel!Excel.DataPivotHierarchyCollection:interface'
-    name: DataPivotHierarchyCollection
-    fullName: Excel.DataPivotHierarchyCollection
-  - uid: 'excel!Excel.FilterPivotHierarchyCollection:interface'
-    name: FilterPivotHierarchyCollection
-    fullName: Excel.FilterPivotHierarchyCollection
-  - uid: 'excel!Excel.PivotHierarchyCollection:interface'
-    name: PivotHierarchyCollection
-    fullName: Excel.PivotHierarchyCollection
-  - uid: 'excel!Excel.PivotLayout:interface'
-    name: PivotLayout
-    fullName: Excel.PivotLayout
-  - uid: 'excel!Excel.Worksheet:interface'
-    name: Worksheet
-    fullName: Excel.Worksheet
+        type: '<xref uid="excel!Excel.Worksheet:interface" />'
+methods:
+  - name: delete()
+    uid: 'excel!Excel.PivotTable#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Deletes the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```typescript
+          async function main(context: Excel.RequestContext) {
+              context.workbook.worksheets.getItem("Pivot").pivotTables.getItem("Farm Sales").delete();
+
+              await context.sync();
+          }
+          ```
+  - name: load(propertyNames)
+    uid: 'excel!Excel.PivotTable#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: refresh()
+    uid: 'excel!Excel.PivotTable#refresh:member(1)'
+    package: excel!
+    fullName: refresh()
+    summary: Refreshes the PivotTable.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refresh(): void;'
+      return:
+        type: void
+        description: ''

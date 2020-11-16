@@ -1,90 +1,87 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.TableStyle:interface'
-    summary: 'Represents a TableStyle, which defines the style elements by region of the Table.'
-    name: Excel.TableStyle
-    fullName: Excel.TableStyle
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.TableStyle
+uid: 'excel!Excel.TableStyle:interface'
+package: excel!
+fullName: Excel.TableStyle
+summary: >-
+  Represents a TableStyle, which defines the style elements by region of the
+  Table.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: name
+    uid: 'excel!Excel.TableStyle#name:member'
     package: excel!
-    children:
-      - 'excel!Excel.TableStyle#delete:member(1)'
-      - 'excel!Excel.TableStyle#duplicate:member(1)'
-      - 'excel!Excel.TableStyle#load:member(1)'
-      - 'excel!Excel.TableStyle#name:member'
-      - 'excel!Excel.TableStyle#readOnly:member'
-  - uid: 'excel!Excel.TableStyle#delete:member(1)'
-    summary: Deletes the TableStyle.
-    name: delete()
-    fullName: delete()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'delete(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.TableStyle#duplicate:member(1)'
-    summary: Creates a duplicate of this TableStyle with copies of all the style elements.
-    name: duplicate()
-    fullName: duplicate()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'duplicate(): TableStyle;'
-      return:
-        type:
-          - 'excel!Excel.TableStyle:interface'
-        description: ''
-  - uid: 'excel!Excel.TableStyle#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.TableStyle#name:member'
-    summary: Gets the name of the TableStyle.
-    name: name
     fullName: name
-    langs:
-      - typeScript
-    type: property
+    summary: Gets the name of the TableStyle.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'name: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.TableStyle#readOnly:member'
-    summary: Specifies if this TableStyle object is read-only.
-    name: readOnly
+        type: string
+  - name: readOnly
+    uid: 'excel!Excel.TableStyle#readOnly:member'
+    package: excel!
     fullName: readOnly
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if this TableStyle object is read-only.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly readOnly: boolean;'
       return:
-        type:
-          - boolean
-references:
-  - uid: 'excel!Excel.TableStyle:interface'
-    name: TableStyle
-    fullName: Excel.TableStyle
+        type: boolean
+methods:
+  - name: delete()
+    uid: 'excel!Excel.TableStyle#delete:member(1)'
+    package: excel!
+    fullName: delete()
+    summary: Deletes the TableStyle.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: duplicate()
+    uid: 'excel!Excel.TableStyle#duplicate:member(1)'
+    package: excel!
+    fullName: duplicate()
+    summary: >-
+      Creates a duplicate of this TableStyle with copies of all the style
+      elements.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'duplicate(): TableStyle;'
+      return:
+        type: '<xref uid="excel!Excel.TableStyle:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.TableStyle#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
