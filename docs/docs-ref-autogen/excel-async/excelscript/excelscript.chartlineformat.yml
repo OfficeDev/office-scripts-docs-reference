@@ -1,51 +1,34 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartLineFormat:interface'
-    summary: Encapsulates the formatting options for line elements.
-    name: Excel.ChartLineFormat
-    fullName: Excel.ChartLineFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartLineFormat
+uid: 'excel!Excel.ChartLineFormat:interface'
+package: excel!
+fullName: Excel.ChartLineFormat
+summary: Encapsulates the formatting options for line elements.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: color
+    uid: 'excel!Excel.ChartLineFormat#color:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartLineFormat#clear:member(1)'
-      - 'excel!Excel.ChartLineFormat#color:member'
-      - 'excel!Excel.ChartLineFormat#lineStyle:member'
-      - 'excel!Excel.ChartLineFormat#load:member(1)'
-      - 'excel!Excel.ChartLineFormat#weight:member'
-  - uid: 'excel!Excel.ChartLineFormat#clear:member(1)'
-    summary: Clear the line format of a chart element.
-    name: clear()
-    fullName: clear()
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'clear(): void;'
-      return:
-        type:
-          - void
-        description: ''
-  - uid: 'excel!Excel.ChartLineFormat#color:member'
-    summary: HTML color code representing the color of lines in the chart.
-    name: color
     fullName: color
-    langs:
-      - typeScript
-    type: property
+    summary: HTML color code representing the color of lines in the chart.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'color: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ChartLineFormat#lineStyle:member'
-    summary: Represents the line style. See Excel.ChartLineStyle for details.
-    name: lineStyle
+        type: string
+  - name: lineStyle
+    uid: 'excel!Excel.ChartLineFormat#lineStyle:member'
+    package: excel!
     fullName: lineStyle
-    langs:
-      - typeScript
-    type: property
+    summary: Represents the line style. See Excel.ChartLineStyle for details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: |-
         lineStyle:
@@ -62,97 +45,63 @@ items:
                     | "Automatic"
                     | "RoundDot";
       return:
-        type:
-          - 'excel!Excel.ChartLineFormat#lineStyle~0:complex'
-  - uid: 'excel!Excel.ChartLineFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartLineFormat#weight:member'
-    summary: 'Represents weight of the line, in points.'
-    name: weight
+        type: |-
+          | <xref uid="excel!Excel.ChartLineStyle:enum" />
+                      | "None"
+                      | "Continuous"
+                      | "Dash"
+                      | "DashDot"
+                      | "DashDotDot"
+                      | "Dot"
+                      | "Grey25"
+                      | "Grey50"
+                      | "Grey75"
+                      | "Automatic"
+                      | "RoundDot"
+  - name: weight
+    uid: 'excel!Excel.ChartLineFormat#weight:member'
+    package: excel!
     fullName: weight
-    langs:
-      - typeScript
-    type: property
+    summary: 'Represents weight of the line, in points.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'weight: number;'
       return:
-        type:
-          - number
-references:
-  - uid: 'excel!Excel.ChartLineFormat#lineStyle~0:complex'
-    name: |-
-      | ChartLineStyle
-                  | "None"
-                  | "Continuous"
-                  | "Dash"
-                  | "DashDot"
-                  | "DashDotDot"
-                  | "Dot"
-                  | "Grey25"
-                  | "Grey50"
-                  | "Grey75"
-                  | "Automatic"
-                  | "RoundDot"
-    fullName: |-
-      | Excel.ChartLineStyle
-                  | "None"
-                  | "Continuous"
-                  | "Dash"
-                  | "DashDot"
-                  | "DashDotDot"
-                  | "Dot"
-                  | "Grey25"
-                  | "Grey50"
-                  | "Grey75"
-                  | "Automatic"
-                  | "RoundDot"
-    spec.typeScript:
-      - name: '| '
-        fullName: '| '
-      - uid: 'excel!Excel.ChartLineStyle:enum'
-        name: ChartLineStyle
-        fullName: Excel.ChartLineStyle
-      - name: |2-
-
-                      | "None"
-                      | "Continuous"
-                      | "Dash"
-                      | "DashDot"
-                      | "DashDotDot"
-                      | "Dot"
-                      | "Grey25"
-                      | "Grey50"
-                      | "Grey75"
-                      | "Automatic"
-                      | "RoundDot"
-        fullName: |2-
-
-                      | "None"
-                      | "Continuous"
-                      | "Dash"
-                      | "DashDot"
-                      | "DashDotDot"
-                      | "Dot"
-                      | "Grey25"
-                      | "Grey50"
-                      | "Grey75"
-                      | "Automatic"
-                      | "RoundDot"
+        type: number
+methods:
+  - name: clear()
+    uid: 'excel!Excel.ChartLineFormat#clear:member(1)'
+    package: excel!
+    fullName: clear()
+    summary: Clear the line format of a chart element.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type: void
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartLineFormat#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

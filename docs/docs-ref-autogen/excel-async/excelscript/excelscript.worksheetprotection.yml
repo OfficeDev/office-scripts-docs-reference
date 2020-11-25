@@ -1,63 +1,79 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.WorksheetProtection:interface'
-    summary: Represents the protection of a sheet object.
-    name: Excel.WorksheetProtection
-    fullName: Excel.WorksheetProtection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.WorksheetProtection
+uid: 'excel!Excel.WorksheetProtection:interface'
+package: excel!
+fullName: Excel.WorksheetProtection
+summary: Represents the protection of a sheet object.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: options
+    uid: 'excel!Excel.WorksheetProtection#options:member'
     package: excel!
-    children:
-      - 'excel!Excel.WorksheetProtection#load:member(1)'
-      - 'excel!Excel.WorksheetProtection#options:member'
-      - 'excel!Excel.WorksheetProtection#protect:member(1)'
-      - 'excel!Excel.WorksheetProtection#protected:member'
-      - 'excel!Excel.WorksheetProtection#unprotect:member(1)'
-  - uid: 'excel!Excel.WorksheetProtection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.WorksheetProtection#options:member'
-    summary: Specifies the protection options for the worksheet.
-    name: options
     fullName: options
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the protection options for the worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly options: WorksheetProtectionOptions;'
       return:
-        type:
-          - 'excel!Excel.WorksheetProtectionOptions:interface'
-  - uid: 'excel!Excel.WorksheetProtection#protect:member(1)'
-    summary: Protects a worksheet. Fails if the worksheet has already been protected.
-    name: 'protect(options, password)'
+        type: '<xref uid="excel!Excel.WorksheetProtectionOptions:interface" />'
+  - name: protected
+    uid: 'excel!Excel.WorksheetProtection#protected:member'
+    package: excel!
+    fullName: protected
+    summary: Specifies if the worksheet is protected.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'readonly protected: boolean;'
+      return:
+        type: boolean
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.WorksheetProtection#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: 'protect(options, password)'
+    uid: 'excel!Excel.WorksheetProtection#protect:member(1)'
+    package: excel!
     fullName: 'protect(options, password)'
-    langs:
-      - typeScript
-    type: method
+    summary: Protects a worksheet. Fails if the worksheet has already been protected.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'protect(options?: WorksheetProtectionOptions, password?: string): void;'
+      parameters:
+        - id: options
+          description: Optional. Sheet protection options.
+          type: '<xref uid="excel!Excel.WorksheetProtectionOptions:interface" />'
+        - id: password
+          description: Optional. Sheet protection password.
+          type: string
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -75,39 +91,22 @@ items:
               }
           }
           ```
-      parameters:
-        - id: options
-          description: Optional. Sheet protection options.
-          type:
-            - 'excel!Excel.WorksheetProtectionOptions:interface'
-        - id: password
-          description: Optional. Sheet protection password.
-          type:
-            - string
-  - uid: 'excel!Excel.WorksheetProtection#protected:member'
-    summary: Specifies if the worksheet is protected.
-    name: protected
-    fullName: protected
-    langs:
-      - typeScript
-    type: property
-    syntax:
-      content: 'readonly protected: boolean;'
-      return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.WorksheetProtection#unprotect:member(1)'
-    summary: Unprotects a worksheet.
-    name: unprotect(password)
+  - name: unprotect(password)
+    uid: 'excel!Excel.WorksheetProtection#unprotect:member(1)'
+    package: excel!
     fullName: unprotect(password)
-    langs:
-      - typeScript
-    type: method
+    summary: Unprotects a worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'unprotect(password?: string): void;'
+      parameters:
+        - id: password
+          description: sheet protection password.
+          type: string
       return:
-        type:
-          - void
+        type: void
         description: |-
 
 
@@ -119,12 +118,3 @@ items:
               activeSheet.protection.unprotect();
           }
           ```
-      parameters:
-        - id: password
-          description: sheet protection password.
-          type:
-            - string
-references:
-  - uid: 'excel!Excel.WorksheetProtectionOptions:interface'
-    name: WorksheetProtectionOptions
-    fullName: Excel.WorksheetProtectionOptions

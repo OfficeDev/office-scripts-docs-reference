@@ -1,109 +1,103 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartAxisTitle:interface'
-    summary: Represents the title of a chart axis.
-    name: Excel.ChartAxisTitle
-    fullName: Excel.ChartAxisTitle
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartAxisTitle
+uid: 'excel!Excel.ChartAxisTitle:interface'
+package: excel!
+fullName: Excel.ChartAxisTitle
+summary: Represents the title of a chart axis.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: format
+    uid: 'excel!Excel.ChartAxisTitle#format:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartAxisTitle#format:member'
-      - 'excel!Excel.ChartAxisTitle#load:member(1)'
-      - 'excel!Excel.ChartAxisTitle#setFormula:member(1)'
-      - 'excel!Excel.ChartAxisTitle#text:member'
-      - 'excel!Excel.ChartAxisTitle#textOrientation:member'
-      - 'excel!Excel.ChartAxisTitle#visible:member'
-  - uid: 'excel!Excel.ChartAxisTitle#format:member'
-    summary: Specifies the formatting of chart axis title.
-    name: format
     fullName: format
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the formatting of chart axis title.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly format: ChartAxisTitleFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartAxisTitleFormat:interface'
-  - uid: 'excel!Excel.ChartAxisTitle#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.ChartAxisTitle#setFormula:member(1)'
-    summary: A string value that represents the formula of chart axis title using A1-style notation.
-    name: setFormula(formula)
-    fullName: setFormula(formula)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'setFormula(formula: string): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: formula
-          description: a string that present the formula to set
-          type:
-            - string
-  - uid: 'excel!Excel.ChartAxisTitle#text:member'
-    summary: Specifies the axis title.
-    name: text
+        type: '<xref uid="excel!Excel.ChartAxisTitleFormat:interface" />'
+  - name: text
+    uid: 'excel!Excel.ChartAxisTitle#text:member'
+    package: excel!
     fullName: text
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies the axis title.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'text: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ChartAxisTitle#textOrientation:member'
-    summary: >-
-      Specifies the angle to which the text is oriented for the chart axis title. The value should either be an integer
-      from -90 to 90 or the integer 180 for vertically-oriented text.
-    name: textOrientation
+        type: string
+  - name: textOrientation
+    uid: 'excel!Excel.ChartAxisTitle#textOrientation:member'
+    package: excel!
     fullName: textOrientation
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the angle to which the text is oriented for the chart axis
+      title. The value should either be an integer from -90 to 90 or the integer
+      180 for vertically-oriented text.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'textOrientation: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.ChartAxisTitle#visible:member'
-    summary: Specifies if the axis title is visibile.
-    name: visible
+        type: number
+  - name: visible
+    uid: 'excel!Excel.ChartAxisTitle#visible:member'
+    package: excel!
     fullName: visible
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies if the axis title is visibile.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'visible: boolean;'
       return:
-        type:
-          - boolean
-references:
-  - uid: 'excel!Excel.ChartAxisTitleFormat:interface'
-    name: ChartAxisTitleFormat
-    fullName: Excel.ChartAxisTitleFormat
+        type: boolean
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartAxisTitle#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: setFormula(formula)
+    uid: 'excel!Excel.ChartAxisTitle#setFormula:member(1)'
+    package: excel!
+    fullName: setFormula(formula)
+    summary: >-
+      A string value that represents the formula of chart axis title using
+      A1-style notation.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormula(formula: string): void;'
+      parameters:
+        - id: formula
+          description: a string that present the formula to set
+          type: string
+      return:
+        type: void
+        description: ''

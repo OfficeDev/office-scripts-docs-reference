@@ -1,71 +1,73 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.IterativeCalculation:interface'
-    summary: Represents the Iterative Calculation settings.
-    name: Excel.IterativeCalculation
-    fullName: Excel.IterativeCalculation
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.IterativeCalculation
+uid: 'excel!Excel.IterativeCalculation:interface'
+package: excel!
+fullName: Excel.IterativeCalculation
+summary: Represents the Iterative Calculation settings.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: enabled
+    uid: 'excel!Excel.IterativeCalculation#enabled:member'
     package: excel!
-    children:
-      - 'excel!Excel.IterativeCalculation#enabled:member'
-      - 'excel!Excel.IterativeCalculation#load:member(1)'
-      - 'excel!Excel.IterativeCalculation#maxChange:member'
-      - 'excel!Excel.IterativeCalculation#maxIteration:member'
-  - uid: 'excel!Excel.IterativeCalculation#enabled:member'
-    summary: True if Excel will use iteration to resolve circular references.
-    name: enabled
     fullName: enabled
-    langs:
-      - typeScript
-    type: property
+    summary: True if Excel will use iteration to resolve circular references.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'enabled: boolean;'
       return:
-        type:
-          - boolean
-  - uid: 'excel!Excel.IterativeCalculation#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
-    fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
-    syntax:
-      content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
-      parameters:
-        - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.IterativeCalculation#maxChange:member'
-    summary: Specifies the maximum amount of change between each iteration as Excel resolves circular references.
-    name: maxChange
+        type: boolean
+  - name: maxChange
+    uid: 'excel!Excel.IterativeCalculation#maxChange:member'
+    package: excel!
     fullName: maxChange
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the maximum amount of change between each iteration as Excel
+      resolves circular references.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'maxChange: number;'
       return:
-        type:
-          - number
-  - uid: 'excel!Excel.IterativeCalculation#maxIteration:member'
-    summary: Specifies the maximum number of iterations that Excel can use to resolve a circular reference.
-    name: maxIteration
+        type: number
+  - name: maxIteration
+    uid: 'excel!Excel.IterativeCalculation#maxIteration:member'
+    package: excel!
     fullName: maxIteration
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the maximum number of iterations that Excel can use to resolve a
+      circular reference.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'maxIteration: number;'
       return:
-        type:
-          - number
+        type: number
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.IterativeCalculation#load:member(1)'
+    package: excel!
+    fullName: load(propertyNames)
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'load(propertyNames?: string | string[]): void;'
+      parameters:
+        - id: propertyNames
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

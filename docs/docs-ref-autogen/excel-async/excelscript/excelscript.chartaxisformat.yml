@@ -1,81 +1,71 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartAxisFormat:interface'
-    summary: Encapsulates the format properties for the chart axis.
-    name: Excel.ChartAxisFormat
-    fullName: Excel.ChartAxisFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartAxisFormat
+uid: 'excel!Excel.ChartAxisFormat:interface'
+package: excel!
+fullName: Excel.ChartAxisFormat
+summary: Encapsulates the format properties for the chart axis.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: fill
+    uid: 'excel!Excel.ChartAxisFormat#fill:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartAxisFormat#fill:member'
-      - 'excel!Excel.ChartAxisFormat#font:member'
-      - 'excel!Excel.ChartAxisFormat#line:member'
-      - 'excel!Excel.ChartAxisFormat#load:member(1)'
-  - uid: 'excel!Excel.ChartAxisFormat#fill:member'
-    summary: Specifies chart fill formatting.
-    name: fill
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies chart fill formatting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ChartFill;'
       return:
-        type:
-          - 'excel!Excel.ChartFill:interface'
-  - uid: 'excel!Excel.ChartAxisFormat#font:member'
-    summary: 'Specifies the font attributes (font name, font size, color, etc.) for a chart axis element.'
-    name: font
+        type: '<xref uid="excel!Excel.ChartFill:interface" />'
+  - name: font
+    uid: 'excel!Excel.ChartAxisFormat#font:member'
+    package: excel!
     fullName: font
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Specifies the font attributes (font name, font size, color, etc.) for a
+      chart axis element.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly font: ChartFont;'
       return:
-        type:
-          - 'excel!Excel.ChartFont:interface'
-  - uid: 'excel!Excel.ChartAxisFormat#line:member'
-    summary: Specifies chart line formatting.
-    name: line
+        type: '<xref uid="excel!Excel.ChartFont:interface" />'
+  - name: line
+    uid: 'excel!Excel.ChartAxisFormat#line:member'
+    package: excel!
     fullName: line
-    langs:
-      - typeScript
-    type: property
+    summary: Specifies chart line formatting.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly line: ChartLineFormat;'
       return:
-        type:
-          - 'excel!Excel.ChartLineFormat:interface'
-  - uid: 'excel!Excel.ChartAxisFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: '<xref uid="excel!Excel.ChartLineFormat:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartAxisFormat#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartFill:interface'
-    name: ChartFill
-    fullName: Excel.ChartFill
-  - uid: 'excel!Excel.ChartFont:interface'
-    name: ChartFont
-    fullName: Excel.ChartFont
-  - uid: 'excel!Excel.ChartLineFormat:interface'
-    name: ChartLineFormat
-    fullName: Excel.ChartLineFormat
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

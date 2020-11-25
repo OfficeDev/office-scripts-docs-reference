@@ -1,164 +1,137 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.SlicerStyleCollection:interface'
-    summary: Represents a collection of SlicerStyle objects.
-    name: Excel.SlicerStyleCollection
-    fullName: Excel.SlicerStyleCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.SlicerStyleCollection
+uid: 'excel!Excel.SlicerStyleCollection:interface'
+package: excel!
+fullName: Excel.SlicerStyleCollection
+summary: Represents a collection of SlicerStyle objects.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(name, makeUniqueName)'
+    uid: 'excel!Excel.SlicerStyleCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.SlicerStyleCollection#add:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#getCount:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#getDefault:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#getItem:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#load:member(1)'
-      - 'excel!Excel.SlicerStyleCollection#setDefault:member(1)'
-  - uid: 'excel!Excel.SlicerStyleCollection#add:member(1)'
-    summary: Creates a blank SlicerStyle with the specified name.
-    name: 'add(name, makeUniqueName)'
     fullName: 'add(name, makeUniqueName)'
-    langs:
-      - typeScript
-    type: method
+    summary: Creates a blank SlicerStyle with the specified name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'add(name: string, makeUniqueName?: boolean): SlicerStyle;'
-      return:
-        type:
-          - 'excel!Excel.SlicerStyle:interface'
-        description: ''
       parameters:
         - id: name
           description: >-
-            The unique name for the new SlicerStyle. Will throw an invalid argument exception if the name is already in
-            use.
-          type:
-            - string
+            The unique name for the new SlicerStyle. Will throw an invalid
+            argument exception if the name is already in use.
+          type: string
         - id: makeUniqueName
-          description: 'Optional, defaults to false. If true, will append numbers to the name in order to make it unique, if needed.'
-          type:
-            - boolean
-  - uid: 'excel!Excel.SlicerStyleCollection#getCount:member(1)'
-    summary: Gets the number of slicer styles in the collection.
-    name: getCount()
+          description: >-
+            Optional, defaults to false. If true, will append numbers to the
+            name in order to make it unique, if needed.
+          type: boolean
+      return:
+        type: '<xref uid="excel!Excel.SlicerStyle:interface" />'
+        description: ''
+  - name: getCount()
+    uid: 'excel!Excel.SlicerStyleCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the number of slicer styles in the collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.SlicerStyleCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.SlicerStyleCollection#getDefault:member(1)'
-    summary: Gets the default SlicerStyle for the parent object's scope.
-    name: getDefault()
+  - name: getDefault()
+    uid: 'excel!Excel.SlicerStyleCollection#getDefault:member(1)'
+    package: excel!
     fullName: getDefault()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the default SlicerStyle for the parent object's scope.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getDefault(): SlicerStyle;'
       return:
-        type:
-          - 'excel!Excel.SlicerStyle:interface'
+        type: '<xref uid="excel!Excel.SlicerStyle:interface" />'
         description: ''
-  - uid: 'excel!Excel.SlicerStyleCollection#getItem:member(1)'
-    summary: Gets a SlicerStyle by name.
-    name: getItem(name)
+  - name: getItem(name)
+    uid: 'excel!Excel.SlicerStyleCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(name)
-    langs:
-      - typeScript
-    type: method
+    summary: Gets a SlicerStyle by name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(name: string): SlicerStyle;'
-      return:
-        type:
-          - 'excel!Excel.SlicerStyle:interface'
-        description: ''
       parameters:
         - id: name
           description: Name of the SlicerStyle to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerStyleCollection#getItemOrNullObject:member(1)'
-    summary: 'Gets a SlicerStyle by name. If the SlicerStyle does not exist, will return a null object.'
-    name: getItemOrNullObject(name)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.SlicerStyle:interface" />'
+        description: ''
+  - name: getItemOrNullObject(name)
+    uid: 'excel!Excel.SlicerStyleCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(name)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a SlicerStyle by name. If the SlicerStyle does not exist, will return
+      a null object.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(name: string): SlicerStyle;'
-      return:
-        type:
-          - 'excel!Excel.SlicerStyle:interface'
-        description: ''
       parameters:
         - id: name
           description: Name of the SlicerStyle to be retrieved.
-          type:
-            - string
-  - uid: 'excel!Excel.SlicerStyleCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.SlicerStyle:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.SlicerStyleCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-  - uid: 'excel!Excel.SlicerStyleCollection#setDefault:member(1)'
-    summary: Sets the default SlicerStyle for use in the parent object's scope.
-    name: setDefault(newDefaultStyle)
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
+  - name: setDefault(newDefaultStyle)
+    uid: 'excel!Excel.SlicerStyleCollection#setDefault:member(1)'
+    package: excel!
     fullName: setDefault(newDefaultStyle)
-    langs:
-      - typeScript
-    type: method
+    summary: Sets the default SlicerStyle for use in the parent object's scope.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'setDefault(newDefaultStyle: SlicerStyle | string): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: newDefaultStyle
-          description: The SlicerStyle object or name of the SlicerStyle object that should be the new default.
-          type:
-            - 'excel!Excel.SlicerStyleCollection#setDefault~0:complex'
-references:
-  - uid: 'excel!Excel.SlicerStyle:interface'
-    name: SlicerStyle
-    fullName: Excel.SlicerStyle
-  - uid: 'excel!Excel.SlicerStyleCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
-  - uid: 'excel!Excel.SlicerStyleCollection#setDefault~0:complex'
-    name: SlicerStyle | string
-    fullName: Excel.SlicerStyle | string
-    spec.typeScript:
-      - uid: 'excel!Excel.SlicerStyle:interface'
-        name: SlicerStyle
-        fullName: Excel.SlicerStyle
-      - name: ' | string'
-        fullName: ' | string'
+          description: >-
+            The SlicerStyle object or name of the SlicerStyle object that should
+            be the new default.
+          type: '<xref uid="excel!Excel.SlicerStyle:interface" /> | string'
+      return:
+        type: void
+        description: ''

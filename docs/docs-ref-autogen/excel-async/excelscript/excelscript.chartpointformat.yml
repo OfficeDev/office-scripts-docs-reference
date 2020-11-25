@@ -1,65 +1,61 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ChartPointFormat:interface'
-    summary: Represents formatting object for chart points.
-    name: Excel.ChartPointFormat
-    fullName: Excel.ChartPointFormat
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ChartPointFormat
+uid: 'excel!Excel.ChartPointFormat:interface'
+package: excel!
+fullName: Excel.ChartPointFormat
+summary: Represents formatting object for chart points.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: border
+    uid: 'excel!Excel.ChartPointFormat#border:member'
     package: excel!
-    children:
-      - 'excel!Excel.ChartPointFormat#border:member'
-      - 'excel!Excel.ChartPointFormat#fill:member'
-      - 'excel!Excel.ChartPointFormat#load:member(1)'
-  - uid: 'excel!Excel.ChartPointFormat#border:member'
-    summary: 'Represents the border format of a chart data point, which includes color, style, and weight information.'
-    name: border
     fullName: border
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the border format of a chart data point, which includes color,
+      style, and weight information.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly border: ChartBorder;'
       return:
-        type:
-          - 'excel!Excel.ChartBorder:interface'
-  - uid: 'excel!Excel.ChartPointFormat#fill:member'
-    summary: 'Represents the fill format of a chart, which includes background formatting information.'
-    name: fill
+        type: '<xref uid="excel!Excel.ChartBorder:interface" />'
+  - name: fill
+    uid: 'excel!Excel.ChartPointFormat#fill:member'
+    package: excel!
     fullName: fill
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      Represents the fill format of a chart, which includes background
+      formatting information.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'readonly fill: ChartFill;'
       return:
-        type:
-          - 'excel!Excel.ChartFill:interface'
-  - uid: 'excel!Excel.ChartPointFormat#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: '<xref uid="excel!Excel.ChartFill:interface" />'
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ChartPointFormat#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.ChartBorder:interface'
-    name: ChartBorder
-    fullName: Excel.ChartBorder
-  - uid: 'excel!Excel.ChartFill:interface'
-    name: ChartFill
-    fullName: Excel.ChartFill
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

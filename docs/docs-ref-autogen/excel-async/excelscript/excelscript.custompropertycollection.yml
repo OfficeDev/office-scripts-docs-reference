@@ -1,140 +1,123 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.CustomPropertyCollection:interface'
-    summary: Contains the collection of customProperty objects.
-    name: Excel.CustomPropertyCollection
-    fullName: Excel.CustomPropertyCollection
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.CustomPropertyCollection
+uid: 'excel!Excel.CustomPropertyCollection:interface'
+package: excel!
+fullName: Excel.CustomPropertyCollection
+summary: Contains the collection of customProperty objects.
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: 'add(key, value)'
+    uid: 'excel!Excel.CustomPropertyCollection#add:member(1)'
     package: excel!
-    children:
-      - 'excel!Excel.CustomPropertyCollection#add:member(1)'
-      - 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
-      - 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
-      - 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
-      - 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
-      - 'excel!Excel.CustomPropertyCollection#load:member(1)'
-  - uid: 'excel!Excel.CustomPropertyCollection#add:member(1)'
-    summary: Creates a new or sets an existing custom property.
-    name: 'add(key, value)'
     fullName: 'add(key, value)'
-    langs:
-      - typeScript
-    type: method
+    summary: Creates a new or sets an existing custom property.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'add(key: string, value: any): CustomProperty;'
-      return:
-        type:
-          - 'excel!Excel.CustomProperty:interface'
-        description: ''
       parameters:
         - id: key
           description: >-
-            Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside
-            of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
-          type:
-            - string
+            Required. The custom property's key, which is case-insensitive. The
+            key is limited to 255 characters outside of Excel on the web (larger
+            keys are automatically trimmed to 255 characters on other
+            platforms).
+          type: string
         - id: value
           description: >-
-            Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web
-            (larger values are automatically trimmed to 255 characters on other platforms).
-          type:
-            - any
-  - uid: 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
-    summary: Deletes all custom properties in this collection.
-    name: deleteAll()
+            Required. The custom property's value. The value is limited to 255
+            characters outside of Excel on the web (larger values are
+            automatically trimmed to 255 characters on other platforms).
+          type: any
+      return:
+        type: '<xref uid="excel!Excel.CustomProperty:interface" />'
+        description: ''
+  - name: deleteAll()
+    uid: 'excel!Excel.CustomPropertyCollection#deleteAll:member(1)'
+    package: excel!
     fullName: deleteAll()
-    langs:
-      - typeScript
-    type: method
+    summary: Deletes all custom properties in this collection.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'deleteAll(): void;'
       return:
-        type:
-          - void
+        type: void
         description: ''
-  - uid: 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
-    summary: Gets the count of custom properties.
-    name: getCount()
+  - name: getCount()
+    uid: 'excel!Excel.CustomPropertyCollection#getCount:member(1)'
+    package: excel!
     fullName: getCount()
-    langs:
-      - typeScript
-    type: method
+    summary: Gets the count of custom properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getCount(): ClientResult<number>;'
       return:
-        type:
-          - 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
+        type: '<xref uid="excel!Excel.ClientResult:interface" />&lt;number&gt;'
         description: ''
-  - uid: 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
-    summary: 'Gets a custom property object by its key, which is case-insensitive. Throws if the custom property does not exist.'
-    name: getItem(key)
+  - name: getItem(key)
+    uid: 'excel!Excel.CustomPropertyCollection#getItem:member(1)'
+    package: excel!
     fullName: getItem(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a custom property object by its key, which is case-insensitive.
+      Throws if the custom property does not exist.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItem(key: string): CustomProperty;'
-      return:
-        type:
-          - 'excel!Excel.CustomProperty:interface'
-        description: ''
       parameters:
         - id: key
           description: The key that identifies the custom property object.
-          type:
-            - string
-  - uid: 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
-    summary: >-
-      Gets a custom property object by its key, which is case-insensitive. Returns a null object if the custom property
-      does not exist.
-    name: getItemOrNullObject(key)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.CustomProperty:interface" />'
+        description: ''
+  - name: getItemOrNullObject(key)
+    uid: 'excel!Excel.CustomPropertyCollection#getItemOrNullObject:member(1)'
+    package: excel!
     fullName: getItemOrNullObject(key)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Gets a custom property object by its key, which is case-insensitive.
+      Returns a null object if the custom property does not exist.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'getItemOrNullObject(key: string): CustomProperty;'
-      return:
-        type:
-          - 'excel!Excel.CustomProperty:interface'
-        description: ''
       parameters:
         - id: key
           description: Required. The key that identifies the custom property object.
-          type:
-            - string
-  - uid: 'excel!Excel.CustomPropertyCollection#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+          type: string
+      return:
+        type: '<xref uid="excel!Excel.CustomProperty:interface" />'
+        description: ''
+  - name: load(propertyNames)
+    uid: 'excel!Excel.CustomPropertyCollection#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
-references:
-  - uid: 'excel!Excel.CustomProperty:interface'
-    name: CustomProperty
-    fullName: Excel.CustomProperty
-  - uid: 'excel!Excel.CustomPropertyCollection#getCount~0:complex'
-    name: ClientResult<number>
-    fullName: Excel.ClientResult<number>
-    spec.typeScript:
-      - uid: 'excel!Excel.ClientResult:interface'
-        name: ClientResult
-        fullName: Excel.ClientResult
-      - name: <number>
-        fullName: <number>
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''

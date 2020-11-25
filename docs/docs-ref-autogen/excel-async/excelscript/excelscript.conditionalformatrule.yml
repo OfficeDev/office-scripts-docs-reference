@@ -1,29 +1,26 @@
-### YamlMime:UniversalReference
-items:
-  - uid: 'excel!Excel.ConditionalFormatRule:interface'
-    summary: 'Represents a rule, for all traditional rule/format pairings.'
-    name: Excel.ConditionalFormatRule
-    fullName: Excel.ConditionalFormatRule
-    langs:
-      - typeScript
-    type: interface
+### YamlMime:TSType
+name: Excel.ConditionalFormatRule
+uid: 'excel!Excel.ConditionalFormatRule:interface'
+package: excel!
+fullName: Excel.ConditionalFormatRule
+summary: 'Represents a rule, for all traditional rule/format pairings.'
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: formula
+    uid: 'excel!Excel.ConditionalFormatRule#formula:member'
     package: excel!
-    children:
-      - 'excel!Excel.ConditionalFormatRule#formula:member'
-      - 'excel!Excel.ConditionalFormatRule#formulaLocal:member'
-      - 'excel!Excel.ConditionalFormatRule#load:member(1)'
-  - uid: 'excel!Excel.ConditionalFormatRule#formula:member'
-    summary: 'The formula, if required, to evaluate the conditional format rule on.'
-    name: formula
     fullName: formula
-    langs:
-      - typeScript
-    type: property
+    summary: 'The formula, if required, to evaluate the conditional format rule on.'
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formula: string;'
       return:
-        type:
-          - string
+        type: string
         description: |-
 
 
@@ -40,35 +37,39 @@ items:
               await context.sync();
           }
           ```
-  - uid: 'excel!Excel.ConditionalFormatRule#formulaLocal:member'
-    summary: 'The formula, if required, to evaluate the conditional format rule on in the user''s language.'
-    name: formulaLocal
+  - name: formulaLocal
+    uid: 'excel!Excel.ConditionalFormatRule#formulaLocal:member'
+    package: excel!
     fullName: formulaLocal
-    langs:
-      - typeScript
-    type: property
+    summary: >-
+      The formula, if required, to evaluate the conditional format rule on in
+      the user's language.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'formulaLocal: string;'
       return:
-        type:
-          - string
-  - uid: 'excel!Excel.ConditionalFormatRule#load:member(1)'
-    summary: >-
-      Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading
-      the properties.
-    name: load(propertyNames)
+        type: string
+methods:
+  - name: load(propertyNames)
+    uid: 'excel!Excel.ConditionalFormatRule#load:member(1)'
+    package: excel!
     fullName: load(propertyNames)
-    langs:
-      - typeScript
-    type: method
+    summary: >-
+      Queues up a command to load the specified properties of the object. You
+      must call `context.sync()` before reading the properties.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
     syntax:
       content: 'load(propertyNames?: string | string[]): void;'
-      return:
-        type:
-          - void
-        description: ''
       parameters:
         - id: propertyNames
-          description: A comma-delimited string or an array of strings that specify the properties to load.
-          type:
-            - 'string | string[]'
+          description: >-
+            A comma-delimited string or an array of strings that specify the
+            properties to load.
+          type: 'string | string[]'
+      return:
+        type: void
+        description: ''
