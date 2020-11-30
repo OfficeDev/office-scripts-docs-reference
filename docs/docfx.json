@@ -52,7 +52,6 @@
           "ThirdPartyNotices"
         ]
       },
-
       {
         "files": [
           "**/*.md",
@@ -70,15 +69,6 @@
         "src": "docs-ref-autogen/excel",
         "dest": "api/office-scripts"
       },
-      {
-        "files": [
-          "toc.yml"
-        ],
-        "group": "office-scripts",
-        "src": "breadcrumb",
-        "dest": "office_scripts_breadcrumb"
-      },
-      
       {
         "files": [
           "**/*.md",
@@ -100,15 +90,7 @@
         "files": [
           "toc.yml"
         ],
-        "group": "office-scripts-async",
-        "src": "breadcrumb",
-        "dest": "office_scripts_breadcrumb"
-      },
-
-      {
-        "files": [
-          "toc.yml"
-        ],
+        "group": "office-scripts-and-async",
         "src": "breadcrumb",
         "dest": "office_scripts_breadcrumb"
       }
@@ -117,26 +99,14 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+		  "**/*.svg"
         ],
         "exclude": [
           "**/obj/**",
           "**/includes/**"
         ],
         "dest": "api"
-      },
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.svg"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**"
-        ],
-        "src": "docs-ref-conceptual",
-        "dest": "office-scripts"
       }
     ],
     "groups": {
@@ -147,6 +117,10 @@
       "office-scripts-async": {
         "dest": "office-scripts-async",
         "moniker_range": "office-scripts-async"
+      },
+      "office-scripts-and-async": {
+        "dest": "office-scripts-and-async",
+        "moniker_range": "office-scripts || office-scripts-async"
       }
     },
     "overwrite": [],
