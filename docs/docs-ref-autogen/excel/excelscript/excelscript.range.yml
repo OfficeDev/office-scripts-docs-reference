@@ -233,8 +233,8 @@ methods:
       Finds the given string based on the criteria specified. If the current
       range is larger than a single cell, then the search will be limited to
       that range, else the search will cover the entire sheet starting after
-      that cell. If there are no matches, this function will return a null
-      object.
+      that cell. If there are no matches, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -819,7 +819,8 @@ methods:
     fullName: getIntersection(anotherRange)
     summary: >-
       Gets the range object that represents the rectangular intersection of the
-      given ranges. If no intersection is found, will return a null object.
+      given ranges. If no intersection is found, then this function will return
+      an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1363,7 +1364,8 @@ methods:
     summary: >-
       Gets the RangeAreas object, comprising one or more ranges, that represents
       all the cells that match the specified type and value. If no special cells
-      are found, a null object will be returned.
+      are found, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1394,8 +1396,9 @@ methods:
     fullName: getSpillingToRange()
     summary: >-
       Gets the range object containing the spill range when called on an anchor
-      cell. If the range is not an anchor cell or spill range can't be found, a
-      null object will be returned.
+      cell. If the range isn't an anchor cell or the spill range can't be found,
+      then this function will return an object with its `isNullObject` property
+      set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1409,9 +1412,10 @@ methods:
     package: ExcelScript!
     fullName: getSpillParent()
     summary: >-
-      Gets the range object containing the anchor cell for a cell getting
-      spilled into. If it is not a spill cell or more than once cells are give,
-      a null object will be returned.
+      Gets the range object containing the anchor cell for the cell getting
+      spilled into. If it's not a spilled cell, or more than one cell is given,
+      then this function will return an object with its `isNullObject` property
+      set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1510,7 +1514,8 @@ methods:
     fullName: getUsedRange(valuesOnly)
     summary: >-
       Returns the used range of the given range object. If there are no used
-      cells within the range, this function will return a null object.
+      cells within the range, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1537,9 +1542,9 @@ methods:
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getValue(): any;'
+      content: 'getValue(): string | number | boolean;'
       return:
-        type: any
+        type: string | number | boolean
         description: |-
 
 
@@ -1572,9 +1577,9 @@ methods:
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getValues(): any[][];'
+      content: 'getValues(): (string | number | boolean)[][];'
       return:
-        type: 'any[][]'
+        type: '(string | number | boolean)[][]'
         description: ''
   - name: getValueType()
     uid: 'ExcelScript!ExcelScript.Range#getValueType:member(1)'
@@ -2197,11 +2202,11 @@ methods:
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'setValues(values: any[][]): void;'
+      content: 'setValues(values: (string | number | boolean)[][]): void;'
       parameters:
         - id: values
           description: ''
-          type: 'any[][]'
+          type: '(string | number | boolean)[][]'
       return:
         type: void
         description: |-

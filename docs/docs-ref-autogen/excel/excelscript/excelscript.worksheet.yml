@@ -637,8 +637,9 @@ methods:
     fullName: getChart(name)
     summary: >-
       Gets a chart using its name. If there are multiple charts with the same
-      name, the first one will be returned. If the chart does not exist, will
-      return a null object.
+      name, the first one will be returned. If the chart doesn't exist, then
+      this function will return an object with its `isNullObject` property set
+      to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -849,8 +850,9 @@ methods:
     package: ExcelScript!
     fullName: getNamedItem(name)
     summary: >-
-      Gets a NamedItem object using its name. If the nameditem object does not
-      exist, will return a null object.
+      Gets a `NamedItem` object using its name. If the object does not exist,
+      then this function will return an object with its `isNullObject` property
+      set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -882,7 +884,8 @@ methods:
     fullName: getNext(visibleOnly)
     summary: >-
       Gets the worksheet that follows this one. If there are no worksheets
-      following this one, this method will return a null object.
+      following this one, then this method will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1149,8 +1152,9 @@ methods:
     package: ExcelScript!
     fullName: getSlicer(key)
     summary: >-
-      Gets a slicer using its name or id. If the slicer does not exist, will
-      return a null object.
+      Gets a slicer using its name or id. If the slicer doesn't exist, then this
+      function will return an object with its `isNullObject` property set to
+      `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1232,8 +1236,9 @@ methods:
     package: ExcelScript!
     fullName: getTable(key)
     summary: >-
-      Gets a table by Name or ID. If the table does not exist, will return a
-      null object.
+      Gets a table by Name or ID. If the table doesn't exist, then this function
+      will return an object with its `isNullObject` property set to `true`<!--
+      -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1263,10 +1268,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getUsedRange:member(1)'
     package: ExcelScript!
     fullName: getUsedRange(valuesOnly)
-    summary: >-
-      The used range is the smallest range that encompasses any cells that have
-      a value or formatting assigned to them. If the entire worksheet is blank,
-      this function will return a null object.
+    summary: ''
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1312,8 +1314,9 @@ methods:
     package: ExcelScript!
     fullName: getWorksheetCustomProperty(key)
     summary: >-
-      Gets a custom property object by its key, which is case-insensitive.
-      Returns a null object if the custom property does not exist.
+      Gets a custom property object by its key, which is case-insensitive. If
+      the custom property doesn't exist, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
