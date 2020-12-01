@@ -83,8 +83,9 @@ methods:
     package: ExcelScript!
     fullName: getRange()
     summary: >-
-      Returns the range object that is associated with the name. Returns a null
-      object if the named item's type is not a range.
+      Returns the range object that is associated with the name. If the named
+      item's type is not a range, then this function will return an object with
+      its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -156,8 +157,9 @@ methods:
     package: ExcelScript!
     fullName: getWorksheet()
     summary: >-
-      Returns the worksheet on which the named item is scoped to. Returns a null
-      object if the item is scoped to the workbook instead.
+      Returns the worksheet to which the named item is scoped. If the item is
+      scoped to the workbook instead, then this function will return an object
+      with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false

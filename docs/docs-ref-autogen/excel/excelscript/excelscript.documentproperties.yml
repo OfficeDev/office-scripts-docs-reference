@@ -133,8 +133,9 @@ methods:
     package: ExcelScript!
     fullName: getCustomProperty(key)
     summary: >-
-      Gets a custom property object by its key, which is case-insensitive.
-      Returns a null object if the custom property does not exist.
+      Gets a custom property object by its key, which is case-insensitive. If
+      the custom property doesn't exist, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
