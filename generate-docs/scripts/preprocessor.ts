@@ -114,10 +114,10 @@ function handleLiteralParameterOverloads(dtsString: string): string {
             if (index < 0) {
                 console.warn("Missing @param for literal parameter: " + match);
             } else {
-            dtsString = dtsString.substring(0, index)
-            + "@param " + parameterName + "String "
-            + dtsString.substring(index + parameterString.length);
-            matchIndex += match.length;
+                dtsString = dtsString.substring(0, index)
+                + "@param " + parameterName + "String "
+                + dtsString.substring(index + parameterString.length);
+                matchIndex += match.length;
             }
         });
     }
