@@ -26,7 +26,7 @@
          * This is necessary because Excel and JavaScript store
          * their dates as different numerical values.
          */
-        let dueDate = new Date(Math.round((dueDateColumnValues[row][0] - 25569) * 86400 * 1000));
+        let dueDate = new Date(Math.round((dueDateColumnValues[row][0] as number - 25569) * 86400 * 1000));
 
         // Check if the current date is greater than the due date.
         if (Date.now() > dueDate.valueOf()) {
