@@ -25,7 +25,7 @@ Use GitHub to contribute to this documentation without having to clone the repo 
 
 ### To contribute using GitHub
 
-1. Find the article you want to contribute to on GitHub (usually the [Excel Scripts Samples](/code-samples/excel-scripts.yml)).
+1. Find the article you want to contribute to on GitHub (usually the [Excel Scripts Samples](/docs/sample-scripts/excel-scripts.yaml)).
 2. Once you are on the article in GitHub, sign in to GitHub (get a free account [Join GitHub](https://github.com/join)).
 3. Choose the **pencil icon** (edit the file in your fork of this project) and make your changes in the **<>Edit file** window.
 4. Scroll to the bottom and enter a description.
@@ -159,7 +159,7 @@ Samples are a critical tool for learning the Office Scripts API. We welcome samp
 
 ### Adding a sample script to the GitHub repository
 
-All the example code in this repository comes from one of the base sample **.yaml** files. The Office Scripts for Excel samples are in **[sample-scripts/excel-scripts.yaml](sample-scripts/excel-scripts.yaml)**. Use one of the methods described earlier in this guide to edit the file. You can also create an issue with the desired sample code and we'll add it to the documentation.
+All the example code in this repository comes from one of the base sample **.yaml** files. The Office Scripts for Excel samples are in **[/docs/sample-scripts/excel-scripts.yaml](/docs/sample-scripts/excel-scripts.yaml)**. Use one of the methods described earlier in this guide to edit the file. You can also create an issue with the desired sample code and we'll add it to the documentation.
 
 Samples are tied to particular APIs. Pick the API that your sample showcases and use it as the YAML key. A YAML key for the Excel sample file has this format: `'ExcelScript.'`*class-name*`#`*method-name*`:member(`*overload-number*`)`. The *overload-number* indicates which method is being referenced when their are multiple options. The value is usually `1`.
 
