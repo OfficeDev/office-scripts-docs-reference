@@ -35,7 +35,7 @@ You now have successfully submitted a pull request. Pull requests are typically 
 
 ### To contribute using Git
 
-If you're planning on making large changes, including updates to the documentation tooling, you should use Git to create a 
+If you're planning on making large changes, including updates to the documentation tooling, you should use Git to create a PR.
 
 1. If you don't have a GitHub account, set one up at [GitHub](https://github.com/join).
 2. After you have an account, install Git on your computer. Follow the steps in the [Set up Git] tutorial.
@@ -159,15 +159,46 @@ Samples are a critical tool for learning the Office Scripts API. We welcome samp
 
 ### Adding a sample script to the GitHub repository
 
-All the example code in this repository comes from one of the base sample **.yml** files. 
+All the example code in this repository comes from one of the base sample **.yaml** files. The Office Scripts for Excel samples are in **[sample-scripts/excel-scripts.yaml](sample-scripts/excel-scripts.yaml)**. Use one of the methods described earlier in this guide to edit the file. You can also create an issue with the desired sample code and we'll add it to the documentation.
+
+Samples are tied to particular APIs. Pick the API that your sample showcases and use it as the YAML key. A YAML key for the Excel sample file has this format: `'ExcelScript.'`*class-name*`#`*method-name*`:member(`*overload-number*`)`. The *overload-number* indicates which method is being referenced when their are multiple options. The value is usually `1`.
+
+After the key, add `:`, then add `  - |-` on a new line. This ensures the spacing in the example stays as is.
+
+The following example shows a sample script for `Range.getValue`:
+
+```YAML
+'ExcelScript.Range#getValue:member(1)':
+    - |-
+    /**
+     * This sample reads the value of A1 and prints it to the console.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the current worksheet.
+        let selectedSheet = workbook.getActiveWorksheet();
+    
+        // Get the value of cell A1.
+        let range = selectedSheet.getRange("A1");
+        
+        // Print the value of A1.
+        console.log(range.getValue());
+    }
+```
+
+Please add samples to the **.yaml** file in alphabetical order, based on the class and method names. This makes them easier to maintain.
 
 ### What makes a good sample?
 
 A good sample has the following characteristics:
 
+1. Descriptive - The sample has an introductory comment explaining the behavior and comments in the code as needed.
 1. Useful - Some or all of the sample could be copied into an actual script and quickly modified to suit someone's needs.
-1. Targeted - The sample showcases a specific API or scenario and only includes enough other code to be functional.
 1. Readable - The sample uses simple TypeScript, effective whitespace, and meaningful variable names.
+1. Targeted - The sample showcases a specific API or scenario and only includes enough other code to be functional.
+
+### When do samples get added to the actual documentation pages?
+
+After the **sample-scripts** files are updated, a member of the team will run the documentation tooling and regenerate the API pages. Your new sample is added then.
 
 ## FAQ
 
