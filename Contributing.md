@@ -17,7 +17,7 @@ Here are some ways you can contribute to this documentation:
 
 ## Using Git and GitHub
 
-**Note:** Most of the information in this section can be found in [GitHub Help](https://docs.github.com/) articles. If you're familiar with Git and GitHub, skip to the [Adding samples](#ading-samples) section for the specifics of the code/content flow of this repository.
+**Note:** Most of the information in this section can be found in [GitHub Help](https://docs.github.com/) articles. If you're familiar with Git and GitHub, skip to the [Adding samples](#adding-samples) section for the specifics of the code/content flow of this repository.
 
 Use GitHub to contribute to this documentation without having to clone the repo to your desktop. This is the easiest way to create a pull request in this repository. It's the recommended way to add a single sample.
 
