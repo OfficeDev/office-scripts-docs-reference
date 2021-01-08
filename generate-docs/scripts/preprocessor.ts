@@ -29,11 +29,11 @@ tryCatch(async () => {
         .forEach(filename => fsx.removeSync(scriptInputsPath + '/' + filename));
 
     console.log("\nCreating snippets file...");
-    const snippetsSourcePath = path.resolve("../../docs/code-snippets");
+    const snippetsSourcePath = path.resolve("../../docs/sample-scripts");
     console.log("\nReading from files: " + snippetsSourcePath);
 
-    let localSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-snippets.yaml`).toString();
-    let localAsyncSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-async-snippets.yaml`).toString();
+    let localSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-scripts.yaml`).toString();
+    let localAsyncSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/async-excel-scripts.yaml`).toString();
 
     // Parse the YAML into an object/hash set.
     let snippets = yaml.load(localSnippetsString);
