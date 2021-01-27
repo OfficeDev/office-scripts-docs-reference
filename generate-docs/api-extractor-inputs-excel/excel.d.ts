@@ -1822,6 +1822,11 @@ export declare namespace ExcelScript {
         setNumberFormatLocal(numberFormatLocal: string): void;
 
         /**
+         * Specifies the number format category of first cell in the range (represented by row index of 0 and column index of 0).
+         */
+        getNumberFormatCategory(): NumberFormatCategory;
+
+        /**
          * Represents Text value of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API.
          * If the range contains multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will be returned.
          */
