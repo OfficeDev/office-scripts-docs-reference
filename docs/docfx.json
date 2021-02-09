@@ -7,8 +7,7 @@
           "**/toc.yml"
         ],
         "exclude": [
-          "excel/**",
-          "excel-async/**"
+          "excel/**"
         ],
         "src": "docs-ref-autogen",
         "dest": "api/office-scripts/office_ref_toc"
@@ -41,7 +40,6 @@
         "exclude": [
           "excel/**",
           "excel.yml",
-          "excel-async/**",
           "**/obj/**",
           "**/includes/**",
           "**/_themes/**",
@@ -71,26 +69,9 @@
       },
       {
         "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "group": "office-scripts-async",
-        "src": "docs-ref-autogen/excel-async",
-        "dest": "api/office-scripts"
-      },
-      {
-        "files": [
-          "excel.yml"
-        ],
-        "group": "office-scripts-async",
-        "src": "docs-ref-autogen/excel-async",
-        "dest": "api/office-scripts"
-      },
-      {
-        "files": [
           "toc.yml"
         ],
-        "group": "office-scripts-and-async",
+        "group": "office-scripts",
         "src": "breadcrumb",
         "dest": "office_scripts_breadcrumb"
       }
@@ -100,7 +81,7 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-		  "**/*.svg"
+		      "**/*.svg"
         ],
         "exclude": [
           "**/obj/**",
@@ -113,14 +94,6 @@
       "office-scripts": {
         "dest": "office-scripts",
         "moniker_range": "office-scripts"
-      },
-      "office-scripts-async": {
-        "dest": "office-scripts-async",
-        "moniker_range": "office-scripts-async"
-      },
-      "office-scripts-and-async": {
-        "dest": "office-scripts-and-async",
-        "moniker_range": "office-scripts || office-scripts-async"
       }
     },
     "overwrite": [],
@@ -157,14 +130,10 @@
       "product": {
         "docs-ref-autogen/excel/**": [
           "office scripts"
-        ],        
-        "docs-ref-autogen/excel-async/**": [
-          "office scripts async"
         ]
       },
       "ms.prod": {
         "docs-ref-autogen/excel/**": "excel",
-        "docs-ref-autogen/excel-async/**": "excel",
         "docs-ref-autogen/overview/**": "non-product-specific"
       }
     },
