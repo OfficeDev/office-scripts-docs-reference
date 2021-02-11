@@ -65,18 +65,6 @@ tryCatch(async () => {
             );
     });
 
-    // change the async files to match the sync namespace pattern
-    const asyncDocFolder = docsDestination + "/excel-async/excel";
-    fsx.readdirSync(asyncDocFolder).forEach(filename => {
-        fsx.renameSync(
-            asyncDocFolder + '/' + filename,
-            asyncDocFolder + '/' + filename.replace("excel.", "excelscript.")
-        );
-        fsx.removeSync(asyncDocFolder + '/' + filename);
-    });
-    fsx.renameSync(asyncDocFolder, docsDestination + "/excel-async/excelscript");
-    fsx.renameSync(asyncDocFolder + ".yml", docsDestination + "/excel-async/excelscript.yml");
-
     // fix all the individual TOC files
     console.log("Writing TOC for Office Scripts");
     let versionPath = path.resolve(`${docsDestination}/excel`);
@@ -84,14 +72,7 @@ tryCatch(async () => {
     let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
     fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
 
-    console.log("Writing TOC for Office Scripts Async");
-    versionPath = path.resolve(`${docsDestination}/excel-async`);
-    const asyncTocPath = versionPath + "/toc.yml";
-    let latestAsyncToc = fixToc(asyncTocPath, "../api-extractor-inputs-excel-async/excel.d.ts");
-    fsx.writeFileSync(asyncTocPath, jsyaml.safeDump(latestAsyncToc));
-
     console.log("\nPostprocessor script complete!\n");
-
     process.exit(0);
 });
 
@@ -124,7 +105,7 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     let excelFilter: string[] = ["Interfaces"].concat(excelEnumFilter);
 
-    // process all packages except 'office' (Common "Shared" API)
+    // process all packages
     origToc.items.forEach((rootItem, rootIndex) => {
         rootItem.items.forEach((packageItem, packageIndex) => {
             // fix host capitalization

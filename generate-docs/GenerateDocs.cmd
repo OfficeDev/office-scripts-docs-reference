@@ -29,12 +29,8 @@ popd
 pushd api-extractor-inputs-excel
 call ..\node_modules\.bin\api-extractor run
 popd
-pushd api-extractor-inputs-excel-async
-call ..\node_modules\.bin\api-extractor run
-popd
 
 call .\node_modules\.bin\api-documenter yaml --input-folder .\json\excel --output-folder .\yaml\excel --office
-call .\node_modules\.bin\api-documenter yaml --input-folder .\json\excel-async --output-folder .\yaml\excel-async --office
 
 pushd scripts
 call node postprocessor.js
