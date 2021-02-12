@@ -553,7 +553,44 @@ methods:
       content: 'getDataValidation(): DataValidation;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.DataValidation:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This script creates a drop-down selection list for a cell. It uses the existing values of the selected range as the choices for the list.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the values for data validation.
+            let selectedRange = workbook.getSelectedRange();
+            let rangeValues = selectedRange.getValues();
+
+            // Convert the values into a comma-delimited string.
+            let dataValidationListString = "";
+            rangeValues.forEach((rangeValueRow) => {
+              rangeValueRow.forEach((value) => {
+                dataValidationListString += value + ",";
+              });
+            });
+
+            // Clear the old range.
+            selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+            // Apply the data validation to the first cell in the selected range.
+            let targetCell = selectedRange.getCell(0,0);
+            let dataValidation = targetCell.getDataValidation();
+
+            // Set the content of the drop-down list.
+            dataValidation.setRule({
+                list: {
+                  inCellDropDown: true,
+                  source: dataValidationListString
+                }
+              });
+          }
+          ```
   - name: getDirectPrecedents()
     uid: 'ExcelScript!ExcelScript.Range#getDirectPrecedents:member(1)'
     package: ExcelScript!
