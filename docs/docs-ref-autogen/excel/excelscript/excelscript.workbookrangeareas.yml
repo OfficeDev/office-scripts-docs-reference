@@ -16,7 +16,7 @@ methods:
     package: ExcelScript!
     fullName: getAddresses()
     summary: >-
-      Returns an array of address in A1-style. Address value will contain the
+      Returns an array of addresses in A1-style. Address values contain the
       worksheet name for each rectangular block of cells (e.g., "Sheet1!A1:B4,
       Sheet1!D1:D4"). Read-only.
     remarks: ''
@@ -32,8 +32,8 @@ methods:
     package: ExcelScript!
     fullName: getAreas()
     summary: >-
-      Returns the RangeAreasCollection object, each RangeAreas in the collection
-      represent one or more rectangle ranges in one worksheet.
+      Returns the `RangeAreasCollection` object. Each `RangeAreas` in the
+      collection represent one or more rectangle ranges in one worksheet.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -47,7 +47,7 @@ methods:
     package: ExcelScript!
     fullName: getRangeAreasBySheet(key)
     summary: >-
-      Returns the RangeAreas object based on worksheet name or id in the
+      Returns the `RangeAreas` object based on worksheet name or ID in the
       collection. If the worksheet does not exist, then this function will
       return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
@@ -57,7 +57,7 @@ methods:
       content: 'getRangeAreasBySheet(key: string): RangeAreas;'
       parameters:
         - id: key
-          description: The name or id of the worksheet.
+          description: The name or ID of the worksheet.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -66,7 +66,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas#getRanges:member(1)'
     package: ExcelScript!
     fullName: getRanges()
-    summary: Returns ranges that comprise this object in a RangeCollection object.
+    summary: Returns ranges that comprise this object in a `RangeCollection` object.
     remarks: ''
     isPreview: false
     isDeprecated: false

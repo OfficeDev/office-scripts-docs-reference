@@ -4,7 +4,7 @@ uid: 'ExcelScript!ExcelScript.PageLayout:interface'
 package: ExcelScript!
 fullName: ExcelScript.PageLayout
 summary: >-
-  Represents layout and print settings that are not dependent any
+  Represents layout and print settings that are not dependent on any
   printer-specific implementation. These settings include margins, orientation,
   page numbering, title rows, and print area.
 remarks: ''
@@ -73,8 +73,8 @@ methods:
     package: ExcelScript!
     fullName: getDraftMode()
     summary: >-
-      The worksheet's draft mode option. If true the sheet will be printed
-      without graphics.
+      The worksheet's draft mode option. If `true`<!-- -->, the sheet will be
+      printed without graphics.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -88,8 +88,8 @@ methods:
     package: ExcelScript!
     fullName: getFirstPageNumber()
     summary: >-
-      The worksheet's first page number to print. Null value represents "auto"
-      page numbering.
+      The worksheet's first page number to print. A `null` value represents
+      "auto" page numbering.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -181,7 +181,7 @@ methods:
     package: ExcelScript!
     fullName: getPrintArea()
     summary: >-
-      Gets the RangeAreas object, comprising one or more rectangular ranges,
+      Gets the `RangeAreas` object, comprising one or more rectangular ranges,
       that represents the print area for the worksheet. If there is no print
       area, then this function will return an object with its `isNullObject`
       property set to `true`<!-- -->.
@@ -411,8 +411,8 @@ methods:
     package: ExcelScript!
     fullName: setDraftMode(draftMode)
     summary: >-
-      The worksheet's draft mode option. If true the sheet will be printed
-      without graphics.
+      The worksheet's draft mode option. If `true`<!-- -->, the sheet will be
+      printed without graphics.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -430,8 +430,8 @@ methods:
     package: ExcelScript!
     fullName: setFirstPageNumber(firstPageNumber)
     summary: >-
-      The worksheet's first page number to print. Null value represents "auto"
-      page numbering.
+      The worksheet's first page number to print. A `null` value represents
+      "auto" page numbering.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -541,7 +541,7 @@ methods:
       content: 'setPrintArea(printArea: Range | RangeAreas | string): void;'
       parameters:
         - id: printArea
-          description: 'The range, or RangeAreas of the content to print.'
+          description: The range or ranges of the content to print.
           type: >-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
             uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
@@ -635,7 +635,7 @@ methods:
           description: Measurement unit for the margins provided.
           type: '<xref uid="ExcelScript!ExcelScript.PrintMarginUnit:enum" />'
         - id: marginOptions
-          description: 'Margin values to set, margins not provided will remain unchanged.'
+          description: Margin values to set. Margins not provided remain unchanged.
           type: >-
             <xref
             uid="ExcelScript!ExcelScript.PageLayoutMarginOptions:interface" />
@@ -676,8 +676,8 @@ methods:
       parameters:
         - id: printTitleColumns
           description: >-
-            The columns to be repeated to the left of each page, range must span
-            the entire column to be valid.
+            The columns to be repeated to the left of each page. The range must
+            span the entire column to be valid.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void
@@ -697,8 +697,8 @@ methods:
       parameters:
         - id: printTitleRows
           description: >-
-            The rows to be repeated at the top of each page, range must span the
-            entire row to be valid.
+            The rows to be repeated at the top of each page. The range must span
+            the entire row to be valid.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void

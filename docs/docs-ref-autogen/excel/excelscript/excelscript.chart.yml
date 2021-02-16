@@ -28,8 +28,8 @@ methods:
     fullName: 'addChartSeries(name, index)'
     summary: >-
       Add a new series to the collection. The new added series is not visible
-      until set values/x axis values/bubble sizes for it (depending on chart
-      type).
+      until values, x-axis values, or bubble sizes for it are set (depending on
+      chart type).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -76,8 +76,8 @@ methods:
     package: ExcelScript!
     fullName: getCategoryLabelLevel()
     summary: >-
-      Specifies a ChartCategoryLabelLevel enumeration constant referring to the
-      level of where the category labels are being sourced from.
+      Specifies a chart category label level enumeration constant, referring to
+      the level of the source category labels.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -90,7 +90,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Chart#getChartType:member(1)'
     package: ExcelScript!
     fullName: getChartType()
-    summary: Specifies the type of the chart. See ExcelScript.ChartType for details.
+    summary: Specifies the type of the chart. See `ExcelScript.ChartType` for details.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -103,7 +103,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Chart#getDataLabels:member(1)'
     package: ExcelScript!
     fullName: getDataLabels()
-    summary: Represents the datalabels on the chart.
+    summary: Represents the data labels on the chart.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -155,7 +155,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Chart#getId:member(1)'
     package: ExcelScript!
     fullName: getId()
-    summary: The unique id of chart.
+    summary: The unique ID of chart.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -184,15 +184,15 @@ methods:
                 ): string;
       parameters:
         - id: width
-          description: (Optional) The desired width of the resulting image.
+          description: Optional. The desired width of the resulting image.
           type: number
         - id: height
-          description: (Optional) The desired height of the resulting image.
+          description: Optional. The desired height of the resulting image.
           type: number
         - id: fittingMode
           description: >-
-            (Optional) The method used to scale the chart to the specified to
-            the specified dimensions (if both height and width are set).
+            Optional. The method used to scale the chart to the specified to the
+            specified dimensions (if both height and width are set).
           type: '<xref uid="ExcelScript!ExcelScript.ImageFittingMode:enum" />'
       return:
         type: string
@@ -255,7 +255,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Chart#getPlotArea:member(1)'
     package: ExcelScript!
     fullName: getPlotArea()
-    summary: Represents the plotArea for the chart.
+    summary: Represents the plot area for the chart.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -310,8 +310,8 @@ methods:
     package: ExcelScript!
     fullName: getSeriesNameLevel()
     summary: >-
-      Specifies a ChartSeriesNameLevel enumeration constant referring to the
-      level of where the series names are being sourced from.
+      Specifies a chart series name level enumeration constant, referring to the
+      level of the source series names.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -339,9 +339,9 @@ methods:
     fullName: getShowDataLabelsOverMaximum()
     summary: >-
       Specifies whether to show the data labels when the value is greater than
-      the maximum value on the value axis. If value axis became smaller than the
-      size of data points, you can use this property to set whether to show the
-      data labels. This property applies to 2-D charts only.
+      the maximum value on the value axis. If the value axis becomes smaller
+      than the size of the data points, you can use this property to set whether
+      to show the data labels. This property applies to 2-D charts only.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -368,7 +368,7 @@ methods:
     package: ExcelScript!
     fullName: getTitle()
     summary: >-
-      Specifies the title of the specified chart, including the text,
+      Represents the title of the specified chart, including the text,
       visibility, position, and formatting of the title.
     remarks: ''
     isPreview: false
@@ -424,8 +424,8 @@ methods:
     package: ExcelScript!
     fullName: setCategoryLabelLevel(categoryLabelLevel)
     summary: >-
-      Specifies a ChartCategoryLabelLevel enumeration constant referring to the
-      level of where the category labels are being sourced from.
+      Specifies a chart category label level enumeration constant, referring to
+      the level of the source category labels.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -442,7 +442,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Chart#setChartType:member(1)'
     package: ExcelScript!
     fullName: setChartType(chartType)
-    summary: Specifies the type of the chart. See ExcelScript.ChartType for details.
+    summary: Specifies the type of the chart. See `ExcelScript.ChartType` for details.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -473,7 +473,7 @@ methods:
           description: >-
             Specifies the way columns or rows are used as data series on the
             chart. Can be one of the following: Auto (default), Rows, and
-            Columns. See ExcelScript.ChartSeriesBy for details.
+            Columns. See `ExcelScript.ChartSeriesBy` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesBy:enum" />'
       return:
         type: void
@@ -603,7 +603,7 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: endCell
           description: >-
-            (Optional) The end cell. If specified, the chart's width and height
+            Optional. The end cell. If specified, the chart's width and height
             will be set to fully cover up this cell/range.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
@@ -614,8 +614,8 @@ methods:
     package: ExcelScript!
     fullName: setSeriesNameLevel(seriesNameLevel)
     summary: >-
-      Specifies a ChartSeriesNameLevel enumeration constant referring to the
-      level of where the series names are being sourced from.
+      Specifies a chart series name level enumeration constant, referring to the
+      level of the source series names.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -651,9 +651,9 @@ methods:
     fullName: setShowDataLabelsOverMaximum(showDataLabelsOverMaximum)
     summary: >-
       Specifies whether to show the data labels when the value is greater than
-      the maximum value on the value axis. If value axis became smaller than the
-      size of data points, you can use this property to set whether to show the
-      data labels. This property applies to 2-D charts only.
+      the maximum value on the value axis. If the value axis becomes smaller
+      than the size of the data points, you can use this property to set whether
+      to show the data labels. This property applies to 2-D charts only.
     remarks: ''
     isPreview: false
     isDeprecated: false

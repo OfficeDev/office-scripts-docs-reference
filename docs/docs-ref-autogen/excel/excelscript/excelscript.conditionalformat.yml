@@ -30,8 +30,7 @@ methods:
     fullName: getCellValue()
     summary: >-
       Returns the cell value conditional format properties if the current
-      conditional format is a CellValue type. For example to format all cells
-      between 5 and 10.
+      conditional format is a `CellValue` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -48,8 +47,8 @@ methods:
     package: ExcelScript!
     fullName: getColorScale()
     summary: >-
-      Returns the ColorScale conditional format properties if the current
-      conditional format is an ColorScale type.
+      Returns the color scale conditional format properties if the current
+      conditional format is a `ColorScale` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -100,8 +99,8 @@ methods:
     package: ExcelScript!
     fullName: getIconSet()
     summary: >-
-      Returns the IconSet conditional format properties if the current
-      conditional format is an IconSet type.
+      Returns the icon set conditional format properties if the current
+      conditional format is an `IconSet` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -117,8 +116,8 @@ methods:
     package: ExcelScript!
     fullName: getId()
     summary: >-
-      The Priority of the Conditional Format within the current
-      ConditionalFormatCollection.
+      The priority of the conditional format in the current
+      `ConditionalFormatCollection`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -133,7 +132,7 @@ methods:
     fullName: getPreset()
     summary: >-
       Returns the preset criteria conditional format. See
-      ExcelScript.PresetCriteriaConditionalFormat for more details.
+      `ExcelScript.PresetCriteriaConditionalFormat` for more details.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -154,7 +153,7 @@ methods:
       conditional format currently exists in. Changing this also changes other
       conditional formats' priorities, to allow for a contiguous priority order.
       Use a negative priority to begin from the back. Priorities greater than
-      than bounds will get and set to the maximum (or minimum if negative)
+      the bounds will get and set to the maximum (or minimum if negative)
       priority. Also note that if you change the priority, you have to re-fetch
       a new copy of the object at that new priority location if you want to make
       further changes to it.
@@ -187,8 +186,8 @@ methods:
     package: ExcelScript!
     fullName: getRanges()
     summary: >-
-      Returns the RangeAreas, comprising one or more rectangular ranges, the
-      conditonal format is applied to.
+      Returns the `RangeAreas`<!-- -->, comprising one or more rectangular
+      ranges, to which the conditonal format is applied.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -203,8 +202,8 @@ methods:
     fullName: getStopIfTrue()
     summary: >-
       If the conditions of this conditional format are met, no lower-priority
-      formats shall take effect on that cell. Null on databars, icon sets, and
-      colorscales as there's no concept of StopIfTrue for these
+      formats shall take effect on that cell. Value is `null` on data bars, icon
+      sets, and color scales as there's no concept of `StopIfTrue` for these.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -219,7 +218,7 @@ methods:
     fullName: getTextComparison()
     summary: >-
       Returns the specific text conditional format properties if the current
-      conditional format is a text type. For example to format cells matching
+      conditional format is a text type. For example, to format cells matching
       the word "Text".
     remarks: ''
     isPreview: false
@@ -236,9 +235,9 @@ methods:
     package: ExcelScript!
     fullName: getTopBottom()
     summary: >-
-      Returns the Top/Bottom conditional format properties if the current
-      conditional format is an TopBottom type. For example to format the top 10%
-      or bottom 10 items.
+      Returns the top/bottom conditional format properties if the current
+      conditional format is a `TopBottom` type. For example, to format the top
+      10% or bottom 10 items.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -272,7 +271,7 @@ methods:
       conditional format currently exists in. Changing this also changes other
       conditional formats' priorities, to allow for a contiguous priority order.
       Use a negative priority to begin from the back. Priorities greater than
-      than bounds will get and set to the maximum (or minimum if negative)
+      the bounds will get and set to the maximum (or minimum if negative)
       priority. Also note that if you change the priority, you have to re-fetch
       a new copy of the object at that new priority location if you want to make
       further changes to it.
@@ -294,8 +293,8 @@ methods:
     fullName: setStopIfTrue(stopIfTrue)
     summary: >-
       If the conditions of this conditional format are met, no lower-priority
-      formats shall take effect on that cell. Null on databars, icon sets, and
-      colorscales as there's no concept of StopIfTrue for these
+      formats shall take effect on that cell. Value is `null` on data bars, icon
+      sets, and color scales as there's no concept of `StopIfTrue` for these.
     remarks: ''
     isPreview: false
     isDeprecated: false
