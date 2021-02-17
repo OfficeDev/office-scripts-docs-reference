@@ -13,7 +13,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Comment#addCommentReply:member(1)'
     package: ExcelScript!
     fullName: 'addCommentReply(content, contentType)'
-    summary: Creates a comment reply for comment.
+    summary: Creates a comment reply for a comment.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -26,8 +26,8 @@ methods:
       parameters:
         - id: content
           description: >-
-            The comment's content. This can be either a string or Interface
-            CommentRichContent (e.g., for comments with mentions).
+            The comment's content. This can be either a string or a
+            `CommentRichContent` object (e.g., for comments with mentions).
           type: >-
             <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
             | string
@@ -126,7 +126,7 @@ methods:
     package: ExcelScript!
     fullName: getCreationDate()
     summary: >-
-      Gets the creation time of the comment. Returns null if the comment was
+      Gets the creation time of the comment. Returns `null` if the comment was
       converted from a note, since the comment does not have a creation date.
     remarks: ''
     isPreview: false
@@ -193,8 +193,8 @@ methods:
     package: ExcelScript!
     fullName: getResolved()
     summary: >-
-      The comment thread status. A value of "true" means the comment thread is
-      resolved.
+      The comment thread status. A value of `true` means that the comment thread
+      is resolved.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -241,8 +241,8 @@ methods:
     package: ExcelScript!
     fullName: setResolved(resolved)
     summary: >-
-      The comment thread status. A value of "true" means the comment thread is
-      resolved.
+      The comment thread status. A value of `true` means that the comment thread
+      is resolved.
     remarks: ''
     isPreview: false
     isDeprecated: false

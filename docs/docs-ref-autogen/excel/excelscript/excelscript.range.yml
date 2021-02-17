@@ -25,7 +25,7 @@ methods:
         - id: type
           description: >-
             The type of conditional format being added. See
-            ExcelScript.ConditionalFormatType for details.
+            `ExcelScript.ConditionalFormatType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
@@ -61,9 +61,9 @@ methods:
     fullName: 'autoFill(destinationRange, autoFillType)'
     summary: >-
       Fills range from the current range to the destination range using the
-      specified AutoFill logic. The destination range can be null, or can extend
-      the source either horizontally or vertically. Discontiguous ranges are not
-      supported.
+      specified AutoFill logic. The destination range can be `null`<!-- -->, or
+      can extend the source either horizontally or vertically. Discontiguous
+      ranges are not supported.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -76,13 +76,14 @@ methods:
       parameters:
         - id: destinationRange
           description: >-
-            The destination range to autofill. If the destination range is null,
-            data is filled out based on the surrounding cells (which is the
-            behavior when double-clicking the UI’s range fill handle).
+            The destination range to AutoFill. If the destination range is
+            `null`<!-- -->, data is filled out based on the surrounding cells
+            (which is the behavior when double-clicking the UI’s range fill
+            handle).
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: autoFillType
           description: >-
-            The type of autofill. Specifies how the destination range is to be
+            The type of AutoFill. Specifies how the destination range is to be
             filled, based on the contents of the current range. Default is
             "FillDefault".
           type: '<xref uid="ExcelScript!ExcelScript.AutoFillType:enum" />'
@@ -116,7 +117,7 @@ methods:
         - id: applyTo
           description: >-
             Optional. Determines the type of clear action. See
-            ExcelScript.ClearApplyTo for details.
+            `ExcelScript.ClearApplyTo` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
@@ -154,7 +155,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#convertDataTypeToText:member(1)'
     package: ExcelScript!
     fullName: convertDataTypeToText()
-    summary: Converts the range cells with datatypes into text.
+    summary: Converts the range cells with data types into text.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -168,10 +169,10 @@ methods:
     package: ExcelScript!
     fullName: 'copyFrom(sourceRange, copyType, skipBlanks, transpose)'
     summary: >-
-      Copies cell data or formatting from the source range or RangeAreas to the
-      current range. The destination range can be a different size than the
-      source range or RangeAreas. The destination will be expanded automatically
-      if it is smaller than the source.
+      Copies cell data or formatting from the source range or `RangeAreas` to
+      the current range. The destination range can be a different size than the
+      source range or `RangeAreas`<!-- -->. The destination will be expanded
+      automatically if it is smaller than the source.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -186,8 +187,8 @@ methods:
       parameters:
         - id: sourceRange
           description: >-
-            The source range or RangeAreas to copy from. When the source
-            RangeAreas has multiple ranges, their form must be able to be
+            The source range or `RangeAreas` to copy from. When the source
+            `RangeAreas` has multiple ranges, their form must be able to be
             created by removing full rows or columns from a rectangular range.
           type: >-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
@@ -220,7 +221,7 @@ methods:
         - id: shift
           description: >-
             Specifies which way to shift the cells. See
-            ExcelScript.DeleteShiftDirection for details.
+            `ExcelScript.DeleteShiftDirection` for details.
           type: '<xref uid="ExcelScript!ExcelScript.DeleteShiftDirection:enum" />'
       return:
         type: void
@@ -247,8 +248,8 @@ methods:
         - id: criteria
           description: >-
             Additional search criteria, including the search direction and
-            whether the search needs to match the entire cell or be case
-            sensitive.
+            whether the search needs to match the entire cell or be
+            case-sensitive.
           type: '<xref uid="ExcelScript!ExcelScript.SearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -258,9 +259,9 @@ methods:
     package: ExcelScript!
     fullName: flashFill()
     summary: >-
-      Does FlashFill to current range.Flash Fill will automatically fills data
-      when it senses a pattern, so the range must be single column range and
-      have data around in order to find pattern.
+      Does a Flash Fill to the current range. Flash Fill automatically fills
+      data when it senses a pattern, so the range must be a single column range
+      and have data around it in order to find a pattern.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -274,7 +275,7 @@ methods:
     package: ExcelScript!
     fullName: 'getAbsoluteResizedRange(numRows, numColumns)'
     summary: >-
-      Gets a Range object with the same top-left cell as the current Range
+      Gets a `Range` object with the same top-left cell as the current `Range`
       object, but with the specified numbers of rows and columns.
     remarks: ''
     isPreview: false
@@ -296,8 +297,8 @@ methods:
     package: ExcelScript!
     fullName: getAddress()
     summary: >-
-      Specifies the range reference in A1-style. Address value will contain the
-      Sheet reference (e.g., "Sheet1!A1:B4").
+      Specifies the range reference in A1-style. Address value contains the
+      sheet reference (e.g., "Sheet1!A1:B4").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -311,7 +312,7 @@ methods:
     package: ExcelScript!
     fullName: getAddressLocal()
     summary: >-
-      Specifies the range reference for the specified range in the language of
+      Represents the range reference for the specified range in the language of
       the user.
     remarks: ''
     isPreview: false
@@ -327,7 +328,7 @@ methods:
     fullName: getBoundingRect(anotherRange)
     summary: >-
       Gets the smallest range object that encompasses the given ranges. For
-      example, the GetBoundingRect of "B2:C5" and "D10:E15" is "B2:E15".
+      example, the `GetBoundingRect` of "B2:C5" and "D10:E15" is "B2:E15".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -335,7 +336,7 @@ methods:
       content: 'getBoundingRect(anotherRange: Range | string): Range;'
       parameters:
         - id: anotherRange
-          description: The range object or address or range name.
+          description: 'The range object, address, or range name.'
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -473,7 +474,9 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getColumnsAfter:member(1)'
     package: ExcelScript!
     fullName: getColumnsAfter(count)
-    summary: Gets a certain number of columns to the right of the current Range object.
+    summary: >-
+      Gets a certain number of columns to the right of the current `Range`
+      object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -494,7 +497,9 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getColumnsBefore:member(1)'
     package: ExcelScript!
     fullName: getColumnsBefore(count)
-    summary: Gets a certain number of columns to the left of the current Range object.
+    summary: >-
+      Gets a certain number of columns to the left of the current `Range`
+      object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -523,7 +528,7 @@ methods:
       content: 'getConditionalFormat(id: string): ConditionalFormat;'
       parameters:
         - id: id
-          description: The id of the conditional format.
+          description: The ID of the conditional format.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
@@ -532,7 +537,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getConditionalFormats:member(1)'
     package: ExcelScript!
     fullName: getConditionalFormats()
-    summary: The collection of ConditionalFormats that intersect the range.
+    summary: The collection of `ConditionalFormats` that intersect the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -596,8 +601,8 @@ methods:
     package: ExcelScript!
     fullName: getDirectPrecedents()
     summary: >-
-      Returns a WorkbookRangeAreas object that represents the range containing
-      all the direct precedents of a cell in same worksheet or in multiple
+      Returns a `WorkbookRangeAreas` object that represents the range containing
+      all the direct precedents of a cell in the same worksheet or in multiple
       worksheets.
     remarks: ''
     isPreview: false
@@ -780,10 +785,10 @@ methods:
     package: ExcelScript!
     fullName: getHasSpill()
     summary: >-
-      Represents if all cells have a spill border. Returns true if all cells
-      have a spill border, or false if all cells do not have a spill border.
-      Returns null if there are cells both with and without spill borders within
-      the range.
+      Represents if all cells have a spill border. Returns `true` if all cells
+      have a spill border, or `false` if all cells do not have a spill border.
+      Returns `null` if there are cells both with and without spill borders
+      within the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -797,8 +802,8 @@ methods:
     package: ExcelScript!
     fullName: getHeight()
     summary: >-
-      Returns the distance in points, for 100% zoom, from top edge of the range
-      to bottom edge of the range.
+      Returns the distance in points, for 100% zoom, from the top edge of the
+      range to the bottom edge of the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -837,11 +842,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getImage:member(1)'
     package: ExcelScript!
     fullName: getImage()
-    summary: >-
-      Renders the range as a base64-encoded png image. **Important**: This API
-      is currently unsupported in Excel for Mac. Visit \[OfficeDev/office-js
-      Issue \#235\](https://github.com/OfficeDev/office-js/issues/235) for the
-      current status.
+    summary: Renders the range as a base64-encoded png image.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -948,8 +949,8 @@ methods:
     package: ExcelScript!
     fullName: getLeft()
     summary: >-
-      Returns the distance in points, for 100% zoom, from left edge of the
-      worksheet to left edge of the range.
+      Returns the distance in points, for 100% zoom, from the left edge of the
+      worksheet to the left edge of the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -989,9 +990,9 @@ methods:
     package: ExcelScript!
     fullName: getMergedAreas()
     summary: >-
-      Returns a RangeAreas object that represents the merged areas in this
+      Returns a `RangeAreas` object that represents the merged areas in this
       range. Note that if the merged areas count in this range is more than 512,
-      the API will fail to return the result.
+      an `InvalidOperation` error will be thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1169,8 +1170,8 @@ methods:
       parameters:
         - id: fullyContained
           description: >-
-            If true, returns only PivotTables that are fully contained within
-            the range bounds. The default value is false.
+            If `true`<!-- -->, returns only PivotTables that are fully contained
+            within the range bounds. The default value is `false`<!-- -->.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]'
@@ -1181,9 +1182,9 @@ methods:
     fullName: getPredefinedCellStyle()
     summary: >-
       Represents the style of the current range. If the styles of the cells are
-      inconsistent, null will be returned. For custom styles, the style name
+      inconsistent, `null` will be returned. For custom styles, the style name
       will be returned. For built-in styles, a string representing a value in
-      the BuiltInStyle enum will be returned.
+      the `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1197,7 +1198,7 @@ methods:
     package: ExcelScript!
     fullName: 'getResizedRange(deltaRows, deltaColumns)'
     summary: >-
-      Gets a Range object similar to the current Range object, but with its
+      Gets a `Range` object similar to the current `Range` object, but with its
       bottom-right corner expanded (or contracted) by some number of rows and
       columns.
     remarks: ''
@@ -1341,7 +1342,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getRowsAbove:member(1)'
     package: ExcelScript!
     fullName: getRowsAbove(count)
-    summary: Gets a certain number of rows above the current Range object.
+    summary: Gets a certain number of rows above the current `Range` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1362,7 +1363,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getRowsBelow:member(1)'
     package: ExcelScript!
     fullName: getRowsBelow(count)
-    summary: Gets a certain number of rows below the current Range object.
+    summary: Gets a certain number of rows below the current `Range` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1384,9 +1385,9 @@ methods:
     package: ExcelScript!
     fullName: getSavedAsArray()
     summary: >-
-      Represents if ALL the cells would be saved as an array formula. Returns
-      true if ALL cells would be saved as an array formula, or false if ALL
-      cells would NOT be saved as an array formula. Returns null if some cells
+      Represents if all the cells would be saved as an array formula. Returns
+      `true` if all cells would be saved as an array formula, or `false` if all
+      cells would not be saved as an array formula. Returns `null` if some cells
       would be saved as an array formula and some would not be.
     remarks: ''
     isPreview: false
@@ -1414,9 +1415,9 @@ methods:
     package: ExcelScript!
     fullName: 'getSpecialCells(cellType, cellValueType)'
     summary: >-
-      Gets the RangeAreas object, comprising one or more ranges, that represents
-      all the cells that match the specified type and value. If no special cells
-      are found, then this function will return an object with its
+      Gets the `RangeAreas` object, comprising one or more ranges, that
+      represents all the cells that match the specified type and value. If no
+      special cells are found, then this function will return an object with its
       `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
@@ -1433,11 +1434,11 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />'
         - id: cellValueType
           description: >-
-            If cellType is either Constants or Formulas, this argument is used
-            to determine which types of cells to include in the result. These
-            values can be combined together to return more than one type. The
-            default is to select all constants or formulas, no matter what the
-            type.
+            If `cellType` is either `constants` or `formulas`<!-- -->, this
+            argument is used to determine which types of cells to include in the
+            result. These values can be combined together to return more than
+            one type. The default is to select all constants or formulas, no
+            matter what the type.
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -1499,7 +1500,7 @@ methods:
     package: ExcelScript!
     fullName: getSurroundingRegion()
     summary: >-
-      Returns a Range object that represents the surrounding region for the
+      Returns a `Range` object that represents the surrounding region for the
       top-left cell in this range. A surrounding region is a range bounded by
       any combination of blank rows and blank columns relative to this range.
     remarks: ''
@@ -1523,8 +1524,8 @@ methods:
       parameters:
         - id: fullyContained
           description: >-
-            If true, returns only tables that are fully contained within the
-            range bounds. The default value is false.
+            If `true`<!-- -->, returns only tables that are fully contained
+            within the range bounds. The default value is `false`<!-- -->.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
@@ -1552,9 +1553,9 @@ methods:
     package: ExcelScript!
     fullName: getTexts()
     summary: >-
-      Text values of the specified range. The Text value will not depend on the
-      cell width. The \# sign substitution that happens in Excel UI will not
-      affect the text value returned by the API.
+      Text values of the specified range. The text value will not depend on the
+      cell width. The number sign (\#) substitution that happens in the Excel UI
+      will not affect the text value returned by the API.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1568,8 +1569,8 @@ methods:
     package: ExcelScript!
     fullName: getTop()
     summary: >-
-      Returns the distance in points, for 100% zoom, from top edge of the
-      worksheet to top edge of the range.
+      Returns the distance in points, for 100% zoom, from the top edge of the
+      worksheet to the top edge of the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1641,8 +1642,9 @@ methods:
     fullName: getValues()
     summary: >-
       Represents the raw values of the specified range. The data returned could
-      be of type string, number, or a boolean. Cells that contain an error will
-      return the error string.
+      be a string, number, or boolean. Cells that contain an error will return
+      the error string. If the returned value starts with a plus ("+"), minus
+      ("-"), or equal sign ("="), Excel interprets this value as a formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1698,8 +1700,8 @@ methods:
     package: ExcelScript!
     fullName: getWidth()
     summary: >-
-      Returns the distance in points, for 100% zoom, from left edge of the range
-      to right edge of the range.
+      Returns the distance in points, for 100% zoom, from the left edge of the
+      range to the right edge of the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1747,7 +1749,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#hideGroupDetails:member(1)'
     package: ExcelScript!
     fullName: hideGroupDetails(groupOption)
-    summary: Hide details of the row or column group.
+    summary: Hides the details of the row or column group.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1756,7 +1758,7 @@ methods:
       parameters:
         - id: groupOption
           description: >-
-            Specifies whether to hide details of grouped rows or grouped
+            Specifies whether to hide the details of grouped rows or grouped
             columns.
           type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
@@ -1768,7 +1770,7 @@ methods:
     fullName: insert(shift)
     summary: >-
       Inserts a cell or a range of cells into the worksheet in place of this
-      range, and shifts the other cells to make space. Returns a new Range
+      range, and shifts the other cells to make space. Returns a new `Range`
       object at the now blank space.
     remarks: ''
     isPreview: false
@@ -1779,7 +1781,7 @@ methods:
         - id: shift
           description: >-
             Specifies which way to shift the cells. See
-            ExcelScript.InsertShiftDirection for details.
+            `ExcelScript.InsertShiftDirection` for details.
           type: '<xref uid="ExcelScript!ExcelScript.InsertShiftDirection:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1797,8 +1799,9 @@ methods:
       parameters:
         - id: across
           description: >-
-            Optional. Set true to merge cells in each row of the specified range
-            as separate merged cells. The default value is false.
+            Optional. Set `true` to merge cells in each row of the specified
+            range as separate merged cells. The default value is `false`<!--
+            -->.
           type: boolean
       return:
         type: void
@@ -1877,10 +1880,10 @@ methods:
           description: String to find.
           type: string
         - id: replacement
-          description: String to replace the original with.
+          description: The string that replaces the original string.
           type: string
         - id: criteria
-          description: Additional Replace Criteria.
+          description: Additional replacement criteria.
           type: '<xref uid="ExcelScript!ExcelScript.ReplaceCriteria:interface" />'
       return:
         type: number
@@ -2207,9 +2210,9 @@ methods:
     fullName: setPredefinedCellStyle(predefinedCellStyle)
     summary: >-
       Represents the style of the current range. If the styles of the cells are
-      inconsistent, null will be returned. For custom styles, the style name
+      inconsistent, `null` will be returned. For custom styles, the style name
       will be returned. For built-in styles, a string representing a value in
-      the BuiltInStyle enum will be returned.
+      the `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2266,8 +2269,9 @@ methods:
     fullName: setValues(values)
     summary: >-
       Represents the raw values of the specified range. The data returned could
-      be of type string, number, or a boolean. Cells that contain an error will
-      return the error string.
+      be a string, number, or boolean. Cells that contain an error will return
+      the error string. If the returned value starts with a plus ("+"), minus
+      ("-"), or equal sign ("="), Excel interprets this value as a formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2337,7 +2341,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#showGroupDetails:member(1)'
     package: ExcelScript!
     fullName: showGroupDetails(groupOption)
-    summary: Show details of the row or column group.
+    summary: Shows the details of the row or column group.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2346,7 +2350,7 @@ methods:
       parameters:
         - id: groupOption
           description: >-
-            Specifies whether to show details of grouped rows or grouped
+            Specifies whether to show the details of grouped rows or grouped
             columns.
           type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
