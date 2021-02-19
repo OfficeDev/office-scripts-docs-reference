@@ -151,7 +151,10 @@ methods:
             removal.
           type: number
         - id: count
-          description: 'Number of rows to delete. By default, a single row will be deleted.'
+          description: >-
+            Number of rows to delete. By default, a single row will be deleted.
+            Note: Deleting more than 1000 rows at the same time could result in
+            a Power Automate timeout.
           type: number
       return:
         type: void
@@ -160,7 +163,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getAutoFilter:member(1)'
     package: ExcelScript!
     fullName: getAutoFilter()
-    summary: Represents the AutoFilter object of the table.
+    summary: Represents the `AutoFilter` object of the table.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -174,7 +177,7 @@ methods:
     package: ExcelScript!
     fullName: getColumn(key)
     summary: >-
-      Gets a column object by Name or ID. If the column doesn't exist, then this
+      Gets a column object by name or ID. If the column doesn't exist, then this
       function will return an object with its `isNullObject` property set to
       `true`<!-- -->.
     remarks: ''
@@ -184,7 +187,7 @@ methods:
       content: 'getColumn(key: number | string): TableColumn | undefined;'
       parameters:
         - id: key
-          description: Column Name or ID.
+          description: Column name or ID.
           type: number | string
       return:
         type: >-
@@ -250,7 +253,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getHeaderRowRange:member(1)'
     package: ExcelScript!
     fullName: getHeaderRowRange()
-    summary: Gets the range object associated with header row of the table.
+    summary: Gets the range object associated with the header row of the table.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -305,7 +308,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getLegacyId:member(1)'
     package: ExcelScript!
     fullName: getLegacyId()
-    summary: Returns a numeric id.
+    summary: Returns a numeric ID.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -332,7 +335,7 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedTableStyle()
     summary: >-
-      Constant value that represents the Table style. Possible values are:
+      Constant value that represents the table style. Possible values are:
       "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
       through "TableStyleMedium28", "TableStyleDark1" through
       "TableStyleDark11". A custom user-defined style present in the workbook
@@ -390,7 +393,7 @@ methods:
     fullName: getShowBandedColumns()
     summary: >-
       Specifies if the columns show banded formatting in which odd columns are
-      highlighted differently from even ones to make reading the table easier.
+      highlighted differently from even ones, to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -405,7 +408,7 @@ methods:
     fullName: getShowBandedRows()
     summary: >-
       Specifies if the rows show banded formatting in which odd rows are
-      highlighted differently from even ones to make reading the table easier.
+      highlighted differently from even ones, to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -476,7 +479,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getTotalRowRange:member(1)'
     package: ExcelScript!
     fullName: getTotalRowRange()
-    summary: Gets the range object associated with totals row of the table.
+    summary: Gets the range object associated with the totals row of the table.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -567,7 +570,7 @@ methods:
     package: ExcelScript!
     fullName: setPredefinedTableStyle(predefinedTableStyle)
     summary: >-
-      Constant value that represents the Table style. Possible values are:
+      Constant value that represents the table style. Possible values are:
       "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
       through "TableStyleMedium28", "TableStyleDark1" through
       "TableStyleDark11". A custom user-defined style present in the workbook
@@ -590,7 +593,7 @@ methods:
     fullName: setShowBandedColumns(showBandedColumns)
     summary: >-
       Specifies if the columns show banded formatting in which odd columns are
-      highlighted differently from even ones to make reading the table easier.
+      highlighted differently from even ones, to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -609,7 +612,7 @@ methods:
     fullName: setShowBandedRows(showBandedRows)
     summary: >-
       Specifies if the rows show banded formatting in which odd rows are
-      highlighted differently from even ones to make reading the table easier.
+      highlighted differently from even ones, to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false

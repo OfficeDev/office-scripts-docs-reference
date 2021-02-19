@@ -16,7 +16,7 @@ methods:
     package: ExcelScript!
     fullName: copyTo(destinationSheet)
     summary: >-
-      Copies and pastes a Shape object. The pasted shape is copied to the same
+      Copies and pastes a `Shape` object. The pasted shape is copied to the same
       pixel location as this shape.
     remarks: ''
     isPreview: false
@@ -27,7 +27,7 @@ methods:
         - id: destinationSheet
           description: >-
             The sheet to which the shape object will be pasted. The default
-            value is the copied Shape's worksheet.
+            value is the copied shape's worksheet.
           type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -49,7 +49,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getAltTextDescription:member(1)'
     package: ExcelScript!
     fullName: getAltTextDescription()
-    summary: Specifies the alternative description text for a Shape object.
+    summary: Specifies the alternative description text for a `Shape` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -62,7 +62,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getAltTextTitle:member(1)'
     package: ExcelScript!
     fullName: getAltTextTitle()
-    summary: Specifies the alternative title text for a Shape object.
+    summary: Specifies the alternative title text for a `Shape` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -141,8 +141,8 @@ methods:
     fullName: getGeometricShapeType()
     summary: >-
       Specifies the geometric shape type of this geometric shape. See
-      ExcelScript.GeometricShapeType for details. Returns null if the shape type
-      is not "GeometricShape".
+      `ExcelScript.GeometricShapeType` for details. Returns `null` if the shape
+      type is not "GeometricShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -171,8 +171,8 @@ methods:
     package: ExcelScript!
     fullName: getHeight()
     summary: >-
-      Specifies the height, in points, of the shape. Throws an invalid argument
-      exception when set with a negative value or zero as input.
+      Specifies the height, in points, of the shape. Throws an `InvalidArgument`
+      exception when set with a negative value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -215,8 +215,8 @@ methods:
     fullName: getLeft()
     summary: >-
       The distance, in points, from the left side of the shape to the left side
-      of the worksheet. Throws an invalid argument exception when set with a
-      negative value as input.
+      of the worksheet. Throws an `InvalidArgument` exception when set with a
+      negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -354,8 +354,8 @@ methods:
     fullName: getTop()
     summary: >-
       The distance, in points, from the top edge of the shape to the top edge of
-      the worksheet. Throws an invalid argument exception when set with a
-      negative value as input.
+      the worksheet. Throws an `InvalidArgument` exception when set with a
+      negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -368,7 +368,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getType:member(1)'
     package: ExcelScript!
     fullName: getType()
-    summary: Returns the type of this shape. See ExcelScript.ShapeType for details.
+    summary: Returns the type of this shape. See `ExcelScript.ShapeType` for details.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -395,8 +395,8 @@ methods:
     package: ExcelScript!
     fullName: getWidth()
     summary: >-
-      Specifies the width, in points, of the shape. Throws an invalid argument
-      exception when set with a negative value or zero as input.
+      Specifies the width, in points, of the shape. Throws an `InvalidArgument`
+      exception when set with a negative value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -459,7 +459,8 @@ methods:
         - id: increment
           description: >-
             How many degrees the shape will be rotated. A positive value rotates
-            the shape clockwise; a negative value rotates it counterclockwise.
+            the shape clockwise and a negative value rotates it
+            counterclockwise.
           type: number
       return:
         type: void
@@ -477,9 +478,9 @@ methods:
       parameters:
         - id: increment
           description: >-
-            The increment, in points, the shape will be vertically moved. in
-            points. A positive value moves the shape down and a negative value
-            moves it up.
+            The increment, in points, the shape will be vertically moved. A
+            positive value moves the shape down and a negative value moves it
+            up.
           type: number
       return:
         type: void
@@ -568,7 +569,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#setAltTextDescription:member(1)'
     package: ExcelScript!
     fullName: setAltTextDescription(altTextDescription)
-    summary: Specifies the alternative description text for a Shape object.
+    summary: Specifies the alternative description text for a `Shape` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -585,7 +586,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#setAltTextTitle:member(1)'
     package: ExcelScript!
     fullName: setAltTextTitle(altTextTitle)
-    summary: Specifies the alternative title text for a Shape object.
+    summary: Specifies the alternative title text for a `Shape` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -604,8 +605,8 @@ methods:
     fullName: setGeometricShapeType(geometricShapeType)
     summary: >-
       Specifies the geometric shape type of this geometric shape. See
-      ExcelScript.GeometricShapeType for details. Returns null if the shape type
-      is not "GeometricShape".
+      `ExcelScript.GeometricShapeType` for details. Returns `null` if the shape
+      type is not "GeometricShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -623,8 +624,8 @@ methods:
     package: ExcelScript!
     fullName: setHeight(height)
     summary: >-
-      Specifies the height, in points, of the shape. Throws an invalid argument
-      exception when set with a negative value or zero as input.
+      Specifies the height, in points, of the shape. Throws an `InvalidArgument`
+      exception when set with a negative value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -643,8 +644,8 @@ methods:
     fullName: setLeft(left)
     summary: >-
       The distance, in points, from the left side of the shape to the left side
-      of the worksheet. Throws an invalid argument exception when set with a
-      negative value as input.
+      of the worksheet. Throws an `InvalidArgument` exception when set with a
+      negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -731,8 +732,8 @@ methods:
     fullName: setTop(top)
     summary: >-
       The distance, in points, from the top edge of the shape to the top edge of
-      the worksheet. Throws an invalid argument exception when set with a
-      negative value as input.
+      the worksheet. Throws an `InvalidArgument` exception when set with a
+      negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -767,8 +768,8 @@ methods:
     package: ExcelScript!
     fullName: setWidth(width)
     summary: >-
-      Specifies the width, in points, of the shape. Throws an invalid argument
-      exception when set with a negative value or zero as input.
+      Specifies the width, in points, of the shape. Throws an `InvalidArgument`
+      exception when set with a negative value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -797,7 +798,7 @@ methods:
         - id: position
           description: >-
             Where to move the shape in the z-order stack relative to the other
-            shapes. See ExcelScript.ShapeZOrder for details.
+            shapes. See `ExcelScript.ShapeZOrder` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeZOrder:enum" />'
       return:
         type: void
