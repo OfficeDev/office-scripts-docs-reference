@@ -14,9 +14,8 @@ methods:
     package: ExcelScript!
     fullName: applyFilter(filter)
     summary: >-
-      Sets one or more of the field's current PivotFilters and applies them to
-      the field. If the provided filters are invalid or cannot be applied, an
-      exception is thrown.
+      Sets one or more of the field's current PivotFilters and applies them to the field. If the provided filters are
+      invalid or cannot be applied, an exception is thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -24,9 +23,7 @@ methods:
       content: 'applyFilter(filter: PivotFilters): void;'
       parameters:
         - id: filter
-          description: >-
-            A configured specific PivotFilter, or a PivotFilters interface
-            containing multiple configured filters.
+          description: 'A configured specific PivotFilter, or a PivotFilters interface containing multiple configured filters.'
           type: '<xref uid="ExcelScript!ExcelScript.PivotFilters:interface" />'
       return:
         type: void
@@ -35,9 +32,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.PivotField#clearAllFilters:member(1)'
     package: ExcelScript!
     fullName: clearAllFilters()
-    summary: >-
-      Clears all criteria from all of the field's filters. This removes any
-      active filtering on the field.
+    summary: Clears all criteria from all of the field's filters. This removes any active filtering on the field.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -50,9 +45,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.PivotField#clearFilter:member(1)'
     package: ExcelScript!
     fullName: clearFilter(filterType)
-    summary: >-
-      Clears all existing criteria from the field's filter of the given type (if
-      one is currently applied).
+    summary: Clears all existing criteria from the field's filter of the given type (if one is currently applied).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -122,9 +115,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotItem(name)
     summary: >-
-      Gets a PivotItem by name. If the PivotItem does not exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a PivotItem by name. If the PivotItem does not exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -175,9 +167,7 @@ methods:
       content: 'isFiltered(filterType?: PivotFilterType): boolean;'
       parameters:
         - id: filterType
-          description: >-
-            The filter type to check. If no type is provided, this method will
-            check if any filter is applied.
+          description: 'The filter type to check. If no type is provided, this method will check if any filter is applied.'
           type: '<xref uid="ExcelScript!ExcelScript.PivotFilterType:enum" />'
       return:
         type: boolean
@@ -238,9 +228,8 @@ methods:
     package: ExcelScript!
     fullName: sortByLabels(sortBy)
     summary: >-
-      Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will
-      be applied based on it, if not sort will be based on the PivotField
-      itself.
+      Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort
+      will be based on the PivotField itself.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -258,9 +247,8 @@ methods:
     package: ExcelScript!
     fullName: 'sortByValues(sortBy, valuesHierarchy, pivotItemScope)'
     summary: >-
-      Sorts the PivotField by specified values in a given scope. The scope
-      defines which specific values will be used to sort when there are multiple
-      values from the same DataPivotHierarchy.
+      Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to
+      sort when there are multiple values from the same DataPivotHierarchy.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -276,20 +264,16 @@ methods:
           description: Specifies if the sorting is done in ascending or descending order.
           type: '<xref uid="ExcelScript!ExcelScript.SortBy:enum" />'
         - id: valuesHierarchy
-          description: >-
-            Specifies the values hierarchy on the data axis to be used for
-            sorting.
+          description: Specifies the values hierarchy on the data axis to be used for sorting.
           type: '<xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />'
         - id: pivotItemScope
           description: >-
-            The items that should be used for the scope of the sorting. These
-            will be the items that make up the row or column that you want to
-            sort on. If a string is used instead of a PivotItem, the string
-            represents the ID of the PivotItem. If there are no items other than
-            data hierarchy on the axis you want to sort on, this can be empty.
-          type: >-
-            Array&lt;<xref uid="ExcelScript!ExcelScript.PivotItem:interface" />
-            | string&gt;
+            The items that should be used for the scope of the sorting. These will be the items that make up the row or
+            column that you want to sort on. If a string is used instead of a PivotItem, the string represents the ID of
+            the PivotItem. If there are no items other than data hierarchy on the axis you want to sort on, this can be
+            empty.
+          type: |-
+            Array&lt;<xref uid="ExcelScript!ExcelScript.PivotItem:interface" /> | string&gt;
                     
       return:
         type: void

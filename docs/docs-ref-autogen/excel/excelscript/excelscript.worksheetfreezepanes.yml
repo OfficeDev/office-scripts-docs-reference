@@ -14,8 +14,8 @@ methods:
     package: ExcelScript!
     fullName: freezeAt(frozenRange)
     summary: >-
-      Sets the frozen cells in the active worksheet view. The range provided
-      corresponds to cells that will be frozen in the top- and left-most pane.
+      Sets the frozen cells in the active worksheet view. The range provided corresponds to cells that will be frozen in
+      the top- and left-most pane.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -23,9 +23,7 @@ methods:
       content: 'freezeAt(frozenRange: Range | string): void;'
       parameters:
         - id: frozenRange
-          description: >-
-            A range that represents the cells to be frozen, or `null` to remove
-            all frozen panes.
+          description: 'A range that represents the cells to be frozen, or `null` to remove all frozen panes.'
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void
@@ -42,9 +40,7 @@ methods:
       content: 'freezeColumns(count?: number): void;'
       parameters:
         - id: count
-          description: >-
-            Optional number of columns to freeze, or zero to unfreeze all
-            columns
+          description: 'Optional number of columns to freeze, or zero to unfreeze all columns'
           type: number
       return:
         type: void
@@ -71,10 +67,9 @@ methods:
     package: ExcelScript!
     fullName: getLocation()
     summary: >-
-      Gets a range that describes the frozen cells in the active worksheet view.
-      The frozen range corresponds to cells that are frozen in the top- and
-      left-most pane. If there is no frozen pane, then this function will return
-      an object with its `isNullObject` property set to `true`<!-- -->.
+      Gets a range that describes the frozen cells in the active worksheet view. The frozen range corresponds to cells
+      that are frozen in the top- and left-most pane. If there is no frozen pane, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
