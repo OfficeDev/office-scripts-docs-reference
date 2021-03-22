@@ -3,9 +3,7 @@ name: ExcelScript.Worksheet
 uid: 'ExcelScript!ExcelScript.Worksheet:interface'
 package: ExcelScript!
 fullName: ExcelScript.Worksheet
-summary: >-
-  An Excel worksheet is a grid of cells. It can contain data, tables, charts,
-  etc.
+summary: 'An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc.'
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -41,17 +39,15 @@ methods:
                 ): Chart;
       parameters:
         - id: type
-          description: >-
-            Represents the type of a chart. See `ExcelScript.ChartType` for
-            details.
+          description: Represents the type of a chart. See `ExcelScript.ChartType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ChartType:enum" />'
         - id: sourceData
           description: The `Range` object corresponding to the source data.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         - id: seriesBy
           description: >-
-            Optional. Specifies the way columns or rows are used as data series
-            on the chart. See `ExcelScript.ChartSeriesBy` for details.
+            Optional. Specifies the way columns or rows are used as data series on the chart. See
+            `ExcelScript.ChartSeriesBy` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesBy:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Chart:interface" />'
@@ -61,9 +57,8 @@ methods:
     package: ExcelScript!
     fullName: 'addComment(cellAddress, content, contentType)'
     summary: >-
-      Creates a new comment with the given content on the given cell. An
-      `InvalidArgument` error is thrown if the provided range is larger than one
-      cell.
+      Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
+      provided range is larger than one cell.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -77,24 +72,19 @@ methods:
       parameters:
         - id: cellAddress
           description: >-
-            The cell to which the comment is added. This can be a `Range` object
-            or a string. If it's a string, it must contain the full address,
-            including the sheet name. An `InvalidArgument` error is thrown if
-            the provided range is larger than one cell.
+            The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: content
           description: >-
-            The comment's content. This can be either a string or
-            `CommentRichContent` object. Strings are used for plain text.
-            `CommentRichContent` objects allow for other comment features, such
-            as mentions.
-          type: >-
-            <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
-            | string
+            The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for
+            plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
+          type: '<xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" /> | string'
         - id: contentType
           description: >-
-            Optional. The type of content contained within the comment. The
-            default value is enum `ContentType.Plain`<!-- -->.
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->.
           type: '<xref uid="ExcelScript!ExcelScript.ContentType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
@@ -103,9 +93,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#addGeometricShape:member(1)'
     package: ExcelScript!
     fullName: addGeometricShape(geometricShapeType)
-    summary: >-
-      Adds a geometric shape to the worksheet. Returns a `Shape` object that
-      represents the new shape.
+    summary: Adds a geometric shape to the worksheet. Returns a `Shape` object that represents the new shape.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -113,9 +101,7 @@ methods:
       content: 'addGeometricShape(geometricShapeType: GeometricShapeType): Shape;'
       parameters:
         - id: geometricShapeType
-          description: >-
-            Represents the type of the geometric shape. See
-            `ExcelScript.GeometricShapeType` for details.
+          description: Represents the type of the geometric shape. See `ExcelScript.GeometricShapeType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -125,8 +111,8 @@ methods:
     package: ExcelScript!
     fullName: addGroup(values)
     summary: >-
-      Groups a subset of shapes in this collection's worksheet. Returns a
-      `Shape` object that represents the new group of shapes.
+      Groups a subset of shapes in this collection's worksheet. Returns a `Shape` object that represents the new group
+      of shapes.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -135,9 +121,7 @@ methods:
       parameters:
         - id: values
           description: An array of shape IDs or shape objects.
-          type: >-
-            Array&lt;string | <xref
-            uid="ExcelScript!ExcelScript.Shape:interface" />&gt;
+          type: 'Array&lt;string | <xref uid="ExcelScript!ExcelScript.Shape:interface" />&gt;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
         description: ''
@@ -163,8 +147,8 @@ methods:
     package: ExcelScript!
     fullName: addImage(base64ImageString)
     summary: >-
-      Creates an image from a base64-encoded string and adds it to the
-      worksheet. Returns the `Shape` object that represents the new image.
+      Creates an image from a base64-encoded string and adds it to the worksheet. Returns the `Shape` object that
+      represents the new image.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -172,9 +156,7 @@ methods:
       content: 'addImage(base64ImageString: string): Shape;'
       parameters:
         - id: base64ImageString
-          description: >-
-            A base64-encoded string representing an image in either JPEG or PNG
-            format.
+          description: A base64-encoded string representing an image in either JPEG or PNG format.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -183,9 +165,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#addLine:member(1)'
     package: ExcelScript!
     fullName: 'addLine(startLeft, startTop, endLeft, endTop, connectorType)'
-    summary: >-
-      Adds a line to worksheet. Returns a `Shape` object that represents the new
-      line.
+    summary: Adds a line to worksheet. Returns a `Shape` object that represents the new line.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -200,29 +180,19 @@ methods:
                 ): Shape;
       parameters:
         - id: startLeft
-          description: >-
-            The distance, in points, from the start of the line to the left side
-            of the worksheet.
+          description: 'The distance, in points, from the start of the line to the left side of the worksheet.'
           type: number
         - id: startTop
-          description: >-
-            The distance, in points, from the start of the line to the top of
-            the worksheet.
+          description: 'The distance, in points, from the start of the line to the top of the worksheet.'
           type: number
         - id: endLeft
-          description: >-
-            The distance, in points, from the end of the line to the left of the
-            worksheet.
+          description: 'The distance, in points, from the end of the line to the left of the worksheet.'
           type: number
         - id: endTop
-          description: >-
-            The distance, in points, from the end of the line to the top of the
-            worksheet.
+          description: 'The distance, in points, from the end of the line to the top of the worksheet.'
           type: number
         - id: connectorType
-          description: >-
-            Represents the connector type. See `ExcelScript.ConnectorType` for
-            details.
+          description: Represents the connector type. See `ExcelScript.ConnectorType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -259,9 +229,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#addNamedItemFormulaLocal:member(1)'
     package: ExcelScript!
     fullName: 'addNamedItemFormulaLocal(name, formula, comment)'
-    summary: >-
-      Adds a new name to the collection of the given scope using the user's
-      locale for the formula.
+    summary: Adds a new name to the collection of the given scope using the user's locale for the formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -289,9 +257,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#addPivotTable:member(1)'
     package: ExcelScript!
     fullName: 'addPivotTable(name, source, destination)'
-    summary: >-
-      Add a PivotTable based on the specified source data and insert it at the
-      top-left cell of the destination range.
+    summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -308,16 +274,15 @@ methods:
           type: string
         - id: source
           description: >-
-            The source data for the new PivotTable, this can either be a range
-            (or string address including the worksheet name) or a table.
+            The source data for the new PivotTable, this can either be a range (or string address including the
+            worksheet name) or a table.
           type: >-
-            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string |
-            <xref uid="ExcelScript!ExcelScript.Table:interface" />
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string | <xref
+            uid="ExcelScript!ExcelScript.Table:interface" />
         - id: destination
           description: >-
-            The cell in the upper-left corner of the PivotTable report's
-            destination range (the range on the worksheet where the resulting
-            report will be placed).
+            The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet
+            where the resulting report will be placed).
           type: |-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
                     
@@ -342,30 +307,24 @@ methods:
       parameters:
         - id: slicerSource
           description: >-
-            The data source that the new slicer will be based on. It can be a
-            `PivotTable` object, a `Table` object, or a string. When a
-            PivotTable object is passed, the data source is the source of the
-            `PivotTable` object. When a `Table` object is passed, the data
-            source is the `Table` object. When a string is passed, it is
+            The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or
+            a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When
+            a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is
             interpreted as the name or ID of a PivotTable or table.
           type: >-
-            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />
-            | <xref uid="ExcelScript!ExcelScript.Table:interface" />
+            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.Table:interface" />
         - id: sourceField
           description: >-
-            The field in the data source to filter by. It can be a `PivotField`
-            object, a `TableColumn` object, the ID of a `PivotField` or the name
-            or ID of a `TableColumn`<!-- -->.
+            The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID
+            of a `PivotField` or the name or ID of a `TableColumn`<!-- -->.
           type: >-
-            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" />
-            | number | <xref uid="ExcelScript!ExcelScript.TableColumn:interface"
-            />
+            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" /> | number | <xref
+            uid="ExcelScript!ExcelScript.TableColumn:interface" />
         - id: slicerDestination
           description: >-
-            Optional. The worksheet in which the new slicer will be created. It
-            can be a `Worksheet` object or the name or ID of a worksheet. This
-            parameter can be omitted if the slicer collection is retrieved from
-            a worksheet.
+            Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name
+            or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
           type: 'string | <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" />'
@@ -375,10 +334,9 @@ methods:
     package: ExcelScript!
     fullName: 'addTable(address, hasHeaders)'
     summary: >-
-      Creates a new table. The range object or source address determines the
-      worksheet under which the table will be added. If the table cannot be
-      added (e.g., because the address is invalid, or the table would overlap
-      with another table), an error will be thrown.
+      Creates a new table. The range object or source address determines the worksheet under which the table will be
+      added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another
+      table), an error will be thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -387,16 +345,14 @@ methods:
       parameters:
         - id: address
           description: >-
-            A `Range` object, or a string address or name of the range
-            representing the data source. If the address does not contain a
-            sheet name, the currently-active sheet is used.
+            A `Range` object, or a string address or name of the range representing the data source. If the address does
+            not contain a sheet name, the currently-active sheet is used.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: hasHeaders
           description: >-
-            A boolean value that indicates whether the data being imported has
-            column labels. If the source does not contain headers (i.e., when
-            this property set to `false`<!-- -->), Excel will automatically
-            generate a header and shift the data down by one row.
+            A boolean value that indicates whether the data being imported has column labels. If the source does not
+            contain headers (i.e., when this property set to `false`<!-- -->), Excel will automatically generate a
+            header and shift the data down by one row.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />'
@@ -426,8 +382,8 @@ methods:
     package: ExcelScript!
     fullName: addTextBox(text)
     summary: >-
-      Adds a text box to the worksheet with the provided text as the content.
-      Returns a `Shape` object that represents the new text box.
+      Adds a text box to the worksheet with the provided text as the content. Returns a `Shape` object that represents
+      the new text box.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -462,8 +418,8 @@ methods:
     package: ExcelScript!
     fullName: 'addWorksheetCustomProperty(key, value)'
     summary: >-
-      Adds a new custom property that maps to the provided key. This overwrites
-      existing custom properties with that key.
+      Adds a new custom property that maps to the provided key. This overwrites existing custom properties with that
+      key.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -476,17 +432,14 @@ methods:
       parameters:
         - id: key
           description: >-
-            The key that identifies the custom property object. It is
-            case-insensitive.The key is limited to 255 characters (larger values
-            will cause an `InvalidArgument` error to be thrown.)
+            The key that identifies the custom property object. It is case-insensitive.The key is limited to 255
+            characters (larger values will cause an `InvalidArgument` error to be thrown.)
           type: string
         - id: value
           description: The value of this custom property.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
-          />
+        type: '<xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface" />'
         description: ''
   - name: calculate(markAllDirty)
     uid: 'ExcelScript!ExcelScript.Worksheet#calculate:member(1)'
@@ -522,15 +475,13 @@ methods:
       parameters:
         - id: positionType
           description: >-
-            The location in the workbook to place the newly created worksheet.
-            The default value is "None", which inserts the worksheet at the
-            beginning of the worksheet.
+            The location in the workbook to place the newly created worksheet. The default value is "None", which
+            inserts the worksheet at the beginning of the worksheet.
           type: '<xref uid="ExcelScript!ExcelScript.WorksheetPositionType:enum" />'
         - id: relativeTo
           description: >-
-            The existing worksheet which determines the newly created
-            worksheet's position. This is only needed if `positionType` is
-            "Before" or "After".
+            The existing worksheet which determines the newly created worksheet's position. This is only needed if
+            `positionType` is "Before" or "After".
           type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -540,10 +491,9 @@ methods:
     package: ExcelScript!
     fullName: delete()
     summary: >-
-      Deletes the worksheet from the workbook. Note that if the worksheet's
-      visibility is set to "VeryHidden", the delete operation will fail with an
-      `InvalidOperation` exception. You should first change its visibility to
-      hidden or visible before deleting it.
+      Deletes the worksheet from the workbook. Note that if the worksheet's visibility is set to "VeryHidden", the
+      delete operation will fail with an `InvalidOperation` exception. You should first change its visibility to hidden
+      or visible before deleting it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -573,9 +523,8 @@ methods:
     package: ExcelScript!
     fullName: 'findAll(text, criteria)'
     summary: >-
-      Finds all occurrences of the given string based on the criteria specified
-      and returns them as a `RangeAreas` object, comprising one or more
-      rectangular ranges.
+      Finds all occurrences of the given string based on the criteria specified and returns them as a `RangeAreas`
+      object, comprising one or more rectangular ranges.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -587,11 +536,9 @@ methods:
           type: string
         - id: criteria
           description: >-
-            Additional search criteria, including whether the search needs to
-            match the entire cell or be case-sensitive.
-          type: >-
-            <xref
-            uid="ExcelScript!ExcelScript.WorksheetSearchCriteria:interface" />
+            Additional search criteria, including whether the search needs to match the entire cell or be
+            case-sensitive.
+          type: '<xref uid="ExcelScript!ExcelScript.WorksheetSearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
         description: ''
@@ -613,9 +560,8 @@ methods:
     package: ExcelScript!
     fullName: 'getCell(row, column)'
     summary: >-
-      Gets the `Range` object containing the single cell based on row and column
-      numbers. The cell can be outside the bounds of its parent range, so long
-      as it stays within the worksheet grid.
+      Gets the `Range` object containing the single cell based on row and column numbers. The cell can be outside the
+      bounds of its parent range, so long as it stays within the worksheet grid.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -636,10 +582,9 @@ methods:
     package: ExcelScript!
     fullName: getChart(name)
     summary: >-
-      Gets a chart using its name. If there are multiple charts with the same
-      name, the first one will be returned. If the chart doesn't exist, then
-      this function will return an object with its `isNullObject` property set
-      to `true`<!-- -->.
+      Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If
+      the chart doesn't exist, then this function will return an object with its `isNullObject` property set to
+      `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -695,10 +640,9 @@ methods:
       parameters:
         - id: cellAddress
           description: >-
-            The cell which the comment is on. This can be a `Range` object or a
-            string. If it's a string, it must contain the full address,
-            including the sheet name. An `InvalidArgument` error is thrown if
-            the provided range is larger than one cell.
+            The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
@@ -744,18 +688,15 @@ methods:
     syntax:
       content: 'getCustomProperties(): WorksheetCustomProperty[];'
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
-          />[]
+        type: '<xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface" />[]'
         description: ''
   - name: getEnableCalculation()
     uid: 'ExcelScript!ExcelScript.Worksheet#getEnableCalculation:member(1)'
     package: ExcelScript!
     fullName: getEnableCalculation()
     summary: >-
-      Determines if Excel should recalculate the worksheet when necessary. True
-      if Excel recalculates the worksheet when necessary. False if Excel doesn't
-      recalculate the sheet.
+      Determines if Excel should recalculate the worksheet when necessary. True if Excel recalculates the worksheet when
+      necessary. False if Excel doesn't recalculate the sheet.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -768,9 +709,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getFreezePanes:member(1)'
     package: ExcelScript!
     fullName: getFreezePanes()
-    summary: >-
-      Gets an object that can be used to manipulate frozen panes on the
-      worksheet.
+    summary: Gets an object that can be used to manipulate frozen panes on the worksheet.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -783,9 +722,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getHorizontalPageBreaks:member(1)'
     package: ExcelScript!
     fullName: getHorizontalPageBreaks()
-    summary: >-
-      Gets the horizontal page break collection for the worksheet. This
-      collection only contains manual page breaks.
+    summary: Gets the horizontal page break collection for the worksheet. This collection only contains manual page breaks.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -799,9 +736,8 @@ methods:
     package: ExcelScript!
     fullName: getId()
     summary: >-
-      Returns a value that uniquely identifies the worksheet in a given
-      workbook. The value of the identifier remains the same even when the
-      worksheet is renamed or moved.
+      Returns a value that uniquely identifies the worksheet in a given workbook. The value of the identifier remains
+      the same even when the worksheet is renamed or moved.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -850,9 +786,8 @@ methods:
     package: ExcelScript!
     fullName: getNamedItem(name)
     summary: >-
-      Gets a `NamedItem` object using its name. If the object does not exist,
-      then this function will return an object with its `isNullObject` property
-      set to `true`<!-- -->.
+      Gets a `NamedItem` object using its name. If the object does not exist, then this function will return an object
+      with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -883,9 +818,8 @@ methods:
     package: ExcelScript!
     fullName: getNext(visibleOnly)
     summary: >-
-      Gets the worksheet that follows this one. If there are no worksheets
-      following this one, then this method will return an object with its
-      `isNullObject` property set to `true`<!-- -->.
+      Gets the worksheet that follows this one. If there are no worksheets following this one, then this method will
+      return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -893,9 +827,7 @@ methods:
       content: 'getNext(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: >-
-            Optional. If `true`<!-- -->, considers only visible worksheets,
-            skipping over any hidden ones.
+          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -918,9 +850,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTable(name)
     summary: >-
-      Gets a PivotTable by name. If the PivotTable does not exist, then this
-      function returns an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a PivotTable by name. If the PivotTable does not exist, then this function returns an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -931,9 +862,7 @@ methods:
           description: Name of the PivotTable to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> | undefined'
         description: ''
   - name: getPivotTables()
     uid: 'ExcelScript!ExcelScript.Worksheet#getPivotTables:member(1)'
@@ -966,9 +895,8 @@ methods:
     package: ExcelScript!
     fullName: getPrevious(visibleOnly)
     summary: >-
-      Gets the worksheet that precedes this one. If there are no previous
-      worksheets, then this method will return an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Gets the worksheet that precedes this one. If there are no previous worksheets, then this method will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -976,9 +904,7 @@ methods:
       content: 'getPrevious(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: >-
-            Optional. If `true`<!-- -->, considers only visible worksheets,
-            skipping over any hidden ones.
+          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -1000,9 +926,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getRange:member(1)'
     package: ExcelScript!
     fullName: getRange(address)
-    summary: >-
-      Gets the `Range` object, representing a single rectangular block of cells,
-      specified by the address or name.
+    summary: 'Gets the `Range` object, representing a single rectangular block of cells, specified by the address or name.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1011,9 +935,8 @@ methods:
       parameters:
         - id: address
           description: >-
-            Optional. The string representing the address or name of the range.
-            For example, "A1:B2". If not specified, the entire worksheet range
-            is returned.
+            Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified,
+            the entire worksheet range is returned.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1042,8 +965,8 @@ methods:
     package: ExcelScript!
     fullName: 'getRangeByIndexes(startRow, startColumn, rowCount, columnCount)'
     summary: >-
-      Gets the `Range` object beginning at a particular row index and column
-      index, and spanning a certain number of rows and columns.
+      Gets the `Range` object beginning at a particular row index and column index, and spanning a certain number of
+      rows and columns.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1076,8 +999,8 @@ methods:
     package: ExcelScript!
     fullName: getRanges(address)
     summary: >-
-      Gets the `RangeAreas` object, representing one or more blocks of
-      rectangular ranges, specified by the address or name.
+      Gets the `RangeAreas` object, representing one or more blocks of rectangular ranges, specified by the address or
+      name.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1086,9 +1009,8 @@ methods:
       parameters:
         - id: address
           description: >-
-            Optional. A string containing the comma-separated addresses or names
-            of the individual ranges. For example, "A1:B2, A5:B5". If not
-            specified, an RangeArea object for the entire worksheet is returned.
+            Optional. A string containing the comma-separated addresses or names of the individual ranges. For example,
+            "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -1154,9 +1076,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicer(key)
     summary: >-
-      Gets a slicer using its name or ID. If the slicer doesn't exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a slicer using its name or ID. If the slicer doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1186,9 +1107,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getStandardHeight:member(1)'
     package: ExcelScript!
     fullName: getStandardHeight()
-    summary: >-
-      Returns the standard (default) height of all the rows in the worksheet, in
-      points.
+    summary: 'Returns the standard (default) height of all the rows in the worksheet, in points.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1202,10 +1121,9 @@ methods:
     package: ExcelScript!
     fullName: getStandardWidth()
     summary: >-
-      Specifies the standard (default) width of all the columns in the
-      worksheet. One unit of column width is equal to the width of one character
-      in the Normal style. For proportional fonts, the width of the character 0
-      (zero) is used.
+      Specifies the standard (default) width of all the columns in the worksheet. One unit of column width is equal to
+      the width of one character in the Normal style. For proportional fonts, the width of the character 0 (zero) is
+      used.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1219,12 +1137,10 @@ methods:
     package: ExcelScript!
     fullName: getTabColor()
     summary: >-
-      The tab color of the worksheet. When retrieving the tab color, if the
-      worksheet is invisible, the value will be `null`<!-- -->. If the worksheet
-      is visible but the tab color is set to auto, an empty string will be
-      returned. Otherwise, the property will be set to a color, in the form
-      \#RRGGBB (e.g., "FFA500"). When setting the color, use an empty-string to
-      set an "auto" color, or a real color otherwise.
+      The tab color of the worksheet. When retrieving the tab color, if the worksheet is invisible, the value will be
+      `null`<!-- -->. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
+      Otherwise, the property will be set to a color, in the form \#RRGGBB (e.g., "FFA500"). When setting the color, use
+      an empty-string to set an "auto" color, or a real color otherwise.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1238,9 +1154,8 @@ methods:
     package: ExcelScript!
     fullName: getTable(key)
     summary: >-
-      Gets a table by name or ID. If the table doesn't exist, then this function
-      will return an object with its `isNullObject` property set to `true`<!--
-      -->.
+      Gets a table by name or ID. If the table doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1287,9 +1202,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getVerticalPageBreaks:member(1)'
     package: ExcelScript!
     fullName: getVerticalPageBreaks()
-    summary: >-
-      Gets the vertical page break collection for the worksheet. This collection
-      only contains manual page breaks.
+    summary: Gets the vertical page break collection for the worksheet. This collection only contains manual page breaks.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1316,9 +1229,8 @@ methods:
     package: ExcelScript!
     fullName: getWorksheetCustomProperty(key)
     summary: >-
-      Gets a custom property object by its key, which is case-insensitive. If
-      the custom property doesn't exist, then this function will return an
-      object with its `isNullObject` property set to `true`<!-- -->.
+      Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then
+      this function will return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1329,14 +1241,10 @@ methods:
                 ): WorksheetCustomProperty | undefined;
       parameters:
         - id: key
-          description: >-
-            The key that identifies the custom property object. It is
-            case-insensitive.
+          description: The key that identifies the custom property object. It is case-insensitive.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface"
-          /> | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface" /> | undefined'
         description: ''
   - name: refreshAllPivotTables()
     uid: 'ExcelScript!ExcelScript.Worksheet#refreshAllPivotTables:member(1)'
@@ -1381,9 +1289,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#replaceAll:member(1)'
     package: ExcelScript!
     fullName: 'replaceAll(text, replacement, criteria)'
-    summary: >-
-      Finds and replaces the given string based on the criteria specified within
-      the current worksheet.
+    summary: Finds and replaces the given string based on the criteria specified within the current worksheet.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1412,9 +1318,8 @@ methods:
     package: ExcelScript!
     fullName: setEnableCalculation(enableCalculation)
     summary: >-
-      Determines if Excel should recalculate the worksheet when necessary. True
-      if Excel recalculates the worksheet when necessary. False if Excel doesn't
-      recalculate the sheet.
+      Determines if Excel should recalculate the worksheet when necessary. True if Excel recalculates the worksheet when
+      necessary. False if Excel doesn't recalculate the sheet.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1500,10 +1405,9 @@ methods:
     package: ExcelScript!
     fullName: setStandardWidth(standardWidth)
     summary: >-
-      Specifies the standard (default) width of all the columns in the
-      worksheet. One unit of column width is equal to the width of one character
-      in the Normal style. For proportional fonts, the width of the character 0
-      (zero) is used.
+      Specifies the standard (default) width of all the columns in the worksheet. One unit of column width is equal to
+      the width of one character in the Normal style. For proportional fonts, the width of the character 0 (zero) is
+      used.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1521,12 +1425,10 @@ methods:
     package: ExcelScript!
     fullName: setTabColor(tabColor)
     summary: >-
-      The tab color of the worksheet. When retrieving the tab color, if the
-      worksheet is invisible, the value will be `null`<!-- -->. If the worksheet
-      is visible but the tab color is set to auto, an empty string will be
-      returned. Otherwise, the property will be set to a color, in the form
-      \#RRGGBB (e.g., "FFA500"). When setting the color, use an empty-string to
-      set an "auto" color, or a real color otherwise.
+      The tab color of the worksheet. When retrieving the tab color, if the worksheet is invisible, the value will be
+      `null`<!-- -->. If the worksheet is visible but the tab color is set to auto, an empty string will be returned.
+      Otherwise, the property will be set to a color, in the form \#RRGGBB (e.g., "FFA500"). When setting the color, use
+      an empty-string to set an "auto" color, or a real color otherwise.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1580,12 +1482,10 @@ methods:
     package: ExcelScript!
     fullName: 'showOutlineLevels(rowLevels, columnLevels)'
     summary: >-
-      Shows row or column groups by their outline levels. Outlines groups and
-      summarizes a list of data in the worksheet. The `rowLevels` and
-      `columnLevels` parameters specify how many levels of the outline will be
-      displayed. The acceptable argument range is between 0 and 8. A value of 0
-      does not change the current display. A value greater than the current
-      number of levels displays all the levels.
+      Shows row or column groups by their outline levels. Outlines groups and summarizes a list of data in the
+      worksheet. The `rowLevels` and `columnLevels` parameters specify how many levels of the outline will be displayed.
+      The acceptable argument range is between 0 and 8. A value of 0 does not change the current display. A value
+      greater than the current number of levels displays all the levels.
     remarks: ''
     isPreview: false
     isDeprecated: false

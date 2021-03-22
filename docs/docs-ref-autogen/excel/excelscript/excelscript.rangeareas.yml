@@ -3,9 +3,7 @@ name: ExcelScript.RangeAreas
 uid: 'ExcelScript!ExcelScript.RangeAreas:interface'
 package: ExcelScript!
 fullName: ExcelScript.RangeAreas
-summary: >-
-  `RangeAreas` represents a collection of one or more rectangular ranges in the
-  same worksheet.
+summary: '`RangeAreas` represents a collection of one or more rectangular ranges in the same worksheet.'
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -23,9 +21,7 @@ methods:
       content: 'addConditionalFormat(type: ConditionalFormatType): ConditionalFormat;'
       parameters:
         - id: type
-          description: >-
-            The type of conditional format being added. See
-            `ExcelScript.ConditionalFormatType` for details.
+          description: The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
@@ -48,8 +44,8 @@ methods:
     package: ExcelScript!
     fullName: clear(applyTo)
     summary: >-
-      Clears values, format, fill, border, and other properties on each of the
-      areas that comprise this `RangeAreas` object.
+      Clears values, format, fill, border, and other properties on each of the areas that comprise this `RangeAreas`
+      object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -57,9 +53,7 @@ methods:
       content: 'clear(applyTo?: ClearApplyTo): void;'
       parameters:
         - id: applyTo
-          description: >-
-            Optional. Determines the type of clear action. See
-            `ExcelScript.ClearApplyTo` for details. Default is "All".
+          description: Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details. Default is "All".
           type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
@@ -95,11 +89,9 @@ methods:
     package: ExcelScript!
     fullName: 'copyFrom(sourceRange, copyType, skipBlanks, transpose)'
     summary: >-
-      Copies cell data or formatting from the source range or `RangeAreas` to
-      the current `RangeAreas`<!-- -->. The destination `RangeAreas` can be a
-      different size than the source range or `RangeAreas`<!-- -->. The
-      destination will be expanded automatically if it is smaller than the
-      source.
+      Copies cell data or formatting from the source range or `RangeAreas` to the current `RangeAreas`<!-- -->. The
+      destination `RangeAreas` can be a different size than the source range or `RangeAreas`<!-- -->. The destination
+      will be expanded automatically if it is smaller than the source.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -114,9 +106,8 @@ methods:
       parameters:
         - id: sourceRange
           description: >-
-            The source range or `RangeAreas` to copy from. When the source
-            `RangeAreas` has multiple ranges, their form must able to be created
-            by removing full rows or columns from a rectangular range.
+            The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form
+            must able to be created by removing full rows or columns from a rectangular range.
           type: >-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
             uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
@@ -124,14 +115,10 @@ methods:
           description: The type of cell data or formatting to copy over. Default is "All".
           type: '<xref uid="ExcelScript!ExcelScript.RangeCopyType:enum" />'
         - id: skipBlanks
-          description: >-
-            True if to skip blank cells in the source range or `RangeAreas`<!--
-            -->. Default is false.
+          description: True if to skip blank cells in the source range or `RangeAreas`<!-- -->. Default is false.
           type: boolean
         - id: transpose
-          description: >-
-            True if to transpose the cells in the destination `RangeAreas`<!--
-            -->. Default is false.
+          description: True if to transpose the cells in the destination `RangeAreas`<!-- -->. Default is false.
           type: boolean
       return:
         type: void
@@ -141,9 +128,8 @@ methods:
     package: ExcelScript!
     fullName: getAddress()
     summary: >-
-      Returns the `RangeAreas` reference in A1-style. Address value will contain
-      the worksheet name for each rectangular block of cells (e.g.,
-      "Sheet1!A1:B4, Sheet1!D1:D4").
+      Returns the `RangeAreas` reference in A1-style. Address value will contain the worksheet name for each rectangular
+      block of cells (e.g., "Sheet1!A1:B4, Sheet1!D1:D4").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -169,9 +155,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getAreaCount:member(1)'
     package: ExcelScript!
     fullName: getAreaCount()
-    summary: >-
-      Returns the number of rectangular ranges that comprise this `RangeAreas`
-      object.
+    summary: Returns the number of rectangular ranges that comprise this `RangeAreas` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -184,9 +168,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getAreas:member(1)'
     package: ExcelScript!
     fullName: getAreas()
-    summary: >-
-      Returns a collection of rectangular ranges that comprise this `RangeAreas`
-      object.
+    summary: Returns a collection of rectangular ranges that comprise this `RangeAreas` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -200,9 +182,8 @@ methods:
     package: ExcelScript!
     fullName: getCellCount()
     summary: >-
-      Returns the number of cells in the `RangeAreas` object, summing up the
-      cell counts of all of the individual rectangular ranges. Returns -1 if the
-      cell count exceeds 2^31-1 (2,147,483,647).
+      Returns the number of cells in the `RangeAreas` object, summing up the cell counts of all of the individual
+      rectangular ranges. Returns -1 if the cell count exceeds 2^31-1 (2,147,483,647).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -232,9 +213,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getConditionalFormats:member(1)'
     package: ExcelScript!
     fullName: getConditionalFormats()
-    summary: >-
-      Returns a collection of conditional formats that intersect with any cells
-      in this `RangeAreas` object.
+    summary: Returns a collection of conditional formats that intersect with any cells in this `RangeAreas` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -247,9 +226,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getDataValidation:member(1)'
     package: ExcelScript!
     fullName: getDataValidation()
-    summary: >-
-      Returns a data validation object for all ranges in the `RangeAreas`<!--
-      -->.
+    summary: Returns a data validation object for all ranges in the `RangeAreas`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -263,10 +240,8 @@ methods:
     package: ExcelScript!
     fullName: getEntireColumn()
     summary: >-
-      Returns a `RangeAreas` object that represents the entire columns of the
-      `RangeAreas` (for example, if the current `RangeAreas` represents cells
-      "B4:E11, H2", it returns a `RangeAreas` that represents columns "B:E,
-      H:H").
+      Returns a `RangeAreas` object that represents the entire columns of the `RangeAreas` (for example, if the current
+      `RangeAreas` represents cells "B4:E11, H2", it returns a `RangeAreas` that represents columns "B:E, H:H").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -280,9 +255,8 @@ methods:
     package: ExcelScript!
     fullName: getEntireRow()
     summary: >-
-      Returns a `RangeAreas` object that represents the entire rows of the
-      `RangeAreas` (for example, if the current `RangeAreas` represents cells
-      "B4:E11", it returns a `RangeAreas` that represents rows "4:11").
+      Returns a `RangeAreas` object that represents the entire rows of the `RangeAreas` (for example, if the current
+      `RangeAreas` represents cells "B4:E11", it returns a `RangeAreas` that represents rows "4:11").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -296,8 +270,8 @@ methods:
     package: ExcelScript!
     fullName: getFormat()
     summary: >-
-      Returns a `RangeFormat` object, encapsulating the the font, fill, borders,
-      alignment, and other properties for all ranges in the `RangeAreas` object.
+      Returns a `RangeFormat` object, encapsulating the the font, fill, borders, alignment, and other properties for all
+      ranges in the `RangeAreas` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -311,10 +285,9 @@ methods:
     package: ExcelScript!
     fullName: getIntersection(anotherRange)
     summary: >-
-      Returns the `RangeAreas` object that represents the intersection of the
-      given ranges or `RangeAreas`<!-- -->. If no intersection is found, then
-      this function will return an object with its `isNullObject` property set
-      to `true`<!-- -->.
+      Returns the `RangeAreas` object that represents the intersection of the given ranges or `RangeAreas`<!-- -->. If
+      no intersection is found, then this function will return an object with its `isNullObject` property set to
+      `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -322,9 +295,7 @@ methods:
       content: 'getIntersection(anotherRange: Range | RangeAreas | string): RangeAreas;'
       parameters:
         - id: anotherRange
-          description: >-
-            The range, `RangeAreas` object, or address that will be used to
-            determine the intersection.
+          description: 'The range, `RangeAreas` object, or address that will be used to determine the intersection.'
           type: >-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
             uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
@@ -335,9 +306,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getIsEntireColumn:member(1)'
     package: ExcelScript!
     fullName: getIsEntireColumn()
-    summary: >-
-      Specifies if all the ranges on this `RangeAreas` object represent entire
-      columns (e.g., "A:C, Q:Z").
+    summary: 'Specifies if all the ranges on this `RangeAreas` object represent entire columns (e.g., "A:C, Q:Z").'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -350,9 +319,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getIsEntireRow:member(1)'
     package: ExcelScript!
     fullName: getIsEntireRow()
-    summary: >-
-      Specifies if all the ranges on this `RangeAreas` object represent entire
-      rows (e.g., "1:3, 5:7").
+    summary: 'Specifies if all the ranges on this `RangeAreas` object represent entire rows (e.g., "1:3, 5:7").'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -366,10 +333,9 @@ methods:
     package: ExcelScript!
     fullName: 'getOffsetRangeAreas(rowOffset, columnOffset)'
     summary: >-
-      Returns a `RangeAreas` object that is shifted by the specific row and
-      column offset. The dimension of the returned `RangeAreas` will match the
-      original object. If the resulting `RangeAreas` is forced outside the
-      bounds of the worksheet grid, an error will be thrown.
+      Returns a `RangeAreas` object that is shifted by the specific row and column offset. The dimension of the returned
+      `RangeAreas` will match the original object. If the resulting `RangeAreas` is forced outside the bounds of the
+      worksheet grid, an error will be thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -382,15 +348,13 @@ methods:
       parameters:
         - id: rowOffset
           description: >-
-            The number of rows (positive, negative, or 0) by which the
-            `RangeAreas` is to be offset. Positive values are offset downward,
-            and negative values are offset upward.
+            The number of rows (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values are
+            offset downward, and negative values are offset upward.
           type: number
         - id: columnOffset
           description: >-
-            The number of columns (positive, negative, or 0) by which the
-            `RangeAreas` is to be offset. Positive values are offset to the
-            right, and negative values are offset to the left.
+            The number of columns (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values
+            are offset to the right, and negative values are offset to the left.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -400,9 +364,8 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedCellStyle()
     summary: >-
-      Represents the style for all ranges in this `RangeAreas` object. If the
-      styles of the cells are inconsistent, `null` will be returned. For custom
-      styles, the style name will be returned. For built-in styles, a string
+      Represents the style for all ranges in this `RangeAreas` object. If the styles of the cells are inconsistent,
+      `null` will be returned. For custom styles, the style name will be returned. For built-in styles, a string
       representing a value in the `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
@@ -417,10 +380,9 @@ methods:
     package: ExcelScript!
     fullName: 'getSpecialCells(cellType, cellValueType)'
     summary: >-
-      Returns a `RangeAreas` object that represents all the cells that match the
-      specified type and value. If no special cells are found that match the
-      criteria, then this function will return an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Returns a `RangeAreas` object that represents all the cells that match the specified type and value. If no special
+      cells are found that match the criteria, then this function will return an object with its `isNullObject` property
+      set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -436,11 +398,9 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />'
         - id: cellValueType
           description: >-
-            If `cellType` is either `constants` or `formulas`<!-- -->, this
-            argument is used to determine which types of cells to include in the
-            result. These values can be combined together to return more than
-            one type. The default is to select all constants or formulas, no
-            matter what the type.
+            If `cellType` is either `constants` or `formulas`<!-- -->, this argument is used to determine which types of
+            cells to include in the result. These values can be combined together to return more than one type. The
+            default is to select all constants or formulas, no matter what the type.
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -449,9 +409,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#getTables:member(1)'
     package: ExcelScript!
     fullName: getTables(fullyContained)
-    summary: >-
-      Returns a scoped collection of tables that overlap with any range in this
-      `RangeAreas` object.
+    summary: Returns a scoped collection of tables that overlap with any range in this `RangeAreas` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -460,8 +418,8 @@ methods:
       parameters:
         - id: fullyContained
           description: >-
-            If `true`<!-- -->, returns only tables that are fully contained
-            within the range bounds. Default is `false`<!-- -->.
+            If `true`<!-- -->, returns only tables that are fully contained within the range bounds. Default is
+            `false`<!-- -->.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
@@ -471,10 +429,9 @@ methods:
     package: ExcelScript!
     fullName: getUsedRangeAreas(valuesOnly)
     summary: >-
-      Returns the used `RangeAreas` that comprises all the used areas of
-      individual rectangular ranges in the `RangeAreas` object. If there are no
-      used cells within the `RangeAreas`<!-- -->, then this function will return
-      an object with its `isNullObject` property set to `true`<!-- -->.
+      Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the
+      `RangeAreas` object. If there are no used cells within the `RangeAreas`<!-- -->, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -504,9 +461,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.RangeAreas#setDirty:member(1)'
     package: ExcelScript!
     fullName: setDirty()
-    summary: >-
-      Sets the `RangeAreas` to be recalculated when the next recalculation
-      occurs.
+    summary: Sets the `RangeAreas` to be recalculated when the next recalculation occurs.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -520,9 +475,8 @@ methods:
     package: ExcelScript!
     fullName: setPredefinedCellStyle(predefinedCellStyle)
     summary: >-
-      Represents the style for all ranges in this `RangeAreas` object. If the
-      styles of the cells are inconsistent, `null` will be returned. For custom
-      styles, the style name will be returned. For built-in styles, a string
+      Represents the style for all ranges in this `RangeAreas` object. If the styles of the cells are inconsistent,
+      `null` will be returned. For custom styles, the style name will be returned. For built-in styles, a string
       representing a value in the `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
