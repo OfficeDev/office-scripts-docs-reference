@@ -647,6 +647,36 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
+  - name: 'getExtendedRange(direction, activeCell)'
+    uid: 'ExcelScript!ExcelScript.Range#getExtendedRange:member(1)'
+    package: ExcelScript!
+    fullName: 'getExtendedRange(direction, activeCell)'
+    summary: >-
+      Returns a range object that includes the current range and up to the edge of the range, based on the provided
+      direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getExtendedRange(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: '<xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />'
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the top-left cell of the range. An error is
+            thrown if the active cell is not in this range.
+          type: |-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+                    
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        description: ''
   - name: getFormat()
     uid: 'ExcelScript!ExcelScript.Range#getFormat:member(1)'
     package: ExcelScript!
@@ -963,21 +993,6 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />[][]'
         description: ''
-  - name: getMergedAreas()
-    uid: 'ExcelScript!ExcelScript.Range#getMergedAreas:member(1)'
-    package: ExcelScript!
-    fullName: getMergedAreas()
-    summary: >-
-      Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count
-      in this range is more than 512, an `InvalidOperation` error will be thrown.
-    remarks: ''
-    isPreview: false
-    isDeprecated: false
-    syntax:
-      content: 'getMergedAreas(): RangeAreas;'
-      return:
-        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
-        description: ''
   - name: getNumberFormat()
     uid: 'ExcelScript!ExcelScript.Range#getNumberFormat:member(1)'
     package: ExcelScript!
@@ -1057,7 +1072,7 @@ methods:
     package: ExcelScript!
     fullName: getNumberFormatsLocal()
     summary: >-
-      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
+      Represents Excel's number format code for the given range, based on the language settings of the user. Excel does
       not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
       text uses the locally-formatted strings based on the language specified in the system settings.
     remarks: ''
@@ -1160,6 +1175,36 @@ methods:
       content: 'getPredefinedCellStyle(): string;'
       return:
         type: string
+        description: ''
+  - name: 'getRangeEdge(direction, activeCell)'
+    uid: 'ExcelScript!ExcelScript.Range#getRangeEdge:member(1)'
+    package: ExcelScript!
+    fullName: 'getRangeEdge(direction, activeCell)'
+    summary: >-
+      Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This
+      matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getRangeEdge(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: '<xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />'
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the top-left cell of the range. An error is
+            thrown if the active cell is not in this range.
+          type: |-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+                    
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
   - name: 'getResizedRange(deltaRows, deltaColumns)'
     uid: 'ExcelScript!ExcelScript.Range#getResizedRange:member(1)'
@@ -2105,7 +2150,7 @@ methods:
     package: ExcelScript!
     fullName: setNumberFormatsLocal(numberFormatsLocal)
     summary: >-
-      Represents Excel's number format code for the given range, based on the language settings of the user.​ Excel does
+      Represents Excel's number format code for the given range, based on the language settings of the user. Excel does
       not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
       text uses the locally-formatted strings based on the language specified in the system settings.
     remarks: ''

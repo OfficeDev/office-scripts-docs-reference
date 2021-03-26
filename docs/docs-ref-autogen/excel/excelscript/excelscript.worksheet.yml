@@ -253,6 +253,25 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />'
         description: ''
+  - name: addNamedSheetView(name)
+    uid: 'ExcelScript!ExcelScript.Worksheet#addNamedSheetView:member(1)'
+    package: ExcelScript!
+    fullName: addNamedSheetView(name)
+    summary: Creates a new sheet view with the given name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addNamedSheetView(name: string): NamedSheetView;'
+      parameters:
+        - id: name
+          description: >-
+            The name of the sheet view to be created. Throws an error when the provided name already exists, is empty,
+            or is a name reserved by the worksheet.
+          type: string
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />'
+        description: ''
   - name: 'addPivotTable(name, source, destination)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addPivotTable:member(1)'
     package: ExcelScript!
@@ -518,6 +537,35 @@ methods:
             sheet.delete();
           }
           ```
+  - name: enterTemporaryNamedSheetView()
+    uid: 'ExcelScript!ExcelScript.Worksheet#enterTemporaryNamedSheetView:member(1)'
+    package: ExcelScript!
+    fullName: enterTemporaryNamedSheetView()
+    summary: >-
+      Creates and activates a new temporary sheet view. Temporary views are removed when closing the application,
+      exiting the temporary view with the exit method, or switching to another sheet view. The temporary sheet view can
+      also be acccessed with the empty string (""), if the temporary view exists.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'enterTemporaryNamedSheetView(): NamedSheetView;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />'
+        description: ''
+  - name: exitActiveNamedSheetView()
+    uid: 'ExcelScript!ExcelScript.Worksheet#exitActiveNamedSheetView:member(1)'
+    package: ExcelScript!
+    fullName: exitActiveNamedSheetView()
+    summary: Exits the currently active sheet view.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'exitActiveNamedSheetView(): void;'
+      return:
+        type: void
+        description: ''
   - name: 'findAll(text, criteria)'
     uid: 'ExcelScript!ExcelScript.Worksheet#findAll:member(1)'
     package: ExcelScript!
@@ -541,6 +589,19 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.WorksheetSearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
+        description: ''
+  - name: getActiveNamedSheetView()
+    uid: 'ExcelScript!ExcelScript.Worksheet#getActiveNamedSheetView:member(1)'
+    package: ExcelScript!
+    fullName: getActiveNamedSheetView()
+    summary: Gets the worksheet's currently active sheet view.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getActiveNamedSheetView(): NamedSheetView;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />'
         description: ''
   - name: getAutoFilter()
     uid: 'ExcelScript!ExcelScript.Worksheet#getAutoFilter:member(1)'
@@ -799,6 +860,38 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" /> | undefined'
+        description: ''
+  - name: getNamedSheetView(key)
+    uid: 'ExcelScript!ExcelScript.Worksheet#getNamedSheetView:member(1)'
+    package: ExcelScript!
+    fullName: getNamedSheetView(key)
+    summary: Gets a sheet view using its name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNamedSheetView(key: string): NamedSheetView;'
+      parameters:
+        - id: key
+          description: >-
+            The case-sensitive name of the sheet view. Use the empty string ("") to get the temporary sheet view, if the
+            temporary view exists.
+          type: string
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />'
+        description: ''
+  - name: getNamedSheetViews()
+    uid: 'ExcelScript!ExcelScript.Worksheet#getNamedSheetViews:member(1)'
+    package: ExcelScript!
+    fullName: getNamedSheetViews()
+    summary: Returns a collection of sheet views that are present in the worksheet.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNamedSheetViews(): NamedSheetView[];'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />[]'
         description: ''
   - name: getNames()
     uid: 'ExcelScript!ExcelScript.Worksheet#getNames:member(1)'
