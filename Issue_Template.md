@@ -9,7 +9,7 @@ If your issue is not related to the Office Scripts documentation, please post it
 
 - To report an issue with the Office Scripts API or platform, use the feedback button in Excel on the web.
 
-- To submit a feature request for the Office.js API or platform, post your idea to our User Voice page (https://excel.uservoice.com/forums/274580-excel-for-the-web?category_id=143439), or if the feature request already exists there, add your vote for it.
+- To submit a feature request for Office Scripts, post your idea to Microsoft Q&A (https://docs.microsoft.com/answers/questions/topics/single/312419.html), or if the feature request already exists there, add your vote for it. Be sure to use the "Office-Scripts-Dev" tag when asking for your feature.
 -->
 
 <!--- Provide a general summary of the documentation issue in the Title above -->
