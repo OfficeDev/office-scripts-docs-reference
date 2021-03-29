@@ -90,6 +90,7 @@ enums:
   - 'ExcelScript!ExcelScript.IconSet:enum'
   - 'ExcelScript!ExcelScript.ImageFittingMode:enum'
   - 'ExcelScript!ExcelScript.InsertShiftDirection:enum'
+  - 'ExcelScript!ExcelScript.KeyboardDirection:enum'
   - 'ExcelScript!ExcelScript.LabelFilterCondition:enum'
   - 'ExcelScript!ExcelScript.LinkedDataTypeState:enum'
   - 'ExcelScript!ExcelScript.NamedItemScope:enum'
@@ -148,14 +149,6 @@ interfaces:
   - 'ExcelScript!ExcelScript.AutoFilter:interface'
   - 'ExcelScript!ExcelScript.BasicDataValidation:interface'
   - 'ExcelScript!ExcelScript.Binding:interface'
-  - 'ExcelScript!ExcelScript.CellBorder:interface'
-  - 'ExcelScript!ExcelScript.CellBorderCollection:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesBorderLoadOptions:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesFill:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesFillLoadOptions:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesFont:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesFontLoadOptions:interface'
-  - 'ExcelScript!ExcelScript.CellPropertiesProtection:interface'
   - 'ExcelScript!ExcelScript.CellValueConditionalFormat:interface'
   - 'ExcelScript!ExcelScript.Chart:interface'
   - 'ExcelScript!ExcelScript.ChartAreaFormat:interface'
@@ -246,6 +239,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.ListDataValidation:interface'
   - 'ExcelScript!ExcelScript.NamedItem:interface'
   - 'ExcelScript!ExcelScript.NamedItemArrayValues:interface'
+  - 'ExcelScript!ExcelScript.NamedSheetView:interface'
   - 'ExcelScript!ExcelScript.NumberFormatInfo:interface'
   - 'ExcelScript!ExcelScript.PageBreak:interface'
   - 'ExcelScript!ExcelScript.PageLayout:interface'
@@ -271,7 +265,6 @@ interfaces:
   - 'ExcelScript!ExcelScript.RangeFont:interface'
   - 'ExcelScript!ExcelScript.RangeFormat:interface'
   - 'ExcelScript!ExcelScript.RangeHyperlink:interface'
-  - 'ExcelScript!ExcelScript.RangeReference:interface'
   - 'ExcelScript!ExcelScript.RangeSort:interface'
   - 'ExcelScript!ExcelScript.RangeView:interface'
   - 'ExcelScript!ExcelScript.RemoveDuplicatesResult:interface'
@@ -323,9 +316,8 @@ functions:
       parameters:
         - id: callback
           description: ''
-          type: >-
-            (workbook: <xref uid="ExcelScript!ExcelScript.Workbook:interface"
-            />) =&gt; Promise&lt;void&gt;
+          type: |-
+            (workbook: <xref uid="ExcelScript!ExcelScript.Workbook:interface" />) =&gt; Promise&lt;void&gt;
                 
       return:
         type: Promise&lt;void&gt;

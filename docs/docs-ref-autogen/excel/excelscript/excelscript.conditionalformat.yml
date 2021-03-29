@@ -3,9 +3,7 @@ name: ExcelScript.ConditionalFormat
 uid: 'ExcelScript!ExcelScript.ConditionalFormat:interface'
 package: ExcelScript!
 fullName: ExcelScript.ConditionalFormat
-summary: >-
-  An object encapsulating a conditional format's range, format, rule, and other
-  properties.
+summary: 'An object encapsulating a conditional format''s range, format, rule, and other properties.'
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -28,96 +26,72 @@ methods:
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getCellValue:member(1)'
     package: ExcelScript!
     fullName: getCellValue()
-    summary: >-
-      Returns the cell value conditional format properties if the current
-      conditional format is a `CellValue` type.
+    summary: Returns the cell value conditional format properties if the current conditional format is a `CellValue` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCellValue(): CellValueConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref
-          uid="ExcelScript!ExcelScript.CellValueConditionalFormat:interface" />
-          | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.CellValueConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getColorScale()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getColorScale:member(1)'
     package: ExcelScript!
     fullName: getColorScale()
-    summary: >-
-      Returns the color scale conditional format properties if the current
-      conditional format is a `ColorScale` type.
+    summary: Returns the color scale conditional format properties if the current conditional format is a `ColorScale` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getColorScale(): ColorScaleConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref
-          uid="ExcelScript!ExcelScript.ColorScaleConditionalFormat:interface" />
-          | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.ColorScaleConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getCustom()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getCustom:member(1)'
     package: ExcelScript!
     fullName: getCustom()
-    summary: >-
-      Returns the custom conditional format properties if the current
-      conditional format is a custom type.
+    summary: Returns the custom conditional format properties if the current conditional format is a custom type.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCustom(): CustomConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.CustomConditionalFormat:interface"
-          /> | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.CustomConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getDataBar()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getDataBar:member(1)'
     package: ExcelScript!
     fullName: getDataBar()
-    summary: >-
-      Returns the data bar properties if the current conditional format is a
-      data bar.
+    summary: Returns the data bar properties if the current conditional format is a data bar.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDataBar(): DataBarConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.DataBarConditionalFormat:interface"
-          /> | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.DataBarConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getIconSet()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getIconSet:member(1)'
     package: ExcelScript!
     fullName: getIconSet()
-    summary: >-
-      Returns the icon set conditional format properties if the current
-      conditional format is an `IconSet` type.
+    summary: Returns the icon set conditional format properties if the current conditional format is an `IconSet` type.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getIconSet(): IconSetConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.IconSetConditionalFormat:interface"
-          /> | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.IconSetConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getId()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getId:member(1)'
     package: ExcelScript!
     fullName: getId()
-    summary: >-
-      The priority of the conditional format in the current
-      `ConditionalFormatCollection`<!-- -->.
+    summary: The priority of the conditional format in the current `ConditionalFormatCollection`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -131,32 +105,26 @@ methods:
     package: ExcelScript!
     fullName: getPreset()
     summary: >-
-      Returns the preset criteria conditional format. See
-      `ExcelScript.PresetCriteriaConditionalFormat` for more details.
+      Returns the preset criteria conditional format. See `ExcelScript.PresetCriteriaConditionalFormat` for more
+      details.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPreset(): PresetCriteriaConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref
-          uid="ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface"
-          /> | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getPriority()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getPriority:member(1)'
     package: ExcelScript!
     fullName: getPriority()
     summary: >-
-      The priority (or index) within the conditional format collection that this
-      conditional format currently exists in. Changing this also changes other
-      conditional formats' priorities, to allow for a contiguous priority order.
-      Use a negative priority to begin from the back. Priorities greater than
-      the bounds will get and set to the maximum (or minimum if negative)
-      priority. Also note that if you change the priority, you have to re-fetch
-      a new copy of the object at that new priority location if you want to make
-      further changes to it.
+      The priority (or index) within the conditional format collection that this conditional format currently exists in.
+      Changing this also changes other conditional formats' priorities, to allow for a contiguous priority order. Use a
+      negative priority to begin from the back. Priorities greater than the bounds will get and set to the maximum (or
+      minimum if negative) priority. Also note that if you change the priority, you have to re-fetch a new copy of the
+      object at that new priority location if you want to make further changes to it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -170,9 +138,8 @@ methods:
     package: ExcelScript!
     fullName: getRange()
     summary: >-
-      Returns the range to which the conditonal format is applied. If the
-      conditional format is applied to multiple ranges, then this function will
-      return an object with its `isNullObject` property set to `true`<!-- -->.
+      Returns the range to which the conditonal format is applied. If the conditional format is applied to multiple
+      ranges, then this function will return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -186,8 +153,8 @@ methods:
     package: ExcelScript!
     fullName: getRanges()
     summary: >-
-      Returns the `RangeAreas`<!-- -->, comprising one or more rectangular
-      ranges, to which the conditonal format is applied.
+      Returns the `RangeAreas`<!-- -->, comprising one or more rectangular ranges, to which the conditonal format is
+      applied.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -201,9 +168,8 @@ methods:
     package: ExcelScript!
     fullName: getStopIfTrue()
     summary: >-
-      If the conditions of this conditional format are met, no lower-priority
-      formats shall take effect on that cell. Value is `null` on data bars, icon
-      sets, and color scales as there's no concept of `StopIfTrue` for these.
+      If the conditions of this conditional format are met, no lower-priority formats shall take effect on that cell.
+      Value is `null` on data bars, icon sets, and color scales as there's no concept of `StopIfTrue` for these.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -217,37 +183,30 @@ methods:
     package: ExcelScript!
     fullName: getTextComparison()
     summary: >-
-      Returns the specific text conditional format properties if the current
-      conditional format is a text type. For example, to format cells matching
-      the word "Text".
+      Returns the specific text conditional format properties if the current conditional format is a text type. For
+      example, to format cells matching the word "Text".
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTextComparison(): TextConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TextConditionalFormat:interface" />
-          | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TextConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getTopBottom()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getTopBottom:member(1)'
     package: ExcelScript!
     fullName: getTopBottom()
     summary: >-
-      Returns the top/bottom conditional format properties if the current
-      conditional format is a `TopBottom` type. For example, to format the top
-      10% or bottom 10 items.
+      Returns the top/bottom conditional format properties if the current conditional format is a `TopBottom` type. For
+      example, to format the top 10% or bottom 10 items.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTopBottom(): TopBottomConditionalFormat | undefined;'
       return:
-        type: >-
-          <xref
-          uid="ExcelScript!ExcelScript.TopBottomConditionalFormat:interface" />
-          | undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TopBottomConditionalFormat:interface" /> | undefined'
         description: ''
   - name: getType()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getType:member(1)'
@@ -267,14 +226,11 @@ methods:
     package: ExcelScript!
     fullName: setPriority(priority)
     summary: >-
-      The priority (or index) within the conditional format collection that this
-      conditional format currently exists in. Changing this also changes other
-      conditional formats' priorities, to allow for a contiguous priority order.
-      Use a negative priority to begin from the back. Priorities greater than
-      the bounds will get and set to the maximum (or minimum if negative)
-      priority. Also note that if you change the priority, you have to re-fetch
-      a new copy of the object at that new priority location if you want to make
-      further changes to it.
+      The priority (or index) within the conditional format collection that this conditional format currently exists in.
+      Changing this also changes other conditional formats' priorities, to allow for a contiguous priority order. Use a
+      negative priority to begin from the back. Priorities greater than the bounds will get and set to the maximum (or
+      minimum if negative) priority. Also note that if you change the priority, you have to re-fetch a new copy of the
+      object at that new priority location if you want to make further changes to it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -292,9 +248,8 @@ methods:
     package: ExcelScript!
     fullName: setStopIfTrue(stopIfTrue)
     summary: >-
-      If the conditions of this conditional format are met, no lower-priority
-      formats shall take effect on that cell. Value is `null` on data bars, icon
-      sets, and color scales as there's no concept of `StopIfTrue` for these.
+      If the conditions of this conditional format are met, no lower-priority formats shall take effect on that cell.
+      Value is `null` on data bars, icon sets, and color scales as there's no concept of `StopIfTrue` for these.
     remarks: ''
     isPreview: false
     isDeprecated: false

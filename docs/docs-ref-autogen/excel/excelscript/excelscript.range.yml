@@ -3,9 +3,7 @@ name: ExcelScript.Range
 uid: 'ExcelScript!ExcelScript.Range:interface'
 package: ExcelScript!
 fullName: ExcelScript.Range
-summary: >-
-  Range represents a set of one or more contiguous cells such as a cell, a row,
-  a column, block of cells, etc.
+summary: 'Range represents a set of one or more contiguous cells such as a cell, a row, a column, block of cells, etc.'
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -23,9 +21,7 @@ methods:
       content: 'addConditionalFormat(type: ConditionalFormatType): ConditionalFormat;'
       parameters:
         - id: type
-          description: >-
-            The type of conditional format being added. See
-            `ExcelScript.ConditionalFormatType` for details.
+          description: The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />'
@@ -60,10 +56,9 @@ methods:
     package: ExcelScript!
     fullName: 'autoFill(destinationRange, autoFillType)'
     summary: >-
-      Fills range from the current range to the destination range using the
-      specified AutoFill logic. The destination range can be `null`<!-- -->, or
-      can extend the source either horizontally or vertically. Discontiguous
-      ranges are not supported.
+      Fills range from the current range to the destination range using the specified AutoFill logic. The destination
+      range can be `null`<!-- -->, or can extend the source either horizontally or vertically. Discontiguous ranges are
+      not supported.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -76,16 +71,13 @@ methods:
       parameters:
         - id: destinationRange
           description: >-
-            The destination range to AutoFill. If the destination range is
-            `null`<!-- -->, data is filled out based on the surrounding cells
-            (which is the behavior when double-clicking the UI’s range fill
-            handle).
+            The destination range to AutoFill. If the destination range is `null`<!-- -->, data is filled out based on
+            the surrounding cells (which is the behavior when double-clicking the UI’s range fill handle).
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: autoFillType
           description: >-
-            The type of AutoFill. Specifies how the destination range is to be
-            filled, based on the contents of the current range. Default is
-            "FillDefault".
+            The type of AutoFill. Specifies how the destination range is to be filled, based on the contents of the
+            current range. Default is "FillDefault".
           type: '<xref uid="ExcelScript!ExcelScript.AutoFillType:enum" />'
       return:
         type: void
@@ -115,9 +107,7 @@ methods:
       content: 'clear(applyTo?: ClearApplyTo): void;'
       parameters:
         - id: applyTo
-          description: >-
-            Optional. Determines the type of clear action. See
-            `ExcelScript.ClearApplyTo` for details.
+          description: Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details.
           type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
@@ -169,9 +159,8 @@ methods:
     package: ExcelScript!
     fullName: 'copyFrom(sourceRange, copyType, skipBlanks, transpose)'
     summary: >-
-      Copies cell data or formatting from the source range or `RangeAreas` to
-      the current range. The destination range can be a different size than the
-      source range or `RangeAreas`<!-- -->. The destination will be expanded
+      Copies cell data or formatting from the source range or `RangeAreas` to the current range. The destination range
+      can be a different size than the source range or `RangeAreas`<!-- -->. The destination will be expanded
       automatically if it is smaller than the source.
     remarks: ''
     isPreview: false
@@ -187,9 +176,8 @@ methods:
       parameters:
         - id: sourceRange
           description: >-
-            The source range or `RangeAreas` to copy from. When the source
-            `RangeAreas` has multiple ranges, their form must be able to be
-            created by removing full rows or columns from a rectangular range.
+            The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form
+            must be able to be created by removing full rows or columns from a rectangular range.
           type: >-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
             uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
@@ -200,9 +188,7 @@ methods:
           description: True if to skip blank cells in the source range. Default is false.
           type: boolean
         - id: transpose
-          description: >-
-            True if to transpose the cells in the destination range. Default is
-            false.
+          description: True if to transpose the cells in the destination range. Default is false.
           type: boolean
       return:
         type: void
@@ -219,23 +205,56 @@ methods:
       content: 'delete(shift: DeleteShiftDirection): void;'
       parameters:
         - id: shift
-          description: >-
-            Specifies which way to shift the cells. See
-            `ExcelScript.DeleteShiftDirection` for details.
+          description: Specifies which way to shift the cells. See `ExcelScript.DeleteShiftDirection` for details.
           type: '<xref uid="ExcelScript!ExcelScript.DeleteShiftDirection:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+           * This sample creates a sample range, then deletes
+           * "A1" using different DeleteShiftDirection values.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Add sample data to better visualize the delete changes.
+            const currentSheet = workbook.getActiveWorksheet();
+            currentSheet.getRange("A1:D4").setValues([
+              [1,2,3,4],
+              [5,6,7,8],
+              [9,10,11,12],
+              [13,14,15,16]]);
+
+            // Delete A1 and shift the cells from the right to fill the space.
+            // The value being deleted is 1.
+            currentSheet.getRange("A1").delete(ExcelScript.DeleteShiftDirection.left);
+
+            // Delete A1 and shift the cells from the bottom to fill the space.
+            // The value being deleted is 2.
+            currentSheet.getRange("A1").delete(ExcelScript.DeleteShiftDirection.up);
+
+            // Log the sample range. The values should be:
+            /*
+              5, 3, 4, "",
+              9, 6, 7, 8,
+              13, 10, 11, 12,
+              "", 14, 15, 16
+            */
+            console.log(currentSheet.getRange("A1:D4").getValues()); 
+          }
+          ```
   - name: 'find(text, criteria)'
     uid: 'ExcelScript!ExcelScript.Range#find:member(1)'
     package: ExcelScript!
     fullName: 'find(text, criteria)'
     summary: >-
-      Finds the given string based on the criteria specified. If the current
-      range is larger than a single cell, then the search will be limited to
-      that range, else the search will cover the entire sheet starting after
-      that cell. If there are no matches, then this function will return an
-      object with its `isNullObject` property set to `true`<!-- -->.
+      Finds the given string based on the criteria specified. If the current range is larger than a single cell, then
+      the search will be limited to that range, else the search will cover the entire sheet starting after that cell. If
+      there are no matches, then this function will return an object with its `isNullObject` property set to `true`<!--
+      -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -247,9 +266,8 @@ methods:
           type: string
         - id: criteria
           description: >-
-            Additional search criteria, including the search direction and
-            whether the search needs to match the entire cell or be
-            case-sensitive.
+            Additional search criteria, including the search direction and whether the search needs to match the entire
+            cell or be case-sensitive.
           type: '<xref uid="ExcelScript!ExcelScript.SearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -259,9 +277,8 @@ methods:
     package: ExcelScript!
     fullName: flashFill()
     summary: >-
-      Does a Flash Fill to the current range. Flash Fill automatically fills
-      data when it senses a pattern, so the range must be a single column range
-      and have data around it in order to find a pattern.
+      Does a Flash Fill to the current range. Flash Fill automatically fills data when it senses a pattern, so the range
+      must be a single column range and have data around it in order to find a pattern.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -275,8 +292,8 @@ methods:
     package: ExcelScript!
     fullName: 'getAbsoluteResizedRange(numRows, numColumns)'
     summary: >-
-      Gets a `Range` object with the same top-left cell as the current `Range`
-      object, but with the specified numbers of rows and columns.
+      Gets a `Range` object with the same top-left cell as the current `Range` object, but with the specified numbers of
+      rows and columns.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -296,9 +313,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getAddress:member(1)'
     package: ExcelScript!
     fullName: getAddress()
-    summary: >-
-      Specifies the range reference in A1-style. Address value contains the
-      sheet reference (e.g., "Sheet1!A1:B4").
+    summary: 'Specifies the range reference in A1-style. Address value contains the sheet reference (e.g., "Sheet1!A1:B4").'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -311,9 +326,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getAddressLocal:member(1)'
     package: ExcelScript!
     fullName: getAddressLocal()
-    summary: >-
-      Represents the range reference for the specified range in the language of
-      the user.
+    summary: Represents the range reference for the specified range in the language of the user.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -327,8 +340,8 @@ methods:
     package: ExcelScript!
     fullName: getBoundingRect(anotherRange)
     summary: >-
-      Gets the smallest range object that encompasses the given ranges. For
-      example, the `GetBoundingRect` of "B2:C5" and "D10:E15" is "B2:E15".
+      Gets the smallest range object that encompasses the given ranges. For example, the `GetBoundingRect` of "B2:C5"
+      and "D10:E15" is "B2:E15".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -346,10 +359,9 @@ methods:
     package: ExcelScript!
     fullName: 'getCell(row, column)'
     summary: >-
-      Gets the range object containing the single cell based on row and column
-      numbers. The cell can be outside the bounds of its parent range, so long
-      as it stays within the worksheet grid. The returned cell is located
-      relative to the top left cell of the range.
+      Gets the range object containing the single cell based on row and column numbers. The cell can be outside the
+      bounds of its parent range, so long as it stays within the worksheet grid. The returned cell is located relative
+      to the top left cell of the range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -370,8 +382,8 @@ methods:
     package: ExcelScript!
     fullName: getCellCount()
     summary: >-
-      Specifies the number of cells in the range. This API will return -1 if the
-      cell count exceeds 2^31-1 (2,147,483,647).
+      Specifies the number of cells in the range. This API will return -1 if the cell count exceeds 2^31-1
+      (2,147,483,647).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -474,9 +486,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getColumnsAfter:member(1)'
     package: ExcelScript!
     fullName: getColumnsAfter(count)
-    summary: >-
-      Gets a certain number of columns to the right of the current `Range`
-      object.
+    summary: Gets a certain number of columns to the right of the current `Range` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -485,10 +495,9 @@ methods:
       parameters:
         - id: count
           description: >-
-            Optional. The number of columns to include in the resulting range.
-            In general, use a positive number to create a range outside the
-            current range. You can also use a negative number to create a range
-            within the current range. The default value is 1.
+            Optional. The number of columns to include in the resulting range. In general, use a positive number to
+            create a range outside the current range. You can also use a negative number to create a range within the
+            current range. The default value is 1.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -497,9 +506,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getColumnsBefore:member(1)'
     package: ExcelScript!
     fullName: getColumnsBefore(count)
-    summary: >-
-      Gets a certain number of columns to the left of the current `Range`
-      object.
+    summary: Gets a certain number of columns to the left of the current `Range` object.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -508,10 +515,9 @@ methods:
       parameters:
         - id: count
           description: >-
-            Optional. The number of columns to include in the resulting range.
-            In general, use a positive number to create a range outside the
-            current range. You can also use a negative number to create a range
-            within the current range. The default value is 1.
+            Optional. The number of columns to include in the resulting range. In general, use a positive number to
+            create a range outside the current range. You can also use a negative number to create a range within the
+            current range. The default value is 1.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -601,9 +607,8 @@ methods:
     package: ExcelScript!
     fullName: getDirectPrecedents()
     summary: >-
-      Returns a `WorkbookRangeAreas` object that represents the range containing
-      all the direct precedents of a cell in the same worksheet or in multiple
-      worksheets.
+      Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedents of a cell in
+      the same worksheet or in multiple worksheets.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -617,9 +622,8 @@ methods:
     package: ExcelScript!
     fullName: getEntireColumn()
     summary: >-
-      Gets an object that represents the entire column of the range (for
-      example, if the current range represents cells "B4:E11", its
-      `getEntireColumn` is a range that represents columns "B:E").
+      Gets an object that represents the entire column of the range (for example, if the current range represents cells
+      "B4:E11", its `getEntireColumn` is a range that represents columns "B:E").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -633,9 +637,8 @@ methods:
     package: ExcelScript!
     fullName: getEntireRow()
     summary: >-
-      Gets an object that represents the entire row of the range (for example,
-      if the current range represents cells "B4:E11", its `GetEntireRow` is a
-      range that represents rows "4:11").
+      Gets an object that represents the entire row of the range (for example, if the current range represents cells
+      "B4:E11", its `GetEntireRow` is a range that represents rows "4:11").
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -644,13 +647,41 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
         description: ''
+  - name: 'getExtendedRange(direction, activeCell)'
+    uid: 'ExcelScript!ExcelScript.Range#getExtendedRange:member(1)'
+    package: ExcelScript!
+    fullName: 'getExtendedRange(direction, activeCell)'
+    summary: >-
+      Returns a range object that includes the current range and up to the edge of the range, based on the provided
+      direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getExtendedRange(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: '<xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />'
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the top-left cell of the range. An error is
+            thrown if the active cell is not in this range.
+          type: |-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+                    
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        description: ''
   - name: getFormat()
     uid: 'ExcelScript!ExcelScript.Range#getFormat:member(1)'
     package: ExcelScript!
     fullName: getFormat()
-    summary: >-
-      Returns a format object, encapsulating the range's font, fill, borders,
-      alignment, and other properties.
+    summary: 'Returns a format object, encapsulating the range''s font, fill, borders, alignment, and other properties.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -664,9 +695,8 @@ methods:
     package: ExcelScript!
     fullName: getFormula()
     summary: >-
-      Represents the cell formula in A1-style notation. If the range contains
-      multiple cells, the data from first cell (represented by row index of 0
-      and column index of 0) will be returned.
+      Represents the cell formula in A1-style notation. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -704,11 +734,9 @@ methods:
     package: ExcelScript!
     fullName: getFormulaLocal()
     summary: >-
-      Represents the cell formula in A1-style notation, in the user's language
-      and number-formatting locale. For example, the English "=SUM(A1, 1.5)"
-      formula would become "=SUMME(A1; 1,5)" in German. If the range contains
-      multiple cells, the data from first cell (represented by row index of 0
-      and column index of 0) will be returned.
+      Represents the cell formula in A1-style notation, in the user's language and number-formatting locale. For
+      example, the English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -722,9 +750,8 @@ methods:
     package: ExcelScript!
     fullName: getFormulaR1C1()
     summary: >-
-      Represents the cell formula in R1C1-style notation. If the range contains
-      multiple cells, the data from first cell (represented by row index of 0
-      and column index of 0) will be returned.
+      Represents the cell formula in R1C1-style notation. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -737,9 +764,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getFormulas:member(1)'
     package: ExcelScript!
     fullName: getFormulas()
-    summary: >-
-      Represents the formula in A1-style notation. If a cell has no formula, its
-      value is returned instead.
+    summary: 'Represents the formula in A1-style notation. If a cell has no formula, its value is returned instead.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -753,10 +778,9 @@ methods:
     package: ExcelScript!
     fullName: getFormulasLocal()
     summary: >-
-      Represents the formula in A1-style notation, in the user's language and
-      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
-      would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its
-      value is returned instead.
+      Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the
+      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its value is
+      returned instead.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -769,9 +793,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getFormulasR1C1:member(1)'
     package: ExcelScript!
     fullName: getFormulasR1C1()
-    summary: >-
-      Represents the formula in R1C1-style notation. If a cell has no formula,
-      its value is returned instead.
+    summary: 'Represents the formula in R1C1-style notation. If a cell has no formula, its value is returned instead.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -785,10 +807,9 @@ methods:
     package: ExcelScript!
     fullName: getHasSpill()
     summary: >-
-      Represents if all cells have a spill border. Returns `true` if all cells
-      have a spill border, or `false` if all cells do not have a spill border.
-      Returns `null` if there are cells both with and without spill borders
-      within the range.
+      Represents if all cells have a spill border. Returns `true` if all cells have a spill border, or `false` if all
+      cells do not have a spill border. Returns `null` if there are cells both with and without spill borders within the
+      range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -801,9 +822,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getHeight:member(1)'
     package: ExcelScript!
     fullName: getHeight()
-    summary: >-
-      Returns the distance in points, for 100% zoom, from the top edge of the
-      range to the bottom edge of the range.
+    summary: 'Returns the distance in points, for 100% zoom, from the top edge of the range to the bottom edge of the range.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -856,9 +875,8 @@ methods:
     package: ExcelScript!
     fullName: getIntersection(anotherRange)
     summary: >-
-      Gets the range object that represents the rectangular intersection of the
-      given ranges. If no intersection is found, then this function will return
-      an object with its `isNullObject` property set to `true`<!-- -->.
+      Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is
+      found, then this function will return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -866,9 +884,7 @@ methods:
       content: 'getIntersection(anotherRange: Range | string): Range;'
       parameters:
         - id: anotherRange
-          description: >-
-            The range object or range address that will be used to determine the
-            intersection of ranges.
+          description: The range object or range address that will be used to determine the intersection of ranges.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -903,9 +919,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getLastCell:member(1)'
     package: ExcelScript!
     fullName: getLastCell()
-    summary: >-
-      Gets the last cell within the range. For example, the last cell of "B2:D5"
-      is "D5".
+    summary: 'Gets the last cell within the range. For example, the last cell of "B2:D5" is "D5".'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -918,9 +932,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getLastColumn:member(1)'
     package: ExcelScript!
     fullName: getLastColumn()
-    summary: >-
-      Gets the last column within the range. For example, the last column of
-      "B2:D5" is "D2:D5".
+    summary: 'Gets the last column within the range. For example, the last column of "B2:D5" is "D2:D5".'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -933,9 +945,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getLastRow:member(1)'
     package: ExcelScript!
     fullName: getLastRow()
-    summary: >-
-      Gets the last row within the range. For example, the last row of "B2:D5"
-      is "B5:D5".
+    summary: 'Gets the last row within the range. For example, the last row of "B2:D5" is "B5:D5".'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -948,9 +958,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getLeft:member(1)'
     package: ExcelScript!
     fullName: getLeft()
-    summary: >-
-      Returns the distance in points, for 100% zoom, from the left edge of the
-      worksheet to the left edge of the range.
+    summary: 'Returns the distance in points, for 100% zoom, from the left edge of the worksheet to the left edge of the range.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -985,30 +993,13 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />[][]'
         description: ''
-  - name: getMergedAreas()
-    uid: 'ExcelScript!ExcelScript.Range#getMergedAreas:member(1)'
-    package: ExcelScript!
-    fullName: getMergedAreas()
-    summary: >-
-      Returns a `RangeAreas` object that represents the merged areas in this
-      range. Note that if the merged areas count in this range is more than 512,
-      an `InvalidOperation` error will be thrown.
-    remarks: ''
-    isPreview: false
-    isDeprecated: false
-    syntax:
-      content: 'getMergedAreas(): RangeAreas;'
-      return:
-        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
-        description: ''
   - name: getNumberFormat()
     uid: 'ExcelScript!ExcelScript.Range#getNumberFormat:member(1)'
     package: ExcelScript!
     fullName: getNumberFormat()
     summary: >-
-      Represents cell Excel number format code for the given range. If the range
-      contains multiple cells, the data from first cell (represented by row
-      index of 0 and column index of 0) will be returned.
+      Represents cell Excel number format code for the given range. If the range contains multiple cells, the data from
+      first cell (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1035,8 +1026,8 @@ methods:
     package: ExcelScript!
     fullName: getNumberFormatCategory()
     summary: >-
-      Specifies the number format category of first cell in the range
-      (represented by row index of 0 and column index of 0).
+      Specifies the number format category of first cell in the range (represented by row index of 0 and column index of
+      0).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1050,13 +1041,11 @@ methods:
     package: ExcelScript!
     fullName: getNumberFormatLocal()
     summary: >-
-      Represents cell Excel number format code for the given range, based on the
-      language settings of the user.​ Excel does not perform any language or
-      format coercion when getting or setting the `numberFormatLocal` property.
-      Any returned text uses the locally-formatted strings based on the language
-      specified in the system settings. If the range contains multiple cells,
-      the data from first cell (represented by row index of 0 and column index
-      of 0) will be returned.
+      Represents cell Excel number format code for the given range, based on the language settings of the user.​ Excel
+      does not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any
+      returned text uses the locally-formatted strings based on the language specified in the system settings. If the
+      range contains multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will
+      be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1083,11 +1072,9 @@ methods:
     package: ExcelScript!
     fullName: getNumberFormatsLocal()
     summary: >-
-      Represents Excel's number format code for the given range, based on the
-      language settings of the user.​ Excel does not perform any language or
-      format coercion when getting or setting the `numberFormatLocal` property.
-      Any returned text uses the locally-formatted strings based on the language
-      specified in the system settings.
+      Represents Excel's number format code for the given range, based on the language settings of the user. Excel does
+      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
+      text uses the locally-formatted strings based on the language specified in the system settings.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1101,10 +1088,9 @@ methods:
     package: ExcelScript!
     fullName: 'getOffsetRange(rowOffset, columnOffset)'
     summary: >-
-      Gets an object which represents a range that's offset from the specified
-      range. The dimension of the returned range will match this range. If the
-      resulting range is forced outside the bounds of the worksheet grid, an
-      error will be thrown.
+      Gets an object which represents a range that's offset from the specified range. The dimension of the returned
+      range will match this range. If the resulting range is forced outside the bounds of the worksheet grid, an error
+      will be thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1113,15 +1099,13 @@ methods:
       parameters:
         - id: rowOffset
           description: >-
-            The number of rows (positive, negative, or 0) by which the range is
-            to be offset. Positive values are offset downward, and negative
-            values are offset upward.
+            The number of rows (positive, negative, or 0) by which the range is to be offset. Positive values are offset
+            downward, and negative values are offset upward.
           type: number
         - id: columnOffset
           description: >-
-            The number of columns (positive, negative, or 0) by which the range
-            is to be offset. Positive values are offset to the right, and
-            negative values are offset to the left.
+            The number of columns (positive, negative, or 0) by which the range is to be offset. Positive values are
+            offset to the right, and negative values are offset to the left.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1170,8 +1154,8 @@ methods:
       parameters:
         - id: fullyContained
           description: >-
-            If `true`<!-- -->, returns only PivotTables that are fully contained
-            within the range bounds. The default value is `false`<!-- -->.
+            If `true`<!-- -->, returns only PivotTables that are fully contained within the range bounds. The default
+            value is `false`<!-- -->.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]'
@@ -1181,10 +1165,9 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedCellStyle()
     summary: >-
-      Represents the style of the current range. If the styles of the cells are
-      inconsistent, `null` will be returned. For custom styles, the style name
-      will be returned. For built-in styles, a string representing a value in
-      the `BuiltInStyle` enum will be returned.
+      Represents the style of the current range. If the styles of the cells are inconsistent, `null` will be returned.
+      For custom styles, the style name will be returned. For built-in styles, a string representing a value in the
+      `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1193,14 +1176,43 @@ methods:
       return:
         type: string
         description: ''
+  - name: 'getRangeEdge(direction, activeCell)'
+    uid: 'ExcelScript!ExcelScript.Range#getRangeEdge:member(1)'
+    package: ExcelScript!
+    fullName: 'getRangeEdge(direction, activeCell)'
+    summary: >-
+      Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This
+      matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getRangeEdge(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: '<xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />'
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the top-left cell of the range. An error is
+            thrown if the active cell is not in this range.
+          type: |-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+                    
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        description: ''
   - name: 'getResizedRange(deltaRows, deltaColumns)'
     uid: 'ExcelScript!ExcelScript.Range#getResizedRange:member(1)'
     package: ExcelScript!
     fullName: 'getResizedRange(deltaRows, deltaColumns)'
     summary: >-
-      Gets a `Range` object similar to the current `Range` object, but with its
-      bottom-right corner expanded (or contracted) by some number of rows and
-      columns.
+      Gets a `Range` object similar to the current `Range` object, but with its bottom-right corner expanded (or
+      contracted) by some number of rows and columns.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1209,15 +1221,13 @@ methods:
       parameters:
         - id: deltaRows
           description: >-
-            The number of rows by which to expand the bottom-right corner,
-            relative to the current range. Use a positive number to expand the
-            range, or a negative number to decrease it.
+            The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive
+            number to expand the range, or a negative number to decrease it.
           type: number
         - id: deltaColumns
           description: >-
-            The number of columns by which to expand the bottom-right corner,
-            relative to the current range. Use a positive number to expand the
-            range, or a negative number to decrease it.
+            The number of columns by which to expand the bottom-right corner, relative to the current range. Use a
+            positive number to expand the range, or a negative number to decrease it.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1351,10 +1361,9 @@ methods:
       parameters:
         - id: count
           description: >-
-            Optional. The number of rows to include in the resulting range. In
-            general, use a positive number to create a range outside the current
-            range. You can also use a negative number to create a range within
-            the current range. The default value is 1.
+            Optional. The number of rows to include in the resulting range. In general, use a positive number to create
+            a range outside the current range. You can also use a negative number to create a range within the current
+            range. The default value is 1.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1372,10 +1381,9 @@ methods:
       parameters:
         - id: count
           description: >-
-            Optional. The number of rows to include in the resulting range. In
-            general, use a positive number to create a range outside the current
-            range. You can also use a negative number to create a range within
-            the current range. The default value is 1.
+            Optional. The number of rows to include in the resulting range. In general, use a positive number to create
+            a range outside the current range. You can also use a negative number to create a range within the current
+            range. The default value is 1.
           type: number
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1385,10 +1393,9 @@ methods:
     package: ExcelScript!
     fullName: getSavedAsArray()
     summary: >-
-      Represents if all the cells would be saved as an array formula. Returns
-      `true` if all cells would be saved as an array formula, or `false` if all
-      cells would not be saved as an array formula. Returns `null` if some cells
-      would be saved as an array formula and some would not be.
+      Represents if all the cells would be saved as an array formula. Returns `true` if all cells would be saved as an
+      array formula, or `false` if all cells would not be saved as an array formula. Returns `null` if some cells would
+      be saved as an array formula and some would not be.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1415,9 +1422,8 @@ methods:
     package: ExcelScript!
     fullName: 'getSpecialCells(cellType, cellValueType)'
     summary: >-
-      Gets the `RangeAreas` object, comprising one or more ranges, that
-      represents all the cells that match the specified type and value. If no
-      special cells are found, then this function will return an object with its
+      Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the
+      specified type and value. If no special cells are found, then this function will return an object with its
       `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
@@ -1434,11 +1440,9 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />'
         - id: cellValueType
           description: >-
-            If `cellType` is either `constants` or `formulas`<!-- -->, this
-            argument is used to determine which types of cells to include in the
-            result. These values can be combined together to return more than
-            one type. The default is to select all constants or formulas, no
-            matter what the type.
+            If `cellType` is either `constants` or `formulas`<!-- -->, this argument is used to determine which types of
+            cells to include in the result. These values can be combined together to return more than one type. The
+            default is to select all constants or formulas, no matter what the type.
           type: '<xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -1466,10 +1470,9 @@ methods:
     package: ExcelScript!
     fullName: getSpillingToRange()
     summary: >-
-      Gets the range object containing the spill range when called on an anchor
-      cell. If the range isn't an anchor cell or the spill range can't be found,
-      then this function will return an object with its `isNullObject` property
-      set to `true`<!-- -->.
+      Gets the range object containing the spill range when called on an anchor cell. If the range isn't an anchor cell
+      or the spill range can't be found, then this function will return an object with its `isNullObject` property set
+      to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1483,10 +1486,9 @@ methods:
     package: ExcelScript!
     fullName: getSpillParent()
     summary: >-
-      Gets the range object containing the anchor cell for the cell getting
-      spilled into. If it's not a spilled cell, or more than one cell is given,
-      then this function will return an object with its `isNullObject` property
-      set to `true`<!-- -->.
+      Gets the range object containing the anchor cell for the cell getting spilled into. If it's not a spilled cell, or
+      more than one cell is given, then this function will return an object with its `isNullObject` property set to
+      `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1500,9 +1502,8 @@ methods:
     package: ExcelScript!
     fullName: getSurroundingRegion()
     summary: >-
-      Returns a `Range` object that represents the surrounding region for the
-      top-left cell in this range. A surrounding region is a range bounded by
-      any combination of blank rows and blank columns relative to this range.
+      Returns a `Range` object that represents the surrounding region for the top-left cell in this range. A surrounding
+      region is a range bounded by any combination of blank rows and blank columns relative to this range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1524,8 +1525,8 @@ methods:
       parameters:
         - id: fullyContained
           description: >-
-            If `true`<!-- -->, returns only tables that are fully contained
-            within the range bounds. The default value is `false`<!-- -->.
+            If `true`<!-- -->, returns only tables that are fully contained within the range bounds. The default value
+            is `false`<!-- -->.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />[]'
@@ -1535,11 +1536,9 @@ methods:
     package: ExcelScript!
     fullName: getText()
     summary: >-
-      Represents Text value of the specified range. The Text value will not
-      depend on the cell width. The \# sign substitution that happens in Excel
-      UI will not affect the text value returned by the API. If the range
-      contains multiple cells, the data from first cell (represented by row
-      index of 0 and column index of 0) will be returned.
+      Represents Text value of the specified range. The Text value will not depend on the cell width. The \# sign
+      substitution that happens in Excel UI will not affect the text value returned by the API. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1553,9 +1552,8 @@ methods:
     package: ExcelScript!
     fullName: getTexts()
     summary: >-
-      Text values of the specified range. The text value will not depend on the
-      cell width. The number sign (\#) substitution that happens in the Excel UI
-      will not affect the text value returned by the API.
+      Text values of the specified range. The text value will not depend on the cell width. The number sign (\#)
+      substitution that happens in the Excel UI will not affect the text value returned by the API.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1568,9 +1566,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getTop:member(1)'
     package: ExcelScript!
     fullName: getTop()
-    summary: >-
-      Returns the distance in points, for 100% zoom, from the top edge of the
-      worksheet to the top edge of the range.
+    summary: 'Returns the distance in points, for 100% zoom, from the top edge of the worksheet to the top edge of the range.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1584,9 +1580,8 @@ methods:
     package: ExcelScript!
     fullName: getUsedRange(valuesOnly)
     summary: >-
-      Returns the used range of the given range object. If there are no used
-      cells within the range, then this function will return an object with its
-      `isNullObject` property set to `true`<!-- -->.
+      Returns the used range of the given range object. If there are no used cells within the range, then this function
+      will return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1604,11 +1599,9 @@ methods:
     package: ExcelScript!
     fullName: getValue()
     summary: >-
-      Represents the raw value of the specified range. The data returned could
-      be of type string, number, or a boolean. Cell that contain an error will
-      return the error string. If the range contains multiple cells, the data
-      from first cell (represented by row index of 0 and column index of 0) will
-      be returned.
+      Represents the raw value of the specified range. The data returned could be of type string, number, or a boolean.
+      Cell that contain an error will return the error string. If the range contains multiple cells, the data from first
+      cell (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1641,10 +1634,9 @@ methods:
     package: ExcelScript!
     fullName: getValues()
     summary: >-
-      Represents the raw values of the specified range. The data returned could
-      be a string, number, or boolean. Cells that contain an error will return
-      the error string. If the returned value starts with a plus ("+"), minus
-      ("-"), or equal sign ("="), Excel interprets this value as a formula.
+      Represents the raw values of the specified range. The data returned could be a string, number, or boolean. Cells
+      that contain an error will return the error string. If the returned value starts with a plus ("+"), minus ("-"),
+      or equal sign ("="), Excel interprets this value as a formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1658,9 +1650,8 @@ methods:
     package: ExcelScript!
     fullName: getValueType()
     summary: >-
-      Represents the type of data in the cell. If the range contains multiple
-      cells, the data from first cell (represented by row index of 0 and column
-      index of 0) will be returned.
+      Represents the type of data in the cell. If the range contains multiple cells, the data from first cell
+      (represented by row index of 0 and column index of 0) will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1699,9 +1690,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getWidth:member(1)'
     package: ExcelScript!
     fullName: getWidth()
-    summary: >-
-      Returns the distance in points, for 100% zoom, from the left edge of the
-      range to the right edge of the range.
+    summary: 'Returns the distance in points, for 100% zoom, from the left edge of the range to the right edge of the range.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1736,11 +1725,9 @@ methods:
       parameters:
         - id: groupOption
           description: >-
-            Specifies how the range can be grouped by rows or columns. An
-            `InvalidArgument` error is thrown when the group option differs from
-            the range's `isEntireRow` or `isEntireColumn` property (i.e.,
-            `range.isEntireRow` is true and `groupOption` is "ByColumns" or
-            `range.isEntireColumn` is true and `groupOption` is "ByRows").
+            Specifies how the range can be grouped by rows or columns. An `InvalidArgument` error is thrown when the
+            group option differs from the range's `isEntireRow` or `isEntireColumn` property (i.e., `range.isEntireRow`
+            is true and `groupOption` is "ByColumns" or `range.isEntireColumn` is true and `groupOption` is "ByRows").
           type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
@@ -1757,9 +1744,7 @@ methods:
       content: 'hideGroupDetails(groupOption: GroupOption): void;'
       parameters:
         - id: groupOption
-          description: >-
-            Specifies whether to hide the details of grouped rows or grouped
-            columns.
+          description: Specifies whether to hide the details of grouped rows or grouped columns.
           type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void
@@ -1769,9 +1754,8 @@ methods:
     package: ExcelScript!
     fullName: insert(shift)
     summary: >-
-      Inserts a cell or a range of cells into the worksheet in place of this
-      range, and shifts the other cells to make space. Returns a new `Range`
-      object at the now blank space.
+      Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make
+      space. Returns a new `Range` object at the now blank space.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1779,9 +1763,7 @@ methods:
       content: 'insert(shift: InsertShiftDirection): Range;'
       parameters:
         - id: shift
-          description: >-
-            Specifies which way to shift the cells. See
-            `ExcelScript.InsertShiftDirection` for details.
+          description: Specifies which way to shift the cells. See `ExcelScript.InsertShiftDirection` for details.
           type: '<xref uid="ExcelScript!ExcelScript.InsertShiftDirection:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
@@ -1799,9 +1781,8 @@ methods:
       parameters:
         - id: across
           description: >-
-            Optional. Set `true` to merge cells in each row of the specified
-            range as separate merged cells. The default value is `false`<!--
-            -->.
+            Optional. Set `true` to merge cells in each row of the specified range as separate merged cells. The default
+            value is `false`<!-- -->.
           type: boolean
       return:
         type: void
@@ -1811,11 +1792,9 @@ methods:
     package: ExcelScript!
     fullName: moveTo(destinationRange)
     summary: >-
-      Moves cell values, formatting, and formulas from current range to the
-      destination range, replacing the old information in those cells. The
-      destination range will be expanded automatically if it is smaller than the
-      current range. Any cells in the destination range that are outside of the
-      original range's area are not changed.
+      Moves cell values, formatting, and formulas from current range to the destination range, replacing the old
+      information in those cells. The destination range will be expanded automatically if it is smaller than the current
+      range. Any cells in the destination range that are outside of the original range's area are not changed.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1823,9 +1802,7 @@ methods:
       content: 'moveTo(destinationRange: Range | string): void;'
       parameters:
         - id: destinationRange
-          description: >-
-            destinationRange Specifies the range to where the information in
-            this range will be moved.
+          description: destinationRange Specifies the range to where the information in this range will be moved.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void
@@ -1847,24 +1824,20 @@ methods:
       parameters:
         - id: columns
           description: >-
-            The columns inside the range that may contain duplicates. At least
-            one column needs to be specified. Zero-indexed.
+            The columns inside the range that may contain duplicates. At least one column needs to be specified.
+            Zero-indexed.
           type: 'number[]'
         - id: includesHeader
           description: True if the input data contains header. Default is false.
           type: boolean
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.RemoveDuplicatesResult:interface"
-          />
+        type: '<xref uid="ExcelScript!ExcelScript.RemoveDuplicatesResult:interface" />'
         description: ''
   - name: 'replaceAll(text, replacement, criteria)'
     uid: 'ExcelScript!ExcelScript.Range#replaceAll:member(1)'
     package: ExcelScript!
     fullName: 'replaceAll(text, replacement, criteria)'
-    summary: >-
-      Finds and replaces the given string based on the criteria specified within
-      the current range.
+    summary: Finds and replaces the given string based on the criteria specified within the current range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1936,8 +1909,8 @@ methods:
     package: ExcelScript!
     fullName: setFormula(formula)
     summary: >-
-      Sets the cell formula in A1-style notation. If the range contains multiple
-      cells, each cell in the given range will be updated with the input data.
+      Sets the cell formula in A1-style notation. If the range contains multiple cells, each cell in the given range
+      will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1979,10 +1952,9 @@ methods:
     package: ExcelScript!
     fullName: setFormulaLocal(formulaLocal)
     summary: >-
-      Set the cell formula in A1-style notation, in the user's language and
-      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
-      would become "=SUMME(A1; 1,5)" in German. If the range contains multiple
-      cells, each cell in the given range will be updated with the input data.
+      Set the cell formula in A1-style notation, in the user's language and number-formatting locale. For example, the
+      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If the range contains multiple cells,
+      each cell in the given range will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2000,9 +1972,8 @@ methods:
     package: ExcelScript!
     fullName: setFormulaR1C1(formulaR1C1)
     summary: >-
-      Sets the cell formula in R1C1-style notation. If the range contains
-      multiple cells, each cell in the given range will be updated with the
-      input data.
+      Sets the cell formula in R1C1-style notation. If the range contains multiple cells, each cell in the given range
+      will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2019,9 +1990,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#setFormulas:member(1)'
     package: ExcelScript!
     fullName: setFormulas(formulas)
-    summary: >-
-      Represents the formula in A1-style notation. If a cell has no formula, its
-      value is returned instead.
+    summary: 'Represents the formula in A1-style notation. If a cell has no formula, its value is returned instead.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2039,10 +2008,9 @@ methods:
     package: ExcelScript!
     fullName: setFormulasLocal(formulasLocal)
     summary: >-
-      Represents the formula in A1-style notation, in the user's language and
-      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
-      would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its
-      value is returned instead.
+      Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the
+      English "=SUM(A1, 1.5)" formula would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its value is
+      returned instead.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2059,9 +2027,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#setFormulasR1C1:member(1)'
     package: ExcelScript!
     fullName: setFormulasR1C1(formulasR1C1)
-    summary: >-
-      Represents the formula in R1C1-style notation. If a cell has no formula,
-      its value is returned instead.
+    summary: 'Represents the formula in R1C1-style notation. If a cell has no formula, its value is returned instead.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2127,9 +2093,8 @@ methods:
     package: ExcelScript!
     fullName: setNumberFormat(numberFormat)
     summary: >-
-      Sets cell Excel number format code for the given range. If the range
-      contains multiple cells, each cell in the given range will be updated with
-      the input data.
+      Sets cell Excel number format code for the given range. If the range contains multiple cells, each cell in the
+      given range will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2147,12 +2112,10 @@ methods:
     package: ExcelScript!
     fullName: setNumberFormatLocal(numberFormatLocal)
     summary: >-
-      Sets cell Excel number format code for the given range, based on the
-      language settings of the user.​ Excel does not perform any language or
-      format coercion when getting or setting the `numberFormatLocal` property.
-      Any returned text uses the locally-formatted strings based on the language
-      specified in the system settings. If the range contains multiple cells,
-      each cell in the given range will be updated with the input data.
+      Sets cell Excel number format code for the given range, based on the language settings of the user.​ Excel does
+      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
+      text uses the locally-formatted strings based on the language specified in the system settings. If the range
+      contains multiple cells, each cell in the given range will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2187,11 +2150,9 @@ methods:
     package: ExcelScript!
     fullName: setNumberFormatsLocal(numberFormatsLocal)
     summary: >-
-      Represents Excel's number format code for the given range, based on the
-      language settings of the user.​ Excel does not perform any language or
-      format coercion when getting or setting the `numberFormatLocal` property.
-      Any returned text uses the locally-formatted strings based on the language
-      specified in the system settings.
+      Represents Excel's number format code for the given range, based on the language settings of the user. Excel does
+      not perform any language or format coercion when getting or setting the `numberFormatLocal` property. Any returned
+      text uses the locally-formatted strings based on the language specified in the system settings.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2209,10 +2170,9 @@ methods:
     package: ExcelScript!
     fullName: setPredefinedCellStyle(predefinedCellStyle)
     summary: >-
-      Represents the style of the current range. If the styles of the cells are
-      inconsistent, `null` will be returned. For custom styles, the style name
-      will be returned. For built-in styles, a string representing a value in
-      the `BuiltInStyle` enum will be returned.
+      Represents the style of the current range. If the styles of the cells are inconsistent, `null` will be returned.
+      For custom styles, the style name will be returned. For built-in styles, a string representing a value in the
+      `BuiltInStyle` enum will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2247,10 +2207,9 @@ methods:
     package: ExcelScript!
     fullName: setValue(value)
     summary: >-
-      Sets the raw value of the specified range. The data being set could be of
-      type string, number, or a boolean. `null` value will be ignored (not set
-      or overwritten in Excel). If the range contains multiple cells, each cell
-      in the given range will be updated with the input data.
+      Sets the raw value of the specified range. The data being set could be of type string, number, or a boolean.
+      `null` value will be ignored (not set or overwritten in Excel). If the range contains multiple cells, each cell in
+      the given range will be updated with the input data.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2268,10 +2227,9 @@ methods:
     package: ExcelScript!
     fullName: setValues(values)
     summary: >-
-      Represents the raw values of the specified range. The data returned could
-      be a string, number, or boolean. Cells that contain an error will return
-      the error string. If the returned value starts with a plus ("+"), minus
-      ("-"), or equal sign ("="), Excel interprets this value as a formula.
+      Represents the raw values of the specified range. The data returned could be a string, number, or boolean. Cells
+      that contain an error will return the error string. If the returned value starts with a plus ("+"), minus ("-"),
+      or equal sign ("="), Excel interprets this value as a formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2349,9 +2307,7 @@ methods:
       content: 'showGroupDetails(groupOption: GroupOption): void;'
       parameters:
         - id: groupOption
-          description: >-
-            Specifies whether to show the details of grouped rows or grouped
-            columns.
+          description: Specifies whether to show the details of grouped rows or grouped columns.
           type: '<xref uid="ExcelScript!ExcelScript.GroupOption:enum" />'
       return:
         type: void

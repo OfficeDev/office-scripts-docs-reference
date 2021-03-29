@@ -3,9 +3,7 @@ name: ExcelScript.Workbook
 uid: 'ExcelScript!ExcelScript.Workbook:interface'
 package: ExcelScript!
 fullName: ExcelScript.Workbook
-summary: >-
-  Workbook is the top level object which contains related workbook objects such
-  as worksheets, tables, and ranges.
+summary: 'Workbook is the top level object which contains related workbook objects such as worksheets, tables, and ranges.'
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -29,8 +27,8 @@ methods:
       parameters:
         - id: range
           description: >-
-            Range to bind the binding to. May be a `Range` object or a string.
-            If string, must contain the full address, including the sheet name
+            Range to bind the binding to. May be a `Range` object or a string. If string, must contain the full address,
+            including the sheet name
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: bindingType
           description: Type of binding. See `ExcelScript.BindingType`<!-- -->.
@@ -46,9 +44,8 @@ methods:
     package: ExcelScript!
     fullName: 'addBindingFromNamedItem(name, bindingType, id)'
     summary: >-
-      Add a new binding based on a named item in the workbook. If the named item
-      references to multiple areas, the `InvalidReference` error will be
-      returned.
+      Add a new binding based on a named item in the workbook. If the named item references to multiple areas, the
+      `InvalidReference` error will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -77,8 +74,8 @@ methods:
     package: ExcelScript!
     fullName: 'addBindingFromSelection(bindingType, id)'
     summary: >-
-      Add a new binding based on the current selection. If the selection has
-      multiple areas, the `InvalidReference` error will be returned.
+      Add a new binding based on the current selection. If the selection has multiple areas, the `InvalidReference`
+      error will be returned.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -99,9 +96,8 @@ methods:
     package: ExcelScript!
     fullName: 'addComment(cellAddress, content, contentType)'
     summary: >-
-      Creates a new comment with the given content on the given cell. An
-      `InvalidArgument` error is thrown if the provided range is larger than one
-      cell.
+      Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
+      provided range is larger than one cell.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -115,24 +111,19 @@ methods:
       parameters:
         - id: cellAddress
           description: >-
-            The cell to which the comment is added. This can be a `Range` object
-            or a string. If it's a string, it must contain the full address,
-            including the sheet name. An `InvalidArgument` error is thrown if
-            the provided range is larger than one cell.
+            The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: content
           description: >-
-            The comment's content. This can be either a string or
-            `CommentRichContent` object. Strings are used for plain text.
-            `CommentRichContent` objects allow for other comment features, such
-            as mentions.
-          type: >-
-            <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
-            | string
+            The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for
+            plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
+          type: '<xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" /> | string'
         - id: contentType
           description: >-
-            Optional. The type of content contained within the comment. The
-            default value is enum `ContentType.Plain`<!-- -->.
+            Optional. The type of content contained within the comment. The default value is enum
+            `ContentType.Plain`<!-- -->.
           type: '<xref uid="ExcelScript!ExcelScript.ContentType:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
@@ -186,9 +177,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Workbook#addNamedItemFormulaLocal:member(1)'
     package: ExcelScript!
     fullName: 'addNamedItemFormulaLocal(name, formula, comment)'
-    summary: >-
-      Adds a new name to the collection of the given scope using the user's
-      locale for the formula.
+    summary: Adds a new name to the collection of the given scope using the user's locale for the formula.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -216,9 +205,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Workbook#addPivotTable:member(1)'
     package: ExcelScript!
     fullName: 'addPivotTable(name, source, destination)'
-    summary: >-
-      Add a PivotTable based on the specified source data and insert it at the
-      top-left cell of the destination range.
+    summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -235,16 +222,15 @@ methods:
           type: string
         - id: source
           description: >-
-            The source data for the new PivotTable, this can either be a range
-            (or string address including the worksheet name) or a table.
+            The source data for the new PivotTable, this can either be a range (or string address including the
+            worksheet name) or a table.
           type: >-
-            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string |
-            <xref uid="ExcelScript!ExcelScript.Table:interface" />
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string | <xref
+            uid="ExcelScript!ExcelScript.Table:interface" />
         - id: destination
           description: >-
-            The cell in the upper-left corner of the PivotTable report's
-            destination range (the range on the worksheet where the resulting
-            report will be placed).
+            The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet
+            where the resulting report will be placed).
           type: |-
             <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
                     
@@ -268,13 +254,13 @@ methods:
       parameters:
         - id: name
           description: >-
-            The unique name for the new PivotTable style. Will throw an
-            `InvalidArgument` error if the name is already in use.
+            The unique name for the new PivotTable style. Will throw an `InvalidArgument` error if the name is already
+            in use.
           type: string
         - id: makeUniqueName
           description: >-
-            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
-            append numbers to the name in order to make it unique, if needed.
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will append numbers to the name in order to make
+            it unique, if needed.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" />'
@@ -314,30 +300,24 @@ methods:
       parameters:
         - id: slicerSource
           description: >-
-            The data source that the new slicer will be based on. It can be a
-            `PivotTable` object, a `Table` object, or a string. When a
-            PivotTable object is passed, the data source is the source of the
-            `PivotTable` object. When a `Table` object is passed, the data
-            source is the `Table` object. When a string is passed, it is
+            The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or
+            a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When
+            a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is
             interpreted as the name or ID of a PivotTable or table.
           type: >-
-            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />
-            | <xref uid="ExcelScript!ExcelScript.Table:interface" />
+            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.Table:interface" />
         - id: sourceField
           description: >-
-            The field in the data source to filter by. It can be a `PivotField`
-            object, a `TableColumn` object, the ID of a `PivotField` or the name
-            or ID of a `TableColumn`<!-- -->.
+            The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID
+            of a `PivotField` or the name or ID of a `TableColumn`<!-- -->.
           type: >-
-            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" />
-            | number | <xref uid="ExcelScript!ExcelScript.TableColumn:interface"
-            />
+            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" /> | number | <xref
+            uid="ExcelScript!ExcelScript.TableColumn:interface" />
         - id: slicerDestination
           description: >-
-            Optional. The worksheet in which the new slicer will be created. It
-            can be a `Worksheet` object or the name or ID of a worksheet. This
-            parameter can be omitted if the slicer collection is retrieved from
-            a worksheet.
+            Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name
+            or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
           type: 'string | <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" />'
@@ -355,13 +335,13 @@ methods:
       parameters:
         - id: name
           description: >-
-            The unique name for the new slicer style. Will throw an
-            `InvalidArgument` exception if the name is already in use.
+            The unique name for the new slicer style. Will throw an `InvalidArgument` exception if the name is already
+            in use.
           type: string
         - id: makeUniqueName
           description: >-
-            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
-            append numbers to the name in order to make it unique, if needed.
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will append numbers to the name in order to make
+            it unique, if needed.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" />'
@@ -371,10 +351,9 @@ methods:
     package: ExcelScript!
     fullName: 'addTable(address, hasHeaders)'
     summary: >-
-      Creates a new table. The range object or source address determines the
-      worksheet under which the table will be added. If the table cannot be
-      added (e.g., because the address is invalid, or the table would overlap
-      with another table), an error will be thrown.
+      Creates a new table. The range object or source address determines the worksheet under which the table will be
+      added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another
+      table), an error will be thrown.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -383,16 +362,14 @@ methods:
       parameters:
         - id: address
           description: >-
-            A `Range` object, or a string address or name of the range
-            representing the data source. If the address does not contain a
-            sheet name, the currently-active sheet is used.
+            A `Range` object, or a string address or name of the range representing the data source. If the address does
+            not contain a sheet name, the currently-active sheet is used.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
         - id: hasHeaders
           description: >-
-            A boolean value that indicates whether the data being imported has
-            column labels. If the source does not contain headers (i.e., when
-            this property set to `false`<!-- -->), Excel will automatically
-            generate a header and shift the data down by one row.
+            A boolean value that indicates whether the data being imported has column labels. If the source does not
+            contain headers (i.e., when this property set to `false`<!-- -->), Excel will automatically generate a
+            header and shift the data down by one row.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />'
@@ -410,13 +387,13 @@ methods:
       parameters:
         - id: name
           description: >-
-            The unique name for the new table style. Will throw an
-            `InvalidArgument` error if the name is already in use.
+            The unique name for the new table style. Will throw an `InvalidArgument` error if the name is already in
+            use.
           type: string
         - id: makeUniqueName
           description: >-
-            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
-            append numbers to the name in order to make it unique, if needed.
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will append numbers to the name in order to make
+            it unique, if needed.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TableStyle:interface" />'
@@ -434,13 +411,13 @@ methods:
       parameters:
         - id: name
           description: >-
-            The unique name for the new timeline style. Will throw an
-            `InvalidArgument` error if the name is already in use.
+            The unique name for the new timeline style. Will throw an `InvalidArgument` error if the name is already in
+            use.
           type: string
         - id: makeUniqueName
           description: >-
-            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
-            append numbers to the name in order to make it unique, if needed.
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will append numbers to the name in order to make
+            it unique, if needed.
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" />'
@@ -450,9 +427,8 @@ methods:
     package: ExcelScript!
     fullName: addWorksheet(name)
     summary: >-
-      Adds a new worksheet to the workbook. The worksheet will be added at the
-      end of existing worksheets. If you wish to activate the newly added
-      worksheet, call `.activate()` on it.
+      Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish
+      to activate the newly added worksheet, call `.activate()` on it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -461,9 +437,8 @@ methods:
       parameters:
         - id: name
           description: >-
-            Optional. The name of the worksheet to be added. If specified, the
-            name should be unique. If not specified, Excel determines the name
-            of the new worksheet.
+            Optional. The name of the worksheet to be added. If specified, the name should be unique. If not specified,
+            Excel determines the name of the new worksheet.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -501,9 +476,8 @@ methods:
     package: ExcelScript!
     fullName: getActiveChart()
     summary: >-
-      Gets the currently active chart in the workbook. If there is no active
-      chart, then this function will return an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Gets the currently active chart in the workbook. If there is no active chart, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -517,9 +491,8 @@ methods:
     package: ExcelScript!
     fullName: getActiveSlicer()
     summary: >-
-      Gets the currently active slicer in the workbook. If there is no active
-      slicer, then this function will return an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Gets the currently active slicer in the workbook. If there is no active slicer, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -572,9 +545,8 @@ methods:
     package: ExcelScript!
     fullName: getBinding(id)
     summary: >-
-      Gets a binding object by ID. If the binding object does not exist, then
-      this function will return an object with its `isNullObject` property set
-      to `true`<!-- -->.
+      Gets a binding object by ID. If the binding object does not exist, then this function will return an object with
+      its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -618,9 +590,8 @@ methods:
     package: ExcelScript!
     fullName: getChartDataPointTrack()
     summary: >-
-      True if all charts in the workbook are tracking the actual data points to
-      which they are attached. False if the charts track the index of the data
-      points.
+      True if all charts in the workbook are tracking the actual data points to which they are attached. False if the
+      charts track the index of the data points.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -659,10 +630,9 @@ methods:
       parameters:
         - id: cellAddress
           description: >-
-            The cell which the comment is on. This can be a `Range` object or a
-            string. If it's a string, it must contain the full address,
-            including the sheet name. An `InvalidArgument` error is thrown if
-            the provided range is larger than one cell.
+            The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must
+            contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided
+            range is larger than one cell.
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
@@ -702,9 +672,8 @@ methods:
     package: ExcelScript!
     fullName: getCustomXmlPart(id)
     summary: >-
-      Gets a custom XML part based on its ID. If the `CustomXmlPart` does not
-      exist, then this function returns an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Gets a custom XML part based on its ID. If the `CustomXmlPart` does not exist, then this function returns an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -715,17 +684,13 @@ methods:
           description: ID of the object to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" /> | undefined'
         description: ''
   - name: getCustomXmlPartByNamespace(namespaceUri)
     uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace:member(1)'
     package: ExcelScript!
     fullName: getCustomXmlPartByNamespace(namespaceUri)
-    summary: >-
-      Gets a new collection of custom XML parts whose namespaces match the given
-      namespace.
+    summary: Gets a new collection of custom XML parts whose namespaces match the given namespace.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -733,9 +698,7 @@ methods:
       content: 'getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];'
       parameters:
         - id: namespaceUri
-          description: >-
-            This must be a fully qualified schema URI; for example,
-            "http://schemas.contoso.com/review/1.0".
+          description: 'This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".'
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]'
@@ -817,9 +780,7 @@ methods:
       content: 'getFirstWorksheet(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: >-
-            Optional. If `true`<!-- -->, considers only visible worksheets,
-            skipping over any hidden ones.
+          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -829,9 +790,8 @@ methods:
     package: ExcelScript!
     fullName: getIsDirty()
     summary: >-
-      Specifies if changes have been made since the workbook was last saved. You
-      can set this property to `true` if you want to close a modified workbook
-      without either saving it or being prompted to save it.
+      Specifies if changes have been made since the workbook was last saved. You can set this property to `true` if you
+      want to close a modified workbook without either saving it or being prompted to save it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -852,9 +812,7 @@ methods:
       content: 'getLastWorksheet(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: >-
-            Optional. If `true`<!-- -->, considers only visible worksheets,
-            skipping over any hidden ones.
+          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -877,9 +835,8 @@ methods:
     package: ExcelScript!
     fullName: getNamedItem(name)
     summary: >-
-      Gets a `NamedItem` object using its name. If the object does not exist,
-      then this function will return an object with its `isNullObject` property
-      set to `true`<!-- -->.
+      Gets a `NamedItem` object using its name. If the object does not exist, then this function will return an object
+      with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -896,9 +853,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Workbook#getNames:member(1)'
     package: ExcelScript!
     fullName: getNames()
-    summary: >-
-      Represents a collection of workbook-scoped named items (named ranges and
-      constants).
+    summary: Represents a collection of workbook-scoped named items (named ranges and constants).
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -912,9 +867,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTable(name)
     summary: >-
-      Gets a PivotTable by name. If the PivotTable does not exist, then this
-      function returns an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a PivotTable by name. If the PivotTable does not exist, then this function returns an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -925,9 +879,7 @@ methods:
           description: Name of the PivotTable to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> | undefined'
         description: ''
   - name: getPivotTables()
     uid: 'ExcelScript!ExcelScript.Workbook#getPivotTables:member(1)'
@@ -947,9 +899,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTableStyle(name)
     summary: >-
-      Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist,
-      then this function will return an object with its `isNullObject` property
-      set to `true`<!-- -->.
+      Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -960,9 +911,7 @@ methods:
           description: Name of the PivotTable style to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> | undefined'
         description: ''
   - name: getPivotTableStyles()
     uid: 'ExcelScript!ExcelScript.Workbook#getPivotTableStyles:member(1)'
@@ -1064,8 +1013,8 @@ methods:
     package: ExcelScript!
     fullName: getSelectedRange()
     summary: >-
-      Gets the currently selected single range from the workbook. If there are
-      multiple ranges selected, this method will throw an error.
+      Gets the currently selected single range from the workbook. If there are multiple ranges selected, this method
+      will throw an error.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1079,9 +1028,8 @@ methods:
     package: ExcelScript!
     fullName: getSelectedRanges()
     summary: >-
-      Gets the currently selected one or more ranges from the workbook. Unlike
-      `getSelectedRange()`<!-- -->, this method returns a `RangeAreas` object
-      that represents all the selected ranges.
+      Gets the currently selected one or more ranges from the workbook. Unlike `getSelectedRange()`<!-- -->, this method
+      returns a `RangeAreas` object that represents all the selected ranges.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1095,9 +1043,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicer(key)
     summary: >-
-      Gets a slicer using its name or ID. If the slicer doesn't exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a slicer using its name or ID. If the slicer doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1128,9 +1075,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicerStyle(name)
     summary: >-
-      Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1141,9 +1087,7 @@ methods:
           description: Name of the slicer style to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> | undefined'
         description: ''
   - name: getSlicerStyles()
     uid: 'ExcelScript!ExcelScript.Workbook#getSlicerStyles:member(1)'
@@ -1163,9 +1107,8 @@ methods:
     package: ExcelScript!
     fullName: getTable(key)
     summary: >-
-      Gets a table by name or ID. If the table doesn't exist, then this function
-      will return an object with its `isNullObject` property set to `true`<!--
-      -->.
+      Gets a table by name or ID. If the table doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1196,9 +1139,8 @@ methods:
     package: ExcelScript!
     fullName: getTableStyle(name)
     summary: >-
-      Gets a `TableStyle` by name. If the table style does not exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a `TableStyle` by name. If the table style does not exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1209,9 +1151,7 @@ methods:
           description: Name of the table style to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TableStyle:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TableStyle:interface" /> | undefined'
         description: ''
   - name: getTableStyles()
     uid: 'ExcelScript!ExcelScript.Workbook#getTableStyles:member(1)'
@@ -1231,9 +1171,8 @@ methods:
     package: ExcelScript!
     fullName: getTimelineStyle(name)
     summary: >-
-      Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then
-      this function will return an object with its `isNullObject` property set
-      to `true`<!-- -->.
+      Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then this function will return an object with
+      its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1244,9 +1183,7 @@ methods:
           description: Name of the timeline style to be retrieved.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> | undefined'
         description: ''
   - name: getTimelineStyles()
     uid: 'ExcelScript!ExcelScript.Workbook#getTimelineStyles:member(1)'
@@ -1266,9 +1203,8 @@ methods:
     package: ExcelScript!
     fullName: getUsePrecisionAsDisplayed()
     summary: >-
-      True if calculations in this workbook will be done using only the
-      precision of the numbers as they're displayed. Data will permanently lose
-      accuracy when switching this property from `false` to `true`<!-- -->.
+      True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
+      Data will permanently lose accuracy when switching this property from `false` to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1282,9 +1218,8 @@ methods:
     package: ExcelScript!
     fullName: getWorksheet(key)
     summary: >-
-      Gets a worksheet object using its name or ID. If the worksheet does not
-      exist, then this function will return an object with its `isNullObject`
-      property set to `true`<!-- -->.
+      Gets a worksheet object using its name or ID. If the worksheet does not exist, then this function will return an
+      object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1361,9 +1296,8 @@ methods:
     package: ExcelScript!
     fullName: setChartDataPointTrack(chartDataPointTrack)
     summary: >-
-      True if all charts in the workbook are tracking the actual data points to
-      which they are attached. False if the charts track the index of the data
-      points.
+      True if all charts in the workbook are tracking the actual data points to which they are attached. False if the
+      charts track the index of the data points.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1391,12 +1325,9 @@ methods:
                 ): void;
       parameters:
         - id: newDefaultStyle
-          description: >-
-            The `PivotTableStyle` object, or name of the `PivotTableStyle`
-            object, that should be the new default.
-          type: >-
-            <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> |
-            string
+          description: 'The `PivotTableStyle` object, or name of the `PivotTableStyle` object, that should be the new default.'
+          type: |-
+            <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> | string
                     
       return:
         type: void
@@ -1413,12 +1344,8 @@ methods:
       content: 'setDefaultSlicerStyle(newDefaultStyle: SlicerStyle | string): void;'
       parameters:
         - id: newDefaultStyle
-          description: >-
-            The `SlicerStyle` object, or name of the `SlicerStyle` object, that
-            should be the new default.
-          type: >-
-            <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> |
-            string
+          description: 'The `SlicerStyle` object, or name of the `SlicerStyle` object, that should be the new default.'
+          type: '<xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> | string'
       return:
         type: void
         description: ''
@@ -1434,9 +1361,7 @@ methods:
       content: 'setDefaultTableStyle(newDefaultStyle: TableStyle | string): void;'
       parameters:
         - id: newDefaultStyle
-          description: >-
-            The `TableStyle` object, or name of the `TableStyle` object, that
-            should be the new default.
+          description: 'The `TableStyle` object, or name of the `TableStyle` object, that should be the new default.'
           type: '<xref uid="ExcelScript!ExcelScript.TableStyle:interface" /> | string'
       return:
         type: void
@@ -1453,12 +1378,8 @@ methods:
       content: 'setDefaultTimelineStyle(newDefaultStyle: TimelineStyle | string): void;'
       parameters:
         - id: newDefaultStyle
-          description: >-
-            The `TimelineStyle` object, or name of the `TimelineStyle` object,
-            that should be the new default.
-          type: >-
-            <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> |
-            string
+          description: 'The `TimelineStyle` object, or name of the `TimelineStyle` object, that should be the new default.'
+          type: '<xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> | string'
       return:
         type: void
         description: ''
@@ -1467,9 +1388,8 @@ methods:
     package: ExcelScript!
     fullName: setIsDirty(isDirty)
     summary: >-
-      Specifies if changes have been made since the workbook was last saved. You
-      can set this property to `true` if you want to close a modified workbook
-      without either saving it or being prompted to save it.
+      Specifies if changes have been made since the workbook was last saved. You can set this property to `true` if you
+      want to close a modified workbook without either saving it or being prompted to save it.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1487,9 +1407,8 @@ methods:
     package: ExcelScript!
     fullName: setUsePrecisionAsDisplayed(usePrecisionAsDisplayed)
     summary: >-
-      True if calculations in this workbook will be done using only the
-      precision of the numbers as they're displayed. Data will permanently lose
-      accuracy when switching this property from `false` to `true`<!-- -->.
+      True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
+      Data will permanently lose accuracy when switching this property from `false` to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false

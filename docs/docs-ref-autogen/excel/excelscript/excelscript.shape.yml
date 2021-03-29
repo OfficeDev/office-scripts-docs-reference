@@ -4,8 +4,8 @@ uid: 'ExcelScript!ExcelScript.Shape:interface'
 package: ExcelScript!
 fullName: ExcelScript.Shape
 summary: >-
-  Represents a generic shape object in the worksheet. A shape could be a
-  geometric shape, a line, a group of shapes, etc.
+  Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes,
+  etc.
 remarks: ''
 isPreview: false
 isDeprecated: false
@@ -15,9 +15,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#copyTo:member(1)'
     package: ExcelScript!
     fullName: copyTo(destinationSheet)
-    summary: >-
-      Copies and pastes a `Shape` object. The pasted shape is copied to the same
-      pixel location as this shape.
+    summary: Copies and pastes a `Shape` object. The pasted shape is copied to the same pixel location as this shape.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -25,9 +23,7 @@ methods:
       content: 'copyTo(destinationSheet?: Worksheet | string): Shape;'
       parameters:
         - id: destinationSheet
-          description: >-
-            The sheet to which the shape object will be pasted. The default
-            value is the copied shape's worksheet.
+          description: The sheet to which the shape object will be pasted. The default value is the copied shape's worksheet.
           type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" /> | string'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -76,12 +72,9 @@ methods:
     package: ExcelScript!
     fullName: getAsImage(format)
     summary: >-
-      Converts the shape to an image and returns the image as a base64-encoded
-      string. The DPI is 96. The only supported formats are
-      `ExcelScript.PictureFormat.BMP`<!-- -->,
-      `ExcelScript.PictureFormat.PNG`<!-- -->,
-      `ExcelScript.PictureFormat.JPEG`<!-- -->, and
-      `ExcelScript.PictureFormat.GIF`<!-- -->.
+      Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
+      formats are `ExcelScript.PictureFormat.BMP`<!-- -->, `ExcelScript.PictureFormat.PNG`<!-- -->,
+      `ExcelScript.PictureFormat.JPEG`<!-- -->, and `ExcelScript.PictureFormat.GIF`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -125,8 +118,8 @@ methods:
     package: ExcelScript!
     fullName: getGeometricShape()
     summary: >-
-      Returns the geometric shape associated with the shape. An error will be
-      thrown if the shape type is not "GeometricShape".
+      Returns the geometric shape associated with the shape. An error will be thrown if the shape type is not
+      "GeometricShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -140,9 +133,8 @@ methods:
     package: ExcelScript!
     fullName: getGeometricShapeType()
     summary: >-
-      Specifies the geometric shape type of this geometric shape. See
-      `ExcelScript.GeometricShapeType` for details. Returns `null` if the shape
-      type is not "GeometricShape".
+      Specifies the geometric shape type of this geometric shape. See `ExcelScript.GeometricShapeType` for details.
+      Returns `null` if the shape type is not "GeometricShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -155,9 +147,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getGroup:member(1)'
     package: ExcelScript!
     fullName: getGroup()
-    summary: >-
-      Returns the shape group associated with the shape. An error will be thrown
-      if the shape type is not "GroupShape".
+    summary: Returns the shape group associated with the shape. An error will be thrown if the shape type is not "GroupShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -171,8 +161,8 @@ methods:
     package: ExcelScript!
     fullName: getHeight()
     summary: >-
-      Specifies the height, in points, of the shape. Throws an `InvalidArgument`
-      exception when set with a negative value or zero as an input.
+      Specifies the height, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative
+      value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -198,9 +188,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getImage:member(1)'
     package: ExcelScript!
     fullName: getImage()
-    summary: >-
-      Returns the image associated with the shape. An error will be thrown if
-      the shape type is not "Image".
+    summary: Returns the image associated with the shape. An error will be thrown if the shape type is not "Image".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -214,9 +202,8 @@ methods:
     package: ExcelScript!
     fullName: getLeft()
     summary: >-
-      The distance, in points, from the left side of the shape to the left side
-      of the worksheet. Throws an `InvalidArgument` exception when set with a
-      negative value as an input.
+      The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an
+      `InvalidArgument` exception when set with a negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -230,10 +217,9 @@ methods:
     package: ExcelScript!
     fullName: getLevel()
     summary: >-
-      Specifies the level of the specified shape. For example, a level of 0
-      means that the shape is not part of any groups, a level of 1 means the
-      shape is part of a top-level group, and a level of 2 means the shape is
-      part of a sub-group of the top level.
+      Specifies the level of the specified shape. For example, a level of 0 means that the shape is not part of any
+      groups, a level of 1 means the shape is part of a top-level group, and a level of 2 means the shape is part of a
+      sub-group of the top level.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -246,9 +232,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getLine:member(1)'
     package: ExcelScript!
     fullName: getLine()
-    summary: >-
-      Returns the line associated with the shape. An error will be thrown if the
-      shape type is not "Line".
+    summary: Returns the line associated with the shape. An error will be thrown if the shape type is not "Line".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -353,9 +337,8 @@ methods:
     package: ExcelScript!
     fullName: getTop()
     summary: >-
-      The distance, in points, from the top edge of the shape to the top edge of
-      the worksheet. Throws an `InvalidArgument` exception when set with a
-      negative value as an input.
+      The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an
+      `InvalidArgument` exception when set with a negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -395,8 +378,8 @@ methods:
     package: ExcelScript!
     fullName: getWidth()
     summary: >-
-      Specifies the width, in points, of the shape. Throws an `InvalidArgument`
-      exception when set with a negative value or zero as an input.
+      Specifies the width, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative value
+      or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -409,9 +392,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#getZOrderPosition:member(1)'
     package: ExcelScript!
     fullName: getZOrderPosition()
-    summary: >-
-      Returns the position of the specified shape in the z-order, with 0
-      representing the bottom of the order stack.
+    summary: 'Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -433,11 +414,9 @@ methods:
       parameters:
         - id: increment
           description: >-
-            The increment, in points, the shape will be horizontally moved. A
-            positive value moves the shape to the right and a negative value
-            moves it to the left. If the sheet is right-to-left oriented, this
-            is reversed: positive values will move the shape to the left and
-            negative values will move it to the right.
+            The increment, in points, the shape will be horizontally moved. A positive value moves the shape to the
+            right and a negative value moves it to the left. If the sheet is right-to-left oriented, this is reversed:
+            positive values will move the shape to the left and negative values will move it to the right.
           type: number
       return:
         type: void
@@ -447,9 +426,8 @@ methods:
     package: ExcelScript!
     fullName: incrementRotation(increment)
     summary: >-
-      Rotates the shape clockwise around the z-axis by the specified number of
-      degrees. Use the `rotation` property to set the absolute rotation of the
-      shape.
+      Rotates the shape clockwise around the z-axis by the specified number of degrees. Use the `rotation` property to
+      set the absolute rotation of the shape.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -458,9 +436,8 @@ methods:
       parameters:
         - id: increment
           description: >-
-            How many degrees the shape will be rotated. A positive value rotates
-            the shape clockwise and a negative value rotates it
-            counterclockwise.
+            How many degrees the shape will be rotated. A positive value rotates the shape clockwise and a negative
+            value rotates it counterclockwise.
           type: number
       return:
         type: void
@@ -478,9 +455,8 @@ methods:
       parameters:
         - id: increment
           description: >-
-            The increment, in points, the shape will be vertically moved. A
-            positive value moves the shape down and a negative value moves it
-            up.
+            The increment, in points, the shape will be vertically moved. A positive value moves the shape down and a
+            negative value moves it up.
           type: number
       return:
         type: void
@@ -490,10 +466,9 @@ methods:
     package: ExcelScript!
     fullName: 'scaleHeight(scaleFactor, scaleType, scaleFrom)'
     summary: >-
-      Scales the height of the shape by a specified factor. For images, you can
-      indicate whether you want to scale the shape relative to the original or
-      the current size. Shapes other than pictures are always scaled relative to
-      their current height.
+      Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the
+      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
+      current height.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -506,21 +481,17 @@ methods:
                 ): void;
       parameters:
         - id: scaleFactor
-          description: >-
-            Specifies the ratio between the height of the shape after you resize
-            it and the current or original height.
+          description: Specifies the ratio between the height of the shape after you resize it and the current or original height.
           type: number
         - id: scaleType
           description: >-
-            Specifies whether the shape is scaled relative to its original or
-            current size. The original size scaling option only works for
-            images.
+            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
+            option only works for images.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeScaleType:enum" />'
         - id: scaleFrom
           description: >-
-            Optional. Specifies which part of the shape retains its position
-            when the shape is scaled. If omitted, it represents the shape's
-            upper left corner retains its position.
+            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
+            represents the shape's upper left corner retains its position.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeScaleFrom:enum" />'
       return:
         type: void
@@ -530,10 +501,9 @@ methods:
     package: ExcelScript!
     fullName: 'scaleWidth(scaleFactor, scaleType, scaleFrom)'
     summary: >-
-      Scales the width of the shape by a specified factor. For images, you can
-      indicate whether you want to scale the shape relative to the original or
-      the current size. Shapes other than pictures are always scaled relative to
-      their current width.
+      Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the
+      shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
+      current width.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -546,21 +516,17 @@ methods:
                 ): void;
       parameters:
         - id: scaleFactor
-          description: >-
-            Specifies the ratio between the width of the shape after you resize
-            it and the current or original width.
+          description: Specifies the ratio between the width of the shape after you resize it and the current or original width.
           type: number
         - id: scaleType
           description: >-
-            Specifies whether the shape is scaled relative to its original or
-            current size. The original size scaling option only works for
-            images.
+            Specifies whether the shape is scaled relative to its original or current size. The original size scaling
+            option only works for images.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeScaleType:enum" />'
         - id: scaleFrom
           description: >-
-            Optional. Specifies which part of the shape retains its position
-            when the shape is scaled. If omitted, it represents the shape's
-            upper left corner retains its position.
+            Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it
+            represents the shape's upper left corner retains its position.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeScaleFrom:enum" />'
       return:
         type: void
@@ -604,9 +570,8 @@ methods:
     package: ExcelScript!
     fullName: setGeometricShapeType(geometricShapeType)
     summary: >-
-      Specifies the geometric shape type of this geometric shape. See
-      `ExcelScript.GeometricShapeType` for details. Returns `null` if the shape
-      type is not "GeometricShape".
+      Specifies the geometric shape type of this geometric shape. See `ExcelScript.GeometricShapeType` for details.
+      Returns `null` if the shape type is not "GeometricShape".
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -624,8 +589,8 @@ methods:
     package: ExcelScript!
     fullName: setHeight(height)
     summary: >-
-      Specifies the height, in points, of the shape. Throws an `InvalidArgument`
-      exception when set with a negative value or zero as an input.
+      Specifies the height, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative
+      value or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -643,9 +608,8 @@ methods:
     package: ExcelScript!
     fullName: setLeft(left)
     summary: >-
-      The distance, in points, from the left side of the shape to the left side
-      of the worksheet. Throws an `InvalidArgument` exception when set with a
-      negative value as an input.
+      The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an
+      `InvalidArgument` exception when set with a negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -731,9 +695,8 @@ methods:
     package: ExcelScript!
     fullName: setTop(top)
     summary: >-
-      The distance, in points, from the top edge of the shape to the top edge of
-      the worksheet. Throws an `InvalidArgument` exception when set with a
-      negative value as an input.
+      The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an
+      `InvalidArgument` exception when set with a negative value as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -768,8 +731,8 @@ methods:
     package: ExcelScript!
     fullName: setWidth(width)
     summary: >-
-      Specifies the width, in points, of the shape. Throws an `InvalidArgument`
-      exception when set with a negative value or zero as an input.
+      Specifies the width, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative value
+      or zero as an input.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -786,9 +749,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Shape#setZOrder:member(1)'
     package: ExcelScript!
     fullName: setZOrder(position)
-    summary: >-
-      Moves the specified shape up or down the collection's z-order, which
-      shifts it in front of or behind other shapes.
+    summary: 'Moves the specified shape up or down the collection''s z-order, which shifts it in front of or behind other shapes.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -797,8 +758,8 @@ methods:
       parameters:
         - id: position
           description: >-
-            Where to move the shape in the z-order stack relative to the other
-            shapes. See `ExcelScript.ShapeZOrder` for details.
+            Where to move the shape in the z-order stack relative to the other shapes. See `ExcelScript.ShapeZOrder` for
+            details.
           type: '<xref uid="ExcelScript!ExcelScript.ShapeZOrder:enum" />'
       return:
         type: void
