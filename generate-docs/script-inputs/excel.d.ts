@@ -627,13 +627,13 @@ declare namespace ExcelScript {
 
         /**
          * Determines if Excel should recalculate the worksheet when necessary.
-         * True if Excel recalculates the worksheet when necessary. False if Excel doesn't recalculate the sheet.
+         * True if Excel recalculates the worksheet when necessary. False if Excel doesn't recalculate the sheet.
          */
         getEnableCalculation(): boolean;
 
         /**
          * Determines if Excel should recalculate the worksheet when necessary.
-         * True if Excel recalculates the worksheet when necessary. False if Excel doesn't recalculate the sheet.
+         * True if Excel recalculates the worksheet when necessary. False if Excel doesn't recalculate the sheet.
          */
         setEnableCalculation(enableCalculation: boolean): void;
 
@@ -942,6 +942,41 @@ declare namespace ExcelScript {
         removeAllHorizontalPageBreaks(): void;
 
         /**
+         * Returns a collection of sheet views that are present in the worksheet.
+         */
+        getNamedSheetViews(): NamedSheetView[];
+
+        /**
+         * Creates a new sheet view with the given name.
+         * @param name The name of the sheet view to be created.
+         * Throws an error when the provided name already exists, is empty, or is a name reserved by the worksheet.
+         */
+        addNamedSheetView(name: string): NamedSheetView;
+
+        /**
+         * Creates and activates a new temporary sheet view.
+         * Temporary views are removed when closing the application, exiting the temporary view with the exit method, or switching to another sheet view.
+         * The temporary sheet view can also be acccessed with the empty string (""), if the temporary view exists.
+         */
+        enterTemporaryNamedSheetView(): NamedSheetView;
+
+        /**
+         * Exits the currently active sheet view.
+         */
+        exitActiveNamedSheetView(): void;
+
+        /**
+         * Gets the worksheet's currently active sheet view.
+         */
+        getActiveNamedSheetView(): NamedSheetView;
+
+        /**
+         * Gets a sheet view using its name.
+         * @param key The case-sensitive name of the sheet view. Use the empty string ("") to get the temporary sheet view, if the temporary view exists.
+         */
+        getNamedSheetView(key: string): NamedSheetView;
+
+        /**
          * Collection of names scoped to the current worksheet.
          */
         getNames(): NamedItem[];
@@ -1150,13 +1185,13 @@ declare namespace ExcelScript {
         freezeAt(frozenRange: Range | string): void;
 
         /**
-         * Freeze the first column or columns of the worksheet in place.
+         * Freeze the first column or columns of the worksheet in place.
          * @param count Optional number of columns to freeze, or zero to unfreeze all columns
          */
         freezeColumns(count?: number): void;
 
         /**
-         * Freeze the top row or rows of the worksheet in place.
+         * Freeze the top row or rows of the worksheet in place.
          * @param count Optional number of rows to freeze, or zero to unfreeze all rows
          */
         freezeRows(count?: number): void;
@@ -1316,14 +1351,14 @@ declare namespace ExcelScript {
         getNumberFormatCategories(): NumberFormatCategory[][];
 
         /**
-         * Represents Excel's number format code for the given range, based on the language settings of the user.​
+         * Represents Excel's number format code for the given range, based on the language settings of the user.
          * Excel does not perform any language or format coercion when getting or setting the `numberFormatLocal` property.
          * Any returned text uses the locally-formatted strings based on the language specified in the system settings.
          */
         getNumberFormatsLocal(): string[][];
 
         /**
-         * Represents Excel's number format code for the given range, based on the language settings of the user.​
+         * Represents Excel's number format code for the given range, based on the language settings of the user.
          * Excel does not perform any language or format coercion when getting or setting the `numberFormatLocal` property.
          * Any returned text uses the locally-formatted strings based on the language specified in the system settings.
          */
@@ -1530,6 +1565,16 @@ declare namespace ExcelScript {
         getEntireRow(): Range;
 
         /**
+         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
+         * @param direction The direction from the active cell.
+         * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
+         */
+        getExtendedRange(
+            direction: KeyboardDirection,
+            activeCell?: Range | string
+        ): Range;
+
+        /**
          * Renders the range as a base64-encoded png image.
          */
         getImage(): string;
@@ -1556,11 +1601,6 @@ declare namespace ExcelScript {
         getLastRow(): Range;
 
         /**
-         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, an `InvalidOperation` error will be thrown.
-         */
-        getMergedAreas(): RangeAreas;
-
-        /**
          * Gets an object which represents a range that's offset from the specified range. The dimension of the returned range will match this range. If the resulting range is forced outside the bounds of the worksheet grid, an error will be thrown.
          * @param rowOffset The number of rows (positive, negative, or 0) by which the range is to be offset. Positive values are offset downward, and negative values are offset upward.
          * @param columnOffset The number of columns (positive, negative, or 0) by which the range is to be offset. Positive values are offset to the right, and negative values are offset to the left.
@@ -1572,6 +1612,16 @@ declare namespace ExcelScript {
          * @param fullyContained If `true`, returns only PivotTables that are fully contained within the range bounds. The default value is `false`.
          */
         getPivotTables(fullyContained?: boolean): PivotTable[];
+
+        /**
+         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
+         * @param direction The direction from the active cell.
+         * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
+         */
+        getRangeEdge(
+            direction: KeyboardDirection,
+            activeCell?: Range | string
+        ): Range;
 
         /**
          * Gets a `Range` object similar to the current `Range` object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns.
@@ -2050,7 +2100,7 @@ declare namespace ExcelScript {
         getAreas(): RangeAreas[];
 
         /**
-         * Returns ranges that comprise this object in a `RangeCollection` object.
+         * Returns ranges that comprise this object in a `RangeCollection` object.
          */
         getRanges(): Range[];
     }
@@ -2435,6 +2485,12 @@ declare namespace ExcelScript {
          * Reapplies all the filters currently on the table.
          */
         reapplyFilters(): void;
+
+        /**
+         * Resize the table to the new range. The new range must overlap with the original table range and the headers (or the top of the table) must be in the same row.
+         * @param newRange The range object or range address that will be used to determine the new size of the table.
+         */
+        resize(newRange: Range | string): void;
 
         /**
          * Represents a collection of all the columns in the table.
@@ -2888,12 +2944,12 @@ declare namespace ExcelScript {
         setPattern(pattern: FillPattern): void;
 
         /**
-         * The HTML color code representing the color of the range pattern, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange").
+         * The HTML color code representing the color of the range pattern, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange").
          */
         getPatternColor(): string;
 
         /**
-         * The HTML color code representing the color of the range pattern, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange").
+         * The HTML color code representing the color of the range pattern, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange").
          */
         setPatternColor(patternColor: string): void;
 
@@ -3208,12 +3264,12 @@ declare namespace ExcelScript {
         setPlotBy(plotBy: ChartPlotBy): void;
 
         /**
-         * True if only visible cells are plotted. False if both visible and hidden cells are plotted.
+         * True if only visible cells are plotted. False if both visible and hidden cells are plotted.
          */
         getPlotVisibleOnly(): boolean;
 
         /**
-         * True if only visible cells are plotted. False if both visible and hidden cells are plotted.
+         * True if only visible cells are plotted. False if both visible and hidden cells are plotted.
          */
         setPlotVisibleOnly(plotVisibleOnly: boolean): void;
 
@@ -3663,12 +3719,12 @@ declare namespace ExcelScript {
         setInvertColor(invertColor: string): void;
 
         /**
-         * True if Excel inverts the pattern in the item when it corresponds to a negative number.
+         * True if Excel inverts the pattern in the item when it corresponds to a negative number.
          */
         getInvertIfNegative(): boolean;
 
         /**
-         * True if Excel inverts the pattern in the item when it corresponds to a negative number.
+         * True if Excel inverts the pattern in the item when it corresponds to a negative number.
          */
         setInvertIfNegative(invertIfNegative: boolean): void;
 
@@ -3830,12 +3886,12 @@ declare namespace ExcelScript {
         setSplitValue(splitValue: number): void;
 
         /**
-         * True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
+         * True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
          */
         getVaryByCategories(): boolean;
 
         /**
-         * True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
+         * True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
          */
         setVaryByCategories(varyByCategories: boolean): void;
 
@@ -6844,14 +6900,14 @@ declare namespace ExcelScript {
 
         /**
          * Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort will be based on the PivotField itself.
-         * @param sortBy Specifies if the sorting is done in ascending or descending order.
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
          */
         sortByLabels(sortBy: SortBy): void;
 
         /**
          * Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to sort when
          * there are multiple values from the same DataPivotHierarchy.
-         * @param sortBy Specifies if the sorting is done in ascending or descending order.
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
          * @param valuesHierarchy Specifies the values hierarchy on the data axis to be used for sorting.
          * @param pivotItemScope The items that should be used for the scope of the sorting. These will be the
          * items that make up the row or column that you want to sort on. If a string is used instead of a PivotItem,
@@ -9607,6 +9663,40 @@ declare namespace ExcelScript {
         getName(): string;
     }
 
+    /**
+     * Represents a named sheet view of a worksheet. A sheet view stores the sort and filter rules for a particular worksheet.
+     * Every sheet view (even a temporary sheet view) has a unique, worksheet-scoped name that is used to access the view.
+     */
+    interface NamedSheetView {
+        /**
+         * Gets or sets the name of the sheet view.
+         * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
+         */
+        getName(): string;
+
+        /**
+         * Gets or sets the name of the sheet view.
+         * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
+         */
+        setName(name: string): void;
+
+        /**
+         * Activates this sheet view. This is equivalent to using "Switch To" in the Excel UI.
+         */
+        activate(): void;
+
+        /**
+         * Removes the sheet view from the worksheet.
+         */
+        delete(): void;
+
+        /**
+         * Creates a copy of this sheet view.
+         * @param name The name of the duplicated sheet view. If no name is provided, one will be generated.
+         */
+        duplicate(name?: string): NamedSheetView;
+    }
+
     //
     // Interface
     //
@@ -9839,16 +9929,6 @@ declare namespace ExcelScript {
     }
 
     /**
-     * Represents a string reference of the form "SheetName!A1:B5", or a global or local named range.
-     */
-    interface RangeReference {
-        /**
-         * The address of the range, for example "SheetName!A1:B5".
-         */
-        address: string;
-    }
-
-    /**
      * Represents the necessary strings to get/set a hyperlink (XHL) object.
      */
     interface RangeHyperlink {
@@ -9927,286 +10007,6 @@ declare namespace ExcelScript {
          * Specifies if the match is case-sensitive. Default is `false` (case-insensitive).
          */
         matchCase?: boolean;
-    }
-
-    /**
-     * Specifies which properties to load on the `format.fill` object.
-     */
-    interface CellPropertiesFillLoadOptions {
-        /**
-         * Specifies whether to load the `color` property.
-         */
-        color?: boolean;
-
-        /**
-         * Specifies whether to load the `pattern` property.
-         */
-        pattern?: boolean;
-
-        /**
-         * Specifies whether to load the `patternColor` property.
-         */
-        patternColor?: boolean;
-
-        /**
-         * Specifies whether to load the `patternTintAndShade` property.
-         */
-        patternTintAndShade?: boolean;
-
-        /**
-         * Specifies whether to load the `tintAndShade` property.
-         */
-        tintAndShade?: boolean;
-    }
-
-    /**
-     * Specifies which properties to load on the `format.font` object.
-     */
-    interface CellPropertiesFontLoadOptions {
-        /**
-         * Specifies whether to load the `bold` property.
-         */
-        bold?: boolean;
-
-        /**
-         * Specifies whether to load the `color` property.
-         */
-        color?: boolean;
-
-        /**
-         * Specifies whether to load the `italic` property.
-         */
-        italic?: boolean;
-
-        /**
-         * Specifies whether to load the `name` property.
-         */
-        name?: boolean;
-
-        /**
-         * Specifies whether to load the `size` property.
-         */
-        size?: boolean;
-
-        /**
-         * Specifies whether to load the `strikethrough` property.
-         */
-        strikethrough?: boolean;
-
-        /**
-         * Specifies whether to load the `subscript` property.
-         */
-        subscript?: boolean;
-
-        /**
-         * Specifies whether to load the `superscript` property.
-         */
-        superscript?: boolean;
-
-        /**
-         * Specifies whether to load the `tintAndShade` property.
-         */
-        tintAndShade?: boolean;
-
-        /**
-         * Specifies whether to load the `underline` property.
-         */
-        underline?: boolean;
-    }
-
-    /**
-     * Specifies which properties to load on the `format.borders` object.
-     */
-    interface CellPropertiesBorderLoadOptions {
-        /**
-         * Specifies whether to load the `color` property.
-         */
-        color?: boolean;
-
-        /**
-         * Specifies whether to load the `style` property.
-         */
-        style?: boolean;
-
-        /**
-         * Specifies whether to load the `tintAndShade` property.
-         */
-        tintAndShade?: boolean;
-
-        /**
-         * Specifies whether to load the `weight` property.
-         */
-        weight?: boolean;
-    }
-
-    /**
-     * Represents the `format.protection` properties of `getCellProperties`, `getRowProperties`, and `getColumnProperties`, or the `format.protection` input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
-     */
-    interface CellPropertiesProtection {
-        /**
-         * Represents the `format.protection.formulaHidden` property.
-         */
-        formulaHidden?: boolean;
-
-        /**
-         * Represents the `format.protection.locked` property.
-         */
-        locked?: boolean;
-    }
-
-    /**
-     * Represents the `format.fill` properties of `getCellProperties`, `getRowProperties`, and `getColumnProperties` or the `format.fill` input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
-     */
-    interface CellPropertiesFill {
-        /**
-         * Represents the `format.fill.color` property.
-         */
-        color?: string;
-
-        /**
-         * Represents the `format.fill.pattern` property.
-         */
-        pattern?: FillPattern;
-
-        /**
-         * Represents the `format.fill.patternColor` property.
-         */
-        patternColor?: string;
-
-        /**
-         * Represents the `format.fill.patternTintAndShade` property.
-         */
-        patternTintAndShade?: number;
-
-        /**
-         * Represents the `format.fill.tintAndShade` property.
-         */
-        tintAndShade?: number;
-    }
-
-    /**
-     * Represents the `format.font` properties of `getCellProperties`, `getRowProperties`, and `getColumnProperties`, or the `format.font` input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
-     */
-    interface CellPropertiesFont {
-        /**
-         * Represents the `format.font.bold` property.
-         */
-        bold?: boolean;
-
-        /**
-         * Represents the `format.font.color` property.
-         */
-        color?: string;
-
-        /**
-         * Represents the `format.font.italic` property.
-         */
-        italic?: boolean;
-
-        /**
-         * Represents the `format.font.name` property.
-         */
-        name?: string;
-
-        /**
-         * Represents the `format.font.size` property.
-         */
-        size?: number;
-
-        /**
-         * Represents the `format.font.strikethrough` property.
-         */
-        strikethrough?: boolean;
-
-        /**
-         * Represents the `format.font.subscript` property.
-         */
-        subscript?: boolean;
-
-        /**
-         * Represents the `format.font.superscript` property.
-         */
-        superscript?: boolean;
-
-        /**
-         * Represents the `format.font.tintAndShade` property.
-         */
-        tintAndShade?: number;
-
-        /**
-         * Represents the `format.font.underline` property.
-         */
-        underline?: RangeUnderlineStyle;
-    }
-
-    /**
-     * Represents the `format.borders` properties of `getCellProperties`, `getRowProperties`, and `getColumnProperties`, or the `format.borders` input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
-     */
-    interface CellBorderCollection {
-        /**
-         * Represents the `format.borders.bottom` property.
-         */
-        bottom?: CellBorder;
-
-        /**
-         * Represents the `format.borders.diagonalDown` property.
-         */
-        diagonalDown?: CellBorder;
-
-        /**
-         * Represents the `format.borders.diagonalUp` property.
-         */
-        diagonalUp?: CellBorder;
-
-        /**
-         * Represents the `format.borders.horizontal` property.
-         */
-        horizontal?: CellBorder;
-
-        /**
-         * Represents the `format.borders.left` property.
-         */
-        left?: CellBorder;
-
-        /**
-         * Represents the `format.borders.right` property.
-         */
-        right?: CellBorder;
-
-        /**
-         * Represents the `format.borders.top` property.
-         */
-        top?: CellBorder;
-
-        /**
-         * Represents the `format.borders.vertical` property.
-         */
-        vertical?: CellBorder;
-    }
-
-    /**
-     * Represents the properties of a single border returned by `getCellProperties`, `getRowProperties`, and `getColumnProperties`, or the border property input parameter of `setCellProperties`, `setRowProperties`, and `setColumnProperties`.
-     */
-    interface CellBorder {
-        /**
-         * Represents the `color` property of a single border.
-         */
-        color?: string;
-
-        /**
-         * Represents the `style` property of a single border.
-         */
-        style?: BorderLineStyle;
-
-        /**
-         * Represents the `tintAndShade` property of a single border.
-         */
-        tintAndShade?: number;
-
-        /**
-         * Represents the `weight` property of a single border.
-         */
-        weight?: BorderWeight;
     }
 
     /**
@@ -13118,6 +12918,16 @@ declare namespace ExcelScript {
         richValue,
     }
 
+    enum KeyboardDirection {
+        left,
+
+        right,
+
+        up,
+
+        down,
+    }
+
     /**
      * Specifies the search direction.
      */
@@ -13551,7 +13361,7 @@ declare namespace ExcelScript {
         fillDefault,
 
         /**
-         * Populates the adjacent cells with data based on the selected data.
+         * Populates the adjacent cells with data based on the selected data.
          */
         fillCopy,
 
@@ -13561,12 +13371,12 @@ declare namespace ExcelScript {
         fillSeries,
 
         /**
-         * Populates the adjacent cells with the selected formulas.
+         * Populates the adjacent cells with the selected formulas.
          */
         fillFormats,
 
         /**
-         * Populates the adjacent cells with the selected values.
+         * Populates the adjacent cells with the selected values.
          */
         fillValues,
 
@@ -13591,12 +13401,12 @@ declare namespace ExcelScript {
         fillYears,
 
         /**
-         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a linear trend model.
+         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a linear trend model.
          */
         linearTrend,
 
         /**
-         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a growth trend model.
+         * A version of "FillSeries" for numbers that fills out the values in the adjacent cells according to a growth trend model.
          */
         growthTrend,
 

@@ -27,19 +27,14 @@ methods:
       parameters:
         - id: index
           description: >-
-            Optional. Specifies the relative position of the new column. If null
-            or -1, the addition happens at the end. Columns with a higher index
-            will be shifted to the side. Zero-indexed.
+            Optional. Specifies the relative position of the new column. If null or -1, the addition happens at the end.
+            Columns with a higher index will be shifted to the side. Zero-indexed.
           type: number
         - id: values
-          description: >-
-            Optional. A 1-dimensional array of unformatted values of the table
-            column.
+          description: Optional. A 1-dimensional array of unformatted values of the table column.
           type: '(boolean | string | number)[]'
         - id: name
-          description: >-
-            Optional. Specifies the name of the new column. If null, the default
-            name will be used.
+          description: 'Optional. Specifies the name of the new column. If null, the default name will be used.'
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" />'
@@ -57,14 +52,11 @@ methods:
       parameters:
         - id: index
           description: >-
-            Optional. Specifies the relative position of the new row. If null or
-            -1, the addition happens at the end. Any rows below the inserted row
-            are shifted downwards. Zero-indexed.
+            Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end.
+            Any rows below the inserted row are shifted downwards. Zero-indexed.
           type: number
         - id: values
-          description: >-
-            Optional. A 1-dimensional array of unformatted values of the table
-            row.
+          description: Optional. A 1-dimensional array of unformatted values of the table row.
           type: '(boolean | string | number)[]'
       return:
         type: void
@@ -82,14 +74,11 @@ methods:
       parameters:
         - id: index
           description: >-
-            Optional. Specifies the relative position of the new row. If null or
-            -1, the addition happens at the end. Any rows below the inserted row
-            are shifted downwards. Zero-indexed.
+            Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end.
+            Any rows below the inserted row are shifted downwards. Zero-indexed.
           type: number
         - id: values
-          description: >-
-            Optional. A 2-dimensional array of unformatted values of the table
-            row.
+          description: Optional. A 2-dimensional array of unformatted values of the table row.
           type: '(boolean | string | number)[][]'
       return:
         type: void
@@ -146,15 +135,13 @@ methods:
       parameters:
         - id: index
           description: >-
-            The index value of the row to be deleted. Caution: the index of the
-            row may have moved from the time you determined the value to use for
-            removal.
+            The index value of the row to be deleted. Caution: the index of the row may have moved from the time you
+            determined the value to use for removal.
           type: number
         - id: count
           description: >-
-            Number of rows to delete. By default, a single row will be deleted.
-            Note: Deleting more than 1000 rows at the same time could result in
-            a Power Automate timeout.
+            Number of rows to delete. By default, a single row will be deleted. Note: Deleting more than 1000 rows at
+            the same time could result in a Power Automate timeout.
           type: number
       return:
         type: void
@@ -177,9 +164,8 @@ methods:
     package: ExcelScript!
     fullName: getColumn(key)
     summary: >-
-      Gets a column object by name or ID. If the column doesn't exist, then this
-      function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      Gets a column object by name or ID. If the column doesn't exist, then this function will return an object with its
+      `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -190,17 +176,13 @@ methods:
           description: Column name or ID.
           type: number | string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> | undefined'
         description: ''
   - name: getColumnById(key)
     uid: 'ExcelScript!ExcelScript.Table#getColumnById:member(1)'
     package: ExcelScript!
     fullName: getColumnById(key)
-    summary: >-
-      Gets a column object by ID. If the column does not exist, will return
-      undefined.
+    summary: 'Gets a column object by ID. If the column does not exist, will return undefined.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -211,17 +193,13 @@ methods:
           description: Column ID.
           type: number
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> | undefined'
         description: ''
   - name: getColumnByName(key)
     uid: 'ExcelScript!ExcelScript.Table#getColumnByName:member(1)'
     package: ExcelScript!
     fullName: getColumnByName(key)
-    summary: >-
-      Gets a column object by Name. If the column does not exist, will return
-      undefined.
+    summary: 'Gets a column object by Name. If the column does not exist, will return undefined.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -232,9 +210,7 @@ methods:
           description: Column Name.
           type: string
       return:
-        type: >-
-          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
-          undefined
+        type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> | undefined'
         description: ''
   - name: getColumns()
     uid: 'ExcelScript!ExcelScript.Table#getColumns:member(1)'
@@ -293,9 +269,8 @@ methods:
     package: ExcelScript!
     fullName: getId()
     summary: >-
-      Returns a value that uniquely identifies the table in a given workbook.
-      The value of the identifier remains the same even when the table is
-      renamed.
+      Returns a value that uniquely identifies the table in a given workbook. The value of the identifier remains the
+      same even when the table is renamed.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -335,11 +310,9 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedTableStyle()
     summary: >-
-      Constant value that represents the table style. Possible values are:
-      "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
-      through "TableStyleMedium28", "TableStyleDark1" through
-      "TableStyleDark11". A custom user-defined style present in the workbook
-      can also be specified.
+      Constant value that represents the table style. Possible values are: "TableStyleLight1" through
+      "TableStyleLight21", "TableStyleMedium1" through "TableStyleMedium28", "TableStyleDark1" through
+      "TableStyleDark11". A custom user-defined style present in the workbook can also be specified.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -392,8 +365,8 @@ methods:
     package: ExcelScript!
     fullName: getShowBandedColumns()
     summary: >-
-      Specifies if the columns show banded formatting in which odd columns are
-      highlighted differently from even ones, to make reading the table easier.
+      Specifies if the columns show banded formatting in which odd columns are highlighted differently from even ones,
+      to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -407,8 +380,8 @@ methods:
     package: ExcelScript!
     fullName: getShowBandedRows()
     summary: >-
-      Specifies if the rows show banded formatting in which odd rows are
-      highlighted differently from even ones, to make reading the table easier.
+      Specifies if the rows show banded formatting in which odd rows are highlighted differently from even ones, to make
+      reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -422,8 +395,8 @@ methods:
     package: ExcelScript!
     fullName: getShowFilterButton()
     summary: >-
-      Specifies if the filter buttons are visible at the top of each column
-      header. Setting this is only allowed if the table contains a header row.
+      Specifies if the filter buttons are visible at the top of each column header. Setting this is only allowed if the
+      table contains a header row.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -436,9 +409,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getShowHeaders:member(1)'
     package: ExcelScript!
     fullName: getShowHeaders()
-    summary: >-
-      Specifies if the header row is visible. This value can be set to show or
-      remove the header row.
+    summary: Specifies if the header row is visible. This value can be set to show or remove the header row.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -451,9 +422,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#getShowTotals:member(1)'
     package: ExcelScript!
     fullName: getShowTotals()
-    summary: >-
-      Specifies if the total row is visible. This value can be set to show or
-      remove the total row.
+    summary: Specifies if the total row is visible. This value can be set to show or remove the total row.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -514,6 +483,25 @@ methods:
       return:
         type: void
         description: ''
+  - name: resize(newRange)
+    uid: 'ExcelScript!ExcelScript.Table#resize:member(1)'
+    package: ExcelScript!
+    fullName: resize(newRange)
+    summary: >-
+      Resize the table to the new range. The new range must overlap with the original table range and the headers (or
+      the top of the table) must be in the same row.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'resize(newRange: Range | string): void;'
+      parameters:
+        - id: newRange
+          description: The range object or range address that will be used to determine the new size of the table.
+          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
+      return:
+        type: void
+        description: ''
   - name: setHighlightFirstColumn(highlightFirstColumn)
     uid: 'ExcelScript!ExcelScript.Table#setHighlightFirstColumn:member(1)'
     package: ExcelScript!
@@ -570,11 +558,9 @@ methods:
     package: ExcelScript!
     fullName: setPredefinedTableStyle(predefinedTableStyle)
     summary: >-
-      Constant value that represents the table style. Possible values are:
-      "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
-      through "TableStyleMedium28", "TableStyleDark1" through
-      "TableStyleDark11". A custom user-defined style present in the workbook
-      can also be specified.
+      Constant value that represents the table style. Possible values are: "TableStyleLight1" through
+      "TableStyleLight21", "TableStyleMedium1" through "TableStyleMedium28", "TableStyleDark1" through
+      "TableStyleDark11". A custom user-defined style present in the workbook can also be specified.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -592,8 +578,8 @@ methods:
     package: ExcelScript!
     fullName: setShowBandedColumns(showBandedColumns)
     summary: >-
-      Specifies if the columns show banded formatting in which odd columns are
-      highlighted differently from even ones, to make reading the table easier.
+      Specifies if the columns show banded formatting in which odd columns are highlighted differently from even ones,
+      to make reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -611,8 +597,8 @@ methods:
     package: ExcelScript!
     fullName: setShowBandedRows(showBandedRows)
     summary: >-
-      Specifies if the rows show banded formatting in which odd rows are
-      highlighted differently from even ones, to make reading the table easier.
+      Specifies if the rows show banded formatting in which odd rows are highlighted differently from even ones, to make
+      reading the table easier.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -630,8 +616,8 @@ methods:
     package: ExcelScript!
     fullName: setShowFilterButton(showFilterButton)
     summary: >-
-      Specifies if the filter buttons are visible at the top of each column
-      header. Setting this is only allowed if the table contains a header row.
+      Specifies if the filter buttons are visible at the top of each column header. Setting this is only allowed if the
+      table contains a header row.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -648,9 +634,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#setShowHeaders:member(1)'
     package: ExcelScript!
     fullName: setShowHeaders(showHeaders)
-    summary: >-
-      Specifies if the header row is visible. This value can be set to show or
-      remove the header row.
+    summary: Specifies if the header row is visible. This value can be set to show or remove the header row.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -667,9 +651,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Table#setShowTotals:member(1)'
     package: ExcelScript!
     fullName: setShowTotals(showTotals)
-    summary: >-
-      Specifies if the total row is visible. This value can be set to show or
-      remove the total row.
+    summary: Specifies if the total row is visible. This value can be set to show or remove the total row.
     remarks: ''
     isPreview: false
     isDeprecated: false
