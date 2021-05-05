@@ -464,6 +464,29 @@
       , ['4/17/2020', 'Mariya', 'Salads', '$1600']
       , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
     ];
+'ExcelScript.Shape#getImage:member(1)':
+  - |-
+    /**
+    * This script transfers an image from one worksheet to another.
+    */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the worksheet with the image on it.
+      let firstWorksheet = workbook.getWorksheet("FirstSheet");
+
+      // Get the first image from the worksheet.
+      // If a script added the image, you could add a name to make it easier to find.
+      let image: ExcelScript.Image;
+      firstWorksheet.getShapes().forEach((shape, index) => {
+        if (shape.getType() === ExcelScript.ShapeType.image) {
+          image = shape.getImage();
+          return;
+        }
+      });
+
+      // Copy the image to another worksheet.
+      image.getShape().copyTo("SecondSheet");
+    }
 'ExcelScript.TableSort#apply:member(1)':
   - |-
     /**
