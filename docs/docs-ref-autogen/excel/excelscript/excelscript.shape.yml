@@ -196,7 +196,34 @@ methods:
       content: 'getImage(): Image;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Image:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```javascript
+          /**
+          * This script transfers an image from one worksheet to another.
+          */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the worksheet with the image on it.
+            let firstWorksheet = workbook.getWorksheet("FirstSheet");
+
+            // Get the first image from the worksheet.
+            // If a script added the image, you could add a name to make it easier to find.
+            let image: ExcelScript.Image;
+            firstWorksheet.getShapes().forEach((shape, index) => {
+              if (shape.getType() === ExcelScript.ShapeType.image) {
+                image = shape.getImage();
+                return;
+              }
+            });
+
+            // Copy the image to another worksheet.
+            image.getShape().copyTo("SecondSheet");
+          }
+          ```
   - name: getLeft()
     uid: 'ExcelScript!ExcelScript.Shape#getLeft:member(1)'
     package: ExcelScript!

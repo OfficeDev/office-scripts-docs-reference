@@ -34,7 +34,6 @@ call .\node_modules\.bin\api-documenter yaml --input-folder .\json\excel --outpu
 
 pushd scripts
 call node postprocessor.js
-call .\node_modules\.bin\sdp-cli -s ..\..\docs\docs-ref-autogen
 popd
 
 pause
