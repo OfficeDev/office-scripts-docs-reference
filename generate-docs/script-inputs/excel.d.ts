@@ -1234,12 +1234,12 @@ declare namespace ExcelScript {
         getColumnCount(): number;
 
         /**
-         * Represents if all columns of the current range are hidden.
+         * Represents if all columns in the current range are hidden. Value is `true` when all columns in a range are hidden. Value is `false` when no columns in the range are hidden. Value is `null` when some columns in a range are hidden and other columns in the same range are not hidden.
          */
         getColumnHidden(): boolean;
 
         /**
-         * Represents if all columns of the current range are hidden.
+         * Represents if all columns in the current range are hidden. Value is `true` when all columns in a range are hidden. Value is `false` when no columns in the range are hidden. Value is `null` when some columns in a range are hidden and other columns in the same range are not hidden.
          */
         setColumnHidden(columnHidden: boolean): void;
 
@@ -1301,7 +1301,7 @@ declare namespace ExcelScript {
         getHeight(): number;
 
         /**
-         * Represents if all cells of the current range are hidden.
+         * Represents if all cells in the current range are hidden. Value is `true` when all cells in a range are hidden. Value is `false` when no cells in the range are hidden. Value is `null` when some cells in a range are hidden and other cells in the same range are not hidden.
          */
         getHidden(): boolean;
 
@@ -1370,12 +1370,12 @@ declare namespace ExcelScript {
         getRowCount(): number;
 
         /**
-         * Represents if all rows of the current range are hidden.
+         * Represents if all rows in the current range are hidden. Value is `true` when all rows in a range are hidden. Value is `false` when no rows in the range are hidden. Value is `null` when some rows in a range are hidden and other rows in the same range are not hidden.
          */
         getRowHidden(): boolean;
 
         /**
-         * Represents if all rows of the current range are hidden.
+         * Represents if all rows in the current range are hidden. Value is `true` when all rows in a range are hidden. Value is `false` when no rows in the range are hidden. Value is `null` when some rows in a range are hidden and other rows in the same range are not hidden.
          */
         setRowHidden(rowHidden: boolean): void;
 
