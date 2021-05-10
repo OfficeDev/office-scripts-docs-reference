@@ -612,6 +612,29 @@
       // Print the value of A1.
       console.log(range.getValue());
     }
+'ExcelScript.Worksheet#setName:member(1)':
+  - |-
+    /**
+     * This sample renames a worksheet from "Sheet1" to "SALES".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get a worksheet named "Sheet1".
+      const sheet = workbook.getWorksheet('Sheet1'); 
+
+      // Set its name to SALES.
+      sheet.setName('SALES');
+    }
+'ExcelScript.Worksheet#setPosition:member(1)':
+  - |-
+    /**
+     * This sample sets the worksheet named "SALES" as the first sheet in the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get a worksheet named "SALES".
+      const sheet = workbook.getWorksheet('SALES'); 
+      // Position the worksheet at the beginning of the workbook.
+      sheet.setPosition(0);
+    }
 'ExcelScript.Worksheet#setTabColor:member(1)':
   - |-
     /**
