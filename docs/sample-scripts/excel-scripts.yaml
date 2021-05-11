@@ -535,6 +535,21 @@
       let cell = workbook.getActiveCell();
       console.log(`The current cell's value is ${cell.getValue()}`);
     }
+'ExcelScript.Workbook#getName:member(1)':
+  - |-
+    /**
+     * This script logs the name of the workbook without the ".xlsx" extension.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the workbook's name.
+      let name = workbook.getName();
+
+      // Remove the file extension.
+      name = name.substring(0, name.lastIndexOf(".xlsx"));
+
+      // Display the name in the console.
+      console.log(name);
+    }
 'ExcelScript.Workbook#getWorksheets:member(1)':
   - |-
     /**
