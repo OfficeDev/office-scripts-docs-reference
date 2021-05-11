@@ -460,7 +460,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script logs the value of the current active cell. 
            * If multiple cells are selected, the top-leftmost cell will be logged.
@@ -829,7 +829,26 @@ methods:
       content: 'getName(): string;'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the name of the workbook without the ".xlsx" extension.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the workbook's name.
+            let name = workbook.getName();
+
+            // Remove the file extension.
+            name = name.substring(0, name.lastIndexOf(".xlsx"));
+
+            // Display the name in the console.
+            console.log(name);
+          }
+          ```
   - name: getNamedItem(name)
     uid: 'ExcelScript!ExcelScript.Workbook#getNamedItem:member(1)'
     package: ExcelScript!
@@ -1249,7 +1268,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script logs the names of all the worksheets in the workbook.
            */

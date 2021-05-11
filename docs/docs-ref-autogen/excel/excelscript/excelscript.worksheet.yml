@@ -380,7 +380,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
            */
@@ -525,7 +525,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * The following scripts removes the first worksheet in the workbook.
            */
@@ -824,7 +824,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample gets all the worksheet names in the workbook.
            * It then logs those names to the console.
@@ -1038,7 +1038,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample reads the value of A1 and prints it to the console.
            */
@@ -1441,7 +1441,23 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample renames a worksheet from "Sheet1" to "SALES".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get a worksheet named "Sheet1".
+            const sheet = workbook.getWorksheet('Sheet1'); 
+
+            // Set its name to SALES.
+            sheet.setName('SALES');
+          }
+          ```
   - name: setPosition(position)
     uid: 'ExcelScript!ExcelScript.Worksheet#setPosition:member(1)'
     package: ExcelScript!
@@ -1458,7 +1474,22 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the worksheet named "SALES" as the first sheet in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get a worksheet named "SALES".
+            const sheet = workbook.getWorksheet('SALES'); 
+            // Position the worksheet at the beginning of the workbook.
+            sheet.setPosition(0);
+          }
+          ```
   - name: setShowGridlines(showGridlines)
     uid: 'ExcelScript!ExcelScript.Worksheet#setShowGridlines:member(1)'
     package: ExcelScript!
@@ -1538,7 +1569,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script sets the tab color of every worksheet in the workbook to red.
            */

@@ -30,7 +30,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample applies conditional formatting to the currently used range in the worksheet. 
            * The conditional formatting is a green fill for the top 10% of values.
@@ -116,7 +116,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script removes all the formatting from the selected range.
            */
@@ -214,7 +214,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample creates a sample range, then deletes
            * "A1" using different DeleteShiftDirection values.
@@ -426,7 +426,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample provides the count of negative numbers that are present
            * in the used range of the current worksheet.
@@ -460,7 +460,10 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getColumnHidden:member(1)'
     package: ExcelScript!
     fullName: getColumnHidden()
-    summary: Represents if all columns of the current range are hidden.
+    summary: >-
+      Represents if all columns in the current range are hidden. Value is `true` when all columns in a range are hidden.
+      Value is `false` when no columns in the range are hidden. Value is `null` when some columns in a range are hidden
+      and other columns in the same range are not hidden.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -569,7 +572,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script creates a drop-down selection list for a cell. It uses the existing values of the selected range as the choices for the list.
            */
@@ -709,7 +712,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /*
            * This script sets a cell's formula, 
            * then displays how Excel stores the cell's formula and value separately.
@@ -835,7 +838,10 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getHidden:member(1)'
     package: ExcelScript!
     fullName: getHidden()
-    summary: Represents if all cells of the current range are hidden.
+    summary: >-
+      Represents if all cells in the current range are hidden. Value is `true` when all cells in a range are hidden.
+      Value is `false` when no cells in the range are hidden. Value is `null` when some cells in a range are hidden and
+      other cells in the same range are not hidden.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1114,7 +1120,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script gets adjacent cells using relative references.
            * Note that if the active cell is on the top row, part of the script fails, 
@@ -1236,7 +1242,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This script copies the formatting in the active cell to the neighboring cells.
            * Note that this script only works when the active cell isn't on an edge of the worksheet.
@@ -1292,7 +1298,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample provides the count of negative numbers that are present
            * in the used range of the current worksheet.
@@ -1326,7 +1332,10 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getRowHidden:member(1)'
     package: ExcelScript!
     fullName: getRowHidden()
-    summary: Represents if all rows of the current range are hidden.
+    summary: >-
+      Represents if all rows in the current range are hidden. Value is `true` when all rows in a range are hidden. Value
+      is `false` when no rows in the range are hidden. Value is `null` when some rows in a range are hidden and other
+      rows in the same range are not hidden.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1451,7 +1460,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample gets all the blank cells in the current worksheet's used range. It then highlights all those cells with a yellow background.
            */
@@ -1614,7 +1623,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample reads the value of A1 and prints it to the console.
            */
@@ -1878,7 +1887,10 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#setColumnHidden:member(1)'
     package: ExcelScript!
     fullName: setColumnHidden(columnHidden)
-    summary: Represents if all columns of the current range are hidden.
+    summary: >-
+      Represents if all columns in the current range are hidden. Value is `true` when all columns in a range are hidden.
+      Value is `false` when no columns in the range are hidden. Value is `null` when some columns in a range are hidden
+      and other columns in the same range are not hidden.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1927,7 +1939,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /*
            * This script sets a cell's formula, 
            * then displays how Excel stores the cell's formula and value separately.
@@ -2061,7 +2073,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /** 
            * This script inserts a hyperlink to the first cell of the last worksheet in the workbook.
            */
@@ -2189,7 +2201,10 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#setRowHidden:member(1)'
     package: ExcelScript!
     fullName: setRowHidden(rowHidden)
-    summary: Represents if all rows of the current range are hidden.
+    summary: >-
+      Represents if all rows in the current range are hidden. Value is `true` when all rows in a range are hidden. Value
+      is `false` when no rows in the range are hidden. Value is `null` when some rows in a range are hidden and other
+      rows in the same range are not hidden.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2246,7 +2261,7 @@ methods:
 
           #### Examples
 
-          ```javascript
+          ```TypeScript
           /**
            * This sample inserts some pre-loaded data into a range.
            * It also shows how to get a range that fits the data.
