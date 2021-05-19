@@ -171,7 +171,7 @@ methods:
            */
           async function main(workbook: ExcelScript.Workbook) {
             // Fetch the image from a URL.
-            const link = "https://github.com/OfficeDev/office-scripts-docs/blob/master/docs/images/git-octocat.png";
+            const link = "https://raw.githubusercontent.com/OfficeDev/office-scripts-docs/master/docs/images/git-octocat.png";
             const response = await fetch(link);
 
             // Store the response as an ArrayBuffer, since it is a raw image file.
@@ -180,8 +180,8 @@ methods:
             // Convert the image data into a base64-encoded string.
             const image = convertToBase64(data);
 
-            // Add the image to a worksheet.
-            workbook.getWorksheet("WebSheet").addImage(image)
+            // Add the image to the current worksheet.
+            workbook.getActiveWorksheet().addImage(image)
           }
 
           /**
