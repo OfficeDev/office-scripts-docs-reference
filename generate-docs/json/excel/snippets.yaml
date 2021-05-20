@@ -271,6 +271,44 @@
       // Log the current results for `getFormula` and `getValue` at B1.
       console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
     }
+'ExcelScript.Range#getHyperlink:member(1)':
+  - >-
+    /**
+     * This sample clears all of the hyperlinks from the current worksheet
+     * and removes the usual hyperlink formatting.
+     */
+    function main(workbook: ExcelScript.Workbook, sheetName: string = 'Sheet1')
+    {
+      // Get the active worksheet. 
+      let sheet = workbook.getWorksheet(sheetName);
+
+      // Get the used range to operate on.
+      // For large ranges (over 10000 entries), consider splitting the operation into batches for performance.
+      const targetRange = sheet.getUsedRange(true);
+      console.log(`Target Range to clear hyperlinks from: ${targetRange.getAddress()}`);
+
+      const rowCount = targetRange.getRowCount();
+      const colCount = targetRange.getColumnCount();
+      console.log(`Searching for hyperlinks in ${targetRange.getAddress()} which contains ${(rowCount * colCount)} cells`);
+
+      // Go through each individual cell looking for a hyperlink. 
+      // This allows us to limit the formatting changes to only the cells with hyperlink formatting.
+      let clearedCount = 0;
+      for (let i = 0; i < rowCount; i++) {
+        for (let j = 0; j < colCount; j++) {
+          const cell = targetRange.getCell(i, j);
+          const hyperlink = cell.getHyperlink();
+          if (hyperlink) {
+            cell.clear(ExcelScript.ClearApplyTo.hyperlinks);
+            cell.getFormat().getFont().setUnderline(ExcelScript.RangeUnderlineStyle.none);
+            cell.getFormat().getFont().setColor('Black');
+            clearedCount++;
+          }
+        }
+      }
+
+      console.log(`Done. Cleared hyperlinks from ${clearedCount} cells`);
+    }
 'ExcelScript.Range#getOffsetRange:member(1)':
   - |-
     /**
@@ -318,7 +356,7 @@
       surroundingRange.copyFrom(
         activeCell, /* The source range. */
         ExcelScript.RangeCopyType.formats /* What to copy. */
-        );
+      );
     }
 'ExcelScript.Range#getRowCount:member(1)':
   - |-
@@ -563,6 +601,45 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.Worksheet#addImage:member(1)':
+  - |-
+    /**
+     * This sample copies an image from a URL. This could be used to copy photos that a colleague stored in a shared folder to a related workbook.
+     */
+    async function main(workbook: ExcelScript.Workbook) {
+      // Fetch the image from a URL.
+      const link = "https://raw.githubusercontent.com/OfficeDev/office-scripts-docs/master/docs/images/git-octocat.png";
+      const response = await fetch(link);
+
+      // Store the response as an ArrayBuffer, since it is a raw image file.
+      const data = await response.arrayBuffer();
+
+      // Convert the image data into a base64-encoded string.
+      const image = convertToBase64(data);
+
+      // Add the image to the current worksheet.
+      workbook.getActiveWorksheet().addImage(image)
+    }
+
+    /**
+     * Converts an ArrayBuffer containing a .png image into a base64-encoded string.
+     */
+    function convertToBase64(input: ArrayBuffer) {
+      const uInt8Array = new Uint8Array(input);
+      const count = uInt8Array.length;
+
+      // Allocate the necessary space up front.
+      const charCodeArray = new Array(count) 
+      
+      // Convert every entry in the array to a character.
+      for (let i = count; i >= 0; i--) { 
+        charCodeArray[i] = String.fromCharCode(uInt8Array[i]);
+      }
+
+      // Convert the characters to base64.
+      const base64 = btoa(charCodeArray.join(''));
+      return base64;
     }
 'ExcelScript.Worksheet#addTable:member(1)':
   - |-
