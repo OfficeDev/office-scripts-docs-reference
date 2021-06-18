@@ -693,7 +693,8 @@ methods:
     summary: Gets a new collection of custom XML parts whose namespaces match the given namespace.
     remarks: ''
     isPreview: false
-    isDeprecated: false
+    isDeprecated: true
+    customDeprecatedMessage: Use `getCustomXmlPartsByNamespace` instead.
     syntax:
       content: 'getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];'
       parameters:
@@ -713,6 +714,23 @@ methods:
     isDeprecated: false
     syntax:
       content: 'getCustomXmlParts(): CustomXmlPart[];'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]'
+        description: ''
+  - name: getCustomXmlPartsByNamespace(namespaceUri)
+    uid: 'ExcelScript!ExcelScript.Workbook#getCustomXmlPartsByNamespace:member(1)'
+    package: ExcelScript!
+    fullName: getCustomXmlPartsByNamespace(namespaceUri)
+    summary: Gets a new collection of custom XML parts whose namespaces match the given namespace.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];'
+      parameters:
+        - id: namespaceUri
+          description: 'This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".'
+          type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]'
         description: ''
