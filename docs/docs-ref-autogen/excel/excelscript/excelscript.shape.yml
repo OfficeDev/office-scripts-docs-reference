@@ -77,7 +77,8 @@ methods:
       `ExcelScript.PictureFormat.JPEG`<!-- -->, and `ExcelScript.PictureFormat.GIF`<!-- -->.
     remarks: ''
     isPreview: false
-    isDeprecated: false
+    isDeprecated: true
+    customDeprecatedMessage: Use `getImageAsBase64` instead.
     syntax:
       content: 'getAsImage(format: PictureFormat): string;'
       parameters:
@@ -224,6 +225,26 @@ methods:
             image.getShape().copyTo("SecondSheet");
           }
           ```
+  - name: getImageAsBase64(format)
+    uid: 'ExcelScript!ExcelScript.Shape#getImageAsBase64:member(1)'
+    package: ExcelScript!
+    fullName: getImageAsBase64(format)
+    summary: >-
+      Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
+      formats are `ExcelScript.PictureFormat.BMP`<!-- -->, `ExcelScript.PictureFormat.PNG`<!-- -->,
+      `ExcelScript.PictureFormat.JPEG`<!-- -->, and `ExcelScript.PictureFormat.GIF`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getImageAsBase64(format: PictureFormat): string;'
+      parameters:
+        - id: format
+          description: Specifies the format of the image.
+          type: '<xref uid="ExcelScript!ExcelScript.PictureFormat:enum" />'
+      return:
+        type: string
+        description: ''
   - name: getLeft()
     uid: 'ExcelScript!ExcelScript.Shape#getLeft:member(1)'
     package: ExcelScript!
