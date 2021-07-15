@@ -67,6 +67,46 @@
         }
       }
     }
+'ExcelScript.DataValidation#getType:member(1)':
+  - |-
+    /**
+     * This sample reads and logs the data validation type of the currently selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the currently selected range.
+      let range = workbook.getSelectedRange();
+
+      // Get the type (`DataValidationType`) of data validation applied to the range.
+      let validationType = range.getDataValidation().getType();
+
+      /*
+       * Log the data validation type.
+       * If the range has a single value, it logs that type.
+       * If the range doesn't have data validation applied, it logs "None".
+       * If the range has multiple different types of data validation, it logs "Inconsistent" or "MixedCriteria".
+       */
+      console.log(validationType.toString());
+    }
+'ExcelScript.DataValidationType:enum':
+  - |-
+    /**
+     * This sample reads and logs the data validation type of the currently selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the currently selected range.
+      let range = workbook.getSelectedRange();
+
+      // Get the type (`DataValidationType`) of data validation applied to the range.
+      let validationType = range.getDataValidation().getType();
+
+      /*
+       * Log the data validation type.
+       * If the range has a single value, it logs that type.
+       * If the range doesn't have data validation applied, it logs "None".
+       * If the range has multiple different types of data validation, it logs "Inconsistent" or "MixedCriteria".
+       */
+      console.log(validationType.toString());
+    }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
     /**
