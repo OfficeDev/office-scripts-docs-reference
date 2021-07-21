@@ -1439,8 +1439,8 @@ export declare namespace ExcelScript {
         getValues(): (string | number | boolean)[][];
 
         /**
-         * Represents the raw values of the specified range. The data returned could be a string, number, or boolean. Cells that contain an error will return the error string.
-         * If the returned value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
+         * Sets the raw values of the specified range. The data provided could be a string, number, or boolean.
+         * If the provided value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
          */
         setValues(values: (string | number | boolean)[][]): void;
 
