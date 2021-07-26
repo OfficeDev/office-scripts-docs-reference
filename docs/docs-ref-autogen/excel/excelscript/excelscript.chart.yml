@@ -270,7 +270,32 @@ methods:
       content: 'getPlotBy(): ChartPlotBy;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ChartPlotBy:enum" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample performs the "Switch Row/Column" action on a chart named "ColumnClusteredChart".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get an existing chart named "ColumnClusteredChart".
+            let columnClusteredChart = selectedSheet.getChart("ColumnClusteredChart");
+            
+            // Switch the row and column for the chart's data source.
+            if (columnClusteredChart.getPlotBy() === ExcelScript.ChartPlotBy.columns) {
+              // If the chart is grouped by columns, switch it to rows.
+              columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.rows);
+            } else {
+              // If the chart is grouped by rows, switch it to columns.
+              columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.columns);
+            }
+          }
+          ```
   - name: getPlotVisibleOnly()
     uid: 'ExcelScript!ExcelScript.Chart#getPlotVisibleOnly:member(1)'
     package: ExcelScript!
@@ -296,7 +321,30 @@ methods:
       content: 'getSeries(): ChartSeries[];'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ChartSeries:interface" />[]'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the overlap of the columns in a chart named "ColumnClusteredChart".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get an existing chart named "ColumnClusteredChart".
+            let chart = selectedSheet.getChart("ColumnClusteredChart");
+
+            // Set the overlap of every column of each series within a category.
+            let seriesList = chart.getSeries();
+            seriesList.forEach((series) => {
+              // An overlap of 25 means the columns have 25% of their length overlapping with the adjacent columns in the same category.
+              series.setOverlap(25);
+            });
+          }
+          ```
   - name: getSeriesNameLevel()
     uid: 'ExcelScript!ExcelScript.Chart#getSeriesNameLevel:member(1)'
     package: ExcelScript!
@@ -531,7 +579,29 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample creates a column-clustered chart based on the current worksheet's data.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the data range.
+            let range = selectedSheet.getUsedRange();
+
+            // Insert a chart using the data on the current worksheet.
+            let chart = selectedSheet.addChart(ExcelScript.ChartType.columnClustered, range);
+
+            // Name the chart for easy access in other scripts.
+            chart.setName("ColumnChart");
+          }
+          ```
   - name: setPlotBy(plotBy)
     uid: 'ExcelScript!ExcelScript.Chart#setPlotBy:member(1)'
     package: ExcelScript!
@@ -548,7 +618,32 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.ChartPlotBy:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample performs the "Switch Row/Column" action on a chart named "ColumnClusteredChart".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get an existing chart named "ColumnClusteredChart".
+            let columnClusteredChart = selectedSheet.getChart("ColumnClusteredChart");
+            
+            // Switch the row and column for the chart's data source.
+            if (columnClusteredChart.getPlotBy() === ExcelScript.ChartPlotBy.columns) {
+              // If the chart is grouped by columns, switch it to rows.
+              columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.rows);
+            } else {
+              // If the chart is grouped by rows, switch it to columns.
+              columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.columns);
+            }
+          }
+          ```
   - name: setPlotVisibleOnly(plotVisibleOnly)
     uid: 'ExcelScript!ExcelScript.Chart#setPlotVisibleOnly:member(1)'
     package: ExcelScript!
@@ -589,7 +684,26 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample moves an existing chart to a specific place on the worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+            
+            // Get an existing chart named "ColumnChart".
+            let chart = selectedSheet.getChart("ColumnChart");
+
+            // Place the chart over the range "F1:L13".
+            chart.setPosition("F1", "L13");
+          }
+          ```
   - name: setSeriesNameLevel(seriesNameLevel)
     uid: 'ExcelScript!ExcelScript.Chart#setSeriesNameLevel:member(1)'
     package: ExcelScript!
