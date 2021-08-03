@@ -268,9 +268,9 @@ function averageDescriptionRatings(ratings: DescriptionRating[]) : DescriptionRa
 function convertToCsv(apiCoverage: Map<string, ClassCoverageRating>) : string {
     let csvString = "Class,Field,Type,Description Rating, Has Example?\n";
     apiCoverage.forEach((coverage, className) => {
-        csvString += `${className},,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
+        csvString += `${className},N/A,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
         coverage.apiRatings.forEach((fieldCoverage, fieldName) => {
-            csvString += `,${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
+            csvString += `${className},${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
         });
     });
 
