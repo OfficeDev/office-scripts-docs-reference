@@ -270,7 +270,7 @@ function convertToCsv(apiCoverage: Map<string, ClassCoverageRating>) : string {
     apiCoverage.forEach((coverage, className) => {
         csvString += `${className},,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
         coverage.apiRatings.forEach((fieldCoverage, fieldName) => {
-            csvString += `,${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
+            csvString += `${className},${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
         });
     });
 
