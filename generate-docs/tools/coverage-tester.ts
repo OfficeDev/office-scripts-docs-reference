@@ -5,6 +5,16 @@ import * as jsyaml from "js-yaml";
 import * as path from "path";
 
 /**
+ * The type of API being measured
+ */
+enum ApiType{
+    Class = "Class",
+    EnumField = "EnumField",
+    Property = "Property",
+    Method = "Method"
+}
+
+/**
  * A measure for how "good" an API description is.
  */
 enum DescriptionRating {
@@ -18,6 +28,7 @@ enum DescriptionRating {
  * A combination of description quality and example usage to measure coverage.
  */
 class CoverageRating {
+    type: ApiType;
     descriptionRating: DescriptionRating;
     hasExample: boolean;
 }
@@ -32,6 +43,7 @@ class ClassCoverageRating {
     constructor() {
         this.apiRatings = new Map();
         this.classRating = {
+            type: ApiType.Class,
             descriptionRating: DescriptionRating.Missing,
             hasExample: false
         };
@@ -141,6 +153,7 @@ function rateClass(classYml: ApiYaml) : ClassCoverageRating {
     classYml.fields?.forEach((field) => {
         // Note: examples in enum fields are intentionally not supported.
         ymlCoverage.apiRatings.set(field.name, {
+            type: ApiType.EnumField,
             descriptionRating: rateDescriptionString(field.summary),
             hasExample: false
         });
@@ -163,11 +176,13 @@ function rateClassDescription(classYml: ApiYaml) : CoverageRating {
     let indexOfExample = classYml.remarks?.indexOf("#### Examples");
     if (indexOfExample > 0) {
         rating = {
+            type: ApiType.Class,
             descriptionRating: rateDescriptionString((classYml.summary + " " + classYml.remarks.substring(0, indexOfExample)).trim()),
             hasExample: true
         }
     } else {
         rating = {
+            type: ApiType.Class,
             descriptionRating: rateDescriptionString((classYml.summary + " " + classYml.remarks).trim()),
             hasExample: false
         }
@@ -182,11 +197,13 @@ function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml) : Cover
     
     if (indexOfExample > 0) {
         rating = {
+            type: fieldYml instanceof ApiPropertyYaml ? ApiType.Property : ApiType.Method,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks.substring(0, indexOfExample)).trim()),
             hasExample: true
         }
     } else {
         rating = {
+            type: fieldYml instanceof ApiPropertyYaml ? ApiType.Property : ApiType.Method,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks).trim()),
             hasExample: false
         }
@@ -249,11 +266,11 @@ function averageDescriptionRatings(ratings: DescriptionRating[]) : DescriptionRa
 }
 
 function convertToCsv(apiCoverage: Map<string, ClassCoverageRating>) : string {
-    let csvString = "Class,Field,Description Rating, Has Example?\n";
+    let csvString = "Class,Field,Type,Description Rating, Has Example?\n";
     apiCoverage.forEach((coverage, className) => {
-        csvString += `${className},,${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
+        csvString += `${className},N/A,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
         coverage.apiRatings.forEach((fieldCoverage, fieldName) => {
-            csvString += `,${fieldName},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
+            csvString += `${className},${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
         });
     });
 

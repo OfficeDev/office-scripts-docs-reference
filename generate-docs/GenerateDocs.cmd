@@ -36,4 +36,10 @@ pushd scripts
 call node postprocessor.js
 popd
 
+pushd tools
+call npm install
+call npm run build
+call node coverage-tester.js
+popd
+
 pause
