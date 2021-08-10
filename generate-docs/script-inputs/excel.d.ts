@@ -3374,7 +3374,7 @@ declare namespace ExcelScript {
          * The aspect ratio is preserved as part of the resizing.
          * @param height Optional. The desired height of the resulting image.
          * @param width Optional. The desired width of the resulting image.
-         * @param fittingMode Optional. The method used to scale the chart to the specified to the specified dimensions (if both height and width are set).
+         * @param fittingMode Optional. The method used to scale the chart to the specified dimensions (if both height and width are set).
          */
         getImage(
             width?: number,
