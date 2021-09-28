@@ -4,7 +4,26 @@ uid: 'ExcelScript!ExcelScript.Range:interface'
 package: ExcelScript!
 fullName: ExcelScript.Range
 summary: 'Range represents a set of one or more contiguous cells such as a cell, a row, a column, block of cells, etc.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script logs the address of the used range in the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current, active worksheet.
+    let currentWorksheet = workbook.getActiveWorksheet();
+
+    // Get the range containing all the cells with data or formatting.
+    let usedRange = currentWorksheet.getUsedRange();
+
+    // Log the range's address to the console.
+    console.log(usedRange.getAddress());
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -81,7 +100,29 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.AutoFillType:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the autofill feature to complete a table.
+           * See https://support.microsoft.com/74e31bdd-d993-45da-aa82-35a236c5b5db
+           * for examples of autofill scenarios.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current, active worksheet.
+            let currentWorksheet = workbook.getActiveWorksheet();
+
+            // Get the data range that shows the pattern.
+            let dataRange = currentWorksheet.getRange("C2:C3");
+
+            // Autofill the connected range. C2:C3 are filled in. C4:C14 are blank.
+            // This uses the default behavior to match a pattern with the table's contents.
+            dataRange.autoFill("C2:C14");
+          }
+          ```
   - name: calculate()
     uid: 'ExcelScript!ExcelScript.Range#calculate:member(1)'
     package: ExcelScript!
@@ -94,7 +135,28 @@ methods:
       content: 'calculate(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script recalculates the used range of a specific worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Only recalculate if the calculation mode is not set to automatic.
+            if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
+              // Get the used range from a worksheet named "Monthly Report".
+              let sheet = workbook.getWorksheet("Monthly Report");
+              let range = sheet.getUsedRange();
+              console.log(`Calculating ${range.getAddress()}`);
+
+              // Force all the used cells in that worksheet to calculate.
+              sheet.getUsedRange().calculate();
+            }
+          }
+          ```
   - name: clear(applyTo)
     uid: 'ExcelScript!ExcelScript.Range#clear:member(1)'
     package: ExcelScript!
@@ -192,7 +254,30 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script copies a table from one worksheet to a new worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the worksheet named "TableTemplate".
+            let base = workbook.getWorksheet("TableTemplate");
+            
+            // Get the range to be copied based on the first table.
+            let tableRange = base.getTables()[0].getRange();
+
+            // Get the area in a new worksheet for the new table.
+            let newWorksheet = workbook.addWorksheet();
+            let newRange = newWorksheet.getRangeByIndexes(0,0, tableRange.getRowCount(), tableRange.getColumnCount());
+
+            // Copy the existing data into the new range.
+            newRange.copyFrom(tableRange);
+          }
+          ```
   - name: delete(shift)
     uid: 'ExcelScript!ExcelScript.Range#delete:member(1)'
     package: ExcelScript!
@@ -271,7 +356,30 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script looks through a table column and finds cells marked "default". 
+           * Those cells have "default" replaced with the number 2000.
+           * This script uses Range.find instead of Worksheet.findAll to limit the search to a specific range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range of a table named "Orders".
+            let table = workbook.getTable("Orders");
+            let range = table.getColumnByName("Count").getRange();
+            
+            // Find all cells with the value "default".
+            let defaultCell = range.find("default", { completeMatch: true });
+            while (defaultCell) {
+              defaultCell.setValue(2000);
+              defaultCell = range.find("default", { completeMatch: true });
+            }
+          }
+          ```
   - name: flashFill()
     uid: 'ExcelScript!ExcelScript.Range#flashFill:member(1)'
     package: ExcelScript!
@@ -286,7 +394,28 @@ methods:
       content: 'flashFill(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the Flash Fill feature to complete a table.
+           * See https://support.microsoft.com/office/3f9bcf1e-db93-4890-94a0-1578341f73f7
+           * for the example table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current, active worksheet.
+            let currentWorksheet = workbook.getActiveWorksheet();
+
+            // Get the data range with a pattern and cells to fill. C2 is filled in. C3:C6 are blank.
+            let dataRange = currentWorksheet.getRange("C2:C6");
+
+            // Flash fill the connected range. 
+            dataRange.flashFill();
+          }
+          ```
   - name: 'getAbsoluteResizedRange(numRows, numColumns)'
     uid: 'ExcelScript!ExcelScript.Range#getAbsoluteResizedRange:member(1)'
     package: ExcelScript!

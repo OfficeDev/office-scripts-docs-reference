@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.AutoFillType:enum'
 package: ExcelScript!
 fullName: ExcelScript.AutoFillType
 summary: The behavior types when AutoFill is used on a range in the workbook.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script uses the autofill feature to complete a table with days of the month.
+   * See https://support.microsoft.com/74e31bdd-d993-45da-aa82-35a236c5b5db
+   * for examples of autofill scenarios.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current, active worksheet.
+    let currentWorksheet = workbook.getActiveWorksheet();
+
+    // Get the data range that shows the pattern.
+    let dataRange = currentWorksheet.getRange("C2:C3");
+
+    // Autofill the connected range. C2:C3 are filled in with dates. C4:C54 are blank.
+    dataRange.autoFill("C2:C54", ExcelScript.AutoFillType.fillDays);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
