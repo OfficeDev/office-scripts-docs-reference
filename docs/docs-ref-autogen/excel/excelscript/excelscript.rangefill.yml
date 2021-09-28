@@ -117,7 +117,23 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the fill color of cell A2 to blue.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range representing cell A2 from the current worksheet.
+            let cell = workbook.getActiveWorksheet().getRange("A2");
+
+            // Set the fill color to blue.
+            cell.getFormat().getFill().setColor("blue");
+          }
+          ```
   - name: setPattern(pattern)
     uid: 'ExcelScript!ExcelScript.RangeFill#setPattern:member(1)'
     package: ExcelScript!

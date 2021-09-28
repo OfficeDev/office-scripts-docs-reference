@@ -112,7 +112,26 @@ methods:
       content: 'getFill(): RangeFill;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeFill:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gives the total row of a table a green color fill.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            let table = workbook.getTables()[0];
+
+            // Get the range for the total row of the table.
+            let totalRange = table.getTotalRowRange();
+
+            // Set the fill color to green.
+            totalRange.getFormat().getFill().setColor("green");
+          }
+          ```
   - name: getFont()
     uid: 'ExcelScript!ExcelScript.RangeFormat#getFont:member(1)'
     package: ExcelScript!
@@ -181,7 +200,27 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.BorderIndex:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeBorder:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a border around the outside of a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get a range from the current worksheet.
+            let range = workbook.getActiveWorksheet().getRange("B2:E15");
+
+            // Add a border around the whole bounding range.
+            let format = range.getFormat();
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+          }
+          ```
   - name: getRangeBorderTintAndShade()
     uid: 'ExcelScript!ExcelScript.RangeFormat#getRangeBorderTintAndShade:member(1)'
     package: ExcelScript!

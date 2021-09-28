@@ -118,7 +118,27 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.BorderLineStyle:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a border around the outside of a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get a range from the current worksheet.
+            let range = workbook.getActiveWorksheet().getRange("B2:E15");
+
+            // Add a border around the whole bounding range.
+            let format = range.getFormat();
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+          }
+          ```
   - name: setTintAndShade(tintAndShade)
     uid: 'ExcelScript!ExcelScript.RangeBorder#setTintAndShade:member(1)'
     package: ExcelScript!

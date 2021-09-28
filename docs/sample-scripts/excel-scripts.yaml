@@ -486,21 +486,61 @@
 'ExcelScript.Range#find:member(1)':
   - |-
     /**
-     * This script looks through a table column and finds cells marked "default". 
-     * Those cells have "default" replaced with the number 2000.
-     * This script uses Range.find instead of Worksheet.findAll to limit the search to a specific range.
+     * This script looks through a table column and finds cells marked "no change". 
+     * Those cells have "no change" replaced with the value from the cell to the left.
+     * This script uses Range.find instead of Worksheet.findAll 
+     * to limit the search to a specific range.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the range of a table named "Orders".
       let table = workbook.getTable("Orders");
-      let range = table.getColumnByName("Count").getRange();
-      
-      // Find all cells with the value "default".
-      let defaultCell = range.find("default", { completeMatch: true });
-      while (defaultCell) {
-        defaultCell.setValue(2000);
-        defaultCell = range.find("default", { completeMatch: true });
+      let range = table.getColumnByName("March").getRange();
+
+      // Find all cells with the value "no change".
+      let cellToOverwrite = range.find("no change", { completeMatch: true });
+      while (cellToOverwrite) {
+        let cellToCopyFrom = cellToOverwrite.getOffsetRange(0,-1);
+        cellToOverwrite.setValue(cellToCopyFrom.getValue());
+        cellToOverwrite = range.find("no change", { completeMatch: true });
       }
+    }
+'ExcelScript.Range#getAddress:member(1)':
+  - |-
+    /**
+     * This script logs the address of the used range in each worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Iterate over every worksheet in the workbook.
+      workbook.getWorksheets().forEach((sheet) => {
+        // Get the used range for a single worksheet.
+        let range = sheet.getUsedRange();
+
+        // Print the address of the used range to the console.
+        console.log(range.getAddress());
+      });
+    }
+'ExcelScript.Range#getBoundingRect:member(1)':
+  - |-
+    /**
+     * This script gets the bounding range of two existing ranges and puts a border around it.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+
+      // Create two range objects for the sample.
+      let range1 = sheet.getRange("B2:C5");
+      let range2 = sheet.getRange("D10:E15");
+
+      // Get the rectangular range that fully includes both ranges.
+      let boundingRectangle = range1.getBoundingRect(range2);
+
+      // Add a border around the whole bounding range (B2:E15).
+      let borders = boundingRectangle.getFormat().getBorders();
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
 'ExcelScript.Range#getColumnCount:member(1)':
   - |-
@@ -564,6 +604,21 @@
             source: dataValidationListString
           }
         });
+    }
+'ExcelScript.Range#getFormat:member(1)':
+  - |-
+    /**
+     * This script gives the total row of a table a green color fill.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      let table = workbook.getTables()[0];
+
+      // Get the range for the total row of the table.
+      let totalRange = table.getTotalRowRange();
+
+      // Set the fill color to green.
+      totalRange.getFormat().getFill().setColor("green");
     }
 'ExcelScript.Range#getFormula:member(1)':
   - |-
@@ -732,6 +787,22 @@
       // Print the value of A1.
       console.log(range.getValue());
     }
+'ExcelScript.Range#replaceAll:member(1)':
+  - |-
+    /**
+     * This script looks through a table column and replaces  
+     * cells marked "monthly special" with "parsnip".
+     * This script uses Range.replaceAll instead of Worksheet.replaceAll
+     * to limit the search to a specific range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range of a table named "Orders".
+      let table = workbook.getTable("Orders");
+      let range = table.getColumnByName("Vegetable").getRange();
+      
+      // Change the value of any cells with the value "monthly special".
+      range.replaceAll("monthly special", "parsnip", {completeMatch: true});
+    }
 'ExcelScript.Range#setFormula:member(1)':
   - |-
     /*
@@ -815,6 +886,65 @@
       , ['4/17/2020', 'Mariya', 'Salads', '$1600']
       , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
     ];
+'ExcelScript.RangeBorder#setStyle:member(1)':
+  - |-   
+    /**
+     * This script adds a border around the outside of a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get a range from the current worksheet.
+      let range = workbook.getActiveWorksheet().getRange("B2:E15");
+
+      // Add a border around the whole bounding range.
+      let format = range.getFormat();
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+    }
+'ExcelScript.RangeFill#setColor:member(1)':
+  - |-
+    /**
+     * This script sets the fill color of cell A2 to blue.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range representing cell A2 from the current worksheet.
+      let cell = workbook.getActiveWorksheet().getRange("A2");
+
+      // Set the fill color to blue.
+      cell.getFormat().getFill().setColor("blue");
+    }
+'ExcelScript.RangeFormat#getFill:member(1)':
+  - |-
+    /**
+     * This script gives the total row of a table a green color fill.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      let table = workbook.getTables()[0];
+
+      // Get the range for the total row of the table.
+      let totalRange = table.getTotalRowRange();
+
+      // Set the fill color to green.
+      totalRange.getFormat().getFill().setColor("green");
+    }
+'ExcelScript.RangeFormat#getRangeBorder:member(1)':
+  - |-   
+    /**
+     * This script adds a border around the outside of a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get a range from the current worksheet.
+      let range = workbook.getActiveWorksheet().getRange("B2:E15");
+
+      // Add a border around the whole bounding range.
+      let format = range.getFormat();
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+      format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
