@@ -654,7 +654,26 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.WorksheetSearchCriteria:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script looks through a worksheet and finds cells containing "No". 
+           * Those cells are filled red.
+           * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current, active worksheet.
+            let worksheet = workbook.getActiveWorksheet();
+            let noCells = worksheet.findAll("No", { completeMatch: true });
+
+            // Set the fill color to red.
+            noCells.getFormat().getFill().setColor("red");
+          }
+          ```
   - name: getActiveNamedSheetView()
     uid: 'ExcelScript!ExcelScript.Worksheet#getActiveNamedSheetView:member(1)'
     package: ExcelScript!

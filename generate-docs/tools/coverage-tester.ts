@@ -193,7 +193,10 @@ function rateClassDescription(classYml: ApiYaml) : CoverageRating {
 
 function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml) : CoverageRating {
     let rating : CoverageRating;
-    let indexOfExample = fieldYml.syntax.return.description?.indexOf("#### Examples");
+    let indexOfExample = Math.max(
+        fieldYml.remarks?.indexOf("#### Examples"), 
+        fieldYml.syntax.return.description?.indexOf("#### Examples")
+    );
     
     if (indexOfExample > 0) {
         rating = {
@@ -266,7 +269,7 @@ function averageDescriptionRatings(ratings: DescriptionRating[]) : DescriptionRa
 }
 
 function convertToCsv(apiCoverage: Map<string, ClassCoverageRating>) : string {
-    let csvString = "Class,Field,Type,Description Rating, Has Example?\n";
+    let csvString = "Class,Field,Type,Description Rating,Has Example?\n";
     apiCoverage.forEach((coverage, className) => {
         csvString += `${className},N/A,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
         coverage.apiRatings.forEach((fieldCoverage, fieldName) => {
