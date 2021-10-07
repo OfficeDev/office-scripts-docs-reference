@@ -308,6 +308,25 @@
       */
       console.log(currentSheet.getRange("A1:D4").getValues()); 
     }
+'ExcelScript.KeyboardDirection:enum':
+  - |-
+    /**
+     * This script makes the font bold on all the contiguous cells between 
+     * A1 and the bottom of the used range of the first column.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get every cell that's used between A1 and the end of the column.
+      // This recreates the Ctrl+Shift+Down arrow key behavior.
+      let firstCell = selectedSheet.getRange("A1");
+      let firstColumn = firstCell.getExtendedRange(ExcelScript.KeyboardDirection.down);
+
+      // Set the font to bold in that range.
+      firstColumn.getFormat().getFont().setBold(true);
+    }
 'ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)':
   - |-
     /**
@@ -605,6 +624,25 @@
           }
         });
     }
+'ExcelScript.Range#getExtendedRange:member(1)':
+  - |-
+    /**
+     * This script makes the font bold on all the contiguous cells between 
+     * A1 and the bottom of the used range of the first column.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get every cell that's used between A1 and the end of the column.
+      // This recreates the Ctrl+Shift+Down arrow key behavior.
+      let firstCell = selectedSheet.getRange("A1");
+      let firstColumn = firstCell.getExtendedRange(ExcelScript.KeyboardDirection.down);
+
+      // Set the font to bold in that range.
+      firstColumn.getFormat().getFont().setBold(true);
+    }
 'ExcelScript.Range#getFormat:member(1)':
   - |-
     /**
@@ -703,6 +741,25 @@
       console.log(`The above cell's address is: ${aboveCell.getAddress()}`);
       aboveCell.getFormat().getFont().setColor("White");
       aboveCell.getFormat().getFill().setColor("Black");
+    }
+'ExcelScript.Range#getRangeEdge:member(1)':
+  - |-
+    /**
+     * This script adds the value "Total" after the end of the first column.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the last used cell at the end of the column.
+      // This recreates the Ctrl+Down arrow key behavior.
+      let firstCell = selectedSheet.getRange("A1");
+      let firstColumn = selectedSheet.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down);
+      let cellAfter = firstColumn.getOffsetRange(1, 0);
+
+      // Set the value of the cell after the current end of the used column to "Total".
+      cellAfter.setValue("Total");
     }
 'ExcelScript.Range#getResizedRange:member(1)':
   - |-
