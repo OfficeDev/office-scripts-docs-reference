@@ -21,7 +21,26 @@ methods:
       content: 'activate(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script switches the active view to a worksheet named "Data", if it exists.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check if the "Data" worksheet exists.
+            let dataWorksheet = workbook.getWorksheet("Data");
+            if (dataWorksheet) {
+              // Switch to the "Data" worksheet.
+              dataWorksheet.activate();
+            } else {
+              console.log(`No worksheet named "Data" in this workbook.`);
+            }
+          }
+          ```
   - name: 'addChart(type, sourceData, seriesBy)'
     uid: 'ExcelScript!ExcelScript.Worksheet#addChart:member(1)'
     package: ExcelScript!
@@ -569,7 +588,31 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script duplicates a worksheet named "Template". 
+           * The new worksheet is added after the template.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the worksheet named "Template".
+            let template = workbook.getWorksheet("Template");
+
+            // Copy the worksheet.
+            let newSheet = template.copy(
+              ExcelScript.WorksheetPositionType.after,
+              template
+            );
+
+            // Name the worksheet using the current date.
+            let date = new Date(Date.now());
+            newSheet.setName(`${date.toDateString()}`);
+          }
+          ```
   - name: delete()
     uid: 'ExcelScript!ExcelScript.Worksheet#delete:member(1)'
     package: ExcelScript!

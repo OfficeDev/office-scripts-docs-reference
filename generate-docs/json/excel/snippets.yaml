@@ -1061,6 +1061,21 @@
         type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
       });
     }
+'ExcelScript.Workbook#addWorksheet:member(1)':
+  - |-
+    /**
+     * This script adds a new worksheet named "Data" to the workbook.
+     * If a worksheet with that name already exists, the script logs a note.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Check if the "Data" worksheet already exists.
+      if (workbook.getWorksheet("Data")) {
+        console.log("The Data worksheet is already in the workbook.");
+      } else {
+        // Add a new worksheet.
+        let worksheet = workbook.addWorksheet("Data");
+      }
+    }
 'ExcelScript.Workbook#getActiveCell:member(1)':
   - |-
     /**
@@ -1087,6 +1102,21 @@
       // Display the name in the console.
       console.log(name);
     }
+'ExcelScript.Workbook#getWorksheet:member(1)':
+  - |-
+    /**
+     * This script switches the active view to a worksheet named "Data", if it exists.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Check if the "Data" worksheet exists.
+      let dataWorksheet = workbook.getWorksheet("Data");
+      if (dataWorksheet) {
+        // Switch to the "Data" worksheet.
+        dataWorksheet.activate();
+      } else {
+        console.log(`No worksheet named "Data" in this workbook.`);
+      }
+    }
 'ExcelScript.Workbook#getWorksheets:member(1)':
   - |-
     /**
@@ -1102,6 +1132,33 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.Workbook:interface':
+  - |-
+    /**
+     * This script adds a new worksheet to the workbook and switches to it.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Add a new worksheet with the default name.
+      let worksheet = workbook.addWorksheet();
+
+      // Switch focus to the new worksheet.
+      worksheet.activate();
+    }
+'ExcelScript.Worksheet#activate:member(1)':
+  - |-
+    /**
+     * This script switches the active view to a worksheet named "Data", if it exists.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Check if the "Data" worksheet exists.
+      let dataWorksheet = workbook.getWorksheet("Data");
+      if (dataWorksheet) {
+        // Switch to the "Data" worksheet.
+        dataWorksheet.activate();
+      } else {
+        console.log(`No worksheet named "Data" in this workbook.`);
+      }
     }
 'ExcelScript.Worksheet#addChart:member(1)':
   - |-
@@ -1175,6 +1232,26 @@
 
       // Sort the table using the first column.
       newTable.getSort().apply([{ key: 0, ascending: true }]);
+    }
+'ExcelScript.Worksheet#copy:member(1)':
+  - |-
+    /**
+     * This script duplicates a worksheet named "Template". 
+     * The new worksheet is added after the template.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the worksheet named "Template".
+      let template = workbook.getWorksheet("Template");
+
+      // Copy the worksheet.
+      let newSheet = template.copy(
+        ExcelScript.WorksheetPositionType.after,
+        template
+      );
+
+      // Name the worksheet using the current date.
+      let date = new Date(Date.now());
+      newSheet.setName(`${date.toDateString()}`);
     }
 'ExcelScript.Worksheet#delete:member(1)':
   - |-
@@ -1288,4 +1365,24 @@
         // Set the color of the current worksheet's tab to red.
         sheet.setTabColor("red");
       }
+    }
+'ExcelScript.WorksheetPositionType:enum':
+  - |-
+    /**
+     * This script duplicates a worksheet named "Template". 
+     * The new worksheet is added after the template.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the worksheet named "Template".
+      let template = workbook.getWorksheet("Template");
+
+      // Copy the worksheet.
+      let newSheet = template.copy(
+        ExcelScript.WorksheetPositionType.after,
+        template
+      );
+
+      // Name the worksheet using the current date.
+      let date = new Date(Date.now());
+      newSheet.setName(`${date.toDateString()}`);
     }

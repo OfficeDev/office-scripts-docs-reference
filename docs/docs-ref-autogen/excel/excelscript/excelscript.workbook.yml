@@ -4,7 +4,23 @@ uid: 'ExcelScript!ExcelScript.Workbook:interface'
 package: ExcelScript!
 fullName: ExcelScript.Workbook
 summary: 'Workbook is the top level object which contains related workbook objects such as worksheets, tables, and ranges.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds a new worksheet to the workbook and switches to it.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Add a new worksheet with the default name.
+    let worksheet = workbook.addWorksheet();
+
+    // Switch focus to the new worksheet.
+    worksheet.activate();
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -442,7 +458,26 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a new worksheet named "Data" to the workbook.
+           * If a worksheet with that name already exists, the script logs a note.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check if the "Data" worksheet already exists.
+            if (workbook.getWorksheet("Data")) {
+              console.log("The Data worksheet is already in the workbook.");
+            } else {
+              // Add a new worksheet.
+              let worksheet = workbook.addWorksheet("Data");
+            }
+          }
+          ```
   - name: getActiveCell()
     uid: 'ExcelScript!ExcelScript.Workbook#getActiveCell:member(1)'
     package: ExcelScript!
@@ -1268,7 +1303,26 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script switches the active view to a worksheet named "Data", if it exists.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check if the "Data" worksheet exists.
+            let dataWorksheet = workbook.getWorksheet("Data");
+            if (dataWorksheet) {
+              // Switch to the "Data" worksheet.
+              dataWorksheet.activate();
+            } else {
+              console.log(`No worksheet named "Data" in this workbook.`);
+            }
+          }
+          ```
   - name: getWorksheets()
     uid: 'ExcelScript!ExcelScript.Workbook#getWorksheets:member(1)'
     package: ExcelScript!
