@@ -4,7 +4,31 @@ uid: 'ExcelScript!ExcelScript.WorksheetPositionType:enum'
 package: ExcelScript!
 fullName: ExcelScript.WorksheetPositionType
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script duplicates a worksheet named "Template". 
+   * The new worksheet is added after the template.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the worksheet named "Template".
+    let template = workbook.getWorksheet("Template");
+
+    // Copy the worksheet.
+    let newSheet = template.copy(
+      ExcelScript.WorksheetPositionType.after,
+      template
+    );
+
+    // Name the worksheet using the current date.
+    let date = new Date(Date.now());
+    newSheet.setName(`${date.toDateString()}`);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
