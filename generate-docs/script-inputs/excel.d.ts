@@ -11,6 +11,25 @@ declare namespace ExcelScript {
     //
 
     /**
+     * Contains information about a linked workbook.
+     * If a workbook has links pointing to data in another workbook, the second workbook is linked to the first workbook.
+     * In this scenario, the second workbook is called the "linked workbook".
+     */
+    interface LinkedWorkbook {
+        /**
+         * Makes a request to break the links pointing to the linked workbook.
+         * Links in formulas are replaced with the latest fetched data.
+         * The current `LinkedWorkbook` object is invalidated and removed from `LinkedWorkbookCollection`.
+         */
+        breakLinks(): void;
+
+        /**
+         * Makes a request to refresh the data retrieved from the linked workbook.
+         */
+        refreshLinks(): void;
+    }
+
+    /**
      * Represents the Excel application that manages the workbook.
      */
     interface Application {
@@ -311,6 +330,39 @@ declare namespace ExcelScript {
          * @param id ID of the object to be retrieved.
          */
         getCustomXmlPart(id: string): CustomXmlPart | undefined;
+
+        /**
+         * Returns a collection of linked workbooks. In formulas, the workbook links can be used to reference data (cell values and names) outside of the current workbook.
+         */
+        getLinkedWorkbooks(): LinkedWorkbook[];
+
+        /**
+         * Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the workbook.
+         */
+        getLinkedWorkbookRefreshMode(): WorkbookLinksRefreshMode;
+
+        /**
+         * Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the workbook.
+         */
+        setLinkedWorkbookRefreshMode(
+            linkedWorkbookRefreshMode: WorkbookLinksRefreshMode
+        ): void;
+
+        /**
+         * Breaks all the links to the linked workbooks. Once the links are broken, any formulas referencing workbook links are removed entirely and replaced with the most recently retrieved values.
+         */
+        breakAllLinksToLinkedWorkbooks(): void;
+
+        /**
+         * Gets information about a linked workbook by its URL. If the workbook does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * @param key The URL of the linked workbook.
+         */
+        getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;
+
+        /**
+         * Makes a request to refresh all the workbook links.
+         */
+        refreshAllLinksToLinkedWorkbooks(): void;
 
         /**
          * Represents a collection of workbook-scoped named items (named ranges and constants).
@@ -1217,7 +1269,7 @@ declare namespace ExcelScript {
     }
 
     /**
-     * Range represents a set of one or more contiguous cells such as a cell, a row, a column, block of cells, etc.
+     * Range represents a set of one or more contiguous cells such as a cell, a row, a column, or a block of cells.
      */
     interface Range {
         /**
@@ -1505,11 +1557,7 @@ declare namespace ExcelScript {
         delete(shift: DeleteShiftDirection): void;
 
         /**
-         * Finds the given string based on the criteria specified.
-         * If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
-         * If there are no matches, then this function will return an object with its `isNullObject` property set to `true`.
-         * @param text The string to find.
-         * @param criteria Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case-sensitive.
+         * Finds the given string based on the criteria specified. If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell. If there are no matches, then this function returns `undefined`.
          */
         find(text: string, criteria: SearchCriteria): Range;
 
@@ -1587,8 +1635,7 @@ declare namespace ExcelScript {
         getImage(): string;
 
         /**
-         * Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is found, then this function will return an object with its `isNullObject` property set to `true`.
-         * @param anotherRange The range object or range address that will be used to determine the intersection of ranges.
+         * Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is found, then this function returns `undefined`.
          */
         getIntersection(anotherRange: Range | string): Range;
 
@@ -1661,10 +1708,7 @@ declare namespace ExcelScript {
         getRowsBelow(count?: number): Range;
 
         /**
-         * Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the specified type and value.
-         * If no special cells are found, then this function will return an object with its `isNullObject` property set to `true`.
-         * @param cellType The type of cells to include.
-         * @param cellValueType If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
+         * Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the specified type and value. If no special cells are found, then this function returns `undefined`.
          */
         getSpecialCells(
             cellType: SpecialCellType,
@@ -1672,14 +1716,12 @@ declare namespace ExcelScript {
         ): RangeAreas;
 
         /**
-         * Gets the range object containing the anchor cell for the cell getting spilled into.
-         * If it's not a spilled cell, or more than one cell is given, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the range object containing the anchor cell for the cell getting spilled into. If it's not a spilled cell, or more than one cell is given, then this function returns `undefined`.
          */
         getSpillParent(): Range;
 
         /**
-         * Gets the range object containing the spill range when called on an anchor cell.
-         * If the range isn't an anchor cell or the spill range can't be found, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the range object containing the spill range when called on an anchor cell. If the range isn't an anchor cell or the spill range can't be found, then this function returns `undefined`.
          */
         getSpillingToRange(): Range;
 
@@ -1695,8 +1737,7 @@ declare namespace ExcelScript {
         getTables(fullyContained?: boolean): Table[];
 
         /**
-         * Returns the used range of the given range object. If there are no used cells within the range, then this function will return an object with its `isNullObject` property set to `true`.
-         * @param valuesOnly Considers only cells with values as used cells.
+         * Returns the used range of the given range object. If there are no used cells within the range, then this function returns `undefined`.
          */
         getUsedRange(valuesOnly?: boolean): Range;
 
@@ -6229,7 +6270,7 @@ declare namespace ExcelScript {
         ): void;
 
         /**
-         * Clears the filter criteria of the AutoFilter.
+         * Clears the filter criteria and sort state of the AutoFilter.
          */
         clearCriteria(): void;
 
@@ -9229,12 +9270,12 @@ declare namespace ExcelScript {
         setColor(color: string): void;
 
         /**
-         * Represents the line style of the shape. Returns `null` when the line is not visible or there are inconsistent dash styles. See `ExcelScript.ShapeLineStyle` for details.
+         * Represents the line style of the shape. Returns `null` when the line is not visible or there are inconsistent dash styles. See `ExcelScript.ShapeLineDashStyle` for details.
          */
         getDashStyle(): ShapeLineDashStyle;
 
         /**
-         * Represents the line style of the shape. Returns `null` when the line is not visible or there are inconsistent dash styles. See `ExcelScript.ShapeLineStyle` for details.
+         * Represents the line style of the shape. Returns `null` when the line is not visible or there are inconsistent dash styles. See `ExcelScript.ShapeLineDashStyle` for details.
          */
         setDashStyle(dashStyle: ShapeLineDashStyle): void;
 
@@ -10628,6 +10669,21 @@ declare namespace ExcelScript {
     //
 
     /**
+     * Represents the refresh mode of the workbook links.
+     */
+    enum WorkbookLinksRefreshMode {
+        /**
+         * The workbook links are updated manually.
+         */
+        manual,
+
+        /**
+         * The workbook links are updated at a set interval determined by the Excel application.
+         */
+        automatic,
+    }
+
+    /**
      * Enum representing all accepted conditions by which a date filter can be applied.
      * Used to configure the type of PivotFilter that is applied to the field.
      */
@@ -11046,741 +11102,6 @@ declare namespace ExcelScript {
          * Required Criteria: {`value`, `threshold`, `selectionType`}.
          */
         bottomN,
-    }
-
-    /**
-     * Represents a built-in PivotTable style
-     */
-    enum BuiltInPivotTableStyle {
-        /**
-         * None
-         */
-        none,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with header borders and footer borders.
-         */
-        light1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with header borders and footer borders.
-         */
-        light2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with header borders and footer borders.
-         */
-        light3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with header borders and footer borders.
-         */
-        light4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with header borders and footer borders.
-         */
-        light5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with header borders and footer borders.
-         */
-        light6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with header borders and footer borders.
-         */
-        light7,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light8,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light9,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light10,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light11,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light12,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light13,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with header borders, footer borders, first column border, and striped rows.
-         */
-        light14,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light15,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light16,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light17,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light18,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light19,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light20,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header and striped bordered rows.
-         */
-        light21,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light22,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light23,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light24,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light25,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light26,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light27,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with header borders, footer borders, and bordered columns.
-         */
-        light28,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and footer border.
-         */
-        medium7,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium8,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium9,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium10,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium11,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium12,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium13,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and total row border.
-         */
-        medium14,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium15,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium16,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium17,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium18,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium19,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium20,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, filled footer, and shaded body.
-         */
-        medium21,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium22,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium23,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium24,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium25,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium26,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium27,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled first column, and shaded body.
-         */
-        medium28,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and shaded body.
-         */
-        dark7,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark8,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark9,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark10,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark11,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark12,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark13,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and outside border.
-         */
-        dark14,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark15,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark16,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark17,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark18,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark19,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark20,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, filled footer, and striped rows.
-         */
-        dark21,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark22,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark23,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark24,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark25,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark26,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark27,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with shaded body, and white borders.
-         */
-        dark28,
-    }
-
-    /**
-     * Represents a built-in table style.
-     */
-    enum BuiltInTableStyle {
-        /**
-         * "Dark 1" (black in the default "Office" theme) with header borders and bottom border.
-         */
-        light1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with header borders and bottom border.
-         */
-        light2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with header borders and bottom border.
-         */
-        light3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with header borders and bottom border.
-         */
-        light4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with header borders and bottom border.
-         */
-        light5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with header borders and bottom border.
-         */
-        light6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with header borders and bottom border.
-         */
-        light7,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light8,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light9,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light10,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light11,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light12,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light13,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, outside border, and row borders.
-         */
-        light14,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with cell borders.
-         */
-        light15,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with cell borders.
-         */
-        light16,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with cell borders.
-         */
-        light17,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with cell borders.
-         */
-        light18,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with cell borders.
-         */
-        light19,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with cell borders.
-         */
-        light20,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with cell borders.
-         */
-        light21,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, outside border, and row borders.
-         */
-        medium7,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium8,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium9,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium10,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium11,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium12,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium13,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, and striped rows.
-         */
-        medium14,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium15,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium16,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium17,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium18,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium19,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium20,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and cell borders.
-         */
-        medium21,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium22,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium23,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium24,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium25,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium26,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium27,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with striped rows, and cell borders.
-         */
-        medium28,
-
-        /**
-         * "Dark 1" (black in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark1,
-
-        /**
-         * "Accent 1" (blue in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark2,
-
-        /**
-         * "Accent 2" (orange in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark3,
-
-        /**
-         * "Accent 3" (gray in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark4,
-
-        /**
-         * "Accent 4" (yellow in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark5,
-
-        /**
-         * "Accent 5" (light blue in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark6,
-
-        /**
-         * "Accent 6" (green in the default "Office" theme) with filled header, striped rows, and dark.
-         */
-        dark7,
-
-        /**
-         * Black with filled header, striped rows, light
-         */
-        dark8,
-
-        /**
-         * Orange with filled header, striped rows, light
-         */
-        dark9,
-
-        /**
-         * Yellow with filled header, striped rows, light
-         */
-        dark10,
-
-        /**
-         * Green with filled header, striped rows, light
-         */
-        dark11,
     }
 
     /**
