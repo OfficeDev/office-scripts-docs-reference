@@ -1,0 +1,42 @@
+### YamlMime:TSType
+name: ExcelScript.LinkedWorkbook
+uid: 'ExcelScript!ExcelScript.LinkedWorkbook:interface'
+package: ExcelScript!
+fullName: ExcelScript.LinkedWorkbook
+summary: >-
+  Contains information about a linked workbook. If a workbook has links pointing to data in another workbook, the second
+  workbook is linked to the first workbook. In this scenario, the second workbook is called the "linked workbook".
+remarks: ''
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: breakLinks()
+    uid: 'ExcelScript!ExcelScript.LinkedWorkbook#breakLinks:member(1)'
+    package: ExcelScript!
+    fullName: breakLinks()
+    summary: >-
+      Makes a request to break the links pointing to the linked workbook. Links in formulas are replaced with the latest
+      fetched data. The current `LinkedWorkbook` object is invalidated and removed from `LinkedWorkbookCollection`<!--
+      -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'breakLinks(): void;'
+      return:
+        type: void
+        description: ''
+  - name: refreshLinks()
+    uid: 'ExcelScript!ExcelScript.LinkedWorkbook#refreshLinks:member(1)'
+    package: ExcelScript!
+    fullName: refreshLinks()
+    summary: Makes a request to refresh the data retrieved from the linked workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refreshLinks(): void;'
+      return:
+        type: void
+        description: ''

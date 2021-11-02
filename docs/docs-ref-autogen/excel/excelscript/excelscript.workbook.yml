@@ -478,6 +478,21 @@ methods:
             }
           }
           ```
+  - name: breakAllLinksToLinkedWorkbooks()
+    uid: 'ExcelScript!ExcelScript.Workbook#breakAllLinksToLinkedWorkbooks:member(1)'
+    package: ExcelScript!
+    fullName: breakAllLinksToLinkedWorkbooks()
+    summary: >-
+      Breaks all the links to the linked workbooks. Once the links are broken, any formulas referencing workbook links
+      are removed entirely and replaced with the most recently retrieved values.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'breakAllLinksToLinkedWorkbooks(): void;'
+      return:
+        type: void
+        description: ''
   - name: getActiveCell()
     uid: 'ExcelScript!ExcelScript.Workbook#getActiveCell:member(1)'
     package: ExcelScript!
@@ -869,6 +884,55 @@ methods:
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
+        description: ''
+  - name: getLinkedWorkbookByUrl(key)
+    uid: 'ExcelScript!ExcelScript.Workbook#getLinkedWorkbookByUrl:member(1)'
+    package: ExcelScript!
+    fullName: getLinkedWorkbookByUrl(key)
+    summary: >-
+      Gets information about a linked workbook by its URL. If the workbook does not exist, then this function will
+      return an object with its `isNullObject` property set to `true`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;'
+      parameters:
+        - id: key
+          description: The URL of the linked workbook.
+          type: string
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.LinkedWorkbook:interface" /> | undefined'
+        description: ''
+  - name: getLinkedWorkbookRefreshMode()
+    uid: 'ExcelScript!ExcelScript.Workbook#getLinkedWorkbookRefreshMode:member(1)'
+    package: ExcelScript!
+    fullName: getLinkedWorkbookRefreshMode()
+    summary: >-
+      Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the
+      workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbookRefreshMode(): WorkbookLinksRefreshMode;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum" />'
+        description: ''
+  - name: getLinkedWorkbooks()
+    uid: 'ExcelScript!ExcelScript.Workbook#getLinkedWorkbooks:member(1)'
+    package: ExcelScript!
+    fullName: getLinkedWorkbooks()
+    summary: >-
+      Returns a collection of linked workbooks. In formulas, the workbook links can be used to reference data (cell
+      values and names) outside of the current workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbooks(): LinkedWorkbook[];'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.LinkedWorkbook:interface" />[]'
         description: ''
   - name: getName()
     uid: 'ExcelScript!ExcelScript.Workbook#getName:member(1)'
@@ -1369,6 +1433,19 @@ methods:
       return:
         type: void
         description: ''
+  - name: refreshAllLinksToLinkedWorkbooks()
+    uid: 'ExcelScript!ExcelScript.Workbook#refreshAllLinksToLinkedWorkbooks:member(1)'
+    package: ExcelScript!
+    fullName: refreshAllLinksToLinkedWorkbooks()
+    summary: Makes a request to refresh all the workbook links.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refreshAllLinksToLinkedWorkbooks(): void;'
+      return:
+        type: void
+        description: ''
   - name: refreshAllPivotTables()
     uid: 'ExcelScript!ExcelScript.Workbook#refreshAllPivotTables:member(1)'
     package: ExcelScript!
@@ -1490,6 +1567,28 @@ methods:
         - id: isDirty
           description: ''
           type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setLinkedWorkbookRefreshMode(linkedWorkbookRefreshMode)
+    uid: 'ExcelScript!ExcelScript.Workbook#setLinkedWorkbookRefreshMode:member(1)'
+    package: ExcelScript!
+    fullName: setLinkedWorkbookRefreshMode(linkedWorkbookRefreshMode)
+    summary: >-
+      Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the
+      workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        setLinkedWorkbookRefreshMode(
+                    linkedWorkbookRefreshMode: WorkbookLinksRefreshMode
+                ): void;
+      parameters:
+        - id: linkedWorkbookRefreshMode
+          description: ''
+          type: '<xref uid="ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum" />'
       return:
         type: void
         description: ''
