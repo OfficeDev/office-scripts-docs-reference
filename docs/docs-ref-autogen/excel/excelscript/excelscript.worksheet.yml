@@ -771,8 +771,7 @@ methods:
     fullName: getChart(name)
     summary: >-
       Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If
-      the chart doesn't exist, then this function will return an object with its `isNullObject` property set to
-      `true`<!-- -->.
+      the chart doesn't exist, then this function returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -780,7 +779,7 @@ methods:
       content: 'getChart(name: string): Chart | undefined;'
       parameters:
         - id: name
-          description: Name of the chart to be retrieved.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Chart:interface" /> | undefined'
@@ -993,8 +992,8 @@ methods:
     package: ExcelScript!
     fullName: getNamedItem(name)
     summary: >-
-      Gets a `NamedItem` object using its name. If the object does not exist, then this function will return an object
-      with its `isNullObject` property set to `true`<!-- -->.
+      Gets a `NamedItem` object using its name. If the object does not exist, then this function returns `undefined`<!--
+      -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1002,7 +1001,7 @@ methods:
       content: 'getNamedItem(name: string): NamedItem | undefined;'
       parameters:
         - id: name
-          description: Nameditem name.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" /> | undefined'
@@ -1057,8 +1056,8 @@ methods:
     package: ExcelScript!
     fullName: getNext(visibleOnly)
     summary: >-
-      Gets the worksheet that follows this one. If there are no worksheets following this one, then this method will
-      return an object with its `isNullObject` property set to `true`<!-- -->.
+      Gets the worksheet that follows this one. If there are no worksheets following this one, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1066,7 +1065,7 @@ methods:
       content: 'getNext(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
+          description: ''
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -1088,9 +1087,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getPivotTable:member(1)'
     package: ExcelScript!
     fullName: getPivotTable(name)
-    summary: >-
-      Gets a PivotTable by name. If the PivotTable does not exist, then this function returns an object with its
-      `isNullObject` property set to `true`<!-- -->.
+    summary: 'Gets a PivotTable by name. If the PivotTable does not exist, then this function returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1098,7 +1095,7 @@ methods:
       content: 'getPivotTable(name: string): PivotTable | undefined;'
       parameters:
         - id: name
-          description: Name of the PivotTable to be retrieved.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> | undefined'
@@ -1134,8 +1131,8 @@ methods:
     package: ExcelScript!
     fullName: getPrevious(visibleOnly)
     summary: >-
-      Gets the worksheet that precedes this one. If there are no previous worksheets, then this method will return an
-      object with its `isNullObject` property set to `true`<!-- -->.
+      Gets the worksheet that precedes this one. If there are no previous worksheets, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1143,7 +1140,7 @@ methods:
       content: 'getPrevious(visibleOnly?: boolean): Worksheet;'
       parameters:
         - id: visibleOnly
-          description: 'Optional. If `true`<!-- -->, considers only visible worksheets, skipping over any hidden ones.'
+          description: ''
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
@@ -1314,9 +1311,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getSlicer:member(1)'
     package: ExcelScript!
     fullName: getSlicer(key)
-    summary: >-
-      Gets a slicer using its name or ID. If the slicer doesn't exist, then this function will return an object with its
-      `isNullObject` property set to `true`<!-- -->.
+    summary: 'Gets a slicer using its name or ID. If the slicer doesn''t exist, then this function returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1324,7 +1319,7 @@ methods:
       content: 'getSlicer(key: string): Slicer | undefined;'
       parameters:
         - id: key
-          description: Name or ID of the slicer to be retrieved.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" /> | undefined'
@@ -1392,9 +1387,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getTable:member(1)'
     package: ExcelScript!
     fullName: getTable(key)
-    summary: >-
-      Gets a table by name or ID. If the table doesn't exist, then this function will return an object with its
-      `isNullObject` property set to `true`<!-- -->.
+    summary: 'Gets a table by name or ID. If the table doesn''t exist, then this function returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1402,7 +1395,7 @@ methods:
       content: 'getTable(key: string): Table | undefined;'
       parameters:
         - id: key
-          description: Name or ID of the table to be retrieved.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" /> | undefined'
@@ -1469,7 +1462,7 @@ methods:
     fullName: getWorksheetCustomProperty(key)
     summary: >-
       Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then
-      this function will return an object with its `isNullObject` property set to `true`<!-- -->.
+      this function returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1480,7 +1473,7 @@ methods:
                 ): WorksheetCustomProperty | undefined;
       parameters:
         - id: key
-          description: The key that identifies the custom property object. It is case-insensitive.
+          description: ''
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.WorksheetCustomProperty:interface" /> | undefined'
