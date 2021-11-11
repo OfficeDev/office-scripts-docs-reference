@@ -326,7 +326,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a custom XML part based on its ID. If the `CustomXmlPart` does not exist, then this function returns `undefined`.
-         * @param id - ID of the binding object to be retrieved.
+         * @param id - ID of the object to be retrieved.
          */
         getCustomXmlPart(id: string): CustomXmlPart | undefined;
 
@@ -508,7 +508,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a slicer using its name or ID. If the slicer doesn't exist, then this function returns `undefined`.
-         * @param name - Name of the slicer style to be retrieved.
+         * @param key - Name or ID of the slicer to be retrieved.
          */
         getSlicer(key: string): Slicer | undefined;
 
@@ -1185,7 +1185,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a table by name or ID. If the table doesn't exist, then this function returns `undefined`.
-         * @param key - Name or ID of the slicer to be retrieved.
+         * @param key - Name or ID of the table to be retrieved.
          */
         getTable(key: string): Table | undefined;
 
@@ -6272,7 +6272,6 @@ export declare namespace ExcelScript {
 
         /**
          * Returns the `Range` object that represents the range to which the AutoFilter applies. If there is no `Range` object associated with the AutoFilter, then this method returns `undefined`.
-         * @param name - Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getRange(): Range;
 
@@ -7168,7 +7167,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this function returns `undefined`.
-         * @param name - Name of the PivotItem to be retrieved.
+         * @param key - Required. The key that identifies the custom property object.
          */
         getCustomProperty(key: string): CustomProperty | undefined;
     }
