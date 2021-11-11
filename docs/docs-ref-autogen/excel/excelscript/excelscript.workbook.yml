@@ -252,7 +252,26 @@ methods:
                     
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to an existing worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+            let pivotTable = workbook.addPivotTable("My Pivot", table, "PivotSheet!A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
   - name: 'addPivotTableStyle(name, makeUniqueName)'
     uid: 'ExcelScript!ExcelScript.Workbook#addPivotTableStyle:member(1)'
     package: ExcelScript!
