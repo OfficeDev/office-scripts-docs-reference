@@ -6468,6 +6468,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this function returns `undefined`.
+         * @param name - Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getColumnHierarchy(name: string): RowColumnPivotHierarchy | undefined;
 
