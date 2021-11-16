@@ -1634,7 +1634,7 @@ export declare namespace ExcelScript {
          * 
          * **Note**: There is a known issue with `Range.getImage` that causes wrapped text or text that exceeds the cell width to render on the same line without line wrapping. 
          * This makes the resulting image unreadable, since the text overflows across the entire row. 
-         * As a workaround, make sure the data in the range fits in each of the cells as a single-line.
+         * As a workaround, make sure the data in the range fits in each of the cells as a singleline.
          */
         getImage(): string;
 
