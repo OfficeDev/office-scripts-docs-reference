@@ -1632,7 +1632,9 @@ declare namespace ExcelScript {
         /**
          * Renders the range as a base64-encoded png image.
          * 
-         * **Note**: There is a known issue with `Range.getImage` that causes longer or wrapped text string to render without line wrapping and in smaller cells. This makes the resulting image unreadable.
+         * **Note**: There is a known issue with `Range.getImage` that causes wrapped text or text that exceeds the cell width to render on the same line without line wrapping. 
+         * This makes the resulting image unreadable, since the text overflows across the entire row. 
+         * As a workaround, make sure the data in the range fits in each of the cells as a single-line.
          */
         getImage(): string;
 
