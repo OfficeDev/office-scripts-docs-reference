@@ -209,12 +209,12 @@ declare namespace ExcelScript {
         getActiveCell(): Range;
 
         /**
-         * Gets the currently active chart in the workbook. If there is no active chart, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the currently active chart in the workbook. If there is no active chart, then this function returns `undefined`.
          */
         getActiveChart(): Chart;
 
         /**
-         * Gets the currently active slicer in the workbook. If there is no active slicer, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the currently active slicer in the workbook. If there is no active slicer, then this function returns `undefined`.
          */
         getActiveSlicer(): Slicer;
 
@@ -267,7 +267,7 @@ declare namespace ExcelScript {
         addBindingFromSelection(bindingType: BindingType, id: string): Binding;
 
         /**
-         * Gets a binding object by ID. If the binding object does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a binding object by ID. If the binding object does not exist, then this function returns `undefined`.
          * @param id ID of the binding object to be retrieved.
          */
         getBinding(id: string): Binding | undefined;
@@ -325,8 +325,7 @@ declare namespace ExcelScript {
         getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];
 
         /**
-         * Gets a custom XML part based on its ID.
-         * If the `CustomXmlPart` does not exist, then this function returns an object with its `isNullObject` property set to `true`.
+         * Gets a custom XML part based on its ID. If the `CustomXmlPart` does not exist, then this function returns `undefined`.
          * @param id ID of the object to be retrieved.
          */
         getCustomXmlPart(id: string): CustomXmlPart | undefined;
@@ -394,7 +393,7 @@ declare namespace ExcelScript {
         ): NamedItem;
 
         /**
-         * Gets a `NamedItem` object using its name. If the object does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `NamedItem` object using its name. If the object does not exist, then this function returns `undefined`.
          * @param name Nameditem name.
          */
         getNamedItem(name: string): NamedItem | undefined;
@@ -420,7 +419,7 @@ declare namespace ExcelScript {
         getDefaultPivotTableStyle(): PivotTableStyle;
 
         /**
-         * Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist, then this function returns `undefined`.
          * @param name Name of the PivotTable style to be retrieved.
          */
         getPivotTableStyle(name: string): PivotTableStyle | undefined;
@@ -451,7 +450,7 @@ declare namespace ExcelScript {
         ): PivotTable;
 
         /**
-         * Gets a PivotTable by name. If the PivotTable does not exist, then this function returns an object with its `isNullObject` property set to `true`.
+         * Gets a PivotTable by name. If the PivotTable does not exist, then this function returns `undefined`.
          * @param name Name of the PivotTable to be retrieved.
          */
         getPivotTable(name: string): PivotTable | undefined;
@@ -479,7 +478,7 @@ declare namespace ExcelScript {
         getDefaultSlicerStyle(): SlicerStyle;
 
         /**
-         * Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this function returns `undefined`.
          * @param name Name of the slicer style to be retrieved.
          */
         getSlicerStyle(name: string): SlicerStyle | undefined;
@@ -508,7 +507,7 @@ declare namespace ExcelScript {
         ): Slicer;
 
         /**
-         * Gets a slicer using its name or ID. If the slicer doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a slicer using its name or ID. If the slicer doesn't exist, then this function returns `undefined`.
          * @param key Name or ID of the slicer to be retrieved.
          */
         getSlicer(key: string): Slicer | undefined;
@@ -548,7 +547,7 @@ declare namespace ExcelScript {
         getDefaultTableStyle(): TableStyle;
 
         /**
-         * Gets a `TableStyle` by name. If the table style does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `TableStyle` by name. If the table style does not exist, then this function returns `undefined`.
          * @param name Name of the table style to be retrieved.
          */
         getTableStyle(name: string): TableStyle | undefined;
@@ -572,7 +571,7 @@ declare namespace ExcelScript {
         addTable(address: Range | string, hasHeaders: boolean): Table;
 
         /**
-         * Gets a table by name or ID. If the table doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a table by name or ID. If the table doesn't exist, then this function returns `undefined`.
          * @param key Name or ID of the table to be retrieved.
          */
         getTable(key: string): Table | undefined;
@@ -595,7 +594,7 @@ declare namespace ExcelScript {
         getDefaultTimelineStyle(): TimelineStyle;
 
         /**
-         * Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then this function returns `undefined`.
          * @param name Name of the timeline style to be retrieved.
          */
         getTimelineStyle(name: string): TimelineStyle | undefined;
@@ -629,7 +628,7 @@ declare namespace ExcelScript {
         getFirstWorksheet(visibleOnly?: boolean): Worksheet;
 
         /**
-         * Gets a worksheet object using its name or ID. If the worksheet does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a worksheet object using its name or ID. If the worksheet does not exist, then this function returns `undefined`.
          * @param key The name or ID of the worksheet.
          */
         getWorksheet(key: string): Worksheet | undefined;
@@ -838,13 +837,13 @@ declare namespace ExcelScript {
         getCell(row: number, column: number): Range;
 
         /**
-         * Gets the worksheet that follows this one. If there are no worksheets following this one, then this method will return an object with its `isNullObject` property set to `true`.
+         * Gets the worksheet that follows this one. If there are no worksheets following this one, then this method returns `undefined`.
          * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getNext(visibleOnly?: boolean): Worksheet;
 
         /**
-         * Gets the worksheet that precedes this one. If there are no previous worksheets, then this method will return an object with its `isNullObject` property set to `true`.
+         * Gets the worksheet that precedes this one. If there are no previous worksheets, then this method returns `undefined`.
          * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getPrevious(visibleOnly?: boolean): Worksheet;
@@ -921,7 +920,7 @@ declare namespace ExcelScript {
         ): Chart;
 
         /**
-         * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If the chart doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If the chart doesn't exist, then this function returns `undefined`.
          * @param name Name of the chart to be retrieved.
          */
         getChart(name: string): Chart | undefined;
@@ -977,7 +976,7 @@ declare namespace ExcelScript {
         ): WorksheetCustomProperty;
 
         /**
-         * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this function returns `undefined`.
          * @param key The key that identifies the custom property object. It is case-insensitive.
          */
         getWorksheetCustomProperty(
@@ -1065,7 +1064,7 @@ declare namespace ExcelScript {
         ): NamedItem;
 
         /**
-         * Gets a `NamedItem` object using its name. If the object does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a `NamedItem` object using its name. If the object does not exist, then this function returns `undefined`.
          * @param name Nameditem name.
          */
         getNamedItem(name: string): NamedItem | undefined;
@@ -1088,7 +1087,7 @@ declare namespace ExcelScript {
         ): PivotTable;
 
         /**
-         * Gets a PivotTable by name. If the PivotTable does not exist, then this function returns an object with its `isNullObject` property set to `true`.
+         * Gets a PivotTable by name. If the PivotTable does not exist, then this function returns `undefined`.
          * @param name Name of the PivotTable to be retrieved.
          */
         getPivotTable(name: string): PivotTable | undefined;
@@ -1167,7 +1166,7 @@ declare namespace ExcelScript {
         ): Slicer;
 
         /**
-         * Gets a slicer using its name or ID. If the slicer doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a slicer using its name or ID. If the slicer doesn't exist, then this function returns `undefined`.
          * @param key Name or ID of the slicer to be retrieved.
          */
         getSlicer(key: string): Slicer | undefined;
@@ -1185,7 +1184,7 @@ declare namespace ExcelScript {
         addTable(address: Range | string, hasHeaders: boolean): Table;
 
         /**
-         * Gets a table by name or ID. If the table doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a table by name or ID. If the table doesn't exist, then this function returns `undefined`.
          * @param key Name or ID of the table to be retrieved.
          */
         getTable(key: string): Table | undefined;
@@ -1256,9 +1255,7 @@ declare namespace ExcelScript {
         freezeRows(count?: number): void;
 
         /**
-         * Gets a range that describes the frozen cells in the active worksheet view.
-         * The frozen range corresponds to cells that are frozen in the top- and left-most pane.
-         * If there is no frozen pane, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a range that describes the frozen cells in the active worksheet view. The frozen range corresponds to cells that are frozen in the top- and left-most pane. If there is no frozen pane, then this function returns `undefined`.
          */
         getLocation(): Range;
 
@@ -2061,7 +2058,7 @@ declare namespace ExcelScript {
         getEntireRow(): RangeAreas;
 
         /**
-         * Returns the `RangeAreas` object that represents the intersection of the given ranges or `RangeAreas`. If no intersection is found, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the `RangeAreas` object that represents the intersection of the given ranges or `RangeAreas`. If no intersection is found, then this function returns `undefined`.
          * @param anotherRange The range, `RangeAreas` object, or address that will be used to determine the intersection.
          */
         getIntersection(anotherRange: Range | RangeAreas | string): RangeAreas;
@@ -2077,7 +2074,7 @@ declare namespace ExcelScript {
         ): RangeAreas;
 
         /**
-         * Returns a `RangeAreas` object that represents all the cells that match the specified type and value. If no special cells are found that match the criteria, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns a `RangeAreas` object that represents all the cells that match the specified type and value. If no special cells are found that match the criteria, then this function returns `undefined`.
          * @param cellType The type of cells to include.
          * @param cellValueType If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
@@ -2093,8 +2090,7 @@ declare namespace ExcelScript {
         getTables(fullyContained?: boolean): Table[];
 
         /**
-         * Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the `RangeAreas` object.
-         * If there are no used cells within the `RangeAreas`, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the `RangeAreas` object. If there are no used cells within the `RangeAreas`, then this function returns `undefined`.
          * @param valuesOnly Whether to only consider cells with values as used cells.
          */
         getUsedRangeAreas(valuesOnly?: boolean): RangeAreas;
@@ -2142,7 +2138,7 @@ declare namespace ExcelScript {
         getAddresses(): string[];
 
         /**
-         * Returns the `RangeAreas` object based on worksheet name or ID in the collection. If the worksheet does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the `RangeAreas` object based on worksheet name or ID in the collection. If the worksheet does not exist, then this function returns `undefined`.
          * @param key The name or ID of the worksheet.
          */
         getRangeAreasBySheet(key: string): RangeAreas;
@@ -2313,7 +2309,7 @@ declare namespace ExcelScript {
         setVisible(visible: boolean): void;
 
         /**
-         * Returns the worksheet to which the named item is scoped. If the item is scoped to the workbook instead, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the worksheet to which the named item is scoped. If the item is scoped to the workbook instead, then this function returns `undefined`.
          */
         getWorksheet(): Worksheet | undefined;
 
@@ -2323,7 +2319,7 @@ declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Returns the range object that is associated with the name. If the named item's type is not a range, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the range object that is associated with the name. If the named item's type is not a range, then this function returns `undefined`.
          */
         getRange(): Range;
     }
@@ -2551,7 +2547,7 @@ declare namespace ExcelScript {
         getColumns(): TableColumn[];
 
         /**
-         * Gets a column object by name or ID. If the column doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a column object by name or ID. If the column doesn't exist, then this function returns `undefined`.
          * @param key Column name or ID.
          */
         getColumn(key: number | string): TableColumn | undefined;
@@ -6275,8 +6271,7 @@ declare namespace ExcelScript {
         clearCriteria(): void;
 
         /**
-         * Returns the `Range` object that represents the range to which the AutoFilter applies.
-         * If there is no `Range` object associated with the AutoFilter, then this method returns an object with its `isNullObject` property set to `true`.
+         * Returns the `Range` object that represents the range to which the AutoFilter applies. If there is no `Range` object associated with the AutoFilter, then this method returns `undefined`.
          */
         getRange(): Range;
 
@@ -6472,7 +6467,7 @@ declare namespace ExcelScript {
         ): RowColumnPivotHierarchy;
 
         /**
-         * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this function returns `undefined`.
          * @param name Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getColumnHierarchy(name: string): RowColumnPivotHierarchy | undefined;
@@ -6495,7 +6490,7 @@ declare namespace ExcelScript {
         addDataHierarchy(pivotHierarchy: PivotHierarchy): DataPivotHierarchy;
 
         /**
-         * Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, then this function returns `undefined`.
          * @param name Name of the DataPivotHierarchy to be retrieved.
          */
         getDataHierarchy(name: string): DataPivotHierarchy | undefined;
@@ -6519,7 +6514,7 @@ declare namespace ExcelScript {
         ): FilterPivotHierarchy;
 
         /**
-         * Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, then this function returns `undefined`.
          * @param name Name of the FilterPivotHierarchy to be retrieved.
          */
         getFilterHierarchy(name: string): FilterPivotHierarchy | undefined;
@@ -6535,7 +6530,7 @@ declare namespace ExcelScript {
         getHierarchies(): PivotHierarchy[];
 
         /**
-         * Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, then this function returns `undefined`.
          * @param name Name of the PivotHierarchy to be retrieved.
          */
         getHierarchy(name: string): PivotHierarchy | undefined;
@@ -6554,7 +6549,7 @@ declare namespace ExcelScript {
         ): RowColumnPivotHierarchy;
 
         /**
-         * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this function returns `undefined`.
          * @param name Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getRowHierarchy(name: string): RowColumnPivotHierarchy | undefined;
@@ -6979,7 +6974,7 @@ declare namespace ExcelScript {
         getItems(): PivotItem[];
 
         /**
-         * Gets a PivotItem by name. If the PivotItem does not exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a PivotItem by name. If the PivotItem does not exist, then this function returns `undefined`.
          * @param name Name of the PivotItem to be retrieved.
          */
         getPivotItem(name: string): PivotItem | undefined;
@@ -7172,7 +7167,7 @@ declare namespace ExcelScript {
         deleteAllCustomProperties(): void;
 
         /**
-         * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this function returns `undefined`.
          * @param key Required. The key that identifies the custom property object.
          */
         getCustomProperty(key: string): CustomProperty | undefined;
@@ -7300,7 +7295,7 @@ declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Returns the range to which the conditonal format is applied. If the conditional format is applied to multiple ranges, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns the range to which the conditonal format is applied. If the conditional format is applied to multiple ranges, then this function returns `undefined`.
          */
         getRange(): Range;
 
@@ -8383,17 +8378,17 @@ declare namespace ExcelScript {
         setZoom(zoom: PageLayoutZoomOptions): void;
 
         /**
-         * Gets the `RangeAreas` object, comprising one or more rectangular ranges, that represents the print area for the worksheet. If there is no print area, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the `RangeAreas` object, comprising one or more rectangular ranges, that represents the print area for the worksheet. If there is no print area, then this function returns `undefined`.
          */
         getPrintArea(): RangeAreas;
 
         /**
-         * Gets the range object representing the title columns. If not set, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the range object representing the title columns. If not set, then this function returns `undefined`.
          */
         getPrintTitleColumns(): Range;
 
         /**
-         * Gets the range object representing the title rows. If not set, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets the range object representing the title rows. If not set, then this function returns `undefined`.
          */
         getPrintTitleRows(): Range;
 
@@ -9683,7 +9678,7 @@ declare namespace ExcelScript {
         getSlicerItems(): SlicerItem[];
 
         /**
-         * Gets a slicer item using its key or name. If the slicer item doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Gets a slicer item using its key or name. If the slicer item doesn't exist, then this function returns `undefined`.
          * @param key Key or name of the slicer to be retrieved.
          */
         getSlicerItem(key: string): SlicerItem | undefined;
