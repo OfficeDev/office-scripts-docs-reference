@@ -959,6 +959,30 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
+'ExcelScript.RangeCopyType:enum':
+  - |-
+    /**
+     * This script copies all of the values from the current worksheet to a new worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+      // Create a new worksheet with a default name.
+      let newSheet = workbook.addWorksheet();
+
+      // Copy the values from the used range to the new worksheet.
+      let copyType = ExcelScript.RangeCopyType.values; /* Change this to copy different information, such as formats. */
+      let targetRange = newSheet.getRangeByIndexes(
+        usedRange.getRowIndex(),
+        usedRange.getColumnIndex(),
+        usedRange.getRowCount(),
+        usedRange.getColumnCount());
+      targetRange.copyFrom(usedRange, copyType);
+
+      // Switch the view to the new worksheet.
+      newSheet.activate();
+    }
 'ExcelScript.RangeFill#setColor:member(1)':
   - |-
     /**
