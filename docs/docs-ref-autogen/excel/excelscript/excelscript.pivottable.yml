@@ -4,7 +4,30 @@ uid: 'ExcelScript!ExcelScript.PivotTable:interface'
 package: ExcelScript!
 fullName: ExcelScript.PivotTable
 summary: Represents an Excel PivotTable.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+   * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Create a PivotTable based on a table in the current worksheet.
+    let sheet = workbook.getActiveWorksheet();
+    let table = sheet.getTables()[0];
+
+    // Add the PivotTable to a new worksheet.
+    let newSheet = workbook.addWorksheet("Pivot");
+    let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+    // Add fields to the PivotTable to show "Sales" per "Type".
+    pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+    pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
