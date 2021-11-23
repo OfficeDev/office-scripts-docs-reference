@@ -170,7 +170,7 @@
 'ExcelScript.ClearApplyTo:enum':
   - |-
     /**
-     * This script removes an extra formatting that's been applied to a table. 
+     * This script removes any extra formatting that's been applied to a table. 
      * This leaves only the base table style effects.
      * Any formatting outside of the table will be left as is.
      */
@@ -655,7 +655,7 @@
 'ExcelScript.Range#find:member(1)':
   - |-
     /**
-     * This script looks through a table column and finds cells marked "no change". 
+     * This script searches through a table column and finds cells marked "no change". 
      * Those cells have "no change" replaced with the value from the cell to the left.
      * This script uses Range.find instead of Worksheet.findAll 
      * to limit the search to a specific range.
@@ -1013,7 +1013,7 @@
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
-     * This script looks through a table column and replaces  
+     * This script searches through a table column and replaces  
      * cells marked "monthly special" with "parsnip".
      * This script uses Range.replaceAll instead of Worksheet.replaceAll
      * to limit the search to a specific range.
@@ -1210,7 +1210,7 @@
 'ExcelScript.SearchCriteria:interface':
   - |-
     /**
-     * This script looks for the next instance of the text "TK" on the current worksheet.
+     * This script searches for the next instance of the text "TK" on the current worksheet.
      * It then selects that cell and removes "TK" and all formatting from the cell.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -1227,13 +1227,13 @@
       // Set focus on the found cell.
       tkCell.select();
 
-      // Remove the "TK" marker text from the cell, as well as any formatting that may have been added.
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
       tkCell.clear(ExcelScript.ClearApplyTo.all);
     }
 'ExcelScript.SearchDirection:enum':
   - |-
     /**
-     * This script looks for the next instance of the text "TK" on the current worksheet.
+     * This script searches for the next instance of the text "TK" on the current worksheet.
      * It then selects that cell and removes "TK" and all formatting from the cell.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -1250,7 +1250,7 @@
       // Set focus on the found cell.
       tkCell.select();
 
-      // Remove the "TK" marker text from the cell, as well as any formatting that may have been added.
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
       tkCell.clear(ExcelScript.ClearApplyTo.all);
     }
 'ExcelScript.Shape#getImage:member(1)':
@@ -1279,7 +1279,7 @@
 'ExcelScript.Table#getRange:member(1)':
   - |-
     /**
-     * This script removes an extra formatting that's been applied to a table. 
+     * This script removes any extra formatting that's been applied to a table. 
      * This leaves only the base table style effects.
      * Any formatting outside of the table will be left as is.
      */
@@ -1577,7 +1577,7 @@
 'ExcelScript.Worksheet#findAll:member(1)':
   - |-
     /**
-     * This script looks through a worksheet and finds cells containing "No". 
+     * This script searches through a worksheet and finds cells containing "No". 
      * Those cells are filled red.
      * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
      */
