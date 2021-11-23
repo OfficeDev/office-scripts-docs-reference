@@ -167,6 +167,24 @@
         series.setOverlap(25);
       });
     }
+'ExcelScript.ClearApplyTo:enum':
+  - |-
+    /**
+     * This script removes any extra formatting that's been applied to a table. 
+     * This leaves only the base table style effects.
+     * Any formatting outside of the table will be left as is.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      let worksheet = workbook.getActiveWorksheet();
+      let table = worksheet.getTables()[0];
+
+      // Get the range used by the table.
+      let range = table.getRange();
+
+      // Clear all the formatting that is not applied by the table and the table style.
+      range.clear(ExcelScript.ClearApplyTo.formats);
+    }
 'ExcelScript.CommentRichContent#richContent:member':
   - |-
     /**
@@ -669,7 +687,7 @@
 'ExcelScript.Range#find:member(1)':
   - |-
     /**
-     * This script looks through a table column and finds cells marked "no change". 
+     * This script searches through a table column and finds cells marked "no change". 
      * Those cells have "no change" replaced with the value from the cell to the left.
      * This script uses Range.find instead of Worksheet.findAll 
      * to limit the search to a specific range.
@@ -1011,7 +1029,7 @@
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
-     * This script looks through a table column and replaces  
+     * This script searches through a table column and replaces  
      * cells marked "monthly special" with "parsnip".
      * This script uses Range.replaceAll instead of Worksheet.replaceAll
      * to limit the search to a specific range.
@@ -1190,6 +1208,52 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
+'ExcelScript.SearchCriteria:interface':
+  - |-
+    /**
+     * This script searches for the next instance of the text "TK" on the current worksheet.
+     * It then selects that cell and removes "TK" and all formatting from the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let range = workbook.getActiveWorksheet().getUsedRange();
+
+      // Get the next cell that contains "TK".
+      let tkCell = range.find("TK", {
+        completeMatch: true, /* Don't match if the cell text only contains "TK" as part of another string. */
+        matchCase: false,
+        searchDirection: ExcelScript.SearchDirection.forward /* Start at the beginning of the range and go to later columns and rows. */
+      });
+
+      // Set focus on the found cell.
+      tkCell.select();
+
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
+      tkCell.clear(ExcelScript.ClearApplyTo.all);
+    }
+'ExcelScript.SearchDirection:enum':
+  - |-
+    /**
+     * This script searches for the next instance of the text "TK" on the current worksheet.
+     * It then selects that cell and removes "TK" and all formatting from the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let range = workbook.getActiveWorksheet().getUsedRange();
+
+      // Get the next cell that contains "TK".
+      let tkCell = range.find("TK", {
+        completeMatch: true, /* Don't match if the cell text only contains "TK" as part of another string. */
+        matchCase: false,
+        searchDirection: ExcelScript.SearchDirection.forward /* Start at the beginning of the range and go to later columns and rows. */
+      });
+
+      // Set focus on the found cell.
+      tkCell.select();
+
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
+      tkCell.clear(ExcelScript.ClearApplyTo.all);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
@@ -1212,6 +1276,24 @@
 
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
+    }
+'ExcelScript.Table#getRange:member(1)':
+  - |-
+    /**
+     * This script removes any extra formatting that's been applied to a table. 
+     * This leaves only the base table style effects.
+     * Any formatting outside of the table will be left as is.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      let worksheet = workbook.getActiveWorksheet();
+      let table = worksheet.getTables()[0];
+
+      // Get the range used by the table.
+      let range = table.getRange();
+
+      // Clear all the formatting that is not applied by the table and the table style.
+      range.clear(ExcelScript.ClearApplyTo.formats);
     }
 'ExcelScript.TableSort#apply:member(1)':
   - |-
@@ -1496,7 +1578,7 @@
 'ExcelScript.Worksheet#findAll:member(1)':
  - |-
     /**
-     * This script looks through a worksheet and finds cells containing "No". 
+     * This script searches through a worksheet and finds cells containing "No". 
      * Those cells are filled red.
      * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
      */

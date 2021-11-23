@@ -134,7 +134,6 @@ let ratingMap: Map<string, ClassCoverageRating> = new Map();
 const docsSource = path.resolve("../../docs/docs-ref-autogen/excel/excelscript");
 fsx.readdirSync(docsSource)
     .forEach(filename => {
-        console.log(`Checking ${filename}.`);
         let ymlFile = jsyaml.load(fsx.readFileSync(docsSource + '/' + filename).toString()) as ApiYaml;
         let rating = rateClass(ymlFile);
         ratingMap.set(ymlFile.name, rating);
