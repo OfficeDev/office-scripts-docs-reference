@@ -167,6 +167,24 @@
         series.setOverlap(25);
       });
     }
+'ExcelScript.ClearApplyTo:enum':
+  - |-
+    /**
+     * This script removes any extra formatting that's been applied to a table. 
+     * This leaves only the base table style effects.
+     * Any formatting outside of the table will be left as is.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      let worksheet = workbook.getActiveWorksheet();
+      let table = worksheet.getTables()[0];
+
+      // Get the range used by the table.
+      let range = table.getRange();
+
+      // Clear all the formatting that is not applied by the table and the table style.
+      range.clear(ExcelScript.ClearApplyTo.formats);
+    }
 'ExcelScript.CommentRichContent#richContent:member':
   - |-
     /**
@@ -235,6 +253,151 @@
           );
         }
       }
+    }
+'ExcelScript.ConditionalFormat#getColorScale:member(1)':
+  - |-
+    /**
+     * This script applies a red, white, and blue color scale to the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Create a new conditional formatting object by adding one to the range.
+      let conditionalFormatting = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.colorScale);
+
+      // Set the colors for the three parts of the scale: minimum, midpoint, and maximum.
+      conditionalFormatting.getColorScale().setCriteria({
+        minimum: {
+          color:"#F8696B", /* A pale red. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.lowestValue
+        },
+        midpoint: {
+          color: "#FCFCFF", /* Slightly off-white. */
+          formula:'=50',type:ExcelScript.ConditionalFormatColorCriterionType.percentile
+        },
+        maximum: {
+          color: "#5A8AC6", /* A pale blue. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
+        }
+      });
+    }
+'ExcelScript.ConditionalFormat#getCustom:member(1)':
+  - |-
+    /**
+     * This script applies a custom conditional formatting to the selected range.
+     * A light-green fill is applied to a cell if the value is larger than the value in the row's previous column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected cells.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Apply a rule for positive change from the previous column.
+      let positiveChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
+      positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+    }
+'ExcelScript.ConditionalFormatColorCriterionType:enum':
+  - |-
+    /**
+     * This script applies a red, white, and blue color scale to the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Create a new conditional formatting object by adding one to the range.
+      let conditionalFormatting = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.colorScale);
+
+      // Set the colors for the three parts of the scale: minimum, midpoint, and maximum.
+      conditionalFormatting.getColorScale().setCriteria({
+        minimum: {
+          color:"#F8696B", /* A pale red. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.lowestValue
+        },
+        midpoint: {
+          color: "#FCFCFF", /* Slightly off-white. */
+          formula:'=50',type:ExcelScript.ConditionalFormatColorCriterionType.percentile
+        },
+        maximum: {
+          color: "#5A8AC6", /* A pale blue. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
+        }
+      });
+    }
+'ExcelScript.ConditionalFormatType:enum':
+  - |-
+    /**
+     * This script applies a red, white, and blue color scale to the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Create a new conditional formatting object by adding one to the range.
+      let conditionalFormatting = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.colorScale);
+
+      // Set the colors for the three parts of the scale: minimum, midpoint, and maximum.
+      conditionalFormatting.getColorScale().setCriteria({
+        minimum: {
+          color:"#F8696B", /* A pale red. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.lowestValue
+        },
+        midpoint: {
+          color: "#FCFCFF", /* Slightly off-white. */
+          formula:'=50',type:ExcelScript.ConditionalFormatColorCriterionType.percentile
+        },
+        maximum: {
+          color: "#5A8AC6", /* A pale blue. */
+          type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
+        }
+      });
+    }
+'ExcelScript.ConditionalTopBottomRule:interface':
+  - |-
+    /**
+     * This sample applies conditional formatting to the currently used range in the worksheet. 
+     * The conditional formatting is a pink fill for the 5 lowest values.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the used range in the worksheet.
+      let range = selectedSheet.getUsedRange();
+
+      // Set the fill color to pink for the lowest 5 values in the range.
+      let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+      conditionalFormat.getTopBottom().getFormat().getFill().setColor("pink");
+      conditionalFormat.getTopBottom().setRule({
+        rank: 5, /* The numerical threshold. */
+        type: ExcelScript.ConditionalTopBottomCriterionType.bottomItems /* The type of the top/bottom condition. */
+      });
+    }
+'ExcelScript.CustomConditionalFormat:interface':
+  - |-
+    /**
+     * This script applies a custom three-color conditional formatting to the selected range.
+     * The three colors represent positive, negative, or no changes from the values in the previous column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected cells.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Apply a rule for positive change from the previous column.
+      let positiveChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
+      positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+
+      // Apply a rule for negative change from the previous column.
+      let negativeChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      negativeChange.getCustom().getFormat().getFill().setColor("pink");
+      negativeChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}<${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+
+      // Apply a rule for no change from the previous column.
+      let noChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      noChange.getCustom().getFormat().getFill().setColor("lightyellow");
+      noChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
     }
 'ExcelScript.DataValidation#getType:member(1)':
   - |-
@@ -350,6 +513,25 @@
         console.log(`Grand total of ${pivotColumnLabelRange.getValues()[0][columnIndex]}: ${grandTotalRange.getValues()[0][columnIndex]}`);
         // Example log: "Grand total of Sum of Crates Sold Wholesale: 11000"
       });
+    }
+'ExcelScript.PivotTable:interface':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+
+      // Add the PivotTable to a new worksheet.
+      let newSheet = workbook.addWorksheet("Pivot");
+      let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
     }
 'ExcelScript.Range:interface':
   - |-
@@ -505,7 +687,7 @@
 'ExcelScript.Range#find:member(1)':
   - |-
     /**
-     * This script looks through a table column and finds cells marked "no change". 
+     * This script searches through a table column and finds cells marked "no change". 
      * Those cells have "no change" replaced with the value from the cell to the left.
      * This script uses Range.find instead of Worksheet.findAll 
      * to limit the search to a specific range.
@@ -847,7 +1029,7 @@
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
-     * This script looks through a table column and replaces  
+     * This script searches through a table column and replaces  
      * cells marked "monthly special" with "parsnip".
      * This script uses Range.replaceAll instead of Worksheet.replaceAll
      * to limit the search to a specific range.
@@ -959,6 +1141,30 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
+'ExcelScript.RangeCopyType:enum':
+  - |-
+    /**
+     * This script copies all of the values from the current worksheet to a new worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+      // Create a new worksheet with a default name.
+      let newSheet = workbook.addWorksheet();
+
+      // Copy the values from the used range to the new worksheet.
+      let copyType = ExcelScript.RangeCopyType.values; /* Change this to copy different information, such as formats. */
+      let targetRange = newSheet.getRangeByIndexes(
+        usedRange.getRowIndex(),
+        usedRange.getColumnIndex(),
+        usedRange.getRowCount(),
+        usedRange.getColumnCount());
+      targetRange.copyFrom(usedRange, copyType);
+
+      // Switch the view to the new worksheet.
+      newSheet.activate();
+    }
 'ExcelScript.RangeFill#setColor:member(1)':
   - |-
     /**
@@ -1002,6 +1208,52 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
+'ExcelScript.SearchCriteria:interface':
+  - |-
+    /**
+     * This script searches for the next instance of the text "TK" on the current worksheet.
+     * It then selects that cell and removes "TK" and all formatting from the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let range = workbook.getActiveWorksheet().getUsedRange();
+
+      // Get the next cell that contains "TK".
+      let tkCell = range.find("TK", {
+        completeMatch: true, /* Don't match if the cell text only contains "TK" as part of another string. */
+        matchCase: false,
+        searchDirection: ExcelScript.SearchDirection.forward /* Start at the beginning of the range and go to later columns and rows. */
+      });
+
+      // Set focus on the found cell.
+      tkCell.select();
+
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
+      tkCell.clear(ExcelScript.ClearApplyTo.all);
+    }
+'ExcelScript.SearchDirection:enum':
+  - |-
+    /**
+     * This script searches for the next instance of the text "TK" on the current worksheet.
+     * It then selects that cell and removes "TK" and all formatting from the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current worksheet.
+      let range = workbook.getActiveWorksheet().getUsedRange();
+
+      // Get the next cell that contains "TK".
+      let tkCell = range.find("TK", {
+        completeMatch: true, /* Don't match if the cell text only contains "TK" as part of another string. */
+        matchCase: false,
+        searchDirection: ExcelScript.SearchDirection.forward /* Start at the beginning of the range and go to later columns and rows. */
+      });
+
+      // Set focus on the found cell.
+      tkCell.select();
+
+      // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
+      tkCell.clear(ExcelScript.ClearApplyTo.all);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
@@ -1025,6 +1277,24 @@
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
     }
+'ExcelScript.Table#getRange:member(1)':
+  - |-
+    /**
+     * This script removes any extra formatting that's been applied to a table. 
+     * This leaves only the base table style effects.
+     * Any formatting outside of the table will be left as is.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      let worksheet = workbook.getActiveWorksheet();
+      let table = worksheet.getTables()[0];
+
+      // Get the range used by the table.
+      let range = table.getRange();
+
+      // Clear all the formatting that is not applied by the table and the table style.
+      range.clear(ExcelScript.ClearApplyTo.formats);
+    }
 'ExcelScript.TableSort#apply:member(1)':
   - |-
     /**
@@ -1041,7 +1311,7 @@
       // Sort the table using the first column.
       newTable.getSort().apply([{ key: 0, ascending: true }]);
     }
-'ExcelScript.TopBottomConditionalFormat#setRule:member(1)':
+'ExcelScript.TopBottomConditionalFormat:interface':
   - |-
     /**
      * This sample applies conditional formatting to the currently used range in the worksheet. 
@@ -1058,8 +1328,8 @@
       let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
       conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
       conditionalFormat.getTopBottom().setRule({
-        rank: 10, // The percentage threshold.
-        type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+        rank: 10, /* The percentage threshold. */
+        type: ExcelScript.ConditionalTopBottomCriterionType.topPercent /* The type of the top/bottom condition. */
       });
     }
 'ExcelScript.Workbook:interface':
@@ -1073,6 +1343,23 @@
 
       // Switch focus to the new worksheet.
       worksheet.activate();
+    }
+'ExcelScript.Workbook#addPivotTable:member(1)':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to an existing worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     * It also assumes there is a worksheet named "PivotSheet".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+      let pivotTable = workbook.addPivotTable("My Pivot", table, "PivotSheet!A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
     }
 'ExcelScript.Workbook#addWorksheet:member(1)':
   - |-
@@ -1218,6 +1505,28 @@
       const base64 = btoa(charCodeArray.join(''));
       return base64;
     }
+'ExcelScript.Worksheet#addPivotTable:member(1)':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+
+      // Add the PivotTable to a new worksheet.
+      let newSheet = workbook.addWorksheet("Pivot");
+      let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+
+      // Switch to the new worksheet.
+      newSheet.activate();
+    }
 'ExcelScript.Worksheet#addTable:member(1)':
   - |-
     /**
@@ -1269,7 +1578,7 @@
 'ExcelScript.Worksheet#findAll:member(1)':
  - |-
     /**
-     * This script looks through a worksheet and finds cells containing "No". 
+     * This script searches through a worksheet and finds cells containing "No". 
      * Those cells are filled red.
      * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
      */
