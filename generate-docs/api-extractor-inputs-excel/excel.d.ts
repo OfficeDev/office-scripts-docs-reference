@@ -325,7 +325,8 @@ export declare namespace ExcelScript {
         getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];
 
         /**
-         * Gets a custom XML part based on its ID. If the `CustomXmlPart` does not exist, then this function returns `undefined`.
+         * Gets a custom XML part based on its ID.
+         * If the `CustomXmlPart` does not exist, then this function returns `undefined`.
          * @param id - ID of the object to be retrieved.
          */
         getCustomXmlPart(id: string): CustomXmlPart | undefined;
@@ -1255,7 +1256,9 @@ export declare namespace ExcelScript {
         freezeRows(count?: number): void;
 
         /**
-         * Gets a range that describes the frozen cells in the active worksheet view. The frozen range corresponds to cells that are frozen in the top- and left-most pane. If there is no frozen pane, then this function returns `undefined`.
+         * Gets a range that describes the frozen cells in the active worksheet view.
+         * The frozen range corresponds to cells that are frozen in the top- and left-most pane.
+         * If there is no frozen pane, then this function returns `undefined`.
          */
         getLocation(): Range;
 
@@ -1554,7 +1557,11 @@ export declare namespace ExcelScript {
         delete(shift: DeleteShiftDirection): void;
 
         /**
-         * Finds the given string based on the criteria specified. If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell. If there are no matches, then this function returns `undefined`.
+         * Finds the given string based on the criteria specified.
+         * If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
+         * If there are no matches, then this function returns `undefined`.
+         * @param text - The string to find.
+         * @param criteria - Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case-sensitive.
          */
         find(text: string, criteria: SearchCriteria): Range;
 
@@ -1637,6 +1644,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is found, then this function returns `undefined`.
+         * @param anotherRange - The range object or range address that will be used to determine the intersection of ranges.
          */
         getIntersection(anotherRange: Range | string): Range;
 
@@ -1709,7 +1717,10 @@ export declare namespace ExcelScript {
         getRowsBelow(count?: number): Range;
 
         /**
-         * Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the specified type and value. If no special cells are found, then this function returns `undefined`.
+         * Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the specified type and value.
+         * If no special cells are found, then this function returns `undefined`.
+         * @param cellType - The type of cells to include.
+         * @param cellValueType - If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCells(
             cellType: SpecialCellType,
@@ -1717,12 +1728,14 @@ export declare namespace ExcelScript {
         ): RangeAreas;
 
         /**
-         * Gets the range object containing the anchor cell for the cell getting spilled into. If it's not a spilled cell, or more than one cell is given, then this function returns `undefined`.
+         * Gets the range object containing the anchor cell for the cell getting spilled into.
+         * If it's not a spilled cell, or more than one cell is given, then this function returns `undefined`.
          */
         getSpillParent(): Range;
 
         /**
-         * Gets the range object containing the spill range when called on an anchor cell. If the range isn't an anchor cell or the spill range can't be found, then this function returns `undefined`.
+         * Gets the range object containing the spill range when called on an anchor cell.
+         * If the range isn't an anchor cell or the spill range can't be found, then this function returns `undefined`.
          */
         getSpillingToRange(): Range;
 
@@ -1739,6 +1752,7 @@ export declare namespace ExcelScript {
 
         /**
          * Returns the used range of the given range object. If there are no used cells within the range, then this function returns `undefined`.
+         * @param valuesOnly - Considers only cells with values as used cells.
          */
         getUsedRange(valuesOnly?: boolean): Range;
 
@@ -2094,7 +2108,8 @@ export declare namespace ExcelScript {
         getTables(fullyContained?: boolean): Table[];
 
         /**
-         * Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the `RangeAreas` object. If there are no used cells within the `RangeAreas`, then this function returns `undefined`.
+         * Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the `RangeAreas` object.
+         * If there are no used cells within the `RangeAreas`, then this function returns `undefined`.
          * @param valuesOnly - Whether to only consider cells with values as used cells.
          */
         getUsedRangeAreas(valuesOnly?: boolean): RangeAreas;
@@ -6275,7 +6290,8 @@ export declare namespace ExcelScript {
         clearCriteria(): void;
 
         /**
-         * Returns the `Range` object that represents the range to which the AutoFilter applies. If there is no `Range` object associated with the AutoFilter, then this method returns `undefined`.
+         * Returns the `Range` object that represents the range to which the AutoFilter applies.
+         * If there is no `Range` object associated with the AutoFilter, then this method returns `undefined`.
          */
         getRange(): Range;
 
