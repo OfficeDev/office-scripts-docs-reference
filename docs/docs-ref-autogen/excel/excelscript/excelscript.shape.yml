@@ -6,9 +6,7 @@ fullName: ExcelScript.Shape
 summary: >-
   Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes,
   etc.
-remarks: ''
-example: []
-isPreview: false
+remarks: ''isPreview: false
 isDeprecated: false
 type: interface
 methods:
@@ -17,9 +15,7 @@ methods:
     package: ExcelScript!
     fullName: copyTo(destinationSheet)
     summary: Copies and pastes a `Shape` object. The pasted shape is copied to the same pixel location as this shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'copyTo(destinationSheet?: Worksheet | string): Shape;'
@@ -35,9 +31,7 @@ methods:
     package: ExcelScript!
     fullName: delete()
     summary: Removes the shape from the worksheet.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'delete(): void;'
@@ -49,9 +43,7 @@ methods:
     package: ExcelScript!
     fullName: getAltTextDescription()
     summary: Specifies the alternative description text for a `Shape` object.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAltTextDescription(): string;'
@@ -63,9 +55,7 @@ methods:
     package: ExcelScript!
     fullName: getAltTextTitle()
     summary: Specifies the alternative title text for a `Shape` object.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAltTextTitle(): string;'
@@ -80,9 +70,7 @@ methods:
       Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
       formats are `ExcelScript.PictureFormat.BMP`<!-- -->, `ExcelScript.PictureFormat.PNG`<!-- -->,
       `ExcelScript.PictureFormat.JPEG`<!-- -->, and `ExcelScript.PictureFormat.GIF`<!-- -->.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: true
     customDeprecatedMessage: Use `getImageAsBase64` instead.
     syntax:
@@ -99,9 +87,7 @@ methods:
     package: ExcelScript!
     fullName: getConnectionSiteCount()
     summary: Returns the number of connection sites on this shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getConnectionSiteCount(): number;'
@@ -113,9 +99,7 @@ methods:
     package: ExcelScript!
     fullName: getFill()
     summary: Returns the fill formatting of this shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFill(): ShapeFill;'
@@ -129,9 +113,7 @@ methods:
     summary: >-
       Returns the geometric shape associated with the shape. An error will be thrown if the shape type is not
       "GeometricShape".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGeometricShape(): GeometricShape;'
@@ -145,9 +127,7 @@ methods:
     summary: >-
       Specifies the geometric shape type of this geometric shape. See `ExcelScript.GeometricShapeType` for details.
       Returns `null` if the shape type is not "GeometricShape".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGeometricShapeType(): GeometricShapeType;'
@@ -159,9 +139,7 @@ methods:
     package: ExcelScript!
     fullName: getGroup()
     summary: Returns the shape group associated with the shape. An error will be thrown if the shape type is not "GroupShape".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGroup(): ShapeGroup;'
@@ -175,9 +153,7 @@ methods:
     summary: >-
       Specifies the height, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative
       value or zero as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getHeight(): number;'
@@ -189,9 +165,7 @@ methods:
     package: ExcelScript!
     fullName: getId()
     summary: Specifies the shape identifier.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getId(): string;'
@@ -203,9 +177,7 @@ methods:
     package: ExcelScript!
     fullName: getImage()
     summary: Returns the image associated with the shape. An error will be thrown if the shape type is not "Image".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getImage(): Image;'
@@ -247,9 +219,7 @@ methods:
       Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported
       formats are `ExcelScript.PictureFormat.BMP`<!-- -->, `ExcelScript.PictureFormat.PNG`<!-- -->,
       `ExcelScript.PictureFormat.JPEG`<!-- -->, and `ExcelScript.PictureFormat.GIF`<!-- -->.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getImageAsBase64(format: PictureFormat): string;'
@@ -267,9 +237,7 @@ methods:
     summary: >-
       The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an
       `InvalidArgument` exception when set with a negative value as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLeft(): number;'
@@ -284,9 +252,7 @@ methods:
       Specifies the level of the specified shape. For example, a level of 0 means that the shape is not part of any
       groups, a level of 1 means the shape is part of a top-level group, and a level of 2 means the shape is part of a
       sub-group of the top level.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLevel(): number;'
@@ -298,9 +264,7 @@ methods:
     package: ExcelScript!
     fullName: getLine()
     summary: Returns the line associated with the shape. An error will be thrown if the shape type is not "Line".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLine(): Line;'
@@ -312,9 +276,7 @@ methods:
     package: ExcelScript!
     fullName: getLineFormat()
     summary: Returns the line formatting of this shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLineFormat(): ShapeLineFormat;'
@@ -326,9 +288,7 @@ methods:
     package: ExcelScript!
     fullName: getLockAspectRatio()
     summary: Specifies if the aspect ratio of this shape is locked.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLockAspectRatio(): boolean;'
@@ -340,9 +300,7 @@ methods:
     package: ExcelScript!
     fullName: getName()
     summary: Specifies the name of the shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getName(): string;'
@@ -354,9 +312,7 @@ methods:
     package: ExcelScript!
     fullName: getParentGroup()
     summary: Specifies the parent group of this shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getParentGroup(): Shape;'
@@ -368,9 +324,7 @@ methods:
     package: ExcelScript!
     fullName: getPlacement()
     summary: Represents how the object is attached to the cells below it.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPlacement(): Placement;'
@@ -382,9 +336,7 @@ methods:
     package: ExcelScript!
     fullName: getRotation()
     summary: 'Specifies the rotation, in degrees, of the shape.'
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRotation(): number;'
@@ -396,9 +348,7 @@ methods:
     package: ExcelScript!
     fullName: getTextFrame()
     summary: Returns the text frame object of this shape. Read only.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTextFrame(): TextFrame;'
@@ -412,9 +362,7 @@ methods:
     summary: >-
       The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an
       `InvalidArgument` exception when set with a negative value as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTop(): number;'
@@ -426,9 +374,7 @@ methods:
     package: ExcelScript!
     fullName: getType()
     summary: Returns the type of this shape. See `ExcelScript.ShapeType` for details.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getType(): ShapeType;'
@@ -440,9 +386,7 @@ methods:
     package: ExcelScript!
     fullName: getVisible()
     summary: Specifies if the shape is visible.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getVisible(): boolean;'
@@ -456,9 +400,7 @@ methods:
     summary: >-
       Specifies the width, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative value
       or zero as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getWidth(): number;'
@@ -470,9 +412,7 @@ methods:
     package: ExcelScript!
     fullName: getZOrderPosition()
     summary: 'Returns the position of the specified shape in the z-order, with 0 representing the bottom of the order stack.'
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getZOrderPosition(): number;'
@@ -484,9 +424,7 @@ methods:
     package: ExcelScript!
     fullName: incrementLeft(increment)
     summary: Moves the shape horizontally by the specified number of points.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'incrementLeft(increment: number): void;'
@@ -507,9 +445,7 @@ methods:
     summary: >-
       Rotates the shape clockwise around the z-axis by the specified number of degrees. Use the `rotation` property to
       set the absolute rotation of the shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'incrementRotation(increment: number): void;'
@@ -527,9 +463,7 @@ methods:
     package: ExcelScript!
     fullName: incrementTop(increment)
     summary: Moves the shape vertically by the specified number of points.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'incrementTop(increment: number): void;'
@@ -550,9 +484,7 @@ methods:
       Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the
       shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
       current height.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -586,9 +518,7 @@ methods:
       Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the
       shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their
       current width.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -619,9 +549,7 @@ methods:
     package: ExcelScript!
     fullName: setAltTextDescription(altTextDescription)
     summary: Specifies the alternative description text for a `Shape` object.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setAltTextDescription(altTextDescription: string): void;'
@@ -637,9 +565,7 @@ methods:
     package: ExcelScript!
     fullName: setAltTextTitle(altTextTitle)
     summary: Specifies the alternative title text for a `Shape` object.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setAltTextTitle(altTextTitle: string): void;'
@@ -657,9 +583,7 @@ methods:
     summary: >-
       Specifies the geometric shape type of this geometric shape. See `ExcelScript.GeometricShapeType` for details.
       Returns `null` if the shape type is not "GeometricShape".
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setGeometricShapeType(geometricShapeType: GeometricShapeType): void;'
@@ -677,9 +601,7 @@ methods:
     summary: >-
       Specifies the height, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative
       value or zero as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setHeight(height: number): void;'
@@ -697,9 +619,7 @@ methods:
     summary: >-
       The distance, in points, from the left side of the shape to the left side of the worksheet. Throws an
       `InvalidArgument` exception when set with a negative value as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setLeft(left: number): void;'
@@ -715,9 +635,7 @@ methods:
     package: ExcelScript!
     fullName: setLockAspectRatio(lockAspectRatio)
     summary: Specifies if the aspect ratio of this shape is locked.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setLockAspectRatio(lockAspectRatio: boolean): void;'
@@ -733,9 +651,7 @@ methods:
     package: ExcelScript!
     fullName: setName(name)
     summary: Specifies the name of the shape.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setName(name: string): void;'
@@ -751,9 +667,7 @@ methods:
     package: ExcelScript!
     fullName: setPlacement(placement)
     summary: Represents how the object is attached to the cells below it.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setPlacement(placement: Placement): void;'
@@ -769,9 +683,7 @@ methods:
     package: ExcelScript!
     fullName: setRotation(rotation)
     summary: 'Specifies the rotation, in degrees, of the shape.'
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setRotation(rotation: number): void;'
@@ -789,9 +701,7 @@ methods:
     summary: >-
       The distance, in points, from the top edge of the shape to the top edge of the worksheet. Throws an
       `InvalidArgument` exception when set with a negative value as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setTop(top: number): void;'
@@ -807,9 +717,7 @@ methods:
     package: ExcelScript!
     fullName: setVisible(visible)
     summary: Specifies if the shape is visible.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setVisible(visible: boolean): void;'
@@ -827,9 +735,7 @@ methods:
     summary: >-
       Specifies the width, in points, of the shape. Throws an `InvalidArgument` exception when set with a negative value
       or zero as an input.
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setWidth(width: number): void;'
@@ -845,9 +751,7 @@ methods:
     package: ExcelScript!
     fullName: setZOrder(position)
     summary: 'Moves the specified shape up or down the collection''s z-order, which shifts it in front of or behind other shapes.'
-    remarks: ''
-    example: []
-    isPreview: false
+    remarks: ''    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setZOrder(position: ShapeZOrder): void;'

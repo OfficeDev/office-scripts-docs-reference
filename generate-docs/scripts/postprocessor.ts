@@ -79,7 +79,7 @@ tryCatch(async () => {
                         .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
                         fsx.writeFileSync(
                             scriptFolder + '/' + interfaceYml,
-                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/```(javascript)/g, "```TypeScript")
+                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/```(javascript)/g, "```TypeScript").replace(/^\s*example: \[\]\r\n/gm, "")
                         );
                     });
                 });
