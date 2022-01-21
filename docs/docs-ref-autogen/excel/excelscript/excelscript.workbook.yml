@@ -20,7 +20,8 @@ remarks: |-
     // Switch focus to the new worksheet.
     worksheet.activate();
   }
-  ```isPreview: false
+  ```
+isPreview: false
 isDeprecated: false
 type: interface
 methods:
@@ -29,7 +30,8 @@ methods:
     package: ExcelScript!
     fullName: 'addBinding(range, bindingType, id)'
     summary: Add a new binding to a particular Range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -60,7 +62,8 @@ methods:
     summary: >-
       Add a new binding based on a named item in the workbook. If the named item references to multiple areas, the
       `InvalidReference` error will be returned.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -89,7 +92,8 @@ methods:
     summary: >-
       Add a new binding based on the current selection. If the selection has multiple areas, the `InvalidReference`
       error will be returned.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addBindingFromSelection(bindingType: BindingType, id: string): Binding;'
@@ -110,7 +114,8 @@ methods:
     summary: >-
       Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the
       provided range is larger than one cell.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -144,7 +149,8 @@ methods:
     package: ExcelScript!
     fullName: addCustomXmlPart(xml)
     summary: Adds a new custom XML part to the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addCustomXmlPart(xml: string): CustomXmlPart;'
@@ -160,7 +166,8 @@ methods:
     package: ExcelScript!
     fullName: 'addNamedItem(name, reference, comment)'
     summary: Adds a new name to the collection of the given scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -187,7 +194,8 @@ methods:
     package: ExcelScript!
     fullName: 'addNamedItemFormulaLocal(name, formula, comment)'
     summary: Adds a new name to the collection of the given scope using the user's locale for the formula.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -214,7 +222,8 @@ methods:
     package: ExcelScript!
     fullName: 'addPivotTable(name, source, destination)'
     summary: Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -270,7 +279,8 @@ methods:
     package: ExcelScript!
     fullName: 'addPivotTableStyle(name, makeUniqueName)'
     summary: Creates a blank `PivotTableStyle` with the specified name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -297,7 +307,8 @@ methods:
     package: ExcelScript!
     fullName: addPredefinedCellStyle(name)
     summary: Adds a new style to the collection.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addPredefinedCellStyle(name: string): void;'
@@ -313,7 +324,8 @@ methods:
     package: ExcelScript!
     fullName: 'addSlicer(slicerSource, sourceField, slicerDestination)'
     summary: Adds a new slicer to the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -352,7 +364,8 @@ methods:
     package: ExcelScript!
     fullName: 'addSlicerStyle(name, makeUniqueName)'
     summary: Creates a blank slicer style with the specified name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addSlicerStyle(name: string, makeUniqueName?: boolean): SlicerStyle;'
@@ -378,7 +391,8 @@ methods:
       Creates a new table. The range object or source address determines the worksheet under which the table will be
       added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another
       table), an error will be thrown.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addTable(address: Range | string, hasHeaders: boolean): Table;'
@@ -402,7 +416,8 @@ methods:
     package: ExcelScript!
     fullName: 'addTableStyle(name, makeUniqueName)'
     summary: Creates a blank `TableStyle` with the specified name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addTableStyle(name: string, makeUniqueName?: boolean): TableStyle;'
@@ -425,7 +440,8 @@ methods:
     package: ExcelScript!
     fullName: 'addTimelineStyle(name, makeUniqueName)'
     summary: Creates a blank `TimelineStyle` with the specified name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addTimelineStyle(name: string, makeUniqueName?: boolean): TimelineStyle;'
@@ -450,7 +466,8 @@ methods:
     summary: >-
       Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish
       to activate the newly added worksheet, call `.activate()` on it.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'addWorksheet(name?: string): Worksheet;'
@@ -489,7 +506,8 @@ methods:
     summary: >-
       Breaks all the links to the linked workbooks. Once the links are broken, any formulas referencing workbook links
       are removed entirely and replaced with the most recently retrieved values.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'breakAllLinksToLinkedWorkbooks(): void;'
@@ -501,7 +519,8 @@ methods:
     package: ExcelScript!
     fullName: getActiveCell()
     summary: Gets the currently active cell from the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getActiveCell(): Range;'
@@ -530,7 +549,8 @@ methods:
     summary: >-
       Gets the currently active chart in the workbook. If there is no active chart, then this function returns
       `undefined`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getActiveChart(): Chart;'
@@ -544,7 +564,8 @@ methods:
     summary: >-
       Gets the currently active slicer in the workbook. If there is no active slicer, then this function returns
       `undefined`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getActiveSlicer(): Slicer;'
@@ -556,7 +577,8 @@ methods:
     package: ExcelScript!
     fullName: getActiveWorksheet()
     summary: Gets the currently active worksheet in the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getActiveWorksheet(): Worksheet;'
@@ -568,7 +590,8 @@ methods:
     package: ExcelScript!
     fullName: getApplication()
     summary: Represents the Excel application instance that contains this workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getApplication(): Application;'
@@ -580,7 +603,8 @@ methods:
     package: ExcelScript!
     fullName: getAutoSave()
     summary: Specifies if the workbook is in AutoSave mode.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAutoSave(): boolean;'
@@ -592,7 +616,8 @@ methods:
     package: ExcelScript!
     fullName: getBinding(id)
     summary: 'Gets a binding object by ID. If the binding object does not exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBinding(id: string): Binding | undefined;'
@@ -608,7 +633,8 @@ methods:
     package: ExcelScript!
     fullName: getBindings()
     summary: Represents a collection of bindings that are part of the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBindings(): Binding[];'
@@ -620,7 +646,8 @@ methods:
     package: ExcelScript!
     fullName: getCalculationEngineVersion()
     summary: Returns a number about the version of Excel Calculation Engine.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCalculationEngineVersion(): number;'
@@ -634,7 +661,8 @@ methods:
     summary: >-
       True if all charts in the workbook are tracking the actual data points to which they are attached. False if the
       charts track the index of the data points.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getChartDataPointTrack(): boolean;'
@@ -646,7 +674,8 @@ methods:
     package: ExcelScript!
     fullName: getComment(commentId)
     summary: Gets a comment from the collection based on its ID.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getComment(commentId: string): Comment;'
@@ -662,7 +691,8 @@ methods:
     package: ExcelScript!
     fullName: getCommentByCell(cellAddress)
     summary: Gets the comment from the specified cell.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCommentByCell(cellAddress: Range | string): Comment;'
@@ -681,7 +711,8 @@ methods:
     package: ExcelScript!
     fullName: getCommentByReplyId(replyId)
     summary: Gets the comment to which the given reply is connected.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCommentByReplyId(replyId: string): Comment;'
@@ -697,7 +728,8 @@ methods:
     package: ExcelScript!
     fullName: getComments()
     summary: Represents a collection of comments associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getComments(): Comment[];'
@@ -711,7 +743,8 @@ methods:
     summary: >-
       Gets a custom XML part based on its ID. If the `CustomXmlPart` does not exist, then this function returns
       `undefined`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCustomXmlPart(id: string): CustomXmlPart | undefined;'
@@ -727,7 +760,8 @@ methods:
     package: ExcelScript!
     fullName: getCustomXmlPartByNamespace(namespaceUri)
     summary: Gets a new collection of custom XML parts whose namespaces match the given namespace.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: true
     customDeprecatedMessage: Use `getCustomXmlPartsByNamespace` instead.
     syntax:
@@ -744,7 +778,8 @@ methods:
     package: ExcelScript!
     fullName: getCustomXmlParts()
     summary: Represents the collection of custom XML parts contained by this workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCustomXmlParts(): CustomXmlPart[];'
@@ -756,7 +791,8 @@ methods:
     package: ExcelScript!
     fullName: getCustomXmlPartsByNamespace(namespaceUri)
     summary: Gets a new collection of custom XML parts whose namespaces match the given namespace.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];'
@@ -772,7 +808,8 @@ methods:
     package: ExcelScript!
     fullName: getDefaultPivotTableStyle()
     summary: Gets the default PivotTable style for the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDefaultPivotTableStyle(): PivotTableStyle;'
@@ -784,7 +821,8 @@ methods:
     package: ExcelScript!
     fullName: getDefaultSlicerStyle()
     summary: Gets the default `SlicerStyle` for the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDefaultSlicerStyle(): SlicerStyle;'
@@ -796,7 +834,8 @@ methods:
     package: ExcelScript!
     fullName: getDefaultTableStyle()
     summary: Gets the default table style for the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDefaultTableStyle(): TableStyle;'
@@ -808,7 +847,8 @@ methods:
     package: ExcelScript!
     fullName: getDefaultTimelineStyle()
     summary: Gets the default timeline style for the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDefaultTimelineStyle(): TimelineStyle;'
@@ -820,7 +860,8 @@ methods:
     package: ExcelScript!
     fullName: getFirstWorksheet(visibleOnly)
     summary: Gets the first worksheet in the collection.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFirstWorksheet(visibleOnly?: boolean): Worksheet;'
@@ -838,7 +879,8 @@ methods:
     summary: >-
       Specifies if changes have been made since the workbook was last saved. You can set this property to `true` if you
       want to close a modified workbook without either saving it or being prompted to save it.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getIsDirty(): boolean;'
@@ -850,7 +892,8 @@ methods:
     package: ExcelScript!
     fullName: getLastWorksheet(visibleOnly)
     summary: Gets the last worksheet in the collection.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLastWorksheet(visibleOnly?: boolean): Worksheet;'
@@ -868,7 +911,8 @@ methods:
     summary: >-
       Gets information about a linked workbook by its URL. If the workbook does not exist, then this function will
       return an object with its `isNullObject` property set to `true`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;'
@@ -886,7 +930,8 @@ methods:
     summary: >-
       Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the
       workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLinkedWorkbookRefreshMode(): WorkbookLinksRefreshMode;'
@@ -900,7 +945,8 @@ methods:
     summary: >-
       Returns a collection of linked workbooks. In formulas, the workbook links can be used to reference data (cell
       values and names) outside of the current workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLinkedWorkbooks(): LinkedWorkbook[];'
@@ -912,7 +958,8 @@ methods:
     package: ExcelScript!
     fullName: getName()
     summary: Gets the workbook name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getName(): string;'
@@ -945,7 +992,8 @@ methods:
     summary: >-
       Gets a `NamedItem` object using its name. If the object does not exist, then this function returns `undefined`<!--
       -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getNamedItem(name: string): NamedItem | undefined;'
@@ -961,7 +1009,8 @@ methods:
     package: ExcelScript!
     fullName: getNames()
     summary: Represents a collection of workbook-scoped named items (named ranges and constants).
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getNames(): NamedItem[];'
@@ -973,7 +1022,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTable(name)
     summary: 'Gets a PivotTable by name. If the PivotTable does not exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPivotTable(name: string): PivotTable | undefined;'
@@ -989,7 +1039,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTables()
     summary: Represents a collection of PivotTables associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPivotTables(): PivotTable[];'
@@ -1003,7 +1054,8 @@ methods:
     summary: >-
       Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist, then this function returns
       `undefined`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPivotTableStyle(name: string): PivotTableStyle | undefined;'
@@ -1019,7 +1071,8 @@ methods:
     package: ExcelScript!
     fullName: getPivotTableStyles()
     summary: Represents a collection of PivotTableStyles associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPivotTableStyles(): PivotTableStyle[];'
@@ -1031,7 +1084,8 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedCellStyle(name)
     summary: Gets a `Style` by name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPredefinedCellStyle(name: string): PredefinedCellStyle;'
@@ -1047,7 +1101,8 @@ methods:
     package: ExcelScript!
     fullName: getPredefinedCellStyles()
     summary: Represents a collection of styles associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPredefinedCellStyles(): PredefinedCellStyle[];'
@@ -1059,7 +1114,8 @@ methods:
     package: ExcelScript!
     fullName: getPreviouslySaved()
     summary: Specifies if the workbook has ever been saved locally or online.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPreviouslySaved(): boolean;'
@@ -1071,7 +1127,8 @@ methods:
     package: ExcelScript!
     fullName: getProperties()
     summary: Gets the workbook properties.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getProperties(): DocumentProperties;'
@@ -1083,7 +1140,8 @@ methods:
     package: ExcelScript!
     fullName: getProtection()
     summary: Returns the protection object for a workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getProtection(): WorkbookProtection;'
@@ -1095,7 +1153,8 @@ methods:
     package: ExcelScript!
     fullName: getReadOnly()
     summary: Returns `true` if the workbook is open in read-only mode.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getReadOnly(): boolean;'
@@ -1109,7 +1168,8 @@ methods:
     summary: >-
       Gets the currently selected single range from the workbook. If there are multiple ranges selected, this method
       will throw an error.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSelectedRange(): Range;'
@@ -1123,7 +1183,8 @@ methods:
     summary: >-
       Gets the currently selected one or more ranges from the workbook. Unlike `getSelectedRange()`<!-- -->, this method
       returns a `RangeAreas` object that represents all the selected ranges.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSelectedRanges(): RangeAreas;'
@@ -1135,7 +1196,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicer(key)
     summary: 'Gets a slicer using its name or ID. If the slicer doesn''t exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSlicer(key: string): Slicer | undefined;'
@@ -1151,7 +1213,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicers()
     summary: Represents a collection of slicers associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSlicers(): Slicer[];'
@@ -1163,7 +1226,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicerStyle(name)
     summary: 'Gets a `SlicerStyle` by name. If the slicer style doesn''t exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSlicerStyle(name: string): SlicerStyle | undefined;'
@@ -1179,7 +1243,8 @@ methods:
     package: ExcelScript!
     fullName: getSlicerStyles()
     summary: Represents a collection of SlicerStyles associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSlicerStyles(): SlicerStyle[];'
@@ -1191,7 +1256,8 @@ methods:
     package: ExcelScript!
     fullName: getTable(key)
     summary: 'Gets a table by name or ID. If the table doesn''t exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTable(key: string): Table | undefined;'
@@ -1207,7 +1273,8 @@ methods:
     package: ExcelScript!
     fullName: getTables()
     summary: Represents a collection of tables associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTables(): Table[];'
@@ -1219,7 +1286,8 @@ methods:
     package: ExcelScript!
     fullName: getTableStyle(name)
     summary: 'Gets a `TableStyle` by name. If the table style does not exist, then this function returns `undefined`<!-- -->.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTableStyle(name: string): TableStyle | undefined;'
@@ -1235,7 +1303,8 @@ methods:
     package: ExcelScript!
     fullName: getTableStyles()
     summary: Represents a collection of TableStyles associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTableStyles(): TableStyle[];'
@@ -1249,7 +1318,8 @@ methods:
     summary: >-
       Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then this function returns `undefined`<!--
       -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTimelineStyle(name: string): TimelineStyle | undefined;'
@@ -1265,7 +1335,8 @@ methods:
     package: ExcelScript!
     fullName: getTimelineStyles()
     summary: Represents a collection of TimelineStyles associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTimelineStyles(): TimelineStyle[];'
@@ -1279,7 +1350,8 @@ methods:
     summary: >-
       True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
       Data will permanently lose accuracy when switching this property from `false` to `true`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getUsePrecisionAsDisplayed(): boolean;'
@@ -1293,7 +1365,8 @@ methods:
     summary: >-
       Gets a worksheet object using its name or ID. If the worksheet does not exist, then this function returns
       `undefined`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getWorksheet(key: string): Worksheet | undefined;'
@@ -1328,7 +1401,8 @@ methods:
     package: ExcelScript!
     fullName: getWorksheets()
     summary: Represents a collection of worksheets associated with the workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getWorksheets(): Worksheet[];'
@@ -1360,7 +1434,8 @@ methods:
     package: ExcelScript!
     fullName: refreshAllDataConnections()
     summary: Refreshes all the Data Connections.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'refreshAllDataConnections(): void;'
@@ -1372,7 +1447,8 @@ methods:
     package: ExcelScript!
     fullName: refreshAllLinksToLinkedWorkbooks()
     summary: Makes a request to refresh all the workbook links.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'refreshAllLinksToLinkedWorkbooks(): void;'
@@ -1384,7 +1460,8 @@ methods:
     package: ExcelScript!
     fullName: refreshAllPivotTables()
     summary: Refreshes all the pivot tables in the collection.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'refreshAllPivotTables(): void;'
@@ -1398,7 +1475,8 @@ methods:
     summary: >-
       True if all charts in the workbook are tracking the actual data points to which they are attached. False if the
       charts track the index of the data points.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setChartDataPointTrack(chartDataPointTrack: boolean): void;'
@@ -1414,7 +1492,8 @@ methods:
     package: ExcelScript!
     fullName: setDefaultPivotTableStyle(newDefaultStyle)
     summary: Sets the default PivotTable style for use in the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -1435,7 +1514,8 @@ methods:
     package: ExcelScript!
     fullName: setDefaultSlicerStyle(newDefaultStyle)
     summary: Sets the default slicer style for use in the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setDefaultSlicerStyle(newDefaultStyle: SlicerStyle | string): void;'
@@ -1451,7 +1531,8 @@ methods:
     package: ExcelScript!
     fullName: setDefaultTableStyle(newDefaultStyle)
     summary: Sets the default table style for use in the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setDefaultTableStyle(newDefaultStyle: TableStyle | string): void;'
@@ -1467,7 +1548,8 @@ methods:
     package: ExcelScript!
     fullName: setDefaultTimelineStyle(newDefaultStyle)
     summary: Sets the default timeline style for use in the parent object's scope.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setDefaultTimelineStyle(newDefaultStyle: TimelineStyle | string): void;'
@@ -1485,7 +1567,8 @@ methods:
     summary: >-
       Specifies if changes have been made since the workbook was last saved. You can set this property to `true` if you
       want to close a modified workbook without either saving it or being prompted to save it.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setIsDirty(isDirty: boolean): void;'
@@ -1503,7 +1586,8 @@ methods:
     summary: >-
       Represents the update mode of the workbook links. The mode is same for all of the workbook links present in the
       workbook.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: |-
@@ -1524,7 +1608,8 @@ methods:
     summary: >-
       True if calculations in this workbook will be done using only the precision of the numbers as they're displayed.
       Data will permanently lose accuracy when switching this property from `false` to `true`<!-- -->.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setUsePrecisionAsDisplayed(usePrecisionAsDisplayed: boolean): void;'

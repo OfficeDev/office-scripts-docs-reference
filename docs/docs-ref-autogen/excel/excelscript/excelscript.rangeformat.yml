@@ -4,7 +4,8 @@ uid: 'ExcelScript!ExcelScript.RangeFormat:interface'
 package: ExcelScript!
 fullName: ExcelScript.RangeFormat
 summary: 'A format object encapsulating the range''s font, fill, borders, alignment, and other properties.'
-remarks: ''isPreview: false
+remarks: ''
+isPreview: false
 isDeprecated: false
 type: interface
 methods:
@@ -15,7 +16,8 @@ methods:
     summary: >-
       Adjusts the indentation of the range formatting. The indent value ranges from 0 to 250 and is measured in
       characters.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'adjustIndent(amount: number): void;'
@@ -36,7 +38,8 @@ methods:
     summary: >-
       Changes the width of the columns of the current range to achieve the best fit, based on the current data in the
       columns.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'autofitColumns(): void;'
@@ -50,7 +53,8 @@ methods:
     summary: >-
       Changes the height of the rows of the current range to achieve the best fit, based on the current data in the
       columns.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'autofitRows(): void;'
@@ -62,7 +66,8 @@ methods:
     package: ExcelScript!
     fullName: getAutoIndent()
     summary: Specifies if text is automatically indented when text alignment is set to equal distribution.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAutoIndent(): boolean;'
@@ -74,7 +79,8 @@ methods:
     package: ExcelScript!
     fullName: getBorders()
     summary: Collection of border objects that apply to the overall range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBorders(): RangeBorder[];'
@@ -86,7 +92,8 @@ methods:
     package: ExcelScript!
     fullName: getColumnWidth()
     summary: 'Specifies the width of all colums within the range. If the column widths are not uniform, `null` will be returned.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getColumnWidth(): number;'
@@ -98,7 +105,8 @@ methods:
     package: ExcelScript!
     fullName: getFill()
     summary: Returns the fill object defined on the overall range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFill(): RangeFill;'
@@ -129,7 +137,8 @@ methods:
     package: ExcelScript!
     fullName: getFont()
     summary: Returns the font object defined on the overall range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFont(): RangeFont;'
@@ -141,7 +150,8 @@ methods:
     package: ExcelScript!
     fullName: getHorizontalAlignment()
     summary: Represents the horizontal alignment for the specified object. See `ExcelScript.HorizontalAlignment` for details.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getHorizontalAlignment(): HorizontalAlignment;'
@@ -153,7 +163,8 @@ methods:
     package: ExcelScript!
     fullName: getIndentLevel()
     summary: An integer from 0 to 250 that indicates the indent level.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getIndentLevel(): number;'
@@ -165,7 +176,8 @@ methods:
     package: ExcelScript!
     fullName: getProtection()
     summary: Returns the format protection object for a range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getProtection(): FormatProtection;'
@@ -177,7 +189,8 @@ methods:
     package: ExcelScript!
     fullName: getRangeBorder(index)
     summary: Gets a border object using its name.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRangeBorder(index: BorderIndex): RangeBorder;'
@@ -216,7 +229,8 @@ methods:
       Specifies a double that lightens or darkens a color for range borders. The value is between -1 (darkest) and 1
       (brightest), with 0 for the original color. A `null` value indicates that the entire border collection doesn't
       have a uniform `tintAndShade` setting.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRangeBorderTintAndShade(): number;'
@@ -228,7 +242,8 @@ methods:
     package: ExcelScript!
     fullName: getReadingOrder()
     summary: The reading order for the range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getReadingOrder(): ReadingOrder;'
@@ -240,7 +255,8 @@ methods:
     package: ExcelScript!
     fullName: getRowHeight()
     summary: 'The height of all rows in the range. If the row heights are not uniform, `null` will be returned.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRowHeight(): number;'
@@ -252,7 +268,8 @@ methods:
     package: ExcelScript!
     fullName: getShrinkToFit()
     summary: Specifies if text automatically shrinks to fit in the available column width.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getShrinkToFit(): boolean;'
@@ -267,7 +284,8 @@ methods:
       The text orientation of all the cells within the range. The text orientation should be an integer either from -90
       to 90, or 180 for vertically-oriented text. If the orientation within a range are not uniform, then `null` will be
       returned.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTextOrientation(): number;'
@@ -283,7 +301,8 @@ methods:
       row height of the `Range` object equals the standard height of the sheet. Returns `null` if the range contains
       more than one row and the rows aren't all the same height. Returns `false` otherwise. Note: This property is only
       intended to be set to `true`<!-- -->. Setting it to `false` has no effect.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getUseStandardHeight(): boolean;'
@@ -299,7 +318,8 @@ methods:
       column width of the `Range` object equals the standard width of the sheet. Returns `null` if the range contains
       more than one column and the columns aren't all the same height. Returns `false` otherwise. Note: This property is
       only intended to be set to `true`<!-- -->. Setting it to `false` has no effect.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getUseStandardWidth(): boolean;'
@@ -311,7 +331,8 @@ methods:
     package: ExcelScript!
     fullName: getVerticalAlignment()
     summary: Represents the vertical alignment for the specified object. See `ExcelScript.VerticalAlignment` for details.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getVerticalAlignment(): VerticalAlignment;'
@@ -325,7 +346,8 @@ methods:
     summary: >-
       Specifies if Excel wraps the text in the object. A `null` value indicates that the entire range doesn't have a
       uniform wrap setting
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'getWrapText(): boolean;'
@@ -337,7 +359,8 @@ methods:
     package: ExcelScript!
     fullName: setAutoIndent(autoIndent)
     summary: Specifies if text is automatically indented when text alignment is set to equal distribution.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setAutoIndent(autoIndent: boolean): void;'
@@ -353,7 +376,8 @@ methods:
     package: ExcelScript!
     fullName: setColumnWidth(columnWidth)
     summary: 'Specifies the width of all colums within the range. If the column widths are not uniform, `null` will be returned.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setColumnWidth(columnWidth: number): void;'
@@ -369,7 +393,8 @@ methods:
     package: ExcelScript!
     fullName: setHorizontalAlignment(horizontalAlignment)
     summary: Represents the horizontal alignment for the specified object. See `ExcelScript.HorizontalAlignment` for details.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setHorizontalAlignment(horizontalAlignment: HorizontalAlignment): void;'
@@ -385,7 +410,8 @@ methods:
     package: ExcelScript!
     fullName: setIndentLevel(indentLevel)
     summary: An integer from 0 to 250 that indicates the indent level.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setIndentLevel(indentLevel: number): void;'
@@ -404,7 +430,8 @@ methods:
       Specifies a double that lightens or darkens a color for range borders. The value is between -1 (darkest) and 1
       (brightest), with 0 for the original color. A `null` value indicates that the entire border collection doesn't
       have a uniform `tintAndShade` setting.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;'
@@ -420,7 +447,8 @@ methods:
     package: ExcelScript!
     fullName: setReadingOrder(readingOrder)
     summary: The reading order for the range.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setReadingOrder(readingOrder: ReadingOrder): void;'
@@ -436,7 +464,8 @@ methods:
     package: ExcelScript!
     fullName: setRowHeight(rowHeight)
     summary: 'The height of all rows in the range. If the row heights are not uniform, `null` will be returned.'
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setRowHeight(rowHeight: number): void;'
@@ -452,7 +481,8 @@ methods:
     package: ExcelScript!
     fullName: setShrinkToFit(shrinkToFit)
     summary: Specifies if text automatically shrinks to fit in the available column width.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setShrinkToFit(shrinkToFit: boolean): void;'
@@ -471,7 +501,8 @@ methods:
       The text orientation of all the cells within the range. The text orientation should be an integer either from -90
       to 90, or 180 for vertically-oriented text. If the orientation within a range are not uniform, then `null` will be
       returned.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setTextOrientation(textOrientation: number): void;'
@@ -491,7 +522,8 @@ methods:
       row height of the `Range` object equals the standard height of the sheet. Returns `null` if the range contains
       more than one row and the rows aren't all the same height. Returns `false` otherwise. Note: This property is only
       intended to be set to `true`<!-- -->. Setting it to `false` has no effect.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setUseStandardHeight(useStandardHeight: boolean): void;'
@@ -511,7 +543,8 @@ methods:
       column width of the `Range` object equals the standard width of the sheet. Returns `null` if the range contains
       more than one column and the columns aren't all the same height. Returns `false` otherwise. Note: This property is
       only intended to be set to `true`<!-- -->. Setting it to `false` has no effect.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setUseStandardWidth(useStandardWidth: boolean): void;'
@@ -527,7 +560,8 @@ methods:
     package: ExcelScript!
     fullName: setVerticalAlignment(verticalAlignment)
     summary: Represents the vertical alignment for the specified object. See `ExcelScript.VerticalAlignment` for details.
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setVerticalAlignment(verticalAlignment: VerticalAlignment): void;'
@@ -545,7 +579,8 @@ methods:
     summary: >-
       Specifies if Excel wraps the text in the object. A `null` value indicates that the entire range doesn't have a
       uniform wrap setting
-    remarks: ''    isPreview: false
+    remarks: ''
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'setWrapText(wrapText: boolean): void;'
