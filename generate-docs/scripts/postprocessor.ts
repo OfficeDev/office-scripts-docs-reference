@@ -65,25 +65,32 @@ tryCatch(async () => {
             );
     });
 
-    // correct the language from javascript to TypeScript
+    // Correct the language from javascript to TypeScript and
+    // remove example field from yml as the OPS schema does not support it.
     fsx.readdirSync(docsDestination)
         .filter(topLevel => topLevel.indexOf(".") < 0)
         .forEach(topLevel => { // contents of docs-ref-autogen
             let hostFolder = docsDestination + '/' + topLevel;
-            fsx.readdirSync(hostFolder)
-                .filter(subfilename => subfilename.indexOf(".") < 0)
-                .forEach(subfilename => { // contents of docs-ref-autogen/<host>
+            fsx.readdirSync(hostFolder).forEach((subfilename) => {
+                if (subfilename.indexOf(".") < 0) { 
+                    // contents of docs-ref-autogen/<host>
                     let scriptFolder = hostFolder + '/' + subfilename;
                     fsx.readdirSync(scriptFolder)
                         .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
                         .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
                         fsx.writeFileSync(
                             scriptFolder + '/' + interfaceYml,
-                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/```(javascript)/g, "```TypeScript")
+                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/```(javascript)/g, "```TypeScript").replace(/^\s*example: \[\]\s*$/gm, "")
                         );
                     });
-                });
+                } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
+                    fsx.writeFileSync(
+                        hostFolder + '/' + subfilename,
+                        fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/```(javascript)/g, "```TypeScript").replace(/^\s*example: \[\]\s*$/gm, "")
+                    );
+                }
         });
+    });
 
     // fix all the individual TOC files
     console.log("Writing TOC for Office Scripts");
