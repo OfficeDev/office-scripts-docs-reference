@@ -490,6 +490,81 @@
       // Set the font to bold in that range.
       firstColumn.getFormat().getFont().setBold(true);
     }
+'ExcelScript.PivotField#applyFilter:member(1)':
+  - |-
+    /**
+     * This script applies a PivotValueFilter to a the first row hierarchy in the PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable on the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let pivotTable = sheet.getPivotTables()[0];
+
+      // Get the first row hierarchy to use as the field which gets filtered.
+      let rowHierarchy = pivotTable.getRowHierarchies()[0];
+
+      // Get the first data hierarchy to use as the values for filtering the rows.
+      let dataHierarchy = pivotTable.getDataHierarchies()[0];
+
+      // Create a filter that excludes values greater than 500.
+      let filter: ExcelScript.PivotValueFilter = {
+        condition: ExcelScript.ValueFilterCondition.greaterThan,
+        comparator: 500,
+        value: dataHierarchy.getName()
+      };
+
+      // Apply the filter.
+      rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
+        valueFilter: filter
+      });
+    }
+'ExcelScript.PivotFilters#valueFilter:member':
+  - |-
+    /**
+     * This script applies a PivotValueFilter to a the first row hierarchy in the PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable on the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let pivotTable = sheet.getPivotTables()[0];
+
+      // Get the first row hierarchy to use as the field which gets filtered.
+      let rowHierarchy = pivotTable.getRowHierarchies()[0];
+
+      // Get the first data hierarchy to use as the values for filtering the rows.
+      let dataHierarchy = pivotTable.getDataHierarchies()[0];
+
+      // Create a filter that excludes values greater than 500.
+      let filter: ExcelScript.PivotValueFilter = {
+        condition: ExcelScript.ValueFilterCondition.greaterThan,
+        comparator: 500,
+        value: dataHierarchy.getName()
+      };
+
+      // Apply the filter.
+      rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
+        valueFilter: filter
+      });
+    }
+'ExcelScript.PivotHierarchy:interface':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+
+      // Add the PivotTable to a new worksheet.
+      let newSheet = workbook.addWorksheet("Pivot");
+      let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
 'ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)':
   - |-
     /**
@@ -514,6 +589,66 @@
         // Example log: "Grand total of Sum of Crates Sold Wholesale: 11000"
       });
     }
+'ExcelScript.PivotTable#addColumnHierarchy:member(1)':
+  - |-
+    /**
+     * This script adds a row hierarchy to the PivotTable on the current worksheet.
+     * This assumes the source data has columns named 
+     * "Type", "Classification", and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable on the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let pivotTable = sheet.getPivotTables()[0];
+
+      // Add the field "Type" to the PivotTable as a row hierarchy.
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+
+      // Add the field "Classification" to the PivotTable as a column hierarchy.
+      pivotTable.addColumnHierarchy(pivotTable.getHierarchy("Classification"));
+
+      // Add the field "Sales" to the PivotTable as a data hierarchy.
+      // By default, this displays the sums of the values in "Sales" based on the "Type".
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.PivotTable#addDataHierarchy:member(1)':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+
+      // Add the PivotTable to a new worksheet.
+      let newSheet = workbook.addWorksheet("Pivot");
+      let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.PivotTable#addRowHierarchy:member(1)':
+  - |-
+    /**
+     * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+     * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Create a PivotTable based on a table in the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let table = sheet.getTables()[0];
+
+      // Add the PivotTable to a new worksheet.
+      let newSheet = workbook.addWorksheet("Pivot");
+      let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+      // Add fields to the PivotTable to show "Sales" per "Type".
+      pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+      pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
 'ExcelScript.PivotTable:interface':
   - |-
     /**
@@ -532,6 +667,34 @@
       // Add fields to the PivotTable to show "Sales" per "Type".
       pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
       pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.PivotValueFilter:interface':
+  - |-
+    /**
+     * This script applies a PivotValueFilter to a the first row hierarchy in the PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable on the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let pivotTable = sheet.getPivotTables()[0];
+
+      // Get the first row hierarchy to use as the field which gets filtered.
+      let rowHierarchy = pivotTable.getRowHierarchies()[0];
+
+      // Get the first data hierarchy to use as the values for filtering the rows.
+      let dataHierarchy = pivotTable.getDataHierarchies()[0];
+
+      // Create a filter that excludes values greater than 500.
+      let filter: ExcelScript.PivotValueFilter = {
+        condition: ExcelScript.ValueFilterCondition.greaterThan,
+        comparator: 500,
+        value: dataHierarchy.getName()
+      };
+
+      // Apply the filter.
+      rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
+        valueFilter: filter
+      });
     }
 'ExcelScript.Range#addConditionalFormat:member(1)':
   - |-
@@ -1329,6 +1492,34 @@
       conditionalFormat.getTopBottom().setRule({
         rank: 10, /* The percentage threshold. */
         type: ExcelScript.ConditionalTopBottomCriterionType.topPercent /* The type of the top/bottom condition. */
+      });
+    }
+'ExcelScript.ValueFilterCondition:enum':
+  - |-
+    /**
+     * This script applies a PivotValueFilter to a the first row hierarchy in the PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable on the current worksheet.
+      let sheet = workbook.getActiveWorksheet();
+      let pivotTable = sheet.getPivotTables()[0];
+
+      // Get the first row hierarchy to use as the field which gets filtered.
+      let rowHierarchy = pivotTable.getRowHierarchies()[0];
+
+      // Get the first data hierarchy to use as the values for filtering the rows.
+      let dataHierarchy = pivotTable.getDataHierarchies()[0];
+
+      // Create a filter that excludes values greater than 500.
+      let filter: ExcelScript.PivotValueFilter = {
+        condition: ExcelScript.ValueFilterCondition.greaterThan,
+        comparator: 500,
+        value: dataHierarchy.getName()
+      };
+
+      // Apply the filter.
+      rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
+        valueFilter: filter
       });
     }
 'ExcelScript.Workbook#addPivotTable:member(1)':
