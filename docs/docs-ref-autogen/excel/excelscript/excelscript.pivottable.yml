@@ -53,7 +53,33 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a row hierarchy to the PivotTable on the current worksheet.
+           * This assumes the source data has columns named 
+           * "Type", "Classification", and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable on the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let pivotTable = sheet.getPivotTables()[0];
+
+            // Add the field "Type" to the PivotTable as a row hierarchy.
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+
+            // Add the field "Classification" to the PivotTable as a column hierarchy.
+            pivotTable.addColumnHierarchy(pivotTable.getHierarchy("Classification"));
+
+            // Add the field "Sales" to the PivotTable as a data hierarchy.
+            // By default, this displays the sums of the values in "Sales" based on the "Type".
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
   - name: addDataHierarchy(pivotHierarchy)
     uid: 'ExcelScript!ExcelScript.PivotTable#addDataHierarchy:member(1)'
     package: ExcelScript!
@@ -70,7 +96,30 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+           * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+
+            // Add the PivotTable to a new worksheet.
+            let newSheet = workbook.addWorksheet("Pivot");
+            let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
   - name: addFilterHierarchy(pivotHierarchy)
     uid: 'ExcelScript!ExcelScript.PivotTable#addFilterHierarchy:member(1)'
     package: ExcelScript!
@@ -114,7 +163,30 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+           * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+
+            // Add the PivotTable to a new worksheet.
+            let newSheet = workbook.addWorksheet("Pivot");
+            let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
   - name: delete()
     uid: 'ExcelScript!ExcelScript.PivotTable#delete:member(1)'
     package: ExcelScript!
