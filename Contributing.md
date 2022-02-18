@@ -7,7 +7,7 @@ Thank you for your interest in our documentation! The best ways to help make thi
 
 ## Report issues
 
-Most of this repo's content is generated from [type definition files](https://github.com/DefinitelyTyped/DefinitelyTyped). As such, corrections here are likely to be overwritten. Please report issues or make requests for additional documentation through [GitHub Issues](https://github.com/OfficeDev/office-scripts-docs-reference/issues). To do this, go to the **Feedback** section at the bottom of the affected article, then select **This page** to create a GitHub issue. Alternatively, create a new issue directly on [GitHub](https://github.com/OfficeDev/office-scripts-docs-reference/issues/new).
+Most of this repo's content is generated from internal files that are copied to **/generate-docs/script-inputs/excel.d.ts**. As such, documentation corrections are likely to be overwritten. Please report issues or make requests for additional documentation through [GitHub Issues](https://github.com/OfficeDev/office-scripts-docs-reference/issues). To do this, go to the **Feedback** section at the bottom of the affected article, then select **This page** to create a GitHub issue. Alternatively, create a new issue directly on [GitHub](https://github.com/OfficeDev/office-scripts-docs-reference/issues/new).
 
 ## Add or edit new samples
 
@@ -65,10 +65,10 @@ Using this method allows you to contribute to one article at a time.
 #### To contribute using GitHub
 
 1. Find the article you want to contribute to on GitHub.
-2. Once you are on the article in GitHub, sign in to GitHub (get a free account [Join GitHub](https://github.com/join)).
-3. Choose the **pencil icon** (edit the file in your fork of this project) and make your changes in the **<>Edit file** window.
-4. Scroll to the bottom and enter a description.
-5. Choose **Propose file change** > **Create pull request**.
+1. Once you are on the article in GitHub, sign in to GitHub (get a free account [Join GitHub](https://github.com/join)).
+1. Choose the **pencil icon** (edit the file in your fork of this project) and make your changes in the **<>Edit file** window.
+1. Scroll to the bottom and enter a description.
+1. Choose **Propose file change** > **Create pull request**.
 
 You now have successfully submitted a pull request. Pull requests are typically reviewed within 10 business days.
 
