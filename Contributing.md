@@ -21,7 +21,7 @@ Samples are tied to particular APIs. Pick the API that your sample showcases and
 
 After the YAML key, add `:`, then add `  - |-` on a new line. This ensures the spacing in the example stays as is.
 
-The following example shows a sample script for `Range.getValue`:
+The following example shows a sample script for `Range.getValue`.
 
 ```YAML
 'ExcelScript.Range#getValue:member(1)':
@@ -45,7 +45,7 @@ Please add samples to the **.yaml** file in alphabetical order, based on the cla
 
 ### What makes a good sample?
 
-A good sample has the following characteristics:
+A good sample has the following characteristics.
 
 1. Descriptive - The sample has an introductory comment explaining the behavior and comments in the code as needed.
 1. Useful - Some or all of the sample could be copied into an actual script and quickly modified to suit someone's needs.
@@ -141,7 +141,7 @@ You navigate to the repository on your computer by using File Explorer. The repo
 
 To edit files, open them in an editor of your choice and modify them. To create a new file, use the editor of your choice and save the new file in the appropriate location in your local copy of the repository. While working, save your work frequently.
 
-The files in `C:\Users\<yourusername>\office-scripts-docs-reference` are a working copy of the new branch that you created in your local repository. Changing anything in this folder doesn't affect the local repository until you commit a change. To commit a change to the local repository, type the following commands in GitBash:
+The files in `C:\Users\<yourusername>\office-scripts-docs-reference` are a working copy of the new branch that you created in your local repository. Changing anything in this folder doesn't affect the local repository until you commit a change. To commit a change to the local repository, type the following commands in GitBash.
 
     git add .
     git commit -v -a -m "<Describe the changes made in this commit>"
@@ -172,7 +172,7 @@ One of the site administrators will process your pull request. Your pull request
 
 After a branch is successfully merged (that is, your pull request is accepted), don't continue working in that local branch. This can lead to merge conflicts if you submit another pull request. To do another update, create a new local branch from the successfully merged upstream branch, and then delete your initial local branch.
 
-For example, if your local branch X was successfully merged into the OfficeDev/office-scripts-docs-reference main branch and you want to make additional updates to the content that was merged. Create a new local branch, X2, from the OfficeDev/office-scripts-docs-reference main branch. To do this, open GitBash and execute the following commands:
+For example, if your local branch X was successfully merged into the OfficeDev/office-scripts-docs-reference main branch and you want to make additional updates to the content that was merged. Create a new local branch, X2, from the OfficeDev/office-scripts-docs-reference main branch. To do this, open GitBash and execute the following commands.
 
     cd office-scripts-docs-reference
     git pull upstream main:X2
