@@ -79,9 +79,9 @@ If you're planning on making large changes, including updates to the documentati
 #### To contribute using Git
 
 1. If you don't have a GitHub account, set one up at [GitHub](https://github.com/join).
-2. After you have an account, install Git on your computer. Follow the steps in the [Set up Git] tutorial.
-3. To submit a pull request using Git, follow the steps in [Use GitHub, Git, and this repository](#use-github-git-and-this-repository).
-4. You will be asked to sign the Contributor's License Agreement if you are:
+1. After you have an account, install Git on your computer. Follow the steps in the [Set up Git] tutorial.
+1. To submit a pull request using Git, follow the steps in [Use GitHub, Git, and this repository](#use-github-git-and-this-repository).
+1. You will be asked to sign the Contributor's License Agreement if you are:
 
     * A member of the Microsoft Open Technologies group.
     * A contributor who doesn't work for Microsoft.
@@ -97,9 +97,9 @@ Signing the CLA does not grant you rights to commit to the main repository, but 
 ### To set up your fork of the repository
 
 1. Set up a GitHub account so you can contribute to this project. If you haven't done this, go to [GitHub](https://github.com/join) and do it now.
-2. Install Git on your computer. Follow the steps in the [Set up Git] tutorial.
-3. Create your own fork of this repository. To do this, at the top of the page,  choose the **Fork** button.
-4. Copy your fork to your computer. To do this, open Git Bash. At the command prompt enter:
+1. Install Git on your computer. Follow the steps in the [Set up Git] tutorial.
+1. Create your own fork of this repository. To do this, at the top of the page,  choose the **Fork** button.
+1. Copy your fork to your computer. To do this, open Git Bash. At the command prompt enter:
 
         git clone https://github.com/<your user name>/office-scripts-docs-reference.git
 
@@ -118,9 +118,9 @@ To make the contribution process as seamless as possible, follow these steps.
 #### To contribute and edit content
 
 1. Create a new branch.
-2. Add new content or edit existing content.
-3. Submit a pull request to the main repository.
-4. Delete the branch.
+1. Add new content or edit existing content.
+1. Submit a pull request to the main repository.
+1. Delete the branch.
 
 **Important**: Limit each branch to a single concept/article to streamline the work flow and reduce the chance of merge conflicts. Content appropriate for a new branch includes:
 
@@ -131,9 +131,9 @@ To make the contribution process as seamless as possible, follow these steps.
 #### To create a new branch
 
 1. Open Git Bash.
-2. At the Git Bash command prompt, type `git pull upstream main:<new branch name>`. This creates a new branch locally that is copied from the latest OfficeDev main branch.
-3. At the Git Bash command prompt, type `git push origin <new branch name>`. This alerts GitHub to the new branch. You should now see the new branch in your fork of the repository on GitHub.
-4. At the Git Bash command prompt, type `git checkout <new branch name>` to switch to your new branch.
+1. At the Git Bash command prompt, type `git pull upstream main:<new branch name>`. This creates a new branch locally that is copied from the latest OfficeDev main branch.
+1. At the Git Bash command prompt, type `git push origin <new branch name>`. This alerts GitHub to the new branch. You should now see the new branch in your fork of the repository on GitHub.
+1. At the Git Bash command prompt, type `git checkout <new branch name>` to switch to your new branch.
 
 #### Add new content or edit existing content
 
@@ -159,12 +159,12 @@ When you're finished with your work and are ready to have it merged into the mai
 #### To submit a pull request to the main repository
 
 1. In the Git Bash command prompt, type `git push origin <new branch name>`. In your local repository, `origin` refers to your GitHub repository that you cloned the local repository from. This command pushes the current state of your new branch, including all commits made in the previous steps, to your GitHub fork.
-2. On the GitHub site, navigate in your fork to the new branch.
-3. Choose the **Pull Request** button at the top of the page.
-4. Verify the Base branch is `OfficeDev/office-scripts-docs-reference@main` and the Head branch is `<your username>/office-scripts-docs-reference@<branch name>`.
-5. Choose the **Update Commit Range** button.
-6. Add a title to your pull request, and describe all the changes you're making.
-7. Submit the pull request.
+1. On the GitHub site, navigate in your fork to the new branch.
+1. Choose the **Pull Request** button at the top of the page.
+1. Verify the Base branch is `OfficeDev/office-scripts-docs-reference@main` and the Head branch is `<your username>/office-scripts-docs-reference@<branch name>`.
+1. Choose the **Update Commit Range** button.
+1. Add a title to your pull request, and describe all the changes you're making.
+1. Submit the pull request.
 
 One of the site administrators will process your pull request. Your pull request will surface on the [OfficeDev/office-scripts-docs-reference](https://github.com/OfficeDev/office-scripts-docs-reference/pulls) site under **Pull requests**. When the pull request is accepted, the issue will be resolved.
 
@@ -191,8 +191,8 @@ Once your changes are successfully merged into the main repository, delete the b
 #### To delete a branch
 
 1. In the Git Bash command prompt, type `git checkout main`. This ensures that you aren't in the branch to be deleted (which isn't allowed).
-2. Next, at the command prompt, type `git branch -d <branch name>`. This deletes the branch on your computer only if it has been successfully merged to the upstream repository. (You can override this behavior with the `–D` flag, but first be sure you want to do this.)
-3. Finally, type `git push origin :<branch name>` at the command prompt (a space before the colon and no space after it).  This will delete the branch on your github fork.  
+1. Next, at the command prompt, type `git branch -d <branch name>`. This deletes the branch on your computer only if it has been successfully merged to the upstream repository. (You can override this behavior with the `–D` flag, but first be sure you want to do this.)
+1. Finally, type `git push origin :<branch name>` at the command prompt (a space before the colon and no space after it).  This will delete the branch on your github fork.  
 
 Congratulations, you have successfully contributed to the project!
 
