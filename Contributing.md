@@ -65,7 +65,7 @@ Using this method allows you to contribute to one article at a time.
 #### To contribute using GitHub
 
 1. Find the article you want to contribute to on GitHub.
-1. Once you are on the article in GitHub, sign in to GitHub (get a free account [Join GitHub](https://github.com/join)).
+1. Once you are on the article in GitHub, sign in to GitHub (to get a free account, [Join GitHub](https://github.com/join)).
 1. Choose the **pencil icon** (edit the file in your fork of this project) and make your changes in the **<>Edit file** window.
 1. Scroll to the bottom and enter a description.
 1. Choose **Propose file change** > **Create pull request**.
@@ -92,7 +92,7 @@ Signing the CLA does not grant you rights to commit to the main repository, but 
 
 ## Use GitHub, Git, and this repository
 
-**Note:** Most of the information in this section can be found in [GitHub Help] articles. If you're familiar with Git and GitHub, skip to the **Contribute and edit content** section for the specifics of the code/content flow of this repository.
+**Note:** Most of the information in this section can be found in [GitHub Help] articles. If you're familiar with Git and GitHub, skip to the [Contribute and edit content](#contribute-and-edit-content) section for the specifics of the code/content flow of this repository.
 
 ### To set up your fork of the repository
 
