@@ -1173,6 +1173,25 @@
       // Print the value of A1.
       console.log(range.getValue());
     }
+'ExcelScript.Range#insert:member(1)':
+  - |-
+    /**
+     * This script inserts headers at the top of the worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      let currentSheet = workbook.getActiveWorksheet();
+
+      // Create headers for 3 columns.
+      let myHeaders = [["NAME", "ID", "ROLE"]];
+
+      // Add a blank first row and push existing data down a row.
+      let firstRow = currentSheet.getRange("1:1");
+      firstRow.insert(ExcelScript.InsertShiftDirection.down);
+
+      // Add the headers.
+      currentSheet.getRange("A1:C1").setValues(myHeaders);
+    }
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
@@ -1208,6 +1227,26 @@
 
       // Log the current results for `getFormula` and `getValue` at B1.
       console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+    }
+'ExcelScript.Range#setFormulas:member(1)':
+  - |-
+    /**
+     * This script sets the values of a range, then adds SUM formulas to calcuate
+     * the totals for each row of that range. 
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      let currentSheet = workbook.getActiveWorksheet();
+
+      // Set the values of a range.
+      let values = [[1, 2, 4], [8, 16, 32], [64, 128, 256]];
+      let valueRange = currentSheet.getRange("A1:C3");
+      valueRange.setValues(values);
+
+      // Set the formulas of a range.
+      let formulas = [["=SUM(A1:C1)"], ["=SUM(A2:C2)"], ["=SUM(A3:C3)"]];
+      let formulaRange = currentSheet.getRange("D1:D3");
+      formulaRange.setFormulas(formulas);
     }
 'ExcelScript.Range#setHyperlink:member(1)':
   - |-
@@ -1327,6 +1366,20 @@
       // Switch the view to the new worksheet.
       newSheet.activate();
     }
+'ExcelScript.RangeFill#clear:member(1)':
+  - |-
+    /**
+     * This script removes all fill color and styles from the used range.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the used range of the current worksheet
+      let currentSheet = workbook.getActiveWorksheet();
+      let usedRange = currentSheet.getUsedRange();
+
+      // Clear the fill from the entire range.
+      usedRange.getFormat().getFill().clear();
+    }
 'ExcelScript.RangeFill#setColor:member(1)':
   - |-
     /**
@@ -1338,6 +1391,23 @@
 
       // Set the fill color to blue.
       cell.getFormat().getFill().setColor("blue");
+    }
+'ExcelScript.RangeFill:interface':
+  - |-
+    /**
+     * This script sets the fill color of the used range to green.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the used range of the current worksheet
+      let currentSheet = workbook.getActiveWorksheet();
+      let usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeFill object.
+      let fill = usedRange.getFormat().getFill();
+
+      // Set the fill color to green.
+      fill.setColor("green");
     }
 'ExcelScript.RangeFormat#getFill:member(1)':
   - |-

@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.RangeFill:interface'
 package: ExcelScript!
 fullName: ExcelScript.RangeFill
 summary: Represents the background of a range object.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the fill color of the used range to green.
+   */
+  function main(workbook: ExcelScript.Workbook)
+  {
+    // Get the used range of the current worksheet.
+    let currentSheet = workbook.getActiveWorksheet();
+    let usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeFill object.
+    let fill = usedRange.getFormat().getFill();
+
+    // Set the fill color to green.
+    fill.setColor("green");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -21,7 +42,25 @@ methods:
       content: 'clear(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes all fill color and styles from the used range.
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the used range of the current worksheet.
+            let currentSheet = workbook.getActiveWorksheet();
+            let usedRange = currentSheet.getUsedRange();
+
+            // Clear the fill from the entire range.
+            usedRange.getFormat().getFill().clear();
+          }
+          ```
   - name: getColor()
     uid: 'ExcelScript!ExcelScript.RangeFill#getColor:member(1)'
     package: ExcelScript!

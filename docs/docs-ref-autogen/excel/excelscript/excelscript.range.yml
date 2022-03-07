@@ -2078,7 +2078,30 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.InsertShiftDirection:enum" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts headers at the top of the worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            let currentSheet = workbook.getActiveWorksheet();
+
+            // Create headers for 3 columns.
+            let myHeaders = [["NAME", "ID", "ROLE"]];
+
+            // Add a blank first row and push existing data down a row.
+            let firstRow = currentSheet.getRange("1:1");
+            firstRow.insert(ExcelScript.InsertShiftDirection.down);
+
+            // Add the headers.
+            currentSheet.getRange("A1:C1").setValues(myHeaders);
+          }
+          ```
   - name: merge(across)
     uid: 'ExcelScript!ExcelScript.Range#merge:member(1)'
     package: ExcelScript!
@@ -2336,7 +2359,31 @@ methods:
           type: 'string[][]'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the values of a range, then adds SUM formulas to calcuate
+           * the totals for each row of that range. 
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            let currentSheet = workbook.getActiveWorksheet();
+
+            // Set the values of a range.
+            let values = [[1, 2, 4], [8, 16, 32], [64, 128, 256]];
+            let valueRange = currentSheet.getRange("A1:C3");
+            valueRange.setValues(values);
+
+            // Set the formulas of a range.
+            let formulas = [["=SUM(A1:C1)"], ["=SUM(A2:C2)"], ["=SUM(A3:C3)"]];
+            let formulaRange = currentSheet.getRange("D1:D3");
+            formulaRange.setFormulas(formulas);
+          }
+          ```
   - name: setFormulasLocal(formulasLocal)
     uid: 'ExcelScript!ExcelScript.Range#setFormulasLocal:member(1)'
     package: ExcelScript!
