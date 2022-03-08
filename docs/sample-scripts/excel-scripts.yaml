@@ -1469,6 +1469,36 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
     }
+'ExcelScript.RangeFormat#setColumnWidth:member(1)':
+  - |-
+    /**
+     * This script inserts a new column and sets that column's width to 100 pixels wide.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Insert a new column between the current B and C columns.
+      const bcRange = currentSheet.getRange("C:C");
+      const newColumn = bcRange.insert(ExcelScript.InsertShiftDirection.right);
+      
+      // Set the column width of the new column to 100 pixels.
+      newColumn.getFormat().setColumnWidth(100);
+    }
+'ExcelScript.RangeFormat#setRowHeight:member(1)':
+  - |-
+    /**
+     * This script inserts a new row and sets that row's width to 100 pixels tall.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Insert a new row between the current 2 and 3 rows.
+      const bcRange = currentSheet.getRange("3:3");
+      const newRow = bcRange.insert(ExcelScript.InsertShiftDirection.down);
+      
+      // Set the row height of the new row to 100 pixels.
+      newRow.getFormat().setRowHeight(100);
+    }
 'ExcelScript.SearchCriteria:interface':
   - |-
     /**
