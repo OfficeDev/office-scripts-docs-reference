@@ -1372,7 +1372,7 @@
      */
     function main(workbook: ExcelScript.Workbook)
     {
-      // Get the used range of the current worksheet
+      // Get the used range of the current worksheet.
       let currentSheet = workbook.getActiveWorksheet();
       let usedRange = currentSheet.getUsedRange();
 
@@ -1389,7 +1389,7 @@
      */
     function main(workbook: ExcelScript.Workbook)
     {
-      // Get the used range of the current worksheet
+      // Get the used range of the current worksheet.
       let currentSheet = workbook.getActiveWorksheet();
       let usedRange = currentSheet.getUsedRange();
 
@@ -1422,6 +1422,36 @@
 
       // Set the fill color to green.
       totalRange.getFormat().getFill().setColor("green");
+    }
+'ExcelScript.RangeFormat#autofitColumns:member(1)':
+  - |-   
+    /**
+     * This script creates a new table from existing data and autofits the columns.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Create the table.
+      const table = currentSheet.addTable(usedRange, true);
+
+      // Format the table columns.
+      table.getRange().getFormat().autofitColumns();
+    }
+'ExcelScript.RangeFormat#autofitRows:member(1)':
+  - |-   
+    /**
+     * This script creates a new table from existing data and autofits the rows.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Create the table.
+      const table = currentSheet.addTable(usedRange, true);
+
+      // Format the table rows.
+      table.getRange().getFormat().autofitRows();
     }
 'ExcelScript.RangeFormat#getRangeBorder:member(1)':
   - |-   
@@ -1691,6 +1721,15 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.Worksheet:interface':
+  - |-
+    /**
+     * This script creates a new worksheet named "Plum" and sets its tab color to purple.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const newSheet = workbook.addWorksheet("Plum")
+      newSheet.setTabColor("purple");
     }
 'ExcelScript.Worksheet#activate:member(1)':
   - |-
