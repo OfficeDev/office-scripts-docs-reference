@@ -15,6 +15,35 @@
       // Autofill the connected range. C2:C3 are filled in with dates. C4:C54 are blank.
       dataRange.autoFill("C2:C54", ExcelScript.AutoFillType.fillDays);
     }
+'ExcelScript.AutoFilter:interface':
+  - |-
+    /**
+     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+     * The autofilter filters to only include rows that have a value in column C in the lowest 10 values 
+     * (of column C values).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const dataRange = currentSheet.getUsedRange();
+
+      // Add a filter that will only show the rows with the top 10% of values in column C
+      // (index 2, assuming the used range spans from at least A:C).
+      currentSheet.getAutoFilter().apply(dataRange, 2, {
+        criterion1: "10",
+        filterOn: ExcelScript.FilterOn.bottomItems
+      });
+    }
+'ExcelScript.AutoFilter#clearCriteria:member(1)':
+  - |-
+    /**
+     * This script clears any applied criteria from the worksheet's autofilter.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Clear all the criteria currently applied to the autofilter.
+      currentSheet.getAutoFilter().clearCriteria();
+    }
 'ExcelScript.Chart#setName:member(1)':
   - |-
     /**
@@ -1424,7 +1453,7 @@
       totalRange.getFormat().getFill().setColor("green");
     }
 'ExcelScript.RangeFormat#autofitColumns:member(1)':
-  - |-   
+  - |-
     /**
      * This script creates a new table from existing data and autofits the columns.
      */
@@ -1439,7 +1468,7 @@
       table.getRange().getFormat().autofitColumns();
     }
 'ExcelScript.RangeFormat#autofitRows:member(1)':
-  - |-   
+  - |-
     /**
      * This script creates a new table from existing data and autofits the rows.
      */
@@ -1452,6 +1481,45 @@
 
       // Format the table rows.
       table.getRange().getFormat().autofitRows();
+    }
+'ExcelScript.RangeFormat#getColumnWidth:member(1)':
+  - |-
+    /**
+     * This script doubles the column width for every column in the active worksheet's used range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get all the current column widths before setting them to improve performance.
+      let currentWidths = Array<number>(usedRange.getColumnCount());
+      for (let column = 0; column < currentWidths.length; column++) {
+        currentWidths[column] = usedRange.getColumn(column).getFormat().getColumnWidth();
+      }
+
+      // Set the new column widths.
+      for (let column = 0; column < currentWidths.length; column++) {
+        usedRange.getFormat().setColumnWidth(currentWidths[column] * 2);
+      }
+'ExcelScript.RangeFormat#getRowHeight:member(1)':
+  - |-
+    /**
+     * This script doubles the row height for every row in the active worksheet's used range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get all the current row heights before setting them to improve performance.
+      let currentHeights = Array<number>(usedRange.getRowCount());
+      for (let row = 0; row < currentHeights.length; row++) {
+        currentHeights[row] = usedRange.getRow(row).getFormat().getRowHeight();
+      }
+
+      // Set the new row heights.
+      for (let row = 0; row < currentHeights.length; row++) {
+        usedRange.getFormat().setRowHeight(currentHeights[row] * 2);
+      }
     }
 'ExcelScript.RangeFormat#getRangeBorder:member(1)':
   - |-   
@@ -1917,6 +1985,24 @@
 
       // Set the fill color to red.
       noCells.getFormat().getFill().setColor("red");
+    }
+'ExcelScript.Worksheet#getAutoFilter:member(1)':
+ - |-
+    /**
+     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+     * The autofilter filters to only include rows that have a value in column D in the top 10 percentile 
+     * (of column D values).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const dataRange = currentSheet.getUsedRange();
+
+      // Add a filter that will only show the rows with the top 10% of values in column D
+      // (index 3, assuming the used range spans from at least A:D).
+      currentSheet.getAutoFilter().apply(dataRange, 3, {
+        criterion1: "10",
+        filterOn: ExcelScript.FilterOn.topPercent
+      });
     }
 'ExcelScript.Worksheet#getChart:member(1)':
  - |-

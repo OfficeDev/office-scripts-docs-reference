@@ -6,7 +6,29 @@ fullName: ExcelScript.AutoFilter
 summary: >-
   Represents the `AutoFilter` object. AutoFilter turns the values in Excel column into specific filters based on the
   cell contents.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+   * The autofilter filters to only include rows that have a value in column C in the lowest 10 values 
+   * (of column C values).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const currentSheet = workbook.getActiveWorksheet();
+    const dataRange = currentSheet.getUsedRange();
+
+    // Add a filter that will only show the rows with the top 10% of values in column C
+    // (index 2, assuming the used range spans from at least A:C).
+    currentSheet.getAutoFilter().apply(dataRange, 2, {
+      criterion1: "10",
+      filterOn: ExcelScript.FilterOn.bottomItems
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -51,7 +73,22 @@ methods:
       content: 'clearCriteria(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script clears any applied criteria from the worksheet's autofilter.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+
+            // Clear all the criteria currently applied to the autofilter.
+            currentSheet.getAutoFilter().clearCriteria();
+          }
+          ```
   - name: getCriteria()
     uid: 'ExcelScript!ExcelScript.AutoFilter#getCriteria:member(1)'
     package: ExcelScript!
