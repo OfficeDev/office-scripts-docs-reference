@@ -4,7 +4,20 @@ uid: 'ExcelScript!ExcelScript.Worksheet:interface'
 package: ExcelScript!
 fullName: ExcelScript.Worksheet
 summary: 'An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a new worksheet named "Plum" and sets its tab color to purple.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const newSheet = workbook.addWorksheet("Plum")
+    newSheet.setTabColor("purple");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -768,7 +781,29 @@ methods:
       content: 'getAutoFilter(): AutoFilter;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.AutoFilter:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+           * The autofilter filters to only include rows that have a value in column D in the top 10 percentile 
+           * (of column D values).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const dataRange = currentSheet.getUsedRange();
+
+            // Add a filter that will only show the rows with the top 10% of values in column D
+            // (index 3, assuming the used range spans from at least A:D).
+            currentSheet.getAutoFilter().apply(dataRange, 3, {
+              criterion1: "10",
+              filterOn: ExcelScript.FilterOn.topPercent
+            });
+          }
+          ```
   - name: 'getCell(row, column)'
     uid: 'ExcelScript!ExcelScript.Worksheet#getCell:member(1)'
     package: ExcelScript!
