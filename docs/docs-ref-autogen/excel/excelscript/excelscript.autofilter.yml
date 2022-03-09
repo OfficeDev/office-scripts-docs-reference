@@ -21,7 +21,7 @@ remarks: |-
     const currentSheet = workbook.getActiveWorksheet();
     const dataRange = currentSheet.getUsedRange();
 
-    // Add a filter that will only show the rows with the top 10% of values in column C
+    // Add a filter that will only show the rows with the lowest 10 values in column C
     // (index 2, assuming the used range spans from at least A:C).
     currentSheet.getAutoFilter().apply(dataRange, 2, {
       criterion1: "10",

@@ -37,7 +37,7 @@
       const currentSheet = workbook.getActiveWorksheet();
       const dataRange = currentSheet.getUsedRange();
 
-      // Add a filter that will only show the rows with the top 10% of values in column C
+      // Add a filter that will only show the rows with the lowest 10 values in column C
       // (index 2, assuming the used range spans from at least A:C).
       currentSheet.getAutoFilter().apply(dataRange, 2, {
         criterion1: "10",
@@ -1477,7 +1477,7 @@
       const currentSheet = workbook.getActiveWorksheet();
       const usedRange = currentSheet.getUsedRange();
 
-      // Get all the current column widths before setting them to improve performance.
+      // To optimize performance, get all the current row heights before setting them.
       let currentWidths = Array<number>(usedRange.getColumnCount());
       for (let column = 0; column < currentWidths.length; column++) {
         currentWidths[column] = usedRange.getColumn(column).getFormat().getColumnWidth();
@@ -1527,7 +1527,7 @@
       const currentSheet = workbook.getActiveWorksheet();
       const usedRange = currentSheet.getUsedRange();
 
-      // Get all the current row heights before setting them to improve performance.
+      // To optimize performance, get all the current row heights before setting them.
       let currentHeights = Array<number>(usedRange.getRowCount());
       for (let row = 0; row < currentHeights.length; row++) {
         currentHeights[row] = usedRange.getRow(row).getFormat().getRowHeight();
