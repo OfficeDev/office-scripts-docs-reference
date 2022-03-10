@@ -45,7 +45,26 @@ methods:
       content: 'autofitColumns(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a new table from existing data and autofits the columns.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Create the table.
+            const table = currentSheet.addTable(usedRange, true);
+
+            // Format the table columns.
+            table.getRange().getFormat().autofitColumns();
+          }
+          ```
   - name: autofitRows()
     uid: 'ExcelScript!ExcelScript.RangeFormat#autofitRows:member(1)'
     package: ExcelScript!
@@ -60,7 +79,26 @@ methods:
       content: 'autofitRows(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a new table from existing data and autofits the rows.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Create the table.
+            const table = currentSheet.addTable(usedRange, true);
+
+            // Format the table rows.
+            table.getRange().getFormat().autofitRows();
+          }
+          ```
   - name: getAutoIndent()
     uid: 'ExcelScript!ExcelScript.RangeFormat#getAutoIndent:member(1)'
     package: ExcelScript!
@@ -99,7 +137,30 @@ methods:
       content: 'getColumnWidth(): number;'
       return:
         type: number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script doubles the column width for every column in the active worksheet's used range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // To optimize performance, get all the current row heights before setting them.
+            let currentWidths = Array<number>(usedRange.getColumnCount());
+            for (let column = 0; column < currentWidths.length; column++) {
+              currentWidths[column] = usedRange.getColumn(column).getFormat().getColumnWidth();
+            }
+
+            // Set the new column widths.
+            for (let column = 0; column < currentWidths.length; column++) {
+              usedRange.getFormat().setColumnWidth(currentWidths[column] * 2);
+            }
+          ```
   - name: getFill()
     uid: 'ExcelScript!ExcelScript.RangeFormat#getFill:member(1)'
     package: ExcelScript!
@@ -262,7 +323,31 @@ methods:
       content: 'getRowHeight(): number;'
       return:
         type: number
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script doubles the row height for every row in the active worksheet's used range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // To optimize performance, get all the current row heights before setting them.
+            let currentHeights = Array<number>(usedRange.getRowCount());
+            for (let row = 0; row < currentHeights.length; row++) {
+              currentHeights[row] = usedRange.getRow(row).getFormat().getRowHeight();
+            }
+
+            // Set the new row heights.
+            for (let row = 0; row < currentHeights.length; row++) {
+              usedRange.getFormat().setRowHeight(currentHeights[row] * 2);
+            }
+          }
+          ```
   - name: getShrinkToFit()
     uid: 'ExcelScript!ExcelScript.RangeFormat#getShrinkToFit:member(1)'
     package: ExcelScript!
@@ -387,7 +472,26 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts a new column and sets that column's width to 100 pixels wide.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+
+            // Insert a new column between the current B and C columns.
+            const bcRange = currentSheet.getRange("C:C");
+            const newColumn = bcRange.insert(ExcelScript.InsertShiftDirection.right);
+            
+            // Set the column width of the new column to 100 pixels.
+            newColumn.getFormat().setColumnWidth(100);
+          }
+          ```
   - name: setHorizontalAlignment(horizontalAlignment)
     uid: 'ExcelScript!ExcelScript.RangeFormat#setHorizontalAlignment:member(1)'
     package: ExcelScript!
@@ -475,7 +579,26 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts a new row and sets that row's width to 100 pixels tall.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+
+            // Insert a new row between the current 2 and 3 rows.
+            const bcRange = currentSheet.getRange("3:3");
+            const newRow = bcRange.insert(ExcelScript.InsertShiftDirection.down);
+            
+            // Set the row height of the new row to 100 pixels.
+            newRow.getFormat().setRowHeight(100);
+          }
+          ```
   - name: setShrinkToFit(shrinkToFit)
     uid: 'ExcelScript!ExcelScript.RangeFormat#setShrinkToFit:member(1)'
     package: ExcelScript!

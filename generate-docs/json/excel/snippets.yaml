@@ -15,6 +15,35 @@
       // Autofill the connected range. C2:C3 are filled in with dates. C4:C54 are blank.
       dataRange.autoFill("C2:C54", ExcelScript.AutoFillType.fillDays);
     }
+'ExcelScript.AutoFilter#clearCriteria:member(1)':
+  - |-
+    /**
+     * This script clears any applied criteria from the worksheet's autofilter.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Clear all the criteria currently applied to the autofilter.
+      currentSheet.getAutoFilter().clearCriteria();
+    }
+'ExcelScript.AutoFilter:interface':
+  - |-
+    /**
+     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+     * The autofilter filters to only include rows that have a value in column C in the lowest 10 values 
+     * (of column C values).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const dataRange = currentSheet.getUsedRange();
+
+      // Add a filter that will only show the rows with the lowest 10 values in column C
+      // (index 2, assuming the used range spans from at least A:C).
+      currentSheet.getAutoFilter().apply(dataRange, 2, {
+        criterion1: "10",
+        filterOn: ExcelScript.FilterOn.bottomItems
+      });
+    }
 'ExcelScript.Chart#getPlotBy:member(1)':
   - |-
     /**
@@ -1373,7 +1402,7 @@
      */
     function main(workbook: ExcelScript.Workbook)
     {
-      // Get the used range of the current worksheet
+      // Get the used range of the current worksheet.
       let currentSheet = workbook.getActiveWorksheet();
       let usedRange = currentSheet.getUsedRange();
 
@@ -1399,7 +1428,7 @@
      */
     function main(workbook: ExcelScript.Workbook)
     {
-      // Get the used range of the current worksheet
+      // Get the used range of the current worksheet.
       let currentSheet = workbook.getActiveWorksheet();
       let usedRange = currentSheet.getUsedRange();
 
@@ -1409,6 +1438,55 @@
       // Set the fill color to green.
       fill.setColor("green");
     }
+'ExcelScript.RangeFormat#autofitColumns:member(1)':
+  - |-
+    /**
+     * This script creates a new table from existing data and autofits the columns.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Create the table.
+      const table = currentSheet.addTable(usedRange, true);
+
+      // Format the table columns.
+      table.getRange().getFormat().autofitColumns();
+    }
+'ExcelScript.RangeFormat#autofitRows:member(1)':
+  - |-
+    /**
+     * This script creates a new table from existing data and autofits the rows.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Create the table.
+      const table = currentSheet.addTable(usedRange, true);
+
+      // Format the table rows.
+      table.getRange().getFormat().autofitRows();
+    }
+'ExcelScript.RangeFormat#getColumnWidth:member(1)':
+  - |-
+    /**
+     * This script doubles the column width for every column in the active worksheet's used range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // To optimize performance, get all the current row heights before setting them.
+      let currentWidths = Array<number>(usedRange.getColumnCount());
+      for (let column = 0; column < currentWidths.length; column++) {
+        currentWidths[column] = usedRange.getColumn(column).getFormat().getColumnWidth();
+      }
+
+      // Set the new column widths.
+      for (let column = 0; column < currentWidths.length; column++) {
+        usedRange.getFormat().setColumnWidth(currentWidths[column] * 2);
+      }
 'ExcelScript.RangeFormat#getFill:member(1)':
   - |-
     /**
@@ -1439,6 +1517,56 @@
       format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
       format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+    }
+'ExcelScript.RangeFormat#getRowHeight:member(1)':
+  - |-
+    /**
+     * This script doubles the row height for every row in the active worksheet's used range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // To optimize performance, get all the current row heights before setting them.
+      let currentHeights = Array<number>(usedRange.getRowCount());
+      for (let row = 0; row < currentHeights.length; row++) {
+        currentHeights[row] = usedRange.getRow(row).getFormat().getRowHeight();
+      }
+
+      // Set the new row heights.
+      for (let row = 0; row < currentHeights.length; row++) {
+        usedRange.getFormat().setRowHeight(currentHeights[row] * 2);
+      }
+    }
+'ExcelScript.RangeFormat#setColumnWidth:member(1)':
+  - |-
+    /**
+     * This script inserts a new column and sets that column's width to 100 pixels wide.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Insert a new column between the current B and C columns.
+      const bcRange = currentSheet.getRange("C:C");
+      const newColumn = bcRange.insert(ExcelScript.InsertShiftDirection.right);
+      
+      // Set the column width of the new column to 100 pixels.
+      newColumn.getFormat().setColumnWidth(100);
+    }
+'ExcelScript.RangeFormat#setRowHeight:member(1)':
+  - |-
+    /**
+     * This script inserts a new row and sets that row's width to 100 pixels tall.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+
+      // Insert a new row between the current 2 and 3 rows.
+      const bcRange = currentSheet.getRange("3:3");
+      const newRow = bcRange.insert(ExcelScript.InsertShiftDirection.down);
+      
+      // Set the row height of the new row to 100 pixels.
+      newRow.getFormat().setRowHeight(100);
     }
 'ExcelScript.SearchCriteria:interface':
   - |-
@@ -1850,6 +1978,24 @@
       // Set the fill color to red.
       noCells.getFormat().getFill().setColor("red");
     }
+'ExcelScript.Worksheet#getAutoFilter:member(1)':
+  - |-
+    /**
+     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
+     * The autofilter filters to only include rows that have a value in column D in the top 10 percentile 
+     * (of column D values).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const dataRange = currentSheet.getUsedRange();
+
+      // Add a filter that will only show the rows with the top 10% of values in column D
+      // (index 3, assuming the used range spans from at least A:D).
+      currentSheet.getAutoFilter().apply(dataRange, 3, {
+        criterion1: "10",
+        filterOn: ExcelScript.FilterOn.topPercent
+      });
+    }
 'ExcelScript.Worksheet#getChart:member(1)':
   - |-
     /**
@@ -1935,6 +2081,15 @@
         // Set the color of the current worksheet's tab to red.
         sheet.setTabColor("red");
       }
+    }
+'ExcelScript.Worksheet:interface':
+  - |-
+    /**
+     * This script creates a new worksheet named "Plum" and sets its tab color to purple.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const newSheet = workbook.addWorksheet("Plum")
+      newSheet.setTabColor("purple");
     }
 'ExcelScript.WorksheetPositionType:enum':
   - |-
