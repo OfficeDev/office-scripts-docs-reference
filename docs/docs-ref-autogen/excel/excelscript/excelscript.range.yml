@@ -2487,7 +2487,22 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the number format in column C to show the data as a percentage.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const  selectedSheet = workbook.getActiveWorksheet();
+            
+            // Set number format for column C to a percentage that rounds to the nearest percentage point.
+            selectedSheet.getRange("C:C").setNumberFormat("0%");
+          }
+          ```
   - name: setNumberFormatLocal(numberFormatLocal)
     uid: 'ExcelScript!ExcelScript.Range#setNumberFormatLocal:member(1)'
     package: ExcelScript!
@@ -2508,7 +2523,22 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the number format in column D to show the data as a percentage with a decimal.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const  selectedSheet = workbook.getActiveWorksheet();
+            
+            // Set number format for column D to a percentage that rounds to the nearest tenth of a percentage.
+            selectedSheet.getRange("D:D").setNumberFormatLocal("0.0%");
+          }
+          ```
   - name: setNumberFormats(numberFormats)
     uid: 'ExcelScript!ExcelScript.Range#setNumberFormats:member(1)'
     package: ExcelScript!

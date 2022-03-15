@@ -500,6 +500,47 @@
       */
       console.log(currentSheet.getRange("A1:D4").getValues()); 
     }
+'ExcelScript.Filter#applyCustomFilter:member(1)':
+  - |-
+    /**
+     * The script filters rows from a table based on numerical values.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const table = currentSheet.getTables()[0];
+
+      // Filter to only show rows with values in the "Sales" column that are 
+      // greater than or equal to 2000.
+      table.getColumnByName("Sales").getFilter().applyCustomFilter(">=2000");
+    }
+'ExcelScript.Filter#applyValuesFilter:member(1)':
+  - |-
+    /**
+     * This script applies a filter to a table so that it only shows rows with "Needs Review" in the "Type" column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Apply the filter to the "Type" column.
+      const typeColumn = table.getColumnByName("Type");
+      typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
+    }
+'ExcelScript.FilterOperator:enum':
+  - |-
+    /**
+     * The script filters rows from a table based on a numerical range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const table = currentSheet.getTables()[0];
+
+      // Filter to only show rows with a value in the "Exam Score" column that is
+      // greater than 0 and less than or equal to 60.
+      table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
+    }
 'ExcelScript.KeyboardDirection:enum':
   - |-
     /**
@@ -1318,6 +1359,28 @@
         documentReference: `${linkedSheetName}!A1`
       });
     }
+'ExcelScript.Range#setNumberFormat:member(1)':
+  - |-
+    /**
+     * This script sets the number format in column C to show the data as a percentage.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const  selectedSheet = workbook.getActiveWorksheet();
+      
+      // Set number format for column C to a percentage that rounds to the nearest percentage point.
+      selectedSheet.getRange("C:C").setNumberFormat("0%");
+    }
+'ExcelScript.Range#setNumberFormatLocal:member(1)':
+  - |-
+    /**
+     * This script sets the number format in column D to show the data as a percentage with a decimal.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const  selectedSheet = workbook.getActiveWorksheet();
+      
+      // Set number format for column D to a percentage that rounds to the nearest tenth of a percentage.
+      selectedSheet.getRange("D:D").setNumberFormatLocal("0.0%");
+    }
 'ExcelScript.Range#setValues:member(1)':
   - |-
    /**
@@ -1566,6 +1629,46 @@
       
       // Set the row height of the new row to 100 pixels.
       newRow.getFormat().setRowHeight(100);
+    }
+'ExcelScript.ReplaceCriteria#completeMatch:member':
+  - |-
+    /**
+     * This script normalizes the text in a column so that values don't include both "OK" and "okay". 
+     * It replaces "OK" and all the case-based variants with "okay".
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range representing column D.
+      const currentSheet = workbook.getActiveWorksheet();
+      const column = currentSheet.getRange("D:D");
+
+      // Create a ReplaceCriteria object for the Range.replaceAll call.
+      const criteria: ExcelScript.ReplaceCriteria = {
+        completeMatch: true, /* Use a complete match to skip cells that already say "okay". */
+        matchCase: false /* Ignore case when comparing strings. */
+      };
+
+      // Replace all instances of "ok" (case-insensitive) with "okay".
+      column.replaceAll("ok", "okay", criteria);
+    }
+'ExcelScript.ReplaceCriteria#matchCase:member':
+  - |-
+    /**
+     * This script replaces instances of "NA" with "North America", 
+     * using the casing to ignore parts of words.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the currently used range.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Create a ReplaceCriteria object for the Range.replaceAll call.
+      const criteria: ExcelScript.ReplaceCriteria = {
+        completeMatch: false, 
+        matchCase: true /* Match with "NA market", not "navigate" */
+      }
+
+      // Replace all instances of "NA" (case-sensitive) with "North America".
+      usedRange.replaceAll("NA", "North America", criteria);
     }
 'ExcelScript.SearchCriteria:interface':
   - |-

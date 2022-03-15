@@ -104,7 +104,25 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.FilterOperator:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * The script filters rows from a table based on numerical values.
+           */ 
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Filter to only show rows with values in the "Sales" column that are 
+            // greater than or equal to 2000.
+            table.getColumnByName("Sales").getFilter().applyCustomFilter(">=2000");
+          }
+          ```
   - name: applyDynamicFilter(criteria)
     uid: 'ExcelScript!ExcelScript.Filter#applyDynamicFilter:member(1)'
     package: ExcelScript!
@@ -208,7 +226,24 @@ methods:
           type: 'Array&lt;string | <xref uid="ExcelScript!ExcelScript.FilterDatetime:interface" />&gt;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a filter to a table so that it only shows rows with "Needs Review" in the "Type" column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            const table = workbook.getTables()[0];
+
+            // Apply the filter to the "Type" column.
+            const typeColumn = table.getColumnByName("Type");
+            typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
+          }
+          ```
   - name: clear()
     uid: 'ExcelScript!ExcelScript.Filter#clear:member(1)'
     package: ExcelScript!
