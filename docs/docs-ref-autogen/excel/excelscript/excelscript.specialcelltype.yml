@@ -4,7 +4,27 @@ uid: 'ExcelScript!ExcelScript.SpecialCellType:enum'
 package: ExcelScript!
 fullName: ExcelScript.SpecialCellType
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds and highlights all the cells in the current worksheet that contain a formula.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range on the current sheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeAreas object for each cell with a formula.
+    const formulaCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas);
+
+    // Add a light blue background to the cells containing formulas.
+    formulaCells.getFormat().getFill().setColor("#ADD8E6");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

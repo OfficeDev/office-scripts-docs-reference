@@ -4,7 +4,25 @@ uid: 'ExcelScript!ExcelScript.RangeFont:interface'
 package: ExcelScript!
 fullName: ExcelScript.RangeFont
 summary: 'This object represents the font attributes (font name, font size, color, etc.) for an object.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the font of A1 to Arial 16.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get A1 on the currentSheet.
+    const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+    // Adjust the font settings for that cell.
+    const cellFont = cell.getFormat().getFont();
+    cellFont.setName("Arial");
+    cellFont.setSize(16);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -166,7 +184,23 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script bolds the text of cell A1.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get A1 on the currentSheet.
+            const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+            // Bold the font for that cell
+            cell.getFormat().getFont().setBold(true);
+          }
+          ```
   - name: setColor(color)
     uid: 'ExcelScript!ExcelScript.RangeFont#setColor:member(1)'
     package: ExcelScript!
@@ -217,7 +251,23 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the font style of A1 to Arial.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get A1 on the currentSheet.
+            const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+            // Adjust the font settings for that cell.
+            cell.getFormat().getFont().setName("Arial");
+          }
+          ```
   - name: setSize(size)
     uid: 'ExcelScript!ExcelScript.RangeFont#setSize:member(1)'
     package: ExcelScript!
@@ -234,7 +284,23 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the font size of A1 to 16.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get A1 on the currentSheet.
+            const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+            // Adjust the font settings for that cell.clear
+            cell.getFormat().getFont().setSize(16);
+          }
+          ```
   - name: setStrikethrough(strikethrough)
     uid: 'ExcelScript!ExcelScript.RangeFont#setStrikethrough:member(1)'
     package: ExcelScript!
