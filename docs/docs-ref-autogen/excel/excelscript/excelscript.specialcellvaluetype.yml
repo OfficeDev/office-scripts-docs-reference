@@ -4,7 +4,29 @@ uid: 'ExcelScript!ExcelScript.SpecialCellValueType:enum'
 package: ExcelScript!
 fullName: ExcelScript.SpecialCellValueType
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds and bolds the text of cells containing strings (not numbers or formulas).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range on the current sheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeAreas object for each cell with only text.
+    const textCells = usedRange.getSpecialCells(
+      ExcelScript.SpecialCellType.constants, 
+      ExcelScript.SpecialCellValueType.text);
+
+    // Bold the text of those cells.
+    textCells.getFormat().getFont().setBold(true);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
