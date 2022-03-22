@@ -141,7 +141,36 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.FilterPivotHierarchy:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a manual filter to a PivotTable. 
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the first PivotTable in the workbook.
+            const pivot = workbook.getPivotTables()[0];
+
+            // Get the hierarchy to use as the filter.
+            const location = pivot.getHierarchy("Location");
+
+            // Use "Location" as the FilterHierarchy.
+            pivot.addFilterHierarchy(location);
+
+            // Select items for the filter.
+            // Note that hierarchies and fields have a 1:1 relationship in Excel,
+            // so `getFields()[0]` always gets the correct field.
+            location.getFields()[0].applyFilter({
+              manualFilter: {
+                selectedItems: ["Seattle", "Chicago"]
+              }
+            });
+          }
+          ```
   - name: addRowHierarchy(pivotHierarchy)
     uid: 'ExcelScript!ExcelScript.PivotTable#addRowHierarchy:member(1)'
     package: ExcelScript!
