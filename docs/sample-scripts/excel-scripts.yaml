@@ -1417,6 +1417,58 @@
       , ['4/17/2020', 'Mariya', 'Salads', '$1600']
       , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
     ];
+'ExcelScript.RangeAreas:interface':
+  - |- 
+    /**
+     * This script clears all the cells in the current worksheet that are displaying errors.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current sheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeAreas object for each cell with a formula error.
+      const errorCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas, ExcelScript.SpecialCellValueType.errors);
+
+      // If there are any error cells, clear them.
+      if (errorCells) {
+        errorCells.clear();
+      }
+    }
+'ExcelScript.RangeAreas#clear:member(1)':
+  - |- 
+    /**
+     * This script clears all the cells in the current worksheet that are displaying errors.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current sheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeAreas object for each cell with a formula error.
+      const errorCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas, ExcelScript.SpecialCellValueType.errors);
+
+      // If there are any error cells, clear them.
+      if (errorCells) {
+        errorCells.clear();
+      }
+    }
+'ExcelScript.RangeAreas#getFormat:member(1)':
+  - |- 
+    /**
+     * This script finds and highlights all the cells in the current worksheet that contain a formula.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current sheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeAreas object for each cell with a formula.
+      const formulaCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas);
+
+      // Add a light blue background to the cells containing formulas.
+      formulaCells.getFormat().getFill().setColor("#ADD8E6");
+    }
 'ExcelScript.RangeBorder#setStyle:member(1)':
   - |-   
     /**
@@ -1564,6 +1616,18 @@
       for (let column = 0; column < currentWidths.length; column++) {
         usedRange.getFormat().setColumnWidth(currentWidths[column] * 2);
       }
+'ExcelScript.RangeFormat#getFont:member(1)':
+  - |-
+    /**
+     * This script bolds the text of cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get A1 on the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Bold the font for that cell
+      cell.getFormat().getFont().setBold(true);
+    }
 'ExcelScript.RangeFormat#getRowHeight:member(1)':
   - |-
     /**
@@ -1629,6 +1693,56 @@
       
       // Set the row height of the new row to 100 pixels.
       newRow.getFormat().setRowHeight(100);
+    }
+'ExcelScript.RangeFont:interface':
+  - |-
+    /**
+     * This script sets the font of A1 to Arial, size 16.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get A1 on the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Adjust the font settings for that cell.
+      const cellFont = cell.getFormat().getFont();
+      cellFont.setName("Arial");
+      cellFont.setSize(16);
+    }
+'ExcelScript.RangeFont#setBold:member(1)':
+  - |-
+    /**
+     * This script bolds the text of cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get A1 on the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Bold the font for that cell
+      cell.getFormat().getFont().setBold(true);
+    }
+'ExcelScript.RangeFont#setName:member(1)':
+  - |-
+    /**
+     * This script sets the font style of A1 to Arial.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get A1 on the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Adjust the font settings for that cell.
+      cell.getFormat().getFont().setName("Arial");
+    }
+'ExcelScript.RangeFont#setSize:member(1)':
+  - |-
+    /**
+     * This script sets the font size of A1 to 16.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get A1 on the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Adjust the font settings for that cell.clear
+      cell.getFormat().getFont().setSize(16);
     }
 'ExcelScript.ReplaceCriteria#completeMatch:member':
   - |-
@@ -1738,6 +1852,40 @@
 
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
+    }
+'ExcelScript.SpecialCellType:enum':
+  - |- 
+    /**
+     * This script finds and highlights all the cells in the current worksheet that contain a formula.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current sheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeAreas object for each cell with a formula.
+      const formulaCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas);
+
+      // Add a light blue background to the cells containing formulas.
+      formulaCells.getFormat().getFill().setColor("#ADD8E6");
+    }
+'ExcelScript.SpecialCellValueType:enum':
+  - |- 
+    /**
+     * This script finds and bolds the text of cells containing strings (not numbers or formulas).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range on the current sheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const usedRange = currentSheet.getUsedRange();
+
+      // Get the RangeAreas object for each cell with only text.
+      const textCells = usedRange.getSpecialCells(
+        ExcelScript.SpecialCellType.constants, 
+        ExcelScript.SpecialCellValueType.text);
+
+      // Bold the text of those cells.
+      textCells.getFormat().getFont().setBold(true);
     }
 'ExcelScript.Table#getRange:member(1)':
   - |-

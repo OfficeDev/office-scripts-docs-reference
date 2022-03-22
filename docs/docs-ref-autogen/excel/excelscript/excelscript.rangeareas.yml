@@ -4,7 +4,29 @@ uid: 'ExcelScript!ExcelScript.RangeAreas:interface'
 package: ExcelScript!
 fullName: ExcelScript.RangeAreas
 summary: '`RangeAreas` represents a collection of one or more rectangular ranges in the same worksheet.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script clears all the cells in the current worksheet that are displaying errors.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range on the current sheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeAreas object for each cell with a formula error.
+    const errorCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas, ExcelScript.SpecialCellValueType.errors);
+
+    // If there are any error cells, clear them.
+    if (errorCells) {
+      errorCells.clear();
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -57,7 +79,29 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script clears all the cells in the current worksheet that are displaying errors.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the used range on the current sheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Get the RangeAreas object for each cell with a formula error.
+            const errorCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas, ExcelScript.SpecialCellValueType.errors);
+
+            // If there are any error cells, clear them.
+            if (errorCells) {
+              errorCells.clear();
+            }
+          }
+          ```
   - name: clearAllConditionalFormats()
     uid: 'ExcelScript!ExcelScript.RangeAreas#clearAllConditionalFormats:member(1)'
     package: ExcelScript!
@@ -279,7 +323,27 @@ methods:
       content: 'getFormat(): RangeFormat;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeFormat:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script finds and highlights all the cells in the current worksheet that contain a formula.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the used range on the current sheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Get the RangeAreas object for each cell with a formula.
+            const formulaCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas);
+
+            // Add a light blue background to the cells containing formulas.
+            formulaCells.getFormat().getFill().setColor("#ADD8E6");
+          }
+          ```
   - name: getIntersection(anotherRange)
     uid: 'ExcelScript!ExcelScript.RangeAreas#getIntersection:member(1)'
     package: ExcelScript!
