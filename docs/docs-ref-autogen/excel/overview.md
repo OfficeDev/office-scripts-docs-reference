@@ -1,6 +1,6 @@
 ---
 title: Office Scripts API reference 
-description: 'An overview of the Office Scripts JavaScript APIs.'
+description: An overview of the Office Scripts JavaScript APIs.
 ms.date: 06/29/2020
 ---
 
