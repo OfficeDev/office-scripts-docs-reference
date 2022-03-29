@@ -588,6 +588,31 @@
         valueFilter: filter
       });
     }
+'ExcelScript.PivotFilters#manualFilter:member':
+  - |-
+    /**
+     * This script adds a manual filter to a PivotTable. 
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the first PivotTable in the workbook.
+      const pivot = workbook.getPivotTables()[0];
+
+      // Get the hierarchy to use as the filter.
+      const location = pivot.getHierarchy("Location");
+
+      // Use "Location" as the FilterHierarchy.
+      pivot.addFilterHierarchy(location);
+
+      // Select items for the filter.
+      // Note that hierarchies and fields have a 1:1 relationship in Excel,
+      // so `getFields()[0]` always gets the correct field.
+      location.getFields()[0].applyFilter({
+        manualFilter: {
+          selectedItems: ["Seattle", "Chicago"]
+        }
+      });
+    }
 'ExcelScript.PivotFilters#valueFilter:member':
   - |-
     /**
@@ -659,6 +684,33 @@
         // Example log: "Grand total of Sum of Crates Sold Wholesale: 11000"
       });
     }
+'ExcelScript.PivotManualFilter:interface':
+  - |-
+    /**
+     * This script adds a manual filter to a PivotTable. 
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the first PivotTable in the workbook.
+      const pivot = workbook.getPivotTables()[0];
+
+      // Get the hierarchy to use as the filter.
+      const location = pivot.getHierarchy("Location");
+
+      // Use "Location" as the FilterHierarchy.
+      pivot.addFilterHierarchy(location);
+
+      // Select items for the filter.
+      const cityFilter: ExcelScript.PivotManualFilter = {
+        selectedItems: ["Seattle", "Chicago"]
+      };
+
+      // Apply the filter
+      // Note that hierarchies and fields have a 1:1 relationship in Excel, so `getFields()[0]` always gets the correct field.
+      location.getFields()[0].applyFilter({
+        manualFilter: cityFilter
+      });
+    }
 'ExcelScript.PivotTable:interface':
   - |-
     /**
@@ -718,6 +770,31 @@
       // Add fields to the PivotTable to show "Sales" per "Type".
       pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
       pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.PivotTable#addFilterHierarchy:member(1)':
+  - |-
+    /**
+     * This script adds a manual filter to a PivotTable. 
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      // Get the first PivotTable in the workbook.
+      const pivot = workbook.getPivotTables()[0];
+
+      // Get the hierarchy to use as the filter.
+      const location = pivot.getHierarchy("Location");
+
+      // Use "Location" as the FilterHierarchy.
+      pivot.addFilterHierarchy(location);
+
+      // Select items for the filter.
+      // Note that hierarchies and fields have a 1:1 relationship in Excel,
+      // so `getFields()[0]` always gets the correct field.
+      location.getFields()[0].applyFilter({
+        manualFilter: {
+          selectedItems: ["Seattle", "Chicago"]
+        }
+      });
     }
 'ExcelScript.PivotTable#addRowHierarchy:member(1)':
   - |-

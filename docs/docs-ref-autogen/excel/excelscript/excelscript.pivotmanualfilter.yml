@@ -6,7 +6,38 @@ fullName: ExcelScript.PivotManualFilter
 summary: >-
   Configurable template for a manual filter to apply to a PivotField. The `condition` defines what criteria need to be
   set in order for the filter to operate.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds a manual filter to a PivotTable. 
+   */
+  function main(workbook: ExcelScript.Workbook)
+  {
+    // Get the first PivotTable in the workbook.
+    const pivot = workbook.getPivotTables()[0];
+
+    // Get the hierarchy to use as the filter.
+    const location = pivot.getHierarchy("Location");
+
+    // Use "Location" as the FilterHierarchy.
+    pivot.addFilterHierarchy(location);
+
+    // Select items for the filter.
+    const cityFilter: ExcelScript.PivotManualFilter = {
+      selectedItems: ["Seattle", "Chicago"]
+    };
+
+    // Apply the filter
+    // Note that hierarchies and fields have a 1:1 relationship in Excel, so `getFields()[0]` always gets the correct field.
+    location.getFields()[0].applyFilter({
+      manualFilter: cityFilter
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
