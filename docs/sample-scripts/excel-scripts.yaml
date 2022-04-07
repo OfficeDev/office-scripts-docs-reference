@@ -18,30 +18,52 @@
 'ExcelScript.AutoFilter:interface':
   - |-
     /**
-     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
-     * The autofilter filters to only include rows that have a value in column C in the lowest 10 values 
+     * This script creates an autoFilter on the worksheet that filters out rows based on column values. 
+     * The autoFilter filters to only include rows that have a value in column C in the lowest 10 values 
      * (of column C values).
      */
     function main(workbook: ExcelScript.Workbook) {
+      // Get the autoFilter of the first table in the current worksheet.
       const currentSheet = workbook.getActiveWorksheet();
       const dataRange = currentSheet.getUsedRange();
+      const autoFilter = currentSheet.getAutoFilter();
 
       // Add a filter that will only show the rows with the lowest 10 values in column C
       // (index 2, assuming the used range spans from at least A:C).
-      currentSheet.getAutoFilter().apply(dataRange, 2, {
+      autoFilter.apply(dataRange, 2, {
         criterion1: "10",
         filterOn: ExcelScript.FilterOn.bottomItems
       });
     }
+'ExcelScript.AutoFilter#apply:member(1)':
+  - |-
+    /**
+     * This script applies a filter to a table so that 
+     * only rows with values in column 1 that start with "L" are shown.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the autoFilter of the first table in the current worksheet.
+      const table = workbook.getActiveWorksheet().getTables()[0];
+      const autoFilter = table.getAutoFilter();
+
+      // Filter to only include values that start with "L".
+      const filterCriteria: ExcelScript.FilterCriteria = {
+        filterOn: ExcelScript.FilterOn.custom,
+        criterion1: "L*"
+      };
+      
+      // Apply the filter to column 1 (zero-based).
+      autoFilter.apply(table.getRange(), 1, filterCriteria);
+    }
 'ExcelScript.AutoFilter#clearCriteria:member(1)':
   - |-
     /**
-     * This script clears any applied criteria from the worksheet's autofilter.
+     * This script clears any applied criteria from the worksheet's autoFilter.
      */
     function main(workbook: ExcelScript.Workbook) {
       const currentSheet = workbook.getActiveWorksheet();
 
-      // Clear all the criteria currently applied to the autofilter.
+      // Clear all the criteria currently applied to the autoFilter.
       currentSheet.getAutoFilter().clearCriteria();
     }
 'ExcelScript.Chart#setName:member(1)':
@@ -526,6 +548,58 @@
       // Apply the filter to the "Type" column.
       const typeColumn = table.getColumnByName("Type");
       typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
+    }
+'ExcelScript.FilterCriteria#criterion1:member':
+  - |-
+    /**
+     * This script creates an autoFilter on the worksheet that filters out rows based on column values. 
+     * The autoFilter filters to only include rows that have a value in column C in the lowest 10 values 
+     * (of column C values).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const dataRange = currentSheet.getUsedRange();
+
+      // Add a filter that will only show the rows with the lowest 10 values in column C
+      // (index 2, assuming the used range spans from at least A:C).
+      const filterCriteria: ExcelScript.FilterCriteria = {
+        criterion1: "10",
+        filterOn: ExcelScript.FilterOn.bottomItems
+      };
+      currentSheet.getAutoFilter().apply(dataRange, 2, filterCriteria);
+    }
+'ExcelScript.FilterCriteria#criterion2:member':
+  - |-
+    /**
+     * This script applies a filter to a table so that it only shows rows with "Needs Review" in the "Type" column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Apply the filter to the "Type" column.
+      const typeColumn = table.getColumnByName("Type");
+      typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
+    }
+'ExcelScript.FilterOn:enum':
+  - |-
+    /**
+     * This script applies a filter to a table so that 
+     * only rows with values in column 1 that start with "L" are shown.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the autoFilter of the first table in the current worksheet.
+      const table = workbook.getActiveWorksheet().getTables()[0];
+      const autoFilter = table.getAutoFilter();
+
+      // Filter to only include values that start with "L".
+      const filterCriteria: ExcelScript.FilterCriteria = {
+        filterOn: ExcelScript.FilterOn.custom,
+        criterion1: "L*"
+      };
+
+      // Apply the filter to column 1 (zero-based).
+      autoFilter.apply(table.getRange(), 1, filterCriteria);
     }
 'ExcelScript.FilterOperator:enum':
   - |-
@@ -2367,8 +2441,8 @@
 'ExcelScript.Worksheet#getAutoFilter:member(1)':
  - |-
     /**
-     * This script creates an autofilter on the worksheet that filters out rows based on column values. 
-     * The autofilter filters to only include rows that have a value in column D in the top 10 percentile 
+     * This script creates an autoFilter on the worksheet that filters out rows based on column values. 
+     * The autoFilter filters to only include rows that have a value in column D in the top 10 percentile 
      * (of column D values).
      */
     function main(workbook: ExcelScript.Workbook) {
