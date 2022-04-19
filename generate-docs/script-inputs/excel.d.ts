@@ -8086,7 +8086,7 @@ declare namespace ExcelScript {
         getName(): string;
 
         /**
-         * Gets the name of the table style.
+         * Sets the name of the table style.
          */
         setName(name: string): void;
 
@@ -8116,7 +8116,7 @@ declare namespace ExcelScript {
         getName(): string;
 
         /**
-         * Gets the name of the PivotTable style.
+         * Sets the name of the PivotTable style.
          */
         setName(name: string): void;
 
@@ -8146,7 +8146,7 @@ declare namespace ExcelScript {
         getName(): string;
 
         /**
-         * Gets the name of the slicer style.
+         * Sets the name of the slicer style.
          */
         setName(name: string): void;
 
@@ -8176,7 +8176,7 @@ declare namespace ExcelScript {
         getName(): string;
 
         /**
-         * Gets the name of the timeline style.
+         * Sets the name of the timeline style.
          */
         setName(name: string): void;
 
