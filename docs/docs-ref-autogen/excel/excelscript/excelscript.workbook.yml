@@ -358,7 +358,33 @@ methods:
           type: 'string | <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Slicer:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a slicer for an existing PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Pivot".
+            const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+            // Create the slicer. 
+            // Note that this assumes "Type" is already added as a hierarchy to the PivotTable.
+            const fruitSlicer: ExcelScript.Slicer = workbook.addSlicer(
+              farmPivot, /* The table or PivotTale to be sliced. */
+              farmPivot.getHierarchy("Type").getFields()[0] /* What source field to use as the slicer options. */
+            );
+
+            // Select the items to display.
+            fruitSlicer.selectItems(["Lemon", "Lime"]);
+
+            // Set the left margin of the slicer.
+            fruitSlicer.setLeft(400);
+          }
+          ```
   - name: 'addSlicerStyle(name, makeUniqueName)'
     uid: 'ExcelScript!ExcelScript.Workbook#addSlicerStyle:member(1)'
     package: ExcelScript!
@@ -410,7 +436,24 @@ methods:
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Table:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample converts the information in the first worksheet
+           * into a table with headers.
+          */
+          function main(workbook: ExcelScript.Workbook) {
+            // This assumes there is one contiguous range in the first worksheet.
+            const dataRange = workbook.getFirstWorksheet().getUsedRange();
+            
+            // Add a table at the workbook level.
+            workbook.addTable(dataRange.getAddress(), true);
+          }
+          ```
   - name: 'addTableStyle(name, makeUniqueName)'
     uid: 'ExcelScript!ExcelScript.Workbook#addTableStyle:member(1)'
     package: ExcelScript!

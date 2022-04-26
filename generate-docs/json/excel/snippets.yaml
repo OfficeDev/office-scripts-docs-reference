@@ -2055,6 +2055,28 @@
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
     }
+'ExcelScript.Slicer:interface':
+  - |-
+    /**
+     * This script adds a slicer for an existing PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Create the slicer. 
+      // Note that this assumes "Type" is already added as a hierarchy to the PivotTable.
+      const fruitSlicer: ExcelScript.Slicer = workbook.addSlicer(
+        farmPivot, /* The table or PivotTale to be sliced. */
+        farmPivot.getHierarchy("Type").getFields()[0] /* What source field to use as the slicer options. */
+      );
+
+      // Select the items to display.
+      fruitSlicer.selectItems(["Lemon", "Lime"]);
+
+      // Set the left margin of the slicer.
+      fruitSlicer.setLeft(400);
+    }
 'ExcelScript.SpecialCellType:enum':
   - |-
     /**
@@ -2188,6 +2210,41 @@
       // Add fields to the PivotTable to show "Sales" per "Type".
       pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
       pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.Workbook#addSlicer:member(1)':
+  - |-
+    /**
+     * This script adds a slicer for an existing PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Create the slicer. 
+      // Note that this assumes "Type" is already added as a hierarchy to the PivotTable.
+      const fruitSlicer: ExcelScript.Slicer = workbook.addSlicer(
+        farmPivot, /* The table or PivotTale to be sliced. */
+        farmPivot.getHierarchy("Type").getFields()[0] /* What source field to use as the slicer options. */
+      );
+
+      // Select the items to display.
+      fruitSlicer.selectItems(["Lemon", "Lime"]);
+
+      // Set the left margin of the slicer.
+      fruitSlicer.setLeft(400);
+    }
+'ExcelScript.Workbook#addTable:member(1)':
+  - |-
+    /**
+     * This sample converts the information in the first worksheet
+     * into a table with headers.
+    */
+    function main(workbook: ExcelScript.Workbook) {
+      // This assumes there is one contiguous range in the first worksheet.
+      const dataRange = workbook.getFirstWorksheet().getUsedRange();
+      
+      // Add a table at the workbook level.
+      workbook.addTable(dataRange.getAddress(), true);
     }
 'ExcelScript.Workbook#addWorksheet:member(1)':
   - |-
@@ -2366,6 +2423,29 @@
 
       // Switch to the new worksheet.
       newSheet.activate();
+    }
+'ExcelScript.Worksheet#addSlicer:member(1)':
+  - |-
+    /**
+     * This script adds a slicer for an existing PivotTable on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first PivotTable from the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const pivot = currentSheet.getPivotTables()[0];
+
+      // Create the slicer. 
+      // Note that this assumes "Type" is already added as a hierarchy to the PivotTable.
+      const slicer = currentSheet.addSlicer(
+        pivot, /* The table or PivotTale to be sliced. */
+        pivot.getHierarchy("Type").getFields()[0] /* What source field to use as the slicer options. */
+      );
+
+      // Select the items to display.
+      slicer.selectItems(["Lemon", "Lime"]);
+
+      // Set the left margin of the slicer.
+      slicer.setLeft(400);
     }
 'ExcelScript.Worksheet#addTable:member(1)':
   - |-
