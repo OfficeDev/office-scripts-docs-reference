@@ -859,7 +859,7 @@ methods:
     fullName: getChart(name)
     summary: >-
       Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If
-      the chart doesn't exist, then this function returns `undefined`<!-- -->.
+      the chart doesn't exist, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1080,7 +1080,7 @@ methods:
     package: ExcelScript!
     fullName: getNamedItem(name)
     summary: >-
-      Gets a `NamedItem` object using its name. If the object does not exist, then this function returns `undefined`<!--
+      Gets a `NamedItem` object using its name. If the object does not exist, then this method returns `undefined`<!--
       -->.
     remarks: ''
     isPreview: false
@@ -1175,7 +1175,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getPivotTable:member(1)'
     package: ExcelScript!
     fullName: getPivotTable(name)
-    summary: 'Gets a PivotTable by name. If the PivotTable does not exist, then this function returns `undefined`<!-- -->.'
+    summary: 'Gets a PivotTable by name. If the PivotTable does not exist, then this method returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1333,8 +1333,9 @@ methods:
       parameters:
         - id: address
           description: >-
-            Optional. A string containing the comma-separated addresses or names of the individual ranges. For example,
-            "A1:B2, A5:B5". If not specified, an RangeArea object for the entire worksheet is returned.
+            Optional. A string containing the comma-separated or semicolon-separated addresses or names of the
+            individual ranges. For example, "A1:B2, A5:B5" or "A1:B2; A5:B5". If not specified, a `RangeAreas` object
+            for the entire worksheet is returned.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
@@ -1351,7 +1352,7 @@ methods:
       content: 'getShape(key: string): Shape;'
       parameters:
         - id: key
-          description: Name or ID of the shape to be retrieved.
+          description: The name or ID of the shape to be retrieved.
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
@@ -1399,7 +1400,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getSlicer:member(1)'
     package: ExcelScript!
     fullName: getSlicer(key)
-    summary: 'Gets a slicer using its name or ID. If the slicer doesn''t exist, then this function returns `undefined`<!-- -->.'
+    summary: 'Gets a slicer using its name or ID. If the slicer doesn''t exist, then this method returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1475,7 +1476,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getTable:member(1)'
     package: ExcelScript!
     fullName: getTable(key)
-    summary: 'Gets a table by name or ID. If the table doesn''t exist, then this function returns `undefined`<!-- -->.'
+    summary: 'Gets a table by name or ID. If the table doesn''t exist, then this method returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1550,7 +1551,7 @@ methods:
     fullName: getWorksheetCustomProperty(key)
     summary: >-
       Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then
-      this function returns `undefined`<!-- -->.
+      this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false

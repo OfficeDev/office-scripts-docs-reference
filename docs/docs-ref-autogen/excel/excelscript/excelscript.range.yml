@@ -75,9 +75,9 @@ methods:
     package: ExcelScript!
     fullName: 'autoFill(destinationRange, autoFillType)'
     summary: >-
-      Fills range from the current range to the destination range using the specified AutoFill logic. The destination
-      range can be `null`<!-- -->, or can extend the source either horizontally or vertically. Discontiguous ranges are
-      not supported.
+      Fills a range from the current range to the destination range using the specified AutoFill logic. The destination
+      range can be `null` or can extend the source range either horizontally or vertically. Discontiguous ranges are not
+      supported.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -338,7 +338,7 @@ methods:
     summary: >-
       Finds the given string based on the criteria specified. If the current range is larger than a single cell, then
       the search will be limited to that range, else the search will cover the entire sheet starting after that cell. If
-      there are no matches, then this function returns `undefined`<!-- -->.
+      there are no matches, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1126,14 +1126,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getImage:member(1)'
     package: ExcelScript!
     fullName: getImage()
-    summary: >-
-      Renders the range as a base64-encoded png image.
-
-
-      **Note**: There is a known issue with `Range.getImage` that causes wrapped text or text that exceeds the cell
-      width to render on the same line without line wrapping. This makes the resulting image unreadable, since the text
-      overflows across the entire row. As a workaround, make sure the data in the range fits in each of the cells as a
-      single line.
+    summary: Renders the range as a base64-encoded png image.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1148,7 +1141,7 @@ methods:
     fullName: getIntersection(anotherRange)
     summary: >-
       Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is
-      found, then this function returns `undefined`<!-- -->.
+      found, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1270,9 +1263,9 @@ methods:
     package: ExcelScript!
     fullName: getMergedAreas()
     summary: >-
-      Returns a RangeAreas object that represents the merged areas in this range. Note that if the merged areas count in
-      this range is more than 512, the API will fail to return the result. If the RangeAreas does not exist, will return
-      a null object.
+      Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count
+      in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object
+      doesn't exist, then this function will return an object with its `isNullObject` property set to `true`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1737,7 +1730,7 @@ methods:
     fullName: 'getSpecialCells(cellType, cellValueType)'
     summary: >-
       Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the
-      specified type and value. If no special cells are found, then this function returns `undefined`<!-- -->.
+      specified type and value. If no special cells are found, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1784,7 +1777,7 @@ methods:
     fullName: getSpillingToRange()
     summary: >-
       Gets the range object containing the spill range when called on an anchor cell. If the range isn't an anchor cell
-      or the spill range can't be found, then this function returns `undefined`<!-- -->.
+      or the spill range can't be found, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1799,7 +1792,7 @@ methods:
     fullName: getSpillParent()
     summary: >-
       Gets the range object containing the anchor cell for the cell getting spilled into. If it's not a spilled cell, or
-      more than one cell is given, then this function returns `undefined`<!-- -->.
+      more than one cell is given, then this method returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1891,7 +1884,7 @@ methods:
     package: ExcelScript!
     fullName: getUsedRange(valuesOnly)
     summary: >-
-      Returns the used range of the given range object. If there are no used cells within the range, then this function
+      Returns the used range of the given range object. If there are no used cells within the range, then this method
       returns `undefined`<!-- -->.
     remarks: ''
     isPreview: false
