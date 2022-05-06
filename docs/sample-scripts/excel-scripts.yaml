@@ -615,6 +615,24 @@
       // greater than 0 and less than or equal to 60.
       table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
     }
+'ExcelScript.GeometricShapeType:enum':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
+    }
 'ExcelScript.Image:interface':
   - |-
     /**
@@ -2053,6 +2071,24 @@
       // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
       tkCell.clear(ExcelScript.ClearApplyTo.all);
     }
+'ExcelScript.Shape:interface':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
@@ -2075,6 +2111,18 @@
 
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
+    }
+'ExcelScript.Shape#setName:member(1)':
+  - |-
+    /**
+     * This script creates a triangle shape on the current worksheet and names it "TRI".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const triangle: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
+      
+      triangle.setName("TRI");
     }
 'ExcelScript.Slicer:interface':
   - |-
@@ -2392,6 +2440,24 @@
 
       // Name the chart for easy access in other scripts.
       chart.setName("ColumnChart");
+    }
+'ExcelScript.Worksheet#addGeometricShape:member(1)':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
     }
 'ExcelScript.Worksheet#addImage:member(1)':
   - |-
