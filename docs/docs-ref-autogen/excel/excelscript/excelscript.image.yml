@@ -4,7 +4,33 @@ uid: 'ExcelScript!ExcelScript.Image:interface'
 package: ExcelScript!
 fullName: ExcelScript.Image
 summary: 'Represents an image in the worksheet. To get the corresponding `Shape` object, use `Image.shape`<!-- -->.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script transfers an image from one worksheet to another.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the worksheet with the image on it.
+    const firstWorksheet = workbook.getWorksheet("FirstSheet");
+
+    // Get the first image from the worksheet.
+    // If a script added the image, you could add a name to make it easier to find.
+    let image: ExcelScript.Image;
+    firstWorksheet.getShapes().forEach((shape, index) => {
+      if (shape.getType() === ExcelScript.ShapeType.image) {
+        image = shape.getImage();
+        return;
+      }
+    });
+
+    // Copy the image to another worksheet.
+    image.getShape().copyTo("SecondSheet");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
