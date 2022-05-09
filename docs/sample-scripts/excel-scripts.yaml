@@ -615,6 +615,46 @@
       // greater than 0 and less than or equal to 60.
       table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
     }
+'ExcelScript.GeometricShapeType:enum':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
+    }
+'ExcelScript.Image:interface':
+  - |-
+    /**
+     * This script transfers an image from one worksheet to another.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the worksheet with the image on it.
+      const firstWorksheet = workbook.getWorksheet("FirstSheet");
+
+      // Get the first image from the worksheet.
+      // If a script added the image, you could add a name to make it easier to find.
+      let image: ExcelScript.Image;
+      firstWorksheet.getShapes().forEach((shape, index) => {
+        if (shape.getType() === ExcelScript.ShapeType.image) {
+          image = shape.getImage();
+          return;
+        }
+      });
+
+      // Copy the image to another worksheet.
+      image.getShape().copyTo("SecondSheet");
+    }
 'ExcelScript.KeyboardDirection:enum':
   - |-
     /**
@@ -2031,6 +2071,24 @@
       // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
       tkCell.clear(ExcelScript.ClearApplyTo.all);
     }
+'ExcelScript.Shape:interface':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
@@ -2053,6 +2111,18 @@
 
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
+    }
+'ExcelScript.Shape#setName:member(1)':
+  - |-
+    /**
+     * This script creates a triangle shape on the current worksheet and names it "TRI".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const triangle: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
+      
+      triangle.setName("TRI");
     }
 'ExcelScript.Slicer:interface':
   - |-
@@ -2371,10 +2441,29 @@
       // Name the chart for easy access in other scripts.
       chart.setName("ColumnChart");
     }
+'ExcelScript.Worksheet#addGeometricShape:member(1)':
+  - |-
+    /**
+     * This script creates a hexagon shape on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const currentSheet = workbook.getActiveWorksheet();
+      const hexagon: ExcelScript.Shape = 
+        currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+      
+      // Set the hexagon size to 40x40 pixels.
+      hexagon.setHeight(40);
+      hexagon.setWidth(40);
+
+      // Position the hexagon at [100,100] pixels.
+      hexagon.setLeft(100);
+      hexagon.setTop(100);
+    }
 'ExcelScript.Worksheet#addImage:member(1)':
   - |-
     /**
-     * This sample copies an image from a URL. This could be used to copy photos that a colleague stored in a shared folder to a related workbook.
+     * This sample copies an image from a URL. 
+     * This could be used to copy photos that a colleague stored in a shared folder to a related workbook.
      */
     async function main(workbook: ExcelScript.Workbook) {
       // Fetch the image from a URL.
@@ -2388,7 +2477,7 @@
       const image = convertToBase64(data);
 
       // Add the image to the current worksheet.
-      workbook.getActiveWorksheet().addImage(image)
+      workbook.getActiveWorksheet().addImage(image);
     }
 
     /**
@@ -2399,7 +2488,7 @@
       const count = uInt8Array.length;
 
       // Allocate the necessary space up front.
-      const charCodeArray = new Array(count) 
+      const charCodeArray = new Array<string>(count) 
       
       // Convert every entry in the array to a character.
       for (let i = count; i >= 0; i--) { 
