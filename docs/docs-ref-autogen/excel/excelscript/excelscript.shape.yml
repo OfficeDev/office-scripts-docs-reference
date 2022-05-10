@@ -6,7 +6,29 @@ fullName: ExcelScript.Shape
 summary: >-
   Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes,
   etc.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a hexagon shape on the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const currentSheet = workbook.getActiveWorksheet();
+    const hexagon: ExcelScript.Shape = 
+      currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+    
+    // Set the hexagon size to 40x40 pixels.
+    hexagon.setHeight(40);
+    hexagon.setWidth(40);
+
+    // Position the hexagon at [100,100] pixels.
+    hexagon.setLeft(100);
+    hexagon.setTop(100);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -703,7 +725,23 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a triangle shape on the current worksheet and names it "TRI".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const triangle: ExcelScript.Shape = 
+              currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
+            
+            triangle.setName("TRI");
+          }
+          ```
   - name: setPlacement(placement)
     uid: 'ExcelScript!ExcelScript.Shape#setPlacement:member(1)'
     package: ExcelScript!
