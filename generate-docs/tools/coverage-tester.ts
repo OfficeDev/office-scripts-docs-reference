@@ -173,7 +173,7 @@ function rateClass(classYml: ApiYaml) : ClassCoverageRating {
 function rateClassDescription(classYml: ApiYaml) : CoverageRating {
     let rating : CoverageRating;
     let indexOfExample = classYml.remarks?.indexOf("#### Examples");
-    if (indexOfExample > 0) {
+    if (indexOfExample >= 0) {
         rating = {
             type: ApiType.Class,
             descriptionRating: rateDescriptionString((classYml.summary + " " + classYml.remarks.substring(0, indexOfExample)).trim()),
@@ -193,19 +193,19 @@ function rateClassDescription(classYml: ApiYaml) : CoverageRating {
 function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml, isMethod: boolean) : CoverageRating {
     let rating : CoverageRating;
     let indexOfExample = fieldYml.remarks?.indexOf("#### Examples");
-    if (!indexOfExample){
+    if (!indexOfExample || indexOfExample < 0) {
         indexOfExample = fieldYml.syntax.return.description?.indexOf("#### Examples")
     }
 
     if (indexOfExample >= 0) {
         rating = {
-            type: isMethod ? ApiType.Method: ApiType.Property,
+            type: isMethod ? ApiType.Method : ApiType.Property,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks.substring(0, indexOfExample)).trim()),
             hasExample: true
         }
     } else {
         rating = {
-            type: isMethod ? ApiType.Method: ApiType.Property,
+            type: isMethod ? ApiType.Method : ApiType.Property,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks).trim()),
             hasExample: false
         }
