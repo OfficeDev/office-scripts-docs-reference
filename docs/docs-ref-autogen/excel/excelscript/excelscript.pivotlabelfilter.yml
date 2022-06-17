@@ -6,7 +6,34 @@ fullName: ExcelScript.PivotLabelFilter
 summary: >-
   Configurable template for a label filter to apply to a PivotField. The `condition` defines what criteria need to be
   set in order for the filter to operate.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script filters items that start with "L" from the "Type" field
+   * of the "Farm Sales" PivotTable.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable.
+    const pivotTable = workbook.getActiveWorksheet().getPivotTable("Farm Sales");
+
+    // Get the "Type" field.
+    const field = pivotTable.getHierarchy("Type").getPivotField("Type");
+
+    // Filter out any types that start with "L" (such as "Lemons" and "Limes").
+    const filter: ExcelScript.PivotLabelFilter = {
+      condition: ExcelScript.LabelFilterCondition.beginsWith,
+      substring: "L",
+      exclusive: true
+    };
+
+    // Apply the label filter to the field.
+    field.applyFilter({ labelFilter: filter });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
