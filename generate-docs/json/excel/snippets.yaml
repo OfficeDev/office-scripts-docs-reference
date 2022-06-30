@@ -1,3 +1,16 @@
+'ExcelScript.AggregationFunction:enum':
+  - |-
+    /**
+     * This script changes how the data in a PivotTable is aggregated.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first PivotTable in the workbook.
+      const pivotTable = workbook.getPivotTables()[0];
+      
+      // Set the first data hierarchy to summarize with an average value, instead of a sum.
+      const dataHierarchy = pivotTable.getDataHierarchies()[0];
+      dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
+    }
 'ExcelScript.AutoFillType:enum':
   - |-
     /**
@@ -2191,6 +2204,18 @@
       // Position the hexagon at [100,100] pixels.
       hexagon.setLeft(100);
       hexagon.setTop(100);
+    }
+'ExcelScript.SheetVisibility:enum':
+  - |-
+    /**
+     * This script unhides all the worksheets in the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Iterate over each worksheet.
+      workbook.getWorksheets().forEach((worksheet) => {
+        // Set the worksheet visibility to visible.
+        worksheet.setVisibility(ExcelScript.SheetVisibility.visible);
+      });
     }
 'ExcelScript.Slicer:interface':
   - |-
