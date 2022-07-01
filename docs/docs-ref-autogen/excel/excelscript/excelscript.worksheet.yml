@@ -1851,7 +1851,23 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SheetVisibility:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script unhides all the worksheets in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Iterate over each worksheet.
+            workbook.getWorksheets().forEach((worksheet) => {
+              // Set the worksheet visibility to visible.
+              worksheet.setVisibility(ExcelScript.SheetVisibility.visible);
+            });
+          }
+          ```
   - name: 'showOutlineLevels(rowLevels, columnLevels)'
     uid: 'ExcelScript!ExcelScript.Worksheet#showOutlineLevels:member(1)'
     package: ExcelScript!
