@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.DynamicFilterCriteria:enum'
 package: ExcelScript!
 fullName: ExcelScript.DynamicFilterCriteria
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a filter to a table that filters it 
+   * to only show rows with dates from the previous month.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the table named "ReportTable".
+    const table = workbook.getTable("ReportTable");
+
+    // Get the column with the header "Date".
+    const dateColumn = table.getColumnByName("Date");
+
+    // Apply a dynamic filter to the column. 
+    // lastMonth` will only show rows with a date from the previous month.
+    dateColumn.getFilter().applyDynamicFilter(ExcelScript.DynamicFilterCriteria.lastMonth);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
