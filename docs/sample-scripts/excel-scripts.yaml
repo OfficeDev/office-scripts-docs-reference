@@ -79,6 +79,35 @@
       // Clear all the criteria currently applied to the autoFilter.
       currentSheet.getAutoFilter().clearCriteria();
     }
+'ExcelScript.CellValueConditionalFormat:interface':
+  - |-
+    /**
+     * This script applies conditional formatting to a range.
+     * That formatting is conditional upon the cell's numerical value.
+     * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const sheet = workbook.getActiveWorksheet();
+      const ratingColumn = sheet.getRange("D2:D20");
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting : ExcelScript.CellValueConditionalFormat 
+        = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      
+      // Create the condition, in this case when the cell value is between 50 and 75.
+      let rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "50",
+        formula2: "75",
+        operator: ExcelScript.ConditionalCellValueOperator.between
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      let format = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+    }
 'ExcelScript.Chart#setName:member(1)':
   - |-
     /**
@@ -317,6 +346,91 @@
           );
         }
       }
+    }
+'ExcelScript.ConditionalCellValueOperator:enum':
+  - |-
+    /**
+     * This script applies conditional formatting to a range.
+     * That formatting is conditional upon the cell's numerical value.
+     * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const sheet = workbook.getActiveWorksheet();
+      const ratingColumn = sheet.getRange("D2:D20");
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      
+      // Set the format to apply when the condition is met.
+      let format = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+
+      // Create the condition, in this case when the cell value is between 50 and 75.
+      let rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "50",
+        formula2: "75",
+        operator: ExcelScript.ConditionalCellValueOperator.between
+      };
+      cellValueConditionalFormatting.setRule(rule);
+    }
+'ExcelScript.ConditionalCellValueRule:interface':
+  - |-
+    /**
+     * This script applies conditional formatting to a range.
+     * That formatting is conditional upon the cell's numerical value.
+     * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const sheet = workbook.getActiveWorksheet();
+      const ratingColumn = sheet.getRange("D2:D20");
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      
+      // Create the condition, in this case when the cell value is between 50 and 75.
+      let rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "50",
+        formula2: "75",
+        operator: ExcelScript.ConditionalCellValueOperator.between
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      let format = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+    }
+'ExcelScript.ConditionalFormat#getCellValue:member(1)':
+  - |-
+    /**
+     * This script applies conditional formatting to a range.
+     * That formatting is conditional upon the cell's numerical value.
+     * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const sheet = workbook.getActiveWorksheet();
+      const ratingColumn = sheet.getRange("D2:D20");
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      
+      // Create the condition, in this case when the cell value is between 50 and 75.
+      let rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "50",
+        formula2: "75",
+        operator: ExcelScript.ConditionalCellValueOperator.between
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      let format = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+
     }
 'ExcelScript.ConditionalFormat#getColorScale:member(1)':
   - |-
@@ -569,6 +683,23 @@
         // Set the property values to a range on the new worksheet.
         newWorksheet.getRange("A1:B3").setValues(values);
     }
+'ExcelScript.DynamicFilterCriteria:enum':
+  - |-
+    /**
+     * This script applies a filter to a table that filters it 
+     * to only show rows with dates from the previous month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the table named "ReportTable".
+      const table = workbook.getTable("ReportTable");
+
+      // Get the column with the header "Date".
+      const dateColumn = table.getColumnByName("Date");
+
+      // Apply a dynamic filter to the column. 
+      // `lastMonth` will only show rows with a date from the previous month.
+      dateColumn.getFilter().applyDynamicFilter(ExcelScript.DynamicFilterCriteria.lastMonth);
+    }
 'ExcelScript.Filter#applyCustomFilter:member(1)':
   - |-
     /**
@@ -582,6 +713,23 @@
       // Filter to only show rows with values in the "Sales" column that are 
       // greater than or equal to 2000.
       table.getColumnByName("Sales").getFilter().applyCustomFilter(">=2000");
+    }
+'ExcelScript.Filter#applyDynamicFilter:member(1)':
+  - |-
+    /**
+     * This script applies a filter to a table that filters it 
+     * to only show rows with dates from the previous month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the table named "ReportTable".
+      const table = workbook.getTable("ReportTable");
+
+      // Get the column with the header "Date".
+      const dateColumn = table.getColumnByName("Date");
+
+      // Apply a dynamic filter to the column. 
+      // `lastMonth` will only show rows with a date from the previous month.
+      dateColumn.getFilter().applyDynamicFilter(ExcelScript.DynamicFilterCriteria.lastMonth);
     }
 'ExcelScript.Filter#applyValuesFilter:member(1)':
   - |-
@@ -2526,6 +2674,22 @@
       let cell = workbook.getActiveCell();
       console.log(`The current cell's value is ${cell.getValue()}`);
     }
+'ExcelScript.Workbook#getLinkedWorkbookRefreshMode:member(1)':
+  - |-
+    /**
+     * This script refreshes all the links to external workbooks, 
+     * if the linked workbook refresh mode is set to manual.
+     * To learn about linked workbooks, see https://support.microsoft.com/office/create-an-external-reference-link-to-a-cell-range-in-another-workbook-c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Check the refresh mode.
+      if (workbook.getLinkedWorkbookRefreshMode() === ExcelScript.WorkbookLinksRefreshMode.manual) {
+        console.log("Refreshing workbook links");
+
+        // Trigger a refresh of linked workbook content.
+        workbook.refreshAllLinksToLinkedWorkbooks();
+      }
+    }
 'ExcelScript.Workbook#getName:member(1)':
   - |-
     /**
@@ -2571,6 +2735,22 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.WorkbookLinksRefreshMode:enum':
+  - |-
+    /**
+     * This script refreshes all the links to external workbooks, 
+     * if the linked workbook refresh mode is set to manual.
+     * To learn about linked workbooks, see https://support.microsoft.com/office/create-an-external-reference-link-to-a-cell-range-in-another-workbook-c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Check the refresh mode.
+      if (workbook.getLinkedWorkbookRefreshMode() === ExcelScript.WorkbookLinksRefreshMode.manual) {
+        console.log("Refreshing workbook links");
+
+        // Trigger a refresh of linked workbook content.
+        workbook.refreshAllLinksToLinkedWorkbooks();
+      }
     }
 'ExcelScript.Worksheet:interface':
   - |-
