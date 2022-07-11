@@ -260,6 +260,24 @@
         series.setOverlap(25);
       });
     }
+'ExcelScript.ChartType:enum':
+  - |-
+    /**
+     * This sample creates a column-clustered chart based on the current worksheet's data.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current worksheet.
+      let selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the data range.
+      let range = selectedSheet.getUsedRange();
+
+      // Insert a chart using the data on the current worksheet.
+      let chart = selectedSheet.addChart(ExcelScript.ChartType.columnClustered, range);
+
+      // Name the chart for easy access in other scripts.
+      chart.setName("ColumnChart");
+    }
 'ExcelScript.ClearApplyTo:enum':
   - |-
     /**
@@ -850,6 +868,25 @@
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
     }
+'ExcelScript.InsertShiftDirection:enum':
+  - |-
+    /**
+     * This script inserts headers at the top of the worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook)
+    {
+      let currentSheet = workbook.getActiveWorksheet();
+
+      // Create headers for 3 columns.
+      let myHeaders = [["NAME", "ID", "ROLE"]];
+
+      // Add a blank first row and push existing data down a row.
+      let firstRow = currentSheet.getRange("1:1");
+      firstRow.insert(ExcelScript.InsertShiftDirection.down);
+
+      // Add the headers.
+      currentSheet.getRange("A1:C1").setValues(myHeaders);
+    }
 'ExcelScript.KeyboardDirection:enum':
   - |-
     /**
@@ -868,6 +905,28 @@
 
       // Set the font to bold in that range.
       firstColumn.getFormat().getFont().setBold(true);
+    }
+'ExcelScript.NumberFormatCategory:enum':
+  - |-
+    /**
+     * This script finds cells in a table column that are not formatted as currency
+     * and sets the fill color to red.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Cost" column from the "Expenses" table.
+      const table = workbook.getTable("Expenses");
+      const costColumn = table.getColumnByName("Cost");
+      const costColumnRange = costColumn.getRangeBetweenHeaderAndTotal();
+
+      // Get the number for categories for the column's range.
+      const numberFormatCategories = costColumnRange.getNumberFormatCategories();
+
+      // If any cell in the column doesn't have a currency format, make the cell red.
+      numberFormatCategories.forEach((category, index) =>{
+        if (category[0] != ExcelScript.NumberFormatCategory.currency) {
+          costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
+        }
+      }); 
     }
 'ExcelScript.PivotField#applyFilter:member(1)':
   - |-
@@ -1197,6 +1256,24 @@
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
       });
+    }
+'ExcelScript.ProtectionSelectionMode:enum':
+  - |-
+    /**
+     * This script protects cells from being selected on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the protection settings for the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const sheetProtection = currentSheet.getProtection();
+
+      // Create a new WorksheetProtectionOptions object with the selectionMode property set to `none`.
+      let protectionOptions : ExcelScript.WorksheetProtectionOptions = {
+        selectionMode: ExcelScript.ProtectionSelectionMode.none
+      }
+
+      // Apply the given protection options.
+      sheetProtection.protect(protectionOptions);
     }
 'ExcelScript.Range#addConditionalFormat:member(1)':
   - |-
@@ -1547,6 +1624,28 @@
       }
 
       console.log(`Done. Cleared hyperlinks from ${clearedCount} cells`);
+    }
+'ExcelScript.Range#getNumberFormatCategories:member(1)':
+  - |-
+    /**
+     * This script finds cells in a table column that are not formatted as currency
+     * and sets the fill color to red.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Cost" column from the "Expenses" table.
+      const table = workbook.getTable("Expenses");
+      const costColumn = table.getColumnByName("Cost");
+      const costColumnRange = costColumn.getRangeBetweenHeaderAndTotal();
+
+      // Get the number for categories for the column's range.
+      const numberFormatCategories = costColumnRange.getNumberFormatCategories();
+
+      // If any cell in the column doesn't have a currency format, make the cell red.
+      numberFormatCategories.forEach((category, index) =>{
+        if (category[0] != ExcelScript.NumberFormatCategory.currency) {
+          costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
+        }
+      }); 
     }
 'ExcelScript.Range#getOffsetRange:member(1)':
   - |-
@@ -3003,6 +3102,24 @@
         // Log the array of worksheet names.
         console.log(worksheetNames);
     }
+'ExcelScript.Worksheet#getProtection:member(1)':
+  - |-
+    /**
+     * This script protects cells from being selected on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the protection settings for the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const sheetProtection = currentSheet.getProtection();
+
+      // Create a new WorksheetProtectionOptions object with the selectionMode property set to `none`.
+      let protectionOptions : ExcelScript.WorksheetProtectionOptions = {
+        selectionMode: ExcelScript.ProtectionSelectionMode.none
+      }
+
+      // Apply the given protection options.
+      sheetProtection.protect(protectionOptions);
+    }
 'ExcelScript.Worksheet#getRange:member(1)':
   - |-
     /**
@@ -3096,4 +3213,40 @@
       // Name the worksheet using the current date.
       let date = new Date(Date.now());
       newSheet.setName(`${date.toDateString()}`);
+    }
+'ExcelScript.WorksheetProtection#protect:member(1)':
+  - |-
+    /**
+     * This script protects cells from being selected on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the protection settings for the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const sheetProtection = currentSheet.getProtection();
+
+      // Create a new WorksheetProtectionOptions object with the selectionMode property set to `none`.
+      let protectionOptions : ExcelScript.WorksheetProtectionOptions = {
+        selectionMode: ExcelScript.ProtectionSelectionMode.none
+      }
+
+      // Apply the given protection options.
+      sheetProtection.protect(protectionOptions);
+    }
+'ExcelScript.WorksheetProtectionOptions:interface':
+  - |-
+    /**
+     * This script protects cells from being selected on the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the protection settings for the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const sheetProtection = currentSheet.getProtection();
+
+      // Create a new WorksheetProtectionOptions object with the selectionMode property set to `none`.
+      let protectionOptions : ExcelScript.WorksheetProtectionOptions = {
+        selectionMode: ExcelScript.ProtectionSelectionMode.none
+      }
+
+      // Apply the given protection options.
+      sheetProtection.protect(protectionOptions);
     }

@@ -4,7 +4,33 @@ uid: 'ExcelScript!ExcelScript.NumberFormatCategory:enum'
 package: ExcelScript!
 fullName: ExcelScript.NumberFormatCategory
 summary: Represents a category of number formats.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds cells in a table column that are not formatted as currency
+   * and sets the fill color to red.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the "Cost" column from the "Expenses" table.
+    const table = workbook.getTable("Expenses");
+    const costColumn = table.getColumnByName("Cost");
+    const costColumnRange = costColumn.getRangeBetweenHeaderAndTotal();
+
+    // Get the number for categories for the column's range.
+    const numberFormatCategories = costColumnRange.getNumberFormatCategories();
+
+    // If any cell in the column doesn't have a currency format, make the cell red.
+    numberFormatCategories.forEach((category, index) =>{
+      if (category[0] != ExcelScript.NumberFormatCategory.currency) {
+        costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
+      }
+    }); 
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
