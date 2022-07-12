@@ -184,7 +184,24 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.AggregationFunction:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script changes how the data in a PivotTable is aggregated.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first PivotTable in the workbook.
+            const pivotTable = workbook.getPivotTables()[0];
+            
+            // Set the first data hierarchy to summarize with an average value, instead of a sum.
+            const dataHierarchy = pivotTable.getDataHierarchies()[0];
+            dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
+          }
+          ```
   - name: setToDefault()
     uid: 'ExcelScript!ExcelScript.DataPivotHierarchy#setToDefault:member(1)'
     package: ExcelScript!

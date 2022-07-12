@@ -1308,7 +1308,33 @@ methods:
       content: 'getNumberFormatCategories(): NumberFormatCategory[][];'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NumberFormatCategory:enum" />[][]'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script finds cells in a table column that are not formatted as currency
+           * and sets the fill color to red.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the "Cost" column from the "Expenses" table.
+            const table = workbook.getTable("Expenses");
+            const costColumn = table.getColumnByName("Cost");
+            const costColumnRange = costColumn.getRangeBetweenHeaderAndTotal();
+
+            // Get the number format categories for the column's range.
+            const numberFormatCategories = costColumnRange.getNumberFormatCategories();
+
+            // If any cell in the column doesn't have a currency format, make the cell red.
+            numberFormatCategories.forEach((category, index) =>{
+              if (category[0] != ExcelScript.NumberFormatCategory.currency) {
+                costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
+              }
+            }); 
+          }
+          ```
   - name: getNumberFormatCategory()
     uid: 'ExcelScript!ExcelScript.Range#getNumberFormatCategory:member(1)'
     package: ExcelScript!
@@ -1970,7 +1996,45 @@ methods:
       content: 'getValueType(): RangeValueType;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RangeValueType:enum" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script formats rows in a worksheet based on the first value in that row. 
+           * If it's the boolean value TRUE, the row is bolded. 
+           * If it's FALSE, nothing is changed. 
+           * If the value type isn't a boolean, the row is italicized.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the used range in the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const usedRange = sheet.getUsedRange();
+
+            // Get the values in the first column.
+            const firstColumnValues = usedRange.getColumn(0).getValues();
+
+            // Look at the first cell in each row.
+            const rowCount = usedRange.getRowCount();
+            for (let i = 0; i < rowCount; i++) {
+              // Get the type of the first cell to make sure it's a boolean.
+              let firstValueType = usedRange.getCell(i, 0).getValueType();
+
+              // Set the bold or italic of the row as described earlier.
+              if (firstValueType === ExcelScript.RangeValueType.boolean) {
+                if (firstColumnValues[i][0] as boolean === true) {
+                  usedRange.getRow(i).getFormat().getFont().setBold(true);
+                } else {
+                  usedRange.getRow(i).getFormat().getFont().setBold(false);
+                }
+              } else {
+                usedRange.getRow(i).getFormat().getFont().setItalic(true);
+              }
+            }
+          }
+          ```
   - name: getValueTypes()
     uid: 'ExcelScript!ExcelScript.Range#getValueTypes:member(1)'
     package: ExcelScript!

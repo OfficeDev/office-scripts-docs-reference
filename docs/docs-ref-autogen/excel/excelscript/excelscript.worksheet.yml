@@ -1268,7 +1268,29 @@ methods:
       content: 'getProtection(): WorksheetProtection;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtection:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script protects cells from being selected on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the protection settings for the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const sheetProtection = currentSheet.getProtection();
+
+            // Create a new WorksheetProtectionOptions object with the selectionMode property set to `none`.
+            let protectionOptions : ExcelScript.WorksheetProtectionOptions = {
+              selectionMode: ExcelScript.ProtectionSelectionMode.none
+            }
+
+            // Apply the given protection options.
+            sheetProtection.protect(protectionOptions);
+          }
+          ```
   - name: getRange(address)
     uid: 'ExcelScript!ExcelScript.Worksheet#getRange:member(1)'
     package: ExcelScript!
@@ -1851,7 +1873,23 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SheetVisibility:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script unhides all the worksheets in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Iterate over each worksheet.
+            workbook.getWorksheets().forEach((worksheet) => {
+              // Set the worksheet visibility to visible.
+              worksheet.setVisibility(ExcelScript.SheetVisibility.visible);
+            });
+          }
+          ```
   - name: 'showOutlineLevels(rowLevels, columnLevels)'
     uid: 'ExcelScript!ExcelScript.Worksheet#showOutlineLevels:member(1)'
     package: ExcelScript!
