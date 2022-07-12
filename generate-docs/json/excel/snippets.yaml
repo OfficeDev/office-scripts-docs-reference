@@ -648,6 +648,28 @@
        */
       console.log(validationType.toString());
     }
+'ExcelScript.DateFilterCondition:enum':
+  - |-
+    /**
+     * This script applies a filter to a PivotTable that filters out rows 
+     * that aren't from this month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Date Recorded" field to filter. 
+      //The data in this field must be dates in order for the filter to work.
+      const pivot = workbook.getPivotTables()[0];
+      const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+      const rowField = rowHierarchy.getFields()[0];
+
+      // Apply the date filter.
+      rowField.applyFilter({
+        dateFilter: {
+          // Setting the condition to `thisMonth` means items that are before or
+          // after this month will not be displayed.
+          condition: ExcelScript.DateFilterCondition.thisMonth
+        }
+      });
+    }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
     /**
@@ -928,6 +950,28 @@
         }
       }); 
     }
+'ExcelScript.PivotDateFilter#condition:member':
+  - |-
+    /**
+     * This script applies a filter to a PivotTable that filters out rows 
+     * that aren't from this month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Date Recorded" field to filter. 
+      //The data in this field must be dates in order for the filter to work.
+      const pivot = workbook.getPivotTables()[0];
+      const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+      const rowField = rowHierarchy.getFields()[0];
+
+      // Apply the date filter.
+      rowField.applyFilter({
+        dateFilter: {
+          // Setting the condition to `thisMonth` means items that are before or
+          // after this month will not be displayed.
+          condition: ExcelScript.DateFilterCondition.thisMonth
+        }
+      });
+    }
 'ExcelScript.PivotField#applyFilter:member(1)':
   - |-
     /**
@@ -954,6 +998,28 @@
       // Apply the filter.
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
+      });
+    }
+'ExcelScript.PivotFilters#dateFilter:member':
+  - |-
+    /**
+     * This script applies a filter to a PivotTable that filters out rows 
+     * that aren't from this month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Date Recorded" field to filter. 
+      //The data in this field must be dates in order for the filter to work.
+      const pivot = workbook.getPivotTables()[0];
+      const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+      const rowField = rowHierarchy.getFields()[0];
+
+      // Apply the date filter.
+      rowField.applyFilter({
+        dateFilter: {
+          // Setting the condition to `thisMonth` means items that are before or
+          // after this month will not be displayed.
+          condition: ExcelScript.DateFilterCondition.thisMonth
+        }
       });
     }
 'ExcelScript.PivotFilters#labelFilter:member':
