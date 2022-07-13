@@ -603,7 +603,7 @@
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the "Date Recorded" field to filter. 
-      //The data in this field must be dates in order for the filter to work.
+      // The data in this field must be dates in order for the filter to work.
       const pivot = workbook.getPivotTables()[0];
       const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
       const rowField = rowHierarchy.getFields()[0];
