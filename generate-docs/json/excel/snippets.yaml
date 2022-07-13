@@ -2633,6 +2633,78 @@
       // Set the left margin of the slicer.
       fruitSlicer.setLeft(400);
     }
+'ExcelScript.SortField#color:member':
+  - |-
+    /**
+     * This script sorts a range based on the color of the cells.
+     * It brings all red cells to the top of the range
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range (A1:D8) to sort from the current worksheet.
+      const worksheet = workbook.getActiveWorksheet();
+      const rangeToSort = worksheet.getRange("A1:D8");
+
+      // Create a SortField for color sorting.
+      // This sorts the rows based on the fill color of each row's cell in the first column.
+      let colorSort: ExcelScript.SortField = {
+        ascending: true,
+        color: "FF0000", /* red */
+        key: 0,
+        sortOn: ExcelScript.SortOn.cellColor
+      };
+
+      // Apply the SortField to the range.
+      rangeToSort.getSort().apply([colorSort]);
+    }
+'ExcelScript.SortMethod:enum':
+  - |-
+    /**
+     * This script sorts a range using the values in the first column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range (A1:D8) to sort from the current worksheet.
+      const worksheet = workbook.getActiveWorksheet();
+      const rangeToSort = worksheet.getRange("A1:D8");
+
+      // Create a SortField for text sorting.
+      let valueSort: ExcelScript.SortField = {
+        ascending: true,
+        key: 0, /* First column */
+        sortOn: ExcelScript.SortOn.value
+      };
+
+      // Apply the SortField to the range.
+      rangeToSort.getSort().apply(
+        [valueSort],
+        false, /* Don't let casing have an impact of sorting. */
+        true, /* The range has headers. */
+        ExcelScript.SortOrientation.rows,
+        ExcelScript.SortMethod.pinYin /* Use phonetic sorting for Chinese characters. */
+        );
+    }
+'ExcelScript.SortOn:enum':
+  - |-
+    /**
+     * This script sorts a range based on the color of the cells.
+     * It brings all red cells to the top of the range
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range (A1:D8) to sort from the current worksheet.
+      const worksheet = workbook.getActiveWorksheet();
+      const rangeToSort = worksheet.getRange("A1:D8");
+
+      // Create a SortField for color sorting.
+      // This sorts the rows based on the fill color of each row's cell in the first column.
+      let colorSort: ExcelScript.SortField = {
+        ascending: true,
+        color: "FF0000", /* red */
+        key: 0,
+        sortOn: ExcelScript.SortOn.cellColor
+      };
+
+      // Apply the SortField to the range.
+      rangeToSort.getSort().apply([colorSort]);
+    }
 'ExcelScript.SpecialCellType:enum':
   - |-
     /**
