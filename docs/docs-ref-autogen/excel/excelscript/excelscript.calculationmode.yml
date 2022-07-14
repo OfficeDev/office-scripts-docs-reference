@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.CalculationMode:enum'
 package: ExcelScript!
 fullName: ExcelScript.CalculationMode
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script recalculates the used range of a specific worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Only recalculate if the calculation mode is not set to automatic.
+    if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
+      // Get the used range from a worksheet named "Monthly Report".
+      let sheet = workbook.getWorksheet("Monthly Report");
+      let range = sheet.getUsedRange();
+      console.log(`Calculating ${range.getAddress()}`);
+
+      // Force all the used cells in that worksheet to calculate.
+      sheet.getUsedRange().calculate();
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

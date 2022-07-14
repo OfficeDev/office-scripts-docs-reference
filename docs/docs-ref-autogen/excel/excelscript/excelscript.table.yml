@@ -235,7 +235,27 @@ methods:
       content: 'getHeaderRowRange(): Range;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script centers the text in the header row cells of a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Get the header range.
+            const headerRange = table.getHeaderRowRange();
+
+            // Set the horizontal text alignment to `center`.
+            headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+          }
+          ```
   - name: getHighlightFirstColumn()
     uid: 'ExcelScript!ExcelScript.Table#getHighlightFirstColumn:member(1)'
     package: ExcelScript!
