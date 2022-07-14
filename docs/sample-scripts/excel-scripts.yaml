@@ -172,8 +172,8 @@
       // Only recalculate if the calculation mode is not set to automatic.
       if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
         // Get the used range from a worksheet named "Monthly Report".
-        let sheet = workbook.getWorksheet("Monthly Report");
-        let range = sheet.getUsedRange();
+        const sheet = workbook.getWorksheet("Monthly Report");
+        const range = sheet.getUsedRange();
         console.log(`Calculating ${range.getAddress()}`);
 
         // Force all the used cells in that worksheet to calculate.
@@ -921,7 +921,7 @@
   - |-
     /**
      * This script applies a filter to a PivotTable that filters it
-     * to only show rows from between June 20th, 2022 to July 10th, 2022.
+     * to only show rows from between June 20th, 2022 and July 10th, 2022.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the "Date Recorded" field to filter. 
@@ -953,7 +953,7 @@
   - |-
     /**
      * This script applies a filter to a PivotTable that filters it
-     * to only show rows from between June 20th, 2022 to July 10th, 2022.
+     * to only show rows from between June 20th, 2022 and July 10th, 2022.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the "Date Recorded" field to filter. 
@@ -1036,7 +1036,7 @@
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
-     * This script centers the text in the header row cells of a table.
+     * This script centers the text in a table's header row cells.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the first table on the current worksheet.
@@ -1241,7 +1241,7 @@
   - |-
     /**
      * This script applies a filter to a PivotTable that filters it
-     * to only show rows from between June 20th, 2022 to July 10th, 2022.
+     * to only show rows from between June 20th, 2022 and July 10th, 2022.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the "Date Recorded" field to filter. 
@@ -1701,8 +1701,8 @@
       // Only recalculate if the calculation mode is not set to automatic.
       if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
         // Get the used range from a worksheet named "Monthly Report".
-        let sheet = workbook.getWorksheet("Monthly Report");
-        let range = sheet.getUsedRange();
+        const sheet = workbook.getWorksheet("Monthly Report");
+        const range = sheet.getUsedRange();
         console.log(`Calculating ${range.getAddress()}`);
 
         // Force all the used cells in that worksheet to calculate.
@@ -2654,7 +2654,7 @@
 'ExcelScript.RangeFormat#setHorizontalAlignment:member(1)':
   - |-
     /**
-     * This script centers the text in the header row cells of a table.
+     * This script centers the text in a table's header row cells.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the first table on the current worksheet.
@@ -3082,7 +3082,7 @@
 'ExcelScript.Table#getHeaderRowRange:member(1)':
   - |-
     /**
-     * This script centers the text in the header row cells of a table.
+     * This script centers the text in a table's header row cells.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the first table on the current worksheet.

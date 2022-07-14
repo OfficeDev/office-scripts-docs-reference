@@ -148,8 +148,8 @@ methods:
             // Only recalculate if the calculation mode is not set to automatic.
             if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
               // Get the used range from a worksheet named "Monthly Report".
-              let sheet = workbook.getWorksheet("Monthly Report");
-              let range = sheet.getUsedRange();
+              const sheet = workbook.getWorksheet("Monthly Report");
+              const range = sheet.getUsedRange();
               console.log(`Calculating ${range.getAddress()}`);
 
               // Force all the used cells in that worksheet to calculate.
