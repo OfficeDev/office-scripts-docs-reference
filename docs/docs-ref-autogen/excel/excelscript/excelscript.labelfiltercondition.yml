@@ -7,7 +7,34 @@ summary: >-
   Enum representing all accepted conditions by which a label filter can be applied. Used to configure the type of
   PivotFilter that is applied to the field. `PivotFilter.criteria.exclusive` can be set to `true` to invert many of
   these conditions.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script filters items that start with "L" from the "Type" field
+   * of the "Farm Sales" PivotTable.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable.
+    const pivotTable = workbook.getActiveWorksheet().getPivotTable("Farm Sales");
+
+    // Get the "Type" field.
+    const field = pivotTable.getHierarchy("Type").getPivotField("Type");
+
+    // Filter out any types that start with "L" (such as "Lemons" and "Limes").
+    const filter: ExcelScript.PivotLabelFilter = {
+      condition: ExcelScript.LabelFilterCondition.beginsWith,
+      substring: "L",
+      exclusive: true
+    };
+
+    // Apply the label filter to the field.
+    field.applyFilter({ labelFilter: filter });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

@@ -4,7 +4,27 @@ uid: 'ExcelScript!ExcelScript.HorizontalAlignment:enum'
 package: ExcelScript!
 fullName: ExcelScript.HorizontalAlignment
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script centers the text in a table's header row cells.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first table on the current worksheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const table = currentSheet.getTables()[0];
+
+    // Get the header range.
+    const headerRange = table.getHeaderRowRange();
+
+    // Set the horizontal text alignment to `center`.
+    headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
