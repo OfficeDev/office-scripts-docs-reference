@@ -148,8 +148,8 @@ methods:
             // Only recalculate if the calculation mode is not set to automatic.
             if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
               // Get the used range from a worksheet named "Monthly Report".
-              let sheet = workbook.getWorksheet("Monthly Report");
-              let range = sheet.getUsedRange();
+              const sheet = workbook.getWorksheet("Monthly Report");
+              const range = sheet.getUsedRange();
               console.log(`Calculating ${range.getAddress()}`);
 
               // Force all the used cells in that worksheet to calculate.
@@ -523,7 +523,7 @@ methods:
             let boundingRectangle = range1.getBoundingRect(range2);
 
             // Add a border around the whole bounding range (B2:E15).
-            let borders = boundingRectangle.getFormat().getBorders();
+            let format = boundingRectangle.getFormat();
             format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
             format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
             format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border

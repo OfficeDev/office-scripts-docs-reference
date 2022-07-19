@@ -6,7 +6,33 @@ fullName: ExcelScript.DateFilterCondition
 summary: >-
   Enum representing all accepted conditions by which a date filter can be applied. Used to configure the type of
   PivotFilter that is applied to the field.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a filter to a PivotTable that filters out rows 
+   * that aren't from this month.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the "Date Recorded" field to filter. 
+    // The data in this field must be dates in order for the filter to work.
+    const pivot = workbook.getPivotTables()[0];
+    const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+    const rowField = rowHierarchy.getFields()[0];
+
+    // Apply the date filter.
+    rowField.applyFilter({
+      dateFilter: {
+        // Setting the condition to `thisMonth` means items that are before or
+        // after this month will not be displayed.
+        condition: ExcelScript.DateFilterCondition.thisMonth
+      }
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

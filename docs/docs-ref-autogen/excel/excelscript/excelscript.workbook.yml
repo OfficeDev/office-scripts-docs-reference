@@ -188,7 +188,32 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a named formula and uses it in another part of the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a named item for a formula.
+            // This formula is the sum of the cells F2:F21 on Sheet1.
+            const namedItem: ExcelScript.NamedItem = workbook.addNamedItem(
+              "GrandTotal", 
+              "=SUM(Sheet1!$F$2:$F$21)", 
+              "The sum of table sums."
+            );
+
+            // Add this named formula to a new sheet in the workbook.
+            const otherSheet = workbook.addWorksheet();
+            otherSheet.getRange("A1").setFormula(namedItem.getFormula());
+
+            // Switch to the new worksheet.
+            otherSheet.activate();
+          }
+          ```
   - name: 'addNamedItemFormulaLocal(name, formula, comment)'
     uid: 'ExcelScript!ExcelScript.Workbook#addNamedItemFormulaLocal:member(1)'
     package: ExcelScript!
@@ -1079,7 +1104,31 @@ methods:
       content: 'getNames(): NamedItem[];'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.NamedItem:interface" />[]'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script looks for every named range with "Review" in the name 
+           * and marks the range with a yellow fill.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Look at every named item in the workbook.
+            workbook.getNames().forEach((namedItem) => {
+              // Find names containing "Review".
+              if (namedItem.getName().includes("Review")) {
+                // Only change the fill color if the named item is a range (not a formula).
+                let itemType: ExcelScript.NamedItemType = namedItem.getType();
+                if (itemType === ExcelScript.NamedItemType.range) {
+                  // Set the range's fill color to yellow.
+                  namedItem.getRange().getFormat().getFill().setColor("yellow");
+                }
+              }
+            });
+          }
+          ```
   - name: getPivotTable(name)
     uid: 'ExcelScript!ExcelScript.Workbook#getPivotTable:member(1)'
     package: ExcelScript!

@@ -524,7 +524,27 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.HorizontalAlignment:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script centers the text in a table's header row cells.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Get the header range.
+            const headerRange = table.getHeaderRowRange();
+
+            // Set the horizontal text alignment to `center`.
+            headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+          }
+          ```
   - name: setIndentLevel(indentLevel)
     uid: 'ExcelScript!ExcelScript.RangeFormat#setIndentLevel:member(1)'
     package: ExcelScript!

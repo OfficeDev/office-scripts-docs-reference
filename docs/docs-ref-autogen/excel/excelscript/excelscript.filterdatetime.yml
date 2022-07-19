@@ -4,7 +4,43 @@ uid: 'ExcelScript!ExcelScript.FilterDatetime:interface'
 package: ExcelScript!
 fullName: ExcelScript.FilterDatetime
 summary: Represents how to filter a date when filtering on values.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a filter to a PivotTable that filters it
+   * to only show rows from between June 20th, 2022 and July 10th, 2022.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the "Date Recorded" field to filter. 
+    // The data in this field must be dates in order for the filter to work.
+    const pivot = workbook.getPivotTables()[0];
+    const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+    const rowField = rowHierarchy.getFields()[0];
+
+    // Create the filter's date boundaries.
+    let earliestDate: ExcelScript.FilterDatetime = {
+      date: "2022-06-20",
+      specificity: ExcelScript.FilterDatetimeSpecificity.day
+    };
+    let latestDate: ExcelScript.FilterDatetime = {
+      date: "2022-07-10",
+      specificity: ExcelScript.FilterDatetimeSpecificity.day
+    };
+
+    // Apply the date filter.
+    rowField.applyFilter({
+      dateFilter: {
+        condition: ExcelScript.DateFilterCondition.between,
+        lowerBound: earliestDate,
+        upperBound: latestDate
+      }
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
