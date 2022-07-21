@@ -1015,7 +1015,7 @@ declare namespace ExcelScript {
         /**
          * Creates and activates a new temporary sheet view.
          * Temporary views are removed when closing the application, exiting the temporary view with the exit method, or switching to another sheet view.
-         * The temporary sheet view can also be acccessed with the empty string (""), if the temporary view exists.
+         * The temporary sheet view can also be accessed with the empty string (""), if the temporary view exists.
          */
         enterTemporaryNamedSheetView(): NamedSheetView;
 
@@ -1664,7 +1664,7 @@ declare namespace ExcelScript {
         getLastRow(): Range;
 
         /**
-         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this function will return an object with its `isNullObject` property set to `true`.
+         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method will return an object with its `isNullObject` property set to `true`.
          */
         getMergedAreas(): RangeAreas;
 
@@ -2739,7 +2739,7 @@ declare namespace ExcelScript {
         clear(): void;
 
         /**
-         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this function will return `null`.
+         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method will return `null`.
          */
         getInvalidCells(): RangeAreas;
     }
@@ -7315,12 +7315,12 @@ declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Returns the range to which the conditonal format is applied. If the conditional format is applied to multiple ranges, then this method returns `undefined`.
+         * Returns the range to which the conditional format is applied. If the conditional format is applied to multiple ranges, then this method returns `undefined`.
          */
         getRange(): Range;
 
         /**
-         * Returns the `RangeAreas`, comprising one or more rectangular ranges, to which the conditonal format is applied.
+         * Returns the `RangeAreas`, comprising one or more rectangular ranges, to which the conditional format is applied.
          */
         getRanges(): RangeAreas;
     }
@@ -11254,7 +11254,7 @@ declare namespace ExcelScript {
     }
 
     /**
-     * The ShowAs calculation function for the DataPivotField.
+     * The ShowAs calculation enum for the DataPivotField.
      */
     enum ShowAsCalculation {
         /**
