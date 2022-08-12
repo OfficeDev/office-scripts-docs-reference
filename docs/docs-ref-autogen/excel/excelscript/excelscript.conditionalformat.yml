@@ -292,7 +292,7 @@ methods:
             const currentSheet = workbook.getActiveWorksheet();
             const firstColumn = currentSheet.getRange("A:A");
 
-            // Add conditional formatting based on the text of the cells.
+            // Add conditional formatting based on the text in the cells.
             const textConditionFormat = 
               firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
 
