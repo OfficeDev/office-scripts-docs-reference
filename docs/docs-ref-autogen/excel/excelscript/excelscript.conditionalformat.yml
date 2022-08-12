@@ -51,7 +51,8 @@ methods:
             const ratingColumn = sheet.getRange("D2:D20");
 
             // Add cell value conditional formatting.
-            const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+            const cellValueConditionalFormatting =
+              ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
             
             // Create the condition, in this case when the cell value is between 50 and 75.
             let rule: ExcelScript.ConditionalCellValueRule = {
@@ -276,7 +277,36 @@ methods:
       content: 'getTextComparison(): TextConditionalFormat | undefined;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TextConditionalFormat:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds conditional formatting to the first column in the worksheet.
+           * This formatting gives the cells a green fill if they have text starting with "Excel".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first column in the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const firstColumn = currentSheet.getRange("A:A");
+
+            // Add conditional formatting based on the text in the cells.
+            const textConditionFormat = 
+              firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+            // Set the conditional format to provide a green fill.
+            textConditionFormat.getFormat().getFill().setColor("green");
+
+            // Apply the condition rule that the text begins with "Excel".
+            const textRule: ExcelScript.ConditionalTextComparisonRule = {
+              operator: ExcelScript.ConditionalTextOperator.beginsWith,
+              text: "Excel"
+            };
+            textConditionFormat.setRule(textRule);
+          }
+          ```
   - name: getTopBottom()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getTopBottom:member(1)'
     package: ExcelScript!

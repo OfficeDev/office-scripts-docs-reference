@@ -479,7 +479,8 @@
       const ratingColumn = sheet.getRange("D2:D20");
 
       // Add cell value conditional formatting.
-      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      const cellValueConditionalFormatting =
+        ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
       
       // Set the format to apply when the condition is met.
       let format = cellValueConditionalFormatting.getFormat();
@@ -507,7 +508,8 @@
       const ratingColumn = sheet.getRange("D2:D20");
 
       // Add cell value conditional formatting.
-      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      const cellValueConditionalFormatting =
+        ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
       
       // Create the condition, in this case when the cell value is between 50 and 75.
       let rule: ExcelScript.ConditionalCellValueRule = {
@@ -535,7 +537,8 @@
       const ratingColumn = sheet.getRange("D2:D20");
 
       // Add cell value conditional formatting.
-      const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+      const cellValueConditionalFormatting =
+        ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
       
       // Create the condition, in this case when the cell value is between 50 and 75.
       let rule: ExcelScript.ConditionalCellValueRule = {
@@ -594,6 +597,31 @@
       positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
       positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
     }
+'ExcelScript.ConditionalFormat#getTextComparison:member(1)':
+  - |-
+    /**
+     * This script adds conditional formatting to the first column in the worksheet.
+     * This formatting gives the cells a green fill if they have text starting with "Excel".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first column in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const firstColumn = currentSheet.getRange("A:A");
+
+      // Add conditional formatting based on the text in the cells.
+      const textConditionFormat = 
+        firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+      // Set the conditional format to provide a green fill.
+      textConditionFormat.getFormat().getFill().setColor("green");
+
+      // Apply the condition rule that the text begins with "Excel".
+      const textRule: ExcelScript.ConditionalTextComparisonRule = {
+        operator: ExcelScript.ConditionalTextOperator.beginsWith,
+        text: "Excel"
+      };
+      textConditionFormat.setRule(textRule);
+    }
 'ExcelScript.ConditionalFormatColorCriterionType:enum':
   - |-
     /**
@@ -649,6 +677,56 @@
           type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
         }
       });
+    }
+'ExcelScript.ConditionalTextComparisonRule:interface':
+  - |-
+    /**
+     * This script adds conditional formatting to the first column in the worksheet.
+     * This formatting gives the cells a green fill if they have text starting with "Excel".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first column in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const firstColumn = currentSheet.getRange("A:A");
+
+      // Add conditional formatting based on the text in the cells.
+      const textConditionFormat = 
+        firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+      // Set the conditional format to provide a green fill.
+      textConditionFormat.getFormat().getFill().setColor("green");
+
+      // Apply the condition rule that the text begins with "Excel".
+      const textRule: ExcelScript.ConditionalTextComparisonRule = {
+        operator: ExcelScript.ConditionalTextOperator.beginsWith,
+        text: "Excel"
+      };
+      textConditionFormat.setRule(textRule);
+    }
+'ExcelScript.ConditionalTextOperator:enum':
+  - |-
+    /**
+     * This script adds conditional formatting to the first column in the worksheet.
+     * This formatting gives the cells a green fill if they have text starting with "Excel".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first column in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const firstColumn = currentSheet.getRange("A:A");
+
+      // Add conditional formatting based on the text in the cells.
+      const textConditionFormat = 
+        firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+      // Set the conditional format to provide a green fill.
+      textConditionFormat.getFormat().getFill().setColor("green");
+
+      // Apply the condition rule that the text begins with "Excel".
+      const textRule: ExcelScript.ConditionalTextComparisonRule = {
+        operator: ExcelScript.ConditionalTextOperator.beginsWith,
+        text: "Excel"
+      };
+      textConditionFormat.setRule(textRule);
     }
 'ExcelScript.ConditionalTopBottomRule:interface':
   - |-
@@ -3129,6 +3207,31 @@
 
       // Sort the table using the first column.
       newTable.getSort().apply([{ key: 0, ascending: true }]);
+    }
+'ExcelScript.TextConditionalFormat:interface':
+  - |-
+    /**
+     * This script adds conditional formatting to the first column in the worksheet.
+     * This formatting gives the cells a green fill if they have text starting with "Excel".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first column in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const firstColumn = currentSheet.getRange("A:A");
+
+      // Add conditional formatting based on the text in the cells.
+      const textConditionFormat: ExcelScript.TextConditionalFormat = 
+        firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+      // Set the conditional format to provide a green fill.
+      textConditionFormat.getFormat().getFill().setColor("green");
+
+      // Apply the condition rule that the text begins with "Excel".
+      const textRule: ExcelScript.ConditionalTextComparisonRule = {
+        operator: ExcelScript.ConditionalTextOperator.beginsWith,
+        text: "Excel"
+      };
+      textConditionFormat.setRule(textRule);
     }
 'ExcelScript.TopBottomConditionalFormat:interface':
   - |-
