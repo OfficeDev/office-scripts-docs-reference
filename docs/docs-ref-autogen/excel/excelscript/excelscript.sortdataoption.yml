@@ -4,7 +4,35 @@ uid: 'ExcelScript!ExcelScript.SortDataOption:enum'
 package: ExcelScript!
 fullName: ExcelScript.SortDataOption
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sorts a table based on the values in column 1.
+   * If the text in a column 1 value can be treated as a number, 
+   * it will be sorted in numerical order, rather than alphabetical 
+   * (so 123 will come before 12.3).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first table on the current worksheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const table = currentSheet.getTables()[0];
+
+    // Create the sorting parameters.
+    const countSortField: ExcelScript.SortField = {
+      key: 1,
+      ascending: true,
+      dataOption: ExcelScript.SortDataOption.textAsNumber
+    };
+
+    // Apply the sort to the table.
+    const sort = table.getSort();
+    sort.apply([countSortField]);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
