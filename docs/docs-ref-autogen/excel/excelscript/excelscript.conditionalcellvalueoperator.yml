@@ -21,7 +21,8 @@ remarks: |-
     const ratingColumn = sheet.getRange("D2:D20");
 
     // Add cell value conditional formatting.
-    const cellValueConditionalFormatting = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+    const cellValueConditionalFormatting =
+      ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
     
     // Set the format to apply when the condition is met.
     let format = cellValueConditionalFormatting.getFormat();
