@@ -3051,6 +3051,30 @@
       // Set the left margin of the slicer.
       fruitSlicer.setLeft(400);
     }
+'ExcelScript.SortDataOption:enum':
+  - |-
+    /**
+     * This script sorts a table based on the values in column 1.
+     * If the text of a column-1 value can be treated as a number, 
+     * it will be sorted in numerical order, rather than Unicode order
+     * (so 123 will come before 12.3).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const table = currentSheet.getTables()[0];
+
+      // Create the sorting parameters.
+      const countSortField: ExcelScript.SortField = {
+        key: 1,
+        ascending: true,
+        dataOption: ExcelScript.SortDataOption.textAsNumber
+      };
+
+      // Apply the sort to the table.
+      const sort = table.getSort();
+      sort.apply([countSortField]);
+    }
 'ExcelScript.SortField#color:member':
   - |-
     /**
@@ -3073,6 +3097,30 @@
 
       // Apply the SortField to the range.
       rangeToSort.getSort().apply([colorSort]);
+    }
+'ExcelScript.SortField#dataOption:member':
+  - |-
+    /**
+     * This script sorts a table based on the values in column 1.
+     * If the text of a column-1 value can be treated as a number, 
+     * it will be sorted in numerical order, rather than Unicode order
+     * (so 123 will come before 12.3).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const table = currentSheet.getTables()[0];
+
+      // Create the sorting parameters.
+      const countSortField: ExcelScript.SortField = {
+        key: 1,
+        ascending: true,
+        dataOption: ExcelScript.SortDataOption.textAsNumber
+      };
+
+      // Apply the sort to the table.
+      const sort = table.getSort();
+      sort.apply([countSortField]);
     }
 'ExcelScript.SortMethod:enum':
   - |-
