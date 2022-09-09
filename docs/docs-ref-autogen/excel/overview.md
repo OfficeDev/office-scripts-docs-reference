@@ -1,12 +1,12 @@
 ---
 title: Office Scripts API reference 
 description: An overview of the Office Scripts JavaScript APIs.
-ms.date: 06/29/2020
+ms.date: 10/01/2022
 ---
 
 # Office Scripts API reference
 
-The Office Scripts API lets you automate common tasks in Excel on the web. Use this reference documentation to learn more about the classes, methods, and other types available for your scripts. All the objects accessible through Office Scripts can be found in the table of contents on the left of the page.
+The Office Scripts API lets you automate common tasks in Excel. Use this reference documentation to learn more about the classes, methods, and other types available for your scripts. All the objects accessible through Office Scripts can be found in the table of contents on the left of the page.
 
 > [!NOTE]
 > If you're looking for the JavaScript APIs for developing Office Add-ins, visit the [Office Add-ins JavaScript API reference](/javascript/api/overview?view=excel-js-preview&preserve-view=true).
@@ -22,10 +22,10 @@ The following list breaks down the basics of the Office Scripts object model. Th
 - A [Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet) contains arrays filled with those objects that are present in the individual sheet.
 - A [Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook) contains arrays of some of those data objects for the entire Workbook.
 
-For more information about the Office Scripts object model, visit [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
+For more information about the Office Scripts object model, visit [Scripting fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
 
 ## See also
 
 - [About Office Scripts](/office/dev/scripts/overview/excel)
-- [Record, edit, and create Office Scripts in Excel on the web](/office/dev/scripts/tutorials/excel-tutorial)
-- [Scripting fundamentals for Office Scripts in Excel on the web](/office/dev/scripts/develop/scripting-fundamentals)
+- [Record, edit, and create Office Scripts in Excel](/office/dev/scripts/tutorials/excel-tutorial)
+- [Scripting fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
