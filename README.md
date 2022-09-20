@@ -1,6 +1,6 @@
 # Office Scripts API Reference
 
-Welcome to the Office Scripts API reference documentation repository. For the best experience, we recommend you view this content on [Microsoft Docs](https://learn.microsoft.com/javascript/api/office-scripts/overview).
+Welcome to the Office Scripts API reference documentation repository. For the best experience, we recommend you view this content on [Microsoft Learn](https://learn.microsoft.com/javascript/api/office-scripts/overview).
 
 > **NOTE**: You can find source files for Office Scripts documentation, including tutorials and how-to guides, in the [OfficeDev/office-scripts-docs](https://github.com/OfficeDev/office-scripts-docs) GitHub repository.
 
