@@ -33,12 +33,12 @@ methods:
           ```TypeScript
           /**
            * This script fully recalculates the entire workbook.
-           * This code is useful when automatic recalculation is turned off, 
+           * This code is useful when automatic recalculation is turned off
            * but later parts of the script rely on updated values.
            */
           function main(workbook: ExcelScript.Workbook, workbookURL: string) {
             const application = workbook.getApplication();
-            application.calculate(ExcelScript.CalculationType.fullRebuild)
+            application.calculate(ExcelScript.CalculationType.fullRebuild);
           }
           ```
   - name: getCalculationEngineVersion()
