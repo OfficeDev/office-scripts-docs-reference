@@ -636,7 +636,28 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PrintOrder:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the print order for every worksheet in the workbook.
+           * The order of printed content will go over (e.g., left-to-right) 
+           * then down (i.e., top-to-bottom).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Access every worksheet in the workbook.
+            workbook.getWorksheets().forEach(worksheet => {
+              // Get the page layout for each sheet.
+              const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+              // Set the print order to over-then-down.
+              layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+            });
+          }
+          ```
   - name: setPrintTitleColumns(printTitleColumns)
     uid: 'ExcelScript!ExcelScript.PageLayout#setPrintTitleColumns:member(1)'
     package: ExcelScript!

@@ -11,6 +11,17 @@
       const dataHierarchy = pivotTable.getDataHierarchies()[0];
       dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
     }
+'ExcelScript.Application#calculate:member(1)':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off, 
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild)
+    }
 'ExcelScript.AutoFillType:enum':
   - |-
     /**
@@ -213,6 +224,17 @@
         // Force all the used cells in that worksheet to calculate.
         sheet.getUsedRange().calculate();
       }
+    }
+'ExcelScript.CalculationType:enum':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off, 
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild)
     }
 'ExcelScript.CellValueConditionalFormat:interface':
   - |-
@@ -1478,7 +1500,7 @@
         }
       }); 
     }
-'ExcelScript.PageLayout#setPrintOrder:method(1)':
+'ExcelScript.PageLayout#setPrintOrder:member(1)':
   - |-
     /**
      * This script sets the print order for every worksheet in the workbook.
