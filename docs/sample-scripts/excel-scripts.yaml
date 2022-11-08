@@ -11,6 +11,17 @@
       const dataHierarchy = pivotTable.getDataHierarchies()[0];
       dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
     }
+'ExcelScript.Application#calculate:member(1)':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild);
+    }
 'ExcelScript.AutoFillType:enum':
   - |-
     /**
@@ -213,6 +224,17 @@
         // Force all the used cells in that worksheet to calculate.
         sheet.getUsedRange().calculate();
       }
+    }
+'ExcelScript.CalculationType:enum':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild);
     }
 'ExcelScript.CellValueConditionalFormat:interface':
   - |-
@@ -1281,6 +1303,21 @@
       hexagon.setLeft(100);
       hexagon.setTop(100);
     }
+'ExcelScript.GroupOption:enum':
+  - |-
+    /**
+     * This script creates a two-level column-based outline on Sheet1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Group columns A-F in the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const firstLevel = sheet.getRange("A:F");
+      firstLevel.group(ExcelScript.GroupOption.byColumns);
+      
+      // Create a second level to the outline by grouping subsections.
+      sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+      sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
+    }
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
@@ -1462,6 +1499,46 @@
           costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
         }
       }); 
+    }
+'ExcelScript.PageLayout#setPrintOrder:member(1)':
+  - |-
+    /**
+     * This script sets the print order for every worksheet in the workbook.
+     * The order of printed content will go over (e.g., left-to-right) 
+     * then down (i.e., top-to-bottom).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+        // Set the print order to over-then-down.
+        layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+      });
+    }
+'ExcelScript.PictureFormat:enum':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     * It then returns the image as a base64-encoded string. 
+     * This string would be used as part of a Power Automate flow to add the image elsewhere.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+
+      // Return the shape as a PNG image represented by a base64-encoded string.
+      return star.getAsImage(ExcelScript.PictureFormat.png);
     }
 'ExcelScript.PivotDateFilter#condition:member':
   - |-
@@ -1866,6 +1943,23 @@
       // Apply the filter.
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
+      });
+    }
+'ExcelScript.PrintOrder:enum':
+  - |-
+    /**
+     * This script sets the print order for every worksheet in the workbook.
+     * The order of printed content will go over (e.g., left-to-right) 
+     * then down (i.e., top-to-bottom).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+        // Set the print order to over-then-down.
+        layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
       });
     }
 'ExcelScript.ProtectionSelectionMode:enum':
@@ -2448,6 +2542,21 @@
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
       otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
+    }
+'ExcelScript.Range#group:member(1)':
+  - |-
+    /**
+     * This script creates a two-level column-based outline on Sheet1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Group columns A-F in the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const firstLevel = sheet.getRange("A:F");
+      firstLevel.group(ExcelScript.GroupOption.byColumns);
+      
+      // Create a second level to the outline by grouping subsections.
+      sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+      sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
     }
 'ExcelScript.Range#insert:member(1)':
   - |-
@@ -3152,11 +3261,34 @@
       hexagon.setLeft(100);
       hexagon.setTop(100);
     }
+'ExcelScript.Shape#getAsImage:member(1)':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     * It then returns the image as a base64-encoded string. 
+     * This string would be used as part of a Power Automate flow to add the image elsewhere.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+
+      // Return the shape as a PNG image represented by a base64-encoded string.
+      return star.getAsImage(ExcelScript.PictureFormat.png);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
-    * This script transfers an image from one worksheet to another.
-    */
+     * This script transfers an image from one worksheet to another.
+     */
     function main(workbook: ExcelScript.Workbook)
     {
       // Get the worksheet with the image on it.
@@ -3175,6 +3307,24 @@
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
     }
+'ExcelScript.Shape#getTextFrame:member(1)':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+    }
 'ExcelScript.Shape#setName:member(1)':
   - |-
     /**
@@ -3186,6 +3336,24 @@
         currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
       
       triangle.setName("TRI");
+    }
+'ExcelScript.ShapeAutoSize:enum':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
     }
 'ExcelScript.SheetVisibility:enum':
   - |-
@@ -3449,6 +3617,24 @@
         text: "Excel"
       };
       textConditionFormat.setRule(textRule);
+    }
+'ExcelScript.TextFrame:interface':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame: ExcelScript.TextFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
     }
 'ExcelScript.TopBottomConditionalFormat:interface':
   - |-
