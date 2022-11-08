@@ -4,7 +4,27 @@ uid: 'ExcelScript!ExcelScript.PrintComments:enum'
 package: ExcelScript!
 fullName: ExcelScript.PrintComments
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script makes the comments print at the end of the worksheet
+   * when the workbook printed.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Access every worksheet in the workbook.
+    workbook.getWorksheets().forEach(worksheet => {
+      // Get the page layout for each sheet.
+      const layout = worksheet.getPageLayout();
+
+      // Change the comment printing settings to print them at the end of the sheet.
+      layout.setPrintComments(ExcelScript.PrintComments.endSheet);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
