@@ -4,7 +4,34 @@ uid: 'ExcelScript!ExcelScript.PictureFormat:enum'
 package: ExcelScript!
 fullName: ExcelScript.PictureFormat
 summary: The format of the image.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a star shape with the value from cell A1.
+   * It then returns the image as a base64-encoded string. 
+   * This string would be used as part of a Power Automate flow to add the image elsewhere.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the value of A1 from the worksheet named Sheet1.
+    const sheet = workbook.getWorksheet("Sheet1");
+    const value = sheet.getRange("A1").getValue();
+
+    // Create a Shape object that looks like a 5-pointed star.
+    const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+    // Set the text of star and make sure the shape fits the text.
+    const textFrame = star.getTextFrame();
+    textFrame.getTextRange().setText(value.toString());
+    textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+
+    // Return the shape as a PNG image represented by a base64-encoded string.
+    return star.getAsImage(ExcelScript.PictureFormat.png);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

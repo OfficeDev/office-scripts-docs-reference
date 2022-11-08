@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.PrintOrder:enum'
 package: ExcelScript!
 fullName: ExcelScript.PrintOrder
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the print order for every worksheet in the workbook.
+   * The order of printed content will go over (e.g., left-to-right) 
+   * then down (i.e., top-to-bottom).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Access every worksheet in the workbook.
+    workbook.getWorksheets().forEach(worksheet => {
+      // Get the page layout for each sheet.
+      const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+      // Set the print order to over-then-down.
+      layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
