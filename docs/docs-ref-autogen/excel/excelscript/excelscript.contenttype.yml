@@ -18,10 +18,8 @@ remarks: |-
     // Get the first cell in the current worksheet.
     const currentSheet = workbook.getActiveWorksheet();
     const cell = currentSheet.getCell(0,0);
-
     
-    /* Create a CommentMention object for the comment,
-     * based on the work item's owner.
+    /* Create a CommentMention object for the comment.
      *
      * A CommentMention's properties are:
      * `name`: The name of the person being mentioned.
@@ -34,7 +32,7 @@ remarks: |-
       email: "alex@contoso.com"
     };
 
-    /* Create comment content that uses the mention. 
+    /* Create comment content that uses the mention.
      * The `<at id="0">` syntax embeds the mention with ID 0 in the comment text. 
      * The name is displayed in the comment, 
      * while an email is sent to the given address.
