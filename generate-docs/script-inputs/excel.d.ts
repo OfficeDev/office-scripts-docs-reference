@@ -14050,12 +14050,12 @@ declare namespace ExcelScript {
         twoCell,
 
         /**
-         * The object is moved and sized with the cells.
+         * The object is free floating.
          */
         oneCell,
 
         /**
-         * The object is free floating.
+         * The object is moved and sized with the cells.
          */
         absolute,
     }

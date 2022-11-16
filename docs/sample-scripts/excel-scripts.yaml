@@ -2035,6 +2035,28 @@
         valueFilter: filter
       });
     }
+'ExcelScript.Placement:enum':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
+    }
 'ExcelScript.PrintComments:enum':
   - |-
     /**
@@ -3442,6 +3464,28 @@
         currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
       
       triangle.setName("TRI");
+    }
+'ExcelScript.Shape#setPlacement:member(1)':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
     }
 'ExcelScript.ShapeAutoSize:enum':
   - |-
