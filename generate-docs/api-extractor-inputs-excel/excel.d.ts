@@ -14045,17 +14045,17 @@ export declare namespace ExcelScript {
      */
     enum Placement {
         /**
-         * The object is moved with the cells.
+         * The object is moved and sized with the cells.
          */
         twoCell,
 
         /**
-         * The object is free floating.
+         * The object is moved with the cells.
          */
         oneCell,
 
         /**
-         * The object is moved and sized with the cells.
+         * The object is free floating.
          */
         absolute,
     }
