@@ -544,7 +544,27 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PrintComments:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script makes the comments print at the end of the worksheet
+           * when the workbook is printed.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Access every worksheet in the workbook.
+            workbook.getWorksheets().forEach(worksheet => {
+              // Get the page layout for each sheet.
+              const layout = worksheet.getPageLayout();
+
+              // Change the comment printing settings to print them at the end of the sheet.
+              layout.setPrintComments(ExcelScript.PrintComments.endSheet);
+            });
+          }
+          ```
   - name: setPrintErrors(printErrors)
     uid: 'ExcelScript!ExcelScript.PageLayout#setPrintErrors:member(1)'
     package: ExcelScript!
@@ -636,7 +656,28 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PrintOrder:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the print order for every worksheet in the workbook.
+           * The order of printed content will go over (e.g., left-to-right) 
+           * then down (i.e., top-to-bottom).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Access every worksheet in the workbook.
+            workbook.getWorksheets().forEach(worksheet => {
+              // Get the page layout for each sheet.
+              const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+              // Set the print order to over-then-down.
+              layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+            });
+          }
+          ```
   - name: setPrintTitleColumns(printTitleColumns)
     uid: 'ExcelScript!ExcelScript.PageLayout#setPrintTitleColumns:member(1)'
     package: ExcelScript!

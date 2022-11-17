@@ -4,7 +4,29 @@ uid: 'ExcelScript!ExcelScript.TextFrame:interface'
 package: ExcelScript!
 fullName: ExcelScript.TextFrame
 summary: Represents the text frame of a shape object.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a star shape with the value from cell A1.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the value of A1 from the worksheet named Sheet1.
+    const sheet = workbook.getWorksheet("Sheet1");
+    const value = sheet.getRange("A1").getValue();
+
+    // Create a Shape object that looks like a 5-pointed star.
+    const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+    // Set the text of star and make sure the shape fits the text.
+    const textFrame: ExcelScript.TextFrame = star.getTextFrame();
+    textFrame.getTextRange().setText(value.toString());
+    textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

@@ -4,7 +4,26 @@ uid: 'ExcelScript!ExcelScript.GroupOption:enum'
 package: ExcelScript!
 fullName: ExcelScript.GroupOption
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a two-level column-based outline on Sheet1.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Group columns A-F in the worksheet named Sheet1.
+    const sheet = workbook.getWorksheet("Sheet1");
+    const firstLevel = sheet.getRange("A:F");
+    firstLevel.group(ExcelScript.GroupOption.byColumns);
+    
+    // Create a second level to the outline by grouping subsections.
+    sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+    sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

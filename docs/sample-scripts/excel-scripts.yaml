@@ -11,6 +11,17 @@
       const dataHierarchy = pivotTable.getDataHierarchies()[0];
       dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
     }
+'ExcelScript.Application#calculate:member(1)':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild);
+    }
 'ExcelScript.AutoFillType:enum':
   - |-
     /**
@@ -78,6 +89,40 @@
 
       // Clear all the criteria currently applied to the autoFilter.
       currentSheet.getAutoFilter().clearCriteria();
+    }
+'ExcelScript.BasicDataValidation:interface':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     * Attempts to enter other values are blocked and an error message appears.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+      // Create an alert to appear when data other than positive numbers are entered.
+      const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+        message: "Positive numbers only",
+        showAlert: true,
+        style: ExcelScript.DataValidationAlertStyle.stop,
+        title: "Invalid data"
+      };
+      rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
     }
 'ExcelScript.BorderIndex:enum':
   - |-
@@ -179,6 +224,17 @@
         // Force all the used cells in that worksheet to calculate.
         sheet.getUsedRange().calculate();
       }
+    }
+'ExcelScript.CalculationType:enum':
+  - |-
+    /**
+     * This script fully recalculates the entire workbook.
+     * This code is useful when automatic recalculation is turned off
+     * but later parts of the script rely on updated values.
+     */
+    function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+      const application = workbook.getApplication();
+      application.calculate(ExcelScript.CalculationType.fullRebuild);
     }
 'ExcelScript.CellValueConditionalFormat:interface':
   - |-
@@ -397,6 +453,43 @@
       // Clear all the formatting that is not applied by the table and the table style.
       range.clear(ExcelScript.ClearApplyTo.formats);
     }
+'ExcelScript.CommentMention:interface':
+  - |- 
+    /**
+     * This sample creates a comment that mentions a specific person.
+     * That person will get a notification and link to the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const cell = currentSheet.getCell(0,0);
+      
+      /* Create a CommentMention object for the comment.
+       *
+       * A CommentMention's properties are:
+       * `name`: The name of the person being mentioned.
+       * `id`: The zero-based index of this mention in the comment.
+       * `email`: The email address of the person being mentioned. 
+       */
+      const mention: ExcelScript.CommentMention = {
+        name: "Alex",
+        id: 0,
+        email: "alex@contoso.com"
+      };
+
+      /* Create comment content that uses the mention. 
+       * The `<at id="0">` syntax embeds the mention with ID 0 in the comment text. 
+       * The name is displayed in the comment, 
+       * while an email is sent to the given address.
+       */
+      const content: ExcelScript.CommentRichContent = {
+        richContent: '<at id="0">' + mention.name + "</at> - Hello!",
+        mentions: [mention]
+      };
+
+      // Add the comment.
+      currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
+    }
 'ExcelScript.CommentRichContent#richContent:member':
   - |-
     /**
@@ -440,7 +533,7 @@
            *          In this sample, "Owner: is also the user name for the email.
            */
           let mention = {
-            name: ownerColumnValues[row][0],
+            name: ownerColumnValues[row][0].toString(),
             id: 0,
             email: ownerColumnValues[row][0] + "@contoso.com"
           };
@@ -749,6 +842,43 @@
         type: ExcelScript.ConditionalTopBottomCriterionType.bottomItems /* The type of the top/bottom condition. */
       });
     }
+'ExcelScript.ContentType:enum':
+  - |- 
+    /**
+     * This sample creates a comment that mentions a specific person.
+     * That person will get a notification and link to the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const cell = currentSheet.getCell(0,0);
+      
+      /* Create a CommentMention object for the comment.
+       *
+       * A CommentMention's properties are:
+       * `name`: The name of the person being mentioned.
+       * `id`: The zero-based index of this mention in the comment.
+       * `email`: The email address of the person being mentioned. 
+       */
+      const mention: ExcelScript.CommentMention = {
+        name: "Alex",
+        id: 0,
+        email: "alex@contoso.com"
+      };
+
+      /* Create comment content that uses the mention.
+       * The `<at id="0">` syntax embeds the mention with ID 0 in the comment text. 
+       * The name is displayed in the comment, 
+       * while an email is sent to the given address.
+       */
+      const content: ExcelScript.CommentRichContent = {
+        richContent: '<at id="0">' + mention.name + "</at> - Hello!",
+        mentions: [mention]
+      };
+
+      // Add the comment.
+      currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
+    }
 'ExcelScript.CustomConditionalFormat:interface':
   - |-
     /**
@@ -828,6 +958,142 @@
        * If the range has multiple different types of data validation, it logs "Inconsistent" or "MixedCriteria".
        */
       console.log(validationType.toString());
+    }
+'ExcelScript.DataValidation#setRule:member(1)':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     * Attempts to enter other values are blocked and an error message appears.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+      // Create an alert to appear when data other than positive numbers are entered.
+      const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+        message: "Positive numbers only",
+        showAlert: true,
+        style: ExcelScript.DataValidationAlertStyle.stop,
+        title: "Invalid data"
+      };
+      rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+    }
+'ExcelScript.DataValidationAlertStyle:enum':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     * Attempts to enter other values are blocked and an error message appears.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+      // Create an alert to appear when data other than positive numbers are entered.
+      const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+        message: "Positive numbers only",
+        showAlert: true,
+        style: ExcelScript.DataValidationAlertStyle.stop,
+        title: "Invalid data"
+      };
+      rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+    }
+'ExcelScript.DataValidationErrorAlert:interface':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     * Attempts to enter other values are blocked and an error message appears.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+      // Create an alert to appear when data other than positive numbers are entered.
+      const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+        message: "Positive numbers only",
+        showAlert: true,
+        style: ExcelScript.DataValidationAlertStyle.stop,
+        title: "Invalid data"
+      };
+      rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+    }
+'ExcelScript.DataValidationRule#wholeNumber:member':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     * Attempts to enter other values are blocked and an error message appears.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+      // Create an alert to appear when data other than positive numbers are entered.
+      const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+        message: "Positive numbers only",
+        showAlert: true,
+        style: ExcelScript.DataValidationAlertStyle.stop,
+        title: "Invalid data"
+      };
+      rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
     }
 'ExcelScript.DataValidationType:enum':
   - |-
@@ -1111,6 +1377,21 @@
       hexagon.setLeft(100);
       hexagon.setTop(100);
     }
+'ExcelScript.GroupOption:enum':
+  - |-
+    /**
+     * This script creates a two-level column-based outline on Sheet1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Group columns A-F in the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const firstLevel = sheet.getRange("A:F");
+      firstLevel.group(ExcelScript.GroupOption.byColumns);
+      
+      // Create a second level to the outline by grouping subsections.
+      sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+      sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
+    }
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
@@ -1292,6 +1573,62 @@
           costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
         }
       }); 
+    }
+'ExcelScript.PageLayout#setPrintComments:member(1)':
+  - |-
+    /**
+     * This script makes the comments print at the end of the worksheet
+     * when the workbook is printed.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout = worksheet.getPageLayout();
+
+        // Change the comment printing settings to print them at the end of the sheet.
+        layout.setPrintComments(ExcelScript.PrintComments.endSheet);
+      });
+    }
+'ExcelScript.PageLayout#setPrintOrder:member(1)':
+  - |-
+    /**
+     * This script sets the print order for every worksheet in the workbook.
+     * The order of printed content will go over (e.g., left-to-right) 
+     * then down (i.e., top-to-bottom).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+        // Set the print order to over-then-down.
+        layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+      });
+    }
+'ExcelScript.PictureFormat:enum':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     * It then returns the image as a base64-encoded string. 
+     * This string would be used as part of a Power Automate flow to add the image elsewhere.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+
+      // Return the shape as a PNG image represented by a base64-encoded string.
+      return star.getAsImage(ExcelScript.PictureFormat.png);
     }
 'ExcelScript.PivotDateFilter#condition:member':
   - |-
@@ -1696,6 +2033,61 @@
       // Apply the filter.
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
+      });
+    }
+'ExcelScript.Placement:enum':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
+    }
+'ExcelScript.PrintComments:enum':
+  - |-
+    /**
+     * This script makes the comments print at the end of the worksheet
+     * when the workbook is printed.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout = worksheet.getPageLayout();
+
+        // Change the comment printing settings to print them at the end of the sheet.
+        layout.setPrintComments(ExcelScript.PrintComments.endSheet);
+      });
+    }
+'ExcelScript.PrintOrder:enum':
+  - |-
+    /**
+     * This script sets the print order for every worksheet in the workbook.
+     * The order of printed content will go over (e.g., left-to-right) 
+     * then down (i.e., top-to-bottom).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Access every worksheet in the workbook.
+      workbook.getWorksheets().forEach(worksheet => {
+        // Get the page layout for each sheet.
+        const layout: ExcelScript.PageLayout = worksheet.getPageLayout();
+
+        // Set the print order to over-then-down.
+        layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
       });
     }
 'ExcelScript.ProtectionSelectionMode:enum':
@@ -2278,6 +2670,21 @@
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
       otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
+    }
+'ExcelScript.Range#group:member(1)':
+  - |-
+    /**
+     * This script creates a two-level column-based outline on Sheet1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Group columns A-F in the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const firstLevel = sheet.getRange("A:F");
+      firstLevel.group(ExcelScript.GroupOption.byColumns);
+      
+      // Create a second level to the outline by grouping subsections.
+      sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+      sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
     }
 'ExcelScript.Range#insert:member(1)':
   - |-
@@ -2982,11 +3389,34 @@
       hexagon.setLeft(100);
       hexagon.setTop(100);
     }
+'ExcelScript.Shape#getAsImage:member(1)':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     * It then returns the image as a base64-encoded string. 
+     * This string would be used as part of a Power Automate flow to add the image elsewhere.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+
+      // Return the shape as a PNG image represented by a base64-encoded string.
+      return star.getAsImage(ExcelScript.PictureFormat.png);
+    }
 'ExcelScript.Shape#getImage:member(1)':
   - |-
     /**
-    * This script transfers an image from one worksheet to another.
-    */
+     * This script transfers an image from one worksheet to another.
+     */
     function main(workbook: ExcelScript.Workbook)
     {
       // Get the worksheet with the image on it.
@@ -3005,6 +3435,24 @@
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
     }
+'ExcelScript.Shape#getTextFrame:member(1)':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+    }
 'ExcelScript.Shape#setName:member(1)':
   - |-
     /**
@@ -3016,6 +3464,46 @@
         currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
       
       triangle.setName("TRI");
+    }
+'ExcelScript.Shape#setPlacement:member(1)':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
+    }
+'ExcelScript.ShapeAutoSize:enum':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
     }
 'ExcelScript.SheetVisibility:enum':
   - |-
@@ -3279,6 +3767,24 @@
         text: "Excel"
       };
       textConditionFormat.setRule(textRule);
+    }
+'ExcelScript.TextFrame:interface':
+  - |-
+    /**
+     * This script creates a star shape with the value from cell A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the value of A1 from the worksheet named Sheet1.
+      const sheet = workbook.getWorksheet("Sheet1");
+      const value = sheet.getRange("A1").getValue();
+
+      // Create a Shape object that looks like a 5-pointed star.
+      const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+      // Set the text of star and make sure the shape fits the text.
+      const textFrame: ExcelScript.TextFrame = star.getTextFrame();
+      textFrame.getTextRange().setText(value.toString());
+      textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
     }
 'ExcelScript.TopBottomConditionalFormat:interface':
   - |-
