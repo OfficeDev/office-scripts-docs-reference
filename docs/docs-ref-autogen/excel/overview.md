@@ -22,10 +22,10 @@ The following list breaks down the basics of the Office Scripts object model. Th
 - A [Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet) contains arrays filled with those objects that are present in the individual sheet.
 - A [Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook) contains arrays of some of those data objects for the entire Workbook.
 
-For more information about the Office Scripts object model, visit [Scripting fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
+For more information about the Office Scripts object model, visit [Fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
 
 ## See also
 
 - [About Office Scripts](/office/dev/scripts/overview/excel)
 - [Record, edit, and create Office Scripts in Excel](/office/dev/scripts/tutorials/excel-tutorial)
-- [Scripting fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
+- [Fundamentals for Office Scripts in Excel](/office/dev/scripts/develop/scripting-fundamentals)
