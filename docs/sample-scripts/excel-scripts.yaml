@@ -453,6 +453,43 @@
       // Clear all the formatting that is not applied by the table and the table style.
       range.clear(ExcelScript.ClearApplyTo.formats);
     }
+'ExcelScript.CommentMention:interface':
+  - |- 
+    /**
+     * This sample creates a comment that mentions a specific person.
+     * That person will get a notification and link to the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const cell = currentSheet.getCell(0,0);
+      
+      /* Create a CommentMention object for the comment.
+       *
+       * A CommentMention's properties are:
+       * `name`: The name of the person being mentioned.
+       * `id`: The zero-based index of this mention in the comment.
+       * `email`: The email address of the person being mentioned. 
+       */
+      const mention: ExcelScript.CommentMention = {
+        name: "Alex",
+        id: 0,
+        email: "alex@contoso.com"
+      };
+
+      /* Create comment content that uses the mention. 
+       * The `<at id="0">` syntax embeds the mention with ID 0 in the comment text. 
+       * The name is displayed in the comment, 
+       * while an email is sent to the given address.
+       */
+      const content: ExcelScript.CommentRichContent = {
+        richContent: '<at id="0">' + mention.name + "</at> - Hello!",
+        mentions: [mention]
+      };
+
+      // Add the comment.
+      currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
+    }
 'ExcelScript.CommentRichContent#richContent:member':
   - |-
     /**
@@ -496,7 +533,7 @@
            *          In this sample, "Owner: is also the user name for the email.
            */
           let mention = {
-            name: ownerColumnValues[row][0],
+            name: ownerColumnValues[row][0].toString(),
             id: 0,
             email: ownerColumnValues[row][0] + "@contoso.com"
           };
@@ -804,6 +841,43 @@
         rank: 5, /* The numerical threshold. */
         type: ExcelScript.ConditionalTopBottomCriterionType.bottomItems /* The type of the top/bottom condition. */
       });
+    }
+'ExcelScript.ContentType:enum':
+  - |- 
+    /**
+     * This sample creates a comment that mentions a specific person.
+     * That person will get a notification and link to the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const cell = currentSheet.getCell(0,0);
+      
+      /* Create a CommentMention object for the comment.
+       *
+       * A CommentMention's properties are:
+       * `name`: The name of the person being mentioned.
+       * `id`: The zero-based index of this mention in the comment.
+       * `email`: The email address of the person being mentioned. 
+       */
+      const mention: ExcelScript.CommentMention = {
+        name: "Alex",
+        id: 0,
+        email: "alex@contoso.com"
+      };
+
+      /* Create comment content that uses the mention.
+       * The `<at id="0">` syntax embeds the mention with ID 0 in the comment text. 
+       * The name is displayed in the comment, 
+       * while an email is sent to the given address.
+       */
+      const content: ExcelScript.CommentRichContent = {
+        richContent: '<at id="0">' + mention.name + "</at> - Hello!",
+        mentions: [mention]
+      };
+
+      // Add the comment.
+      currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
     }
 'ExcelScript.CustomConditionalFormat:interface':
   - |-
@@ -1960,6 +2034,28 @@
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
       });
+    }
+'ExcelScript.Placement:enum':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
     }
 'ExcelScript.PrintComments:enum':
   - |-
@@ -3368,6 +3464,28 @@
         currentSheet.addGeometricShape(ExcelScript.GeometricShapeType.triangle);
       
       triangle.setName("TRI");
+    }
+'ExcelScript.Shape#setPlacement:member(1)':
+  - |-
+    /**
+     * This script creates a diamond shape at cell C3.
+     * The shape moves and resizes as the grid underneath it changes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get cell C3 in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const cell = sheet.getRange("C3");
+
+      // Create a diamond that slightly overlaps the cell C3.
+      const diamond = sheet.addGeometricShape(ExcelScript.GeometricShapeType.diamond);
+      // Set each dimension so that the shape extends 5 pixels beyond the cell borders.
+      diamond.setLeft(cell.getLeft() - 5);
+      diamond.setTop(cell.getTop() - 5);
+      diamond.setHeight(cell.getHeight() + 10);
+      diamond.setWidth(cell.getWidth() + 10);
+
+      // Set the placement of the shape so that it resizes and moves with the grid.
+      diamond.setPlacement(ExcelScript.Placement.twoCell);
     }
 'ExcelScript.ShapeAutoSize:enum':
   - |-
