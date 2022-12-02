@@ -417,6 +417,23 @@
         series.setOverlap(25);
       });
     }
+'ExcelScript.ChartSeriesBy:enum':
+  - |-
+    /**
+     * This script creates a clustered-column chart using an existing table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table on the current worksheet.
+        const sheet = workbook.getActiveWorksheet();
+        const table = sheet.getTables()[0];
+
+        // Add a clustered-column chart that clusters the data based on the columns in the table.
+        const chart = sheet.addChart(
+            ExcelScript.ChartType.columnClustered,
+            table.getRange(),
+            ExcelScript.ChartSeriesBy.columns
+        );   
+    }
 'ExcelScript.ChartType:enum':
   - |-
     /**
