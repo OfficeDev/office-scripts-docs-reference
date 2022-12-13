@@ -4,7 +4,38 @@ uid: 'ExcelScript!ExcelScript.BuiltInStyle:enum'
 package: ExcelScript!
 fullName: ExcelScript.BuiltInStyle
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the cell style to "warning text"
+   * on every cell with a formula error.
+  */ 
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range in the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const usedRange = sheet.getUsedRange();
+
+    // Get any cells that are displaying errors.
+    const errorCells = usedRange.getSpecialCells(
+      ExcelScript.SpecialCellType.formulas,
+      ExcelScript.SpecialCellValueType.errors
+    );
+
+    // Check if there are error cells before proceeding.
+    if (errorCells) {
+      // Use the built-in warning text style on the error cells.
+      errorCells.setPredefinedCellStyle(
+        ExcelScript.BuiltInStyle.warningText.toString()
+      );
+    } else {
+      console.log("No formula errors in the worksheet.");
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

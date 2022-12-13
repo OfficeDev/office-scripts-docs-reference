@@ -208,6 +208,33 @@
       edgeRight.setStyle(ExcelScript.BorderLineStyle.dashDot);
       edgeRight.setWeight(ExcelScript.BorderWeight.thick);
     }
+'ExcelScript.BuiltInStyle:enum':
+  - |- 
+    /**
+     * This script sets the cell style to "warning text"
+     * on every cell with a formula error.
+    */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const usedRange = sheet.getUsedRange();
+
+      // Get any cells that are displaying errors.
+      const errorCells = usedRange.getSpecialCells(
+        ExcelScript.SpecialCellType.formulas,
+        ExcelScript.SpecialCellValueType.errors
+      );
+
+      // Check if there are error cells before proceeding.
+      if (errorCells) {
+        // Use the built-in warning text style on the error cells.
+        errorCells.setPredefinedCellStyle(
+          ExcelScript.BuiltInStyle.warningText.toString()
+        );
+      } else {
+        console.log("No formula errors in the worksheet.");
+      }
+    }
 'ExcelScript.CalculationMode:enum':
   - |-
     /**
@@ -264,6 +291,28 @@
       let format = cellValueConditionalFormatting.getFormat();
       format.getFill().setColor("yellow");
       format.getFont().setItalic(true);
+    }
+'ExcelScript.Chart#getImage:member(1)':
+  - |-
+    /**
+     * This script returns an image of the first chart in the first worksheet.
+     * That image is 600x400 pixels and the chart will be 
+     * stretched to fill those dimensions.
+     * The returned image can be used in a Power Automate flow
+     */
+    function main(workbook: ExcelScript.Workbook): string {
+      // Get the first chart in the first worksheet.
+      const firstSheet = workbook.getFirstWorksheet();
+      const firstChart = firstSheet.getCharts()[0];
+
+      // Get an image of the chart as a base64-encoded string.
+      const base64String = firstChart.getImage(
+        600, /* Width */
+        400, /* Height */
+        ExcelScript.ImageFittingMode.fill /* Fill to match the dimensions. */
+      );
+
+      return base64String;
     }
 'ExcelScript.Chart#getPlotBy:member(1)':
   - |-
@@ -1446,6 +1495,28 @@
 
       // Copy the image to another worksheet.
       image.getShape().copyTo("SecondSheet");
+    }
+'ExcelScript.ImageFittingMode:enum':
+  - |-
+    /**
+     * This script returns an image of the first chart in the first worksheet.
+     * That image is 600x400 pixels and the chart will be 
+     * stretched to fill those dimensions.
+     * The returned image can be used in a Power Automate flow
+     */
+    function main(workbook: ExcelScript.Workbook): string {
+      // Get the first chart in the first worksheet.
+      const firstSheet = workbook.getFirstWorksheet();
+      const firstChart = firstSheet.getCharts()[0];
+
+      // Get an image of the chart as a base64-encoded string.
+      const base64String = firstChart.getImage(
+        600, /* Width */
+        400, /* Height */
+        ExcelScript.ImageFittingMode.fill /* Fill to match the dimensions. */
+      );
+
+      return base64String;
     }
 'ExcelScript.InsertShiftDirection:enum':
   - |-
@@ -2914,6 +2985,33 @@
 
       // Add a light blue background to the cells containing formulas.
       formulaCells.getFormat().getFill().setColor("#ADD8E6");
+    }
+'ExcelScript.RangeAreas#setPredefinedCellStyle:member(1)':
+  - |- 
+    /**
+     * This script sets the cell style to "warning text"
+     * on every cell with a formula error.
+    */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the used range in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const usedRange = sheet.getUsedRange();
+
+      // Get any cells that are displaying errors.
+      const errorCells = usedRange.getSpecialCells(
+        ExcelScript.SpecialCellType.formulas,
+        ExcelScript.SpecialCellValueType.errors
+      );
+
+      // Check if there are error cells before proceeding.
+      if (errorCells) {
+        // Use the built-in warning text style on the error cells.
+        errorCells.setPredefinedCellStyle(
+          ExcelScript.BuiltInStyle.warningText.toString()
+        );
+      } else {
+        console.log("No formula errors in the worksheet.");
+      }
     }
 'ExcelScript.RangeBorder#setStyle:member(1)':
   - |-   

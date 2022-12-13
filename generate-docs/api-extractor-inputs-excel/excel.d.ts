@@ -354,7 +354,7 @@ export declare namespace ExcelScript {
         breakAllLinksToLinkedWorkbooks(): void;
 
         /**
-         * Gets information about a linked workbook by its URL. If the workbook does not exist, then this method returns an object with its `isNullObject` property set to `true`.
+         * Gets information about a linked workbook by its URL. If the workbook does not exist, then this method returns `undefined`.
          * @param key - The URL of the linked workbook.
          */
         getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;
@@ -1664,7 +1664,7 @@ export declare namespace ExcelScript {
         getLastRow(): Range;
 
         /**
-         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method will return an object with its `isNullObject` property set to `true`.
+         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method will return `undefined`.
          */
         getMergedAreas(): RangeAreas;
 
@@ -6720,7 +6720,7 @@ export declare namespace ExcelScript {
         getFields(): PivotField[];
 
         /**
-         * Gets a PivotField by name. If the PivotField does not exist, then this method returns an object with its `isNullObject` property set to `true`.
+         * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
          * @param name - Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
@@ -6766,7 +6766,7 @@ export declare namespace ExcelScript {
         getFields(): PivotField[];
 
         /**
-         * Gets a PivotField by name. If the PivotField does not exist, then this method returns an object with its `isNullObject` property set to `true`.
+         * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
          * @param name - Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
@@ -6822,7 +6822,7 @@ export declare namespace ExcelScript {
         getFields(): PivotField[];
 
         /**
-         * Gets a PivotField by name. If the PivotField does not exist, then this method returns an object with its `isNullObject` property set to `true`.
+         * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
          * @param name - Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
@@ -9040,7 +9040,7 @@ export declare namespace ExcelScript {
     }
 
     /**
-     * Represents an image in the worksheet. To get the corresponding `Shape` object, use `Image.shape`.
+     * Represents an image in the worksheet. To get the corresponding `Shape` object, use `Image.getShape`.
      */
     export interface Image {
         /**
