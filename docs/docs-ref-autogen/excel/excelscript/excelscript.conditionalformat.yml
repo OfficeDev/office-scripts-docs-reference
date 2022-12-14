@@ -199,7 +199,37 @@ methods:
       content: 'getPreset(): PresetCriteriaConditionalFormat | undefined;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a conditional format that uses a preset criterion.
+           * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+           * (of anything else in row 1).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range for row 1.
+            const sheet = workbook.getActiveWorksheet();
+            const formattedRange = sheet.getRange("1:1");
+
+            // Create a new conditional formatting object to that range.
+            const conditionalFormat = formattedRange.addConditionalFormat(
+              ExcelScript.ConditionalFormatType.presetCriteria);
+
+            // Set the conditional formatting to apply a green fill.
+            const presetFormat = conditionalFormat.getPreset();
+            presetFormat.getFormat().getFill().setColor("green");
+
+            // Set a rule to apply the conditional format when values are duplicated in the range.
+            const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+              criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+            };
+            presetFormat.setRule(duplicateRule);
+          }
+          ```
   - name: getPriority()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#getPriority:member(1)'
     package: ExcelScript!

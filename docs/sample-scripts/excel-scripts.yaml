@@ -756,6 +756,32 @@
       positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
       positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
     }
+'ExcelScript.ConditionalFormat#getPreset:member(1)':
+  - |-
+    /**
+     * This script applies a conditional format that uses a preset criterion.
+     * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+     * (of anything else in row 1).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for row 1.
+      const sheet = workbook.getActiveWorksheet();
+      const formattedRange = sheet.getRange("1:1");
+
+      // Create a new conditional formatting object to that range.
+      const conditionalFormat = formattedRange.addConditionalFormat(
+        ExcelScript.ConditionalFormatType.presetCriteria);
+
+      // Set the conditional formatting to apply a green fill.
+      const presetFormat = conditionalFormat.getPreset();
+      presetFormat.getFormat().getFill().setColor("green");
+
+      // Set a rule to apply the conditional format when values are duplicated in the range.
+      const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+        criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+      };
+      presetFormat.setRule(duplicateRule);
+    }
 'ExcelScript.ConditionalFormat#getTextComparison:member(1)':
   - |-
     /**
@@ -809,6 +835,32 @@
         }
       });
     }
+'ExcelScript.ConditionalFormatPresetCriterion:enum':
+  - |-
+    /**
+     * This script applies a conditional format that uses a preset criterion.
+     * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+     * (of anything else in row 1).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for row 1.
+      const sheet = workbook.getActiveWorksheet();
+      const formattedRange = sheet.getRange("1:1");
+
+      // Create a new conditional formatting object to that range.
+      const conditionalFormat = formattedRange.addConditionalFormat(
+        ExcelScript.ConditionalFormatType.presetCriteria);
+
+      // Set the conditional formatting to apply a green fill.
+      const presetFormat = conditionalFormat.getPreset();
+      presetFormat.getFormat().getFill().setColor("green");
+
+      // Set a rule to apply the conditional format when values are duplicated in the range.
+      const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+        criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+      };
+      presetFormat.setRule(duplicateRule);
+    }
 'ExcelScript.ConditionalFormatType:enum':
   - |-
     /**
@@ -836,6 +888,32 @@
           type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
         }
       });
+    }
+'ExcelScript.ConditionalPresetCriteriaRule:interface':
+  - |-
+    /**
+     * This script applies a conditional format that uses a preset criterion.
+     * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+     * (of anything else in row 1).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for row 1.
+      const sheet = workbook.getActiveWorksheet();
+      const formattedRange = sheet.getRange("1:1");
+
+      // Create a new conditional formatting object to that range.
+      const conditionalFormat = formattedRange.addConditionalFormat(
+        ExcelScript.ConditionalFormatType.presetCriteria);
+
+      // Set the conditional formatting to apply a green fill.
+      const presetFormat = conditionalFormat.getPreset();
+      presetFormat.getFormat().getFill().setColor("green");
+
+      // Set a rule to apply the conditional format when values are duplicated in the range.
+      const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+        criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+      };
+      presetFormat.setRule(duplicateRule);
     }
 'ExcelScript.ConditionalTextComparisonRule:interface':
   - |-
@@ -1126,6 +1204,30 @@
         title: "Invalid data"
       };
       rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+    }
+'ExcelScript.DataValidationOperator:enum':
+  - |-
+    /**
+     * This script creates a data validation rule for the range B1:B5.
+     * All values in that range must be a positive number.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range B1:B5 in the active worksheet.
+      const currentSheet = workbook.getActiveWorksheet();
+      const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+      // Create a data validation rule to only allow positive numbers.
+      const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+        formula1: "0",
+        operator: ExcelScript.DataValidationOperator.greaterThan
+      };
+      const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+        wholeNumber: positiveNumberValidation
+      };
+
+      // Set the rule on the range.
+      const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+      rangeDataValidation.setRule(positiveNumberOnlyRule);
     }
 'ExcelScript.DataValidationRule#wholeNumber:member':
   - |-
@@ -2144,6 +2246,32 @@
 
       // Set the placement of the shape so that it resizes and moves with the grid.
       diamond.setPlacement(ExcelScript.Placement.twoCell);
+    }
+'ExcelScript.PresetCriteriaConditionalFormat:interface':
+  - |-
+    /**
+     * This script applies a conditional format that uses a preset criterion.
+     * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+     * (of anything else in row 1).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for row 1.
+      const sheet = workbook.getActiveWorksheet();
+      const formattedRange = sheet.getRange("1:1");
+
+      // Create a new conditional formatting object to that range.
+      const conditionalFormat = formattedRange.addConditionalFormat(
+        ExcelScript.ConditionalFormatType.presetCriteria);
+
+      // Set the conditional formatting to apply a green fill.
+      const presetFormat: ExcelScript.PresetCriteriaConditionalFormat = conditionalFormat.getPreset();
+      presetFormat.getFormat().getFill().setColor("green");
+
+      // Set a rule to apply the conditional format when values are duplicated in the range.
+      const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+        criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+      };
+      presetFormat.setRule(duplicateRule);
     }
 'ExcelScript.PrintComments:enum':
   - |-
@@ -3282,6 +3410,20 @@
       // Set the row height of the new row to 100 pixels.
       newRow.getFormat().setRowHeight(100);
     }
+'ExcelScript.RangeFormat#setVerticalAlignment:member(1)':
+  - |-
+    /**
+     * This script sets the vertical alignment formatting to "top"
+     * for every cell in the row.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get row 1 for the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const firstRow = sheet.getRange("1:1");
+
+      // Set the vertical alignment formatting on the row.
+      firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
+    }
 'ExcelScript.RangeFont:interface':
   - |-
     /**
@@ -3949,6 +4091,20 @@
       rowHierarchy.getPivotField(rowHierarchy.getName()).applyFilter({
         valueFilter: filter
       });
+    }
+'ExcelScript.VerticalAlignment:enum':
+  - |-
+    /**
+     * This script sets the vertical alignment formatting to "top"
+     * for every cell in the row.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get row 1 for the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const firstRow = sheet.getRange("1:1");
+
+      // Set the vertical alignment formatting on the row.
+      firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
     }
 'ExcelScript.Workbook:interface':
   - |-

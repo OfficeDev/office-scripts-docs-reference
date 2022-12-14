@@ -730,7 +730,25 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.VerticalAlignment:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the vertical alignment formatting to "top"
+           * for every cell in the row.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get row 1 for the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const firstRow = sheet.getRange("1:1");
+
+            // Set the vertical alignment formatting on the row.
+            firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
+          }
+          ```
   - name: setWrapText(wrapText)
     uid: 'ExcelScript!ExcelScript.RangeFormat#setWrapText:member(1)'
     package: ExcelScript!
