@@ -190,7 +190,33 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.ImageFittingMode:enum" />'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script returns an image of the first chart in the first worksheet.
+           * That image is 600x400 pixels and the chart will be 
+           * stretched to fill those dimensions.
+           * The returned image can be used in a Power Automate flow.
+           */
+          function main(workbook: ExcelScript.Workbook): string {
+            // Get the first chart in the first worksheet.
+            const firstSheet = workbook.getFirstWorksheet();
+            const firstChart = firstSheet.getCharts()[0];
+
+            // Get an image of the chart as a base64-encoded string.
+            const base64String = firstChart.getImage(
+              600, /* Width */
+              400, /* Height */
+              ExcelScript.ImageFittingMode.fill /* Fill to match the dimensions. */
+            );
+
+            return base64String;
+          }
+          ```
   - name: getLeft()
     uid: 'ExcelScript!ExcelScript.Chart#getLeft:member(1)'
     package: ExcelScript!
