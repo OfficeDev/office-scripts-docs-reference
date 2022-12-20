@@ -4,7 +4,27 @@ uid: 'ExcelScript!ExcelScript.PivotFilterType:enum'
 package: ExcelScript!
 fullName: ExcelScript.PivotFilterType
 summary: A simple enum that represents a type of filter for a PivotField.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script gets the "Type" field from the "Farms Sales" PivotTable 
+   * and clears the value filter from it.
+   */ 
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable named "Farm Sales"
+    const pivot = workbook.getPivotTable("Farm Sales");
+
+    // Get the "Type" field
+    const typeField = pivot.getHierarchy("Type").getPivotField("Type");
+
+    // Clear the value filter (if there is one) from the field.
+    typeField.clearFilter(ExcelScript.PivotFilterType.value);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
