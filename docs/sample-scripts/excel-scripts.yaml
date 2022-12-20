@@ -1902,6 +1902,22 @@
         valueFilter: filter
       });
     }
+'ExcelScript.PivotField#clearFilter:member(1)':
+  - |-
+    /**
+     * This script gets the "Type" field from the "Farms Sales" PivotTable 
+     * and clears the value filter from it.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the "Type" field.
+      const typeField = pivot.getHierarchy("Type").getPivotField("Type");
+
+      // Clear the value filter (if there is one) from the field.
+      typeField.clearFilter(ExcelScript.PivotFilterType.value);
+    }
 'ExcelScript.PivotFilters#dateFilter:member':
   - |-
     /**
@@ -2000,6 +2016,22 @@
         valueFilter: filter
       });
     }
+'ExcelScript.PivotFilterType:enum':
+  - |-
+    /**
+     * This script gets the "Type" field from the "Farms Sales" PivotTable 
+     * and clears the value filter from it.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the "Type" field.
+      const typeField = pivot.getHierarchy("Type").getPivotField("Type");
+
+      // Clear the value filter (if there is one) from the field.
+      typeField.clearFilter(ExcelScript.PivotFilterType.value);
+    }
 'ExcelScript.PivotHierarchy:interface':
   - |-
     /**
@@ -2065,6 +2097,38 @@
         console.log(`Grand total of ${pivotColumnLabelRange.getValues()[0][columnIndex]}: ${grandTotalRange.getValues()[0][columnIndex]}`);
         // Example log: "Grand total of Sum of Crates Sold Wholesale: 11000"
       });
+    }
+'ExcelScript.PivotLayout#setLayoutType:member(1)':
+  - |-
+    /**
+     * This script sets the layout of the "Farms Sales" PivotTable to the "tabular"
+     * setting. This places the fields from the Rows area in separate columns.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the PivotLayout object.
+      const layout = pivot.getLayout();
+
+      // Set the layout type to "tabular".
+      layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
+    }
+'ExcelScript.PivotLayoutType:enum':
+  - |-
+    /**
+     * This script sets the layout of the "Farms Sales" PivotTable to the "tabular"
+     * setting. This places the fields from the Rows area in separate columns.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the PivotLayout object.
+      const layout = pivot.getLayout();
+
+      // Set the layout type to "tabular".
+      layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
     }
 'ExcelScript.PivotManualFilter:interface':
   - |-
@@ -2196,6 +2260,22 @@
       // Add fields to the PivotTable to show "Sales" per "Type".
       pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
       pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+    }
+'ExcelScript.PivotTable#getLayout:member(1)':
+  - |-
+    /**
+     * This script sets the layout of the "Farms Sales" PivotTable to the "tabular"
+     * setting. This places the fields from the Rows area in separate columns.
+     */ 
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the PivotLayout object.
+      const layout = pivot.getLayout();
+
+      // Set the layout type to "tabular".
+      layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
     }
 'ExcelScript.PivotValueFilter:interface':
   - |-

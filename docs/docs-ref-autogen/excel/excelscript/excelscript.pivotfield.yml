@@ -89,7 +89,27 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PivotFilterType:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gets the "Type" field from the "Farms Sales" PivotTable 
+           * and clears the value filter from it.
+           */ 
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Sales".
+            const pivot = workbook.getPivotTable("Farm Sales");
+
+            // Get the "Type" field.
+            const typeField = pivot.getHierarchy("Type").getPivotField("Type");
+
+            // Clear the value filter (if there is one) from the field.
+            typeField.clearFilter(ExcelScript.PivotFilterType.value);
+          }
+          ```
   - name: getFilters()
     uid: 'ExcelScript!ExcelScript.PivotField#getFilters:member(1)'
     package: ExcelScript!
