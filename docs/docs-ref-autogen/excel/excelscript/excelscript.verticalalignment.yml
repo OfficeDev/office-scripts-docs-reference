@@ -4,7 +4,25 @@ uid: 'ExcelScript!ExcelScript.VerticalAlignment:enum'
 package: ExcelScript!
 fullName: ExcelScript.VerticalAlignment
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the vertical alignment formatting to "top"
+   * for every cell in the row.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get row 1 for the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const firstRow = sheet.getRange("1:1");
+
+    // Set the vertical alignment formatting on the row.
+    firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

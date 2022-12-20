@@ -406,7 +406,27 @@ methods:
       content: 'getLayout(): PivotLayout;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotLayout:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the layout of the "Farms Sales" PivotTable to the "tabular"
+           * setting. This places the fields from the Rows area in separate columns.
+           */ 
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Sales".
+            const pivot = workbook.getPivotTable("Farm Sales");
+
+            // Get the PivotLayout object.
+            const layout = pivot.getLayout();
+
+            // Set the layout type to "tabular".
+            layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
+          }
+          ```
   - name: getName()
     uid: 'ExcelScript!ExcelScript.PivotTable#getName:member(1)'
     package: ExcelScript!
