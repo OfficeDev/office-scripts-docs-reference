@@ -337,7 +337,36 @@ methods:
       content: 'getLine(): Line;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Line:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a line that goes from cell B2 to cell F4 on the current worksheet.
+           */ 
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+
+            // Get the ranges for the two cells.
+            const b2Range = sheet.getRange("B2");
+            const f4Range = sheet.getRange("F4");
+
+            // Add a straight line that connects the top-left corners of both cells.
+            const newShape = sheet.addLine(
+              b2Range.getLeft(),
+              b2Range.getTop(),
+              f4Range.getLeft(),
+              f4Range.getTop(),
+              ExcelScript.ConnectorType.straight);
+
+            // Add an open arrowhead to the end of the line, such that it points at F4.
+            const line = newShape.getLine();
+            line.setEndArrowheadStyle(ExcelScript.ArrowheadStyle.open);
+          }
+          ```
   - name: getLineFormat()
     uid: 'ExcelScript!ExcelScript.Shape#getLineFormat:member(1)'
     package: ExcelScript!
