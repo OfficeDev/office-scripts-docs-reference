@@ -382,4 +382,23 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SubtotalLocationType:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script displays group subtotals to the "Farms Sales" PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Sales".
+            const pivot = workbook.getPivotTable("Farm Sales");
+
+            // Get the PivotLayout object.
+            const layout = pivot.getLayout();
+
+            // Show all the subtotals at the bottom of each group.
+            layout.setSubtotalLocation(ExcelScript.SubtotalLocationType.atBottom);
+          }
+          ```

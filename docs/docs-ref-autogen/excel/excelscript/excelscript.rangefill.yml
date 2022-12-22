@@ -191,7 +191,21 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.FillPattern:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets a black-checkered fill on the selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const selected = workbook.getSelectedRange();
+            selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
+            selected.getFormat().getFill().setPatternColor("black");
+          }
+          ```
   - name: setPatternColor(patternColor)
     uid: 'ExcelScript!ExcelScript.RangeFill#setPatternColor:member(1)'
     package: ExcelScript!

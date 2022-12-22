@@ -4,7 +4,21 @@ uid: 'ExcelScript!ExcelScript.FillPattern:enum'
 package: ExcelScript!
 fullName: ExcelScript.FillPattern
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets a black-checkered fill on the selected range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const selected = workbook.getSelectedRange();
+    selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
+    selected.getFormat().getFill().setPatternColor("black");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

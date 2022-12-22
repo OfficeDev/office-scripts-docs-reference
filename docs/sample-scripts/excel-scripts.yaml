@@ -1451,6 +1451,16 @@
       // `lastMonth` will only show rows with a date from the previous month.
       dateColumn.getFilter().applyDynamicFilter(ExcelScript.DynamicFilterCriteria.lastMonth);
     }
+'ExcelScript.FillPattern:enum':
+  - |-
+    /**
+     * This script sets a black-checkered fill on the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const selected = workbook.getSelectedRange();
+      selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
+      selected.getFormat().getFill().setPatternColor("black");
+    }
 'ExcelScript.Filter#applyCustomFilter:member(1)':
   - |-
     /**
@@ -2211,6 +2221,21 @@
 
       // Set the layout type to "tabular".
       layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
+    }
+'ExcelScript.PivotLayout#setSubtotalLocation:member(1)':
+  - |-
+    /**
+     * This script displays group subtotals to the "Farms Sales" PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the PivotLayout object.
+      const layout = pivot.getLayout();
+
+      // Show all the subtotals at the bottom of each group.
+      layout.setSubtotalLocation(ExcelScript.SubtotalLocationType.atBottom);
     }
 'ExcelScript.PivotLayoutType:enum':
   - |-
@@ -3430,6 +3455,16 @@
       // Set the fill color to blue.
       cell.getFormat().getFill().setColor("blue");
     }
+'ExcelScript.RangeFill#setPattern:member(1)':
+  - |-
+    /**
+     * This script sets a black-checkered fill on the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const selected = workbook.getSelectedRange();
+      selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
+      selected.getFormat().getFill().setPatternColor("black");
+    }
 'ExcelScript.RangeFormat#getFill:member(1)':
   - |-
     /**
@@ -4152,6 +4187,21 @@
 
       // Bold the text of those cells.
       textCells.getFormat().getFont().setBold(true);
+    }
+'ExcelScript.SubtotalLocationType:enum':
+  - |-
+    /**
+     * This script displays group subtotals to the "Farms Sales" PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Sales".
+      const pivot = workbook.getPivotTable("Farm Sales");
+
+      // Get the PivotLayout object.
+      const layout = pivot.getLayout();
+
+      // Show all the subtotals at the bottom of each group.
+      layout.setSubtotalLocation(ExcelScript.SubtotalLocationType.atBottom);
     }
 'ExcelScript.Table#getHeaderRowRange:member(1)':
   - |-
