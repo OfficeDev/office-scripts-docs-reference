@@ -4,7 +4,35 @@ uid: 'ExcelScript!ExcelScript.DocumentPropertyType:enum'
 package: ExcelScript!
 fullName: ExcelScript.DocumentPropertyType
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script uses a custom property to set the value and formatting of a cell.
+   * If the value of "Routing Number" is not set or is not a number, the cell will be red.
+  */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first cell from Sheet1.
+    const cell = workbook.getWorksheet("Sheet1").getCell(0,0);
+    
+    // Get the "Routing Number" property.
+    const properties = workbook.getProperties();
+    const routingNumber = properties.getCustomProperty("Routing Number");
+
+    // If the property is missing or is not a number, change the formatting to indicate a problem.
+    if (!routingNumber || routingNumber.getType() != ExcelScript.DocumentPropertyType.number) {
+      cell.getFormat().getFill().setColor("red");
+    }
+
+    // If the property exists, use it to set the value of A1.
+    if (routingNumber) {
+      cell.setValue(routingNumber.getValue());
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:

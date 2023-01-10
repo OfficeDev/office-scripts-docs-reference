@@ -57,7 +57,23 @@ methods:
           type: any
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CustomProperty:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a workbook-level custom property.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the property collection.
+            const properties = workbook.getProperties();
+
+            // Add a new property called "Project" with the value "FA".
+            properties.addCustomProperty("Project", "FA");
+          }
+          ```
   - name: deleteAllCustomProperties()
     uid: 'ExcelScript!ExcelScript.DocumentProperties#deleteAllCustomProperties:member(1)'
     package: ExcelScript!
@@ -167,7 +183,26 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CustomProperty:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gets a workbook-level custom property called "Project".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the property collection.
+            const properties = workbook.getProperties();
+
+            // Get the "Project" property.
+            const project = properties.getCustomProperty("Project");
+
+            // Show the property value in the console.
+            console.log(project.getValue());
+          }
+          ```
   - name: getKeywords()
     uid: 'ExcelScript!ExcelScript.DocumentProperties#getKeywords:member(1)'
     package: ExcelScript!

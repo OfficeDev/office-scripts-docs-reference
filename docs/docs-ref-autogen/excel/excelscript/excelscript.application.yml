@@ -83,7 +83,38 @@ methods:
       content: 'getCalculationState(): CalculationState;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CalculationState:enum" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the fill color of the first cell to indicate the current
+           * calculation state of the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first cell in the first worksheet.
+            const cell = workbook.getWorksheets()[0].getCell(0,0);
+
+            // Get that cell's fill object.
+            const cellFill = cell.getFormat().getFill();
+
+            // Set the cell fill based on the calculation state.
+            const calcState = workbook.getApplication().getCalculationState();
+            switch (calcState) {
+              case ExcelScript.CalculationState.pending:
+                cellFill.setColor("Red");
+                break;
+              case ExcelScript.CalculationState.calculating:
+                cellFill.setColor("Yellow");
+                break;
+              case ExcelScript.CalculationState.done:
+                cellFill.setColor("Green");
+                break;
+            }
+          }
+          ```
   - name: getCultureInfo()
     uid: 'ExcelScript!ExcelScript.Application#getCultureInfo:member(1)'
     package: ExcelScript!

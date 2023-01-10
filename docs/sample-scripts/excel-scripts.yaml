@@ -22,6 +22,33 @@
       const application = workbook.getApplication();
       application.calculate(ExcelScript.CalculationType.fullRebuild);
     }
+'ExcelScript.Application#getCalculationState:member(1)':
+  - |-
+    /**
+     * This script uses the fill color of the first cell to indicate the current
+     * calculation state of the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the first worksheet.
+      const cell = workbook.getWorksheets()[0].getCell(0,0);
+
+      // Get that cell's fill object.
+      const cellFill = cell.getFormat().getFill();
+
+      // Set the cell fill based on the calculation state.
+      const calcState = workbook.getApplication().getCalculationState();
+      switch (calcState) {
+        case ExcelScript.CalculationState.pending:
+          cellFill.setColor("Red");
+          break;
+        case ExcelScript.CalculationState.calculating:
+          cellFill.setColor("Yellow");
+          break;
+        case ExcelScript.CalculationState.done:
+          cellFill.setColor("Green");
+          break;
+      }
+    }
 'ExcelScript.ArrowheadLength:enum':
   - |- 
     /**
@@ -327,6 +354,33 @@
 
         // Force all the used cells in that worksheet to calculate.
         sheet.getUsedRange().calculate();
+      }
+    }
+'ExcelScript.CalculationState:enum':
+  - |-
+    /**
+     * This script uses the fill color of the first cell to indicate the current
+     * calculation state of the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the first worksheet.
+      const cell = workbook.getWorksheets()[0].getCell(0,0);
+
+      // Get that cell's fill object.
+      const cellFill = cell.getFormat().getFill();
+
+      // Set the cell fill based on the calculation state.
+      const calcState = workbook.getApplication().getCalculationState();
+      switch (calcState) {
+        case ExcelScript.CalculationState.pending:
+          cellFill.setColor("Red");
+          break;
+        case ExcelScript.CalculationState.calculating:
+          cellFill.setColor("Yellow");
+          break;
+        case ExcelScript.CalculationState.done:
+          cellFill.setColor("Green");
+          break;
       }
     }
 'ExcelScript.CalculationType:enum':
@@ -760,6 +814,34 @@
       format.getFill().setColor("yellow");
       format.getFont().setItalic(true);
     }
+'ExcelScript.ConditionalDataBarRule:interface':
+  - |-
+    /**
+     * This script creates data bar conditional formatting on the select ranged.
+     * The scale of the data bar goes from 0 to 1000.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      const selected = workbook.getSelectedRange();
+      
+      // Create new conditional formatting on the range.
+      const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+      const dataBarFormat: ExcelScript.DataBarConditionalFormat = format.getDataBar();
+
+      // Set the lower bound of the data bar formatting to be 0.
+      const lowerBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "0"
+      };
+      dataBarFormat.setLowerBoundRule(lowerBound);
+
+      // Set the upper bound of the data bar formatting to be 1000.
+      const upperBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "1000"
+      };
+      dataBarFormat.setUpperBoundRule(upperBound);
+    }
 'ExcelScript.ConditionalFormat#getCellValue:member(1)':
   - |-
     /**
@@ -832,6 +914,34 @@
       let positiveChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
       positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
       positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+    }
+'ExcelScript.ConditionalFormat#getDataBar:member(1)':
+  - |-
+    /**
+     * This script creates data bar conditional formatting on the select ranged.
+     * The scale of the data bar goes from 0 to 1000.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      const selected = workbook.getSelectedRange();
+      
+      // Create new conditional formatting on the range.
+      const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+      const dataBarFormat = format.getDataBar();
+
+      // Set the lower bound of the data bar formatting to be 0.
+      const lowerBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "0"
+      };
+      dataBarFormat.setLowerBoundRule(lowerBound);
+
+      // Set the upper bound of the data bar formatting to be 1000.
+      const upperBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "1000"
+      };
+      dataBarFormat.setUpperBoundRule(upperBound);
     }
 'ExcelScript.ConditionalFormat#getPreset:member(1)':
   - |-
@@ -937,6 +1047,34 @@
         criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
       };
       presetFormat.setRule(duplicateRule);
+    }
+'ExcelScript.ConditionalFormatRuleType:enum':
+  - |-
+    /**
+     * This script creates data bar conditional formatting on the select ranged.
+     * The scale of the data bar goes from 0 to 1000.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected range.
+      const selected = workbook.getSelectedRange();
+      
+      // Create new conditional formatting on the range.
+      const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+      const dataBarFormat = format.getDataBar();
+
+      // Set the lower bound of the data bar formatting to be 0.
+      const lowerBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "0"
+      };
+      dataBarFormat.setLowerBoundRule(lowerBound);
+
+      // Set the upper bound of the data bar formatting to be 1000.
+      const upperBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "1000"
+      };
+      dataBarFormat.setUpperBoundRule(upperBound);
     }
 'ExcelScript.ConditionalFormatType:enum':
   - |-
@@ -1146,27 +1284,33 @@
       noChange.getCustom().getFormat().getFill().setColor("lightyellow");
       noChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
     }
-'ExcelScript.DateFilterCondition:enum':
+'ExcelScript.DataBarConditionalFormat:interface':
   - |-
     /**
-     * This script applies a filter to a PivotTable that filters out rows 
-     * that aren't from this month.
+     * This script creates data bar conditional formatting on the select ranged.
+     * The scale of the data bar goes from 0 to 1000.
      */
     function main(workbook: ExcelScript.Workbook) {
-      // Get the "Date Recorded" field to filter. 
-      // The data in this field must be dates in order for the filter to work.
-      const pivot = workbook.getPivotTables()[0];
-      const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
-      const rowField = rowHierarchy.getFields()[0];
+      // Get the selected range.
+      const selected = workbook.getSelectedRange();
+      
+      // Create new conditional formatting on the range.
+      const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+      const dataBarFormat: ExcelScript.DataBarConditionalFormat = format.getDataBar();
 
-      // Apply the date filter.
-      rowField.applyFilter({
-        dateFilter: {
-          // Setting the condition to `thisMonth` means items that are before or
-          // after this month will not be displayed.
-          condition: ExcelScript.DateFilterCondition.thisMonth
-        }
-      });
+      // Set the lower bound of the data bar formatting to be 0.
+      const lowerBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "0"
+      };
+      dataBarFormat.setLowerBoundRule(lowerBound);
+
+      // Set the upper bound of the data bar formatting to be 1000.
+      const upperBound: ExcelScript.ConditionalDataBarRule = {
+        type: ExcelScript.ConditionalFormatRuleType.number,
+        formula: "1000"
+      };
+      dataBarFormat.setUpperBoundRule(upperBound);
     }
 'ExcelScript.DataPivotHierarchy#setSummarizeBy:member(1)':
   - |-
@@ -1381,6 +1525,28 @@
        */
       console.log(validationType.toString());
     }
+'ExcelScript.DateFilterCondition:enum':
+  - |-
+    /**
+     * This script applies a filter to a PivotTable that filters out rows 
+     * that aren't from this month.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Date Recorded" field to filter. 
+      // The data in this field must be dates in order for the filter to work.
+      const pivot = workbook.getPivotTables()[0];
+      const rowHierarchy = pivot.getRowHierarchy("Date Recorded");
+      const rowField = rowHierarchy.getFields()[0];
+
+      // Apply the date filter.
+      rowField.applyFilter({
+        dateFilter: {
+          // Setting the condition to `thisMonth` means items that are before or
+          // after this month will not be displayed.
+          condition: ExcelScript.DateFilterCondition.thisMonth
+        }
+      });
+    }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
     /**
@@ -1433,6 +1599,57 @@
         
         // Set the property values to a range on the new worksheet.
         newWorksheet.getRange("A1:B3").setValues(values);
+    }
+'ExcelScript.DocumentProperties#addCustomProperty:member(1)':
+  - |-
+    /**
+     * This script adds a workbook-level custom property.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the property collection.
+      const properties = workbook.getProperties();
+
+      // Add a new property called "Project" with the value "FA".
+      properties.addCustomProperty("Project", "FA");
+    }
+'ExcelScript.DocumentProperties#getCustomProperty:member(1)':
+  - |-
+    /**
+     * This script gets a workbook-level custom property called "Project".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the property collection.
+      const properties = workbook.getProperties();
+
+      // Get the "Project" property.
+      const project = properties.getCustomProperty("Project");
+
+      // Show the property value in the console.
+      console.log(project.getValue());
+    }
+'ExcelScript.DocumentPropertyType:enum':
+  - |-
+    /**
+     * This script uses a custom property to set the value and formatting of a cell.
+     * If the value of "Routing Number" is not set or is not a number, the cell will be red.
+    */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell from Sheet1.
+      const cell = workbook.getWorksheet("Sheet1").getCell(0,0);
+      
+      // Get the "Routing Number" property.
+      const properties = workbook.getProperties();
+      const routingNumber = properties.getCustomProperty("Routing Number");
+
+      // If the property is missing or is not a number, change the formatting to indicate a problem.
+      if (!routingNumber || routingNumber.getType() != ExcelScript.DocumentPropertyType.number) {
+        cell.getFormat().getFill().setColor("red");
+      }
+
+      // If the property exists, use it to set the value of A1.
+      if (routingNumber) {
+        cell.setValue(routingNumber.getValue());
+      }
     }
 'ExcelScript.DynamicFilterCriteria:enum':
   - |-
@@ -2225,7 +2442,7 @@
 'ExcelScript.PivotLayout#setSubtotalLocation:member(1)':
   - |-
     /**
-     * This script displays group subtotals to the "Farms Sales" PivotTable.
+     * This script displays group subtotals of the "Farms Sales" PivotTable.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the PivotTable named "Farm Sales".
@@ -4191,7 +4408,7 @@
 'ExcelScript.SubtotalLocationType:enum':
   - |-
     /**
-     * This script displays group subtotals to the "Farms Sales" PivotTable.
+     * This script displays group subtotals of the "Farms Sales" PivotTable.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the PivotTable named "Farm Sales".

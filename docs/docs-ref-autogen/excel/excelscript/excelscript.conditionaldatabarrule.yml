@@ -4,7 +4,39 @@ uid: 'ExcelScript!ExcelScript.ConditionalDataBarRule:interface'
 package: ExcelScript!
 fullName: ExcelScript.ConditionalDataBarRule
 summary: Represents a rule-type for a data bar.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates data bar conditional formatting on the select ranged.
+   * The scale of the data bar goes from 0 to 1000.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the selected range.
+    const selected = workbook.getSelectedRange();
+    
+    // Create new conditional formatting on the range.
+    const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+    const dataBarFormat: ExcelScript.DataBarConditionalFormat = format.getDataBar();
+
+    // Set the lower bound of the data bar formatting to be 0.
+    const lowerBound: ExcelScript.ConditionalDataBarRule = {
+      type: ExcelScript.ConditionalFormatRuleType.number,
+      formula: "0"
+    };
+    dataBarFormat.setLowerBoundRule(lowerBound);
+
+    // Set the upper bound of the data bar formatting to be 1000.
+    const upperBound: ExcelScript.ConditionalDataBarRule = {
+      type: ExcelScript.ConditionalFormatRuleType.number,
+      formula: "1000"
+    };
+    dataBarFormat.setUpperBoundRule(upperBound);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
