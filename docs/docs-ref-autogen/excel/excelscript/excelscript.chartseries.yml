@@ -4,7 +4,40 @@ uid: 'ExcelScript!ExcelScript.ChartSeries:interface'
 package: ExcelScript!
 fullName: ExcelScript.ChartSeries
 summary: Represents a series in a chart.
-remarks: "\n\n#### Examples\n\n```TypeScript\n/**\n * This sample produces a line chart ith two series.\n * The chart assumes data in A1:E5 that looks like this:\n * Product\tQtr1\tQtr2\tQtr3\tQtr4\n * Frames\t5000\t7000\t6544\t4377\n * Saddles\t400\t323\t276\t651\n */\nfunction main(workbook: ExcelScript.Workbook) {\n  // Establish the ranges to use.\n  const sheet = workbook.getActiveWorksheet();\n  const headerRange = sheet.getRange(\"A1:E1\");\n  const firstSeriesRange = sheet.getRange(\"A2:E2\");\n  const secondSeriesRange = sheet.getRange(\"A3:E3\");\n\n  // Create the chart.\n  const lineChart = sheet.addChart(ExcelScript.ChartType.line, headerRange);\n\n  // Add the first chart series.\n  const firstSeries = lineChart.addChartSeries();\n  firstSeries.setXAxisValues(headerRange);\n  firstSeries.setValues(firstSeriesRange);\n\n  // Add the second chart series.\n  const secondSeries = lineChart.addChartSeries();\n  secondSeries.setXAxisValues(headerRange);\n  secondSeries.setValues(secondSeriesRange);\n}\n```"
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample produces a line chart ith two series.
+   * The chart assumes data in A1:E5 that looks like this:
+   * Product Qtr1 Qtr2 Qtr3 Qtr4
+   * Frames 5000 7000 6544 4377
+   * Saddles 400 323 276 651
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Establish the ranges to use.
+    const sheet = workbook.getActiveWorksheet();
+    const headerRange = sheet.getRange("A1:E1");
+    const firstSeriesRange = sheet.getRange("A2:E2");
+    const secondSeriesRange = sheet.getRange("A3:E3");
+
+    // Create the chart.
+    const lineChart = sheet.addChart(ExcelScript.ChartType.line, headerRange);
+
+    // Add the first chart series.
+    const firstSeries = lineChart.addChartSeries();
+    firstSeries.setXAxisValues(headerRange);
+    firstSeries.setValues(firstSeriesRange);
+
+    // Add the second chart series.
+    const secondSeries = lineChart.addChartSeries();
+    secondSeries.setXAxisValues(headerRange);
+    secondSeries.setValues(secondSeriesRange);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
