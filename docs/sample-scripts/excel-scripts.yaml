@@ -423,6 +423,35 @@
       format.getFill().setColor("yellow");
       format.getFont().setItalic(true);
     }
+'ExcelScript.Chart#addChartSeries:member(1)':
+  - |-
+    /**
+     * This sample produces a line chart with two series.
+     * The chart assumes data in A1:E5 that looks like this:
+     * Product Qtr1 Qtr2 Qtr3 Qtr4
+     * Frames 5000 7000 6544 4377
+     * Saddles 400 323 276 651
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Establish the ranges to use.
+      const sheet = workbook.getActiveWorksheet();
+      const headerRange = sheet.getRange("A1:E1");
+      const firstSeriesRange = sheet.getRange("A2:E2");
+      const secondSeriesRange = sheet.getRange("A3:E3");
+
+      // Create the chart.
+      const lineChart = sheet.addChart(ExcelScript.ChartType.line, headerRange);
+
+      // Add the first chart series.
+      const firstSeries = lineChart.addChartSeries();
+      firstSeries.setXAxisValues(headerRange);
+      firstSeries.setValues(firstSeriesRange);
+
+      // Add the second chart series.
+      const secondSeries = lineChart.addChartSeries();
+      secondSeries.setXAxisValues(headerRange);
+      secondSeries.setValues(secondSeriesRange);
+    }
 'ExcelScript.Chart#getImage:member(1)':
   - |-
     /**
@@ -559,6 +588,35 @@
         // If the chart is grouped by rows, switch it to columns.
         columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.columns);
       }
+    }
+'ExcelScript.ChartSeries:interface':
+  - |-
+    /**
+     * This sample produces a line chart with two series.
+     * The chart assumes data in A1:E5 that looks like this:
+     * Product Qtr1 Qtr2 Qtr3 Qtr4
+     * Frames 5000 7000 6544 4377
+     * Saddles 400 323 276 651
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Establish the ranges to use.
+      const sheet = workbook.getActiveWorksheet();
+      const headerRange = sheet.getRange("A1:E1");
+      const firstSeriesRange = sheet.getRange("A2:E2");
+      const secondSeriesRange = sheet.getRange("A3:E3");
+
+      // Create the chart.
+      const lineChart = sheet.addChart(ExcelScript.ChartType.line, headerRange);
+
+      // Add the first chart series.
+      const firstSeries = lineChart.addChartSeries();
+      firstSeries.setXAxisValues(headerRange);
+      firstSeries.setValues(firstSeriesRange);
+
+      // Add the second chart series.
+      const secondSeries = lineChart.addChartSeries();
+      secondSeries.setXAxisValues(headerRange);
+      secondSeries.setValues(secondSeriesRange);
     }
 'ExcelScript.ChartSeries#getName:member(1)':
   - |-
