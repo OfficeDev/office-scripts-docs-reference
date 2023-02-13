@@ -1,6 +1,7 @@
 ---
 title: Office Scripts API reference 
 description: An overview of the Office Scripts JavaScript APIs.
+ms.topic: overview
 ms.date: 10/01/2022
 ---
 
