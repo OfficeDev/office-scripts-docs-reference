@@ -2774,12 +2774,12 @@ declare namespace ExcelScript {
         setAutoIndent(autoIndent: boolean): void;
 
         /**
-         * Specifies the width of all colums within the range. If the column widths are not uniform, `null` will be returned.
+         * Specifies the width of all columns within the range. If the column widths are not uniform, `null` will be returned.
          */
         getColumnWidth(): number;
 
         /**
-         * Specifies the width of all colums within the range. If the column widths are not uniform, `null` will be returned.
+         * Specifies the width of all columns within the range. If the column widths are not uniform, `null` will be returned.
          */
         setColumnWidth(columnWidth: number): void;
 
@@ -4557,12 +4557,12 @@ declare namespace ExcelScript {
         setTextOrientation(textOrientation: number): void;
 
         /**
-         * Specifies if the axis title is visibile.
+         * Specifies if the axis title is visible.
          */
         getVisible(): boolean;
 
         /**
-         * Specifies if the axis title is visibile.
+         * Specifies if the axis title is visible.
          */
         setVisible(visible: boolean): void;
 
@@ -5368,12 +5368,12 @@ declare namespace ExcelScript {
         ): void;
 
         /**
-         * Specifies if the chart title is visibile.
+         * Specifies if the chart title is visible.
          */
         getVisible(): boolean;
 
         /**
-         * Specifies if the chart title is visibile.
+         * Specifies if the chart title is visible.
          */
         setVisible(visible: boolean): void;
 
@@ -7362,13 +7362,13 @@ declare namespace ExcelScript {
         setBarDirection(barDirection: ConditionalDataBarDirection): void;
 
         /**
-         * The rule for what consistutes the lower bound (and how to calculate it, if applicable) for a data bar.
+         * The rule for what constitutes the lower bound (and how to calculate it, if applicable) for a data bar.
          * The `ConditionalDataBarRule` object must be set as a JSON object (use `x.lowerBoundRule = {...}` instead of `x.lowerBoundRule.formula = ...`).
          */
         getLowerBoundRule(): ConditionalDataBarRule;
 
         /**
-         * The rule for what consistutes the lower bound (and how to calculate it, if applicable) for a data bar.
+         * The rule for what constitutes the lower bound (and how to calculate it, if applicable) for a data bar.
          * The `ConditionalDataBarRule` object must be set as a JSON object (use `x.lowerBoundRule = {...}` instead of `x.lowerBoundRule.formula = ...`).
          */
         setLowerBoundRule(lowerBoundRule: ConditionalDataBarRule): void;
