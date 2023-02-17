@@ -112,7 +112,34 @@ methods:
       content: 'getRangeBetweenHeaderAndTotal(): Range;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a new column to a table.
+           * It then sets the formulas in the new column to be the product
+           * of the values in the two preceding columns.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            const table = workbook.getTables()[0];
+
+            // Append an empty column to the table with the header "Total". 
+            const totalColumn = table.addColumn(-1, null, "Total");
+
+            // Get the names of the two preceding columns.
+            const productColumnName1 = table.getColumns()[totalColumn.getIndex() - 1].getName();
+            const productColumnName2 = table.getColumns()[totalColumn.getIndex() - 2].getName();
+            
+            // Set the formulas in the "Total" column to be the product of the two preceding columns.
+            totalColumn.getRangeBetweenHeaderAndTotal().setFormula(
+              `=[@[${productColumnName1}]]*[@[${productColumnName2}]]`
+            );
+          }
+          ```
   - name: getTotalRowRange()
     uid: 'ExcelScript!ExcelScript.TableColumn#getTotalRowRange:member(1)'
     package: ExcelScript!
