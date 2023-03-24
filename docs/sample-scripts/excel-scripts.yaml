@@ -3352,14 +3352,16 @@
 'ExcelScript.Range#getVisibleView:member(1)':
   - |-
     /**
-     * This script copies values and formatting from the visible range of a table in Sheet1 into Sheet2.
+     * This script copies values and formatting from the 
+     * visible range of a table in Sheet1 into Sheet2.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the filtered data from Sheet1.
       const currentSheet = workbook.getWorksheet("Sheet1");
       const table = currentSheet.getTables()[0];
-      const source = table.getRange().getVisibleView().getRange();
-      
+      const visibleTableRange: ExcelScript.RangeView = table.getRange().getVisibleView();
+      const source = currentSheet.getRanges(visibleTableRange.getCellAddresses().toString());
+
       // Copy the data into the other sheet.
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
@@ -3999,32 +4001,34 @@
 'ExcelScript.RangeView:interface':
   - |-
     /**
-     * This script copies values and formatting from the visible range of a table in Sheet1 into Sheet2.
+     * This script copies values and formatting from the 
+     * visible range of a table in Sheet1 into Sheet2.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the filtered data from Sheet1.
       const currentSheet = workbook.getWorksheet("Sheet1");
       const table = currentSheet.getTables()[0];
       const visibleTableRange: ExcelScript.RangeView = table.getRange().getVisibleView();
-      const source = visibleTableRange.getRange();
-      
+      const source = currentSheet.getRanges(visibleTableRange.getCellAddresses().toString());
+
       // Copy the data into the other sheet.
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
       otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
     }
-'ExcelScript.RangeView#getRange:member(1)':
+'ExcelScript.RangeView#getCellAddresses:member(1)':
   - |-
     /**
-     * This script copies values and formatting from the visible range of a table in Sheet1 into Sheet2.
+     * This script copies values and formatting from the 
+     * visible range of a table in Sheet1 into Sheet2.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the filtered data from Sheet1.
       const currentSheet = workbook.getWorksheet("Sheet1");
       const table = currentSheet.getTables()[0];
       const visibleTableRange: ExcelScript.RangeView = table.getRange().getVisibleView();
-      const source = visibleTableRange.getRange();
-      
+      const source = currentSheet.getRanges(visibleTableRange.getCellAddresses().toString());
+
       // Copy the data into the other sheet.
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
