@@ -568,6 +568,26 @@
       // Place the chart over the range "F1:L13".
       chart.setPosition("F1", "L13");
     }
+'ExcelScript.ChartErrorBarsType:enum':
+  - |-
+    /**
+     * This script adds error bars for the standard error on each chart series point.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for the chart.
+      const worksheet = workbook.getWorksheet("Sample");
+      const dataRange = worksheet.getRange("A1:B15");
+
+      // Create a line chart.
+      const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
+
+      // For each series, add error bars for the standard error on each point
+      const allSeries = chart.getSeries();
+      allSeries.forEach((series) => {
+        series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
+        series.getYErrorBars().setVisible(true);
+      });
+    }
 'ExcelScript.ChartPlotBy:enum':
   - |-
     /**
@@ -634,6 +654,26 @@
       let seriesList = chart.getSeries();
       seriesList.forEach((series) => {
         console.log(series.getName());
+      });
+    }
+'ExcelScript.ChartSeries#getYErrorBars:member(1)':
+  - |-
+    /**
+     * This script adds error bars for the standard error on each chart series point.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for the chart.
+      const worksheet = workbook.getWorksheet("Sample");
+      const dataRange = worksheet.getRange("A1:B15");
+
+      // Create a line chart.
+      const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
+
+      // For each series, add error bars for the standard error on each point
+      const allSeries = chart.getSeries();
+      allSeries.forEach((series) => {
+        series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
+        series.getYErrorBars().setVisible(true);
       });
     }
 'ExcelScript.ChartSeries#setOverlap:member(1)':
