@@ -21,7 +21,7 @@ remarks: |-
     // Create a line chart.
     const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
 
-    // For each series, add error bars for the standard error on each point
+    // For each series, add error bars for the standard error on each point.
     const allSeries = chart.getSeries();
     allSeries.forEach((series) => {
       series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
