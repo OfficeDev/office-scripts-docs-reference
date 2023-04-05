@@ -4,7 +4,31 @@ uid: 'ExcelScript!ExcelScript.ChartErrorBarsType:enum'
 package: ExcelScript!
 fullName: ExcelScript.ChartErrorBarsType
 summary: Represents the range type for error bars.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds error bars for the standard error of each chart series point.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range for the chart.
+    const worksheet = workbook.getWorksheet("Sample");
+    const dataRange = worksheet.getRange("A1:B15");
+
+    // Create a line chart.
+    const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
+
+    // For each series, add error bars for the standard error on each point.
+    const allSeries = chart.getSeries();
+    allSeries.forEach((series) => {
+      series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
+      series.getYErrorBars().setVisible(true);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
