@@ -4,7 +4,41 @@ uid: 'ExcelScript!ExcelScript.IconSetConditionalFormat:interface'
 package: ExcelScript!
 fullName: ExcelScript.IconSetConditionalFormat
 summary: Represents an icon set criteria for conditional formatting.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies icon set conditional formatting to a range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range "A1:A5" on the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const range = sheet.getRange("A1:A5");
+
+    // Create icon set conditional formatting on the range.
+    const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+    const iconSetFormat: ExcelScript.IconSetConditionalFormat = conditionalFormatting.getIconSet();
+    // Use the "3 Traffic Lights (Unrimmed)" set.
+    iconSetFormat.setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+    // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+    iconSetFormat.setCriteria([
+      {
+        formula:'=0',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type:ExcelScript.ConditionalFormatIconRuleType.percent
+      },
+      {
+        formula:'=33',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type:ExcelScript.ConditionalFormatIconRuleType.percent},
+      {
+        formula:'=67',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type:ExcelScript.ConditionalFormatIconRuleType.percent
+      }]);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

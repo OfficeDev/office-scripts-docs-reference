@@ -568,6 +568,26 @@
       // Place the chart over the range "F1:L13".
       chart.setPosition("F1", "L13");
     }
+'ExcelScript.ChartErrorBarsType:enum':
+  - |-
+    /**
+     * This script adds error bars for the standard error of each chart series point.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for the chart.
+      const worksheet = workbook.getWorksheet("Sample");
+      const dataRange = worksheet.getRange("A1:B15");
+
+      // Create a line chart.
+      const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
+
+      // For each series, add error bars for the standard error on each point.
+      const allSeries = chart.getSeries();
+      allSeries.forEach((series) => {
+        series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
+        series.getYErrorBars().setVisible(true);
+      });
+    }
 'ExcelScript.ChartPlotBy:enum':
   - |-
     /**
@@ -634,6 +654,26 @@
       let seriesList = chart.getSeries();
       seriesList.forEach((series) => {
         console.log(series.getName());
+      });
+    }
+'ExcelScript.ChartSeries#getYErrorBars:member(1)':
+  - |-
+    /**
+     * This script adds error bars for the standard error of each chart series point.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range for the chart.
+      const worksheet = workbook.getWorksheet("Sample");
+      const dataRange = worksheet.getRange("A1:B15");
+
+      // Create a line chart.
+      const chart = worksheet.addChart(ExcelScript.ChartType.line, dataRange);
+
+      // For each series, add error bars for the standard error on each point
+      const allSeries = chart.getSeries();
+      allSeries.forEach((series) => {
+        series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
+        series.getYErrorBars().setVisible(true);
       });
     }
 'ExcelScript.ChartSeries#setOverlap:member(1)':
@@ -1001,6 +1041,36 @@
       };
       dataBarFormat.setUpperBoundRule(upperBound);
     }
+'ExcelScript.ConditionalFormat#getIconSet:member(1)':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      conditionalFormatting.getIconSet().setCriteria([
+        {
+          formula:'=0',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula:'=33',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent},
+        {
+          formula:'=67',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        }]);
+    }
 'ExcelScript.ConditionalFormat#getPreset:member(1)':
   - |-
     /**
@@ -1079,6 +1149,38 @@
           type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
         }
       });
+    }
+'ExcelScript.ConditionalFormatIconRuleType:enum':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      const criteria: ExcelScript.ConditionalIconCriterion[] = [
+        {
+          formula: '=0', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=33', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=67', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        }];
+      conditionalFormatting.getIconSet().setCriteria(criteria);
     }
 'ExcelScript.ConditionalFormatPresetCriterion:enum':
   - |-
@@ -1161,6 +1263,70 @@
           type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
         }
       });
+    }
+'ExcelScript.ConditionalIconCriterion:interface':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      const criteria: ExcelScript.ConditionalIconCriterion[] = [
+        {
+          formula: '=0', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=33', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=67', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        }];
+      conditionalFormatting.getIconSet().setCriteria(criteria);
+    }
+'ExcelScript.ConditionalIconCriterionOperator:enum':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      const criteria: ExcelScript.ConditionalIconCriterion[] = [
+        {
+          formula: '=0', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=33', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula: '=67', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type: ExcelScript.ConditionalFormatIconRuleType.percent
+        }];
+      conditionalFormatting.getIconSet().setCriteria(criteria);
     }
 'ExcelScript.ConditionalPresetCriteriaRule:interface':
   - |-
@@ -1958,6 +2124,66 @@
 
       // Set the horizontal text alignment to `center`.
       headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+    }
+'ExcelScript.IconSet:enum':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      conditionalFormatting.getIconSet().setCriteria([
+        {
+          formula:'=0',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula:'=33',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent},
+        {
+          formula:'=67',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        }]);
+    }
+'ExcelScript.IconSetConditionalFormat:interface':
+  - |-
+    /**
+     * This script applies icon set conditional formatting to a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range "A1:A5" on the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("A1:A5");
+
+      // Create icon set conditional formatting on the range.
+      const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+      const iconSetFormat: ExcelScript.IconSetConditionalFormat = conditionalFormatting.getIconSet();
+      // Use the "3 Traffic Lights (Unrimmed)" set.
+      iconSetFormat.setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+      // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+      iconSetFormat.setCriteria([
+        {
+          formula:'=0',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        },
+        {
+          formula:'=33',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent},
+        {
+          formula:'=67',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+          type:ExcelScript.ConditionalFormatIconRuleType.percent
+        }]);
     }
 'ExcelScript.Image:interface':
   - |-
