@@ -739,18 +739,20 @@ methods:
     uid: 'ExcelScript!ExcelScript.Workbook#getComment:member(1)'
     package: ExcelScript!
     fullName: getComment(commentId)
-    summary: Gets a comment from the collection based on its ID.
+    summary: >-
+      Gets a comment from the collection based on its ID. If the comment object does not exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getComment(commentId: string): Comment;'
+      content: 'getComment(commentId: string): Comment | undefined;'
       parameters:
         - id: commentId
           description: The identifier for the comment.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" /> | undefined'
         description: ''
   - name: getCommentByCell(cellAddress)
     uid: 'ExcelScript!ExcelScript.Workbook#getCommentByCell:member(1)'
@@ -1193,18 +1195,18 @@ methods:
     uid: 'ExcelScript!ExcelScript.Workbook#getPredefinedCellStyle:member(1)'
     package: ExcelScript!
     fullName: getPredefinedCellStyle(name)
-    summary: Gets a `Style` by name.
+    summary: 'Gets a style by name. If the style object does not exist, then this method returns `undefined`<!-- -->.'
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getPredefinedCellStyle(name: string): PredefinedCellStyle;'
+      content: 'getPredefinedCellStyle(name: string): PredefinedCellStyle | undefined;'
       parameters:
         - id: name
           description: Name of the style to be retrieved.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.PredefinedCellStyle:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.PredefinedCellStyle:interface" /> | undefined'
         description: ''
   - name: getPredefinedCellStyles()
     uid: 'ExcelScript!ExcelScript.Workbook#getPredefinedCellStyles:member(1)'
@@ -1257,6 +1259,36 @@ methods:
       content: 'getProtection(): WorkbookProtection;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.WorkbookProtection:interface" />'
+        description: ''
+  - name: getQueries()
+    uid: 'ExcelScript!ExcelScript.Workbook#getQueries:member(1)'
+    package: ExcelScript!
+    fullName: getQueries()
+    summary: Returns a collection of Power Query queries that are part of the workbook.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getQueries(): Query[];'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Query:interface" />[]'
+        description: ''
+  - name: getQuery(key)
+    uid: 'ExcelScript!ExcelScript.Workbook#getQuery:member(1)'
+    package: ExcelScript!
+    fullName: getQuery(key)
+    summary: Gets a query from the collection based on its name.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getQuery(key: string): Query;'
+      parameters:
+        - id: key
+          description: The name of the query case-insensitive.
+          type: string
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.Query:interface" />'
         description: ''
   - name: getReadOnly()
     uid: 'ExcelScript!ExcelScript.Workbook#getReadOnly:member(1)'

@@ -80,18 +80,20 @@ methods:
     uid: 'ExcelScript!ExcelScript.Comment#getCommentReply:member(1)'
     package: ExcelScript!
     fullName: getCommentReply(commentReplyId)
-    summary: Returns a comment reply identified by its ID.
+    summary: >-
+      Returns a comment reply identified by its ID. If the comment reply object does not exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getCommentReply(commentReplyId: string): CommentReply;'
+      content: 'getCommentReply(commentReplyId: string): CommentReply | undefined;'
       parameters:
         - id: commentReplyId
           description: The identifier for the comment reply.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.CommentReply:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.CommentReply:interface" /> | undefined'
         description: ''
   - name: getContent()
     uid: 'ExcelScript!ExcelScript.Comment#getContent:member(1)'

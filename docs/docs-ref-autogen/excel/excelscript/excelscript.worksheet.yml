@@ -929,18 +929,20 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getComment:member(1)'
     package: ExcelScript!
     fullName: getComment(commentId)
-    summary: Gets a comment from the collection based on its ID.
+    summary: >-
+      Gets a comment from the collection based on its ID. If the comment object does not exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getComment(commentId: string): Comment;'
+      content: 'getComment(commentId: string): Comment | undefined;'
       parameters:
         - id: commentId
           description: The identifier for the comment.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Comment:interface" /> | undefined'
         description: ''
   - name: getCommentByCell(cellAddress)
     uid: 'ExcelScript!ExcelScript.Worksheet#getCommentByCell:member(1)'
@@ -1119,12 +1121,14 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getNamedSheetView:member(1)'
     package: ExcelScript!
     fullName: getNamedSheetView(key)
-    summary: Gets a sheet view using its name.
+    summary: >-
+      Gets a sheet view using its name. If the sheet view object does not exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getNamedSheetView(key: string): NamedSheetView;'
+      content: 'getNamedSheetView(key: string): NamedSheetView | undefined;'
       parameters:
         - id: key
           description: >-
@@ -1132,7 +1136,7 @@ methods:
             temporary view exists.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.NamedSheetView:interface" /> | undefined'
         description: ''
   - name: getNamedSheetViews()
     uid: 'ExcelScript!ExcelScript.Worksheet#getNamedSheetViews:member(1)'
@@ -1387,18 +1391,20 @@ methods:
     uid: 'ExcelScript!ExcelScript.Worksheet#getShape:member(1)'
     package: ExcelScript!
     fullName: getShape(key)
-    summary: Gets a shape using its name or ID.
+    summary: >-
+      Gets a shape using its name or ID. If the shape object does not exist, then this method returns `undefined`<!--
+      -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getShape(key: string): Shape;'
+      content: 'getShape(key: string): Shape | undefined;'
       parameters:
         - id: key
           description: The name or ID of the shape to be retrieved.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" /> | undefined'
         description: ''
   - name: getShapes()
     uid: 'ExcelScript!ExcelScript.Worksheet#getShapes:member(1)'
@@ -1514,6 +1520,22 @@ methods:
       content: 'getTabColor(): string;'
       return:
         type: string
+        description: ''
+  - name: getTabId()
+    uid: 'ExcelScript!ExcelScript.Worksheet#getTabId:member(1)'
+    package: ExcelScript!
+    fullName: getTabId()
+    summary: >-
+      Returns a value representing this worksheet that can be read by Open Office XML. This is an integer value, which
+      is different from `worksheet.id` (which returns a globally unique identifier) and `worksheet.name` (which returns
+      a value such as "Sheet1").
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTabId(): number;'
+      return:
+        type: number
         description: ''
   - name: getTable(key)
     uid: 'ExcelScript!ExcelScript.Worksheet#getTable:member(1)'
