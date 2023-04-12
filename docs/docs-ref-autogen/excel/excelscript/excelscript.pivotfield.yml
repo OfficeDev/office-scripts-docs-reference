@@ -325,4 +325,26 @@ methods:
           type: 'Array&lt;<xref uid="ExcelScript!ExcelScript.PivotItem:interface" /> | string&gt;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sorts the rows of a PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get an existing PivotTable.
+            const pivotTable = workbook.getPivotTable("Farm Sales");
+
+            // Get the data hierarchy to use as the basis of the sort.
+            const valueFieldToSortOn = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+            // Get the row to sort.
+            const rowToSort = pivotTable.getRowHierarchy("Farm");
+
+            // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+            rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+          }
+          ```
