@@ -11,6 +11,105 @@ declare namespace ExcelScript {
     //
 
     /**
+     * Represents an `AllowEditRange` object found in a worksheet. This object works with worksheet protection properties.
+     * When worksheet protection is enabled, an `AllowEditRange` object can be used to allow editing of a specific range, while maintaining protection on the rest of the worksheet.
+     */
+    interface AllowEditRange {
+        /**
+         * Specifies the range associated with the object.
+         */
+        getAddress(): string;
+
+        /**
+         * Specifies the range associated with the object.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to set the range.
+         */
+        setAddress(address: string): void;
+
+        /**
+         * Specifies if the object is password protected.
+         */
+        getIsPasswordProtected(): boolean;
+
+        /**
+         * Specifies the title of the object.
+         */
+        getTitle(): string;
+
+        /**
+         * Specifies the title of the object.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to set the title.
+         * If there is already an existing `AllowEditRange` with the same string, or if the string is `null` or empty (""), then this method throws an `InvalidArgument` error and fails to set the title.
+         */
+        setTitle(title: string): void;
+
+        /**
+         * Deletes the object from the `AllowEditRangeCollection`.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails the delete operation.
+         */
+        delete(): void;
+
+        /**
+         * Pauses worksheet protection for the object for the user in the current session.
+         * This method does nothing if worksheet protection isn't enabled or is already paused.
+         * If worksheet protection cannot be paused, this method throws an `UnsupportedOperation` error and fails to pause protection for the object.
+         * If the password is incorrect, then this method throws a `BadPassword` error and fails to pause protection for the object.
+         * If a password is supplied but the object does not require a password, the inputted password will be ignored and the operation will succeed.
+         * @param password The password associated with the `AllowEditRange` object.
+         */
+        pauseProtection(password?: string): void;
+
+        /**
+         * Changes the password associated with the object.
+         * Setting the password string as empty ("") or `null` will remove password protection from the object.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, then this method throws an `AccessDenied` error and the set operation fails.
+         * @param password The password associated with the `AllowEditRange` object.
+         */
+        setPassword(password?: string): void;
+    }
+
+    /**
+     * Represents a Power Query query.
+     */
+    interface Query {
+        /**
+         * Gets the query error message from when the query was last refreshed.
+         */
+        getError(): QueryError;
+
+        /**
+         * Gets the query loaded to object type.
+         */
+        getLoadedTo(): LoadToType;
+
+        /**
+         * Specifies if the query loaded to the data model.
+         */
+        getLoadedToDataModel(): boolean;
+
+        /**
+         * Gets the name of the query.
+         * Query names cannot contain periods or quotation marks.
+         */
+        getName(): string;
+
+        /**
+         * Gets the date and time when the query was last refreshed.
+         */
+        getRefreshDate(): Date;
+
+        /**
+         * Gets the number of rows that were loaded when the query was last refreshed.
+         * If last refresh has errors the value will be -1.
+         */
+        getRowsLoadedCount(): number;
+    }
+
+    /**
      * Contains information about a linked workbook.
      * If a workbook has links pointing to data in another workbook, the second workbook is linked to the first workbook.
      * In this scenario, the second workbook is called the "linked workbook".
@@ -290,12 +389,6 @@ declare namespace ExcelScript {
         ): Comment;
 
         /**
-         * Gets a comment from the collection based on its ID.
-         * @param commentId The identifier for the comment.
-         */
-        getComment(commentId: string): Comment;
-
-        /**
          * Gets the comment from the specified cell.
          * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
@@ -306,6 +399,13 @@ declare namespace ExcelScript {
          * @param replyId The identifier of comment reply.
          */
         getCommentByReplyId(replyId: string): Comment;
+
+        /**
+         * Gets a comment from the collection based on its ID.
+         * If the comment object does not exist, then this method returns `undefined`.
+         * @param commentId The identifier for the comment.
+         */
+        getComment(commentId: string): Comment | undefined;
 
         /**
          * Represents the collection of custom XML parts contained by this workbook.
@@ -462,6 +562,17 @@ declare namespace ExcelScript {
         refreshAllPivotTables(): void;
 
         /**
+         * Returns a collection of Power Query queries that are part of the workbook.
+         */
+        getQueries(): Query[];
+
+        /**
+         * Gets a query from the collection based on its name.
+         * @param key The name of the query case-insensitive.
+         */
+        getQuery(key: string): Query;
+
+        /**
          * Represents a collection of SlicerStyles associated with the workbook.
          */
         getSlicerStyles(): SlicerStyle[];
@@ -525,10 +636,11 @@ declare namespace ExcelScript {
         addPredefinedCellStyle(name: string): void;
 
         /**
-         * Gets a `Style` by name.
+         * Gets a style by name.
+         * If the style object does not exist, then this method returns `undefined`.
          * @param name Name of the style to be retrieved.
          */
-        getPredefinedCellStyle(name: string): PredefinedCellStyle;
+        getPredefinedCellStyle(name: string): PredefinedCellStyle | undefined;
 
         /**
          * Represents a collection of TableStyles associated with the workbook.
@@ -788,6 +900,11 @@ declare namespace ExcelScript {
         setTabColor(tabColor: string): void;
 
         /**
+         * Returns a value representing this worksheet that can be read by Open Office XML. This is an integer value, which is different from `worksheet.id` (which returns a globally unique identifier) and `worksheet.name` (which returns a value such as "Sheet1").
+         */
+        getTabId(): number;
+
+        /**
          * The visibility of the worksheet.
          */
         getVisibility(): SheetVisibility;
@@ -944,12 +1061,6 @@ declare namespace ExcelScript {
         ): Comment;
 
         /**
-         * Gets a comment from the collection based on its ID.
-         * @param commentId The identifier for the comment.
-         */
-        getComment(commentId: string): Comment;
-
-        /**
          * Gets the comment from the specified cell.
          * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
@@ -960,6 +1071,13 @@ declare namespace ExcelScript {
          * @param replyId The identifier of comment reply.
          */
         getCommentByReplyId(replyId: string): Comment;
+
+        /**
+         * Gets a comment from the collection based on its ID.
+         * If the comment object does not exist, then this method returns `undefined`.
+         * @param commentId The identifier for the comment.
+         */
+        getComment(commentId: string): Comment | undefined;
 
         /**
          * Gets a collection of worksheet-level custom properties.
@@ -1031,9 +1149,11 @@ declare namespace ExcelScript {
 
         /**
          * Gets a sheet view using its name.
-         * @param key The case-sensitive name of the sheet view. Use the empty string ("") to get the temporary sheet view, if the temporary view exists.
+         * If the sheet view object does not exist, then this method returns `undefined`.
+         * @param key The case-sensitive name of the sheet view.
+         * Use the empty string ("") to get the temporary sheet view, if the temporary view exists.
          */
-        getNamedSheetView(key: string): NamedSheetView;
+        getNamedSheetView(key: string): NamedSheetView | undefined;
 
         /**
          * Collection of names scoped to the current worksheet.
@@ -1145,9 +1265,10 @@ declare namespace ExcelScript {
 
         /**
          * Gets a shape using its name or ID.
+         * If the shape object does not exist, then this method returns `undefined`.
          * @param key The name or ID of the shape to be retrieved.
          */
-        getShape(key: string): Shape;
+        getShape(key: string): Shape | undefined;
 
         /**
          * Returns a collection of slicers that are part of the worksheet.
@@ -1212,6 +1333,21 @@ declare namespace ExcelScript {
      */
     interface WorksheetProtection {
         /**
+         * Specifies if protection can be paused for this worksheet.
+         */
+        getCanPauseProtection(): boolean;
+
+        /**
+         * Specifies if the sheet is password protected.
+         */
+        getIsPasswordProtected(): boolean;
+
+        /**
+         * Specifies if worksheet protection is paused.
+         */
+        getIsPaused(): boolean;
+
+        /**
          * Specifies the protection options for the worksheet.
          */
         getOptions(): WorksheetProtectionOptions;
@@ -1222,6 +1358,29 @@ declare namespace ExcelScript {
         getProtected(): boolean;
 
         /**
+         * Specifies the protection options saved in the worksheet.
+         * This will return the same `WorksheetProtectionOptions` object regardless of the worksheet protection state.
+         */
+        getSavedOptions(): WorksheetProtectionOptions;
+
+        /**
+         * Specifies if the password can be used to unlock worksheet protection.
+         * This method doesn't change the worksheet protection state.
+         * If a password is input but no password is required to unlock worksheet protection, this method will return false.
+         * @param password The password to check against the protected worksheet.
+         */
+        checkPassword(password?: string): boolean;
+
+        /**
+         * Pauses worksheet protection for the given worksheet object for the user in the current session.
+         * This method does nothing if worksheet protection isn't enabled or is already paused.
+         * If the password is incorrect, then this method throws an `InvalidArgument` error and fails to pause protection.
+         * This method does not change the protection state if worksheet protection is not enabled or already paused.
+         * @param password The password associated with the protected worksheet.
+         */
+        pauseProtection(password?: string): void;
+
+        /**
          * Protects a worksheet. Fails if the worksheet has already been protected.
          * @param options Optional. Sheet protection options.
          * @param password Optional. Sheet protection password.
@@ -1229,10 +1388,69 @@ declare namespace ExcelScript {
         protect(options?: WorksheetProtectionOptions, password?: string): void;
 
         /**
+         * Resumes worksheet protection for the given worksheet object for the user in a given session.
+         * Worksheet protection must be paused for this method to work. If worksheet protection is not paused, then this method will not change the protection state of the worksheet.
+         */
+        resumeProtection(): void;
+
+        /**
+         * Changes the password associated with the `WorksheetProtection` object.
+         * Setting the password as an empty string ("") or as `null` will remove password protection from the `WorksheetProtection` object.
+         * Worksheet protection must be enabled and paused for this method to work properly.
+         * If worksheet protection is disabled, this method throws an `InvalidOperation` error and fails to change the password.
+         * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to change the password.
+         * @param password The password associated with the `WorksheetProtection` object.
+         */
+        setPassword(password?: string): void;
+
+        /**
          * Unprotects a worksheet.
          * @param password Sheet protection password.
          */
         unprotect(password?: string): void;
+
+        /**
+         * Change the worksheet protection options associated with the `WorksheetProtection` object.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to change the worksheet protection options.
+         * @param options The options interface associated with the `WorksheetProtection` object.
+         */
+        updateOptions(options: WorksheetProtectionOptions): void;
+
+        /**
+         * Specifies the `AllowEditRangeCollection` object found in this worksheet. This is a collection of `AllowEditRange` objects, which work with worksheet protection properties.
+         * When worksheet protection is enabled, an `AllowEditRange` object can be used to allow editing of a specific range, while maintaining protection on the rest of the worksheet.
+         */
+        getAllowEditRanges(): AllowEditRange[];
+
+        /**
+         * Adds an `AllowEditRange` object to the worksheet.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, then this method throws an `AccessDenied` error and the add operation fails.
+         * @param title The title string of the `AllowEditRange` object to be added.
+         * @param rangeAddress The range address of the `AllowEditRange` object to be added.
+         * @param options Additional options to be added to the `AllowEditRange` object, such as the password.
+         */
+        addAllowEditRange(
+            title: string,
+            rangeAddress: string,
+            options?: AllowEditRangeOptions
+        ): void;
+
+        /**
+         * Gets the `AllowEditRange` object by its title.
+         * @param key The title of the `AllowEditRange`.
+         */
+        getAllowEditRange(key: string): AllowEditRange | undefined;
+
+        /**
+         * Pauses worksheet protection for all `AllowEditRange` objects found in this worksheet that have the given password for the user in the current session.
+         * This method does nothing if worksheet protection isn't enabled or is paused.
+         * If worksheet protection cannot be paused, this method throws an `UnsupportedOperation` error and fails to pause protection for the range.
+         * If the password does not match any `AllowEditRange` objects in the collection, then this method throws a `BadPassword` error and fails to pause protection for any range in the collection.
+         * @param password The password to pause protection on the `AllowEditRange` objects.
+         */
+        pauseProtectionForAllAllowEditRanges(password: string): void;
     }
 
     interface WorksheetFreezePanes {
@@ -1536,8 +1754,8 @@ declare namespace ExcelScript {
         convertDataTypeToText(): void;
 
         /**
-         * Copies cell data or formatting from the source range or `RangeAreas` to the current range.
-         * The destination range can be a different size than the source range or `RangeAreas`. The destination will be expanded automatically if it is smaller than the source.
+         * Copies cell data or formatting from the source range or `RangeAreas` to the current range. The destination range can be a different size than the source range or `RangeAreas`. The destination is expanded automatically if it's smaller than the source.
+         * Note: Like the copy functionality in the Excel UI, if the destination range is an exact multiple greater than the source range in either rows or columns, then the source content is replicated multiple times. For example, a 2x2 range copy into a 2x6 range will result in 3 copies of the original 2x2 range.
          * @param sourceRange The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form must be able to be created by removing full rows or columns from a rectangular range.
          * @param copyType The type of cell data or formatting to copy over. Default is "All".
          * @param skipBlanks True if to skip blank cells in the source range. Default is false.
@@ -1609,7 +1827,7 @@ declare namespace ExcelScript {
         getColumnsBefore(count?: number): Range;
 
         /**
-         * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedents of a cell in the same worksheet or in multiple worksheets.
+         * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
 
@@ -1635,10 +1853,6 @@ declare namespace ExcelScript {
 
         /**
          * Renders the range as a base64-encoded png image.
-         * 
-         * **Note**: There is a known issue with `Range.getImage` that causes wrapped text or text that exceeds the cell width to render on the same line without line wrapping. 
-         * This makes the resulting image unreadable, since the text overflows across the entire row. 
-         * As a workaround, make sure the data in the range fits in each of the cells as a single line.
          */
         getImage(): string;
 
@@ -1664,7 +1878,7 @@ declare namespace ExcelScript {
         getLastRow(): Range;
 
         /**
-         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method will return `undefined`.
+         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method returns `undefined`.
          */
         getMergedAreas(): RangeAreas;
 
@@ -1866,10 +2080,11 @@ declare namespace ExcelScript {
         clearAllConditionalFormats(): void;
 
         /**
-         * Returns a conditional format for the given ID.
+         * Returns a conditional format identified by its ID.
+         * If the conditional format object does not exist, then this method returns `undefined`.
          * @param id The ID of the conditional format.
          */
-        getConditionalFormat(id: string): ConditionalFormat;
+        getConditionalFormat(id: string): ConditionalFormat | undefined;
 
         /**
          * Represents the cell formula in A1-style notation.
@@ -2001,7 +2216,7 @@ declare namespace ExcelScript {
         getDataValidation(): DataValidation;
 
         /**
-         * Returns a `RangeFormat` object, encapsulating the the font, fill, borders, alignment, and other properties for all ranges in the `RangeAreas` object.
+         * Returns a `RangeFormat` object, encapsulating the font, fill, borders, alignment, and other properties for all ranges in the `RangeAreas` object.
          */
         getFormat(): RangeFormat;
 
@@ -2141,10 +2356,11 @@ declare namespace ExcelScript {
         clearAllConditionalFormats(): void;
 
         /**
-         * Returns a conditional format for the given ID.
+         * Returns a conditional format identified by its ID.
+         * If the conditional format object does not exist, then this method returns `undefined`.
          * @param id The ID of the conditional format.
          */
-        getConditionalFormat(id: string): ConditionalFormat;
+        getConditionalFormat(id: string): ConditionalFormat | undefined;
     }
 
     /**
@@ -2739,7 +2955,7 @@ declare namespace ExcelScript {
         clear(): void;
 
         /**
-         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method will return `null`.
+         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method returns `null`.
          */
         getInvalidCells(): RangeAreas;
     }
@@ -3426,6 +3642,11 @@ declare namespace ExcelScript {
         delete(): void;
 
         /**
+         * Gets the data table on the chart. If the chart doesn't allow a data table, then this method returns `undefined`.
+         */
+        getDataTable(): ChartDataTable;
+
+        /**
          * Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions.
          * The aspect ratio is preserved as part of the resizing.
          * @param height Optional. The desired height of the resulting image.
@@ -3977,6 +4198,20 @@ declare namespace ExcelScript {
          * Deletes the chart series.
          */
         delete(): void;
+
+        /**
+         * Gets the string representation of the data source of the chart series.The string representation could be information such as a cell address.
+         * @param dimension The dimension of the axis where the data is from.
+         */
+        getDimensionDataSourceString(dimension: ChartSeriesDimension): string;
+
+        /**
+         * Gets the data source type of the chart series.
+         * @param dimension The dimension of the axis where the data is from.
+         */
+        getDimensionDataSourceType(
+            dimension: ChartSeriesDimension
+        ): ChartDataSourceType;
 
         /**
          * Gets the values from a single dimension of the chart series. These could be either category values or data values, depending on the dimension specified and how the data is mapped for the chart series.
@@ -4980,6 +5215,86 @@ declare namespace ExcelScript {
     }
 
     /**
+     * Represents the data table object of a chart.
+     */
+    interface ChartDataTable {
+        /**
+         * Represents the format of a chart data table, which includes fill, font, and border format.
+         */
+        getFormat(): ChartDataTableFormat;
+
+        /**
+         * Specifies whether to display the horizontal border of the data table.
+         */
+        getShowHorizontalBorder(): boolean;
+
+        /**
+         * Specifies whether to display the horizontal border of the data table.
+         */
+        setShowHorizontalBorder(showHorizontalBorder: boolean): void;
+
+        /**
+         * Specifies whether to show the legend key of the data table.
+         */
+        getShowLegendKey(): boolean;
+
+        /**
+         * Specifies whether to show the legend key of the data table.
+         */
+        setShowLegendKey(showLegendKey: boolean): void;
+
+        /**
+         * Specifies whether to display the outline border of the data table.
+         */
+        getShowOutlineBorder(): boolean;
+
+        /**
+         * Specifies whether to display the outline border of the data table.
+         */
+        setShowOutlineBorder(showOutlineBorder: boolean): void;
+
+        /**
+         * Specifies whether to display the vertical border of the data table.
+         */
+        getShowVerticalBorder(): boolean;
+
+        /**
+         * Specifies whether to display the vertical border of the data table.
+         */
+        setShowVerticalBorder(showVerticalBorder: boolean): void;
+
+        /**
+         * Specifies whether to show the data table of the chart.
+         */
+        getVisible(): boolean;
+
+        /**
+         * Specifies whether to show the data table of the chart.
+         */
+        setVisible(visible: boolean): void;
+    }
+
+    /**
+     * Represents the format of a chart data table.
+     */
+    interface ChartDataTableFormat {
+        /**
+         * Represents the border format of chart data table, which includes color, line style, and weight.
+         */
+        getBorder(): ChartBorder;
+
+        /**
+         * Represents the fill format of an object, which includes background formatting information.
+         */
+        getFill(): ChartFill;
+
+        /**
+         * Represents the font attributes (such as font name, font size, and color) for the current object.
+         */
+        getFont(): ChartFont;
+    }
+
+    /**
      * This object represents the attributes for a chart's error bars.
      */
     interface ChartErrorBars {
@@ -5434,6 +5749,11 @@ declare namespace ExcelScript {
          * Clears the fill color of a chart element.
          */
         clear(): void;
+
+        /**
+         * Gets the uniform color fill formatting of a chart element.
+         */
+        getSolidColor(): string;
 
         /**
          * Sets the fill formatting of a chart element to a uniform color.
@@ -6283,6 +6603,14 @@ declare namespace ExcelScript {
             columnIndex?: number,
             criteria?: FilterCriteria
         ): void;
+
+        /**
+         * Clears the column filter criteria of the AutoFilter.
+         * @param columnIndex The zero-based column index, which represents which column filter needs to be cleared.
+         * If the index value is not supported (for example, if the value is a negative number, or if the value is greater than the number of available columns in the range),
+         * then an `InvalidArgument` error will be thrown.
+         */
+        clearColumnCriteria(columnIndex: number): void;
 
         /**
          * Clears the filter criteria and sort state of the AutoFilter.
@@ -7616,7 +7944,7 @@ declare namespace ExcelScript {
     }
 
     /**
-     * Represents the the preset criteria conditional format such as above average, below average, unique values, contains blank, nonblank, error, and noerror.
+     * Represents the preset criteria conditional format such as above average, below average, unique values, contains blank, nonblank, error, and noerror.
      */
     interface PresetCriteriaConditionalFormat {
         /**
@@ -7690,12 +8018,14 @@ declare namespace ExcelScript {
         getFont(): ConditionalRangeFont;
 
         /**
-         * Represents Excel's number format code for the given range. Cleared if `null` is passed in.
+         * Represents Excel's number format code for the given range.
+         * Cleared if `null` is passed in.
          */
         getNumberFormat(): string;
 
         /**
-         * Represents Excel's number format code for the given range. Cleared if `null` is passed in.
+         * Represents Excel's number format code for the given range.
+         * Cleared if `null` is passed in.
          */
         setNumberFormat(numberFormat: string): void;
 
@@ -8081,12 +8411,12 @@ declare namespace ExcelScript {
      */
     interface TableStyle {
         /**
-         * Gets the name of the table style.
+         * Specifies the name of the table style.
          */
         getName(): string;
 
         /**
-         * Gets the name of the table style.
+         * Specifies the name of the table style.
          */
         setName(name: string): void;
 
@@ -8111,12 +8441,12 @@ declare namespace ExcelScript {
      */
     interface PivotTableStyle {
         /**
-         * Gets the name of the PivotTable style.
+         * Specifies the name of the PivotTable style.
          */
         getName(): string;
 
         /**
-         * Gets the name of the PivotTable style.
+         * Specifies the name of the PivotTable style.
          */
         setName(name: string): void;
 
@@ -8141,12 +8471,12 @@ declare namespace ExcelScript {
      */
     interface SlicerStyle {
         /**
-         * Gets the name of the slicer style.
+         * Specifies the name of the slicer style.
          */
         getName(): string;
 
         /**
-         * Gets the name of the slicer style.
+         * Specifies the name of the slicer style.
          */
         setName(name: string): void;
 
@@ -8171,12 +8501,12 @@ declare namespace ExcelScript {
      */
     interface TimelineStyle {
         /**
-         * Gets the name of the timeline style.
+         * Specifies the name of the timeline style.
          */
         getName(): string;
 
         /**
-         * Gets the name of the timeline style.
+         * Specifies the name of the timeline style.
          */
         setName(name: string): void;
 
@@ -8676,9 +9006,10 @@ declare namespace ExcelScript {
 
         /**
          * Returns a comment reply identified by its ID.
+         * If the comment reply object does not exist, then this method returns `undefined`.
          * @param commentReplyId The identifier for the comment reply.
          */
-        getCommentReply(commentReplyId: string): CommentReply;
+        getCommentReply(commentReplyId: string): CommentReply | undefined;
     }
 
     /**
@@ -9085,9 +9416,10 @@ declare namespace ExcelScript {
 
         /**
          * Gets a shape using its name or ID.
+         * If the shape object does not exist, then this method returns `undefined`.
          * @param key The name or ID of the shape to be retrieved.
          */
-        getShape(key: string): Shape;
+        getShape(key: string): Shape | undefined;
     }
 
     /**
@@ -9777,6 +10109,16 @@ declare namespace ExcelScript {
     //
 
     /**
+     * The interface used to construct optional fields of the `AllowEditRange` object.
+     */
+    interface AllowEditRangeOptions {
+        /**
+         * The password associated with the `AllowEditRange`.
+         */
+        password?: string;
+    }
+
+    /**
      * Configurable template for a date filter to apply to a PivotField.
      * The `condition` defines what criteria need to be set in order for the filter to operate.
      */
@@ -10347,7 +10689,7 @@ declare namespace ExcelScript {
         date: string;
 
         /**
-         * How specific the date should be used to keep data. For example, if the date is 2005-04-02 and the specifity is set to "month", the filter operation will keep all rows with a date in the month of April 2005.
+         * How specific the date should be used to keep data. For example, if the date is 2005-04-02 and the specificity is set to "month", the filter operation will keep all rows with a date in the month of April 2005.
          */
         specificity: FilterDatetimeSpecificity;
     }
@@ -10682,6 +11024,66 @@ declare namespace ExcelScript {
     //
     // Enum
     //
+
+    /**
+     * An enum that specifies the query load to destination.
+     */
+    enum LoadToType {
+        /**
+         * Load to connection only.
+         */
+        connectionOnly,
+
+        /**
+         * Load to a table.
+         */
+        table,
+
+        /**
+         * Load to PivotTable.
+         */
+        pivotTable,
+
+        /**
+         * Load to PivotChart.
+         */
+        pivotChart,
+    }
+
+    /**
+     * An enum that specifies the query load error message.
+     */
+    enum QueryError {
+        /**
+         * Unknown error.
+         */
+        unknown,
+
+        /**
+         * No error.
+         */
+        none,
+
+        /**
+         * Load to the worksheet failed.
+         */
+        failedLoadToWorksheet,
+
+        /**
+         * Load to the data model failed.
+         */
+        failedLoadToDataModel,
+
+        /**
+         * Download failed.
+         */
+        failedDownload,
+
+        /**
+         * Download did not complete.
+         */
+        failedToCompleteDownload,
+    }
 
     /**
      * Represents the refresh mode of the workbook links.
@@ -11184,7 +11586,7 @@ declare namespace ExcelScript {
     }
 
     /**
-     * Aggregation function for the DataPivotField.
+     * Aggregation function for the `DataPivotHierarchy`.
      */
     enum AggregationFunction {
         /**
@@ -11254,7 +11656,7 @@ declare namespace ExcelScript {
     }
 
     /**
-     * The ShowAs calculation enum for the DataPivotField.
+     * The ShowAs calculation function for the DataPivotField.
      */
     enum ShowAsCalculation {
         /**
@@ -11791,6 +12193,19 @@ declare namespace ExcelScript {
         columns,
 
         rows,
+    }
+
+    /**
+     * Specifies whether the series data range is local range, external range, list, or unknown.
+     */
+    enum ChartDataSourceType {
+        localRange,
+
+        externalRange,
+
+        list,
+
+        unknown,
     }
 
     /**

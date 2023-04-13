@@ -39,18 +39,20 @@ methods:
     uid: 'ExcelScript!ExcelScript.ShapeGroup#getShape:member(1)'
     package: ExcelScript!
     fullName: getShape(key)
-    summary: Gets a shape using its name or ID.
+    summary: >-
+      Gets a shape using its name or ID. If the shape object does not exist, then this method returns `undefined`<!--
+      -->.
     remarks: ''
     isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getShape(key: string): Shape;'
+      content: 'getShape(key: string): Shape | undefined;'
       parameters:
         - id: key
           description: The name or ID of the shape to be retrieved.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" /> | undefined'
         description: ''
   - name: getShapes()
     uid: 'ExcelScript!ExcelScript.ShapeGroup#getShapes:member(1)'
