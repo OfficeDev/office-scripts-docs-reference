@@ -169,6 +169,45 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ChartDataLabels:interface" />'
         description: ''
+  - name: getDimensionDataSourceString(dimension)
+    uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceString:member(1)'
+    package: ExcelScript!
+    fullName: getDimensionDataSourceString(dimension)
+    summary: >-
+      Gets the string representation of the data source of the chart series.The string representation could be
+      information such as a cell address.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDimensionDataSourceString(dimension: ChartSeriesDimension): string;'
+      parameters:
+        - id: dimension
+          description: The dimension of the axis where the data is from.
+          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />'
+      return:
+        type: string
+        description: ''
+  - name: getDimensionDataSourceType(dimension)
+    uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceType:member(1)'
+    package: ExcelScript!
+    fullName: getDimensionDataSourceType(dimension)
+    summary: Gets the data source type of the chart series.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getDimensionDataSourceType(
+                    dimension: ChartSeriesDimension
+                ): ChartDataSourceType;
+      parameters:
+        - id: dimension
+          description: The dimension of the axis where the data is from.
+          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.ChartDataSourceType:enum" />'
+        description: ''
   - name: getDimensionValues(dimension)
     uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionValues:member(1)'
     package: ExcelScript!
