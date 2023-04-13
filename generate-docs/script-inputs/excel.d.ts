@@ -1424,6 +1424,20 @@ declare namespace ExcelScript {
         getAllowEditRanges(): AllowEditRange[];
 
         /**
+         * Adds an `AllowEditRange` object to the worksheet.
+         * Worksheet protection must be disabled or paused for this method to work properly.
+         * If worksheet protection is enabled and not paused, then this method throws an `AccessDenied` error and the add operation fails.
+         * @param title The title string of the `AllowEditRange` object to be added.
+         * @param rangeAddress The range address of the `AllowEditRange` object to be added.
+         * @param options Additional options to be added to the `AllowEditRange` object, such as the password.
+         */
+        addAllowEditRange(
+            title: string,
+            rangeAddress: string,
+            options?: AllowEditRangeOptions
+        ): void;
+
+        /**
          * Gets the `AllowEditRange` object by its title.
          * @param key The title of the `AllowEditRange`.
          */
@@ -2941,7 +2955,7 @@ declare namespace ExcelScript {
         clear(): void;
 
         /**
-         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method will return `null`.
+         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method returns `null`.
          */
         getInvalidCells(): RangeAreas;
     }
@@ -3626,6 +3640,11 @@ declare namespace ExcelScript {
          * Deletes the chart object.
          */
         delete(): void;
+
+        /**
+         * Gets the data table on the chart. If the chart doesn't allow a data table, then this method returns `undefined`.
+         */
+        getDataTable(): ChartDataTable;
 
         /**
          * Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions.
@@ -5191,6 +5210,86 @@ declare namespace ExcelScript {
 
         /**
          * Represents the font attributes (such as font name, font size, and color) for a chart data label.
+         */
+        getFont(): ChartFont;
+    }
+
+    /**
+     * Represents the data table object of a chart.
+     */
+    interface ChartDataTable {
+        /**
+         * Represents the format of a chart data table, which includes fill, font, and border format.
+         */
+        getFormat(): ChartDataTableFormat;
+
+        /**
+         * Specifies whether to display the horizontal border of the data table.
+         */
+        getShowHorizontalBorder(): boolean;
+
+        /**
+         * Specifies whether to display the horizontal border of the data table.
+         */
+        setShowHorizontalBorder(showHorizontalBorder: boolean): void;
+
+        /**
+         * Specifies whether to show the legend key of the data table.
+         */
+        getShowLegendKey(): boolean;
+
+        /**
+         * Specifies whether to show the legend key of the data table.
+         */
+        setShowLegendKey(showLegendKey: boolean): void;
+
+        /**
+         * Specifies whether to display the outline border of the data table.
+         */
+        getShowOutlineBorder(): boolean;
+
+        /**
+         * Specifies whether to display the outline border of the data table.
+         */
+        setShowOutlineBorder(showOutlineBorder: boolean): void;
+
+        /**
+         * Specifies whether to display the vertical border of the data table.
+         */
+        getShowVerticalBorder(): boolean;
+
+        /**
+         * Specifies whether to display the vertical border of the data table.
+         */
+        setShowVerticalBorder(showVerticalBorder: boolean): void;
+
+        /**
+         * Specifies whether to show the data table of the chart.
+         */
+        getVisible(): boolean;
+
+        /**
+         * Specifies whether to show the data table of the chart.
+         */
+        setVisible(visible: boolean): void;
+    }
+
+    /**
+     * Represents the format of a chart data table.
+     */
+    interface ChartDataTableFormat {
+        /**
+         * Represents the border format of chart data table, which includes color, line style, and weight.
+         */
+        getBorder(): ChartBorder;
+
+        /**
+         * Represents the fill format of an object, which includes background formatting information.
+         */
+        getFill(): ChartFill;
+
+        /**
+         * Represents the font attributes (such as font name, font size, and color) for the current object.
          */
         getFont(): ChartFont;
     }
@@ -10008,6 +10107,16 @@ declare namespace ExcelScript {
     //
     // Interface
     //
+
+    /**
+     * The interface used to construct optional fields of the `AllowEditRange` object.
+     */
+    interface AllowEditRangeOptions {
+        /**
+         * The password associated with the `AllowEditRange`.
+         */
+        password?: string;
+    }
 
     /**
      * Configurable template for a date filter to apply to a PivotField.

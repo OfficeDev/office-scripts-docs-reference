@@ -9,6 +9,37 @@ isPreview: false
 isDeprecated: false
 type: interface
 methods:
+  - name: 'addAllowEditRange(title, rangeAddress, options)'
+    uid: 'ExcelScript!ExcelScript.WorksheetProtection#addAllowEditRange:member(1)'
+    package: ExcelScript!
+    fullName: 'addAllowEditRange(title, rangeAddress, options)'
+    summary: >-
+      Adds an `AllowEditRange` object to the worksheet. Worksheet protection must be disabled or paused for this method
+      to work properly. If worksheet protection is enabled and not paused, then this method throws an `AccessDenied`
+      error and the add operation fails.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addAllowEditRange(
+                    title: string,
+                    rangeAddress: string,
+                    options?: AllowEditRangeOptions
+                ): void;
+      parameters:
+        - id: title
+          description: The title string of the `AllowEditRange` object to be added.
+          type: string
+        - id: rangeAddress
+          description: The range address of the `AllowEditRange` object to be added.
+          type: string
+        - id: options
+          description: 'Additional options to be added to the `AllowEditRange` object, such as the password.'
+          type: '<xref uid="ExcelScript!ExcelScript.AllowEditRangeOptions:interface" />'
+      return:
+        type: void
+        description: ''
   - name: checkPassword(password)
     uid: 'ExcelScript!ExcelScript.WorksheetProtection#checkPassword:member(1)'
     package: ExcelScript!
