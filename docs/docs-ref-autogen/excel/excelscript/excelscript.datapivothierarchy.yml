@@ -4,7 +4,29 @@ uid: 'ExcelScript!ExcelScript.DataPivotHierarchy:interface'
 package: ExcelScript!
 fullName: ExcelScript.DataPivotHierarchy
 summary: Represents the Excel DataPivotHierarchy.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   *  This sample sorts the rows of a PivotTable.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get an existing PivotTable.
+    const pivotTable = workbook.getPivotTable("Farm Sales");
+
+    // Get the data hierarchy to use as the basis of the sort.
+    const valueFieldToSortOn: ExcelScript.DataPivotHierarchy = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+    // Get the row to sort.
+    const rowToSort: ExcelScript.RowColumnPivotHierarchy = pivotTable.getRowHierarchy("Farm");
+
+    // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+    rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
