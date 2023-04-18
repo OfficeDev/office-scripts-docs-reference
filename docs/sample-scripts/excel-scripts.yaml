@@ -1536,6 +1536,24 @@
       };
       dataBarFormat.setUpperBoundRule(upperBound);
     }
+'ExcelScript.DataPivotHierarchy:interface':
+  - |-
+    /**
+     *  This sample sorts the rows of a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get an existing PivotTable.
+      const pivotTable = workbook.getPivotTable("Farm Sales");
+
+      // Get the data hierarchy to use as the basis of the sort.
+      const valueFieldToSortOn: ExcelScript.DataPivotHierarchy = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+      // Get the row to sort.
+      const rowToSort: ExcelScript.RowColumnPivotHierarchy = pivotTable.getRowHierarchy("Farm");
+
+      // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+      rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+    }
 'ExcelScript.DataPivotHierarchy#setSummarizeBy:member(1)':
   - |-
     /**
@@ -2527,6 +2545,24 @@
       // Clear the value filter (if there is one) from the field.
       typeField.clearFilter(ExcelScript.PivotFilterType.value);
     }
+'ExcelScript.PivotField#sortByValues:member(1)':
+  - |-
+    /**
+     * This sample sorts the rows of a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get an existing PivotTable.
+      const pivotTable = workbook.getPivotTable("Farm Sales");
+
+      // Get the data hierarchy to use as the basis of the sort.
+      const valueFieldToSortOn = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+      // Get the row to sort.
+      const rowToSort = pivotTable.getRowHierarchy("Farm");
+
+      // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+      rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+    }
 'ExcelScript.PivotFilters#dateFilter:member':
   - |-
     /**
@@ -2900,6 +2936,24 @@
 
       // Set the layout type to "tabular".
       layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
+    }
+'ExcelScript.PivotTable#getRowHierarchy:member(1)':
+  - |-
+    /**
+     * This sample sorts the rows of a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get an existing PivotTable.
+      const pivotTable = workbook.getPivotTable("Farm Sales");
+
+      // Get the data hierarchy to use as the basis of the sort.
+      const valueFieldToSortOn = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+      // Get the row to sort.
+      const rowToSort = pivotTable.getRowHierarchy("Farm");
+
+      // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+      rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
     }
 'ExcelScript.PivotValueFilter:interface':
   - |-
@@ -4299,6 +4353,24 @@
 
       // Replace all instances of "NA" (case-sensitive) with "North America".
       usedRange.replaceAll("NA", "North America", criteria);
+    }
+'ExcelScript.RowColumnPivotHierarchy:interface':
+  - |-
+    /**
+     *  This sample sorts the rows of a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get an existing PivotTable.
+      const pivotTable = workbook.getPivotTable("Farm Sales");
+
+      // Get the data hierarchy to use as the basis of the sort.
+      const valueFieldToSortOn: ExcelScript.DataPivotHierarchy = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+      // Get the row to sort.
+      const rowToSort: ExcelScript.RowColumnPivotHierarchy = pivotTable.getRowHierarchy("Farm");
+
+      // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+      rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
     }
 'ExcelScript.SearchCriteria:interface':
   - |-
