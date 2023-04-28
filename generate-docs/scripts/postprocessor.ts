@@ -80,13 +80,13 @@ tryCatch(async () => {
                         .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
                         fsx.writeFileSync(
                             scriptFolder + '/' + interfaceYml,
-                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/```(javascript)/g, "```TypeScript").replace(/^\s*example: \[\]\s*$/gm, "")
+                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/^\s*example: \[\]\s*$/gm, "")
                         );
                     });
                 } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
                     fsx.writeFileSync(
                         hostFolder + '/' + subfilename,
-                        fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/```(javascript)/g, "```TypeScript").replace(/^\s*example: \[\]\s*$/gm, "")
+                        fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/^\s*example: \[\]\s*$/gm, "")
                     );
                 }
         });
