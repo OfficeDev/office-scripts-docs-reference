@@ -62,7 +62,25 @@ methods:
       content: 'delete(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script deletes all the shapes on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the collection of shapes on the currently selected worksheet.
+            const shapes = workbook.getActiveWorksheet().getShapes();
+
+            // Remove each shape.
+            shapes.forEach(shape =>{
+              shape.delete();
+            });
+          }
+          ```
   - name: getAltTextDescription()
     uid: 'ExcelScript!ExcelScript.Shape#getAltTextDescription:member(1)'
     package: ExcelScript!
