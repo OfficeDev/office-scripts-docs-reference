@@ -1483,6 +1483,28 @@
       // Add the comment.
       currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
     }
+'ExcelScript.CultureInfo:interface':
+  - |-
+    /**
+     * This script sets the value of a cell to a date string for January 2nd, 2023.
+     * It writes the day or month first in the string based on system settings.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Get the date format.
+      const cultureInfo : ExcelScript.CultureInfo = workbook.getApplication().getCultureInfo();
+      const systemDateTimeFormat : ExcelScript.DatetimeFormatInfo = cultureInfo.getDatetimeFormat();
+      const shortDatePattern : string = systemDateTimeFormat.getShortDatePattern();
+
+      // Determine if the date should start with the month or day.
+      if (shortDatePattern.startsWith("m")) {
+        cell.setValue("1/2/2023");
+      } else {
+        cell.setValue("2/1/2023");
+      }
+    }
 'ExcelScript.CustomConditionalFormat:interface':
   - |-
     /**
@@ -1788,6 +1810,28 @@
           condition: ExcelScript.DateFilterCondition.thisMonth
         }
       });
+    }
+'ExcelScript.DatetimeFormatInfo:interface':
+  - |-
+    /**
+     * This script sets the value of a cell to a date string for January 2nd, 2023.
+     * It writes the day or month first in the string based on system settings.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Get the date format.
+      const cultureInfo : ExcelScript.CultureInfo = workbook.getApplication().getCultureInfo();
+      const systemDateTimeFormat : ExcelScript.DatetimeFormatInfo = cultureInfo.getDatetimeFormat();
+      const shortDatePattern : string = systemDateTimeFormat.getShortDatePattern();
+
+      // Determine if the date should start with the month or day.
+      if (shortDatePattern.startsWith("m")) {
+        cell.setValue("1/2/2023");
+      } else {
+        cell.setValue("2/1/2023");
+      }
     }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
@@ -4244,6 +4288,26 @@
       // Adjust the font settings for that cell.clear
       cell.getFormat().getFont().setSize(16);
     }
+'ExcelScript.RangeHyperlink:interface':
+  - |-
+    /**
+     * This script puts a link to a webpage in a cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Create a link to a webpage.
+      const sampleHyperlink : ExcelScript.RangeHyperlink = {
+        address: "https://learn.microsoft.com//office/dev/scripts/resources/samples/table-of-contents",
+        screenTip: "Sample: Create a workbook table of contents",
+        textToDisplay: "Learn how to make a workbook table of contents"
+      }
+
+      // Put the link in the cell and format the width to fit.
+      cell.setHyperlink(sampleHyperlink);
+      cell.getFormat().autofitColumns();
+    }
 'ExcelScript.RangeValueType:enum':
   - |-
     /**
@@ -4805,6 +4869,25 @@
 
       // Append an empty column to the table with the header "Total". 
       table.addColumn(-1, null, "Total");
+    }
+'ExcelScript.Table:interface':
+  - |-
+    /**
+     * This script creates a table from the current sheet's used range.
+     * It then adds a total row to the table with the SUM of the last column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the used range of the current worksheet.
+        const sheet = workbook.getActiveWorksheet();
+        const range = sheet.getUsedRange();
+
+        // Create a table that has headers from that range.
+        const table = sheet.addTable(range, true);
+
+        // Have the table display the SUM for the last column.
+        table.setShowTotals(true);
+        const lastColumn = table.getColumn(table.getColumns().length);
+        lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
     }
 'ExcelScript.Table#getColumns:member(1)':
   - |-
