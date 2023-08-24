@@ -32,6 +32,7 @@ class CoverageRating {
     type: ApiType;
     descriptionRating: DescriptionRating;
     hasExample: boolean;
+    isDeprecated: boolean;
 }
 
 /**
@@ -46,7 +47,8 @@ class ClassCoverageRating {
         this.classRating = {
             type: ApiType.Class,
             descriptionRating: DescriptionRating.Missing,
-            hasExample: false
+            hasExample: false,
+            isDeprecated: false
         };
     }
 }
@@ -151,11 +153,12 @@ function rateClass(classYml: ApiYaml) : ClassCoverageRating {
     ymlCoverage.classRating = rateClassDescription(classYml);
 
     classYml.fields?.forEach((field) => {
-        // Note: examples in enum fields are intentionally not supported.
+        // Note: Examples in enum fields are intentionally not supported.
         ymlCoverage.apiRatings.set(field.name, {
             type: ApiType.EnumField,
             descriptionRating: rateDescriptionString(field.summary),
-            hasExample: false
+            hasExample: false,
+            isDeprecated: false
         });
     });
 
@@ -164,8 +167,7 @@ function rateClass(classYml: ApiYaml) : ClassCoverageRating {
     });
 
     classYml.methods?.forEach((field) => {
-        let name = field.name.indexOf(",") < 0 ? field.name : field.name.substring(0, field.name.indexOf(","));
-        ymlCoverage.apiRatings.set(name, rateFieldDescription(field, true));
+        ymlCoverage.apiRatings.set(field.name, rateFieldDescription(field, true));
     });
 
     return ymlCoverage;
@@ -175,22 +177,25 @@ function rateClassDescription(classYml: ApiYaml) : CoverageRating {
     let rating : CoverageRating;
     let type: ApiType = classYml.type === "interface" || classYml.type === "class" ? ApiType.Class : ApiType.Enum;
     let indexOfExample = classYml.remarks?.indexOf("#### Examples");
-    if (indexOfExample >= 0) {
+    if (indexOfExample > 0) {
         rating = {
             type: type,
             descriptionRating: rateDescriptionString((classYml.summary + " " + classYml.remarks.substring(0, indexOfExample)).trim()),
-            hasExample: true
+            hasExample: true,
+            isDeprecated: classYml.isDeprecated
         }
     } else {
         rating = {
             type: type,
             descriptionRating: rateDescriptionString((classYml.summary + " " + classYml.remarks).trim()),
-            hasExample: false
+            hasExample: false,
+            isDeprecated: classYml.isDeprecated
         }
     }
 
     return rating;
 }
+
 
 function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml, isMethod: boolean) : CoverageRating {
     let rating : CoverageRating;
@@ -201,15 +206,17 @@ function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml, isMetho
 
     if (indexOfExample >= 0) {
         rating = {
-            type: isMethod ? ApiType.Method : ApiType.Property,
+            type: isMethod ? ApiType.Method: ApiType.Property,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks.substring(0, indexOfExample)).trim()),
-            hasExample: true
+            hasExample: true,
+            isDeprecated: fieldYml.isDeprecated
         }
     } else {
         rating = {
-            type: isMethod ? ApiType.Method : ApiType.Property,
+            type: isMethod ? ApiType.Method: ApiType.Property,
             descriptionRating: rateDescriptionString((fieldYml.summary + " " + fieldYml.remarks).trim()),
-            hasExample: false
+            hasExample: false,
+            isDeprecated: fieldYml.isDeprecated
         }
     }
 
@@ -225,6 +232,13 @@ function rateFieldDescription(fieldYml: ApiPropertyYaml | ApiMethodYaml, isMetho
     return rating;
 }
 
+/**
+ * Apply a rudimentary system for descriptions.
+ * Missing: No description.
+ * Poor: 5 words or fewer - Implies a terse description that's unlikely to be a complete sentence.
+ * Fine: A single sentence of notable length. Enough to describe the field, but likely missing the finer points.
+ * Great: Multiple sentences, which implies notes about usage and edge cases.
+ */
 function rateDescriptionString(description: string) : DescriptionRating{
     if (description === "") {
         return DescriptionRating.Missing;
@@ -232,7 +246,7 @@ function rateDescriptionString(description: string) : DescriptionRating{
 
     let sentenceCount = description.split(". ").length;
     let wordCount = description.split(" ").length;
-    if (wordCount < 10) {
+    if (wordCount <= 5) {
         return DescriptionRating.Poor;
     } else if (sentenceCount < 2) {
         return DescriptionRating.Fine;
@@ -272,9 +286,9 @@ function averageDescriptionRatings(ratings: DescriptionRating[]) : DescriptionRa
 function convertToCsv(apiCoverage: Map<string, ClassCoverageRating>) : string {
     let csvString = "Class,Field,Type,Description Rating,Has Example?\n";
     apiCoverage.forEach((coverage, className) => {
-        csvString += `${className},N/A,${coverage.classRating.type},${coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
+        csvString += `${className},N/A,${coverage.classRating.type},${coverage.classRating.isDeprecated ? "Deprecated" : coverage.classRating.descriptionRating},${coverage.classRating.hasExample}\n`;
         coverage.apiRatings.forEach((fieldCoverage, fieldName) => {
-            csvString += `${className},${fieldName},${fieldCoverage.type},${fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
+            csvString += `${className},"${fieldName}",${fieldCoverage.type},${fieldCoverage.isDeprecated ? "Deprecated" : fieldCoverage.descriptionRating},${fieldCoverage.hasExample}\n`;
         });
     });
 
