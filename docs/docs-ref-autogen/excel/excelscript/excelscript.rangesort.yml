@@ -44,4 +44,28 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.SortMethod:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sorts the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the used range of the current worksheet.
+              const activeRange = workbook.getActiveWorksheet().getUsedRange();
+
+              // Sort the rows in ascending order based on the last column.
+              activeRange.getSort().apply(
+                  [{
+                      ascending: true,
+                      key: activeRange.getColumnCount() - 1
+                  }],
+                  false, /* Don't match case */
+                  true,  /* Treat the first row as a header row */
+                  ExcelScript.SortOrientation.rows
+              );
+          }
+          ```
