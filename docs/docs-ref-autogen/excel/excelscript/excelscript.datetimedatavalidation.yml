@@ -18,7 +18,7 @@ remarks: |-
       const selectedSheet = workbook.getActiveWorksheet();
       const range = selectedSheet.getRange("D2:D6");
 
-      // Set a validation rule to only only values that are dates in the year 2023.
+      // Set a validation rule to only allow values that are dates in the year 2023.
       let dataValidation = range.getDataValidation();
       const dateValidationRule: ExcelScript.DateTimeDataValidation = {
           formula1: "1/1/2023",

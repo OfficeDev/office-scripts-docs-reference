@@ -1821,7 +1821,7 @@
         const selectedSheet = workbook.getActiveWorksheet();
         const range = selectedSheet.getRange("D2:D6");
 
-        // Set a validation rule to only only values that are dates in the year 2023.
+        // Set a validation rule to only allow values that are dates in the year 2023.
         let dataValidation = range.getDataValidation();
         const dateValidationRule: ExcelScript.DateTimeDataValidation = {
             formula1: "1/1/2023",
@@ -1878,7 +1878,7 @@
       // Get current date.
       const currentDate = new Date(Date.now());
 
-      // Write date using the system's separator character.
+      // Write the date using the system's separator character.
       cell.setValue(`${currentDate.getMonth()}${separator}${currentDate.getDate()}${separator}${currentDate.getFullYear()}`);
     }
 'ExcelScript.DeleteShiftDirection:enum':
@@ -4371,8 +4371,8 @@
                 ascending: true,
                 key: activeRange.getColumnCount() - 1
             }],
-            false, /* Don't match case */
-            true,  /* Treat the first row as a header row */
+            false, /* Don't match case. */
+            true,  /* Treat the first row as a header row. */
             ExcelScript.SortOrientation.rows
         );
     }
@@ -4843,8 +4843,8 @@
                 ascending: true,
                 key: activeRange.getColumnCount() - 1
             }],
-            false, /* Don't match case */
-            true,  /* Treat the first row as a header row */
+            false, /* Don't match case. */
+            true,  /* Treat the first row as a header rows. */
             ExcelScript.SortOrientation.rows
         );
     }
