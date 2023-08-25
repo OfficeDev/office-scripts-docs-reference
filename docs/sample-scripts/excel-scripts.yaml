@@ -1833,6 +1833,27 @@
         cell.setValue("2/1/2023");
       }
     }
+'ExcelScript.DatetimeFormatInfo#getDateSeparator:member(1)':
+  - |-
+    /**
+     * This script writes the current date, month, and year.
+     * It uses the system's date separator character.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+      // Get the date separation string.
+      const cultureInfo = workbook.getApplication().getCultureInfo();
+      const systemDateTimeFormat = cultureInfo.getDatetimeFormat();
+      const separator = systemDateTimeFormat.getDateSeparator();
+
+      // Get current date.
+      const currentDate = new Date(Date.now());
+
+      // Write date using the system's separator character.
+      cell.setValue(`${currentDate.getMonth()}${separator}${currentDate.getDate()}${separator}${currentDate.getFullYear()}`);
+    }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
     /**
