@@ -4,7 +4,30 @@ uid: 'ExcelScript!ExcelScript.Table:interface'
 package: ExcelScript!
 fullName: ExcelScript.Table
 summary: Represents an Excel table.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a table from the current sheet's used range.
+   * It then adds a total row to the table with the SUM of the last column.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+      // Get the used range of the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getUsedRange();
+
+      // Create a table that has headers from that range.
+      const table = sheet.addTable(range, true);
+
+      // Have the table display the SUM for the last column.
+      table.setShowTotals(true);
+      const lastColumn = table.getColumn(table.getColumns().length);
+      lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

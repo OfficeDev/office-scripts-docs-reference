@@ -4,7 +4,33 @@ uid: 'ExcelScript!ExcelScript.DatetimeFormatInfo:interface'
 package: ExcelScript!
 fullName: ExcelScript.DatetimeFormatInfo
 summary: Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the value of a cell to a date string for January 2, 2023.
+   * It writes the day or month first in the string based on system settings.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first cell in the current worksheet.
+    const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+    // Get the date format.
+    const cultureInfo : ExcelScript.CultureInfo = workbook.getApplication().getCultureInfo();
+    const systemDateTimeFormat : ExcelScript.DatetimeFormatInfo = cultureInfo.getDatetimeFormat();
+    const shortDatePattern : string = systemDateTimeFormat.getShortDatePattern();
+
+    // Determine if the date should start with the month or day.
+    if (shortDatePattern.startsWith("m")) {
+      cell.setValue("1/2/2023");
+    } else {
+      cell.setValue("2/1/2023");
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
