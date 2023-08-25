@@ -4,7 +4,25 @@ uid: 'ExcelScript!ExcelScript.TextRange:interface'
 package: ExcelScript!
 fullName: ExcelScript.TextRange
 summary: 'Contains the text that is attached to a shape, in addition to properties and methods for manipulating the text.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds text to a shape.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Create a hexagon shape in the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const hexagon = sheet.addGeometricShape(ExcelScript.GeometricShapeType.hexagon);
+    
+    // Set the text of the shape.
+    const hexText: ExcelScript.TextRange = hexagon.getTextFrame().getTextRange();
+    hexText.setText("Forest");
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -56,7 +74,40 @@ methods:
       content: 'getText(): string;'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script writes all the text from the workbook's geometric shapes in a new worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a new worksheet.
+            const shapeTextSheet = workbook.addWorksheet("ShapeText");
+            let shapeTextValues: string[][] = [];
+
+            // Get the text from every geometric shape in every worksheet.
+            workbook.getWorksheets().forEach((sheet) => {
+              sheet.getShapes().forEach((shape) => {
+                if (shape.getType() === ExcelScript.ShapeType.geometricShape)
+                shapeTextValues.push([
+                  sheet.getName(),
+                  shape.getGeometricShapeType().toString(),
+                  shape.getTextFrame().getTextRange().getText()]);
+              });
+            });
+
+            // Add the text to the new worksheet.
+            const range = shapeTextSheet.getRangeByIndexes(
+              0,
+              0, 
+              shapeTextValues.length, 
+              shapeTextValues[0].length);
+            range.setValues(shapeTextValues);
+          }
+          ```
   - name: setText(text)
     uid: 'ExcelScript!ExcelScript.TextRange#setText:member(1)'
     package: ExcelScript!
