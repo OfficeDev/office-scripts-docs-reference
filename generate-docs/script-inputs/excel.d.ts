@@ -389,7 +389,7 @@ declare namespace ExcelScript {
         ): Comment;
 
         /**
-         * Gets the comment from the specified cell.
+         * Gets the comment from the specified cell. If there is no comment in the cell, an error is thrown.
          * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
         getCommentByCell(cellAddress: Range | string): Comment;
@@ -1061,7 +1061,7 @@ declare namespace ExcelScript {
         ): Comment;
 
         /**
-         * Gets the comment from the specified cell.
+         * Gets the comment from the specified cell. If there is no comment in the cell, an error is thrown.
          * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
         getCommentByCell(cellAddress: Range | string): Comment;
