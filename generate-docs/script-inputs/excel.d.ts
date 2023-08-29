@@ -1682,8 +1682,6 @@ declare namespace ExcelScript {
 
         /**
          * Represents the style of the current range.
-         * If the styles of the cells are inconsistent, `null` will be returned.
-         * For custom styles, the style name will be returned. For built-in styles, a string representing a value in the `BuiltInStyle` enum will be returned.
          */
         setPredefinedCellStyle(predefinedCellStyle: string): void;
 
@@ -2995,7 +2993,7 @@ declare namespace ExcelScript {
         getColumnWidth(): number;
 
         /**
-         * Specifies the width of all columns within the range. If the column widths are not uniform, `null` will be returned.
+         * Specifies the width of all columns within the range.
          */
         setColumnWidth(columnWidth: number): void;
 
@@ -3050,7 +3048,7 @@ declare namespace ExcelScript {
         getRowHeight(): number;
 
         /**
-         * The height of all rows in the range. If the row heights are not uniform, `null` will be returned.
+         * Specifies the height of all rows in the range.
          */
         setRowHeight(rowHeight: number): void;
 
@@ -3083,15 +3081,11 @@ declare namespace ExcelScript {
          * Returns `true` if the row height of the `Range` object equals the standard height of the sheet.
          * Returns `null` if the range contains more than one row and the rows aren't all the same height.
          * Returns `false` otherwise.
-         * Note: This property is only intended to be set to `true`. Setting it to `false` has no effect.
          */
         getUseStandardHeight(): boolean;
 
         /**
          * Determines if the row height of the `Range` object equals the standard height of the sheet.
-         * Returns `true` if the row height of the `Range` object equals the standard height of the sheet.
-         * Returns `null` if the range contains more than one row and the rows aren't all the same height.
-         * Returns `false` otherwise.
          * Note: This property is only intended to be set to `true`. Setting it to `false` has no effect.
          */
         setUseStandardHeight(useStandardHeight: boolean): void;
@@ -3101,15 +3095,11 @@ declare namespace ExcelScript {
          * Returns `true` if the column width of the `Range` object equals the standard width of the sheet.
          * Returns `null` if the range contains more than one column and the columns aren't all the same height.
          * Returns `false` otherwise.
-         * Note: This property is only intended to be set to `true`. Setting it to `false` has no effect.
          */
         getUseStandardWidth(): boolean;
 
         /**
          * Specifies if the column width of the `Range` object equals the standard width of the sheet.
-         * Returns `true` if the column width of the `Range` object equals the standard width of the sheet.
-         * Returns `null` if the range contains more than one column and the columns aren't all the same height.
-         * Returns `false` otherwise.
          * Note: This property is only intended to be set to `true`. Setting it to `false` has no effect.
          */
         setUseStandardWidth(useStandardWidth: boolean): void;
@@ -4073,12 +4063,12 @@ declare namespace ExcelScript {
         setName(name: string): void;
 
         /**
-         * Specifies how bars and columns are positioned. Can be a value between –100 and 100. Applies only to 2-D bar and 2-D column charts.
+         * Specifies how bars and columns are positioned. Can be a value between -100 and 100. Applies only to 2-D bar and 2-D column charts.
          */
         getOverlap(): number;
 
         /**
-         * Specifies how bars and columns are positioned. Can be a value between –100 and 100. Applies only to 2-D bar and 2-D column charts.
+         * Specifies how bars and columns are positioned. Can be a value between -100 and 100. Applies only to 2-D bar and 2-D column charts.
          */
         setOverlap(overlap: number): void;
 
@@ -6915,12 +6905,12 @@ declare namespace ExcelScript {
      */
     interface PivotLayout {
         /**
-         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved.
+         * Specifies if formatting will be automatically formatted when it's refreshed or when fields are moved.
          */
         getAutoFormat(): boolean;
 
         /**
-         * Specifies if formatting will be automatically formatted when it’s refreshed or when fields are moved.
+         * Specifies if formatting will be automatically formatted when it's refreshed or when fields are moved.
          */
         setAutoFormat(autoFormat: boolean): void;
 
