@@ -13866,7 +13866,7 @@ declare namespace ExcelScript {
         fillSeries,
 
         /**
-         * Populates the adjacent cells with the selected formulas.
+         * Populates the adjacent cells with the selected formats.
          */
         fillFormats,
 
