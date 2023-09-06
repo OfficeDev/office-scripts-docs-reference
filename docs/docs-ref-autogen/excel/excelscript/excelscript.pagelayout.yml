@@ -6,7 +6,31 @@ fullName: ExcelScript.PageLayout
 summary: >-
   Represents layout and print settings that are not dependent on any printer-specific implementation. These settings
   include margins, orientation, page numbering, title rows, and print area.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets some basic page layout settings for printing.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Go to each worksheet so the print settings are consistent.
+    workbook.getWorksheets().forEach((sheet) => {
+      const pageLayout : ExcelScript.PageLayout = sheet.getPageLayout();
+
+      // Turn off draft mode so images are printed.
+      pageLayout.setDraftMode(false);
+      
+      // Print on 8.5"x11" paper.
+      pageLayout.setPaperSize(ExcelScript.PaperType.letter);
+
+      // Print every page with a landscape orientation.
+      pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -406,7 +430,25 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script turns off the print setting for draft mode.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Go to each worksheet so the print settings are consistent.
+            workbook.getWorksheets().forEach((sheet) => {
+              const pageLayout = sheet.getPageLayout();
+
+              // Turn off draft mode so images are printed.
+              pageLayout.setDraftMode(false);
+            });
+          }
+          ```
   - name: setFirstPageNumber(firstPageNumber)
     uid: 'ExcelScript!ExcelScript.PageLayout#setFirstPageNumber:member(1)'
     package: ExcelScript!
@@ -491,7 +533,25 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PageOrientation:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the printing orientation for the entire workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Go to each worksheet so the print settings are consistent.
+            workbook.getWorksheets().forEach((sheet) => {
+              const pageLayout = sheet.getPageLayout();
+
+              // Print every page with a landscape orientation.
+              pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+            });
+          }
+          ```
   - name: setPaperSize(paperSize)
     uid: 'ExcelScript!ExcelScript.PageLayout#setPaperSize:member(1)'
     package: ExcelScript!
@@ -508,7 +568,24 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PaperType:enum" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the page size for printing.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Go to each worksheet so the print settings are consistent.
+            workbook.getWorksheets().forEach((sheet) => {
+              const pageLayout = sheet.getPageLayout();
+              // Print on 8.5"x11" paper.
+              pageLayout.setPaperSize(ExcelScript.PaperType.letter);
+            });
+          }
+          ```
   - name: setPrintArea(printArea)
     uid: 'ExcelScript!ExcelScript.PageLayout#setPrintArea:member(1)'
     package: ExcelScript!
