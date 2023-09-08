@@ -1195,7 +1195,25 @@ methods:
       content: 'getPageLayout(): PageLayout;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PageLayout:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the printing orientation for the entire workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Go to each worksheet so the print settings are consistent.
+            workbook.getWorksheets().forEach((sheet) => {
+              const pageLayout = sheet.getPageLayout();
+
+              // Print every page with a landscape orientation.
+              pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+            });
+          }
+          ```
   - name: getPivotTable(name)
     uid: 'ExcelScript!ExcelScript.Worksheet#getPivotTable:member(1)'
     package: ExcelScript!

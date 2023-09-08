@@ -2483,6 +2483,67 @@
         }
       }); 
     }
+'ExcelScript.PageLayout:interface':
+  - |-
+    /**
+     * This script sets some basic page layout settings for printing.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout : ExcelScript.PageLayout = sheet.getPageLayout();
+
+        // Turn off draft mode so images are printed.
+        pageLayout.setDraftMode(false);
+        
+        // Print on 8.5"x11" paper.
+        pageLayout.setPaperSize(ExcelScript.PaperType.letter);
+
+        // Print every page with a landscape orientation.
+        pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+      });
+    }
+'ExcelScript.PageLayout#setDraftMode:member(1)':
+  - |-
+    /**
+     * This script turns off the print setting for draft mode.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+
+        // Turn off draft mode so images are printed.
+        pageLayout.setDraftMode(false);
+      });
+    }
+'ExcelScript.PageLayout#setOrientation:member(1)':
+  - |-
+    /**
+     * This script sets the printing orientation for the entire workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+
+        // Print every page with a landscape orientation.
+        pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+      });
+    }
+'ExcelScript.PageLayout#setPaperSize:member(1)':
+  - |-
+    /**
+     * This script sets the page size for printing.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+        // Print on 8.5"x11" paper.
+        pageLayout.setPaperSize(ExcelScript.PaperType.letter);
+      });
+    }
 'ExcelScript.PageLayout#setPrintComments:member(1)':
   - |-
     /**
@@ -2514,6 +2575,33 @@
 
         // Set the print order to over-then-down.
         layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
+      });
+    }
+'ExcelScript.PageOrientation:enum':
+  - |-
+    /**
+     * This script sets the printing orientation for the entire workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+
+        // Print every page with a landscape orientation.
+        pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+      });
+    }
+'ExcelScript.PaperType:enum':
+  - |-
+    /**
+     * This script sets the page size for printing.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+        // Print on 8.5"x11" paper.
+        pageLayout.setPaperSize(ExcelScript.PaperType.letter);
       });
     }
 'ExcelScript.PictureFormat:enum':
@@ -5689,6 +5777,20 @@
 
         // Log the array of worksheet names.
         console.log(worksheetNames);
+    }
+'ExcelScript.Worksheet#getPageLayout:member(1)':
+  - |-
+    /**
+     * This script sets the printing orientation for the entire workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Go to each worksheet so the print settings are consistent.
+      workbook.getWorksheets().forEach((sheet) => {
+        const pageLayout = sheet.getPageLayout();
+
+        // Print every page with a landscape orientation.
+        pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+      });
     }
 'ExcelScript.Worksheet#getProtection:member(1)':
   - |-
