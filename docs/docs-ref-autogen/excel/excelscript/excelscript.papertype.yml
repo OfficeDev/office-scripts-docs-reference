@@ -4,7 +4,24 @@ uid: 'ExcelScript!ExcelScript.PaperType:enum'
 package: ExcelScript!
 fullName: ExcelScript.PaperType
 summary: ''
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the page size for printing.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Go to each worksheet so the print settings are consistent.
+    workbook.getWorksheets().forEach((sheet) => {
+      const pageLayout = sheet.getPageLayout();
+      // Print on 8.5"x11" paper.
+      pageLayout.setPaperSize(ExcelScript.PaperType.letter);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
