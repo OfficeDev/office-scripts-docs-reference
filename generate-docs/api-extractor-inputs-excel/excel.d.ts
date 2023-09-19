@@ -14713,6 +14713,4 @@ export declare namespace ExcelScript {
     //
     // Type
     //
-
-    type RangeValue = string | number | boolean | null | undefined;
 }
