@@ -1609,6 +1609,26 @@
        */
       console.log(validationType.toString());
     }
+'ExcelScript.DataValidation#setPrompt:member(1)':
+  - |-
+    /**
+     * This script creates a text prompt that's shown in C2:C8 when a user enters the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the data validation object for C2:C8 in the current worksheet.
+        let selectedSheet = workbook.getActiveWorksheet();
+        let dataValidation = selectedSheet.getRange("C2:C8").getDataValidation();
+
+        // Clear any previous validation to avoid conflicts.
+        dataValidation.clear();
+
+        // Create a prompt to remind users to only enter first names in this column.
+        dataValidation.setPrompt({ 
+            showPrompt: true, 
+            title: "First names only", 
+            message: "Only enter the first name of the employee, not the full name." 
+        });
+    }    
 'ExcelScript.DataValidation#setRule:member(1)':
   - |-
     /**
@@ -1735,6 +1755,27 @@
       const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
       rangeDataValidation.setRule(positiveNumberOnlyRule);
     }
+'ExcelScript.DataValidationPrompt:interface':
+  - |-
+    /**
+     * This script creates a text prompt that's shown in C2:C8 when a user enters the cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the data validation object for C2:C8 in the current worksheet.
+        let selectedSheet = workbook.getActiveWorksheet();
+        let dataValidation = selectedSheet.getRange("C2:C8").getDataValidation();
+
+        // Clear any previous validation to avoid conflicts.
+        dataValidation.clear();
+
+        // Create a prompt to remind users to only enter first names in this column.
+        const prompt: ExcelScript.DataValidationPrompt = {
+          showPrompt: true,
+          title: "First names only",
+          message: "Only enter the first name of the employee, not the full name."
+        }
+        dataValidation.setPrompt(prompt);
+    }    
 'ExcelScript.DataValidationRule#wholeNumber:member':
   - |-
     /**
