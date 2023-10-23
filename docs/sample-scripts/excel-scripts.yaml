@@ -1922,6 +1922,27 @@
       // Write the date using the system's separator character.
       cell.setValue(`${currentDate.getMonth()}${separator}${currentDate.getDate()}${separator}${currentDate.getFullYear()}`);
     }
+'ExcelScript.DatetimeFormatInfo#getTimeSeparator:member(1)':
+  - |-
+    /**
+     * This script writes the current hour, minute, and second.
+     * It uses the system's time separator character.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first cell in the current worksheet.
+      const cell = workbook.getActiveWorksheet().getCell(0, 0);
+
+      // Get the date separation string.
+      const cultureInfo = workbook.getApplication().getCultureInfo();
+      const systemDateTimeFormat = cultureInfo.getDatetimeFormat();
+      const separator = systemDateTimeFormat.getTimeSeparator();
+
+      // Get current time.
+      const currentTime = new Date(Date.now());
+
+      // Write the date using the system's separator character.
+      cell.setValue(`${currentTime.getHours()}${separator}${currentTime.getMinutes()}${separator}${currentTime.getSeconds()}`);
+    }
 'ExcelScript.DeleteShiftDirection:enum':
   - |-
     /**
@@ -4415,6 +4436,18 @@
       // Set the vertical alignment formatting on the row.
       firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
     }
+'ExcelScript.RangeFormat#setWrapText:member(1)':
+  - |-
+    /**
+     * This script turns on the text wrapping for a column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the E column in current worksheet.
+      const column = workbook.getActiveWorksheet().getRange("E:E");
+
+      // Set wrap text to true for the column.
+      column.getFormat().setWrapText(true);
+    }
 'ExcelScript.RangeFont:interface':
   - |-
     /**
@@ -5162,6 +5195,21 @@
 
       // Clear all the formatting that is not applied by the table and the table style.
       range.clear(ExcelScript.ClearApplyTo.formats);
+    }
+'ExcelScript.Table#reapplyFilters:member(1)':
+  - |-
+    /**
+     * This script reapplies the filters on every table in the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get all the tables.
+      const tables = workbook.getTables();
+
+      // Iterate over every table.
+      tables.forEach((table) => {
+        // Reapply the filters to account for new table entries.
+        table.reapplyFilters();
+      });
     }
 'ExcelScript.TableColumn#getRangeBetweenHeaderAndTotal:member(1)':
   - |-

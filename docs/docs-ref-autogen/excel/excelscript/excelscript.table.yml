@@ -588,7 +588,26 @@ methods:
       content: 'reapplyFilters(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script reapplies the filters on every table in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the tables.
+            const tables = workbook.getTables();
+
+            // Iterate over every table.
+            tables.forEach((table) => {
+              // Reapply the filters to account for new table entries.
+              table.reapplyFilters();
+            });
+          }
+          ```
   - name: resize(newRange)
     uid: 'ExcelScript!ExcelScript.Table#resize:member(1)'
     package: ExcelScript!
