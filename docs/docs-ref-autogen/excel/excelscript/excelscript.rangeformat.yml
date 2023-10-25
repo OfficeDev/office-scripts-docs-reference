@@ -763,4 +763,20 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script turns on the text wrapping for a column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the E column in current worksheet.
+            const column = workbook.getActiveWorksheet().getRange("E:E");
+
+            // Set wrap text to true for the column.
+            column.getFormat().setWrapText(true);
+          }
+          ```
