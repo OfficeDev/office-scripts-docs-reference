@@ -214,7 +214,28 @@ methods:
           type: number | string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adjusts the indentation of a specific table column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the current worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+            const table = selectedSheet.getTables()[0];
+
+            // Get the data range of the second column.
+            const secondColumn = table.getColumn(2);
+            const data = secondColumn.getRangeBetweenHeaderAndTotal();
+
+            // Add an indentation of 1 character space to the data range.
+            data.getFormat().adjustIndent(1);
+          }
+          ```
   - name: getColumnById(key)
     uid: 'ExcelScript!ExcelScript.Table#getColumnById:member(1)'
     package: ExcelScript!
