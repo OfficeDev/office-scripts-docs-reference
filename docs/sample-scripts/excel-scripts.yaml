@@ -5172,6 +5172,23 @@
         const lastColumn = table.getColumn(table.getColumns().length);
         lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
     }
+'ExcelScript.Table#getColumn:member(1)':
+  - |-
+    /**
+     * This script adjusts the indentation of a specific table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the current worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+      const table = selectedSheet.getTables()[0];
+
+      // Get the data range of the second column.
+      const secondColumn = table.getColumn(2);
+      const data = secondColumn.getRangeBetweenHeaderAndTotal();
+
+      // Add an indentation of 1 character space to the data range.
+      data.getFormat().adjustIndent(1);
+    }
 'ExcelScript.Table#getColumns:member(1)':
   - |-
     /**
