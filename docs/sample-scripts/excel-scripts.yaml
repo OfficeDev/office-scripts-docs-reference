@@ -4264,6 +4264,39 @@
       selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
       selected.getFormat().getFill().setPatternColor("black");
     }
+'ExcelScript.RangeFormat:interface':
+  - |-
+    /**
+     * This script applies some simple formatting to the top row of the used range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the top row of the used range in the current worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+      const topRow = selectedSheet.getUsedRange().getRow(0);
+
+      // For the top row, set the fill to black, the font color to white, and the font to be bold.
+      const format: ExcelScript.RangeFormat = topRow.getFormat();
+      format.getFill().setColor("black");
+      format.getFont().setColor("white");
+      format.getFont().setBold(true);
+    }
+'ExcelScript.RangeFormat#adjustIndent:member(1)':
+  - |-
+    /**
+     * This script adjusts the indentation of a specific table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the current worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+      const table = selectedSheet.getTables()[0];
+
+      // Get the data range of the second column.
+      const secondColumn = table.getColumn(2);
+      const data = secondColumn.getRangeBetweenHeaderAndTotal();
+
+      // Add an indentation of 1 character space to the data range.
+      data.getFormat().adjustIndent(1);
+    }
 'ExcelScript.RangeFormat#getFill:member(1)':
   - |-
     /**
