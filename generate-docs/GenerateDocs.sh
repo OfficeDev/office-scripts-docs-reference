@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ -d "node_modules" ]; then
     rm -rf "node_modules"
 fi
