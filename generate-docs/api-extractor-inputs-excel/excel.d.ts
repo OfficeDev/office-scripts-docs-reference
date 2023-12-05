@@ -1366,7 +1366,7 @@ export declare namespace ExcelScript {
         /**
          * Specifies if the password can be used to unlock worksheet protection.
          * This method doesn't change the worksheet protection state.
-         * If a password is input but no password is required to unlock worksheet protection, this method will return false.
+         * If a password is entered but no password is required to unlock worksheet protection, this method will return false.
          * @param password - The password to check against the protected worksheet.
          */
         checkPassword(password?: string): boolean;
@@ -1727,7 +1727,7 @@ export declare namespace ExcelScript {
          * The destination range can be `null` or can extend the source range either horizontally or vertically.
          * Discontiguous ranges are not supported.
          *
-         * @param destinationRange - The destination range to AutoFill. If the destination range is `null`, data is filled out based on the surrounding cells (which is the behavior when double-clicking the UI’s range fill handle).
+         * @param destinationRange - The destination range to AutoFill. If the destination range is `null`, data is filled out based on the surrounding cells (which is the behavior when double-clicking the UI's range fill handle).
          * @param autoFillType - The type of AutoFill. Specifies how the destination range is to be filled, based on the contents of the current range. Default is "FillDefault".
          */
         autoFill(
@@ -2527,7 +2527,8 @@ export declare namespace ExcelScript {
         getType(): NamedItemType;
 
         /**
-         * Represents the value computed by the name's formula. For a named range, will return the range address.
+         * Represents the value computed by the name's formula. For a named range, it will return the range address.
+         * This API returns the #VALUE! error in the Excel UI if it refers to a user-defined function.
          */
         getValue(): string | number;
 
@@ -4190,7 +4191,7 @@ export declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Gets the string representation of the data source of the chart series.The string representation could be information such as a cell address.
+         * Gets the string representation of the data source of the chart series. The string representation could be information such as a cell address.
          * @param dimension - The dimension of the axis where the data is from.
          */
         getDimensionDataSourceString(dimension: ChartSeriesDimension): string;
@@ -4222,7 +4223,7 @@ export declare namespace ExcelScript {
         setValues(sourceData: Range): void;
 
         /**
-         * Sets the values of the x-axis for a chart series. Only works for scatter charts.
+         * Sets the values of the x-axis for a chart series.
          * @param sourceData - The `Range` object corresponding to the source data.
          */
         setXAxisValues(sourceData: Range): void;
@@ -12186,15 +12187,27 @@ export declare namespace ExcelScript {
     }
 
     /**
-     * Specifies whether the series data range is local range, external range, list, or unknown.
+     * Specifies the data source type of the chart series.
      */
     enum ChartDataSourceType {
+        /**
+         * The data source type of the chart series is a local range.
+         */
         localRange,
 
+        /**
+         * The data source type of the chart series is an external range.
+         */
         externalRange,
 
+        /**
+         * The data source type of the chart series is a list.
+         */
         list,
 
+        /**
+         * The data source type of the chart series is unknown or unsupported.
+         */
         unknown,
     }
 
@@ -13347,6 +13360,9 @@ export declare namespace ExcelScript {
         fill,
     }
 
+    /**
+     * Determines the direction in which existing cells will be shifted to accommodate what is being inserted.
+     */
     enum InsertShiftDirection {
         down,
 
@@ -13444,6 +13460,9 @@ export declare namespace ExcelScript {
         columns,
     }
 
+    /**
+     * Represents the part of the cell used as the sorting criteria.
+     */
     enum SortOn {
         value,
 
@@ -13766,6 +13785,9 @@ export declare namespace ExcelScript {
         notAvailable,
     }
 
+    /**
+     * The position of a worksheet relative to another worksheet or the entire worksheet collection.
+     */
     enum WorksheetPositionType {
         none,
 
@@ -13933,6 +13955,8 @@ export declare namespace ExcelScript {
         formats,
 
         link,
+
+        columnWidths,
     }
 
     enum LinkedDataTypeState {
