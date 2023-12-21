@@ -13955,8 +13955,6 @@ export declare namespace ExcelScript {
         formats,
 
         link,
-
-        columnWidths,
     }
 
     enum LinkedDataTypeState {
