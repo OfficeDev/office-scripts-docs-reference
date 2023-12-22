@@ -1776,6 +1776,42 @@
         }
         dataValidation.setPrompt(prompt);
     }    
+'ExcelScript.DataValidationRule#list:member':
+  - |-
+    /**
+     * This script creates a dropdown selection list for a cell.
+     * It uses the existing values of the selected range as the choices for the list.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the values for data validation.
+        const selectedRange = workbook.getSelectedRange();
+        const rangeValues = selectedRange.getValues();
+
+        // Convert the values into a comma-delimited string.
+        let dataValidationListString = "";
+        rangeValues.forEach((rangeValueRow) => {
+            rangeValueRow.forEach((value) => {
+                dataValidationListString += value + ",";
+            });
+        });
+
+        // Clear the old range.
+        selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+        // Apply the data validation to the first cell in the selected range.
+        const targetCell = selectedRange.getCell(0, 0);
+        const dataValidation = targetCell.getDataValidation();
+
+        // Set the content of the dropdown list.
+        let validationCriteria : ExcelScript.ListDataValidation = {
+            inCellDropDown: true,
+            source: dataValidationListString
+        };
+        let validationRule: ExcelScript.DataValidationRule = {
+            list: validationCriteria
+        };
+        dataValidation.setRule(validationRule);
+    }
 'ExcelScript.DataValidationRule#wholeNumber:member':
   - |-
     /**
@@ -2461,6 +2497,42 @@
 
       // Apply the label filter to the field.
       field.applyFilter({ labelFilter: filter });
+    }
+'ExcelScript.ListDataValidation:interface':
+  - |-
+    /**
+     * This script creates a dropdown selection list for a cell.
+     * It uses the existing values of the selected range as the choices for the list.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the values for data validation.
+        const selectedRange = workbook.getSelectedRange();
+        const rangeValues = selectedRange.getValues();
+
+        // Convert the values into a comma-delimited string.
+        let dataValidationListString = "";
+        rangeValues.forEach((rangeValueRow) => {
+            rangeValueRow.forEach((value) => {
+                dataValidationListString += value + ",";
+            });
+        });
+
+        // Clear the old range.
+        selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+        // Apply the data validation to the first cell in the selected range.
+        const targetCell = selectedRange.getCell(0, 0);
+        const dataValidation = targetCell.getDataValidation();
+
+        // Set the content of the dropdown list.
+        let validationCriteria : ExcelScript.ListDataValidation = {
+            inCellDropDown: true,
+            source: dataValidationListString
+        };
+        let validationRule: ExcelScript.DataValidationRule = {
+            list: validationCriteria
+        };
+        dataValidation.setRule(validationRule);
     }
 'ExcelScript.NamedItem:interface':
   - |-
@@ -5141,18 +5213,6 @@
       // Show all the subtotals at the bottom of each group.
       layout.setSubtotalLocation(ExcelScript.SubtotalLocationType.atBottom);
     }
-'ExcelScript.Table#addColumn:member(1)':
-  - |-
-    /**
-     * This script adds a new column to a table.
-     */
-    function main(workbook: ExcelScript.Workbook) {
-      // Get the first table in the workbook.
-      const table = workbook.getTables()[0];
-
-      // Append an empty column to the table with the header "Total". 
-      table.addColumn(-1, null, "Total");
-    }
 'ExcelScript.Table:interface':
   - |-
     /**
@@ -5171,6 +5231,83 @@
         table.setShowTotals(true);
         const lastColumn = table.getColumn(table.getColumns().length);
         lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
+    }
+'ExcelScript.Table#addColumn:member(1)':
+  - |-
+    /**
+     * This script adds a new column to a table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Append an empty column to the table with the header "Total". 
+      table.addColumn(-1, null, "Total");
+    }
+'ExcelScript.Table#addRow:member(1)':
+  - |-
+    /**
+     * This script adds a row to an existing table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table in the current worksheet.
+        const selectedSheet = workbook.getActiveWorksheet();
+        const table = selectedSheet.getTables()[0];
+
+        // Initialize the data to be added as a table row.
+        // Note that length of the array must match the number of columns in the table.
+        let rowData = ["Carrots", "Vegetable", 750];
+
+        // Add a row to the end of the table.
+        table.addRow(-1, rowData);
+    }
+'ExcelScript.Table#addRows:member(1)':
+  - |-
+    /**
+     * This script adds multiple rows to an existing table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table in the current worksheet.
+        const selectedSheet = workbook.getActiveWorksheet();
+        const table = selectedSheet.getTables()[0];
+
+        // Initialize the data to be added as table rows.
+        // Note that length of the array must match the number of columns in the table.
+        let rowData = [["Apples", "Fruit", 5000],
+                      ["Celery", "Vegetable", 600],
+                      ["Onions", "Vegetable", 1500]];
+
+        // Add the rows to the end of the table.
+        table.addRows(-1, rowData);
+    }
+'ExcelScript.Table#convertToRange:member(1)':
+  - |-
+    /**
+     * This script converts a table to a range and removes the formatting.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table in the current worksheet.
+        const selectedSheet = workbook.getActiveWorksheet();
+        const table = selectedSheet.getTables()[0];
+
+        // Convert the table to a range.
+        const formerTable = table.convertToRange();
+
+        // Remove the formatting from the table
+        formerTable.clear(ExcelScript.ClearApplyTo.formats);
+    }
+'ExcelScript.Table#delete:member(1)':
+  - |-
+    /**
+     * This script deletes a table. 
+     * This removes all associated data and formatting.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the table named "Inventory".
+        const table = workbook.getTable("Inventory");
+
+        // Delete the table.
+        table.delete();
     }
 'ExcelScript.Table#getColumn:member(1)':
   - |-
@@ -5211,6 +5348,21 @@
       totalColumn.getRangeBetweenHeaderAndTotal().setFormula(
         `=[@[${productColumnName1}]]*[@[${productColumnName2}]]`
       );
+    }
+'ExcelScript.Table#getColumnByName:member(1)':
+  - |-
+    /**
+     * This script removes a specific column from a table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the table named "Inventory".
+        const table = workbook.getTable("Inventory");
+
+        // If it exists, remove the column named "Category".
+        let categoryColumn = table.getColumnByName("Category");
+        if (categoryColumn) {
+            categoryColumn.delete();
+        }
     }
 'ExcelScript.Table#getHeaderRowRange:member(1)':
   - |-
@@ -5260,6 +5412,34 @@
         // Reapply the filters to account for new table entries.
         table.reapplyFilters();
       });
+    }
+'ExcelScript.Table#setShowTotals:member(1)':
+  - |-
+    /**
+     * This script adds the Total Row to an existing table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table in the current worksheet.
+        const selectedSheet = workbook.getActiveWorksheet();
+        const table = selectedSheet.getTables()[0];
+
+        // Set the Total Row to show.
+        table.setShowTotals(true);
+    }
+'ExcelScript.TableColumn#delete:member(1)':
+  - |-
+    /**
+     * This script removes a specific column from a table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the table named "Inventory".
+        const table = workbook.getTable("Inventory");
+
+        // If it exists, remove the column named "Category".
+        let categoryColumn = table.getColumnByName("Category");
+        if (categoryColumn) {
+            categoryColumn.delete();
+        }
     }
 'ExcelScript.TableColumn#getRangeBetweenHeaderAndTotal:member(1)':
   - |-
