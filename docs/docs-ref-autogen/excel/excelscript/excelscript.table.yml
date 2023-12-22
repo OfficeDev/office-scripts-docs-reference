@@ -99,7 +99,28 @@ methods:
           type: '(boolean | string | number)[]'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a row to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Initialize the data to be added as a table row.
+              // Note that length of the array must match the number of columns in the table.
+              let rowData = ["Carrots", "Vegetable", 750];
+
+              // Add a row to the end of the table.
+              table.addRow(-1, rowData);
+          }
+          ```
   - name: 'addRows(index, values)'
     uid: 'ExcelScript!ExcelScript.Table#addRows:member(1)'
     package: ExcelScript!
@@ -121,7 +142,30 @@ methods:
           type: '(boolean | string | number)[][]'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds multiple rows to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Initialize the data to be added as table rows.
+              // Note that length of the array must match the number of columns in the table.
+              let rowData = [["Apples", "Fruit", 5000],
+                            ["Celery", "Vegetable", 600],
+                            ["Onions", "Vegetable", 1500]];
+
+              // Add the rows to the end of the table.
+              table.addRows(-1, rowData);
+          }
+          ```
   - name: clearFilters()
     uid: 'ExcelScript!ExcelScript.Table#clearFilters:member(1)'
     package: ExcelScript!
@@ -147,7 +191,27 @@ methods:
       content: 'convertToRange(): Range;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script converts a table to a range and removes the formatting.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Convert the table to a range.
+              const formerTable = table.convertToRange();
+
+              // Remove the formatting from the table
+              formerTable.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
   - name: delete()
     uid: 'ExcelScript!ExcelScript.Table#delete:member(1)'
     package: ExcelScript!
@@ -160,7 +224,24 @@ methods:
       content: 'delete(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script deletes a table. 
+           * This removes all associated data and formatting.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Inventory".
+              const table = workbook.getTable("Inventory");
+
+              // Delete the table.
+              table.delete();
+          }
+          ```
   - name: 'deleteRowsAt(index, count)'
     uid: 'ExcelScript!ExcelScript.Table#deleteRowsAt:member(1)'
     package: ExcelScript!
@@ -269,7 +350,26 @@ methods:
           type: string
       return:
         type: '<xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> | undefined'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes a specific column from a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Inventory".
+              const table = workbook.getTable("Inventory");
+
+              // If it exists, remove the column named "Category".
+              let categoryColumn = table.getColumnByName("Category");
+              if (categoryColumn) {
+                  categoryColumn.delete();
+              }
+          }
+          ```
   - name: getColumns()
     uid: 'ExcelScript!ExcelScript.Table#getColumns:member(1)'
     package: ExcelScript!
@@ -809,4 +909,21 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds the Total Row to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Set the Total Row to show.
+              table.setShowTotals(true);
+          }
+          ```

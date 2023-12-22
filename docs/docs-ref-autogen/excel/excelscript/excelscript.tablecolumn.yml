@@ -21,7 +21,26 @@ methods:
       content: 'delete(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes a specific column from a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Inventory".
+              const table = workbook.getTable("Inventory");
+
+              // If it exists, remove the column named "Category".
+              let categoryColumn = table.getColumnByName("Category");
+              if (categoryColumn) {
+                  categoryColumn.delete();
+              }
+          }
+          ```
   - name: getFilter()
     uid: 'ExcelScript!ExcelScript.TableColumn#getFilter:member(1)'
     package: ExcelScript!
