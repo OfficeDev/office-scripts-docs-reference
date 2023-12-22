@@ -4,7 +4,47 @@ uid: 'ExcelScript!ExcelScript.ListDataValidation:interface'
 package: ExcelScript!
 fullName: ExcelScript.ListDataValidation
 summary: Represents the List data validation criteria.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a dropdown selection list for a cell.
+   * It uses the existing values of the selected range as the choices for the list.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+      // Get the values for data validation.
+      const selectedRange = workbook.getSelectedRange();
+      const rangeValues = selectedRange.getValues();
+
+      // Convert the values into a comma-delimited string.
+      let dataValidationListString = "";
+      rangeValues.forEach((rangeValueRow) => {
+          rangeValueRow.forEach((value) => {
+              dataValidationListString += value + ",";
+          });
+      });
+
+      // Clear the old range.
+      selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+      // Apply the data validation to the first cell in the selected range.
+      const targetCell = selectedRange.getCell(0, 0);
+      const dataValidation = targetCell.getDataValidation();
+
+      // Set the content of the dropdown list.
+      let validationCriteria : ExcelScript.ListDataValidation = {
+          inCellDropDown: true,
+          source: dataValidationListString
+      };
+      let validationRule: ExcelScript.DataValidationRule = {
+          list: validationCriteria
+      };
+      dataValidation.setRule(validationRule);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
