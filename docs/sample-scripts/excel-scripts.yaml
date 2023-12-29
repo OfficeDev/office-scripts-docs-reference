@@ -915,7 +915,7 @@
 'ExcelScript.ConditionalDataBarRule:interface':
   - |-
     /**
-     * This script creates data bar conditional formatting on the select ranged.
+     * This script creates data bar conditional formatting on the selected range.
      * The scale of the data bar goes from 0 to 1000.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -1016,7 +1016,7 @@
 'ExcelScript.ConditionalFormat#getDataBar:member(1)':
   - |-
     /**
-     * This script creates data bar conditional formatting on the select ranged.
+     * This script creates data bar conditional formatting on the selected range.
      * The scale of the data bar goes from 0 to 1000.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -1122,6 +1122,26 @@
       };
       textConditionFormat.setRule(textRule);
     }
+'ExcelScript.ConditionalFormat#getTopBottom:member(1)':
+  - |-
+    /**
+     * This script applies top/bottom conditional formatting to a range.
+     * The top 2 values in the range will have the cell fill color changed to green.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const sheet = workbook.getWorksheet("TopBottom");
+      const dataRange = sheet.getRange("B2:D5");
+
+      // Set the fill color to green for the top 2 values in the range.
+      const topBottomFormat = dataRange.addConditionalFormat(
+        ExcelScript.ConditionalFormatType.topBottom).getTopBottom();
+      topBottomFormat.getFormat().getFill().setColor("green");
+      topBottomFormat.setRule({
+        rank: 2, /* The numeric threshold. */
+        type: ExcelScript.ConditionalTopBottomCriterionType.topItems /* The type of the top/bottom condition. */
+      });
+    }
 'ExcelScript.ConditionalFormatColorCriterionType:enum':
   - |-
     /**
@@ -1211,7 +1231,7 @@
 'ExcelScript.ConditionalFormatRuleType:enum':
   - |-
     /**
-     * This script creates data bar conditional formatting on the select ranged.
+     * This script creates data bar conditional formatting on the selected range.
      * The scale of the data bar goes from 0 to 1000.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -1533,7 +1553,7 @@
 'ExcelScript.DataBarConditionalFormat:interface':
   - |-
     /**
-     * This script creates data bar conditional formatting on the select ranged.
+     * This script creates data bar conditional formatting on the selected range.
      * The scale of the data bar goes from 0 to 1000.
      */
     function main(workbook: ExcelScript.Workbook) {
