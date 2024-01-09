@@ -1,11 +1,4 @@
 declare namespace ExcelScript {
-    /*
-     * Special Run Function
-     */
-    function run(
-        callback: (workbook: Workbook) => Promise<void>
-    ): Promise<void>;
-
     //
     // Class
     //
