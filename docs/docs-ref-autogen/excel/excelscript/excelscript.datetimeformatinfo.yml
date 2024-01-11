@@ -85,7 +85,23 @@ methods:
       content: 'getLongDatePattern(): string;'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script returns the system's long date pattern. 
+           * This could be used in a Power Automate flow to keep date formatting consistent.
+           */
+          function main(workbook: ExcelScript.Workbook) : string {
+              const cultureInfo = workbook.getApplication().getCultureInfo();
+              const dateTimeInfo =  cultureInfo.getDatetimeFormat();
+              
+              return dateTimeInfo.getLongDatePattern();
+          }
+          ```
   - name: getLongTimePattern()
     uid: 'ExcelScript!ExcelScript.DatetimeFormatInfo#getLongTimePattern:member(1)'
     package: ExcelScript!

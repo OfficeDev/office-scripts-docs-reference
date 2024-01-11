@@ -892,7 +892,23 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script makes a table's headers not visible in the grid.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "CoverageTable".
+              const coverageTable = workbook.getTable("CoverageTable");
+
+              // Make the header row not visible.
+              coverageTable.setShowHeaders(false);
+          }
+          ```
   - name: setShowTotals(showTotals)
     uid: 'ExcelScript!ExcelScript.Table#setShowTotals:member(1)'
     package: ExcelScript!

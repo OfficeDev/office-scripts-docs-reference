@@ -53,7 +53,27 @@ methods:
       content: 'getFilter(): Filter;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Filter:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a table filter to only show the top 10% of values 
+           * belonging to a particular column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table on the current worksheet.
+              const table = workbook.getActiveWorksheet().getTables()[0];
+
+              // Get the filter for the "PageViews" table column.
+              const pageViewFilter = table.getColumnByName("PageViews").getFilter();
+
+              // Apply a filter to only show the rows in the top 10% of values in this column.
+              pageViewFilter.applyTopPercentFilter(10);
+          }
+          ```
   - name: getHeaderRowRange()
     uid: 'ExcelScript!ExcelScript.TableColumn#getHeaderRowRange:member(1)'
     package: ExcelScript!
