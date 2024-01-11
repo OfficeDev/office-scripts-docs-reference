@@ -1978,6 +1978,18 @@
       // Write the date using the system's separator character.
       cell.setValue(`${currentDate.getMonth()}${separator}${currentDate.getDate()}${separator}${currentDate.getFullYear()}`);
     }
+'ExcelScript.DatetimeFormatInfo#getLongDatePattern:member(1)':
+  - |-
+    /**
+     * This script returns the system's long date pattern. 
+     * This could be used in a Power Automate flow to keep date formatting consistent.
+     */
+    function main(workbook: ExcelScript.Workbook) : string {
+        const cultureInfo = workbook.getApplication().getCultureInfo();
+        const dateTimeInfo =  cultureInfo.getDatetimeFormat();
+        
+        return dateTimeInfo.getLongDatePattern();
+    }
 'ExcelScript.DatetimeFormatInfo#getTimeSeparator:member(1)':
   - |-
     /**
@@ -2129,6 +2141,22 @@
       const selected = workbook.getSelectedRange();
       selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
       selected.getFormat().getFill().setPatternColor("black");
+    }
+'ExcelScript.Filter:interface':
+  - |- 
+    /**
+     * This script adds a table filter to only show the top 10% of values 
+     * belonging to a particular column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table on the current worksheet.
+        const table = workbook.getActiveWorksheet().getTables()[0];
+
+        // Get the filter for the "PageViews" table column.
+        const pageViewFilter : ExcelScript.Filter = table.getColumnByName("PageViews").getFilter();
+
+        // Apply a filter to only show the rows with the top 10% of values in this column.
+        pageViewFilter.applyTopPercentFilter(10);
     }
 'ExcelScript.Filter#applyCustomFilter:member(1)':
   - |-
@@ -5433,6 +5461,18 @@
         table.reapplyFilters();
       });
     }
+'ExcelScript.Table#setShowHeaders:member(1)':
+  - |-
+    /**
+     * This script makes a table's headers not visible in the grid.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the table named "CoverageTable".
+        const coverageTable = workbook.getTable("CoverageTable");
+
+        // Make the header row not visible.
+        coverageTable.setShowHeaders(false);
+    }
 'ExcelScript.Table#setShowTotals:member(1)':
   - |-
     /**
@@ -5460,6 +5500,22 @@
         if (categoryColumn) {
             categoryColumn.delete();
         }
+    }
+'ExcelScript.TableColumn#getFilter:member(1)':
+  - |- 
+    /**
+     * This script adds a table filter to only show the top 10% of values 
+     * belonging to a particular column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first table on the current worksheet.
+        const table = workbook.getActiveWorksheet().getTables()[0];
+
+        // Get the filter for the "PageViews" table column.
+        const pageViewFilter = table.getColumnByName("PageViews").getFilter();
+
+        // Apply a filter to only show the rows with the top 10% of values in this column.
+        pageViewFilter.applyTopPercentFilter(10);
     }
 'ExcelScript.TableColumn#getRangeBetweenHeaderAndTotal:member(1)':
   - |-
