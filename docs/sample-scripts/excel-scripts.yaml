@@ -2202,6 +2202,19 @@
       const typeColumn = table.getColumnByName("Type");
       typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
     }
+'ExcelScript.Filter#clear:member(1)':
+  - |-
+    /**
+     * This script shows how to clear a filter from a table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Clear the filter for the table column named "Status".
+      const statusColumnFilter = table.getColumn("Status").getFilter();
+      statusColumnFilter.clear();
+    }
 'ExcelScript.FilterCriteria#criterion1:member':
   - |-
     /**
@@ -4043,6 +4056,19 @@
       // Add the headers.
       currentSheet.getRange("A1:C1").setValues(myHeaders);
     }
+'ExcelScript.Range#merge:member(1)':
+  - |-
+    /**
+     * This script merges a group of cells into a single region.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+
+      // Merge cells A1 through A4.
+      const range = selectedSheet.getRange("A1:A4");
+      range.merge();
+    }
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
@@ -4184,6 +4210,19 @@
       , ['4/17/2020', 'Mariya', 'Salads', '$1600']
       , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
     ];
+'ExcelScript.Range#unmerge:member(1)':
+  - |-
+    /**
+     * This script unmerges every used cell in the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+
+      // Separate all regions into single cells in the currently used range.
+      const range = selectedSheet.getUsedRange();
+      range.unmerge();
+    }
 'ExcelScript.RangeAreas:interface':
   - |- 
     /**
@@ -5485,6 +5524,21 @@
 
         // Set the Total Row to show.
         table.setShowTotals(true);
+    }
+'ExcelScript.TableColumn:interface':
+  - |-
+    /**
+     * This script shows how to get the range of a table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Get the range of the table column named "Type".
+      const typeColumn : ExcelScript.TableColumn = table.getColumn("Type");
+      const range = typeColumn.getRange();
+
+      // Do something with the range...
     }
 'ExcelScript.TableColumn#delete:member(1)':
   - |-

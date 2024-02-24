@@ -2218,7 +2218,24 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script merges a group of cells into a single region.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+
+            // Merge cells A1 through A4.
+            const range = selectedSheet.getRange("A1:A4");
+            range.merge();
+          }
+          ```
   - name: moveTo(destinationRange)
     uid: 'ExcelScript!ExcelScript.Range#moveTo:member(1)'
     package: ExcelScript!
@@ -2850,4 +2867,21 @@ methods:
       content: 'unmerge(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script unmerges every used cell in the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+
+            // Separate all regions into single cells in the currently used range.
+            const range = selectedSheet.getUsedRange();
+            range.unmerge();
+          }
+          ```
