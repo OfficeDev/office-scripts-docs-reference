@@ -21,7 +21,7 @@ remarks: |-
       // Get the filter for the "PageViews" table column.
       const pageViewFilter : ExcelScript.Filter = table.getColumnByName("PageViews").getFilter();
 
-      // Apply a filter to only show the rows in the top 10% of values in this column.
+      // Apply a filter to only show the rows with the top 10% of values in this column.
       pageViewFilter.applyTopPercentFilter(10);
   }
   ```
@@ -297,7 +297,24 @@ methods:
       content: 'clear(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script shows how to clear a filter from a table column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            const table = workbook.getTables()[0];
+
+            // Clear the filter for the table column named "Status".
+            const statusColumnFilter = table.getColumn("Status").getFilter();
+            statusColumnFilter.clear();
+          }
+          ```
   - name: getCriteria()
     uid: 'ExcelScript!ExcelScript.Filter#getCriteria:member(1)'
     package: ExcelScript!
