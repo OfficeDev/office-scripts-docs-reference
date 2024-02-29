@@ -4710,6 +4710,24 @@
       cell.setHyperlink(sampleHyperlink);
       cell.getFormat().autofitColumns();
     }
+'ExcelScript.RangeHyperlink#documentReference:member':
+  - |-
+    /**
+     * This script creates a hyperlink to a table in the current cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected cell.
+      const selectedCell = workbook.getActiveCell();
+
+      // Create a hyperlink from the current cell to a table named "Resources".
+      const link : ExcelScript.RangeHyperlink = {
+        documentReference: "Resources",
+        screenTip: "Resources table",
+        textToDisplay: "Go to table"
+      } ;
+
+      selectedCell.setHyperlink(link)
+    }
 'ExcelScript.RangeSort#apply:member(1)':
   - |-
     /**
