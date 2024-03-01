@@ -1374,6 +1374,88 @@
       };
       presetFormat.setRule(duplicateRule);
     }
+'ExcelScript.ConditionalRangeFill:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      const fill: ExcelScript.ConditionalRangeFill = format.getFill();
+      const font: ExcelScript.ConditionalRangeFont = format.getFont();
+      fill.setColor("yellow");
+      font.setItalic(true);
+    }
+'ExcelScript.ConditionalRangeFont:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      const fill: ExcelScript.ConditionalRangeFill = format.getFill();
+      const font: ExcelScript.ConditionalRangeFont = format.getFont();
+      fill.setColor("yellow");
+      font.setItalic(true);
+    }
+'ExcelScript.ConditionalRangeFormat:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+    }
 'ExcelScript.ConditionalTextComparisonRule:interface':
   - |-
     /**
@@ -2345,6 +2427,44 @@
       // greater than 0 and less than or equal to 60.
       table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
     }
+'ExcelScript.FilterPivotHierarchy:interface':
+  - |-
+    /**
+     * This script creates a PivotTable with a filter.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the two worksheets to use in PivotTable creation.
+      const dataSheet = workbook.getWorksheet("Data");
+      const pivotSheet = workbook.getWorksheet("Pivot");
+
+      // Create a new PivotTable.
+      const newPivot = pivotSheet.addPivotTable(
+        "My PivotTable", 
+        dataSheet.getUsedRange(), 
+        pivotSheet.getRange("A1"));
+
+      // Add a filter with the Quarter field.
+      const filter: ExcelScript.FilterPivotHierarchy = 
+        newPivot.addFilterHierarchy(newPivot.getHierarchy("Quarter"));
+
+      // Add other hierarchies...
+    }
+'ExcelScript.FilterPivotHierarchy#getName:member(1)':
+  - |-
+    /**
+     * This script logs the names of all the filter hierarchies in a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first PivotTable in the workbook.
+        const pivotTable = workbook.getPivotTables()[0];
+
+        // For each pivot filter, log its name.
+        pivotTable.getFilterHierarchies().forEach((filter: ExcelScript.FilterPivotHierarchy) => {
+          console.log(filter.getName());
+        });
+    }
+
+
 'ExcelScript.GeometricShapeType:enum':
   - |-
     /**
