@@ -57,6 +57,29 @@ properties:
       content: 'documentReference?: string;'
       return:
         type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a hyperlink in the current cell to a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected cell.
+            const selectedCell = workbook.getActiveCell();
+
+            // Create a hyperlink from the current cell to a table named "Resources".
+            const link : ExcelScript.RangeHyperlink = {
+              documentReference: "Resources",
+              screenTip: "Resources table",
+              textToDisplay: "Go to table"
+            } ;
+
+            selectedCell.setHyperlink(link)
+          }
+          ```
   - name: screenTip
     uid: 'ExcelScript!ExcelScript.RangeHyperlink#screenTip:member'
     package: ExcelScript!
