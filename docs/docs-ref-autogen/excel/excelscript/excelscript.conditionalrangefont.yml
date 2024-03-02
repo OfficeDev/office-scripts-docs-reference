@@ -4,7 +4,39 @@ uid: 'ExcelScript!ExcelScript.ConditionalRangeFont:interface'
 package: ExcelScript!
 fullName: ExcelScript.ConditionalRangeFont
 summary: 'This object represents the font attributes (font style, color, etc.) for an object.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies cell value conditional formatting to a range.
+   * Any value less than 60 will have the cell's fill color changed and the font made italic.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range to format.
+    const selectedRange = workbook.getSelectedRange();
+
+    // Add cell value conditional formatting.
+    const cellValueConditionalFormatting =
+      selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+    // Create the condition, in this case when the cell value is less than 60.
+    const rule: ExcelScript.ConditionalCellValueRule = {
+      formula1: "60",
+      operator: ExcelScript.ConditionalCellValueOperator.lessThan
+    };
+    cellValueConditionalFormatting.setRule(rule);
+
+    // Set the format to apply when the condition is met.
+    const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+    const fill: ExcelScript.ConditionalRangeFill = format.getFill();
+    const font: ExcelScript.ConditionalRangeFont = format.getFont();
+    fill.setColor("yellow");
+    font.setItalic(true);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

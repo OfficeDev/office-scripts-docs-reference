@@ -4,7 +4,26 @@ uid: 'ExcelScript!ExcelScript.TableColumn:interface'
 package: ExcelScript!
 fullName: ExcelScript.TableColumn
 summary: Represents a column in a table.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script shows how to get the range of a table column.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first table in the workbook.
+    const table = workbook.getTables()[0];
+
+    // Get the range of the table column named "Type".
+    const typeColumn : ExcelScript.TableColumn = table.getColumn("Type");
+    const range = typeColumn.getRange();
+
+    // Do something with the range...
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -70,7 +89,7 @@ methods:
               // Get the filter for the "PageViews" table column.
               const pageViewFilter = table.getColumnByName("PageViews").getFilter();
 
-              // Apply a filter to only show the rows in the top 10% of values in this column.
+              // Apply a filter to only show the rows with the top 10% of values in this column.
               pageViewFilter.applyTopPercentFilter(10);
           }
           ```

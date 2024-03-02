@@ -1374,6 +1374,88 @@
       };
       presetFormat.setRule(duplicateRule);
     }
+'ExcelScript.ConditionalRangeFill:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      const fill: ExcelScript.ConditionalRangeFill = format.getFill();
+      const font: ExcelScript.ConditionalRangeFont = format.getFont();
+      fill.setColor("yellow");
+      font.setItalic(true);
+    }
+'ExcelScript.ConditionalRangeFont:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      const fill: ExcelScript.ConditionalRangeFill = format.getFill();
+      const font: ExcelScript.ConditionalRangeFont = format.getFont();
+      fill.setColor("yellow");
+      font.setItalic(true);
+    }
+'ExcelScript.ConditionalRangeFormat:interface':
+  - |-
+    /**
+     * This script applies cell value conditional formatting to a range.
+     * Any value less than 60 will have the cell's fill color changed and the font made italic.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the range to format.
+      const selectedRange = workbook.getSelectedRange();
+
+      // Add cell value conditional formatting.
+      const cellValueConditionalFormatting =
+        selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+
+      // Create the condition, in this case when the cell value is less than 60.
+      const rule: ExcelScript.ConditionalCellValueRule = {
+        formula1: "60",
+        operator: ExcelScript.ConditionalCellValueOperator.lessThan
+      };
+      cellValueConditionalFormatting.setRule(rule);
+
+      // Set the format to apply when the condition is met.
+      const format: ExcelScript.ConditionalRangeFormat = cellValueConditionalFormatting.getFormat();
+      format.getFill().setColor("yellow");
+      format.getFont().setItalic(true);
+    }
 'ExcelScript.ConditionalTextComparisonRule:interface':
   - |-
     /**
@@ -2202,6 +2284,19 @@
       const typeColumn = table.getColumnByName("Type");
       typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
     }
+'ExcelScript.Filter#clear:member(1)':
+  - |-
+    /**
+     * This script shows how to clear a filter from a table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Clear the filter for the table column named "Status".
+      const statusColumnFilter = table.getColumn("Status").getFilter();
+      statusColumnFilter.clear();
+    }
 'ExcelScript.FilterCriteria#criterion1:member':
   - |-
     /**
@@ -2332,6 +2427,44 @@
       // greater than 0 and less than or equal to 60.
       table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
     }
+'ExcelScript.FilterPivotHierarchy:interface':
+  - |-
+    /**
+     * This script creates a PivotTable with a filter.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the two worksheets to use in PivotTable creation.
+      const dataSheet = workbook.getWorksheet("Data");
+      const pivotSheet = workbook.getWorksheet("Pivot");
+
+      // Create a new PivotTable.
+      const newPivot = pivotSheet.addPivotTable(
+        "My PivotTable", 
+        dataSheet.getUsedRange(), 
+        pivotSheet.getRange("A1"));
+
+      // Add a filter with the Quarter field.
+      const filter: ExcelScript.FilterPivotHierarchy = 
+        newPivot.addFilterHierarchy(newPivot.getHierarchy("Quarter"));
+
+      // Add other hierarchies...
+    }
+'ExcelScript.FilterPivotHierarchy#getName:member(1)':
+  - |-
+    /**
+     * This script logs the names of all the filter hierarchies in a PivotTable.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the first PivotTable in the workbook.
+        const pivotTable = workbook.getPivotTables()[0];
+
+        // For each pivot filter, log its name.
+        pivotTable.getFilterHierarchies().forEach((filter: ExcelScript.FilterPivotHierarchy) => {
+          console.log(filter.getName());
+        });
+    }
+
+
 'ExcelScript.GeometricShapeType:enum':
   - |-
     /**
@@ -4043,6 +4176,19 @@
       // Add the headers.
       currentSheet.getRange("A1:C1").setValues(myHeaders);
     }
+'ExcelScript.Range#merge:member(1)':
+  - |-
+    /**
+     * This script merges a group of cells into a single region.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+
+      // Merge cells A1 through A4.
+      const range = selectedSheet.getRange("A1:A4");
+      range.merge();
+    }
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
@@ -4184,6 +4330,19 @@
       , ['4/17/2020', 'Mariya', 'Salads', '$1600']
       , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
     ];
+'ExcelScript.Range#unmerge:member(1)':
+  - |-
+    /**
+     * This script unmerges every used cell in the current worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active worksheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+
+      // Separate all regions into single cells in the currently used range.
+      const range = selectedSheet.getUsedRange();
+      range.unmerge();
+    }
 'ExcelScript.RangeAreas:interface':
   - |- 
     /**
@@ -4670,6 +4829,24 @@
       // Put the link in the cell and format the width to fit.
       cell.setHyperlink(sampleHyperlink);
       cell.getFormat().autofitColumns();
+    }
+'ExcelScript.RangeHyperlink#documentReference:member':
+  - |-
+    /**
+     * This script creates a hyperlink in the current cell to a table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected cell.
+      const selectedCell = workbook.getActiveCell();
+
+      // Create a hyperlink from the current cell to a table named "Resources".
+      const link : ExcelScript.RangeHyperlink = {
+        documentReference: "Resources",
+        screenTip: "Resources table",
+        textToDisplay: "Go to table"
+      } ;
+
+      selectedCell.setHyperlink(link)
     }
 'ExcelScript.RangeSort#apply:member(1)':
   - |-
@@ -5485,6 +5662,21 @@
 
         // Set the Total Row to show.
         table.setShowTotals(true);
+    }
+'ExcelScript.TableColumn:interface':
+  - |-
+    /**
+     * This script shows how to get the range of a table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table in the workbook.
+      const table = workbook.getTables()[0];
+
+      // Get the range of the table column named "Type".
+      const typeColumn : ExcelScript.TableColumn = table.getColumn("Type");
+      const range = typeColumn.getRange();
+
+      // Do something with the range...
     }
 'ExcelScript.TableColumn#delete:member(1)':
   - |-
