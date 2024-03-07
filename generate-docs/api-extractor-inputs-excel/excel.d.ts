@@ -746,7 +746,7 @@ export declare namespace ExcelScript {
         getLastWorksheet(visibleOnly?: boolean): Worksheet;
 
         /**
-         * Refreshes all the Data Connections.
+         * Makes a request to refresh all the data connections.
          */
         refreshAllDataConnections(): void;
 
