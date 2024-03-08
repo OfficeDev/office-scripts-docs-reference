@@ -4,7 +4,33 @@ uid: 'ExcelScript!ExcelScript.FilterPivotHierarchy:interface'
 package: ExcelScript!
 fullName: ExcelScript.FilterPivotHierarchy
 summary: Represents the Excel FilterPivotHierarchy.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a PivotTable with a filter.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the two worksheets to use in PivotTable creation.
+    const dataSheet = workbook.getWorksheet("Data");
+    const pivotSheet = workbook.getWorksheet("Pivot");
+
+    // Create a new PivotTable.
+    const newPivot = pivotSheet.addPivotTable(
+      "My PivotTable", 
+      dataSheet.getUsedRange(), 
+      pivotSheet.getRange("A1"));
+
+    // Add a filter with the Quarter field.
+    const filter: ExcelScript.FilterPivotHierarchy = 
+      newPivot.addFilterHierarchy(newPivot.getHierarchy("Quarter"));
+
+    // Add other hierarchies...
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
@@ -60,7 +86,25 @@ methods:
       content: 'getName(): string;'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the names of all the filter hierarchies in a PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first PivotTable in the workbook.
+              const pivotTable = workbook.getPivotTables()[0];
+
+              // For each pivot filter, log its name.
+              pivotTable.getFilterHierarchies().forEach((filter: ExcelScript.FilterPivotHierarchy) => {
+                console.log(filter.getName());
+              });
+          }
+          ```
   - name: getPivotField(name)
     uid: 'ExcelScript!ExcelScript.FilterPivotHierarchy#getPivotField:member(1)'
     package: ExcelScript!
