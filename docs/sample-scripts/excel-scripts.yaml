@@ -3576,8 +3576,8 @@
 
       // Apply the given protection options.
       sheetProtection.protect(protectionOptions);
-    }  
-'ExcelScript.Query:enum':
+    }
+'ExcelScript.Query:interface':
   - |-
     /**
      * This script logs information about all the Power Query queries in the workbook.
@@ -4218,6 +4218,22 @@
       
       // Change the value of any cells with the value "monthly special".
       range.replaceAll("monthly special", "parsnip", {completeMatch: true});
+    }
+'ExcelScript.Range#select:member(1)':
+  - |-
+    /**
+     * This script selects the first row of a table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first table on the current worksheet.
+      const sheet = workbook.getActiveWorksheet()
+      const table = sheet.getTables()[0];
+
+      // Get the first data row in the table.
+      const row = table.getRangeBetweenHeaderAndTotal().getRow(0);
+
+      // Select the first data row.
+      row.select();
     }
 'ExcelScript.Range#setFormula:member(1)':
   - |-
@@ -5229,6 +5245,23 @@
       textFrame.getTextRange().setText(value.toString());
       textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
     }
+'ExcelScript.ShapeFont:interface':
+  - |-
+    /**
+     * This sample sets the font of a shape to be bold. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first shape in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const shape = sheet.getShapes()[0];
+
+      // Get the text font from the shape
+      const text: ExcelScript.TextRange = shape.getTextFrame().getTextRange();
+      const shapeTextFont: ExcelScript.ShapeFont = text.getFont();
+
+      // Set the font to be bold.
+      shapeTextFont.setBold(true);
+    }
 'ExcelScript.SheetVisibility:enum':
   - |-
     /**
@@ -5818,6 +5851,23 @@
       // Set the text of the shape.
       const hexText: ExcelScript.TextRange = hexagon.getTextFrame().getTextRange();
       hexText.setText("Forest");
+    }
+'ExcelScript.TextRange#getFont:member(1)':
+  - |-
+    /**
+     * This sample sets the font of a shape to be bold. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first shape in the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const shape = sheet.getShapes()[0];
+
+      // Get the text font from the shape
+      const text: ExcelScript.TextRange = shape.getTextFrame().getTextRange();
+      const shapeTextFont: ExcelScript.ShapeFont = text.getFont();
+
+      // Set the font to be bold.
+      shapeTextFont.setBold(true);
     }
 'ExcelScript.TextRange#getText:member(1)':
   - |-
@@ -6495,6 +6545,27 @@
       // Name the worksheet using the current date.
       let date = new Date(Date.now());
       newSheet.setName(`${date.toDateString()}`);
+    }
+'ExcelScript.WorksheetProtection:interface':
+  - |-
+    /**
+     * This script pauses the protection of a worksheet by using the provided password.
+     * This password could come from a Power Automate flow.
+     */
+    function main(workbook: ExcelScript.Workbook, password: string) {
+      // Get the worksheet named "Sales"
+      const sheet = workbook.getWorksheet("Sales");
+      const protection: ExcelScript.WorksheetProtection = sheet.getProtection();
+      // Check if the provided password works.
+      if (protection.checkPassword(password)) {
+        protection.pauseProtection(password);
+
+        // Edit the worksheet...
+
+        protection.resumeProtection();
+      } else {
+        console.log("Incorrect password");
+      }
     }
 'ExcelScript.WorksheetProtection#protect:member(1)':
   - |-

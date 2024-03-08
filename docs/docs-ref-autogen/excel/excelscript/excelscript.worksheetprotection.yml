@@ -4,7 +4,32 @@ uid: 'ExcelScript!ExcelScript.WorksheetProtection:interface'
 package: ExcelScript!
 fullName: ExcelScript.WorksheetProtection
 summary: Represents the protection of a worksheet object.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script pauses the protection of a worksheet by using the provided password.
+   * This password could come from a Power Automate flow.
+   */
+  function main(workbook: ExcelScript.Workbook, password: string) {
+    // Get the worksheet named "Sales"
+    const sheet = workbook.getWorksheet("Sales");
+    const protection: ExcelScript.WorksheetProtection = sheet.getProtection();
+    // Check if the provided password works.
+    if (protection.checkPassword(password)) {
+      protection.pauseProtection(password);
+
+      // Edit the worksheet...
+
+      protection.resumeProtection();
+    } else {
+      console.log("Incorrect password");
+    }
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

@@ -2342,7 +2342,27 @@ methods:
       content: 'select(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script selects the first row of a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const sheet = workbook.getActiveWorksheet()
+            const table = sheet.getTables()[0];
+
+            // Get the first data row in the table.
+            const row = table.getRangeBetweenHeaderAndTotal().getRow(0);
+
+            // Select the first data row.
+            row.select();
+          }
+          ```
   - name: setColumnHidden(columnHidden)
     uid: 'ExcelScript!ExcelScript.Range#setColumnHidden:member(1)'
     package: ExcelScript!

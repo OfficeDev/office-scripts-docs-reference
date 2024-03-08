@@ -39,7 +39,28 @@ methods:
       content: 'getFont(): ShapeFont;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ShapeFont:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the font of a shape to be bold. 
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first shape in the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const shape = sheet.getShapes()[0];
+
+            // Get the text font from the shape
+            const text: ExcelScript.TextRange = shape.getTextFrame().getTextRange();
+            const shapeTextFont: ExcelScript.ShapeFont = text.getFont();
+
+            // Set the font to be bold.
+            shapeTextFont.setBold(true);
+          }
+          ```
   - name: 'getSubstring(start, length)'
     uid: 'ExcelScript!ExcelScript.TextRange#getSubstring:member(1)'
     package: ExcelScript!
