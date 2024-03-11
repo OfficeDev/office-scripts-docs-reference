@@ -4,7 +4,25 @@ uid: 'ExcelScript!ExcelScript.Query:interface'
 package: ExcelScript!
 fullName: ExcelScript.Query
 summary: Represents a Power Query query.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script logs information about all the Power Query queries in the workbook.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get all the Power Query queries in the workbook.
+    const queries = workbook.getQueries();
+
+    // For each query, log the date it was last refreshed.
+    queries.forEach((query: ExcelScript.Query) => {
+      console.log(`Query ${query.getName()} - last refreshed ${query.getRefreshDate()}`);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

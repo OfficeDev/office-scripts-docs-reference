@@ -4,7 +4,28 @@ uid: 'ExcelScript!ExcelScript.ShapeFont:interface'
 package: ExcelScript!
 fullName: ExcelScript.ShapeFont
 summary: 'Represents the font attributes, such as font name, font size, and color, for a shape''s `TextRange` object.'
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample sets the font of a shape to be bold. 
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first shape in the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const shape = sheet.getShapes()[0];
+
+    // Get the text font from the shape.
+    const text: ExcelScript.TextRange = shape.getTextFrame().getTextRange();
+    const shapeTextFont: ExcelScript.ShapeFont = text.getFont();
+
+    // Set the font to be bold.
+    shapeTextFont.setBold(true);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
