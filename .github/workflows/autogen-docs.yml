@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '15 17 * * WED'
+    - cron: '55 17 * * WED'
 jobs:
   autogen-docs:
     runs-on: ubuntu-latest
@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+      - name: Make the script file executable
+        run: |
+          echo "Making script file executable"
+          chmod +x GenerateDocs.sh
       - name: Run GenerateDocs script
         run: |
           echo "Generating docs"
