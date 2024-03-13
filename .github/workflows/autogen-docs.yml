@@ -4,13 +4,10 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '55 17 * * WED'
+    - cron: '45 18 * * WED'
 jobs:
   autogen-docs:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./generate-docs
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -21,11 +18,11 @@ jobs:
       - name: Make the script file executable
         run: |
           echo "Making script file executable"
-          chmod +x GenerateDocs.sh
+          chmod +x ./generate-docs/GenerateDocs.sh
       - name: Run GenerateDocs script
         run: |
           echo "Generating docs"
-          ./GenerateDocs.sh
+          ./generate-docs/GenerateDocs.sh
       - name: Commit and push changes
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
