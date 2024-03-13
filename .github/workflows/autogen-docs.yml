@@ -1,0 +1,34 @@
+name: autogen-docs
+run-name: Automatically run GenerateDocs
+on:
+  schedule:
+    - cron: '45 10 * * TUE'
+    - cron: '45 10 * * THU'
+    - cron: '15 17 * * WED'
+jobs:
+  autogen-docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./generate-docs
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Run GenerateDocs script
+        run: |
+          echo "Generating docs"
+          ./GenerateDocs.sh
+      - name: Commit and push changes
+        run: |
+          echo "Committing and pushing changes to autogen-docs branch"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b autogen-docs
+          git add .
+          git commit -m "Automatically generated docs"
+          git push
+  
