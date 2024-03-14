@@ -4,10 +4,10 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '25 16 * * THU'
+    - cron: '45 16 * * THU'
 jobs:
   autogen-docs:
-    runs-on: windows-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./generate-docs
