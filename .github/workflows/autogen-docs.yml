@@ -4,10 +4,12 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '15 17 * * THU'
+    - cron: '55 17 * * THU'
 jobs:
   autogen-docs:
     runs-on: macos-latest
+    permissions:
+      contents: write
     defaults:
       run:
         working-directory: ./generate-docs
@@ -34,5 +36,5 @@ jobs:
           git checkout -b autogen-docs
           git add .
           git commit -m "Automatically generated docs"
-          git push --set-upstream origin autogen-docs
+          git push
   
