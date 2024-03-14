@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '45 18 * * THU'
+    - cron: '05 19 * * THU'
 jobs:
   autogen-docs:
     runs-on: macos-latest
@@ -36,6 +36,6 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "Automatically generated docs"
+          git commit -am "Automatically generated docs"
           git push
   
