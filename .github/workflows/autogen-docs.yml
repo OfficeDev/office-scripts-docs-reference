@@ -4,29 +4,28 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '50 15 * * THU'
+    - cron: '25 16 * * THU'
 jobs:
   autogen-docs:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     defaults:
       run:
-        working-directory: .
+        working-directory: ./generate-docs
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Make the script file executable
+        run: |
+          echo "Making script file executable"
+          chmod +x ./GenerateDocs.sh
       - name: Set up node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Make the script file executable
-        run: |
-          echo "Making script file executable"
-          chmod +x ./generate-docs/GenerateDocs.sh
       - name: Run GenerateDocs script
         run: |
           echo "Generating docs"
           ./GenerateDocs.sh
-        working-directory: ./generate-docs
       - name: Commit and push changes
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
