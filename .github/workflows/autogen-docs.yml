@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '52 14 * * FRI'
+    - cron: '20 15 * * FRI'
 jobs:
   autogen-docs:
     runs-on: macos-latest
@@ -17,7 +17,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          ref: autogen-docs
+          ref: autogen-docs-1
       - name: Make the script file executable
         run: |
           echo "Making script file executable"
