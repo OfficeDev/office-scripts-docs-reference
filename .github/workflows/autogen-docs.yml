@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '36 13 * * FRI'
+    - cron: '10 14 * * FRI'
 jobs:
   autogen-docs:
     runs-on: macos-latest
@@ -30,12 +30,16 @@ jobs:
         run: |
           echo "Generating docs"
           ./GenerateDocs.sh
+      - name: Undo chmod
+        run: |
+          echo "Undoing script file chmod"
+          chmod -x ./GenerateDocs.sh.
       - name: Commit and push changes
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add ../docs/\*
+          git add ../\*
           git commit -m "Automatically generated docs"
           git push
   
