@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '20 15 * * FRI'
+    - cron: '55 15 * * FRI'
 jobs:
   autogen-docs:
     runs-on: macos-latest
@@ -16,8 +16,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: autogen-docs-1
       - name: Make the script file executable
         run: |
           echo "Making script file executable"
@@ -39,7 +37,8 @@ jobs:
           echo "Committing and pushing changes to autogen-docs branch"
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git checkout -b autogen-docs
           git add ../.
           git commit -m "Automatically generated docs"
-          git push
+          git push --set-upstream origin autogen-docs
   
