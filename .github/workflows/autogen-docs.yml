@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '10 14 * * FRI'
+    - cron: '22 14 * * FRI'
 jobs:
   autogen-docs:
     runs-on: macos-latest
@@ -33,7 +33,7 @@ jobs:
       - name: Undo chmod
         run: |
           echo "Undoing script file chmod"
-          chmod -x ./GenerateDocs.sh.
+          chmod -x ./GenerateDocs.sh
       - name: Commit and push changes
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
