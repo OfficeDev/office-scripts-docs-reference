@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '25 15 * * MON'
+    - cron: '48 15 * * MON'
 jobs:
   autogen-docs:
     runs-on: windows-latest
@@ -40,10 +40,11 @@ jobs:
           git config user.email github-actions@github.com
           git checkout -b autogen-docs
           git add ../.
-          echo "GIT_STATUS=$(git status)" >> "$GITHUB_OUTPUT"
+          git status
+          echo "git_status=$(git status)" >> "$GITHUB_OUTPUT"
         id: determine_changes
       - name: Commit and push changes if any
-        if: ${{ !contains(steps.determine_changes.outputs.GIT_STATUS, 'nothing to commit, working tree clean') }}
+        if: ${{ !contains(steps.determine_changes.outputs.git_status, 'nothing to commit, working tree clean') }}
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
           git commit -m "Automatically generated docs"
