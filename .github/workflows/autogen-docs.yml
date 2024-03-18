@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '45 10 * * TUE'
     - cron: '45 10 * * THU'
-    - cron: '58 19 * * FRI'
+    - cron: '25 15 * * MON'
 jobs:
   autogen-docs:
     runs-on: windows-latest
@@ -34,7 +34,6 @@ jobs:
           echo "Undoing script file chmod"
           chmod -x ./GenerateDocs.sh
       - name: Determine changes
-        id: determine_changes
         run: |
           echo "Determining if there are any changes"
           git config user.name github-actions
@@ -42,8 +41,9 @@ jobs:
           git checkout -b autogen-docs
           git add ../.
           echo "GIT_STATUS=$(git status)" >> "$GITHUB_OUTPUT"
+        id: determine_changes
       - name: Commit and push changes if any
-        if: ${{ ! contains(steps.determine_changes.outputs.GIT_STATUS, 'nothing to commit, working tree clean') }}
+        if: ${{ !contains(steps.determine_changes.outputs.GIT_STATUS, 'nothing to commit, working tree clean') }}
         run: |
           echo "Committing and pushing changes to autogen-docs branch"
           git commit -m "Automatically generated docs"
