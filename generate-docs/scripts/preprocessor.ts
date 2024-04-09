@@ -2,7 +2,7 @@
 
 import * as path from "path";
 import * as fsx from 'fs-extra';
-import yaml = require('js-yaml');
+import * as jsyaml from "js-yaml";
 
 tryCatch(async () => {
     console.log("\nStarting preprocessor script...");
@@ -30,11 +30,11 @@ tryCatch(async () => {
     let localSnippetsString = fsx.readFileSync(`${snippetsSourcePath}/excel-scripts.yaml`).toString();
 
     // Parse the YAML into an object/hash set.
-    let snippets = yaml.load(localSnippetsString);
+    let snippets = jsyaml.load(localSnippetsString);
     let snippetDestination = path.resolve("../json/excel/snippets.yaml");
     console.log("\nWriting snippets to: " + snippetDestination);
     fsx.createFileSync(snippetDestination);
-    fsx.writeFileSync(snippetDestination, yaml.safeDump(
+    fsx.writeFileSync(snippetDestination, jsyaml.dump(
         snippets,
         {sortKeys: <any>((a: string, b: string) => {
             if (a < b) {
