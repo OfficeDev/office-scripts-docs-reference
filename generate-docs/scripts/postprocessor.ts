@@ -97,7 +97,7 @@ tryCatch(async () => {
     let versionPath = path.resolve(`${docsDestination}/excel`);
     let tocPath = versionPath + "/toc.yml";
     let latestToc = fixToc(tocPath, "../api-extractor-inputs-excel/excel.d.ts");
-    fsx.writeFileSync(tocPath, jsyaml.safeDump(latestToc));
+    fsx.writeFileSync(tocPath, jsyaml.dump(latestToc));
 
     console.log("\nPostprocessor script complete!\n");
     process.exit(0);
@@ -115,7 +115,7 @@ async function tryCatch(call: () => Promise<void>) {
 function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     console.log(`Updating the structure of the TOC file: ${tocPath}`);
 
-    let origToc = (jsyaml.safeLoad(fsx.readFileSync(tocPath).toString()) as Toc);
+    let origToc = (jsyaml.load(fsx.readFileSync(tocPath).toString()) as Toc);
     let newToc = <Toc>{};
     let membersToMove = <IMembers>{};
 
