@@ -1259,7 +1259,29 @@ methods:
       content: 'getProtection(): WorkbookProtection;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.WorkbookProtection:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a workbook-level password if there is not already one.
+           * The password is provided by the user through a prompt.
+           */
+          function main(workbook: ExcelScript.Workbook, password?: string) {
+            // Get the workbook-level protection object.
+            const protection = workbook.getProtection();
+
+            // Check if the workbook is already protected.
+            if (!protection.getProtected()) {
+                // Protect the workbook with the given password.
+                // If the optional password was omitted, 
+                // no password will be needed to unprotect the workbook.
+              protection.protect(password);
+            }
+          }
+          ```
   - name: getQueries()
     uid: 'ExcelScript!ExcelScript.Workbook#getQueries:member(1)'
     package: ExcelScript!

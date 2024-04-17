@@ -6123,6 +6123,24 @@
         }
       });
     }
+'ExcelScript.Workbook#getProtection:member(1)':
+  - |-
+    /**
+     * This script applies a workbook-level password if there is not already one.
+     * The password is provided by the user through a prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Check if the workbook is already protected.
+      if (!protection.getProtected()) {
+          // Protect the workbook with the given password.
+          // If the optional password was omitted, 
+          // no password will be needed to unprotect the workbook.
+        protection.protect(password);
+      }
+    }
 'ExcelScript.Workbook#getWorksheet:member(1)':
   - |-
     /**
@@ -6153,6 +6171,47 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.WorkbookProtection#getProtected:member(1)':
+  - |-
+    /**
+     * This script applies a default workbook-level password if there is not already one.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Check if the workbook is already protected.
+      if (!protection.getProtected()) {
+        // Apply a default password.
+        protection.protect("1234");
+      }
+    }
+'ExcelScript.WorkbookProtection#protect:member(1)':
+  - |-
+    /**
+     * This script protects the workbook using a password given in a user prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Protect the workbook with the given password.
+      // If the optional password was omitted, 
+      // no password will be needed to unprotect the workbook.
+      protection.protect(password);
+    }
+'ExcelScript.WorkbookProtection#unprotect:member(1)':
+  - |-
+    /**
+     * This script removes protection from the workbook using a password given in a user prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Unprotect the workbook with the given password.
+      protection.unprotect(password);
     }
 'ExcelScript.WorkbookLinksRefreshMode:enum':
   - |-
