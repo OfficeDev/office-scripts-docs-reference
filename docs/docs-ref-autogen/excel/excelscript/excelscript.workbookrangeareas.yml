@@ -4,7 +4,30 @@ uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas:interface'
 package: ExcelScript!
 fullName: ExcelScript.WorkbookRangeAreas
 summary: Represents a collection of one or more rectangular ranges in multiple worksheets.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds the direct precedents of the active cell.
+   * It changes the font and color of those precedent cells. 
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the active cell.
+    const selected = workbook.getActiveCell();
+    
+    // Get the cells that are direct precedents of the current cell.
+    const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+    // Set the font to bold and the fill color to orange for all the precedent cells.
+    precedents.getRanges().forEach(range => {
+      range.getFormat().getFill().setColor("orange");
+      range.getFormat().getFont().setBold(true);
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

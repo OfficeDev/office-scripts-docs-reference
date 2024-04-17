@@ -3864,6 +3864,25 @@
           }
         });
     }
+'ExcelScript.Range#getDirectPrecedents:member(1)':
+  - |-
+    /**
+     * This script finds the direct precedents of the active cell.
+     * It changes the font and color of those precedent cells. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      const selected = workbook.getActiveCell();
+      
+      // Get the cells that are direct precedents of the current cell.
+      const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+      // Set the font to bold and the fill color to orange for all the precedent cells.
+      precedents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("orange");
+        range.getFormat().getFont().setBold(true);
+      });
+    }
 'ExcelScript.Range#getExtendedRange:member(1)':
   - |-
     /**
@@ -6126,7 +6145,7 @@
 'ExcelScript.Workbook#getProtection:member(1)':
   - |-
     /**
-     * This script applies a workbook-level password if there is not already one.
+     * This script protects the workbook with a password, if it isn't already protected.
      * The password is provided by the user through a prompt.
      */
     function main(workbook: ExcelScript.Workbook, password?: string) {
@@ -6175,7 +6194,7 @@
 'ExcelScript.WorkbookProtection#getProtected:member(1)':
   - |-
     /**
-     * This script applies a default workbook-level password if there is not already one.
+     * This script protects the workbook with a default password, if there is not already protection.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Get the workbook-level protection object.
@@ -6212,6 +6231,25 @@
 
       // Unprotect the workbook with the given password.
       protection.unprotect(password);
+    }
+'ExcelScript.WorkbookRangeAreas:interface':
+  - |-
+    /**
+     * This script finds the direct precedents of the active cell.
+     * It changes the font and color of those precedent cells. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      const selected = workbook.getActiveCell();
+      
+      // Get the cells that are direct precedents of the current cell.
+      const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+      // Set the font to bold and the fill color to orange for all the precedent cells.
+      precedents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("orange");
+        range.getFormat().getFont().setBold(true);
+      });
     }
 'ExcelScript.WorkbookLinksRefreshMode:enum':
   - |-
