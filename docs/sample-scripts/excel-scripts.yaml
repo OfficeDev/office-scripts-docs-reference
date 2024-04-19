@@ -1691,6 +1691,25 @@
       const dataHierarchy = pivotTable.getDataHierarchies()[0];
       dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
     }
+'ExcelScript.DataPivotHierarchy#setShowAs:member(1)':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * It shows the percentage of the gran total, 
+     * instead of the default sum.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Show the data as a percentage of the grand total.
+      farmSales.setShowAs({
+        calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+      });
+    }
 'ExcelScript.DataValidation#getType:member(1)':
   - |-
     /**
@@ -5292,6 +5311,55 @@
         // Set the worksheet visibility to visible.
         worksheet.setVisibility(ExcelScript.SheetVisibility.visible);
       });
+    }
+'ExcelScript.ShowAsCalculation:enum':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * It shows the percentage of the gran total, 
+     * instead of the default sum.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Show the data as a percentage of the grand total.
+      farmSales.setShowAs({
+        calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+      });
+    }
+'ExcelScript.ShowAsRule:interface':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * The field shows each value's difference
+     * from the value of the "Lemon" in the same row.
+     * If the row has no value for "Lemon", the field shows "#N/A".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Get the row hierarchy "Type".
+      const typeField = farmPivot.getRowHierarchy("Type").getFields()[0];
+
+      // Change the data hierarchy to show each value as the difference
+      // from the value of the "Lemon" in that row.
+      const rule: ExcelScript.ShowAsRule = {
+        calculation: ExcelScript.ShowAsCalculation.differenceFrom,
+        baseField: typeField,
+        baseItem: typeField.getPivotItem("Lemon")
+      }
+      farmSales.setShowAs(rule);
+
+      // Set the name of the field to match the new behavior.
+      farmSales.setName("Difference from Lemons of Crates Sold at Farm");
     }
 'ExcelScript.Slicer:interface':
   - |-
