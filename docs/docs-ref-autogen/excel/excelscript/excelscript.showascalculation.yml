@@ -4,7 +4,30 @@ uid: 'ExcelScript!ExcelScript.ShowAsCalculation:enum'
 package: ExcelScript!
 fullName: ExcelScript.ShowAsCalculation
 summary: The ShowAs calculation function for the DataPivotField.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * The script changes the display for "Crates Sold at Farm".
+   * It shows the percentage of the grand total, 
+   * instead of the default sum.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable named "Farm Pivot".
+    const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+    // Get the data hierarchy "Sum of Crates Sold at Farm".
+    const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+    // Show the data as a percentage of the grand total.
+    farmSales.setShowAs({
+      calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+    });
+  }
+  ```
 isPreview: false
 isDeprecated: false
 fields:
