@@ -799,7 +799,30 @@ methods:
       content: 'getDirectPrecedents(): WorkbookRangeAreas;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script finds the direct precedents of the active cell.
+           * It changes the font and color of those precedent cells. 
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            const selected = workbook.getActiveCell();
+            
+            // Get the cells that are direct precedents of the current cell.
+            const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+            // Set the font to bold and the fill color to orange for all the precedent cells.
+            precedents.getRanges().forEach(range => {
+              range.getFormat().getFill().setColor("orange");
+              range.getFormat().getFont().setBold(true);
+            });
+          }
+          ```
   - name: getEntireColumn()
     uid: 'ExcelScript!ExcelScript.Range#getEntireColumn:member(1)'
     package: ExcelScript!

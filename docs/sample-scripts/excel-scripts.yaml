@@ -1691,6 +1691,25 @@
       const dataHierarchy = pivotTable.getDataHierarchies()[0];
       dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
     }
+'ExcelScript.DataPivotHierarchy#setShowAs:member(1)':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * It shows the percentage of the grand total, 
+     * instead of the default sum.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Show the data as a percentage of the grand total.
+      farmSales.setShowAs({
+        calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+      });
+    }
 'ExcelScript.DataValidation#getType:member(1)':
   - |-
     /**
@@ -3864,6 +3883,25 @@
           }
         });
     }
+'ExcelScript.Range#getDirectPrecedents:member(1)':
+  - |-
+    /**
+     * This script finds the direct precedents of the active cell.
+     * It changes the font and color of those precedent cells. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      const selected = workbook.getActiveCell();
+      
+      // Get the cells that are direct precedents of the current cell.
+      const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+      // Set the font to bold and the fill color to orange for all the precedent cells.
+      precedents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("orange");
+        range.getFormat().getFont().setBold(true);
+      });
+    }
 'ExcelScript.Range#getExtendedRange:member(1)':
   - |-
     /**
@@ -5274,6 +5312,55 @@
         worksheet.setVisibility(ExcelScript.SheetVisibility.visible);
       });
     }
+'ExcelScript.ShowAsCalculation:enum':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * It shows the percentage of the grand total, 
+     * instead of the default sum.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Show the data as a percentage of the grand total.
+      farmSales.setShowAs({
+        calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+      });
+    }
+'ExcelScript.ShowAsRule:interface':
+  - |-
+    /**
+     * The script changes the display for "Crates Sold at Farm".
+     * The field shows each value's difference
+     * from the value of the "Lemon" in the same row.
+     * If the row has no value for "Lemon", the field shows "#N/A".
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the PivotTable named "Farm Pivot".
+      const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+      // Get the data hierarchy "Sum of Crates Sold at Farm".
+      const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+      // Get the row hierarchy "Type".
+      const typeField = farmPivot.getRowHierarchy("Type").getFields()[0];
+
+      // Change the data hierarchy to show each value as the difference
+      // from the value of the "Lemon" in that row.
+      const rule: ExcelScript.ShowAsRule = {
+        calculation: ExcelScript.ShowAsCalculation.differenceFrom,
+        baseField: typeField,
+        baseItem: typeField.getPivotItem("Lemon")
+      }
+      farmSales.setShowAs(rule);
+
+      // Set the name of the field to match the new behavior.
+      farmSales.setName("Difference from Lemons of Crates Sold at Farm");
+    }
 'ExcelScript.Slicer:interface':
   - |-
     /**
@@ -6123,6 +6210,24 @@
         }
       });
     }
+'ExcelScript.Workbook#getProtection:member(1)':
+  - |-
+    /**
+     * This script protects the workbook with a password, if it isn't already protected.
+     * The password is provided by the user through a prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Check if the workbook is already protected.
+      if (!protection.getProtected()) {
+          // Protect the workbook with the given password.
+          // If the optional password was omitted, 
+          // no password will be needed to unprotect the workbook.
+        protection.protect(password);
+      }
+    }
 'ExcelScript.Workbook#getWorksheet:member(1)':
   - |-
     /**
@@ -6153,6 +6258,66 @@
       // Write in the console all the worksheet names and the total count.
       console.log(names);
       console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+    }
+'ExcelScript.WorkbookProtection#getProtected:member(1)':
+  - |-
+    /**
+     * This script protects the workbook with a default password, if there is not already protection.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Check if the workbook is already protected.
+      if (!protection.getProtected()) {
+        // Apply a default password.
+        protection.protect("1234");
+      }
+    }
+'ExcelScript.WorkbookProtection#protect:member(1)':
+  - |-
+    /**
+     * This script protects the workbook using a password given in a user prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Protect the workbook with the given password.
+      // If the optional password was omitted, 
+      // no password will be needed to unprotect the workbook.
+      protection.protect(password);
+    }
+'ExcelScript.WorkbookProtection#unprotect:member(1)':
+  - |-
+    /**
+     * This script removes protection from the workbook using a password given in a user prompt.
+     */
+    function main(workbook: ExcelScript.Workbook, password?: string) {
+      // Get the workbook-level protection object.
+      const protection = workbook.getProtection();
+
+      // Unprotect the workbook with the given password.
+      protection.unprotect(password);
+    }
+'ExcelScript.WorkbookRangeAreas:interface':
+  - |-
+    /**
+     * This script finds the direct precedents of the active cell.
+     * It changes the font and color of those precedent cells. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the active cell.
+      const selected = workbook.getActiveCell();
+      
+      // Get the cells that are direct precedents of the current cell.
+      const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+      // Set the font to bold and the fill color to orange for all the precedent cells.
+      precedents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("orange");
+        range.getFormat().getFont().setBold(true);
+      });
     }
 'ExcelScript.WorkbookLinksRefreshMode:enum':
   - |-

@@ -21,7 +21,26 @@ methods:
       content: 'getProtected(): boolean;'
       return:
         type: boolean
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script protects the workbook with a default password, if there is not already protection.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the workbook-level protection object.
+            const protection = workbook.getProtection();
+
+            // Check if the workbook is already protected.
+            if (!protection.getProtected()) {
+              // Apply a default password.
+              protection.protect("1234");
+            }
+          }
+          ```
   - name: protect(password)
     uid: 'ExcelScript!ExcelScript.WorkbookProtection#protect:member(1)'
     package: ExcelScript!
@@ -38,7 +57,25 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script protects the workbook using a password given in a user prompt.
+           */
+          function main(workbook: ExcelScript.Workbook, password?: string) {
+            // Get the workbook-level protection object.
+            const protection = workbook.getProtection();
+
+            // Protect the workbook with the given password.
+            // If the optional password was omitted, 
+            // no password will be needed to unprotect the workbook.
+            protection.protect(password);
+          }
+          ```
   - name: unprotect(password)
     uid: 'ExcelScript!ExcelScript.WorkbookProtection#unprotect:member(1)'
     package: ExcelScript!
@@ -55,4 +92,20 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes protection from the workbook using a password given in a user prompt.
+           */
+          function main(workbook: ExcelScript.Workbook, password?: string) {
+            // Get the workbook-level protection object.
+            const protection = workbook.getProtection();
+
+            // Unprotect the workbook with the given password.
+            protection.unprotect(password);
+          }
+          ```
