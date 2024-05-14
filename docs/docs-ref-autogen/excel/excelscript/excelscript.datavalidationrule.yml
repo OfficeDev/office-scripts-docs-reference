@@ -23,6 +23,32 @@ properties:
       content: 'custom?: CustomDataValidation;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.CustomDataValidation:interface" />'
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds data validation to a range.
+           * The validation prevents duplicate entries within that range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range "B2:B20".
+            const sheet = workbook.getActiveWorksheet();
+            const range = sheet.getRange("B2:B20");
+
+            // Set data validation on the range to prevent duplicate, non-blank entries.
+            const dataValidation = range.getDataValidation();
+            dataValidation.setIgnoreBlanks(true);
+            const duplicateRule : ExcelScript.CustomDataValidation = { 
+              formula: "=COUNTIF($B$2:$B$20, B2)=1"
+            };
+            dataValidation.setRule({
+              custom: duplicateRule
+            });
+          }
+          ```
   - name: date
     uid: 'ExcelScript!ExcelScript.DataValidationRule#date:member'
     package: ExcelScript!
