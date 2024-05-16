@@ -2314,6 +2314,7 @@ methods:
            * This script removes duplicate rows from a range.
            */
           function main(workbook: ExcelScript.Workbook) {
+            // Get the used range of the active worksheet.
             const usedRange = workbook.getActiveWorksheet().getUsedRange();
 
             // Remove any row that has a same value in the 0-indexed column as a previous row.
