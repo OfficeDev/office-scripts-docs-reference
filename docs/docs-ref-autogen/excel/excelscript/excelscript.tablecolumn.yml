@@ -227,4 +227,21 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script renames a column in an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the "Employee" table.
+            const employeeTable = workbook.getTable("Employee");
+
+            // Rename a column from "EmplID" to "Employee ID".
+            const idColumn = employeeTable.getColumnByName("EmplID");
+            idColumn.setName("Employee ID");
+          }
+          ```

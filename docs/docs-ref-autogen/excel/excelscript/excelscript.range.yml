@@ -2304,7 +2304,25 @@ methods:
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.RemoveDuplicatesResult:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes duplicate rows from a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+            // Remove any row that has a same value in the 0-indexed column as a previous row.
+            const removedResults = usedRange.removeDuplicates([0], true);
+
+            // Log the count of removed rows.
+            console.log(`Rows removed: ${removedResults.getRemoved()}.`);
+          }
+          ```
   - name: 'replaceAll(text, replacement, criteria)'
     uid: 'ExcelScript!ExcelScript.Range#replaceAll:member(1)'
     package: ExcelScript!

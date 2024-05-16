@@ -4283,6 +4283,20 @@
       const range = selectedSheet.getRange("A1:A4");
       range.merge();
     }
+'ExcelScript.Range#removeDuplicates:member(1)':
+  - |-
+    /**
+     * This script removes duplicate rows from a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+      // Remove any row that has a same value in the 0-indexed column as a previous row.
+      const removedResults = usedRange.removeDuplicates([0], true);
+
+      // Log the count of removed rows.
+      console.log(`Rows removed: ${removedResults.getRemoved()}.`);
+    }
 'ExcelScript.Range#replaceAll:member(1)':
   - |-
     /**
@@ -5047,6 +5061,20 @@
       const otherSheet = workbook.getWorksheet("Sheet2");
       const otherRangeCorner = otherSheet.getRange("A1");
       otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
+    }
+'ExcelScript.RemoveDuplicatesResult:interface':
+  - |-
+    /**
+     * This script removes duplicate rows from a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+      // Remove any row that has a same value in the 0-indexed column as a previous row.
+      const removedResults: ExcelScript.RemoveDuplicatesResult = usedRange.removeDuplicates([0], true);
+
+      // Log the count of removed rows.
+      console.log(`Rows removed: ${removedResults.getRemoved()}.`);
     }
 'ExcelScript.ReplaceCriteria#completeMatch:member':
   - |-
@@ -5814,6 +5842,20 @@
         table.reapplyFilters();
       });
     }
+'ExcelScript.Table#setShowBandedRows:member(1)':
+  - |-
+    /**
+     * This script sets all the tables in the workbook to have banded rows. 
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get all the tables.
+      const tables = workbook.getTables();
+
+      // For each table, set the banded row formatting to true.
+      tables.forEach((table) => {
+        table.setShowBandedRows(true);
+      });
+    }
 'ExcelScript.Table#setShowHeaders:member(1)':
   - |-
     /**
@@ -5908,6 +5950,19 @@
         `=[@[${productColumnName1}]]*[@[${productColumnName2}]]`
       );
     }
+'ExcelScript.TableColumn#setName:member(1)':
+  - |-
+    /**
+     * This script renames a column in an existing table.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the "Employee" table.
+      const employeeTable = workbook.getTable("Employee");
+
+      // Rename a column from "EmplID" to "Employee ID".
+      const idColumn = employeeTable.getColumnByName("EmplID");
+      idColumn.setName("Employee ID");
+    }
 'ExcelScript.TableSort#apply:member(1)':
   - |-
     /**
@@ -5923,6 +5978,21 @@
 
       // Sort the table using the first column.
       newTable.getSort().apply([{ key: 0, ascending: true }]);
+    }
+'ExcelScript.TableSort#reapply:member(1)':
+  - |-
+    /**
+     * This script reapplies all the current sorting criteria to existing tables.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get all the tables.
+      const tables = workbook.getTables();
+
+      // For each table, reapply that table's current sorting parameters.
+      tables.forEach((table) => {
+        const sort: ExcelScript.TableSort = table.getSort();
+        sort.reapply();
+      });
     }
 'ExcelScript.TextConditionalFormat:interface':
   - |-

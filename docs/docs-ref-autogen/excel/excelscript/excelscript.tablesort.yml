@@ -123,4 +123,23 @@ methods:
       content: 'reapply(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script reapplies all the current sorting criteria to existing tables.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the tables.
+            const tables = workbook.getTables();
+
+            // For each table, reapply that table's current sorting parameters.
+            tables.forEach((table) => {
+              const sort: ExcelScript.TableSort = table.getSort();
+              sort.reapply();
+            });
+          }
+          ```
