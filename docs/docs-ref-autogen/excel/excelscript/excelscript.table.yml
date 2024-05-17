@@ -856,7 +856,25 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets all the tables in the workbook to have banded rows. 
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the tables.
+            const tables = workbook.getTables();
+
+            // For each table, set the banded row formatting to true.
+            tables.forEach((table) => {
+              table.setShowBandedRows(true);
+            });
+          }
+          ```
   - name: setShowFilterButton(showFilterButton)
     uid: 'ExcelScript!ExcelScript.Table#setShowFilterButton:member(1)'
     package: ExcelScript!
