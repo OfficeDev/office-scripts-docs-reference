@@ -4,7 +4,26 @@ uid: 'ExcelScript!ExcelScript.RemoveDuplicatesResult:interface'
 package: ExcelScript!
 fullName: ExcelScript.RemoveDuplicatesResult
 summary: Represents the results from `Range.removeDuplicates`<!-- -->.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script removes duplicate rows from a range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range of the active worksheet.
+    const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+    // Remove any row that has a same value in the 0-indexed column as a previous row.
+    const removedResults: ExcelScript.RemoveDuplicatesResult = usedRange.removeDuplicates([0], true);
+
+    // Log the count of removed rows.
+    console.log(`Rows removed: ${removedResults.getRemoved()}.`);
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface
