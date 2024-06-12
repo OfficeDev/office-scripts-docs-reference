@@ -26,7 +26,27 @@ methods:
       content: 'breakLinks(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes all links to other workbooks.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get all the linked workbook references.
+              const externalWorkbooks: ExcelScript.LinkedWorkbook[] = workbook.getLinkedWorkbooks();
+              console.log(`There are ${externalWorkbooks.length} other workbooks linked to from this workbook.`);
+
+              // Remove all the links to those workbooks.
+              // This changes the value of cells with workbook links to "#CONNECT!".
+              externalWorkbooks.forEach((workbookLink) => {
+                  workbookLink.breakLinks();
+              });
+          }
+          ```
   - name: refreshLinks()
     uid: 'ExcelScript!ExcelScript.LinkedWorkbook#refreshLinks:member(1)'
     package: ExcelScript!
