@@ -178,7 +178,25 @@ methods:
       content: 'clearFilters(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script clears the filters from all tables in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get all the tables in the workbook.
+              const tables = workbook.getTables();
+
+              // Remove any active filters from each table.
+              tables.forEach((table) => {
+                table.clearFilters();
+              });
+          }
+          ```
   - name: convertToRange()
     uid: 'ExcelScript!ExcelScript.Table#convertToRange:member(1)'
     package: ExcelScript!
