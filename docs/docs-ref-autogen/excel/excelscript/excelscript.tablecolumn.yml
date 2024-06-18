@@ -210,7 +210,27 @@ methods:
       content: 'getTotalRowRange(): Range;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the value in the total row of a table column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Cities".
+              const table = workbook.getTable("Cities");
+
+              // Get the total row from the "Population" column.
+              const column = table.getColumn("Population");
+              const totalRange = column.getTotalRowRange();
+
+              // Log the total value.
+              console.log(totalRange.getValue());
+          }
+          ```
   - name: setName(name)
     uid: 'ExcelScript!ExcelScript.TableColumn#setName:member(1)'
     package: ExcelScript!

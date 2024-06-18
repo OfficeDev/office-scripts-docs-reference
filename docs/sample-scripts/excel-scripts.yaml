@@ -130,7 +130,7 @@
   - |-
     /**
      * This script uses the autofill feature to complete a table with days of the month.
-     * See https://support.microsoft.com/74e31bdd-d993-45da-aa82-35a236c5b5db
+     * See https://support.microsoft.com/office/74e31bdd-d993-45da-aa82-35a236c5b5db
      * for examples of autofill scenarios.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -2740,6 +2740,22 @@
       // Apply the label filter to the field.
       field.applyFilter({ labelFilter: filter });
     }
+'ExcelScript.LinkedWorkbook#breakLinks:member(1)':
+  - |-
+    /**
+     * This script removes all links to other workbooks.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get all the linked workbook references.
+        const externalWorkbooks: ExcelScript.LinkedWorkbook[] = workbook.getLinkedWorkbooks();
+        console.log(`There are ${externalWorkbooks.length} other workbooks linked to from this workbook.`);
+
+        // Remove all the links to those workbooks.
+        // This changes the value of cells with workbook links to "#CONNECT!".
+        externalWorkbooks.forEach((workbookLink) => {
+            workbookLink.breakLinks();
+        });
+    }
 'ExcelScript.ListDataValidation:interface':
   - |-
     /**
@@ -3692,7 +3708,7 @@
   - |-
     /**
      * This script uses the autofill feature to complete a table.
-     * See https://support.microsoft.com/74e31bdd-d993-45da-aa82-35a236c5b5db
+     * See https://support.microsoft.com/office/74e31bdd-d993-45da-aa82-35a236c5b5db
      * for examples of autofill scenarios.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -5711,6 +5727,20 @@
         // Add the rows to the end of the table.
         table.addRows(-1, rowData);
     }
+'ExcelScript.Table#clearFilters:member(1)':
+  - |-
+    /**
+     * This script clears the filters from all tables in the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get all the tables in the workbook.
+        const tables = workbook.getTables();
+
+        // Remove any active filters from each table.
+        tables.forEach((table) => {
+          table.clearFilters();
+        });
+    }
 'ExcelScript.Table#convertToRange:member(1)':
   - |-
     /**
@@ -5951,6 +5981,22 @@
       totalColumn.getRangeBetweenHeaderAndTotal().setFormula(
         `=[@[${productColumnName1}]]*[@[${productColumnName2}]]`
       );
+    }
+'ExcelScript.TableColumn#getTotalRowRange:member(1)':
+  - |-
+    /**
+     * This script logs the value in the total row of a table column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the table named "Cities".
+        const table = workbook.getTable("Cities");
+
+        // Get the total row from the "Population" column.
+        const column = table.getColumn("Population");
+        const totalRange = column.getTotalRowRange();
+
+        // Log the total value.
+        console.log(totalRange.getValue());
     }
 'ExcelScript.TableColumn#setName:member(1)':
   - |-
@@ -6278,7 +6324,7 @@
     /**
      * This script refreshes all the links to external workbooks, 
      * if the linked workbook refresh mode is set to manual.
-     * To learn about linked workbooks, see https://support.microsoft.com/office/create-an-external-reference-link-to-a-cell-range-in-another-workbook-c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+     * To learn about linked workbooks, see https://support.microsoft.com/office/c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Check the refresh mode.
@@ -6288,6 +6334,21 @@
         // Trigger a refresh of linked workbook content.
         workbook.refreshAllLinksToLinkedWorkbooks();
       }
+'ExcelScript.Workbook#getLinkedWorkbooks:member(1)':
+  - |-
+    /**
+     * This script removes all links to other workbooks.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get all the linked workbook references.
+        const externalWorkbooks: ExcelScript.LinkedWorkbook[] = workbook.getLinkedWorkbooks();
+        console.log(`There are ${externalWorkbooks.length} other workbooks linked to from this workbook.`);
+
+        // Remove all the links to those workbooks.
+        // This changes the value of cells with workbook links to "#CONNECT!".
+        externalWorkbooks.forEach((workbookLink) => {
+            workbookLink.breakLinks();
+        });
     }
 'ExcelScript.Workbook#getName:member(1)':
   - |-
@@ -6438,7 +6499,7 @@
     /**
      * This script refreshes all the links to external workbooks, 
      * if the linked workbook refresh mode is set to manual.
-     * To learn about linked workbooks, see https://support.microsoft.com/office/create-an-external-reference-link-to-a-cell-range-in-another-workbook-c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+     * To learn about linked workbooks, see https://support.microsoft.com/office/c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
      */
     function main(workbook: ExcelScript.Workbook) {
       // Check the refresh mode.
