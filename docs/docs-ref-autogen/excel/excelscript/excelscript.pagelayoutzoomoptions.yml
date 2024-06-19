@@ -11,13 +11,13 @@ remarks: |-
 
   ```TypeScript
   /**
-   * This script changes the scale to fit of the page layout.
+   * This script changes the scale-to-fit of the page layout.
    */
   function main(workbook: ExcelScript.Workbook) {
       // Get the current worksheet.
       const sheet = workbook.getActiveWorksheet();
 
-      // Scale the layout zoom to half size for printing.
+      // Scale the layout to half size for printing.
       const layout = sheet.getPageLayout();
       const zoomOptions: ExcelScript.PageLayoutZoomOptions = {
           scale: 50
