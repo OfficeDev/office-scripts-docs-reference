@@ -4,7 +4,33 @@ uid: 'ExcelScript!ExcelScript.AllowEditRangeOptions:interface'
 package: ExcelScript!
 fullName: ExcelScript.AllowEditRangeOptions
 summary: The interface used to construct optional fields of the `AllowEditRange` object.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds a password-protected editable range
+   * to an otherwise protected worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook, password: string) {
+      // Get the protection object for the "Data" worksheet.
+      const dataSheet = workbook.getWorksheet("Data");
+      const sheetProtection = dataSheet.getProtection();
+
+      // Set the password to edit the range to be the user provided string.
+      const editRangeProperties : ExcelScript.AllowEditRangeOptions = {
+          password: password
+      };
+
+      // Set range "D2:D6" to be editable if the password is provided.
+      sheetProtection.addAllowEditRange("Notes Section", "D2:D6", editRangeProperties);
+      
+      // Protect the worksheet.
+      sheetProtection.protect();
+  }
+  ```
 isPreview: false
 isDeprecated: false
 type: interface

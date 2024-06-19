@@ -841,4 +841,24 @@ methods:
           type: '<xref uid="ExcelScript!ExcelScript.PageLayoutZoomOptions:interface" />'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script changes the scale to fit of the page layout.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the current worksheet.
+              const sheet = workbook.getActiveWorksheet();
+
+              // Scale the layout zoom to half size for printing.
+              const layout = sheet.getPageLayout();
+              const zoomOptions: ExcelScript.PageLayoutZoomOptions = {
+                  scale: 50
+              }
+              layout.setZoom(zoomOptions)
+          }
+          ```
