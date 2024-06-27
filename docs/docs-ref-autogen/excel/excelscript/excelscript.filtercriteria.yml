@@ -75,24 +75,6 @@ properties:
       content: 'criterion2?: string;'
       return:
         type: string
-        description: |-
-
-
-          #### Examples
-
-          ```TypeScript
-          /**
-           * This script applies a filter to a table so that it only shows rows with "Needs Review" in the "Type" column.
-           */
-          function main(workbook: ExcelScript.Workbook) {
-            // Get the first table in the workbook.
-            const table = workbook.getTables()[0];
-
-            // Apply the filter to the "Type" column.
-            const typeColumn = table.getColumnByName("Type");
-            typeColumn.getFilter().applyValuesFilter(["Needs Review"]);
-          }
-          ```
   - name: dynamicCriteria
     uid: 'ExcelScript!ExcelScript.FilterCriteria#dynamicCriteria:member'
     package: ExcelScript!
