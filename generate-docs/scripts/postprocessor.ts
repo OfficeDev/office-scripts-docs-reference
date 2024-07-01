@@ -56,7 +56,7 @@ tryCatch(async () => {
         });
 
     console.log(`Copying docs output files to: ${docsDestination}`);
-    // copy docs output to /docs/docs-ref-autogen folder
+    // Copy docs output to the /docs/docs-ref-autogen folder.
     fsx.readdirSync(docsSource)
         .forEach(filename => {
             fsx.copySync(
@@ -65,34 +65,33 @@ tryCatch(async () => {
             );
     });
 
-    // Correct the language from javascript to TypeScript and
-    // remove example field from yml as the OPS schema does not support it.
-    // fsx.readdirSync(docsDestination)
-    //     .filter(topLevel => topLevel.indexOf(".") < 0)
-    //     .forEach(topLevel => { // contents of docs-ref-autogen
-    //         let hostFolder = docsDestination + '/' + topLevel;
-    //         fsx.readdirSync(hostFolder).forEach((subfilename) => {
-    //             if (subfilename.indexOf(".") < 0) { 
-    //                 // contents of docs-ref-autogen/<host>
-    //                 let scriptFolder = hostFolder + '/' + subfilename;
-    //                 fsx.readdirSync(scriptFolder)
-    //                     .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
-    //                     .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
-    //                     fsx.writeFileSync(
-    //                         scriptFolder + '/' + interfaceYml,
-    //                         fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
-    //                     );
-    //                 });
-    //             } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
-    //                 fsx.writeFileSync(
-    //                     hostFolder + '/' + subfilename,
-    //                     fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
-    //                 );
-    //             }
-    //     });
-    // });
+    // Remove the xample field from the YAML as the OPS schema does not support it.
+    fsx.readdirSync(docsDestination)
+        .filter(topLevel => topLevel.indexOf(".") < 0)
+        .forEach(topLevel => { // contents of docs-ref-autogen
+            let hostFolder = docsDestination + '/' + topLevel;
+            fsx.readdirSync(hostFolder).forEach((subfilename) => {
+                if (subfilename.indexOf(".") < 0) { 
+                    // contents of docs-ref-autogen/<host>
+                    let scriptFolder = hostFolder + '/' + subfilename;
+                    fsx.readdirSync(scriptFolder)
+                        .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
+                        .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
+                        fsx.writeFileSync(
+                            scriptFolder + '/' + interfaceYml,
+                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
+                        );
+                    });
+                } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
+                    fsx.writeFileSync(
+                        hostFolder + '/' + subfilename,
+                        fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
+                    );
+                }
+        });
+    });
 
-    // fix all the individual TOC files
+    // Fix all the TOC file.
     console.log("Writing TOC for Office Scripts");
     let versionPath = path.resolve(`${docsDestination}/excel`);
     let tocPath = versionPath + "/toc.yml";
@@ -128,15 +127,12 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
         "href": "overview.md"
     }] as any;
 
-    // create folders for Excel subcategories
+    // Create a folder for enums.
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
-    let excelFilter: string[] = ["Interfaces"].concat(excelEnumFilter);
-
-    // process all packages
-    origToc.items.forEach((rootItem, rootIndex) => {
-        rootItem.items.forEach((packageItem, packageIndex) => {
-            // fix host capitalization
-            let packageName = (packageItem.name.substr(0, 1).toUpperCase() + packageItem.name.substr(1)).replace(/\-/g, ' ');
+    origToc.items.forEach((rootItem) => {
+        rootItem.items.forEach((packageItem) => {
+            // Fix host capitalization.
+            let packageName = (packageItem.name.substring(0, 1).toUpperCase() + packageItem.name.substring(1)).replace(/\-/g, ' ');
             membersToMove.items = packageItem.items;
 
             if (packageName.toLocaleLowerCase().includes('excel')) {
@@ -144,7 +140,7 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
                     return excelEnumFilter.indexOf(item.name) >= 0;
                 });
                 let primaryList = membersToMove.items.filter(item => {
-                    return excelFilter.indexOf(item.name) < 0;
+                    return excelEnumFilter.indexOf(item.name) < 0;
                 });
 
                 let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
