@@ -65,7 +65,7 @@ tryCatch(async () => {
             );
     });
 
-    // Remove the xample field from the YAML as the OPS schema does not support it.
+    // Remove the example field from the YAML as the OPS schema does not support it.
     fsx.readdirSync(docsDestination)
         .filter(topLevel => topLevel.indexOf(".") < 0)
         .forEach(topLevel => { // contents of docs-ref-autogen
@@ -131,26 +131,22 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     origToc.items.forEach((rootItem) => {
         rootItem.items.forEach((packageItem) => {
-            // Fix host capitalization.
-            let packageName = (packageItem.name.substring(0, 1).toUpperCase() + packageItem.name.substring(1)).replace(/\-/g, ' ');
             membersToMove.items = packageItem.items;
 
-            if (packageName.toLocaleLowerCase().includes('excel')) {
-                let enumList = membersToMove.items.filter(item => {
-                    return excelEnumFilter.indexOf(item.name) >= 0;
-                });
-                let primaryList = membersToMove.items.filter(item => {
-                    return excelEnumFilter.indexOf(item.name) < 0;
-                });
+            let enumList = membersToMove.items.filter(item => {
+                return excelEnumFilter.indexOf(item.name) >= 0;
+            });
+            let primaryList = membersToMove.items.filter(item => {
+                return excelEnumFilter.indexOf(item.name) < 0;
+            });
 
-                let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                primaryList.unshift(excelEnumRoot);
-                newToc.items[0].items.push({
-                    "name": packageName,
-                    "uid": packageItem.uid,
-                    "items": primaryList as any
-                });
-            }
+            let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
+            primaryList.unshift(excelEnumRoot);
+            newToc.items[0].items.push({
+                "name": packageItem.name,
+                "uid": packageItem.uid,
+                "items": primaryList as any
+            });
         });
     });
 
