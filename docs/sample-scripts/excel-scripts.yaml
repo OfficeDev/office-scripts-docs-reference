@@ -1250,6 +1250,27 @@
       };
       presetFormat.setRule(duplicateRule);
     }
+'ExcelScript.ConditionalFormatRule:interface':
+  - |-
+    /**
+     * This script applies a custom conditional formatting to the selected range.
+     * A light-green fill is applied to a cell if the value is larger than the value in the row's previous column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the selected cells.
+      let selectedRange = workbook.getSelectedRange();
+
+      // Apply a rule for positive change from the previous column.
+      let positiveChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+
+      // Set the conditional format to be a lightgreen fill.
+      let positiveCustom: ExcelScript.CustomConditionalFormat = positiveChange.getCustom();
+      positiveCustom.getFormat().getFill().setColor("lightgreen");
+
+      // Set the conditional rule to be if there is positive change across the row.
+      let positiveRule: ExcelScript.ConditionalFormatRule = positiveCustom.getRule();
+      positiveRule.setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+    }
 'ExcelScript.ConditionalFormatRuleType:enum':
   - |-
     /**
@@ -1640,19 +1661,22 @@
       let selectedRange = workbook.getSelectedRange();
 
       // Apply a rule for positive change from the previous column.
-      let positiveChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
-      positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
-      positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+      let positiveChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      let positiveCustom: ExcelScript.CustomConditionalFormat = positiveChange.getCustom();
+      positiveCustom.getFormat().getFill().setColor("lightgreen");
+      positiveCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
 
       // Apply a rule for negative change from the previous column.
-      let negativeChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
-      negativeChange.getCustom().getFormat().getFill().setColor("pink");
-      negativeChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}<${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+      let negativeChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      let negativeCustom: ExcelScript.CustomConditionalFormat = negativeChange.getCustom();
+      negativeCustom.getFormat().getFill().setColor("pink");
+      negativeCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}<${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
 
       // Apply a rule for no change from the previous column.
-      let noChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
-      noChange.getCustom().getFormat().getFill().setColor("lightyellow");
-      noChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+      let sameChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      let sameCustom: ExcelScript.CustomConditionalFormat = sameChange.getCustom();
+      sameCustom.getFormat().getFill().setColor("lightyellow");
+      sameCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
     }
 'ExcelScript.CustomDataValidation:interface':
   - |-
@@ -6748,7 +6772,7 @@
  - |-
     /**
      * This script searches through a worksheet and finds cells containing "No". 
-     * Those cells are filled red.
+     * Those cells are filled with the color red.
      * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
      */
     function main(workbook: ExcelScript.Workbook) {
@@ -7006,4 +7030,25 @@
 
       // Apply the given protection options.
       sheetProtection.protect(protectionOptions);
+    }
+'ExcelScript.WorksheetSearchCriteria:interface':
+ - |-
+    /**
+     * This script searches through a worksheet and finds cells containing "No". 
+     * Those cells are filled with the color red.
+     * Use Range.find instead of Worksheet.findAll when you want to limit the search to a specific range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the current, active worksheet.
+      const worksheet = workbook.getActiveWorksheet();
+
+      // Get all the cells that exactly contain the string "No".
+      const searchCriteria: ExcelScript.WorksheetSearchCriteria = { 
+        completeMatch: true,
+        matchCase: true
+      };
+      const noCells = worksheet.findAll("No", searchCriteria);
+
+      // Set the fill color to red.
+      noCells.getFormat().getFill().setColor("red");
     }
