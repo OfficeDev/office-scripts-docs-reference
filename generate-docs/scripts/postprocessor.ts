@@ -56,7 +56,7 @@ tryCatch(async () => {
         });
 
     console.log(`Copying docs output files to: ${docsDestination}`);
-    // copy docs output to /docs/docs-ref-autogen folder
+    // Copy docs output to the /docs/docs-ref-autogen folder.
     fsx.readdirSync(docsSource)
         .forEach(filename => {
             fsx.copySync(
@@ -65,8 +65,7 @@ tryCatch(async () => {
             );
     });
 
-    // Correct the language from javascript to TypeScript and
-    // remove example field from yml as the OPS schema does not support it.
+    // Remove the example field from the YAML as the OPS schema does not support it.
     fsx.readdirSync(docsDestination)
         .filter(topLevel => topLevel.indexOf(".") < 0)
         .forEach(topLevel => { // contents of docs-ref-autogen
@@ -92,7 +91,7 @@ tryCatch(async () => {
         });
     });
 
-    // fix all the individual TOC files
+    // Fix all the TOC file.
     console.log("Writing TOC for Office Scripts");
     let versionPath = path.resolve(`${docsDestination}/excel`);
     let tocPath = versionPath + "/toc.yml";
@@ -128,33 +127,26 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
         "href": "overview.md"
     }] as any;
 
-    // create folders for Excel subcategories
+    // Create a folder for enums.
     let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
-    let excelFilter: string[] = ["Interfaces"].concat(excelEnumFilter);
-
-    // process all packages
-    origToc.items.forEach((rootItem, rootIndex) => {
-        rootItem.items.forEach((packageItem, packageIndex) => {
-            // fix host capitalization
-            let packageName = (packageItem.name.substr(0, 1).toUpperCase() + packageItem.name.substr(1)).replace(/\-/g, ' ');
+    origToc.items.forEach((rootItem) => {
+        rootItem.items.forEach((packageItem) => {
             membersToMove.items = packageItem.items;
 
-            if (packageName.toLocaleLowerCase().includes('excel')) {
-                let enumList = membersToMove.items.filter(item => {
-                    return excelEnumFilter.indexOf(item.name) >= 0;
-                });
-                let primaryList = membersToMove.items.filter(item => {
-                    return excelFilter.indexOf(item.name) < 0;
-                });
+            let enumList = membersToMove.items.filter(item => {
+                return excelEnumFilter.indexOf(item.name) >= 0;
+            });
+            let primaryList = membersToMove.items.filter(item => {
+                return excelEnumFilter.indexOf(item.name) < 0;
+            });
 
-                let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-                primaryList.unshift(excelEnumRoot);
-                newToc.items[0].items.push({
-                    "name": packageName,
-                    "uid": packageItem.uid,
-                    "items": primaryList as any
-                });
-            }
+            let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
+            primaryList.unshift(excelEnumRoot);
+            newToc.items[0].items.push({
+                "name": packageItem.name,
+                "uid": packageItem.uid,
+                "items": primaryList as any
+            });
         });
     });
 

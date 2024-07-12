@@ -746,7 +746,7 @@ declare namespace ExcelScript {
         getLastWorksheet(visibleOnly?: boolean): Worksheet;
 
         /**
-         * Makes a request to refresh all the data connections.
+         * Refreshes all the Data Connections.
          */
         refreshAllDataConnections(): void;
 
@@ -768,13 +768,13 @@ declare namespace ExcelScript {
         getProtected(): boolean;
 
         /**
-         * Protects a workbook. Fails if the workbook has been protected.
+         * Protects the workbook. Fails if the workbook has been protected.
          * @param password Workbook protection password.
          */
         protect(password?: string): void;
 
         /**
-         * Unprotects a workbook.
+         * Unprotects the workbook.
          * @param password Workbook protection password.
          */
         unprotect(password?: string): void;
@@ -812,12 +812,12 @@ declare namespace ExcelScript {
         getId(): string;
 
         /**
-         * The display name of the worksheet.
+         * The display name of the worksheet. The name must be fewer than 32 characters.
          */
         getName(): string;
 
         /**
-         * The display name of the worksheet.
+         * The display name of the worksheet. The name must be fewer than 32 characters.
          */
         setName(name: string): void;
 
@@ -1869,7 +1869,7 @@ declare namespace ExcelScript {
         getLastRow(): Range;
 
         /**
-         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this method returns `undefined`.
+         * Returns a `RangeAreas` object that represents the merged areas in this range. Note that if the merged areas count in this range is more than 512, then this method will fail to return the result. If the `RangeAreas` object doesn't exist, then this function returns `undefined`.
          */
         getMergedAreas(): RangeAreas;
 
@@ -2947,7 +2947,7 @@ declare namespace ExcelScript {
         clear(): void;
 
         /**
-         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this method returns `null`.
+         * Returns a `RangeAreas` object, comprising one or more rectangular ranges, with invalid cell values. If all cell values are valid, this function will return `null`.
          */
         getInvalidCells(): RangeAreas;
     }
@@ -4028,11 +4028,13 @@ declare namespace ExcelScript {
 
         /**
          * Specifies the marker size of a chart series.
+         * The supported size range is 2 to 72. This method returns an InvalidArgument error if it's set with a size outside of the supported range.
          */
         getMarkerSize(): number;
 
         /**
          * Specifies the marker size of a chart series.
+         * The supported size range is 2 to 72. This method returns an InvalidArgument error if it's set with a size outside of the supported range.
          */
         setMarkerSize(markerSize: number): void;
 
@@ -4305,11 +4307,13 @@ declare namespace ExcelScript {
 
         /**
          * Represents marker size of a data point.
+         * The supported size range is 2 to 72. This method returns an InvalidArgument error if it's set with a size outside of the supported range.
          */
         getMarkerSize(): number;
 
         /**
          * Represents marker size of a data point.
+         * The supported size range is 2 to 72. This method returns an InvalidArgument error if it's set with a size outside of the supported range.
          */
         setMarkerSize(markerSize: number): void;
 
@@ -10185,7 +10189,7 @@ declare namespace ExcelScript {
         lowerBound?: string;
 
         /**
-         * The substring used for `beginsWith`, `endsWith`, and `contains` filter conditions.
+         * The substring used for the `beginsWith`, `endsWith`, and `contains` filter conditions.
          */
         substring?: string;
 
@@ -13472,6 +13476,9 @@ declare namespace ExcelScript {
         textAsNumber,
     }
 
+    /**
+     * Represents the ordering method to be used when sorting Chinese characters.
+     */
     enum SortMethod {
         pinYin,
 
