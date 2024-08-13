@@ -131,7 +131,7 @@ To make the contribution process as seamless as possible, follow these steps.
 #### To create a new branch
 
 1. Open Git Bash.
-1. At the Git Bash command prompt, type `git pull upstream main:<new branch name>`. This creates a new branch locally that is copied from the latest OfficeDev main branch.
+1. At the Git Bash command prompt, type `git pull upstream main:<new branch name>`. This creates a new branch locally that is copied from the latest `OfficeDev/office-scripts-docs-reference` main branch.
 1. At the Git Bash command prompt, type `git push origin <new branch name>`. This alerts GitHub to the new branch. You should now see the new branch in your fork of the repository on GitHub.
 1. At the Git Bash command prompt, type `git checkout <new branch name>` to switch to your new branch.
 
