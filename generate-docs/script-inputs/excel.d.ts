@@ -1734,7 +1734,7 @@ declare namespace ExcelScript {
         calculate(): void;
 
         /**
-         * Clear range values, format, fill, border, etc.
+         * Clear range values and formatting, such as fill and border.
          * @param applyTo Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details.
          */
         clear(applyTo?: ClearApplyTo): void;
@@ -1818,6 +1818,16 @@ declare namespace ExcelScript {
         getColumnsBefore(count?: number): Range;
 
         /**
+         * Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified range in the same worksheet or across multiple worksheets.
+         */
+        getDependents(): WorkbookRangeAreas;
+
+        /**
+         * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a specified range in the same worksheet or across multiple worksheets.
+         */
+        getDirectDependents(): WorkbookRangeAreas;
+
+        /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
@@ -1885,6 +1895,11 @@ declare namespace ExcelScript {
          * @param fullyContained If `true`, returns only PivotTables that are fully contained within the range bounds. The default value is `false`.
          */
         getPivotTables(fullyContained?: boolean): PivotTable[];
+
+        /**
+         * Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified range in the same worksheet or across multiple worksheets.
+         */
+        getPrecedents(): WorkbookRangeAreas;
 
         /**
          * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
@@ -7406,12 +7421,12 @@ declare namespace ExcelScript {
         setCategory(category: string): void;
 
         /**
-         * The comments of the workbook.
+         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         getComments(): string;
 
         /**
-         * The comments of the workbook.
+         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         setComments(comments: string): void;
 
@@ -10173,6 +10188,12 @@ declare namespace ExcelScript {
      */
     interface PivotLabelFilter {
         /**
+         * The comparator is the static value to which other values are compared. The type of comparison is defined by the condition.
+         * Note: A numeric string is treated as a number when being compared against other numeric strings.
+         */
+        comparator?: string;
+
+        /**
          * Specifies the condition for the filter, which defines the necessary filtering criteria.
          */
         condition: LabelFilterCondition;
@@ -12798,15 +12819,18 @@ declare namespace ExcelScript {
     }
 
     enum ClearApplyTo {
+        /**
+         * Clears everything in the range.
+         */
         all,
 
         /**
-         * Clears all formatting for the range.
+         * Clears all formatting for the range, leaving values intact.
          */
         formats,
 
         /**
-         * Clears the contents of the range.
+         * Clears the contents of the range, leaving formatting intact.
          */
         contents,
 
