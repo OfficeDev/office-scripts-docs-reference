@@ -7421,12 +7421,12 @@ declare namespace ExcelScript {
         setCategory(category: string): void;
 
         /**
-         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbork.
+         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         getComments(): string;
 
         /**
-         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbork.
+         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         setComments(comments: string): void;
 
