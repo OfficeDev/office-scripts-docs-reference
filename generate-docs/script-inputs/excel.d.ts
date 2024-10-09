@@ -7651,7 +7651,7 @@ declare namespace ExcelScript {
         getRange(): Range;
 
         /**
-         * Returns the `RangeAreas`, comprising one or more rectangular ranges, to which the conditonal format is applied.
+         * Returns the `RangeAreas`, comprising one or more rectangular ranges, to which the conditional format is applied.
          */
         getRanges(): RangeAreas;
     }
