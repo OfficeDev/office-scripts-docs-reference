@@ -161,7 +161,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#clear:member(1)'
     package: ExcelScript!
     fullName: clear(applyTo)
-    summary: 'Clear range values, format, fill, border, etc.'
+    summary: 'Clear range values and formatting, such as fill and border.'
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -785,6 +785,36 @@ methods:
               });
           }
           ```
+  - name: getDependents()
+    uid: 'ExcelScript!ExcelScript.Range#getDependents:member(1)'
+    package: ExcelScript!
+    fullName: getDependents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified
+      range in the same worksheet or across multiple worksheets.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDependents(): WorkbookRangeAreas;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />'
+        description: ''
+  - name: getDirectDependents()
+    uid: 'ExcelScript!ExcelScript.Range#getDirectDependents:member(1)'
+    package: ExcelScript!
+    fullName: getDirectDependents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a
+      specified range in the same worksheet or across multiple worksheets.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDirectDependents(): WorkbookRangeAreas;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />'
+        description: ''
   - name: getDirectPrecedents()
     uid: 'ExcelScript!ExcelScript.Range#getDirectPrecedents:member(1)'
     package: ExcelScript!
@@ -1491,6 +1521,21 @@ methods:
           type: boolean
       return:
         type: '<xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]'
+        description: ''
+  - name: getPrecedents()
+    uid: 'ExcelScript!ExcelScript.Range#getPrecedents:member(1)'
+    package: ExcelScript!
+    fullName: getPrecedents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified
+      range in the same worksheet or across multiple worksheets.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPrecedents(): WorkbookRangeAreas;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />'
         description: ''
   - name: getPredefinedCellStyle()
     uid: 'ExcelScript!ExcelScript.Range#getPredefinedCellStyle:member(1)'
