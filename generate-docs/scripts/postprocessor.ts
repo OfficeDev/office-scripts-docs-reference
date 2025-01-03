@@ -79,14 +79,18 @@ tryCatch(async () => {
                         .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
                         fsx.writeFileSync(
                             scriptFolder + '/' + interfaceYml,
-                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
-                        );
+                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString()
+                                .replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
+                                .replace(/description: \\\*[\r\n]/g, "description:") // Remove descriptions that are just "\*".
+                                .replace(/\\\*/gm, "*")); // Fix asterisk protection.
                     });
                 } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
                     fsx.writeFileSync(
                         hostFolder + '/' + subfilename,
-                        fsx.readFileSync(hostFolder + '/' + subfilename).toString().replace(/^\s*example: \[\]\s*$/gm, "").replace(/\\\*/gm, "*")
-                    );
+                        fsx.readFileSync(hostFolder + '/' + subfilename).toString()
+                        .replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
+                        .replace(/description: \\\*[\r\n]/g, "description:") // Remove descriptions that are just "\*".
+                        .replace(/\\\*/gm, "*")); // Fix asterisk protection.
                 }
         });
     });
