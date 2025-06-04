@@ -203,6 +203,23 @@ methods:
       return:
         type: void
         description: ''
+  - name: clearOrResetContents()
+    uid: 'ExcelScript!ExcelScript.Range#clearOrResetContents:member(1)'
+    package: ExcelScript!
+    fullName: clearOrResetContents()
+    summary: >-
+      Clears the values of the cells in the range, with special consideration given to cells containing controls. If the
+      range contains only blank values and controls set to their default value, then the values and control formatting
+      are removed. Otherwise, this sets the cells with controls to their default value and clears the values of the
+      other cells in the range.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clearOrResetContents(): void;'
+      return:
+        type: void
+        description: ''
   - name: convertDataTypeToText()
     uid: 'ExcelScript!ExcelScript.Range#convertDataTypeToText:member(1)'
     package: ExcelScript!
@@ -735,6 +752,21 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />[]'
         description: ''
+  - name: getControl()
+    uid: 'ExcelScript!ExcelScript.Range#getControl:member(1)'
+    package: ExcelScript!
+    fullName: getControl()
+    summary: >-
+      Accesses the cell control applied to this range. If the range has multiple cell controls, this returns
+      `EmptyCellControl`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getControl(): CellControl;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.CellControl:type" />'
+        description: ''
   - name: getDataValidation()
     uid: 'ExcelScript!ExcelScript.Range#getDataValidation:member(1)'
     package: ExcelScript!
@@ -791,7 +823,8 @@ methods:
     fullName: getDependents()
     summary: >-
       Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified
-      range in the same worksheet or across multiple worksheets.
+      range in the same worksheet or across multiple worksheets. Note: This API returns an `ItemNotFound` error if no
+      dependents are found.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -806,7 +839,8 @@ methods:
     fullName: getDirectDependents()
     summary: >-
       Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a
-      specified range in the same worksheet or across multiple worksheets.
+      specified range in the same worksheet or across multiple worksheets. Note: This API returns an `ItemNotFound`
+      error if no dependents are found.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -821,7 +855,8 @@ methods:
     fullName: getDirectPrecedents()
     summary: >-
       Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a
-      specified range in the same worksheet or across multiple worksheets.
+      specified range in the same worksheet or across multiple worksheets. Note: This API returns an `ItemNotFound`
+      error if no precedents are found.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1182,7 +1217,7 @@ methods:
     uid: 'ExcelScript!ExcelScript.Range#getImage:member(1)'
     package: ExcelScript!
     fullName: getImage()
-    summary: Renders the range as a base64-encoded png image.
+    summary: Renders the range as a Base64-encoded PNG image.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -1529,7 +1564,8 @@ methods:
     fullName: getPrecedents()
     summary: >-
       Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified
-      range in the same worksheet or across multiple worksheets.
+      range in the same worksheet or across multiple worksheets. Note: This API returns an `ItemNotFound` error if no
+      precedents are found.
     remarks: ''
     isPreview: false
     isDeprecated: false
@@ -2468,6 +2504,25 @@ methods:
         - id: columnHidden
           description: ''
           type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setControl(control)
+    uid: 'ExcelScript!ExcelScript.Range#setControl:member(1)'
+    package: ExcelScript!
+    fullName: setControl(control)
+    summary: >-
+      Accesses the cell control applied to this range. If the range has multiple cell controls, this returns
+      `EmptyCellControl`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setControl(control: CellControl): void;'
+      parameters:
+        - id: control
+          description: ''
+          type: '<xref uid="ExcelScript!ExcelScript.CellControl:type" />'
       return:
         type: void
         description: ''

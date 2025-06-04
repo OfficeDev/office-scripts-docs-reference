@@ -109,6 +109,11 @@ export declare namespace ExcelScript {
      */
     export interface LinkedWorkbook {
         /**
+         * The original URL pointing to the linked workbook. It is unique across all linked workbooks in the collection.
+         */
+        getId(): string;
+
+        /**
          * Makes a request to break the links pointing to the linked workbook.
          * Links in formulas are replaced with the latest fetched data.
          * The current `LinkedWorkbook` object is invalidated and removed from `LinkedWorkbookCollection`.
@@ -842,6 +847,16 @@ export declare namespace ExcelScript {
         getProtection(): WorksheetProtection;
 
         /**
+         * Specifies if data type icons are visible on the worksheet. By default, data type icons are visible.
+         */
+        getShowDataTypeIcons(): boolean;
+
+        /**
+         * Specifies if data type icons are visible on the worksheet. By default, data type icons are visible.
+         */
+        setShowDataTypeIcons(showDataTypeIcons: boolean): void;
+
+        /**
          * Specifies if gridlines are visible to the user.
          */
         getShowGridlines(): boolean;
@@ -961,7 +976,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the `Range` object, representing a single rectangular block of cells, specified by the address or name.
-         * @param address - Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified, the entire worksheet range is returned.
+         * @param address - Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified, the entire worksheet range is returned. The `address` has a limit of 8192 characters. If the address exceeds the character limit, this method returns an `InvalidArgument` error.
          */
         getRange(address?: string): Range;
 
@@ -1142,7 +1157,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a sheet view using its name.
-         * If the sheet view object does not exist, then this method returns `undefined`.
+         * If the sheet view object does not exist, then this method returns an object with its `isNullObject` property set to `true`.
          * @param key - The case-sensitive name of the sheet view.
          * Use the empty string ("") to get the temporary sheet view, if the temporary view exists.
          */
@@ -1229,8 +1244,8 @@ export declare namespace ExcelScript {
         addGroup(values: Array<string | Shape>): Shape;
 
         /**
-         * Creates an image from a base64-encoded string and adds it to the worksheet. Returns the `Shape` object that represents the new image.
-         * @param base64ImageString - A base64-encoded string representing an image in either JPEG or PNG format.
+         * Creates an image from a Base64-encoded string and adds it to the worksheet. Returns the `Shape` object that represents the new image.
+         * @param base64ImageString - A Base64-encoded string representing an image in either JPEG or PNG format.
          */
         addImage(base64ImageString: string): Shape;
 
@@ -1519,6 +1534,18 @@ export declare namespace ExcelScript {
         getColumnIndex(): number;
 
         /**
+         * Accesses the cell control applied to this range.
+         * If the range has multiple cell controls, this returns `EmptyCellControl`.
+         */
+        getControl(): CellControl;
+
+        /**
+         * Accesses the cell control applied to this range.
+         * If the range has multiple cell controls, this returns `EmptyCellControl`.
+         */
+        setControl(control: CellControl): void;
+
+        /**
          * Returns a data validation object.
          */
         getDataValidation(): DataValidation;
@@ -1740,6 +1767,13 @@ export declare namespace ExcelScript {
         clear(applyTo?: ClearApplyTo): void;
 
         /**
+         * Clears the values of the cells in the range, with special consideration given to cells containing controls.
+         * If the range contains only blank values and controls set to their default value, then the values and control formatting are removed.
+         * Otherwise, this sets the cells with controls to their default value and clears the values of the other cells in the range.
+         */
+        clearOrResetContents(): void;
+
+        /**
          * Converts the range cells with data types into text.
          */
         convertDataTypeToText(): void;
@@ -1819,16 +1853,19 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified range in the same worksheet or across multiple worksheets.
+         * Note: This API returns an `ItemNotFound` error if no dependents are found.
          */
         getDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a specified range in the same worksheet or across multiple worksheets.
+         * Note: This API returns an `ItemNotFound` error if no dependents are found.
          */
         getDirectDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
+         * Note: This API returns an `ItemNotFound` error if no precedents are found.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
 
@@ -1853,7 +1890,7 @@ export declare namespace ExcelScript {
         ): Range;
 
         /**
-         * Renders the range as a base64-encoded png image.
+         * Renders the range as a Base64-encoded PNG image.
          */
         getImage(): string;
 
@@ -1898,6 +1935,7 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified range in the same worksheet or across multiple worksheets.
+         * Note: This API returns an `ItemNotFound` error if no precedents are found.
          */
         getPrecedents(): WorkbookRangeAreas;
 
@@ -2265,6 +2303,13 @@ export declare namespace ExcelScript {
          * @param applyTo - Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details. Default is "All".
          */
         clear(applyTo?: ClearApplyTo): void;
+
+        /**
+         * Clears the values of the cells in the ranges, with special consideration given to cells containing controls.
+         * If the ranges contain only blank values and controls set to their default value, then the values and control formatting are removed.
+         * Otherwise, this sets the cells with controls to their default value and clears the values of the other cells in the ranges.
+         */
+        clearOrResetContents(): void;
 
         /**
          * Converts all cells in the `RangeAreas` with data types into text.
@@ -3646,7 +3691,7 @@ export declare namespace ExcelScript {
         getDataTable(): ChartDataTable;
 
         /**
-         * Renders the chart as a base64-encoded image by scaling the chart to fit the specified dimensions.
+         * Renders the chart as a Base64-encoded image by scaling the chart to fit the specified dimensions.
          * The aspect ratio is preserved as part of the resizing.
          * @param height - Optional. The desired height of the resulting image.
          * @param width - Optional. The desired width of the resulting image.
@@ -4851,6 +4896,18 @@ export declare namespace ExcelScript {
         getFormat(): ChartDataLabelFormat;
 
         /**
+         * Specifies the geometric shape type of the data labels. See `ExcelScript.GeometricShapeType` for more details.
+         * Value is `null` if the data labels are not geometric shapes.
+         */
+        getGeometricShapeType(): GeometricShapeType;
+
+        /**
+         * Specifies the geometric shape type of the data labels. See `ExcelScript.GeometricShapeType` for more details.
+         * Value is `null` if the data labels are not geometric shapes.
+         */
+        setGeometricShapeType(geometricShapeType: GeometricShapeType): void;
+
+        /**
          * Specifies the horizontal alignment for chart data label. See `ExcelScript.ChartTextHorizontalAlignment` for details.
          * This property is valid only when the `TextOrientation` of data label is 0.
          */
@@ -4863,6 +4920,11 @@ export declare namespace ExcelScript {
         setHorizontalAlignment(
             horizontalAlignment: ChartTextHorizontalAlignment
         ): void;
+
+        /**
+         * Gets an object that represents the leader lines of the data labels.
+         */
+        getLeaderLines(): ChartLeaderLines;
 
         /**
          * Specifies if the number format is linked to the cells. If `true`, the number format will change in the labels when it changes in the cells.
@@ -4905,6 +4967,11 @@ export declare namespace ExcelScript {
         setSeparator(separator: string): void;
 
         /**
+         * Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the data point. If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See Excel.GeometricShapeType for more details. 
+         */
+        getShowAsStickyCallout(): boolean;
+
+        /**
          * Specifies if the data label bubble size is visible.
          */
         getShowBubbleSize(): boolean;
@@ -4923,6 +4990,16 @@ export declare namespace ExcelScript {
          * Specifies if the data label category name is visible.
          */
         setShowCategoryName(showCategoryName: boolean): void;
+
+        /**
+         * Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
+         */
+        getShowLeaderLines(): boolean;
+
+        /**
+         * Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
+         */
+        setShowLeaderLines(showLeaderLines: boolean): void;
 
         /**
          * Specifies if the data label legend key is visible.
@@ -5019,6 +5096,18 @@ export declare namespace ExcelScript {
         setFormula(formula: string): void;
 
         /**
+         * Specifies the geometric shape type of the data label. See `ExcelScript.GeometricShapeType` for more details.
+         * Value is `null` if the data label is not a geometric shape.
+         */
+        getGeometricShapeType(): GeometricShapeType;
+
+        /**
+         * Specifies the geometric shape type of the data label. See `ExcelScript.GeometricShapeType` for more details.
+         * Value is `null` if the data label is not a geometric shape.
+         */
+        setGeometricShapeType(geometricShapeType: GeometricShapeType): void;
+
+        /**
          * Returns the height, in points, of the chart data label. Value is `null` if the chart data label is not visible.
          */
         getHeight(): number;
@@ -5086,6 +5175,11 @@ export declare namespace ExcelScript {
          * String representing the separator used for the data label on a chart.
          */
         setSeparator(separator: string): void;
+
+        /**
+         * Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the data point. If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See Excel.GeometricShapeType for more details. 
+         */
+        getShowAsStickyCallout(): boolean;
 
         /**
          * Specifies if the data label bubble size is visible.
@@ -5195,6 +5289,30 @@ export declare namespace ExcelScript {
          * Returns the width, in points, of the chart data label. Value is `null` if the chart data label is not visible.
          */
         getWidth(): number;
+
+        /**
+         * Returns a substring of the data label. The line break character '\n' counts as one character.
+         * @param start - The zero-based starting character position of a substring in the data label.
+         * @param length - Optional. The number of characters in the substring. If length is omitted, all the characters from start to the end of the data label are retrieved.
+         */
+        getSubstring(start: number, length?: number): ChartFormatString;
+
+        /**
+         * Returns the tail anchor of the data label which is shown as a sticky callout.
+         */
+        getTailAnchor(): ChartDataLabelAnchor;
+
+        /**
+         * Sets the height of the data label in points.
+         * @param height - The height of the data label in points.
+         */
+        setHeight(height: number): void;
+
+        /**
+         * Sets the width of the data label in points.
+         * @param width - The width of the data label in points.
+         */
+        setWidth(width: number): void;
     }
 
     /**
@@ -5215,6 +5333,31 @@ export declare namespace ExcelScript {
          * Represents the font attributes (such as font name, font size, and color) for a chart data label.
          */
         getFont(): ChartFont;
+    }
+
+    /**
+     * Represents the chart data label anchor.
+     */
+    export interface ChartDataLabelAnchor {
+        /**
+         * Represents the distance, in points, from the anchor to the left edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         */
+        getLeft(): number;
+
+        /**
+         * Represents the distance, in points, from the anchor to the left edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         */
+        setLeft(left: number): void;
+
+        /**
+         * Represents the distance, in points, from the anchor to the top edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         */
+        getTop(): number;
+
+        /**
+         * Represents the distance, in points, from the anchor to the top edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         */
+        setTop(top: number): void;
     }
 
     /**
@@ -6426,6 +6569,26 @@ export declare namespace ExcelScript {
     }
 
     /**
+     * Gets an object that represents the formatting of chart leader lines.
+     */
+    export interface ChartLeaderLines {
+        /**
+         * Represents the formatting of leader lines of data labels in a series.
+         */
+        getFormat(): ChartLeaderLinesFormat;
+    }
+
+    /**
+     * Encapsulates the format properties for leader lines.
+     */
+    export interface ChartLeaderLinesFormat {
+        /**
+         * Gets an object that represents the line formatting of chart leader lines.
+         */
+        getLine(): ChartLineFormat;
+    }
+
+    /**
      * Manages sorting operations on `Range` objects.
      */
     export interface RangeSort {
@@ -6662,6 +6825,11 @@ export declare namespace ExcelScript {
      */
     export interface NumberFormatInfo {
         /**
+         * Gets the currency symbol for currency values. This is based on current system settings.
+         */
+        getCurrencySymbol(): string;
+
+        /**
          * Gets the string used as the decimal separator for numeric values. This is based on current system settings.
          */
         getNumberDecimalSeparator(): string;
@@ -6800,6 +6968,17 @@ export declare namespace ExcelScript {
         delete(): void;
 
         /**
+         * Returns the string representation of the data source for the PivotTable. This method currently supports string representations for table and range objects.
+         * Otherwise, it returns an empty string.
+         */
+        getDataSourceString(): string;
+
+        /**
+         * Gets the type of the data source for the PivotTable.
+         */
+        getDataSourceType(): DataSourceType;
+
+        /**
          * Refreshes the PivotTable.
          */
         refresh(): void;
@@ -6918,6 +7097,42 @@ export declare namespace ExcelScript {
      */
     export interface PivotLayout {
         /**
+         * The alt text description of the PivotTable.
+         *
+         * Alt text provides alternative, text-based representations of the information contained in the PivotTable.
+         * This information is useful for people with vision or cognitive impairments who may not be able to see or understand the table.
+         * A title can be read to a person with a disability and is used to determine whether they wish to hear the description of the content.
+         */
+        getAltTextDescription(): string;
+
+        /**
+         * The alt text description of the PivotTable.
+         *
+         * Alt text provides alternative, text-based representations of the information contained in the PivotTable.
+         * This information is useful for people with vision or cognitive impairments who may not be able to see or understand the table.
+         * A title can be read to a person with a disability and is used to determine whether they wish to hear the description of the content.
+         */
+        setAltTextDescription(altTextDescription: string): void;
+
+        /**
+         * The alt text title of the PivotTable.
+         *
+         * Alt text provides alternative, text-based representations of the information contained in the PivotTable.
+         * This information is useful for people with vision or cognitive impairments who may not be able to see or understand the table.
+         * A title can be read to a person with a disability and is used to determine whether they wish to hear the description of the content.
+         */
+        getAltTextTitle(): string;
+
+        /**
+         * The alt text title of the PivotTable.
+         *
+         * Alt text provides alternative, text-based representations of the information contained in the PivotTable.
+         * This information is useful for people with vision or cognitive impairments who may not be able to see or understand the table.
+         * A title can be read to a person with a disability and is used to determine whether they wish to hear the description of the content.
+         */
+        setAltTextTitle(altTextTitle: string): void;
+
+        /**
          * Specifies if formatting will be automatically formatted when it's refreshed or when fields are moved.
          */
         getAutoFormat(): boolean;
@@ -6928,6 +7143,20 @@ export declare namespace ExcelScript {
         setAutoFormat(autoFormat: boolean): void;
 
         /**
+         * The text that is automatically filled into any empty cell in the PivotTable if `fillEmptyCells == true`.
+         * Note that this value persists if `fillEmptyCells` is set to `false`, and that setting this value does not set that property to `true`.
+         * By default, this is an empty string.
+         */
+        getEmptyCellText(): string;
+
+        /**
+         * The text that is automatically filled into any empty cell in the PivotTable if `fillEmptyCells == true`.
+         * Note that this value persists if `fillEmptyCells` is set to `false`, and that setting this value does not set that property to `true`.
+         * By default, this is an empty string.
+         */
+        setEmptyCellText(emptyCellText: string): void;
+
+        /**
          * Specifies if the field list can be shown in the UI.
          */
         getEnableFieldList(): boolean;
@@ -6936,6 +7165,18 @@ export declare namespace ExcelScript {
          * Specifies if the field list can be shown in the UI.
          */
         setEnableFieldList(enableFieldList: boolean): void;
+
+        /**
+         * Specifies whether empty cells in the PivotTable should be populated with the `emptyCellText`. Default is `false`.
+         * Note that the value of `emptyCellText` persists when this property is set to `false`.
+         */
+        getFillEmptyCells(): boolean;
+
+        /**
+         * Specifies whether empty cells in the PivotTable should be populated with the `emptyCellText`. Default is `false`.
+         * Note that the value of `emptyCellText` persists when this property is set to `false`.
+         */
+        setFillEmptyCells(fillEmptyCells: boolean): void;
 
         /**
          * This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this will be null.
@@ -6968,6 +7209,16 @@ export declare namespace ExcelScript {
         setShowColumnGrandTotals(showColumnGrandTotals: boolean): void;
 
         /**
+         * Specifies whether the PivotTable displays field headers (field captions and filter drop-downs).
+         */
+        getShowFieldHeaders(): boolean;
+
+        /**
+         * Specifies whether the PivotTable displays field headers (field captions and filter drop-downs).
+         */
+        setShowFieldHeaders(showFieldHeaders: boolean): void;
+
+        /**
          * Specifies if the PivotTable report shows grand totals for rows.
          */
         getShowRowGrandTotals(): boolean;
@@ -6986,6 +7237,13 @@ export declare namespace ExcelScript {
          * This property indicates the `SubtotalLocationType` of all fields on the PivotTable. If fields have different states, this will be `null`.
          */
         setSubtotalLocation(subtotalLocation: SubtotalLocationType): void;
+
+        /**
+         * Sets whether or not to display a blank line after each item. This is set at the global level for the PivotTable and applied to individual PivotFields.
+         * This function overwrites the setting for all fields in the PivotTable to the value of `display` parameter.
+         * @param display - True turns on the blank-line display setting. False turns it off.
+         */
+        displayBlankLineAfterEachItem(display: boolean): void;
 
         /**
          * Returns the range where the PivotTable's column labels reside.
@@ -7017,6 +7275,12 @@ export declare namespace ExcelScript {
          * Returns the range where the PivotTable's row labels reside.
          */
         getRowLabelRange(): Range;
+
+        /**
+         * Sets the "repeat all item labels" setting across all fields in the PivotTable.
+         * @param repeatLabels - True turns on the label-repetition display setting. False turns it off.
+         */
+        repeatAllItemLabels(repeatLabels: boolean): void;
 
         /**
          * Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria and context. This behaves identically to applying an autosort from the UI.
@@ -7381,12 +7645,12 @@ export declare namespace ExcelScript {
         getKey(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         getValue(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         setValue(value: string): void;
 
@@ -7421,12 +7685,12 @@ export declare namespace ExcelScript {
         setCategory(category: string): void;
 
         /**
-         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
+         * The Comments field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         getComments(): string;
 
         /**
-         * The comment field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
+         * The Comments field in the metadata of the workbook. These have no connection to comments by users made in the workbook.
          */
         setComments(comments: string): void;
 
@@ -7641,6 +7905,55 @@ export declare namespace ExcelScript {
         getType(): ConditionalFormatType;
 
         /**
+         * Change the conditional format rule type to cell value.
+         * @param properties - The properties to set for the cell value conditional format rule.
+         */
+        changeRuleToCellValue(properties: ConditionalCellValueRule): void;
+
+        /**
+         * Change the conditional format rule type to color scale.
+         */
+        changeRuleToColorScale(): void;
+
+        /**
+         * Change the conditional format rule type to text comparison.
+         * @param properties - The properties to set for the text comparison conditional format rule.
+         */
+        changeRuleToContainsText(
+            properties: ConditionalTextComparisonRule
+        ): void;
+
+        /**
+         * Change the conditional format rule type to custom.
+         * @param formula - The formula to set for the custom conditional format rule.
+         */
+        changeRuleToCustom(formula: string): void;
+
+        /**
+         * Change the conditional format rule type to data bar.
+         */
+        changeRuleToDataBar(): void;
+
+        /**
+         * Change the conditional format rule type to icon set.
+         */
+        changeRuleToIconSet(): void;
+
+        /**
+         * Change the conditional format rule type to preset criteria.
+         * @param properties - The properties to set for the preset criteria conditional format rule.
+         */
+        changeRuleToPresetCriteria(
+            properties: ConditionalPresetCriteriaRule
+        ): void;
+
+        /**
+         * Change the conditional format rule type to top/bottom.
+         * @param properties - The properties to set for the top/bottom conditional format rule.
+         */
+        changeRuleToTopBottom(properties: ConditionalTopBottomRule): void;
+
+        /**
          * Deletes this conditional format.
          */
         delete(): void;
@@ -7654,6 +7967,12 @@ export declare namespace ExcelScript {
          * Returns the `RangeAreas`, comprising one or more rectangular ranges, to which the conditional format is applied.
          */
         getRanges(): RangeAreas;
+
+        /**
+         * Set the ranges that the conditional format rule is applied to.
+         * @param ranges - Collection of one or more ranges for this rule to be applied to.
+         */
+        setRanges(ranges: Range | RangeAreas | string): void;
     }
 
     /**
@@ -8031,6 +8350,11 @@ export declare namespace ExcelScript {
          * Cleared if `null` is passed in.
          */
         setNumberFormat(numberFormat: string): void;
+
+        /**
+         * Remove the format properties from a conditional format rule. This creates a rule with no format settings.
+         */
+        clearFormat(): void;
 
         /**
          * Collection of border objects that apply to the overall conditional format range.
@@ -8880,22 +9204,22 @@ export declare namespace ExcelScript {
         setState(state: HeaderFooterState): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         getUseSheetMargins(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         setUseSheetMargins(useSheetMargins: boolean): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         getUseSheetScale(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         setUseSheetScale(useSheetScale: boolean): void;
     }
@@ -8905,6 +9229,11 @@ export declare namespace ExcelScript {
          * Specifies the column index for the page break.
          */
         getColumnIndex(): number;
+
+        /**
+         * Specifies the row index for the page break.
+         */
+        getRowIndex(): number;
 
         /**
          * Deletes a page break object.
@@ -9121,6 +9450,13 @@ export declare namespace ExcelScript {
         getConnectionSiteCount(): number;
 
         /**
+         * Gets the display name of the shape. A newly created shape has a generated name
+         * that is localized and may not match its `name`. In this scenario, you can use
+         * this API to get the name that is displayed in the UI.
+         */
+        getDisplayName(): string;
+
+        /**
          * Returns the fill formatting of this shape.
          */
         getFill(): ShapeFill;
@@ -9301,7 +9637,7 @@ export declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported formats are `ExcelScript.PictureFormat.BMP`, `ExcelScript.PictureFormat.PNG`, `ExcelScript.PictureFormat.JPEG`, and `ExcelScript.PictureFormat.GIF`.
+         * Converts the shape to an image and returns the image as a Base64-encoded string. The DPI is 96. The only supported formats are `ExcelScript.PictureFormat.BMP`, `ExcelScript.PictureFormat.PNG`, `ExcelScript.PictureFormat.JPEG`, and `ExcelScript.PictureFormat.GIF`.
          * @param format - Specifies the format of the image.
          */
         getImageAsBase64(format: PictureFormat): string;
@@ -10079,13 +10415,13 @@ export declare namespace ExcelScript {
      */
     export interface NamedSheetView {
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         getName(): string;
 
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         setName(name: string): void;
@@ -11110,6 +11446,26 @@ export declare namespace ExcelScript {
     }
 
     /**
+     * Represents a command type of `DataConnection`.
+     */
+    enum DataSourceType {
+        /**
+         * The data source type is unknown or unsupported.
+         */
+        unknown,
+
+        /**
+         * The data source type is a range in the current workbook.
+         */
+        localRange,
+
+        /**
+         * The data source type is a table in the current workbook.
+         */
+        localTable,
+    }
+
+    /**
      * Enum representing all accepted conditions by which a date filter can be applied.
      * Used to configure the type of PivotFilter that is applied to the field.
      */
@@ -11558,6 +11914,32 @@ export declare namespace ExcelScript {
          * The chart series axis for the bubble sizes in bubble charts.
          */
         bubbleSizes,
+    }
+
+    /**
+     * Represents the type of cell control.
+     */
+    enum CellControlType {
+        /**
+         * Type representing an unknown control.
+         * This represents a control that was added in a future version of Excel, and the current version of Excel doesn't know how to display this control.
+         */
+        unknown,
+
+        /**
+         * Type representing an empty control.
+         */
+        empty,
+
+        /**
+         * Type representing a query that results in a mix of control results.
+         */
+        mixed,
+
+        /**
+         * Type representing a checkbox control.
+         */
+        checkbox,
     }
 
     /**
@@ -12843,6 +13225,13 @@ export declare namespace ExcelScript {
          * Removes hyperlinks and formatting for the cell but leaves content, conditional formats, and data validation intact.
          */
         removeHyperlinks,
+
+        /**
+         * Sets all cells in the range to their default state.
+         * Cells with cell controls are set to the default value defined by each control.
+         * Cells without cell controls are set to blank.
+         */
+        resetContents,
     }
 
     /**
@@ -14759,4 +15148,43 @@ export declare namespace ExcelScript {
     //
     // Type
     //
+    /**
+     * Represents an unknown cell control.
+     * This represents a control that was added in a future version of Excel, and the current version of Excel doesn't know how to display this control.
+     */
+    export interface UnknownCellControl {
+        type: CellControlType.unknown;
+    }
+
+    /**
+     * Represents an empty cell control.
+     * This represents the state where a cell does not have a control.
+     */
+    export interface EmptyCellControl {
+        type: CellControlType.empty;
+    }
+
+    /**
+     * Represents the result of a query that resulted in multiple cell controls.
+     * If the result has multiple controls, then they can't be represented as a single result.
+     */
+    export interface MixedCellControl {
+        type: CellControlType.mixed;
+    }
+
+    /**
+     * Represents a checkbox. This is a cell control that allows a user to toggle the boolean value in a cell.
+     */
+    export interface CheckboxCellControl {
+        type: CellControlType.checkbox;
+    }
+
+    /**
+     * Represents an interactable control inside of a cell.
+     */
+    type CellControl =
+        | UnknownCellControl
+        | EmptyCellControl
+        | MixedCellControl
+        | CheckboxCellControl;
 }

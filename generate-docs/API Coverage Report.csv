@@ -176,6 +176,12 @@ ExcelScript.CalculationType,N/A,Enum,Unknown,true
 ExcelScript.CalculationType,"full",EnumField,Fine,false
 ExcelScript.CalculationType,"fullRebuild",EnumField,Fine,false
 ExcelScript.CalculationType,"recalculate",EnumField,Good,false
+ExcelScript.CellControl,N/A,TypeAlias,Fine,false
+ExcelScript.CellControlType,N/A,Enum,Unknown,false
+ExcelScript.CellControlType,"checkbox",EnumField,Poor,false
+ExcelScript.CellControlType,"empty",EnumField,Poor,false
+ExcelScript.CellControlType,"mixed",EnumField,Fine,false
+ExcelScript.CellControlType,"unknown",EnumField,Fine,false
 ExcelScript.CellValueConditionalFormat,N/A,Interface,Unknown,true
 ExcelScript.CellValueConditionalFormat,"getFormat()",Method,Excellent,false
 ExcelScript.CellValueConditionalFormat,"getRule()",Method,Excellent,false
@@ -436,6 +442,7 @@ ExcelScript.ChartDataLabel,N/A,Interface,Unknown,false
 ExcelScript.ChartDataLabel,"getAutoText()",Method,Excellent,false
 ExcelScript.ChartDataLabel,"getFormat()",Method,Poor,false
 ExcelScript.ChartDataLabel,"getFormula()",Method,Great,false
+ExcelScript.ChartDataLabel,"getGeometricShapeType()",Method,Excellent,false
 ExcelScript.ChartDataLabel,"getHeight()",Method,Excellent,false
 ExcelScript.ChartDataLabel,"getHorizontalAlignment()",Method,Great,false
 ExcelScript.ChartDataLabel,"getLeft()",Method,Great,false
@@ -443,12 +450,15 @@ ExcelScript.ChartDataLabel,"getLinkNumberFormat()",Method,Excellent,false
 ExcelScript.ChartDataLabel,"getNumberFormat()",Method,Great,false
 ExcelScript.ChartDataLabel,"getPosition()",Method,Good,false
 ExcelScript.ChartDataLabel,"getSeparator()",Method,Great,false
+ExcelScript.ChartDataLabel,"getShowAsStickyCallout()",Method,Great,false
 ExcelScript.ChartDataLabel,"getShowBubbleSize()",Method,Great,false
 ExcelScript.ChartDataLabel,"getShowCategoryName()",Method,Great,false
 ExcelScript.ChartDataLabel,"getShowLegendKey()",Method,Good,false
 ExcelScript.ChartDataLabel,"getShowPercentage()",Method,Good,false
 ExcelScript.ChartDataLabel,"getShowSeriesName()",Method,Great,false
 ExcelScript.ChartDataLabel,"getShowValue()",Method,Great,false
+ExcelScript.ChartDataLabel,"getSubstring(start, length)",Method,Great,false
+ExcelScript.ChartDataLabel,"getTailAnchor()",Method,Good,false
 ExcelScript.ChartDataLabel,"getText()",Method,Good,false
 ExcelScript.ChartDataLabel,"getTextOrientation()",Method,Great,false
 ExcelScript.ChartDataLabel,"getTop()",Method,Great,false
@@ -456,6 +466,8 @@ ExcelScript.ChartDataLabel,"getVerticalAlignment()",Method,Great,false
 ExcelScript.ChartDataLabel,"getWidth()",Method,Excellent,false
 ExcelScript.ChartDataLabel,"setAutoText(autoText)",Method,Excellent,false
 ExcelScript.ChartDataLabel,"setFormula(formula)",Method,Great,false
+ExcelScript.ChartDataLabel,"setGeometricShapeType(geometricShapeType)",Method,Excellent,false
+ExcelScript.ChartDataLabel,"setHeight(height)",Method,Poor,false
 ExcelScript.ChartDataLabel,"setHorizontalAlignment(horizontalAlignment)",Method,Great,false
 ExcelScript.ChartDataLabel,"setLeft(left)",Method,Great,false
 ExcelScript.ChartDataLabel,"setLinkNumberFormat(linkNumberFormat)",Method,Excellent,false
@@ -472,6 +484,12 @@ ExcelScript.ChartDataLabel,"setText(text)",Method,Good,false
 ExcelScript.ChartDataLabel,"setTextOrientation(textOrientation)",Method,Great,false
 ExcelScript.ChartDataLabel,"setTop(top)",Method,Great,false
 ExcelScript.ChartDataLabel,"setVerticalAlignment(verticalAlignment)",Method,Great,false
+ExcelScript.ChartDataLabel,"setWidth(width)",Method,Poor,false
+ExcelScript.ChartDataLabelAnchor,N/A,Interface,Unknown,false
+ExcelScript.ChartDataLabelAnchor,"getLeft()",Method,Excellent,false
+ExcelScript.ChartDataLabelAnchor,"getTop()",Method,Excellent,false
+ExcelScript.ChartDataLabelAnchor,"setLeft(left)",Method,Excellent,false
+ExcelScript.ChartDataLabelAnchor,"setTop(top)",Method,Excellent,false
 ExcelScript.ChartDataLabelFormat,N/A,Interface,Unknown,false
 ExcelScript.ChartDataLabelFormat,"getBorder()",Method,Fine,false
 ExcelScript.ChartDataLabelFormat,"getFill()",Method,Fine,false
@@ -492,13 +510,17 @@ ExcelScript.ChartDataLabelPosition,"top",EnumField,Missing,false
 ExcelScript.ChartDataLabels,N/A,Interface,Unknown,false
 ExcelScript.ChartDataLabels,"getAutoText()",Method,Excellent,false
 ExcelScript.ChartDataLabels,"getFormat()",Method,Great,false
+ExcelScript.ChartDataLabels,"getGeometricShapeType()",Method,Excellent,false
 ExcelScript.ChartDataLabels,"getHorizontalAlignment()",Method,Excellent,false
+ExcelScript.ChartDataLabels,"getLeaderLines()",Method,Good,false
 ExcelScript.ChartDataLabels,"getLinkNumberFormat()",Method,Excellent,false
 ExcelScript.ChartDataLabels,"getNumberFormat()",Method,Good,false
 ExcelScript.ChartDataLabels,"getPosition()",Method,Good,false
 ExcelScript.ChartDataLabels,"getSeparator()",Method,Great,false
+ExcelScript.ChartDataLabels,"getShowAsStickyCallout()",Method,Great,false
 ExcelScript.ChartDataLabels,"getShowBubbleSize()",Method,Great,false
 ExcelScript.ChartDataLabels,"getShowCategoryName()",Method,Great,false
+ExcelScript.ChartDataLabels,"getShowLeaderLines()",Method,Excellent,false
 ExcelScript.ChartDataLabels,"getShowLegendKey()",Method,Good,false
 ExcelScript.ChartDataLabels,"getShowPercentage()",Method,Good,false
 ExcelScript.ChartDataLabels,"getShowSeriesName()",Method,Great,false
@@ -506,6 +528,7 @@ ExcelScript.ChartDataLabels,"getShowValue()",Method,Great,false
 ExcelScript.ChartDataLabels,"getTextOrientation()",Method,Great,false
 ExcelScript.ChartDataLabels,"getVerticalAlignment()",Method,Great,false
 ExcelScript.ChartDataLabels,"setAutoText(autoText)",Method,Excellent,false
+ExcelScript.ChartDataLabels,"setGeometricShapeType(geometricShapeType)",Method,Excellent,false
 ExcelScript.ChartDataLabels,"setHorizontalAlignment(horizontalAlignment)",Method,Excellent,false
 ExcelScript.ChartDataLabels,"setLinkNumberFormat(linkNumberFormat)",Method,Excellent,false
 ExcelScript.ChartDataLabels,"setNumberFormat(numberFormat)",Method,Good,false
@@ -513,6 +536,7 @@ ExcelScript.ChartDataLabels,"setPosition(position)",Method,Good,false
 ExcelScript.ChartDataLabels,"setSeparator(separator)",Method,Great,false
 ExcelScript.ChartDataLabels,"setShowBubbleSize(showBubbleSize)",Method,Great,false
 ExcelScript.ChartDataLabels,"setShowCategoryName(showCategoryName)",Method,Great,false
+ExcelScript.ChartDataLabels,"setShowLeaderLines(showLeaderLines)",Method,Excellent,false
 ExcelScript.ChartDataLabels,"setShowLegendKey(showLegendKey)",Method,Good,false
 ExcelScript.ChartDataLabels,"setShowPercentage(showPercentage)",Method,Good,false
 ExcelScript.ChartDataLabels,"setShowSeriesName(showSeriesName)",Method,Great,false
@@ -598,6 +622,10 @@ ExcelScript.ChartGridlines,"getVisible()",Method,Good,false
 ExcelScript.ChartGridlines,"setVisible(visible)",Method,Good,false
 ExcelScript.ChartGridlinesFormat,N/A,Interface,Unknown,false
 ExcelScript.ChartGridlinesFormat,"getLine()",Method,Poor,false
+ExcelScript.ChartLeaderLines,N/A,Interface,Unknown,false
+ExcelScript.ChartLeaderLines,"getFormat()",Method,Fine,false
+ExcelScript.ChartLeaderLinesFormat,N/A,Interface,Unknown,false
+ExcelScript.ChartLeaderLinesFormat,"getLine()",Method,Good,false
 ExcelScript.ChartLegend,N/A,Interface,Unknown,false
 ExcelScript.ChartLegend,"getFormat()",Method,Fine,false
 ExcelScript.ChartLegend,"getHeight()",Method,Excellent,false
@@ -1051,12 +1079,15 @@ ExcelScript.ChartType,"xyscatterSmoothNoMarkers",EnumField,Missing,false
 ExcelScript.ChartUnderlineStyle,N/A,Enum,Missing,false
 ExcelScript.ChartUnderlineStyle,"none",EnumField,Missing,false
 ExcelScript.ChartUnderlineStyle,"single",EnumField,Missing,false
+ExcelScript.CheckboxCellControl,N/A,Interface,Missing,false
+ExcelScript.CheckboxCellControl,"type",Property,Missing,false
 ExcelScript.ClearApplyTo,N/A,Enum,Unknown,true
 ExcelScript.ClearApplyTo,"all",EnumField,Poor,false
 ExcelScript.ClearApplyTo,"contents",EnumField,Fine,false
 ExcelScript.ClearApplyTo,"formats",EnumField,Good,false
 ExcelScript.ClearApplyTo,"hyperlinks",EnumField,Fine,false
 ExcelScript.ClearApplyTo,"removeHyperlinks",EnumField,Good,false
+ExcelScript.ClearApplyTo,"resetContents",EnumField,Great,false
 ExcelScript.ColorScaleConditionalFormat,N/A,Interface,Great,false
 ExcelScript.ColorScaleConditionalFormat,"getCriteria()",Method,Excellent,false
 ExcelScript.ColorScaleConditionalFormat,"getThreeColorScale()",Method,Good,false
@@ -1150,7 +1181,15 @@ ExcelScript.ConditionalDataBarPositiveFormat,"setGradientFill(gradientFill)",Met
 ExcelScript.ConditionalDataBarRule,N/A,Interface,Fine,true
 ExcelScript.ConditionalDataBarRule,"formula",Property,Great,false
 ExcelScript.ConditionalDataBarRule,"type",Property,Poor,false
-ExcelScript.ConditionalFormat,N/A,Interface,Unknown,false
+ExcelScript.ConditionalFormat,N/A,Interface,Great,false
+ExcelScript.ConditionalFormat,"changeRuleToCellValue(properties)",Method,Great,false
+ExcelScript.ConditionalFormat,"changeRuleToColorScale()",Method,Good,false
+ExcelScript.ConditionalFormat,"changeRuleToContainsText(properties)",Method,Good,false
+ExcelScript.ConditionalFormat,"changeRuleToCustom(formula)",Method,Fine,false
+ExcelScript.ConditionalFormat,"changeRuleToDataBar()",Method,Good,false
+ExcelScript.ConditionalFormat,"changeRuleToIconSet()",Method,Good,false
+ExcelScript.ConditionalFormat,"changeRuleToPresetCriteria(properties)",Method,Good,false
+ExcelScript.ConditionalFormat,"changeRuleToTopBottom(properties)",Method,Good,false
 ExcelScript.ConditionalFormat,"delete()",Method,Good,false
 ExcelScript.ConditionalFormat,"getCellValue()",Method,Excellent,true
 ExcelScript.ConditionalFormat,"getColorScale()",Method,Excellent,true
@@ -1167,6 +1206,7 @@ ExcelScript.ConditionalFormat,"getTextComparison()",Method,Excellent,true
 ExcelScript.ConditionalFormat,"getTopBottom()",Method,Excellent,true
 ExcelScript.ConditionalFormat,"getType()",Method,Good,false
 ExcelScript.ConditionalFormat,"setPriority(priority)",Method,Excellent,false
+ExcelScript.ConditionalFormat,"setRanges(ranges)",Method,Good,false
 ExcelScript.ConditionalFormat,"setStopIfTrue(stopIfTrue)",Method,Excellent,false
 ExcelScript.ConditionalFormatColorCriterionType,N/A,Enum,Missing,true
 ExcelScript.ConditionalFormatColorCriterionType,"formula",EnumField,Missing,false
@@ -1286,6 +1326,7 @@ ExcelScript.ConditionalRangeFontUnderlineStyle,"double",EnumField,Missing,false
 ExcelScript.ConditionalRangeFontUnderlineStyle,"none",EnumField,Missing,false
 ExcelScript.ConditionalRangeFontUnderlineStyle,"single",EnumField,Missing,false
 ExcelScript.ConditionalRangeFormat,N/A,Interface,Missing,true
+ExcelScript.ConditionalRangeFormat,"clearFormat()",Method,Great,false
 ExcelScript.ConditionalRangeFormat,"getBorders()",Method,Great,false
 ExcelScript.ConditionalRangeFormat,"getConditionalRangeBorder(index)",Method,Fine,false
 ExcelScript.ConditionalRangeFormat,"getConditionalRangeBorderBottom()",Method,Poor,false
@@ -1371,6 +1412,10 @@ ExcelScript.DataPivotHierarchy,"setPosition(position)",Method,Poor,false
 ExcelScript.DataPivotHierarchy,"setShowAs(showAs)",Method,Great,true
 ExcelScript.DataPivotHierarchy,"setSummarizeBy(summarizeBy)",Method,Great,true
 ExcelScript.DataPivotHierarchy,"setToDefault()",Method,Great,false
+ExcelScript.DataSourceType,N/A,Enum,Unknown,false
+ExcelScript.DataSourceType,"localRange",EnumField,Fine,false
+ExcelScript.DataSourceType,"localTable",EnumField,Fine,false
+ExcelScript.DataSourceType,"unknown",EnumField,Poor,false
 ExcelScript.DataValidation,N/A,Interface,Unknown,false
 ExcelScript.DataValidation,"clear()",Method,Poor,false
 ExcelScript.DataValidation,"getErrorAlert()",Method,Great,false
@@ -1545,6 +1590,8 @@ ExcelScript.DynamicFilterCriteria,"tomorrow",EnumField,Missing,false
 ExcelScript.DynamicFilterCriteria,"unknown",EnumField,Missing,false
 ExcelScript.DynamicFilterCriteria,"yearToDate",EnumField,Missing,false
 ExcelScript.DynamicFilterCriteria,"yesterday",EnumField,Missing,false
+ExcelScript.EmptyCellControl,N/A,Interface,Missing,false
+ExcelScript.EmptyCellControl,"type",Property,Missing,false
 ExcelScript.FillPattern,N/A,Enum,Missing,true
 ExcelScript.FillPattern,"checker",EnumField,Missing,false
 ExcelScript.FillPattern,"crissCross",EnumField,Missing,false
@@ -1833,11 +1880,11 @@ ExcelScript.HeaderFooterGroup,"getEvenPages()",Method,Good,false
 ExcelScript.HeaderFooterGroup,"getFirstPage()",Method,Good,false
 ExcelScript.HeaderFooterGroup,"getOddPages()",Method,Good,false
 ExcelScript.HeaderFooterGroup,"getState()",Method,Fine,false
-ExcelScript.HeaderFooterGroup,"getUseSheetMargins()",Method,Great,false
-ExcelScript.HeaderFooterGroup,"getUseSheetScale()",Method,Great,false
+ExcelScript.HeaderFooterGroup,"getUseSheetMargins()",Method,Excellent,false
+ExcelScript.HeaderFooterGroup,"getUseSheetScale()",Method,Excellent,false
 ExcelScript.HeaderFooterGroup,"setState(state)",Method,Fine,false
-ExcelScript.HeaderFooterGroup,"setUseSheetMargins(useSheetMargins)",Method,Great,false
-ExcelScript.HeaderFooterGroup,"setUseSheetScale(useSheetScale)",Method,Great,false
+ExcelScript.HeaderFooterGroup,"setUseSheetMargins(useSheetMargins)",Method,Excellent,false
+ExcelScript.HeaderFooterGroup,"setUseSheetScale(useSheetScale)",Method,Excellent,false
 ExcelScript.HeaderFooterState,N/A,Enum,Unknown,false
 ExcelScript.HeaderFooterState,"default",EnumField,Good,false
 ExcelScript.HeaderFooterState,"firstAndDefault",EnumField,Good,false
@@ -1953,8 +2000,9 @@ ExcelScript.LinkedDataTypeState,"disambiguationNeeded",EnumField,Missing,false
 ExcelScript.LinkedDataTypeState,"fetchingData",EnumField,Missing,false
 ExcelScript.LinkedDataTypeState,"none",EnumField,Missing,false
 ExcelScript.LinkedDataTypeState,"validLinkedData",EnumField,Missing,false
-ExcelScript.LinkedWorkbook,N/A,Interface,Good,false
+ExcelScript.LinkedWorkbook,N/A,Interface,Unknown,false
 ExcelScript.LinkedWorkbook,"breakLinks()",Method,Great,true
+ExcelScript.LinkedWorkbook,"getId()",Method,Fine,false
 ExcelScript.LinkedWorkbook,"refreshLinks()",Method,Fine,false
 ExcelScript.ListDataValidation,N/A,Interface,Unknown,true
 ExcelScript.ListDataValidation,"inCellDropDown",Property,Excellent,false
@@ -1964,6 +2012,8 @@ ExcelScript.LoadToType,"connectionOnly",EnumField,Poor,false
 ExcelScript.LoadToType,"pivotChart",EnumField,Missing,false
 ExcelScript.LoadToType,"pivotTable",EnumField,Missing,false
 ExcelScript.LoadToType,"table",EnumField,Missing,false
+ExcelScript.MixedCellControl,N/A,Interface,Missing,false
+ExcelScript.MixedCellControl,"type",Property,Missing,false
 ExcelScript.NamedItem,N/A,Interface,Unknown,true
 ExcelScript.NamedItem,"delete()",Method,Fine,false
 ExcelScript.NamedItem,"getArrayValues()",Method,Excellent,false
@@ -1997,8 +2047,8 @@ ExcelScript.NamedSheetView,N/A,Interface,Unknown,false
 ExcelScript.NamedSheetView,"activate()",Method,Fine,false
 ExcelScript.NamedSheetView,"delete()",Method,Poor,false
 ExcelScript.NamedSheetView,"duplicate(name)",Method,Fine,false
-ExcelScript.NamedSheetView,"getName()",Method,Great,false
-ExcelScript.NamedSheetView,"setName(name)",Method,Great,false
+ExcelScript.NamedSheetView,"getName()",Method,Excellent,false
+ExcelScript.NamedSheetView,"setName(name)",Method,Excellent,false
 ExcelScript.NumberFormatCategory,N/A,Enum,Unknown,true
 ExcelScript.NumberFormatCategory,"accounting",EnumField,Fine,false
 ExcelScript.NumberFormatCategory,"currency",EnumField,Great,false
@@ -2012,13 +2062,15 @@ ExcelScript.NumberFormatCategory,"scientific",EnumField,Great,false
 ExcelScript.NumberFormatCategory,"special",EnumField,Good,false
 ExcelScript.NumberFormatCategory,"text",EnumField,Good,false
 ExcelScript.NumberFormatCategory,"time",EnumField,Great,false
-ExcelScript.NumberFormatInfo,N/A,Interface,Unknown,false
+ExcelScript.NumberFormatInfo,N/A,Interface,Great,false
+ExcelScript.NumberFormatInfo,"getCurrencySymbol()",Method,Good,false
 ExcelScript.NumberFormatInfo,"getNumberDecimalSeparator()",Method,Excellent,false
 ExcelScript.NumberFormatInfo,"getNumberGroupSeparator()",Method,Excellent,false
 ExcelScript.PageBreak,N/A,Interface,Unknown,false
 ExcelScript.PageBreak,"delete()",Method,Good,false
 ExcelScript.PageBreak,"getCellAfterBreak()",Method,Poor,false
 ExcelScript.PageBreak,"getColumnIndex()",Method,Good,false
+ExcelScript.PageBreak,"getRowIndex()",Method,Good,false
 ExcelScript.PageLayout,N/A,Interface,Unknown,true
 ExcelScript.PageLayout,"getBlackAndWhite()",Method,Fine,false
 ExcelScript.PageLayout,"getBottomMargin()",Method,Fine,false
@@ -2200,25 +2252,37 @@ ExcelScript.PivotLabelFilter,"lowerBound",Property,Excellent,false
 ExcelScript.PivotLabelFilter,"substring",Property,Excellent,false
 ExcelScript.PivotLabelFilter,"upperBound",Property,Excellent,false
 ExcelScript.PivotLayout,N/A,Interface,Unknown,false
+ExcelScript.PivotLayout,"displayBlankLineAfterEachItem(display)",Method,Excellent,false
+ExcelScript.PivotLayout,"getAltTextDescription()",Method,Good,false
+ExcelScript.PivotLayout,"getAltTextTitle()",Method,Good,false
 ExcelScript.PivotLayout,"getAutoFormat()",Method,Excellent,false
 ExcelScript.PivotLayout,"getBodyAndTotalRange()",Method,Great,true
 ExcelScript.PivotLayout,"getColumnLabelRange()",Method,Good,false
 ExcelScript.PivotLayout,"getDataHierarchy(cell)",Method,Excellent,false
+ExcelScript.PivotLayout,"getEmptyCellText()",Method,Excellent,false
 ExcelScript.PivotLayout,"getEnableFieldList()",Method,Excellent,false
+ExcelScript.PivotLayout,"getFillEmptyCells()",Method,Excellent,false
 ExcelScript.PivotLayout,"getFilterAxisRange()",Method,Fine,false
 ExcelScript.PivotLayout,"getLayoutType()",Method,Excellent,false
 ExcelScript.PivotLayout,"getPreserveFormatting()",Method,Excellent,false
 ExcelScript.PivotLayout,"getRange()",Method,Good,false
 ExcelScript.PivotLayout,"getRowLabelRange()",Method,Good,false
 ExcelScript.PivotLayout,"getShowColumnGrandTotals()",Method,Great,false
+ExcelScript.PivotLayout,"getShowFieldHeaders()",Method,Excellent,false
 ExcelScript.PivotLayout,"getShowRowGrandTotals()",Method,Great,false
 ExcelScript.PivotLayout,"getSubtotalLocation()",Method,Excellent,false
+ExcelScript.PivotLayout,"repeatAllItemLabels(repeatLabels)",Method,Good,false
+ExcelScript.PivotLayout,"setAltTextDescription(altTextDescription)",Method,Good,false
+ExcelScript.PivotLayout,"setAltTextTitle(altTextTitle)",Method,Good,false
 ExcelScript.PivotLayout,"setAutoFormat(autoFormat)",Method,Excellent,false
 ExcelScript.PivotLayout,"setAutoSortOnCell(cell, sortBy)",Method,Excellent,false
+ExcelScript.PivotLayout,"setEmptyCellText(emptyCellText)",Method,Excellent,false
 ExcelScript.PivotLayout,"setEnableFieldList(enableFieldList)",Method,Excellent,false
+ExcelScript.PivotLayout,"setFillEmptyCells(fillEmptyCells)",Method,Excellent,false
 ExcelScript.PivotLayout,"setLayoutType(layoutType)",Method,Excellent,true
 ExcelScript.PivotLayout,"setPreserveFormatting(preserveFormatting)",Method,Excellent,false
 ExcelScript.PivotLayout,"setShowColumnGrandTotals(showColumnGrandTotals)",Method,Great,false
+ExcelScript.PivotLayout,"setShowFieldHeaders(showFieldHeaders)",Method,Excellent,false
 ExcelScript.PivotLayout,"setShowRowGrandTotals(showRowGrandTotals)",Method,Great,false
 ExcelScript.PivotLayout,"setSubtotalLocation(subtotalLocation)",Method,Excellent,true
 ExcelScript.PivotLayoutType,N/A,Enum,Good,true
@@ -2238,6 +2302,8 @@ ExcelScript.PivotTable,"getColumnHierarchies()",Method,Poor,false
 ExcelScript.PivotTable,"getColumnHierarchy(name)",Method,Excellent,false
 ExcelScript.PivotTable,"getDataHierarchies()",Method,Poor,false
 ExcelScript.PivotTable,"getDataHierarchy(name)",Method,Excellent,false
+ExcelScript.PivotTable,"getDataSourceString()",Method,Excellent,false
+ExcelScript.PivotTable,"getDataSourceType()",Method,Fine,false
 ExcelScript.PivotTable,"getEnableDataValueEditing()",Method,Excellent,false
 ExcelScript.PivotTable,"getFilterHierarchies()",Method,Poor,false
 ExcelScript.PivotTable,"getFilterHierarchy(name)",Method,Excellent,false
@@ -2368,6 +2434,7 @@ ExcelScript.Range,"autoFill(destinationRange, autoFillType)",Method,Good,true
 ExcelScript.Range,"calculate()",Method,Fine,true
 ExcelScript.Range,"clear(applyTo)",Method,Good,true
 ExcelScript.Range,"clearAllConditionalFormats()",Method,Great,false
+ExcelScript.Range,"clearOrResetContents()",Method,Excellent,false
 ExcelScript.Range,"convertDataTypeToText()",Method,Fine,false
 ExcelScript.Range,"copyFrom(sourceRange, copyType, skipBlanks, transpose)",Method,Great,true
 ExcelScript.Range,"delete(shift)",Method,Fine,true
@@ -2387,6 +2454,7 @@ ExcelScript.Range,"getColumnsAfter(count)",Method,Good,false
 ExcelScript.Range,"getColumnsBefore(count)",Method,Good,false
 ExcelScript.Range,"getConditionalFormat(id)",Method,Excellent,false
 ExcelScript.Range,"getConditionalFormats()",Method,Good,false
+ExcelScript.Range,"getControl()",Method,Great,false
 ExcelScript.Range,"getDataValidation()",Method,Good,true
 ExcelScript.Range,"getDependents()",Method,Excellent,false
 ExcelScript.Range,"getDirectDependents()",Method,Excellent,false
@@ -2461,6 +2529,7 @@ ExcelScript.Range,"removeDuplicates(columns, includesHeader)",Method,Great,true
 ExcelScript.Range,"replaceAll(text, replacement, criteria)",Method,Excellent,true
 ExcelScript.Range,"select()",Method,Fine,true
 ExcelScript.Range,"setColumnHidden(columnHidden)",Method,Excellent,false
+ExcelScript.Range,"setControl(control)",Method,Great,false
 ExcelScript.Range,"setDirty()",Method,Good,false
 ExcelScript.Range,"setFormula(formula)",Method,Great,true
 ExcelScript.Range,"setFormulaLocal(formulaLocal)",Method,Excellent,false
@@ -2486,6 +2555,7 @@ ExcelScript.RangeAreas,"addConditionalFormat(type)",Method,Good,false
 ExcelScript.RangeAreas,"calculate()",Method,Fine,false
 ExcelScript.RangeAreas,"clear(applyTo)",Method,Great,true
 ExcelScript.RangeAreas,"clearAllConditionalFormats()",Method,Great,false
+ExcelScript.RangeAreas,"clearOrResetContents()",Method,Excellent,false
 ExcelScript.RangeAreas,"convertDataTypeToText()",Method,Fine,false
 ExcelScript.RangeAreas,"copyFrom(sourceRange, copyType, skipBlanks, transpose)",Method,Good,false
 ExcelScript.RangeAreas,"getAddress()",Method,Great,false
@@ -2668,6 +2738,7 @@ ExcelScript.Shape,"getAltTextDescription()",Method,Excellent,false
 ExcelScript.Shape,"getAltTextTitle()",Method,Excellent,false
 ExcelScript.Shape,"getAsImage(format)",Method,Deprecated,true
 ExcelScript.Shape,"getConnectionSiteCount()",Method,Good,false
+ExcelScript.Shape,"getDisplayName()",Method,Good,false
 ExcelScript.Shape,"getFill()",Method,Fine,false
 ExcelScript.Shape,"getGeometricShape()",Method,Excellent,false
 ExcelScript.Shape,"getGeometricShapeType()",Method,Excellent,false
@@ -3097,6 +3168,8 @@ ExcelScript.TopBottomSelectionType,N/A,Enum,Good,false
 ExcelScript.TopBottomSelectionType,"items",EnumField,Good,false
 ExcelScript.TopBottomSelectionType,"percent",EnumField,Good,false
 ExcelScript.TopBottomSelectionType,"sum",EnumField,Good,false
+ExcelScript.UnknownCellControl,N/A,Interface,Missing,false
+ExcelScript.UnknownCellControl,"type",Property,Missing,false
 ExcelScript.ValueFilterCondition,N/A,Enum,Unknown,true
 ExcelScript.ValueFilterCondition,"between",EnumField,Excellent,false
 ExcelScript.ValueFilterCondition,"bottomN",EnumField,Great,false
@@ -3267,6 +3340,7 @@ ExcelScript.Worksheet,"getRangeByIndexes(startRow, startColumn, rowCount, column
 ExcelScript.Worksheet,"getRanges(address)",Method,Great,false
 ExcelScript.Worksheet,"getShape(key)",Method,Excellent,false
 ExcelScript.Worksheet,"getShapes()",Method,Great,false
+ExcelScript.Worksheet,"getShowDataTypeIcons()",Method,Excellent,false
 ExcelScript.Worksheet,"getShowGridlines()",Method,Good,false
 ExcelScript.Worksheet,"getShowHeadings()",Method,Good,false
 ExcelScript.Worksheet,"getSlicer(key)",Method,Excellent,false
@@ -3288,17 +3362,18 @@ ExcelScript.Worksheet,"replaceAll(text, replacement, criteria)",Method,Excellent
 ExcelScript.Worksheet,"setEnableCalculation(enableCalculation)",Method,Excellent,false
 ExcelScript.Worksheet,"setName(name)",Method,Fine,true
 ExcelScript.Worksheet,"setPosition(position)",Method,Good,true
+ExcelScript.Worksheet,"setShowDataTypeIcons(showDataTypeIcons)",Method,Excellent,false
 ExcelScript.Worksheet,"setShowGridlines(showGridlines)",Method,Good,false
 ExcelScript.Worksheet,"setShowHeadings(showHeadings)",Method,Good,false
 ExcelScript.Worksheet,"setStandardWidth(standardWidth)",Method,Excellent,false
 ExcelScript.Worksheet,"setTabColor(tabColor)",Method,Excellent,true
 ExcelScript.Worksheet,"setVisibility(visibility)",Method,Poor,true
 ExcelScript.Worksheet,"showOutlineLevels(rowLevels, columnLevels)",Method,Excellent,false
-ExcelScript.WorksheetCustomProperty,N/A,Interface,Unknown,false
+ExcelScript.WorksheetCustomProperty,N/A,Interface,Great,false
 ExcelScript.WorksheetCustomProperty,"delete()",Method,Good,false
 ExcelScript.WorksheetCustomProperty,"getKey()",Method,Excellent,false
-ExcelScript.WorksheetCustomProperty,"getValue()",Method,Good,false
-ExcelScript.WorksheetCustomProperty,"setValue(value)",Method,Good,false
+ExcelScript.WorksheetCustomProperty,"getValue()",Method,Excellent,false
+ExcelScript.WorksheetCustomProperty,"setValue(value)",Method,Excellent,false
 ExcelScript.WorksheetFreezePanes,N/A,Interface,Unknown,false
 ExcelScript.WorksheetFreezePanes,"freezeAt(frozenRange)",Method,Fine,false
 ExcelScript.WorksheetFreezePanes,"freezeColumns(count)",Method,Fine,false
