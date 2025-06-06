@@ -17,6 +17,7 @@ enums:
   - 'ExcelScript!ExcelScript.CalculationMode:enum'
   - 'ExcelScript!ExcelScript.CalculationState:enum'
   - 'ExcelScript!ExcelScript.CalculationType:enum'
+  - 'ExcelScript!ExcelScript.CellControlType:enum'
   - 'ExcelScript!ExcelScript.ChartAxisCategoryType:enum'
   - 'ExcelScript!ExcelScript.ChartAxisDisplayUnit:enum'
   - 'ExcelScript!ExcelScript.ChartAxisGroup:enum'
@@ -73,6 +74,7 @@ enums:
   - 'ExcelScript!ExcelScript.ConditionalTopBottomCriterionType:enum'
   - 'ExcelScript!ExcelScript.ConnectorType:enum'
   - 'ExcelScript!ExcelScript.ContentType:enum'
+  - 'ExcelScript!ExcelScript.DataSourceType:enum'
   - 'ExcelScript!ExcelScript.DataValidationAlertStyle:enum'
   - 'ExcelScript!ExcelScript.DataValidationOperator:enum'
   - 'ExcelScript!ExcelScript.DataValidationType:enum'
@@ -148,6 +150,8 @@ enums:
   - 'ExcelScript!ExcelScript.VerticalAlignment:enum'
   - 'ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum'
   - 'ExcelScript!ExcelScript.WorksheetPositionType:enum'
+  - 'ExcelScript!Global.OfficeScript.EmailContentType:enum'
+  - 'ExcelScript!Global.OfficeScript.EmailImportance:enum'
 interfaces:
   - 'ExcelScript!ExcelScript.AllowEditRange:interface'
   - 'ExcelScript!ExcelScript.AllowEditRangeOptions:interface'
@@ -167,6 +171,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.ChartBorder:interface'
   - 'ExcelScript!ExcelScript.ChartBoxwhiskerOptions:interface'
   - 'ExcelScript!ExcelScript.ChartDataLabel:interface'
+  - 'ExcelScript!ExcelScript.ChartDataLabelAnchor:interface'
   - 'ExcelScript!ExcelScript.ChartDataLabelFormat:interface'
   - 'ExcelScript!ExcelScript.ChartDataLabels:interface'
   - 'ExcelScript!ExcelScript.ChartDataTable:interface'
@@ -178,6 +183,8 @@ interfaces:
   - 'ExcelScript!ExcelScript.ChartFormatString:interface'
   - 'ExcelScript!ExcelScript.ChartGridlines:interface'
   - 'ExcelScript!ExcelScript.ChartGridlinesFormat:interface'
+  - 'ExcelScript!ExcelScript.ChartLeaderLines:interface'
+  - 'ExcelScript!ExcelScript.ChartLeaderLinesFormat:interface'
   - 'ExcelScript!ExcelScript.ChartLegend:interface'
   - 'ExcelScript!ExcelScript.ChartLegendEntry:interface'
   - 'ExcelScript!ExcelScript.ChartLegendFormat:interface'
@@ -196,6 +203,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.ChartTrendlineFormat:interface'
   - 'ExcelScript!ExcelScript.ChartTrendlineLabel:interface'
   - 'ExcelScript!ExcelScript.ChartTrendlineLabelFormat:interface'
+  - 'ExcelScript!ExcelScript.CheckboxCellControl:interface'
   - 'ExcelScript!ExcelScript.ColorScaleConditionalFormat:interface'
   - 'ExcelScript!ExcelScript.Comment:interface'
   - 'ExcelScript!ExcelScript.CommentMention:interface'
@@ -231,6 +239,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.DateTimeDataValidation:interface'
   - 'ExcelScript!ExcelScript.DatetimeFormatInfo:interface'
   - 'ExcelScript!ExcelScript.DocumentProperties:interface'
+  - 'ExcelScript!ExcelScript.EmptyCellControl:interface'
   - 'ExcelScript!ExcelScript.Filter:interface'
   - 'ExcelScript!ExcelScript.FilterCriteria:interface'
   - 'ExcelScript!ExcelScript.FilterDatetime:interface'
@@ -246,6 +255,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.Line:interface'
   - 'ExcelScript!ExcelScript.LinkedWorkbook:interface'
   - 'ExcelScript!ExcelScript.ListDataValidation:interface'
+  - 'ExcelScript!ExcelScript.MixedCellControl:interface'
   - 'ExcelScript!ExcelScript.NamedItem:interface'
   - 'ExcelScript!ExcelScript.NamedItemArrayValues:interface'
   - 'ExcelScript!ExcelScript.NamedSheetView:interface'
@@ -301,6 +311,7 @@ interfaces:
   - 'ExcelScript!ExcelScript.TextRange:interface'
   - 'ExcelScript!ExcelScript.TimelineStyle:interface'
   - 'ExcelScript!ExcelScript.TopBottomConditionalFormat:interface'
+  - 'ExcelScript!ExcelScript.UnknownCellControl:interface'
   - 'ExcelScript!ExcelScript.Workbook:interface'
   - 'ExcelScript!ExcelScript.WorkbookProtection:interface'
   - 'ExcelScript!ExcelScript.WorkbookRangeAreas:interface'
@@ -310,3 +321,87 @@ interfaces:
   - 'ExcelScript!ExcelScript.WorksheetProtection:interface'
   - 'ExcelScript!ExcelScript.WorksheetProtectionOptions:interface'
   - 'ExcelScript!ExcelScript.WorksheetSearchCriteria:interface'
+  - 'ExcelScript!Global.OfficeScript.EmailAttachment:interface'
+  - 'ExcelScript!Global.OfficeScript.MailProperties:interface'
+typeAliases:
+  - 'ExcelScript!ExcelScript.CellControl:type'
+functions:
+  - name: Global.OfficeScript.convertToPdf()
+    uid: 'ExcelScript!Global.OfficeScript.convertToPdf:function(1)'
+    package: ExcelScript!
+    summary: >-
+      Return the text encoding of the document as a PDF. If the document is empty, then the following error is shown:
+      "We didn't find anything to print".
+    remarks: ''
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: 'export function convertToPdf(): string;'
+      return:
+        type: string
+        description: 'The content of the workbook as a string, in PDF format.'
+  - name: |-
+      Global.OfficeScript.downloadFile({
+                  name,
+                  content,
+              })
+    uid: 'ExcelScript!Global.OfficeScript.downloadFile:function(1)'
+    package: ExcelScript!
+    summary: Downloads a specified file to the default download location specified by the local machine.
+    remarks: ''
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: |-
+        export function downloadFile({
+                    name,
+                    content,
+                }: {
+                    name: string;
+                    content: string;
+                }): void;
+      parameters:
+        - id: |-
+            {
+                        name,
+                        content,
+                    }
+          description: ''
+          type: |-
+            {
+                        name: string;
+                        content: string;
+                    }
+      return:
+        type: void
+        description: ''
+  - name: Global.OfficeScript.Metadata.getScriptName()
+    uid: 'ExcelScript!Global.OfficeScript.Metadata.getScriptName:function(1)'
+    package: ExcelScript!
+    summary: Get the current executing scripts name.
+    remarks: ''
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: 'export function getScriptName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: Global.OfficeScript.sendMail(mailProperties)
+    uid: 'ExcelScript!Global.OfficeScript.sendMail:function(1)'
+    package: ExcelScript!
+    summary: >-
+      Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email. If
+      the request body includes content, this method returns 400 Bad request.
+    remarks: ''
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: 'export function sendMail(mailProperties: MailProperties): void;'
+      parameters:
+        - id: mailProperties
+          description: ''
+          type: '<xref uid="ExcelScript!Global.OfficeScript.MailProperties:interface" />'
+      return:
+        type: void
+        description: ''

@@ -9,6 +9,136 @@ isPreview: false
 isDeprecated: false
 type: interface
 methods:
+  - name: changeRuleToCellValue(properties)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToCellValue:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToCellValue(properties)
+    summary: Change the conditional format rule type to cell value.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToCellValue(properties: ConditionalCellValueRule): void;'
+      parameters:
+        - id: properties
+          description: The properties to set for the cell value conditional format rule.
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalCellValueRule:interface" />'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToColorScale()
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToColorScale:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToColorScale()
+    summary: Change the conditional format rule type to color scale.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToColorScale(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToContainsText(properties)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToContainsText:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToContainsText(properties)
+    summary: Change the conditional format rule type to text comparison.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        changeRuleToContainsText(
+                    properties: ConditionalTextComparisonRule
+                ): void;
+      parameters:
+        - id: properties
+          description: The properties to set for the text comparison conditional format rule.
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalTextComparisonRule:interface" />'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToCustom(formula)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToCustom:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToCustom(formula)
+    summary: Change the conditional format rule type to custom.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToCustom(formula: string): void;'
+      parameters:
+        - id: formula
+          description: The formula to set for the custom conditional format rule.
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToDataBar()
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToDataBar:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToDataBar()
+    summary: Change the conditional format rule type to data bar.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToDataBar(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToIconSet()
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToIconSet:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToIconSet()
+    summary: Change the conditional format rule type to icon set.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToIconSet(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToPresetCriteria(properties)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToPresetCriteria:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToPresetCriteria(properties)
+    summary: Change the conditional format rule type to preset criteria.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        changeRuleToPresetCriteria(
+                    properties: ConditionalPresetCriteriaRule
+                ): void;
+      parameters:
+        - id: properties
+          description: The properties to set for the preset criteria conditional format rule.
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalPresetCriteriaRule:interface" />'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToTopBottom(properties)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#changeRuleToTopBottom:member(1)'
+    package: ExcelScript!
+    fullName: changeRuleToTopBottom(properties)
+    summary: Change the conditional format rule type to top/bottom.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToTopBottom(properties: ConditionalTopBottomRule): void;'
+      parameters:
+        - id: properties
+          description: The properties to set for the top/bottom conditional format rule.
+          type: '<xref uid="ExcelScript!ExcelScript.ConditionalTopBottomRule:interface" />'
+      return:
+        type: void
+        description: ''
   - name: delete()
     uid: 'ExcelScript!ExcelScript.ConditionalFormat#delete:member(1)'
     package: ExcelScript!
@@ -474,6 +604,25 @@ methods:
         - id: priority
           description: ''
           type: number
+      return:
+        type: void
+        description: ''
+  - name: setRanges(ranges)
+    uid: 'ExcelScript!ExcelScript.ConditionalFormat#setRanges:member(1)'
+    package: ExcelScript!
+    fullName: setRanges(ranges)
+    summary: Set the ranges that the conditional format rule is applied to.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRanges(ranges: Range | RangeAreas | string): void;'
+      parameters:
+        - id: ranges
+          description: Collection of one or more ranges for this rule to be applied to.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
       return:
         type: void
         description: ''

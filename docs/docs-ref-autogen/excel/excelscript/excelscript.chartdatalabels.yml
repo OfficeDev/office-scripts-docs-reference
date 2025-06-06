@@ -35,6 +35,21 @@ methods:
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ChartDataLabelFormat:interface" />'
         description: ''
+  - name: getGeometricShapeType()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#getGeometricShapeType:member(1)'
+    package: ExcelScript!
+    fullName: getGeometricShapeType()
+    summary: >-
+      Specifies the geometric shape type of the data labels. See `ExcelScript.GeometricShapeType` for more details.
+      Value is `null` if the data labels are not geometric shapes.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getGeometricShapeType(): GeometricShapeType;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
+        description: ''
   - name: getHorizontalAlignment()
     uid: 'ExcelScript!ExcelScript.ChartDataLabels#getHorizontalAlignment:member(1)'
     package: ExcelScript!
@@ -49,6 +64,19 @@ methods:
       content: 'getHorizontalAlignment(): ChartTextHorizontalAlignment;'
       return:
         type: '<xref uid="ExcelScript!ExcelScript.ChartTextHorizontalAlignment:enum" />'
+        description: ''
+  - name: getLeaderLines()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#getLeaderLines:member(1)'
+    package: ExcelScript!
+    fullName: getLeaderLines()
+    summary: Gets an object that represents the leader lines of the data labels.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLeaderLines(): ChartLeaderLines;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.ChartLeaderLines:interface" />'
         description: ''
   - name: getLinkNumberFormat()
     uid: 'ExcelScript!ExcelScript.ChartDataLabels#getLinkNumberFormat:member(1)'
@@ -104,6 +132,23 @@ methods:
       return:
         type: string
         description: ''
+  - name: getShowAsStickyCallout()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#getShowAsStickyCallout:member(1)'
+    package: ExcelScript!
+    fullName: getShowAsStickyCallout()
+    summary: >-
+      Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the
+      data point. If `true`<!-- -->, the callout is one of the following values: "AccentCallout1", "AccentCallout2",
+      "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See
+      Excel.GeometricShapeType for more details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowAsStickyCallout(): boolean;'
+      return:
+        type: boolean
+        description: ''
   - name: getShowBubbleSize()
     uid: 'ExcelScript!ExcelScript.ChartDataLabels#getShowBubbleSize:member(1)'
     package: ExcelScript!
@@ -127,6 +172,21 @@ methods:
     isDeprecated: false
     syntax:
       content: 'getShowCategoryName(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getShowLeaderLines()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#getShowLeaderLines:member(1)'
+    package: ExcelScript!
+    fullName: getShowLeaderLines()
+    summary: >-
+      Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines
+      are shown; otherwise, `false`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowLeaderLines(): boolean;'
       return:
         type: boolean
         description: ''
@@ -226,6 +286,25 @@ methods:
         - id: autoText
           description: ''
           type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setGeometricShapeType(geometricShapeType)
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#setGeometricShapeType:member(1)'
+    package: ExcelScript!
+    fullName: setGeometricShapeType(geometricShapeType)
+    summary: >-
+      Specifies the geometric shape type of the data labels. See `ExcelScript.GeometricShapeType` for more details.
+      Value is `null` if the data labels are not geometric shapes.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setGeometricShapeType(geometricShapeType: GeometricShapeType): void;'
+      parameters:
+        - id: geometricShapeType
+          description: ''
+          type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
       return:
         type: void
         description: ''
@@ -350,6 +429,25 @@ methods:
       content: 'setShowCategoryName(showCategoryName: boolean): void;'
       parameters:
         - id: showCategoryName
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setShowLeaderLines(showLeaderLines)
+    uid: 'ExcelScript!ExcelScript.ChartDataLabels#setShowLeaderLines:member(1)'
+    package: ExcelScript!
+    fullName: setShowLeaderLines(showLeaderLines)
+    summary: >-
+      Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines
+      are shown; otherwise, `false`<!-- -->.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowLeaderLines(showLeaderLines: boolean): void;'
+      parameters:
+        - id: showLeaderLines
           description: ''
           type: boolean
       return:
