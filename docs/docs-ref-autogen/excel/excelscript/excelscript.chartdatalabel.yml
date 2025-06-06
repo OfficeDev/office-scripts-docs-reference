@@ -48,6 +48,21 @@ methods:
       return:
         type: string
         description: ''
+  - name: getGeometricShapeType()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#getGeometricShapeType:member(1)'
+    package: ExcelScript!
+    fullName: getGeometricShapeType()
+    summary: >-
+      Specifies the geometric shape type of the data label. See `ExcelScript.GeometricShapeType` for more details. Value
+      is `null` if the data label is not a geometric shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getGeometricShapeType(): GeometricShapeType;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
+        description: ''
   - name: getHeight()
     uid: 'ExcelScript!ExcelScript.ChartDataLabel#getHeight:member(1)'
     package: ExcelScript!
@@ -145,6 +160,23 @@ methods:
       return:
         type: string
         description: ''
+  - name: getShowAsStickyCallout()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#getShowAsStickyCallout:member(1)'
+    package: ExcelScript!
+    fullName: getShowAsStickyCallout()
+    summary: >-
+      Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the
+      data point. If `true`<!-- -->, the callout is one of the following values: "AccentCallout1", "AccentCallout2",
+      "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See
+      Excel.GeometricShapeType for more details.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowAsStickyCallout(): boolean;'
+      return:
+        type: boolean
+        description: ''
   - name: getShowBubbleSize()
     uid: 'ExcelScript!ExcelScript.ChartDataLabel#getShowBubbleSize:member(1)'
     package: ExcelScript!
@@ -222,6 +254,41 @@ methods:
       content: 'getShowValue(): boolean;'
       return:
         type: boolean
+        description: ''
+  - name: 'getSubstring(start, length)'
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#getSubstring:member(1)'
+    package: ExcelScript!
+    fullName: 'getSubstring(start, length)'
+    summary: Returns a substring of the data label. The line break character '<!-- -->\\<!-- -->n' counts as one character.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSubstring(start: number, length?: number): ChartFormatString;'
+      parameters:
+        - id: start
+          description: The zero-based starting character position of a substring in the data label.
+          type: number
+        - id: length
+          description: >-
+            Optional. The number of characters in the substring. If length is omitted, all the characters from start to
+            the end of the data label are retrieved.
+          type: number
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.ChartFormatString:interface" />'
+        description: ''
+  - name: getTailAnchor()
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#getTailAnchor:member(1)'
+    package: ExcelScript!
+    fullName: getTailAnchor()
+    summary: Returns the tail anchor of the data label which is shown as a sticky callout.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTailAnchor(): ChartDataLabelAnchor;'
+      return:
+        type: '<xref uid="ExcelScript!ExcelScript.ChartDataLabelAnchor:interface" />'
         description: ''
   - name: getText()
     uid: 'ExcelScript!ExcelScript.ChartDataLabel#getText:member(1)'
@@ -325,6 +392,42 @@ methods:
         - id: formula
           description: ''
           type: string
+      return:
+        type: void
+        description: ''
+  - name: setGeometricShapeType(geometricShapeType)
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#setGeometricShapeType:member(1)'
+    package: ExcelScript!
+    fullName: setGeometricShapeType(geometricShapeType)
+    summary: >-
+      Specifies the geometric shape type of the data label. See `ExcelScript.GeometricShapeType` for more details. Value
+      is `null` if the data label is not a geometric shape.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setGeometricShapeType(geometricShapeType: GeometricShapeType): void;'
+      parameters:
+        - id: geometricShapeType
+          description: ''
+          type: '<xref uid="ExcelScript!ExcelScript.GeometricShapeType:enum" />'
+      return:
+        type: void
+        description: ''
+  - name: setHeight(height)
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#setHeight:member(1)'
+    package: ExcelScript!
+    fullName: setHeight(height)
+    summary: Sets the height of the data label in points.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setHeight(height: number): void;'
+      parameters:
+        - id: height
+          description: The height of the data label in points.
+          type: number
       return:
         type: void
         description: ''
@@ -615,6 +718,23 @@ methods:
         - id: verticalAlignment
           description: ''
           type: '<xref uid="ExcelScript!ExcelScript.ChartTextVerticalAlignment:enum" />'
+      return:
+        type: void
+        description: ''
+  - name: setWidth(width)
+    uid: 'ExcelScript!ExcelScript.ChartDataLabel#setWidth:member(1)'
+    package: ExcelScript!
+    fullName: setWidth(width)
+    summary: Sets the width of the data label in points.
+    remarks: ''
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setWidth(width: number): void;'
+      parameters:
+        - id: width
+          description: The width of the data label in points.
+          type: number
       return:
         type: void
         description: ''
