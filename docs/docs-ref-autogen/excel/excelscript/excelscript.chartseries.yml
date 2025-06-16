@@ -1,6 +1,6 @@
 ### YamlMime:TSType
 name: ExcelScript.ChartSeries
-uid: 'ExcelScript!ExcelScript.ChartSeries:interface'
+uid: ExcelScript!ExcelScript.ChartSeries:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartSeries
 summary: Represents a series in a chart.
@@ -38,33 +38,38 @@ remarks: |-
     secondSeries.setValues(secondSeriesRange);
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
   - name: addChartTrendline(type)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#addChartTrendline:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#addChartTrendline:member(1)
     package: ExcelScript!
     fullName: addChartTrendline(type)
     summary: Adds a new trendline to trendline collection.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'addChartTrendline(type?: ChartTrendlineType): ChartTrendline;'
       parameters:
         - id: type
-          description: Specifies the trendline type. The default value is "Linear". See `ExcelScript.ChartTrendline` for details.
-          type: '<xref uid="ExcelScript!ExcelScript.ChartTrendlineType:enum" />'
+          description: >-
+            Specifies the trendline type. The default value is "Linear". See
+            `ExcelScript.ChartTrendline` for details.
+          type: <xref uid="ExcelScript!ExcelScript.ChartTrendlineType:enum" />
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />
         description: ''
   - name: delete()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#delete:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#delete:member(1)
     package: ExcelScript!
     fullName: delete()
     summary: Deletes the chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -73,52 +78,59 @@ methods:
         type: void
         description: ''
   - name: getAxisGroup()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getAxisGroup:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getAxisGroup:member(1)
     package: ExcelScript!
     fullName: getAxisGroup()
     summary: Specifies the group for the specified series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAxisGroup(): ChartAxisGroup;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartAxisGroup:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartAxisGroup:enum" />
         description: ''
   - name: getBinOptions()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getBinOptions:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getBinOptions:member(1)
     package: ExcelScript!
     fullName: getBinOptions()
     summary: Encapsulates the bin options for histogram charts and pareto charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBinOptions(): ChartBinOptions;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartBinOptions:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartBinOptions:interface" />
         description: ''
   - name: getBoxwhiskerOptions()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getBoxwhiskerOptions:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getBoxwhiskerOptions:member(1)
     package: ExcelScript!
     fullName: getBoxwhiskerOptions()
     summary: Encapsulates the options for the box and whisker charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBoxwhiskerOptions(): ChartBoxwhiskerOptions;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartBoxwhiskerOptions:interface" />'
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ChartBoxwhiskerOptions:interface"
+          />
         description: ''
   - name: getBubbleScale()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getBubbleScale:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getBubbleScale:member(1)
     package: ExcelScript!
     fullName: getBubbleScale()
     summary: >-
-      This can be an integer value from 0 (zero) to 300, representing the percentage of the default size. This property
-      only applies to bubble charts.
+      This can be an integer value from 0 (zero) to 300, representing the
+      percentage of the default size. This property only applies to bubble
+      charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -127,11 +139,14 @@ methods:
         type: number
         description: ''
   - name: getChartTrendline(index)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getChartTrendline:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getChartTrendline:member(1)
     package: ExcelScript!
     fullName: getChartTrendline(index)
-    summary: 'Gets a trendline object by index, which is the insertion order in the items array.'
+    summary: >-
+      Gets a trendline object by index, which is the insertion order in the
+      items array.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -141,42 +156,47 @@ methods:
           description: Represents the insertion order in the items array.
           type: number
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />
         description: ''
   - name: getChartType()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getChartType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getChartType:member(1)
     package: ExcelScript!
     fullName: getChartType()
-    summary: Represents the chart type of a series. See `ExcelScript.ChartType` for details.
+    summary: >-
+      Represents the chart type of a series. See `ExcelScript.ChartType` for
+      details.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getChartType(): ChartType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartType:enum" />
         description: ''
   - name: getDataLabels()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getDataLabels:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getDataLabels:member(1)
     package: ExcelScript!
     fullName: getDataLabels()
     summary: Represents a collection of all data labels in the series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getDataLabels(): ChartDataLabels;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartDataLabels:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartDataLabels:interface" />
         description: ''
   - name: getDimensionDataSourceString(dimension)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceString:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceString:member(1)
     package: ExcelScript!
     fullName: getDimensionDataSourceString(dimension)
     summary: >-
-      Gets the string representation of the data source of the chart series. The string representation could be
-      information such as a cell address.
+      Gets the string representation of the data source of the chart series. The
+      string representation could be information such as a cell address.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -184,16 +204,17 @@ methods:
       parameters:
         - id: dimension
           description: The dimension of the axis where the data is from.
-          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />
       return:
         type: string
         description: ''
   - name: getDimensionDataSourceType(dimension)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceType:member(1)
     package: ExcelScript!
     fullName: getDimensionDataSourceType(dimension)
     summary: Gets the data source type of the chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -204,18 +225,20 @@ methods:
       parameters:
         - id: dimension
           description: The dimension of the axis where the data is from.
-          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartDataSourceType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartDataSourceType:enum" />
         description: ''
   - name: getDimensionValues(dimension)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getDimensionValues:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getDimensionValues:member(1)
     package: ExcelScript!
     fullName: getDimensionValues(dimension)
     summary: >-
-      Gets the values from a single dimension of the chart series. These could be either category values or data values,
-      depending on the dimension specified and how the data is mapped for the chart series.
+      Gets the values from a single dimension of the chart series. These could
+      be either category values or data values, depending on the dimension
+      specified and how the data is mapped for the chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -223,18 +246,20 @@ methods:
       parameters:
         - id: dimension
           description: The dimension of the axis where the data is from.
-          type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartSeriesDimension:enum" />
       return:
-        type: 'string[]'
+        type: string[]
         description: ''
   - name: getDoughnutHoleSize()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getDoughnutHoleSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getDoughnutHoleSize:member(1)
     package: ExcelScript!
     fullName: getDoughnutHoleSize()
     summary: >-
-      Represents the doughnut hole size of a chart series. Only valid on doughnut and doughnut exploded charts. Throws
-      an `InvalidArgument` error on invalid charts.
+      Represents the doughnut hole size of a chart series. Only valid on
+      doughnut and doughnut exploded charts. Throws an `InvalidArgument` error
+      on invalid charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -243,13 +268,15 @@ methods:
         type: number
         description: ''
   - name: getExplosion()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getExplosion:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getExplosion:member(1)
     package: ExcelScript!
     fullName: getExplosion()
     summary: >-
-      Specifies the explosion value for a pie-chart or doughnut-chart slice. Returns 0 (zero) if there's no explosion
-      (the tip of the slice is in the center of the pie).
+      Specifies the explosion value for a pie-chart or doughnut-chart slice.
+      Returns 0 (zero) if there's no explosion (the tip of the slice is in the
+      center of the pie).
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -258,11 +285,12 @@ methods:
         type: number
         description: ''
   - name: getFiltered()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getFiltered:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getFiltered:member(1)
     package: ExcelScript!
     fullName: getFiltered()
     summary: Specifies if the series is filtered. Not applicable for surface charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -271,13 +299,15 @@ methods:
         type: boolean
         description: ''
   - name: getFirstSliceAngle()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getFirstSliceAngle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getFirstSliceAngle:member(1)
     package: ExcelScript!
     fullName: getFirstSliceAngle()
     summary: >-
-      Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies
-      only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360.
+      Specifies the angle of the first pie-chart or doughnut-chart slice, in
+      degrees (clockwise from vertical). Applies only to pie, 3-D pie, and
+      doughnut charts. Can be a value from 0 through 360.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -286,26 +316,31 @@ methods:
         type: number
         description: ''
   - name: getFormat()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getFormat:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getFormat:member(1)
     package: ExcelScript!
     fullName: getFormat()
-    summary: 'Represents the formatting of a chart series, which includes fill and line formatting.'
+    summary: >-
+      Represents the formatting of a chart series, which includes fill and line
+      formatting.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFormat(): ChartSeriesFormat;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartSeriesFormat:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartSeriesFormat:interface" />
         description: ''
   - name: getGapWidth()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGapWidth:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGapWidth:member(1)
     package: ExcelScript!
     fullName: getGapWidth()
     summary: >-
-      Represents the gap width of a chart series. Only valid on bar and column charts, as well as specific classes of
-      line and pie charts. Throws an invalid argument exception on invalid charts.
+      Represents the gap width of a chart series. Only valid on bar and column
+      charts, as well as specific classes of line and pie charts. Throws an
+      invalid argument exception on invalid charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -314,11 +349,12 @@ methods:
         type: number
         description: ''
   - name: getGradientMaximumColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMaximumColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMaximumColor:member(1)
     package: ExcelScript!
     fullName: getGradientMaximumColor()
     summary: Specifies the color for maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -327,24 +363,26 @@ methods:
         type: string
         description: ''
   - name: getGradientMaximumType()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMaximumType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMaximumType:member(1)
     package: ExcelScript!
     fullName: getGradientMaximumType()
     summary: Specifies the type for maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGradientMaximumType(): ChartGradientStyleType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
         description: ''
   - name: getGradientMaximumValue()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMaximumValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMaximumValue:member(1)
     package: ExcelScript!
     fullName: getGradientMaximumValue()
     summary: Specifies the maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -353,11 +391,12 @@ methods:
         type: number
         description: ''
   - name: getGradientMidpointColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMidpointColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMidpointColor:member(1)
     package: ExcelScript!
     fullName: getGradientMidpointColor()
     summary: Specifies the color for the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -366,24 +405,26 @@ methods:
         type: string
         description: ''
   - name: getGradientMidpointType()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMidpointType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMidpointType:member(1)
     package: ExcelScript!
     fullName: getGradientMidpointType()
     summary: Specifies the type for the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGradientMidpointType(): ChartGradientStyleType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
         description: ''
   - name: getGradientMidpointValue()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMidpointValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMidpointValue:member(1)
     package: ExcelScript!
     fullName: getGradientMidpointValue()
     summary: Specifies the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -392,11 +433,12 @@ methods:
         type: number
         description: ''
   - name: getGradientMinimumColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMinimumColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMinimumColor:member(1)
     package: ExcelScript!
     fullName: getGradientMinimumColor()
     summary: Specifies the color for the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -405,24 +447,26 @@ methods:
         type: string
         description: ''
   - name: getGradientMinimumType()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMinimumType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMinimumType:member(1)
     package: ExcelScript!
     fullName: getGradientMinimumType()
     summary: Specifies the type for the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGradientMinimumType(): ChartGradientStyleType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
         description: ''
   - name: getGradientMinimumValue()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientMinimumValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientMinimumValue:member(1)
     package: ExcelScript!
     fullName: getGradientMinimumValue()
     summary: Specifies the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -431,24 +475,26 @@ methods:
         type: number
         description: ''
   - name: getGradientStyle()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getGradientStyle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getGradientStyle:member(1)
     package: ExcelScript!
     fullName: getGradientStyle()
     summary: Specifies the series gradient style of a region map chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getGradientStyle(): ChartGradientStyle;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyle:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyle:enum" />
         description: ''
   - name: getHasDataLabels()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getHasDataLabels:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getHasDataLabels:member(1)
     package: ExcelScript!
     fullName: getHasDataLabels()
     summary: Specifies if the series has data labels.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -457,11 +503,12 @@ methods:
         type: boolean
         description: ''
   - name: getInvertColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getInvertColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getInvertColor:member(1)
     package: ExcelScript!
     fullName: getInvertColor()
     summary: Specifies the fill color for negative data points in a series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -470,11 +517,14 @@ methods:
         type: string
         description: ''
   - name: getInvertIfNegative()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getInvertIfNegative:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getInvertIfNegative:member(1)
     package: ExcelScript!
     fullName: getInvertIfNegative()
-    summary: True if Excel inverts the pattern in the item when it corresponds to a negative number.
+    summary: >-
+      True if Excel inverts the pattern in the item when it corresponds to a
+      negative number.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -483,24 +533,26 @@ methods:
         type: boolean
         description: ''
   - name: getMapOptions()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getMapOptions:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getMapOptions:member(1)
     package: ExcelScript!
     fullName: getMapOptions()
     summary: Encapsulates the options for a region map chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getMapOptions(): ChartMapOptions;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartMapOptions:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartMapOptions:interface" />
         description: ''
   - name: getMarkerBackgroundColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getMarkerBackgroundColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getMarkerBackgroundColor:member(1)
     package: ExcelScript!
     fullName: getMarkerBackgroundColor()
     summary: Specifies the marker background color of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -509,11 +561,12 @@ methods:
         type: string
         description: ''
   - name: getMarkerForegroundColor()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getMarkerForegroundColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getMarkerForegroundColor:member(1)
     package: ExcelScript!
     fullName: getMarkerForegroundColor()
     summary: Specifies the marker foreground color of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -522,13 +575,15 @@ methods:
         type: string
         description: ''
   - name: getMarkerSize()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getMarkerSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getMarkerSize:member(1)
     package: ExcelScript!
     fullName: getMarkerSize()
     summary: >-
-      Specifies the marker size of a chart series. The supported size range is 2 to 72. This method returns an
-      InvalidArgument error if it's set with a size outside of the supported range.
+      Specifies the marker size of a chart series. The supported size range is 2
+      to 72. This method returns an InvalidArgument error if it's set with a
+      size outside of the supported range.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -537,24 +592,30 @@ methods:
         type: number
         description: ''
   - name: getMarkerStyle()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getMarkerStyle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getMarkerStyle:member(1)
     package: ExcelScript!
     fullName: getMarkerStyle()
-    summary: Specifies the marker style of a chart series. See `ExcelScript.ChartMarkerStyle` for details.
+    summary: >-
+      Specifies the marker style of a chart series. See
+      `ExcelScript.ChartMarkerStyle` for details.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getMarkerStyle(): ChartMarkerStyle;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartMarkerStyle:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartMarkerStyle:enum" />
         description: ''
   - name: getName()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getName:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getName:member(1)
     package: ExcelScript!
     fullName: getName()
-    summary: Specifies the name of a series in a chart. The name's length should not be greater than 255 characters.
+    summary: >-
+      Specifies the name of a series in a chart. The name's length should not be
+      greater than 255 characters.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -585,13 +646,14 @@ methods:
           }
           ```
   - name: getOverlap()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getOverlap:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getOverlap:member(1)
     package: ExcelScript!
     fullName: getOverlap()
     summary: >-
-      Specifies how bars and columns are positioned. Can be a value between -100 and 100. Applies only to 2-D bar and
-      2-D column charts.
+      Specifies how bars and columns are positioned. Can be a value between -100
+      and 100. Applies only to 2-D bar and 2-D column charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -600,24 +662,26 @@ methods:
         type: number
         description: ''
   - name: getParentLabelStrategy()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getParentLabelStrategy:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getParentLabelStrategy:member(1)
     package: ExcelScript!
     fullName: getParentLabelStrategy()
     summary: Specifies the series parent label strategy area for a treemap chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getParentLabelStrategy(): ChartParentLabelStrategy;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartParentLabelStrategy:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartParentLabelStrategy:enum" />
         description: ''
   - name: getPlotOrder()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getPlotOrder:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getPlotOrder:member(1)
     package: ExcelScript!
     fullName: getPlotOrder()
     summary: Specifies the plot order of a chart series within the chart group.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -626,26 +690,29 @@ methods:
         type: number
         description: ''
   - name: getPoints()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getPoints:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getPoints:member(1)
     package: ExcelScript!
     fullName: getPoints()
     summary: Returns a collection of all points in the series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getPoints(): ChartPoint[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartPoint:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.ChartPoint:interface" />[]
         description: ''
   - name: getSecondPlotSize()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getSecondPlotSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getSecondPlotSize:member(1)
     package: ExcelScript!
     fullName: getSecondPlotSize()
     summary: >-
-      Specifies the size of the secondary section of either a pie-of-pie chart or a bar-of-pie chart, as a percentage of
-      the size of the primary pie. Can be a value from 5 to 200.
+      Specifies the size of the secondary section of either a pie-of-pie chart
+      or a bar-of-pie chart, as a percentage of the size of the primary pie. Can
+      be a value from 5 to 200.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -654,11 +721,12 @@ methods:
         type: number
         description: ''
   - name: getShowConnectorLines()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getShowConnectorLines:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getShowConnectorLines:member(1)
     package: ExcelScript!
     fullName: getShowConnectorLines()
     summary: Specifies whether connector lines are shown in waterfall charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -667,11 +735,14 @@ methods:
         type: boolean
         description: ''
   - name: getShowLeaderLines()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getShowLeaderLines:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getShowLeaderLines:member(1)
     package: ExcelScript!
     fullName: getShowLeaderLines()
-    summary: Specifies whether leader lines are displayed for each data label in the series.
+    summary: >-
+      Specifies whether leader lines are displayed for each data label in the
+      series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -680,11 +751,12 @@ methods:
         type: boolean
         description: ''
   - name: getShowShadow()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getShowShadow:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getShowShadow:member(1)
     package: ExcelScript!
     fullName: getShowShadow()
     summary: Specifies if the series has a shadow.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -693,11 +765,14 @@ methods:
         type: boolean
         description: ''
   - name: getSmooth()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getSmooth:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getSmooth:member(1)
     package: ExcelScript!
     fullName: getSmooth()
-    summary: Specifies if the series is smooth. Only applicable to line and scatter charts.
+    summary: >-
+      Specifies if the series is smooth. Only applicable to line and scatter
+      charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -706,24 +781,30 @@ methods:
         type: boolean
         description: ''
   - name: getSplitType()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getSplitType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getSplitType:member(1)
     package: ExcelScript!
     fullName: getSplitType()
-    summary: Specifies the way the two sections of either a pie-of-pie chart or a bar-of-pie chart are split.
+    summary: >-
+      Specifies the way the two sections of either a pie-of-pie chart or a
+      bar-of-pie chart are split.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSplitType(): ChartSplitType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartSplitType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartSplitType:enum" />
         description: ''
   - name: getSplitValue()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getSplitValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getSplitValue:member(1)
     package: ExcelScript!
     fullName: getSplitValue()
-    summary: Specifies the threshold value that separates two sections of either a pie-of-pie chart or a bar-of-pie chart.
+    summary: >-
+      Specifies the threshold value that separates two sections of either a
+      pie-of-pie chart or a bar-of-pie chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -732,24 +813,28 @@ methods:
         type: number
         description: ''
   - name: getTrendlines()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getTrendlines:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getTrendlines:member(1)
     package: ExcelScript!
     fullName: getTrendlines()
     summary: The collection of trendlines in the series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getTrendlines(): ChartTrendline[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.ChartTrendline:interface" />[]
         description: ''
   - name: getVaryByCategories()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getVaryByCategories:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getVaryByCategories:member(1)
     package: ExcelScript!
     fullName: getVaryByCategories()
-    summary: True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
+    summary: >-
+      True if Excel assigns a different color or pattern to each data marker.
+      The chart must contain only one series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -758,30 +843,32 @@ methods:
         type: boolean
         description: ''
   - name: getXErrorBars()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getXErrorBars:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getXErrorBars:member(1)
     package: ExcelScript!
     fullName: getXErrorBars()
     summary: Represents the error bar object of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getXErrorBars(): ChartErrorBars;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartErrorBars:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartErrorBars:interface" />
         description: ''
   - name: getYErrorBars()
-    uid: 'ExcelScript!ExcelScript.ChartSeries#getYErrorBars:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#getYErrorBars:member(1)
     package: ExcelScript!
     fullName: getYErrorBars()
     summary: Represents the error bar object of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getYErrorBars(): ChartErrorBars;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ChartErrorBars:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.ChartErrorBars:interface" />
         description: |-
 
 
@@ -808,11 +895,12 @@ methods:
           }
           ```
   - name: setAxisGroup(axisGroup)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setAxisGroup:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setAxisGroup:member(1)
     package: ExcelScript!
     fullName: setAxisGroup(axisGroup)
     summary: Specifies the group for the specified series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -820,18 +908,20 @@ methods:
       parameters:
         - id: axisGroup
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartAxisGroup:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartAxisGroup:enum" />
       return:
         type: void
         description: ''
   - name: setBubbleScale(bubbleScale)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setBubbleScale:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setBubbleScale:member(1)
     package: ExcelScript!
     fullName: setBubbleScale(bubbleScale)
     summary: >-
-      This can be an integer value from 0 (zero) to 300, representing the percentage of the default size. This property
-      only applies to bubble charts.
+      This can be an integer value from 0 (zero) to 300, representing the
+      percentage of the default size. This property only applies to bubble
+      charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -844,11 +934,12 @@ methods:
         type: void
         description: ''
   - name: setBubbleSizes(sourceData)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setBubbleSizes:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setBubbleSizes:member(1)
     package: ExcelScript!
     fullName: setBubbleSizes(sourceData)
     summary: Sets the bubble sizes for a chart series. Only works for bubble charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -856,16 +947,19 @@ methods:
       parameters:
         - id: sourceData
           description: The `Range` object corresponding to the source data.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
       return:
         type: void
         description: ''
   - name: setChartType(chartType)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setChartType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setChartType:member(1)
     package: ExcelScript!
     fullName: setChartType(chartType)
-    summary: Represents the chart type of a series. See `ExcelScript.ChartType` for details.
+    summary: >-
+      Represents the chart type of a series. See `ExcelScript.ChartType` for
+      details.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -873,18 +967,20 @@ methods:
       parameters:
         - id: chartType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartType:enum" />
       return:
         type: void
         description: ''
   - name: setDoughnutHoleSize(doughnutHoleSize)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setDoughnutHoleSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setDoughnutHoleSize:member(1)
     package: ExcelScript!
     fullName: setDoughnutHoleSize(doughnutHoleSize)
     summary: >-
-      Represents the doughnut hole size of a chart series. Only valid on doughnut and doughnut exploded charts. Throws
-      an `InvalidArgument` error on invalid charts.
+      Represents the doughnut hole size of a chart series. Only valid on
+      doughnut and doughnut exploded charts. Throws an `InvalidArgument` error
+      on invalid charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -897,13 +993,15 @@ methods:
         type: void
         description: ''
   - name: setExplosion(explosion)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setExplosion:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setExplosion:member(1)
     package: ExcelScript!
     fullName: setExplosion(explosion)
     summary: >-
-      Specifies the explosion value for a pie-chart or doughnut-chart slice. Returns 0 (zero) if there's no explosion
-      (the tip of the slice is in the center of the pie).
+      Specifies the explosion value for a pie-chart or doughnut-chart slice.
+      Returns 0 (zero) if there's no explosion (the tip of the slice is in the
+      center of the pie).
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -916,11 +1014,12 @@ methods:
         type: void
         description: ''
   - name: setFiltered(filtered)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setFiltered:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setFiltered:member(1)
     package: ExcelScript!
     fullName: setFiltered(filtered)
     summary: Specifies if the series is filtered. Not applicable for surface charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -933,13 +1032,15 @@ methods:
         type: void
         description: ''
   - name: setFirstSliceAngle(firstSliceAngle)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setFirstSliceAngle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setFirstSliceAngle:member(1)
     package: ExcelScript!
     fullName: setFirstSliceAngle(firstSliceAngle)
     summary: >-
-      Specifies the angle of the first pie-chart or doughnut-chart slice, in degrees (clockwise from vertical). Applies
-      only to pie, 3-D pie, and doughnut charts. Can be a value from 0 through 360.
+      Specifies the angle of the first pie-chart or doughnut-chart slice, in
+      degrees (clockwise from vertical). Applies only to pie, 3-D pie, and
+      doughnut charts. Can be a value from 0 through 360.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -952,13 +1053,15 @@ methods:
         type: void
         description: ''
   - name: setGapWidth(gapWidth)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGapWidth:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGapWidth:member(1)
     package: ExcelScript!
     fullName: setGapWidth(gapWidth)
     summary: >-
-      Represents the gap width of a chart series. Only valid on bar and column charts, as well as specific classes of
-      line and pie charts. Throws an invalid argument exception on invalid charts.
+      Represents the gap width of a chart series. Only valid on bar and column
+      charts, as well as specific classes of line and pie charts. Throws an
+      invalid argument exception on invalid charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -971,11 +1074,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMaximumColor(gradientMaximumColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMaximumColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMaximumColor:member(1)
     package: ExcelScript!
     fullName: setGradientMaximumColor(gradientMaximumColor)
     summary: Specifies the color for maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -988,11 +1092,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMaximumType(gradientMaximumType)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMaximumType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMaximumType:member(1)
     package: ExcelScript!
     fullName: setGradientMaximumType(gradientMaximumType)
     summary: Specifies the type for maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1003,16 +1108,17 @@ methods:
       parameters:
         - id: gradientMaximumType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
       return:
         type: void
         description: ''
   - name: setGradientMaximumValue(gradientMaximumValue)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMaximumValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMaximumValue:member(1)
     package: ExcelScript!
     fullName: setGradientMaximumValue(gradientMaximumValue)
     summary: Specifies the maximum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1025,11 +1131,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMidpointColor(gradientMidpointColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMidpointColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMidpointColor:member(1)
     package: ExcelScript!
     fullName: setGradientMidpointColor(gradientMidpointColor)
     summary: Specifies the color for the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1042,11 +1149,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMidpointType(gradientMidpointType)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMidpointType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMidpointType:member(1)
     package: ExcelScript!
     fullName: setGradientMidpointType(gradientMidpointType)
     summary: Specifies the type for the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1057,16 +1165,17 @@ methods:
       parameters:
         - id: gradientMidpointType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
       return:
         type: void
         description: ''
   - name: setGradientMidpointValue(gradientMidpointValue)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMidpointValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMidpointValue:member(1)
     package: ExcelScript!
     fullName: setGradientMidpointValue(gradientMidpointValue)
     summary: Specifies the midpoint value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1079,11 +1188,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMinimumColor(gradientMinimumColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMinimumColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMinimumColor:member(1)
     package: ExcelScript!
     fullName: setGradientMinimumColor(gradientMinimumColor)
     summary: Specifies the color for the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1096,11 +1206,12 @@ methods:
         type: void
         description: ''
   - name: setGradientMinimumType(gradientMinimumType)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMinimumType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMinimumType:member(1)
     package: ExcelScript!
     fullName: setGradientMinimumType(gradientMinimumType)
     summary: Specifies the type for the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1111,16 +1222,17 @@ methods:
       parameters:
         - id: gradientMinimumType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyleType:enum" />
       return:
         type: void
         description: ''
   - name: setGradientMinimumValue(gradientMinimumValue)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientMinimumValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientMinimumValue:member(1)
     package: ExcelScript!
     fullName: setGradientMinimumValue(gradientMinimumValue)
     summary: Specifies the minimum value of a region map chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1133,11 +1245,12 @@ methods:
         type: void
         description: ''
   - name: setGradientStyle(gradientStyle)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setGradientStyle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setGradientStyle:member(1)
     package: ExcelScript!
     fullName: setGradientStyle(gradientStyle)
     summary: Specifies the series gradient style of a region map chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1145,16 +1258,17 @@ methods:
       parameters:
         - id: gradientStyle
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartGradientStyle:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartGradientStyle:enum" />
       return:
         type: void
         description: ''
   - name: setHasDataLabels(hasDataLabels)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setHasDataLabels:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setHasDataLabels:member(1)
     package: ExcelScript!
     fullName: setHasDataLabels(hasDataLabels)
     summary: Specifies if the series has data labels.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1167,11 +1281,12 @@ methods:
         type: void
         description: ''
   - name: setInvertColor(invertColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setInvertColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setInvertColor:member(1)
     package: ExcelScript!
     fullName: setInvertColor(invertColor)
     summary: Specifies the fill color for negative data points in a series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1184,11 +1299,14 @@ methods:
         type: void
         description: ''
   - name: setInvertIfNegative(invertIfNegative)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setInvertIfNegative:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setInvertIfNegative:member(1)
     package: ExcelScript!
     fullName: setInvertIfNegative(invertIfNegative)
-    summary: True if Excel inverts the pattern in the item when it corresponds to a negative number.
+    summary: >-
+      True if Excel inverts the pattern in the item when it corresponds to a
+      negative number.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1201,11 +1319,12 @@ methods:
         type: void
         description: ''
   - name: setMarkerBackgroundColor(markerBackgroundColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setMarkerBackgroundColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setMarkerBackgroundColor:member(1)
     package: ExcelScript!
     fullName: setMarkerBackgroundColor(markerBackgroundColor)
     summary: Specifies the marker background color of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1218,11 +1337,12 @@ methods:
         type: void
         description: ''
   - name: setMarkerForegroundColor(markerForegroundColor)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setMarkerForegroundColor:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setMarkerForegroundColor:member(1)
     package: ExcelScript!
     fullName: setMarkerForegroundColor(markerForegroundColor)
     summary: Specifies the marker foreground color of a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1235,13 +1355,15 @@ methods:
         type: void
         description: ''
   - name: setMarkerSize(markerSize)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setMarkerSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setMarkerSize:member(1)
     package: ExcelScript!
     fullName: setMarkerSize(markerSize)
     summary: >-
-      Specifies the marker size of a chart series. The supported size range is 2 to 72. This method returns an
-      InvalidArgument error if it's set with a size outside of the supported range.
+      Specifies the marker size of a chart series. The supported size range is 2
+      to 72. This method returns an InvalidArgument error if it's set with a
+      size outside of the supported range.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1254,11 +1376,14 @@ methods:
         type: void
         description: ''
   - name: setMarkerStyle(markerStyle)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setMarkerStyle:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setMarkerStyle:member(1)
     package: ExcelScript!
     fullName: setMarkerStyle(markerStyle)
-    summary: Specifies the marker style of a chart series. See `ExcelScript.ChartMarkerStyle` for details.
+    summary: >-
+      Specifies the marker style of a chart series. See
+      `ExcelScript.ChartMarkerStyle` for details.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1266,16 +1391,19 @@ methods:
       parameters:
         - id: markerStyle
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartMarkerStyle:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartMarkerStyle:enum" />
       return:
         type: void
         description: ''
   - name: setName(name)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setName:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setName:member(1)
     package: ExcelScript!
     fullName: setName(name)
-    summary: Specifies the name of a series in a chart. The name's length should not be greater than 255 characters.
+    summary: >-
+      Specifies the name of a series in a chart. The name's length should not be
+      greater than 255 characters.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1288,13 +1416,14 @@ methods:
         type: void
         description: ''
   - name: setOverlap(overlap)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setOverlap:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setOverlap:member(1)
     package: ExcelScript!
     fullName: setOverlap(overlap)
     summary: >-
-      Specifies how bars and columns are positioned. Can be a value between -100 and 100. Applies only to 2-D bar and
-      2-D column charts.
+      Specifies how bars and columns are positioned. Can be a value between -100
+      and 100. Applies only to 2-D bar and 2-D column charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1330,11 +1459,12 @@ methods:
           }
           ```
   - name: setParentLabelStrategy(parentLabelStrategy)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setParentLabelStrategy:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setParentLabelStrategy:member(1)
     package: ExcelScript!
     fullName: setParentLabelStrategy(parentLabelStrategy)
     summary: Specifies the series parent label strategy area for a treemap chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1345,16 +1475,17 @@ methods:
       parameters:
         - id: parentLabelStrategy
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartParentLabelStrategy:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartParentLabelStrategy:enum" />
       return:
         type: void
         description: ''
   - name: setPlotOrder(plotOrder)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setPlotOrder:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setPlotOrder:member(1)
     package: ExcelScript!
     fullName: setPlotOrder(plotOrder)
     summary: Specifies the plot order of a chart series within the chart group.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1367,13 +1498,15 @@ methods:
         type: void
         description: ''
   - name: setSecondPlotSize(secondPlotSize)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setSecondPlotSize:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setSecondPlotSize:member(1)
     package: ExcelScript!
     fullName: setSecondPlotSize(secondPlotSize)
     summary: >-
-      Specifies the size of the secondary section of either a pie-of-pie chart or a bar-of-pie chart, as a percentage of
-      the size of the primary pie. Can be a value from 5 to 200.
+      Specifies the size of the secondary section of either a pie-of-pie chart
+      or a bar-of-pie chart, as a percentage of the size of the primary pie. Can
+      be a value from 5 to 200.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1386,11 +1519,12 @@ methods:
         type: void
         description: ''
   - name: setShowConnectorLines(showConnectorLines)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setShowConnectorLines:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setShowConnectorLines:member(1)
     package: ExcelScript!
     fullName: setShowConnectorLines(showConnectorLines)
     summary: Specifies whether connector lines are shown in waterfall charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1403,11 +1537,14 @@ methods:
         type: void
         description: ''
   - name: setShowLeaderLines(showLeaderLines)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setShowLeaderLines:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setShowLeaderLines:member(1)
     package: ExcelScript!
     fullName: setShowLeaderLines(showLeaderLines)
-    summary: Specifies whether leader lines are displayed for each data label in the series.
+    summary: >-
+      Specifies whether leader lines are displayed for each data label in the
+      series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1420,11 +1557,12 @@ methods:
         type: void
         description: ''
   - name: setShowShadow(showShadow)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setShowShadow:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setShowShadow:member(1)
     package: ExcelScript!
     fullName: setShowShadow(showShadow)
     summary: Specifies if the series has a shadow.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1437,11 +1575,14 @@ methods:
         type: void
         description: ''
   - name: setSmooth(smooth)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setSmooth:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setSmooth:member(1)
     package: ExcelScript!
     fullName: setSmooth(smooth)
-    summary: Specifies if the series is smooth. Only applicable to line and scatter charts.
+    summary: >-
+      Specifies if the series is smooth. Only applicable to line and scatter
+      charts.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1454,11 +1595,14 @@ methods:
         type: void
         description: ''
   - name: setSplitType(splitType)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setSplitType:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setSplitType:member(1)
     package: ExcelScript!
     fullName: setSplitType(splitType)
-    summary: Specifies the way the two sections of either a pie-of-pie chart or a bar-of-pie chart are split.
+    summary: >-
+      Specifies the way the two sections of either a pie-of-pie chart or a
+      bar-of-pie chart are split.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1466,16 +1610,19 @@ methods:
       parameters:
         - id: splitType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ChartSplitType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ChartSplitType:enum" />
       return:
         type: void
         description: ''
   - name: setSplitValue(splitValue)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setSplitValue:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setSplitValue:member(1)
     package: ExcelScript!
     fullName: setSplitValue(splitValue)
-    summary: Specifies the threshold value that separates two sections of either a pie-of-pie chart or a bar-of-pie chart.
+    summary: >-
+      Specifies the threshold value that separates two sections of either a
+      pie-of-pie chart or a bar-of-pie chart.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1488,11 +1635,14 @@ methods:
         type: void
         description: ''
   - name: setValues(sourceData)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setValues:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setValues:member(1)
     package: ExcelScript!
     fullName: setValues(sourceData)
-    summary: 'Sets the values for a chart series. For scatter charts, it refers to y-axis values.'
+    summary: >-
+      Sets the values for a chart series. For scatter charts, it refers to
+      y-axis values.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1500,16 +1650,19 @@ methods:
       parameters:
         - id: sourceData
           description: The `Range` object corresponding to the source data.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
       return:
         type: void
         description: ''
   - name: setVaryByCategories(varyByCategories)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setVaryByCategories:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setVaryByCategories:member(1)
     package: ExcelScript!
     fullName: setVaryByCategories(varyByCategories)
-    summary: True if Excel assigns a different color or pattern to each data marker. The chart must contain only one series.
+    summary: >-
+      True if Excel assigns a different color or pattern to each data marker.
+      The chart must contain only one series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1522,11 +1675,12 @@ methods:
         type: void
         description: ''
   - name: setXAxisValues(sourceData)
-    uid: 'ExcelScript!ExcelScript.ChartSeries#setXAxisValues:member(1)'
+    uid: ExcelScript!ExcelScript.ChartSeries#setXAxisValues:member(1)
     package: ExcelScript!
     fullName: setXAxisValues(sourceData)
     summary: Sets the values of the x-axis for a chart series.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -1534,7 +1688,7 @@ methods:
       parameters:
         - id: sourceData
           description: The `Range` object corresponding to the source data.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
       return:
         type: void
         description: ''

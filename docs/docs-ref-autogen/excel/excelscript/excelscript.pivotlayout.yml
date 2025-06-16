@@ -1,23 +1,27 @@
 ### YamlMime:TSType
 name: ExcelScript.PivotLayout
-uid: 'ExcelScript!ExcelScript.PivotLayout:interface'
+uid: ExcelScript!ExcelScript.PivotLayout:interface
 package: ExcelScript!
 fullName: ExcelScript.PivotLayout
 summary: Represents the visual layout of the PivotTable.
 remarks: ''
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
   - name: displayBlankLineAfterEachItem(display)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#displayBlankLineAfterEachItem:member(1)'
+    uid: >-
+      ExcelScript!ExcelScript.PivotLayout#displayBlankLineAfterEachItem:member(1)
     package: ExcelScript!
     fullName: displayBlankLineAfterEachItem(display)
     summary: >-
-      Sets whether or not to display a blank line after each item. This is set at the global level for the PivotTable
-      and applied to individual PivotFields. This function overwrites the setting for all fields in the PivotTable to
-      the value of `display` parameter.
+      Sets whether or not to display a blank line after each item. This is set
+      at the global level for the PivotTable and applied to individual
+      PivotFields. This function overwrites the setting for all fields in the
+      PivotTable to the value of `display` parameter.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -30,18 +34,21 @@ methods:
         type: void
         description: ''
   - name: getAltTextDescription()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getAltTextDescription:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getAltTextDescription:member(1)
     package: ExcelScript!
     fullName: getAltTextDescription()
     summary: >-
       The alt text description of the PivotTable.
 
 
-      Alt text provides alternative, text-based representations of the information contained in the PivotTable. This
-      information is useful for people with vision or cognitive impairments who may not be able to see or understand the
-      table. A title can be read to a person with a disability and is used to determine whether they wish to hear the
-      description of the content.
+      Alt text provides alternative, text-based representations of the
+      information contained in the PivotTable. This information is useful for
+      people with vision or cognitive impairments who may not be able to see or
+      understand the table. A title can be read to a person with a disability
+      and is used to determine whether they wish to hear the description of the
+      content.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -50,18 +57,21 @@ methods:
         type: string
         description: ''
   - name: getAltTextTitle()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getAltTextTitle:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getAltTextTitle:member(1)
     package: ExcelScript!
     fullName: getAltTextTitle()
     summary: >-
       The alt text title of the PivotTable.
 
 
-      Alt text provides alternative, text-based representations of the information contained in the PivotTable. This
-      information is useful for people with vision or cognitive impairments who may not be able to see or understand the
-      table. A title can be read to a person with a disability and is used to determine whether they wish to hear the
-      description of the content.
+      Alt text provides alternative, text-based representations of the
+      information contained in the PivotTable. This information is useful for
+      people with vision or cognitive impairments who may not be able to see or
+      understand the table. A title can be read to a person with a disability
+      and is used to determine whether they wish to hear the description of the
+      content.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -70,11 +80,14 @@ methods:
         type: string
         description: ''
   - name: getAutoFormat()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getAutoFormat:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getAutoFormat:member(1)
     package: ExcelScript!
     fullName: getAutoFormat()
-    summary: Specifies if formatting will be automatically formatted when it's refreshed or when fields are moved.
+    summary: >-
+      Specifies if formatting will be automatically formatted when it's
+      refreshed or when fields are moved.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -83,17 +96,18 @@ methods:
         type: boolean
         description: ''
   - name: getBodyAndTotalRange()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getBodyAndTotalRange:member(1)
     package: ExcelScript!
     fullName: getBodyAndTotalRange()
     summary: Returns the range where the PivotTable's data values reside.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBodyAndTotalRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: |-
 
 
@@ -124,24 +138,28 @@ methods:
           }
           ```
   - name: getColumnLabelRange()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getColumnLabelRange:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getColumnLabelRange:member(1)
     package: ExcelScript!
     fullName: getColumnLabelRange()
     summary: Returns the range where the PivotTable's column labels reside.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getColumnLabelRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: ''
   - name: getDataHierarchy(cell)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getDataHierarchy:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getDataHierarchy:member(1)
     package: ExcelScript!
     fullName: getDataHierarchy(cell)
-    summary: Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
+    summary: >-
+      Gets the DataHierarchy that is used to calculate the value in a specified
+      range within the PivotTable.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -149,19 +167,22 @@ methods:
       parameters:
         - id: cell
           description: A single cell within the PivotTable data body.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />
         description: ''
   - name: getEmptyCellText()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getEmptyCellText:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getEmptyCellText:member(1)
     package: ExcelScript!
     fullName: getEmptyCellText()
     summary: >-
-      The text that is automatically filled into any empty cell in the PivotTable if `fillEmptyCells == true`<!-- -->.
-      Note that this value persists if `fillEmptyCells` is set to `false`<!-- -->, and that setting this value does not
-      set that property to `true`<!-- -->. By default, this is an empty string.
+      The text that is automatically filled into any empty cell in the
+      PivotTable if `fillEmptyCells == true`<!-- -->. Note that this value
+      persists if `fillEmptyCells` is set to `false`<!-- -->, and that setting
+      this value does not set that property to `true`<!-- -->. By default, this
+      is an empty string.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -170,11 +191,12 @@ methods:
         type: string
         description: ''
   - name: getEnableFieldList()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getEnableFieldList:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getEnableFieldList:member(1)
     package: ExcelScript!
     fullName: getEnableFieldList()
     summary: Specifies if the field list can be shown in the UI.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -183,13 +205,16 @@ methods:
         type: boolean
         description: ''
   - name: getFillEmptyCells()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getFillEmptyCells:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getFillEmptyCells:member(1)
     package: ExcelScript!
     fullName: getFillEmptyCells()
     summary: >-
-      Specifies whether empty cells in the PivotTable should be populated with the `emptyCellText`<!-- -->. Default is
-      `false`<!-- -->. Note that the value of `emptyCellText` persists when this property is set to `false`<!-- -->.
+      Specifies whether empty cells in the PivotTable should be populated with
+      the `emptyCellText`<!-- -->. Default is `false`<!-- -->. Note that the
+      value of `emptyCellText` persists when this property is set to `false`<!--
+      -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -198,41 +223,45 @@ methods:
         type: boolean
         description: ''
   - name: getFilterAxisRange()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getFilterAxisRange:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getFilterAxisRange:member(1)
     package: ExcelScript!
     fullName: getFilterAxisRange()
     summary: Returns the range of the PivotTable's filter area.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getFilterAxisRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: ''
   - name: getLayoutType()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getLayoutType:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getLayoutType:member(1)
     package: ExcelScript!
     fullName: getLayoutType()
     summary: >-
-      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
-      will be null.
+      This property indicates the PivotLayoutType of all fields on the
+      PivotTable. If fields have different states, this will be null.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getLayoutType(): PivotLayoutType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.PivotLayoutType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.PivotLayoutType:enum" />
         description: ''
   - name: getPreserveFormatting()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getPreserveFormatting:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getPreserveFormatting:member(1)
     package: ExcelScript!
     fullName: getPreserveFormatting()
     summary: >-
-      Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting,
-      sorting, or changing page field items.
+      Specifies if formatting is preserved when the report is refreshed or
+      recalculated by operations such as pivoting, sorting, or changing page
+      field items.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -241,37 +270,40 @@ methods:
         type: boolean
         description: ''
   - name: getRange()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getRange:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getRange:member(1)
     package: ExcelScript!
     fullName: getRange()
-    summary: 'Returns the range the PivotTable exists on, excluding the filter area.'
+    summary: Returns the range the PivotTable exists on, excluding the filter area.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: ''
   - name: getRowLabelRange()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getRowLabelRange:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getRowLabelRange:member(1)
     package: ExcelScript!
     fullName: getRowLabelRange()
     summary: Returns the range where the PivotTable's row labels reside.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRowLabelRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: ''
   - name: getShowColumnGrandTotals()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getShowColumnGrandTotals:member(1)
     package: ExcelScript!
     fullName: getShowColumnGrandTotals()
     summary: Specifies if the PivotTable report shows grand totals for columns.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -280,11 +312,14 @@ methods:
         type: boolean
         description: ''
   - name: getShowFieldHeaders()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getShowFieldHeaders:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getShowFieldHeaders:member(1)
     package: ExcelScript!
     fullName: getShowFieldHeaders()
-    summary: Specifies whether the PivotTable displays field headers (field captions and filter drop-downs).
+    summary: >-
+      Specifies whether the PivotTable displays field headers (field captions
+      and filter drop-downs).
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -293,11 +328,12 @@ methods:
         type: boolean
         description: ''
   - name: getShowRowGrandTotals()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getShowRowGrandTotals:member(1)
     package: ExcelScript!
     fullName: getShowRowGrandTotals()
     summary: Specifies if the PivotTable report shows grand totals for rows.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -306,50 +342,59 @@ methods:
         type: boolean
         description: ''
   - name: getSubtotalLocation()
-    uid: 'ExcelScript!ExcelScript.PivotLayout#getSubtotalLocation:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#getSubtotalLocation:member(1)
     package: ExcelScript!
     fullName: getSubtotalLocation()
     summary: >-
-      This property indicates the `SubtotalLocationType` of all fields on the PivotTable. If fields have different
-      states, this will be `null`<!-- -->.
+      This property indicates the `SubtotalLocationType` of all fields on the
+      PivotTable. If fields have different states, this will be `null`<!-- -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSubtotalLocation(): SubtotalLocationType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.SubtotalLocationType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.SubtotalLocationType:enum" />
         description: ''
   - name: repeatAllItemLabels(repeatLabels)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#repeatAllItemLabels:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#repeatAllItemLabels:member(1)
     package: ExcelScript!
     fullName: repeatAllItemLabels(repeatLabels)
-    summary: Sets the "repeat all item labels" setting across all fields in the PivotTable.
+    summary: >-
+      Sets the "repeat all item labels" setting across all fields in the
+      PivotTable.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'repeatAllItemLabels(repeatLabels: boolean): void;'
       parameters:
         - id: repeatLabels
-          description: True turns on the label-repetition display setting. False turns it off.
+          description: >-
+            True turns on the label-repetition display setting. False turns it
+            off.
           type: boolean
       return:
         type: void
         description: ''
   - name: setAltTextDescription(altTextDescription)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setAltTextDescription:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setAltTextDescription:member(1)
     package: ExcelScript!
     fullName: setAltTextDescription(altTextDescription)
     summary: >-
       The alt text description of the PivotTable.
 
 
-      Alt text provides alternative, text-based representations of the information contained in the PivotTable. This
-      information is useful for people with vision or cognitive impairments who may not be able to see or understand the
-      table. A title can be read to a person with a disability and is used to determine whether they wish to hear the
-      description of the content.
+      Alt text provides alternative, text-based representations of the
+      information contained in the PivotTable. This information is useful for
+      people with vision or cognitive impairments who may not be able to see or
+      understand the table. A title can be read to a person with a disability
+      and is used to determine whether they wish to hear the description of the
+      content.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -362,18 +407,21 @@ methods:
         type: void
         description: ''
   - name: setAltTextTitle(altTextTitle)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setAltTextTitle:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setAltTextTitle:member(1)
     package: ExcelScript!
     fullName: setAltTextTitle(altTextTitle)
     summary: >-
       The alt text title of the PivotTable.
 
 
-      Alt text provides alternative, text-based representations of the information contained in the PivotTable. This
-      information is useful for people with vision or cognitive impairments who may not be able to see or understand the
-      table. A title can be read to a person with a disability and is used to determine whether they wish to hear the
-      description of the content.
+      Alt text provides alternative, text-based representations of the
+      information contained in the PivotTable. This information is useful for
+      people with vision or cognitive impairments who may not be able to see or
+      understand the table. A title can be read to a person with a disability
+      and is used to determine whether they wish to hear the description of the
+      content.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -386,11 +434,14 @@ methods:
         type: void
         description: ''
   - name: setAutoFormat(autoFormat)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setAutoFormat:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setAutoFormat:member(1)
     package: ExcelScript!
     fullName: setAutoFormat(autoFormat)
-    summary: Specifies if formatting will be automatically formatted when it's refreshed or when fields are moved.
+    summary: >-
+      Specifies if formatting will be automatically formatted when it's
+      refreshed or when fields are moved.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -402,37 +453,44 @@ methods:
       return:
         type: void
         description: ''
-  - name: 'setAutoSortOnCell(cell, sortBy)'
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setAutoSortOnCell:member(1)'
+  - name: setAutoSortOnCell(cell, sortBy)
+    uid: ExcelScript!ExcelScript.PivotLayout#setAutoSortOnCell:member(1)
     package: ExcelScript!
-    fullName: 'setAutoSortOnCell(cell, sortBy)'
+    fullName: setAutoSortOnCell(cell, sortBy)
     summary: >-
-      Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria
-      and context. This behaves identically to applying an autosort from the UI.
+      Sets the PivotTable to automatically sort using the specified cell to
+      automatically select all necessary criteria and context. This behaves
+      identically to applying an autosort from the UI.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;'
       parameters:
         - id: cell
-          description: A single cell to use get the criteria from for applying the autosort.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
+          description: >-
+            A single cell to use get the criteria from for applying the
+            autosort.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
         - id: sortBy
           description: The direction of the sort.
-          type: '<xref uid="ExcelScript!ExcelScript.SortBy:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.SortBy:enum" />
       return:
         type: void
         description: ''
   - name: setEmptyCellText(emptyCellText)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setEmptyCellText:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setEmptyCellText:member(1)
     package: ExcelScript!
     fullName: setEmptyCellText(emptyCellText)
     summary: >-
-      The text that is automatically filled into any empty cell in the PivotTable if `fillEmptyCells == true`<!-- -->.
-      Note that this value persists if `fillEmptyCells` is set to `false`<!-- -->, and that setting this value does not
-      set that property to `true`<!-- -->. By default, this is an empty string.
+      The text that is automatically filled into any empty cell in the
+      PivotTable if `fillEmptyCells == true`<!-- -->. Note that this value
+      persists if `fillEmptyCells` is set to `false`<!-- -->, and that setting
+      this value does not set that property to `true`<!-- -->. By default, this
+      is an empty string.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -445,11 +503,12 @@ methods:
         type: void
         description: ''
   - name: setEnableFieldList(enableFieldList)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setEnableFieldList:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setEnableFieldList:member(1)
     package: ExcelScript!
     fullName: setEnableFieldList(enableFieldList)
     summary: Specifies if the field list can be shown in the UI.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -462,13 +521,16 @@ methods:
         type: void
         description: ''
   - name: setFillEmptyCells(fillEmptyCells)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setFillEmptyCells:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setFillEmptyCells:member(1)
     package: ExcelScript!
     fullName: setFillEmptyCells(fillEmptyCells)
     summary: >-
-      Specifies whether empty cells in the PivotTable should be populated with the `emptyCellText`<!-- -->. Default is
-      `false`<!-- -->. Note that the value of `emptyCellText` persists when this property is set to `false`<!-- -->.
+      Specifies whether empty cells in the PivotTable should be populated with
+      the `emptyCellText`<!-- -->. Default is `false`<!-- -->. Note that the
+      value of `emptyCellText` persists when this property is set to `false`<!--
+      -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -481,13 +543,14 @@ methods:
         type: void
         description: ''
   - name: setLayoutType(layoutType)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setLayoutType:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setLayoutType:member(1)
     package: ExcelScript!
     fullName: setLayoutType(layoutType)
     summary: >-
-      This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this
-      will be null.
+      This property indicates the PivotLayoutType of all fields on the
+      PivotTable. If fields have different states, this will be null.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -495,7 +558,7 @@ methods:
       parameters:
         - id: layoutType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.PivotLayoutType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.PivotLayoutType:enum" />
       return:
         type: void
         description: |-
@@ -520,13 +583,15 @@ methods:
           }
           ```
   - name: setPreserveFormatting(preserveFormatting)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setPreserveFormatting:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setPreserveFormatting:member(1)
     package: ExcelScript!
     fullName: setPreserveFormatting(preserveFormatting)
     summary: >-
-      Specifies if formatting is preserved when the report is refreshed or recalculated by operations such as pivoting,
-      sorting, or changing page field items.
+      Specifies if formatting is preserved when the report is refreshed or
+      recalculated by operations such as pivoting, sorting, or changing page
+      field items.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -539,11 +604,12 @@ methods:
         type: void
         description: ''
   - name: setShowColumnGrandTotals(showColumnGrandTotals)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setShowColumnGrandTotals:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setShowColumnGrandTotals:member(1)
     package: ExcelScript!
     fullName: setShowColumnGrandTotals(showColumnGrandTotals)
     summary: Specifies if the PivotTable report shows grand totals for columns.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -556,11 +622,14 @@ methods:
         type: void
         description: ''
   - name: setShowFieldHeaders(showFieldHeaders)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setShowFieldHeaders:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setShowFieldHeaders:member(1)
     package: ExcelScript!
     fullName: setShowFieldHeaders(showFieldHeaders)
-    summary: Specifies whether the PivotTable displays field headers (field captions and filter drop-downs).
+    summary: >-
+      Specifies whether the PivotTable displays field headers (field captions
+      and filter drop-downs).
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -573,11 +642,12 @@ methods:
         type: void
         description: ''
   - name: setShowRowGrandTotals(showRowGrandTotals)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setShowRowGrandTotals:member(1)
     package: ExcelScript!
     fullName: setShowRowGrandTotals(showRowGrandTotals)
     summary: Specifies if the PivotTable report shows grand totals for rows.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -590,13 +660,14 @@ methods:
         type: void
         description: ''
   - name: setSubtotalLocation(subtotalLocation)
-    uid: 'ExcelScript!ExcelScript.PivotLayout#setSubtotalLocation:member(1)'
+    uid: ExcelScript!ExcelScript.PivotLayout#setSubtotalLocation:member(1)
     package: ExcelScript!
     fullName: setSubtotalLocation(subtotalLocation)
     summary: >-
-      This property indicates the `SubtotalLocationType` of all fields on the PivotTable. If fields have different
-      states, this will be `null`<!-- -->.
+      This property indicates the `SubtotalLocationType` of all fields on the
+      PivotTable. If fields have different states, this will be `null`<!-- -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -604,7 +675,7 @@ methods:
       parameters:
         - id: subtotalLocation
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.SubtotalLocationType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.SubtotalLocationType:enum" />
       return:
         type: void
         description: |-

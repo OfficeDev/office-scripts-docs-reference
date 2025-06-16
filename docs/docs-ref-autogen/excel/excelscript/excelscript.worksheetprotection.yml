@@ -1,6 +1,6 @@
 ### YamlMime:TSType
 name: ExcelScript.WorksheetProtection
-uid: 'ExcelScript!ExcelScript.WorksheetProtection:interface'
+uid: ExcelScript!ExcelScript.WorksheetProtection:interface
 package: ExcelScript!
 fullName: ExcelScript.WorksheetProtection
 summary: Represents the protection of a worksheet object.
@@ -31,19 +31,22 @@ remarks: |-
     }
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
-  - name: 'addAllowEditRange(title, rangeAddress, options)'
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#addAllowEditRange:member(1)'
+  - name: addAllowEditRange(title, rangeAddress, options)
+    uid: ExcelScript!ExcelScript.WorksheetProtection#addAllowEditRange:member(1)
     package: ExcelScript!
-    fullName: 'addAllowEditRange(title, rangeAddress, options)'
+    fullName: addAllowEditRange(title, rangeAddress, options)
     summary: >-
-      Adds an `AllowEditRange` object to the worksheet. Worksheet protection must be disabled or paused for this method
-      to work properly. If worksheet protection is enabled and not paused, then this method throws an `AccessDenied`
-      error and the add operation fails.
+      Adds an `AllowEditRange` object to the worksheet. Worksheet protection
+      must be disabled or paused for this method to work properly. If worksheet
+      protection is enabled and not paused, then this method throws an
+      `AccessDenied` error and the add operation fails.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -61,8 +64,12 @@ methods:
           description: The range address of the `AllowEditRange` object to be added.
           type: string
         - id: options
-          description: 'Additional options to be added to the `AllowEditRange` object, such as the password.'
-          type: '<xref uid="ExcelScript!ExcelScript.AllowEditRangeOptions:interface" />'
+          description: >-
+            Additional options to be added to the `AllowEditRange` object, such
+            as the password.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.AllowEditRangeOptions:interface"
+            />
       return:
         type: void
         description: |-
@@ -93,14 +100,16 @@ methods:
           }
           ```
   - name: checkPassword(password)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#checkPassword:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#checkPassword:member(1)
     package: ExcelScript!
     fullName: checkPassword(password)
     summary: >-
-      Specifies if the password can be used to unlock worksheet protection. This method doesn't change the worksheet
-      protection state. If a password is entered but no password is required to unlock worksheet protection, this method
-      will return false.
+      Specifies if the password can be used to unlock worksheet protection. This
+      method doesn't change the worksheet protection state. If a password is
+      entered but no password is required to unlock worksheet protection, this
+      method will return false.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -113,11 +122,12 @@ methods:
         type: boolean
         description: ''
   - name: getAllowEditRange(key)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getAllowEditRange:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getAllowEditRange:member(1)
     package: ExcelScript!
     fullName: getAllowEditRange(key)
     summary: Gets the `AllowEditRange` object by its title.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -127,31 +137,37 @@ methods:
           description: The title of the `AllowEditRange`<!-- -->.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.AllowEditRange:interface" /> | undefined'
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.AllowEditRange:interface" /> |
+          undefined
         description: ''
   - name: getAllowEditRanges()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getAllowEditRanges:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getAllowEditRanges:member(1)
     package: ExcelScript!
     fullName: getAllowEditRanges()
     summary: >-
-      Specifies the `AllowEditRangeCollection` object found in this worksheet. This is a collection of `AllowEditRange`
-      objects, which work with worksheet protection properties. When worksheet protection is enabled, an
-      `AllowEditRange` object can be used to allow editing of a specific range, while maintaining protection on the rest
-      of the worksheet.
+      Specifies the `AllowEditRangeCollection` object found in this worksheet.
+      This is a collection of `AllowEditRange` objects, which work with
+      worksheet protection properties. When worksheet protection is enabled, an
+      `AllowEditRange` object can be used to allow editing of a specific range,
+      while maintaining protection on the rest of the worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAllowEditRanges(): AllowEditRange[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.AllowEditRange:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.AllowEditRange:interface" />[]
         description: ''
   - name: getCanPauseProtection()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getCanPauseProtection:member(1)'
+    uid: >-
+      ExcelScript!ExcelScript.WorksheetProtection#getCanPauseProtection:member(1)
     package: ExcelScript!
     fullName: getCanPauseProtection()
     summary: Specifies if protection can be paused for this worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -160,11 +176,13 @@ methods:
         type: boolean
         description: ''
   - name: getIsPasswordProtected()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getIsPasswordProtected:member(1)'
+    uid: >-
+      ExcelScript!ExcelScript.WorksheetProtection#getIsPasswordProtected:member(1)
     package: ExcelScript!
     fullName: getIsPasswordProtected()
     summary: Specifies if the sheet is password protected.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -173,11 +191,12 @@ methods:
         type: boolean
         description: ''
   - name: getIsPaused()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getIsPaused:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getIsPaused:member(1)
     package: ExcelScript!
     fullName: getIsPaused()
     summary: Specifies if worksheet protection is paused.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -186,24 +205,28 @@ methods:
         type: boolean
         description: ''
   - name: getOptions()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getOptions:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getOptions:member(1)
     package: ExcelScript!
     fullName: getOptions()
     summary: Specifies the protection options for the worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getOptions(): WorksheetProtectionOptions;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />'
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />
         description: ''
   - name: getProtected()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getProtected:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getProtected:member(1)
     package: ExcelScript!
     fullName: getProtected()
     summary: Specifies if the worksheet is protected.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -212,30 +235,37 @@ methods:
         type: boolean
         description: ''
   - name: getSavedOptions()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#getSavedOptions:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#getSavedOptions:member(1)
     package: ExcelScript!
     fullName: getSavedOptions()
     summary: >-
-      Specifies the protection options saved in the worksheet. This will return the same `WorksheetProtectionOptions`
-      object regardless of the worksheet protection state.
+      Specifies the protection options saved in the worksheet. This will return
+      the same `WorksheetProtectionOptions` object regardless of the worksheet
+      protection state.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getSavedOptions(): WorksheetProtectionOptions;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />'
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />
         description: ''
   - name: pauseProtection(password)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#pauseProtection:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#pauseProtection:member(1)
     package: ExcelScript!
     fullName: pauseProtection(password)
     summary: >-
-      Pauses worksheet protection for the given worksheet object for the user in the current session. This method does
-      nothing if worksheet protection isn't enabled or is already paused. If the password is incorrect, then this method
-      throws an `InvalidArgument` error and fails to pause protection. This method does not change the protection state
-      if worksheet protection is not enabled or already paused.
+      Pauses worksheet protection for the given worksheet object for the user in
+      the current session. This method does nothing if worksheet protection
+      isn't enabled or is already paused. If the password is incorrect, then
+      this method throws an `InvalidArgument` error and fails to pause
+      protection. This method does not change the protection state if worksheet
+      protection is not enabled or already paused.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -248,16 +278,21 @@ methods:
         type: void
         description: ''
   - name: pauseProtectionForAllAllowEditRanges(password)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#pauseProtectionForAllAllowEditRanges:member(1)'
+    uid: >-
+      ExcelScript!ExcelScript.WorksheetProtection#pauseProtectionForAllAllowEditRanges:member(1)
     package: ExcelScript!
     fullName: pauseProtectionForAllAllowEditRanges(password)
     summary: >-
-      Pauses worksheet protection for all `AllowEditRange` objects found in this worksheet that have the given password
-      for the user in the current session. This method does nothing if worksheet protection isn't enabled or is paused.
-      If worksheet protection cannot be paused, this method throws an `UnsupportedOperation` error and fails to pause
-      protection for the range. If the password does not match any `AllowEditRange` objects in the collection, then this
-      method throws a `BadPassword` error and fails to pause protection for any range in the collection.
+      Pauses worksheet protection for all `AllowEditRange` objects found in this
+      worksheet that have the given password for the user in the current
+      session. This method does nothing if worksheet protection isn't enabled or
+      is paused. If worksheet protection cannot be paused, this method throws an
+      `UnsupportedOperation` error and fails to pause protection for the range.
+      If the password does not match any `AllowEditRange` objects in the
+      collection, then this method throws a `BadPassword` error and fails to
+      pause protection for any range in the collection.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -269,12 +304,13 @@ methods:
       return:
         type: void
         description: ''
-  - name: 'protect(options, password)'
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#protect:member(1)'
+  - name: protect(options, password)
+    uid: ExcelScript!ExcelScript.WorksheetProtection#protect:member(1)
     package: ExcelScript!
-    fullName: 'protect(options, password)'
+    fullName: protect(options, password)
     summary: Protects a worksheet. Fails if the worksheet has already been protected.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -282,7 +318,10 @@ methods:
       parameters:
         - id: options
           description: Optional. Sheet protection options.
-          type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />'
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface"
+            />
         - id: password
           description: Optional. Sheet protection password.
           type: string
@@ -312,14 +351,16 @@ methods:
           }
           ```
   - name: resumeProtection()
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#resumeProtection:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#resumeProtection:member(1)
     package: ExcelScript!
     fullName: resumeProtection()
     summary: >-
-      Resumes worksheet protection for the given worksheet object for the user in a given session. Worksheet protection
-      must be paused for this method to work. If worksheet protection is not paused, then this method will not change
-      the protection state of the worksheet.
+      Resumes worksheet protection for the given worksheet object for the user
+      in a given session. Worksheet protection must be paused for this method to
+      work. If worksheet protection is not paused, then this method will not
+      change the protection state of the worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -328,16 +369,20 @@ methods:
         type: void
         description: ''
   - name: setPassword(password)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#setPassword:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#setPassword:member(1)
     package: ExcelScript!
     fullName: setPassword(password)
     summary: >-
-      Changes the password associated with the `WorksheetProtection` object. Setting the password as an empty string
-      ("") or as `null` will remove password protection from the `WorksheetProtection` object. Worksheet protection must
-      be enabled and paused for this method to work properly. If worksheet protection is disabled, this method throws an
-      `InvalidOperation` error and fails to change the password. If worksheet protection is enabled and not paused, this
-      method throws an `AccessDenied` error and fails to change the password.
+      Changes the password associated with the `WorksheetProtection` object.
+      Setting the password as an empty string ("") or as `null` will remove
+      password protection from the `WorksheetProtection` object. Worksheet
+      protection must be enabled and paused for this method to work properly. If
+      worksheet protection is disabled, this method throws an `InvalidOperation`
+      error and fails to change the password. If worksheet protection is enabled
+      and not paused, this method throws an `AccessDenied` error and fails to
+      change the password.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -350,11 +395,12 @@ methods:
         type: void
         description: ''
   - name: unprotect(password)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#unprotect:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#unprotect:member(1)
     package: ExcelScript!
     fullName: unprotect(password)
     summary: Unprotects a worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -367,22 +413,30 @@ methods:
         type: void
         description: ''
   - name: updateOptions(options)
-    uid: 'ExcelScript!ExcelScript.WorksheetProtection#updateOptions:member(1)'
+    uid: ExcelScript!ExcelScript.WorksheetProtection#updateOptions:member(1)
     package: ExcelScript!
     fullName: updateOptions(options)
     summary: >-
-      Change the worksheet protection options associated with the `WorksheetProtection` object. Worksheet protection
-      must be disabled or paused for this method to work properly. If worksheet protection is enabled and not paused,
-      this method throws an `AccessDenied` error and fails to change the worksheet protection options.
+      Change the worksheet protection options associated with the
+      `WorksheetProtection` object. Worksheet protection must be disabled or
+      paused for this method to work properly. If worksheet protection is
+      enabled and not paused, this method throws an `AccessDenied` error and
+      fails to change the worksheet protection options.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'updateOptions(options: WorksheetProtectionOptions): void;'
       parameters:
         - id: options
-          description: The options interface associated with the `WorksheetProtection` object.
-          type: '<xref uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface" />'
+          description: >-
+            The options interface associated with the `WorksheetProtection`
+            object.
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.WorksheetProtectionOptions:interface"
+            />
       return:
         type: void
         description: ''

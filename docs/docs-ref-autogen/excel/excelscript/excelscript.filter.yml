@@ -1,6 +1,6 @@
 ### YamlMime:TSType
 name: ExcelScript.Filter
-uid: 'ExcelScript!ExcelScript.Filter:interface'
+uid: ExcelScript!ExcelScript.Filter:interface
 package: ExcelScript!
 fullName: ExcelScript.Filter
 summary: Manages the filtering of a table's column.
@@ -25,16 +25,18 @@ remarks: |-
       pageViewFilter.applyTopPercentFilter(10);
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
   - name: apply(criteria)
-    uid: 'ExcelScript!ExcelScript.Filter#apply:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#apply:member(1)
     package: ExcelScript!
     fullName: apply(criteria)
     summary: Apply the given filter criteria on the given column.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -42,16 +44,19 @@ methods:
       parameters:
         - id: criteria
           description: The criteria to apply.
-          type: '<xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />
       return:
         type: void
         description: ''
   - name: applyBottomItemsFilter(count)
-    uid: 'ExcelScript!ExcelScript.Filter#applyBottomItemsFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyBottomItemsFilter:member(1)
     package: ExcelScript!
     fullName: applyBottomItemsFilter(count)
-    summary: Apply a "Bottom Item" filter to the column for the given number of elements.
+    summary: >-
+      Apply a "Bottom Item" filter to the column for the given number of
+      elements.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -64,11 +69,14 @@ methods:
         type: void
         description: ''
   - name: applyBottomPercentFilter(percent)
-    uid: 'ExcelScript!ExcelScript.Filter#applyBottomPercentFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyBottomPercentFilter:member(1)
     package: ExcelScript!
     fullName: applyBottomPercentFilter(percent)
-    summary: Apply a "Bottom Percent" filter to the column for the given percentage of elements.
+    summary: >-
+      Apply a "Bottom Percent" filter to the column for the given percentage of
+      elements.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -81,11 +89,12 @@ methods:
         type: void
         description: ''
   - name: applyCellColorFilter(color)
-    uid: 'ExcelScript!ExcelScript.Filter#applyCellColorFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyCellColorFilter:member(1)
     package: ExcelScript!
     fullName: applyCellColorFilter(color)
     summary: Apply a "Cell Color" filter to the column for the given color.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -97,12 +106,13 @@ methods:
       return:
         type: void
         description: ''
-  - name: 'applyCustomFilter(criteria1, criteria2, oper)'
-    uid: 'ExcelScript!ExcelScript.Filter#applyCustomFilter:member(1)'
+  - name: applyCustomFilter(criteria1, criteria2, oper)
+    uid: ExcelScript!ExcelScript.Filter#applyCustomFilter:member(1)
     package: ExcelScript!
-    fullName: 'applyCustomFilter(criteria1, criteria2, oper)'
+    fullName: applyCustomFilter(criteria1, criteria2, oper)
     summary: Apply an "Icon" filter to the column for the given criteria strings.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -120,8 +130,10 @@ methods:
           description: Optional. The second criteria string.
           type: string
         - id: oper
-          description: Optional. The operator that describes how the two criteria are joined.
-          type: '<xref uid="ExcelScript!ExcelScript.FilterOperator:enum" />'
+          description: >-
+            Optional. The operator that describes how the two criteria are
+            joined.
+          type: <xref uid="ExcelScript!ExcelScript.FilterOperator:enum" />
       return:
         type: void
         description: |-
@@ -144,11 +156,12 @@ methods:
           }
           ```
   - name: applyDynamicFilter(criteria)
-    uid: 'ExcelScript!ExcelScript.Filter#applyDynamicFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyDynamicFilter:member(1)
     package: ExcelScript!
     fullName: applyDynamicFilter(criteria)
     summary: Apply a "Dynamic" filter to the column.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -156,7 +169,7 @@ methods:
       parameters:
         - id: criteria
           description: The dynamic criteria to apply.
-          type: '<xref uid="ExcelScript!ExcelScript.DynamicFilterCriteria:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.DynamicFilterCriteria:enum" />
       return:
         type: void
         description: |-
@@ -182,11 +195,12 @@ methods:
           }
           ```
   - name: applyFontColorFilter(color)
-    uid: 'ExcelScript!ExcelScript.Filter#applyFontColorFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyFontColorFilter:member(1)
     package: ExcelScript!
     fullName: applyFontColorFilter(color)
     summary: Apply a "Font Color" filter to the column for the given color.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -199,11 +213,12 @@ methods:
         type: void
         description: ''
   - name: applyIconFilter(icon)
-    uid: 'ExcelScript!ExcelScript.Filter#applyIconFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyIconFilter:member(1)
     package: ExcelScript!
     fullName: applyIconFilter(icon)
     summary: Apply an "Icon" filter to the column for the given icon.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -211,16 +226,17 @@ methods:
       parameters:
         - id: icon
           description: The icons of the cells to show.
-          type: '<xref uid="ExcelScript!ExcelScript.Icon:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Icon:interface" />
       return:
         type: void
         description: ''
   - name: applyTopItemsFilter(count)
-    uid: 'ExcelScript!ExcelScript.Filter#applyTopItemsFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyTopItemsFilter:member(1)
     package: ExcelScript!
     fullName: applyTopItemsFilter(count)
     summary: Apply a "Top Item" filter to the column for the given number of elements.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -233,11 +249,14 @@ methods:
         type: void
         description: ''
   - name: applyTopPercentFilter(percent)
-    uid: 'ExcelScript!ExcelScript.Filter#applyTopPercentFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyTopPercentFilter:member(1)
     package: ExcelScript!
     fullName: applyTopPercentFilter(percent)
-    summary: Apply a "Top Percent" filter to the column for the given percentage of elements.
+    summary: >-
+      Apply a "Top Percent" filter to the column for the given percentage of
+      elements.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -250,11 +269,12 @@ methods:
         type: void
         description: ''
   - name: applyValuesFilter(values)
-    uid: 'ExcelScript!ExcelScript.Filter#applyValuesFilter:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#applyValuesFilter:member(1)
     package: ExcelScript!
     fullName: applyValuesFilter(values)
     summary: Apply a "Values" filter to the column for the given values.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -262,9 +282,11 @@ methods:
       parameters:
         - id: values
           description: >-
-            The list of values to show. This must be an array of strings or an array of `ExcelScript.FilterDateTime`
-            objects.
-          type: 'Array&lt;string | <xref uid="ExcelScript!ExcelScript.FilterDatetime:interface" />&gt;'
+            The list of values to show. This must be an array of strings or an
+            array of `ExcelScript.FilterDateTime` objects.
+          type: >-
+            Array&lt;string | <xref
+            uid="ExcelScript!ExcelScript.FilterDatetime:interface" />&gt;
       return:
         type: void
         description: |-
@@ -286,11 +308,12 @@ methods:
           }
           ```
   - name: clear()
-    uid: 'ExcelScript!ExcelScript.Filter#clear:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#clear:member(1)
     package: ExcelScript!
     fullName: clear()
     summary: Clear the filter on the given column.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -316,15 +339,16 @@ methods:
           }
           ```
   - name: getCriteria()
-    uid: 'ExcelScript!ExcelScript.Filter#getCriteria:member(1)'
+    uid: ExcelScript!ExcelScript.Filter#getCriteria:member(1)
     package: ExcelScript!
     fullName: getCriteria()
     summary: The currently applied filter on the given column.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCriteria(): FilterCriteria;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />
         description: ''
