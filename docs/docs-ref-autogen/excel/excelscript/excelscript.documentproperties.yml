@@ -1,6 +1,6 @@
 ### YamlMime:TSType
 name: ExcelScript.DocumentProperties
-uid: 'ExcelScript!ExcelScript.DocumentProperties:interface'
+uid: ExcelScript!ExcelScript.DocumentProperties:interface
 package: ExcelScript!
 fullName: ExcelScript.DocumentProperties
 summary: Represents workbook properties.
@@ -30,16 +30,18 @@ remarks: |-
       newWorksheet.getRange("A1:B3").setValues(values);
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
-  - name: 'addCustomProperty(key, value)'
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#addCustomProperty:member(1)'
+  - name: addCustomProperty(key, value)
+    uid: ExcelScript!ExcelScript.DocumentProperties#addCustomProperty:member(1)
     package: ExcelScript!
-    fullName: 'addCustomProperty(key, value)'
+    fullName: addCustomProperty(key, value)
     summary: Creates a new or sets an existing custom property.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -47,16 +49,19 @@ methods:
       parameters:
         - id: key
           description: >-
-            Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside
-            of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
+            Required. The custom property's key, which is case-insensitive. The
+            key is limited to 255 characters outside of Excel on the web (larger
+            keys are automatically trimmed to 255 characters on other
+            platforms).
           type: string
         - id: value
           description: >-
-            Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web
-            (larger values are automatically trimmed to 255 characters on other platforms).
+            Required. The custom property's value. The value is limited to 255
+            characters outside of Excel on the web (larger values are
+            automatically trimmed to 255 characters on other platforms).
           type: any
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.CustomProperty:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.CustomProperty:interface" />
         description: |-
 
 
@@ -75,11 +80,13 @@ methods:
           }
           ```
   - name: deleteAllCustomProperties()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#deleteAllCustomProperties:member(1)'
+    uid: >-
+      ExcelScript!ExcelScript.DocumentProperties#deleteAllCustomProperties:member(1)
     package: ExcelScript!
     fullName: deleteAllCustomProperties()
     summary: Deletes all custom properties in this collection.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -88,11 +95,12 @@ methods:
         type: void
         description: ''
   - name: getAuthor()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getAuthor:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getAuthor:member(1)
     package: ExcelScript!
     fullName: getAuthor()
     summary: The author of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -101,11 +109,12 @@ methods:
         type: string
         description: ''
   - name: getCategory()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getCategory:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getCategory:member(1)
     package: ExcelScript!
     fullName: getCategory()
     summary: The category of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -114,13 +123,14 @@ methods:
         type: string
         description: ''
   - name: getComments()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getComments:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getComments:member(1)
     package: ExcelScript!
     fullName: getComments()
     summary: >-
-      The Comments field in the metadata of the workbook. These have no connection to comments by users made in the
-      workbook.
+      The Comments field in the metadata of the workbook. These have no
+      connection to comments by users made in the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -129,11 +139,12 @@ methods:
         type: string
         description: ''
   - name: getCompany()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getCompany:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getCompany:member(1)
     package: ExcelScript!
     fullName: getCompany()
     summary: The company of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -142,11 +153,12 @@ methods:
         type: string
         description: ''
   - name: getCreationDate()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getCreationDate:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getCreationDate:member(1)
     package: ExcelScript!
     fullName: getCreationDate()
     summary: Gets the creation date of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -155,26 +167,29 @@ methods:
         type: Date
         description: ''
   - name: getCustom()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getCustom:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getCustom:member(1)
     package: ExcelScript!
     fullName: getCustom()
     summary: Gets the collection of custom properties of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCustom(): CustomProperty[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.CustomProperty:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.CustomProperty:interface" />[]
         description: ''
   - name: getCustomProperty(key)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getCustomProperty:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getCustomProperty:member(1)
     package: ExcelScript!
     fullName: getCustomProperty(key)
     summary: >-
-      Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then
-      this method returns `undefined`<!-- -->.
+      Gets a custom property object by its key, which is case-insensitive. If
+      the custom property doesn't exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -184,7 +199,9 @@ methods:
           description: Required. The key that identifies the custom property object.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.CustomProperty:interface" /> | undefined'
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.CustomProperty:interface" /> |
+          undefined
         description: |-
 
 
@@ -206,11 +223,12 @@ methods:
           }
           ```
   - name: getKeywords()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getKeywords:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getKeywords:member(1)
     package: ExcelScript!
     fullName: getKeywords()
     summary: The keywords of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -219,11 +237,12 @@ methods:
         type: string
         description: ''
   - name: getLastAuthor()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getLastAuthor:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getLastAuthor:member(1)
     package: ExcelScript!
     fullName: getLastAuthor()
     summary: Gets the last author of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -232,11 +251,12 @@ methods:
         type: string
         description: ''
   - name: getManager()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getManager:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getManager:member(1)
     package: ExcelScript!
     fullName: getManager()
     summary: The manager of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -245,11 +265,12 @@ methods:
         type: string
         description: ''
   - name: getRevisionNumber()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getRevisionNumber:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getRevisionNumber:member(1)
     package: ExcelScript!
     fullName: getRevisionNumber()
     summary: Gets the revision number of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -258,11 +279,12 @@ methods:
         type: number
         description: ''
   - name: getSubject()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getSubject:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getSubject:member(1)
     package: ExcelScript!
     fullName: getSubject()
     summary: The subject of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -271,11 +293,12 @@ methods:
         type: string
         description: ''
   - name: getTitle()
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#getTitle:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#getTitle:member(1)
     package: ExcelScript!
     fullName: getTitle()
     summary: The title of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -284,11 +307,12 @@ methods:
         type: string
         description: ''
   - name: setAuthor(author)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setAuthor:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setAuthor:member(1)
     package: ExcelScript!
     fullName: setAuthor(author)
     summary: The author of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -301,11 +325,12 @@ methods:
         type: void
         description: ''
   - name: setCategory(category)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setCategory:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setCategory:member(1)
     package: ExcelScript!
     fullName: setCategory(category)
     summary: The category of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -318,13 +343,14 @@ methods:
         type: void
         description: ''
   - name: setComments(comments)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setComments:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setComments:member(1)
     package: ExcelScript!
     fullName: setComments(comments)
     summary: >-
-      The Comments field in the metadata of the workbook. These have no connection to comments by users made in the
-      workbook.
+      The Comments field in the metadata of the workbook. These have no
+      connection to comments by users made in the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -337,11 +363,12 @@ methods:
         type: void
         description: ''
   - name: setCompany(company)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setCompany:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setCompany:member(1)
     package: ExcelScript!
     fullName: setCompany(company)
     summary: The company of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -354,11 +381,12 @@ methods:
         type: void
         description: ''
   - name: setKeywords(keywords)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setKeywords:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setKeywords:member(1)
     package: ExcelScript!
     fullName: setKeywords(keywords)
     summary: The keywords of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -371,11 +399,12 @@ methods:
         type: void
         description: ''
   - name: setManager(manager)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setManager:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setManager:member(1)
     package: ExcelScript!
     fullName: setManager(manager)
     summary: The manager of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -388,11 +417,12 @@ methods:
         type: void
         description: ''
   - name: setRevisionNumber(revisionNumber)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setRevisionNumber:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setRevisionNumber:member(1)
     package: ExcelScript!
     fullName: setRevisionNumber(revisionNumber)
     summary: Gets the revision number of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -405,11 +435,12 @@ methods:
         type: void
         description: ''
   - name: setSubject(subject)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setSubject:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setSubject:member(1)
     package: ExcelScript!
     fullName: setSubject(subject)
     summary: The subject of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -422,11 +453,12 @@ methods:
         type: void
         description: ''
   - name: setTitle(title)
-    uid: 'ExcelScript!ExcelScript.DocumentProperties#setTitle:member(1)'
+    uid: ExcelScript!ExcelScript.DocumentProperties#setTitle:member(1)
     package: ExcelScript!
     fullName: setTitle(title)
     summary: The title of the workbook.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:

@@ -4,6 +4,9 @@ import { generateEnumList } from './util';
 import * as fsx from 'fs-extra';
 import * as jsyaml from "js-yaml";
 import * as path from "path";
+import * as os from "os";
+
+const EOL = os.EOL;
 
 interface Toc {
     items: [
@@ -38,6 +41,71 @@ interface IMembers {
             uid?: string
         }
     ]
+}
+
+interface ApiFieldYaml {
+    name: string;
+    uid: string;
+    package: string;
+    summary: string;
+    remarks?: string;
+}
+
+interface ApiPropertyYaml {
+    name: string;
+    uid: string;
+    package: string;
+    fullName: string;
+    summary: string;
+    remarks?: string;
+    isPreview: boolean;
+    isDeprecated: boolean;
+    syntax: {
+        content: string;
+        return: {
+            type: string;
+            description?: string;
+        }
+    }
+}
+
+interface ApiMethodYaml {
+    name: string;
+    uid: string;
+    package: string;
+    fullName: string;
+    summary: string;
+    remarks?: string;
+    isPreview: boolean;
+    isDeprecated: boolean;
+    syntax: {
+        content: string;
+        parameters?: {
+            id: string;
+            description: string;
+            type: string;
+        }[];
+        return: {
+            type: string;
+            description: string;
+        };
+    };
+}
+
+interface ApiYaml {
+    name: string;
+    uid: string;
+    package: string;
+    fullName: string;
+    summary: string;
+    remarks: string;
+    isPreview: boolean;
+    isDeprecated: boolean;
+    type: string;
+    fields?: ApiFieldYaml[];
+    properties?: ApiPropertyYaml[];
+    methods?: ApiMethodYaml[];
+    syntax?: string;
 }
 
 tryCatch(async () => {
@@ -77,20 +145,14 @@ tryCatch(async () => {
                     fsx.readdirSync(scriptFolder)
                         .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
                         .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
-                        fsx.writeFileSync(
-                            scriptFolder + '/' + interfaceYml,
-                            fsx.readFileSync(scriptFolder + '/' + interfaceYml).toString()
-                                .replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
-                                .replace(/description: \\\*[\r\n]/g, "description:") // Remove descriptions that are just "\*".
-                                .replace(/\\\*/gm, "*")); // Fix asterisk protection.
+                        let fileName = scriptFolder + '/' + interfaceYml;
+                        const ymlFile = fsx.readFileSync(fileName, "utf8");
+                        fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile)); 
                     });
                 } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
-                    fsx.writeFileSync(
-                        hostFolder + '/' + subfilename,
-                        fsx.readFileSync(hostFolder + '/' + subfilename).toString()
-                        .replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
-                        .replace(/description: \\\*[\r\n]/g, "description:") // Remove descriptions that are just "\*".
-                        .replace(/\\\*/gm, "*")); // Fix asterisk protection.
+                    let fileName =  hostFolder + '/' + subfilename;
+                    const ymlFile = fsx.readFileSync(fileName, "utf8");
+                    fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile));
                 }
         });
     });
@@ -155,4 +217,33 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     });
 
     return newToc;
+}
+
+
+function cleanUpYmlFile(ymlFile: string): string {
+    const schemaComment = ymlFile.substring(0, ymlFile.indexOf("\n") + 1);
+    const apiYaml: ApiYaml = jsyaml.load(ymlFile) as ApiYaml;
+
+    // Add links for type aliases.
+    if (apiYaml.uid.endsWith(":type")) {
+        let remarks = `${EOL}${EOL}Learn more about the types in this type alias through the following links. ${EOL}${EOL}`
+        apiYaml.syntax.substring(apiYaml.syntax.indexOf('=')).match(/[\w]+/g).forEach((match, matchIndex, matches) => {
+            remarks += `[ExcelScript.${match}](/javascript/api/office-scripts/excelscript/excelscript.${match.toLowerCase()})`;
+            if (matchIndex < matches.length - 1) {
+                remarks += ", ";
+            }
+        });
+
+        let exampleIndex = apiYaml.remarks.indexOf("#### Examples");
+        if (exampleIndex > 0) {
+            apiYaml.remarks = `${apiYaml.remarks.substring(0, exampleIndex)}${remarks}${EOL}${EOL}${apiYaml.remarks.substring(exampleIndex)}`;
+        } else {
+            apiYaml.remarks += remarks;
+        }
+    }
+    
+    let cleanYml = schemaComment + jsyaml.dump(apiYaml);
+    return cleanYml.replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
+                   .replace(/description: \\\*[\r\n]/gm, "description: ''") // Remove descriptions that are just "\*".
+                   .replace(/\\\*/gm, "*"); // Fix asterisk protection.
 }
