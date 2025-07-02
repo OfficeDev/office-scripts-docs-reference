@@ -1,11 +1,11 @@
 ### YamlMime:TSType
 name: ExcelScript.AutoFilter
-uid: 'ExcelScript!ExcelScript.AutoFilter:interface'
+uid: ExcelScript!ExcelScript.AutoFilter:interface
 package: ExcelScript!
 fullName: ExcelScript.AutoFilter
 summary: >-
-  Represents the `AutoFilter` object. AutoFilter turns the values in Excel column into specific filters based on the
-  cell contents.
+  Represents the `AutoFilter` object. AutoFilter turns the values in Excel
+  column into specific filters based on the cell contents.
 remarks: |-
 
 
@@ -31,16 +31,20 @@ remarks: |-
     });
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
-  - name: 'apply(range, columnIndex, criteria)'
-    uid: 'ExcelScript!ExcelScript.AutoFilter#apply:member(1)'
+  - name: apply(range, columnIndex, criteria)
+    uid: ExcelScript!ExcelScript.AutoFilter#apply:member(1)
     package: ExcelScript!
-    fullName: 'apply(range, columnIndex, criteria)'
-    summary: Applies the AutoFilter to a range. This filters the column if column index and filter criteria are specified.
+    fullName: apply(range, columnIndex, criteria)
+    summary: >-
+      Applies the AutoFilter to a range. This filters the column if column index
+      and filter criteria are specified.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -53,13 +57,13 @@ methods:
       parameters:
         - id: range
           description: The range on which the AutoFilter will apply.
-          type: '<xref uid="ExcelScript!ExcelScript.Range:interface" /> | string'
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
         - id: columnIndex
           description: The zero-based column index to which the AutoFilter is applied.
           type: number
         - id: criteria
           description: The filter criteria.
-          type: '<xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />
       return:
         type: void
         description: |-
@@ -88,11 +92,12 @@ methods:
           }
           ```
   - name: clearColumnCriteria(columnIndex)
-    uid: 'ExcelScript!ExcelScript.AutoFilter#clearColumnCriteria:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#clearColumnCriteria:member(1)
     package: ExcelScript!
     fullName: clearColumnCriteria(columnIndex)
     summary: Clears the column filter criteria of the AutoFilter.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -100,19 +105,22 @@ methods:
       parameters:
         - id: columnIndex
           description: >-
-            The zero-based column index, which represents which column filter needs to be cleared. If the index value is
-            not supported (for example, if the value is a negative number, or if the value is greater than the number of
-            available columns in the range), then an `InvalidArgument` error will be thrown.
+            The zero-based column index, which represents which column filter
+            needs to be cleared. If the index value is not supported (for
+            example, if the value is a negative number, or if the value is
+            greater than the number of available columns in the range), then an
+            `InvalidArgument` error will be thrown.
           type: number
       return:
         type: void
         description: ''
   - name: clearCriteria()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#clearCriteria:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#clearCriteria:member(1)
     package: ExcelScript!
     fullName: clearCriteria()
     summary: Clears the filter criteria and sort state of the AutoFilter.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -136,24 +144,26 @@ methods:
           }
           ```
   - name: getCriteria()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#getCriteria:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#getCriteria:member(1)
     package: ExcelScript!
     fullName: getCriteria()
     summary: An array that holds all the filter criteria in the autofiltered range.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getCriteria(): FilterCriteria[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.FilterCriteria:interface" />[]
         description: ''
   - name: getEnabled()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#getEnabled:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#getEnabled:member(1)
     package: ExcelScript!
     fullName: getEnabled()
     summary: Specifies if the AutoFilter is enabled.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -162,11 +172,12 @@ methods:
         type: boolean
         description: ''
   - name: getIsDataFiltered()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#getIsDataFiltered:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#getIsDataFiltered:member(1)
     package: ExcelScript!
     fullName: getIsDataFiltered()
     summary: Specifies if the AutoFilter has filter criteria.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -175,26 +186,29 @@ methods:
         type: boolean
         description: ''
   - name: getRange()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#getRange:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#getRange:member(1)
     package: ExcelScript!
     fullName: getRange()
     summary: >-
-      Returns the `Range` object that represents the range to which the AutoFilter applies. If there is no `Range`
-      object associated with the AutoFilter, then this method returns `undefined`<!-- -->.
+      Returns the `Range` object that represents the range to which the
+      AutoFilter applies. If there is no `Range` object associated with the
+      AutoFilter, then this method returns `undefined`<!-- -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRange(): Range;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
         description: ''
   - name: reapply()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#reapply:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#reapply:member(1)
     package: ExcelScript!
     fullName: reapply()
     summary: Applies the specified AutoFilter object currently on the range.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -203,11 +217,12 @@ methods:
         type: void
         description: ''
   - name: remove()
-    uid: 'ExcelScript!ExcelScript.AutoFilter#remove:member(1)'
+    uid: ExcelScript!ExcelScript.AutoFilter#remove:member(1)
     package: ExcelScript!
     fullName: remove()
     summary: Removes the AutoFilter for the range.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:

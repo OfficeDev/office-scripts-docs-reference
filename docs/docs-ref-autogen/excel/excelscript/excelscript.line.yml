@@ -1,20 +1,24 @@
 ### YamlMime:TSType
 name: ExcelScript.Line
-uid: 'ExcelScript!ExcelScript.Line:interface'
+uid: ExcelScript!ExcelScript.Line:interface
 package: ExcelScript!
 fullName: ExcelScript.Line
-summary: 'Represents a line inside a worksheet. To get the corresponding `Shape` object, use `Line.shape`<!-- -->.'
+summary: >-
+  Represents a line inside a worksheet. To get the corresponding `Shape` object,
+  use `Line.shape`<!-- -->.
 remarks: ''
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
-  - name: 'connectBeginShape(shape, connectionSite)'
-    uid: 'ExcelScript!ExcelScript.Line#connectBeginShape:member(1)'
+  - name: connectBeginShape(shape, connectionSite)
+    uid: ExcelScript!ExcelScript.Line#connectBeginShape:member(1)
     package: ExcelScript!
-    fullName: 'connectBeginShape(shape, connectionSite)'
+    fullName: connectBeginShape(shape, connectionSite)
     summary: Attaches the beginning of the specified connector to a specified shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -22,21 +26,23 @@ methods:
       parameters:
         - id: shape
           description: The shape to connect.
-          type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Shape:interface" />
         - id: connectionSite
           description: >-
-            The connection site on the shape to which the beginning of the connector is attached. Must be an integer
-            between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
+            The connection site on the shape to which the beginning of the
+            connector is attached. Must be an integer between 0 (inclusive) and
+            the connection-site count of the specified shape (exclusive).
           type: number
       return:
         type: void
         description: ''
-  - name: 'connectEndShape(shape, connectionSite)'
-    uid: 'ExcelScript!ExcelScript.Line#connectEndShape:member(1)'
+  - name: connectEndShape(shape, connectionSite)
+    uid: ExcelScript!ExcelScript.Line#connectEndShape:member(1)
     package: ExcelScript!
-    fullName: 'connectEndShape(shape, connectionSite)'
+    fullName: connectEndShape(shape, connectionSite)
     summary: Attaches the end of the specified connector to a specified shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -44,21 +50,23 @@ methods:
       parameters:
         - id: shape
           description: The shape to connect.
-          type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+          type: <xref uid="ExcelScript!ExcelScript.Shape:interface" />
         - id: connectionSite
           description: >-
-            The connection site on the shape to which the end of the connector is attached. Must be an integer between 0
-            (inclusive) and the connection-site count of the specified shape (exclusive).
+            The connection site on the shape to which the end of the connector
+            is attached. Must be an integer between 0 (inclusive) and the
+            connection-site count of the specified shape (exclusive).
           type: number
       return:
         type: void
         description: ''
   - name: disconnectBeginShape()
-    uid: 'ExcelScript!ExcelScript.Line#disconnectBeginShape:member(1)'
+    uid: ExcelScript!ExcelScript.Line#disconnectBeginShape:member(1)
     package: ExcelScript!
     fullName: disconnectBeginShape()
     summary: Detaches the beginning of the specified connector from a shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -67,11 +75,12 @@ methods:
         type: void
         description: ''
   - name: disconnectEndShape()
-    uid: 'ExcelScript!ExcelScript.Line#disconnectEndShape:member(1)'
+    uid: ExcelScript!ExcelScript.Line#disconnectEndShape:member(1)
     package: ExcelScript!
     fullName: disconnectEndShape()
     summary: Detaches the end of the specified connector from a shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -80,65 +89,79 @@ methods:
         type: void
         description: ''
   - name: getBeginArrowheadLength()
-    uid: 'ExcelScript!ExcelScript.Line#getBeginArrowheadLength:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getBeginArrowheadLength:member(1)
     package: ExcelScript!
     fullName: getBeginArrowheadLength()
-    summary: Represents the length of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the length of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBeginArrowheadLength(): ArrowheadLength;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />
         description: ''
   - name: getBeginArrowheadStyle()
-    uid: 'ExcelScript!ExcelScript.Line#getBeginArrowheadStyle:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getBeginArrowheadStyle:member(1)
     package: ExcelScript!
     fullName: getBeginArrowheadStyle()
-    summary: Represents the style of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the style of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBeginArrowheadStyle(): ArrowheadStyle;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />
         description: ''
   - name: getBeginArrowheadWidth()
-    uid: 'ExcelScript!ExcelScript.Line#getBeginArrowheadWidth:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getBeginArrowheadWidth:member(1)
     package: ExcelScript!
     fullName: getBeginArrowheadWidth()
-    summary: Represents the width of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the width of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBeginArrowheadWidth(): ArrowheadWidth;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />
         description: ''
   - name: getBeginConnectedShape()
-    uid: 'ExcelScript!ExcelScript.Line#getBeginConnectedShape:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getBeginConnectedShape:member(1)
     package: ExcelScript!
     fullName: getBeginConnectedShape()
-    summary: Represents the shape to which the beginning of the specified line is attached.
+    summary: >-
+      Represents the shape to which the beginning of the specified line is
+      attached.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getBeginConnectedShape(): Shape;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Shape:interface" />
         description: ''
   - name: getBeginConnectedSite()
-    uid: 'ExcelScript!ExcelScript.Line#getBeginConnectedSite:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getBeginConnectedSite:member(1)
     package: ExcelScript!
     fullName: getBeginConnectedSite()
     summary: >-
-      Represents the connection site to which the beginning of a connector is connected. Returns `null` when the
-      beginning of the line is not attached to any shape.
+      Represents the connection site to which the beginning of a connector is
+      connected. Returns `null` when the beginning of the line is not attached
+      to any shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -147,78 +170,85 @@ methods:
         type: number
         description: ''
   - name: getConnectorType()
-    uid: 'ExcelScript!ExcelScript.Line#getConnectorType:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getConnectorType:member(1)
     package: ExcelScript!
     fullName: getConnectorType()
     summary: Represents the connector type for the line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getConnectorType(): ConnectorType;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />
         description: ''
   - name: getEndArrowheadLength()
-    uid: 'ExcelScript!ExcelScript.Line#getEndArrowheadLength:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getEndArrowheadLength:member(1)
     package: ExcelScript!
     fullName: getEndArrowheadLength()
     summary: Represents the length of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getEndArrowheadLength(): ArrowheadLength;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />
         description: ''
   - name: getEndArrowheadStyle()
-    uid: 'ExcelScript!ExcelScript.Line#getEndArrowheadStyle:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getEndArrowheadStyle:member(1)
     package: ExcelScript!
     fullName: getEndArrowheadStyle()
     summary: Represents the style of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getEndArrowheadStyle(): ArrowheadStyle;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />
         description: ''
   - name: getEndArrowheadWidth()
-    uid: 'ExcelScript!ExcelScript.Line#getEndArrowheadWidth:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getEndArrowheadWidth:member(1)
     package: ExcelScript!
     fullName: getEndArrowheadWidth()
     summary: Represents the width of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getEndArrowheadWidth(): ArrowheadWidth;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />'
+        type: <xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />
         description: ''
   - name: getEndConnectedShape()
-    uid: 'ExcelScript!ExcelScript.Line#getEndConnectedShape:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getEndConnectedShape:member(1)
     package: ExcelScript!
     fullName: getEndConnectedShape()
     summary: Represents the shape to which the end of the specified line is attached.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getEndConnectedShape(): Shape;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Shape:interface" />
         description: ''
   - name: getEndConnectedSite()
-    uid: 'ExcelScript!ExcelScript.Line#getEndConnectedSite:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getEndConnectedSite:member(1)
     package: ExcelScript!
     fullName: getEndConnectedSite()
     summary: >-
-      Represents the connection site to which the end of a connector is connected. Returns `null` when the end of the
-      line is not attached to any shape.
+      Represents the connection site to which the end of a connector is
+      connected. Returns `null` when the end of the line is not attached to any
+      shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -227,11 +257,12 @@ methods:
         type: number
         description: ''
   - name: getId()
-    uid: 'ExcelScript!ExcelScript.Line#getId:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getId:member(1)
     package: ExcelScript!
     fullName: getId()
     summary: Specifies the shape identifier.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -240,11 +271,12 @@ methods:
         type: string
         description: ''
   - name: getIsBeginConnected()
-    uid: 'ExcelScript!ExcelScript.Line#getIsBeginConnected:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getIsBeginConnected:member(1)
     package: ExcelScript!
     fullName: getIsBeginConnected()
     summary: Specifies if the beginning of the specified line is connected to a shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -253,11 +285,12 @@ methods:
         type: boolean
         description: ''
   - name: getIsEndConnected()
-    uid: 'ExcelScript!ExcelScript.Line#getIsEndConnected:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getIsEndConnected:member(1)
     package: ExcelScript!
     fullName: getIsEndConnected()
     summary: Specifies if the end of the specified line is connected to a shape.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -266,24 +299,28 @@ methods:
         type: boolean
         description: ''
   - name: getShape()
-    uid: 'ExcelScript!ExcelScript.Line#getShape:member(1)'
+    uid: ExcelScript!ExcelScript.Line#getShape:member(1)
     package: ExcelScript!
     fullName: getShape()
     summary: Returns the `Shape` object associated with the line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getShape(): Shape;'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Shape:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.Shape:interface" />
         description: ''
   - name: setBeginArrowheadLength(beginArrowheadLength)
-    uid: 'ExcelScript!ExcelScript.Line#setBeginArrowheadLength:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setBeginArrowheadLength:member(1)
     package: ExcelScript!
     fullName: setBeginArrowheadLength(beginArrowheadLength)
-    summary: Represents the length of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the length of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -291,16 +328,19 @@ methods:
       parameters:
         - id: beginArrowheadLength
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />
       return:
         type: void
         description: ''
   - name: setBeginArrowheadStyle(beginArrowheadStyle)
-    uid: 'ExcelScript!ExcelScript.Line#setBeginArrowheadStyle:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setBeginArrowheadStyle:member(1)
     package: ExcelScript!
     fullName: setBeginArrowheadStyle(beginArrowheadStyle)
-    summary: Represents the style of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the style of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -308,16 +348,19 @@ methods:
       parameters:
         - id: beginArrowheadStyle
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />
       return:
         type: void
         description: ''
   - name: setBeginArrowheadWidth(beginArrowheadWidth)
-    uid: 'ExcelScript!ExcelScript.Line#setBeginArrowheadWidth:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setBeginArrowheadWidth:member(1)
     package: ExcelScript!
     fullName: setBeginArrowheadWidth(beginArrowheadWidth)
-    summary: Represents the width of the arrowhead at the beginning of the specified line.
+    summary: >-
+      Represents the width of the arrowhead at the beginning of the specified
+      line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -325,16 +368,17 @@ methods:
       parameters:
         - id: beginArrowheadWidth
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />
       return:
         type: void
         description: ''
   - name: setConnectorType(connectorType)
-    uid: 'ExcelScript!ExcelScript.Line#setConnectorType:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setConnectorType:member(1)
     package: ExcelScript!
     fullName: setConnectorType(connectorType)
     summary: Represents the connector type for the line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -342,16 +386,17 @@ methods:
       parameters:
         - id: connectorType
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ConnectorType:enum" />
       return:
         type: void
         description: ''
   - name: setEndArrowheadLength(endArrowheadLength)
-    uid: 'ExcelScript!ExcelScript.Line#setEndArrowheadLength:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setEndArrowheadLength:member(1)
     package: ExcelScript!
     fullName: setEndArrowheadLength(endArrowheadLength)
     summary: Represents the length of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -359,16 +404,17 @@ methods:
       parameters:
         - id: endArrowheadLength
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadLength:enum" />
       return:
         type: void
         description: ''
   - name: setEndArrowheadStyle(endArrowheadStyle)
-    uid: 'ExcelScript!ExcelScript.Line#setEndArrowheadStyle:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setEndArrowheadStyle:member(1)
     package: ExcelScript!
     fullName: setEndArrowheadStyle(endArrowheadStyle)
     summary: Represents the style of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -376,16 +422,17 @@ methods:
       parameters:
         - id: endArrowheadStyle
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadStyle:enum" />
       return:
         type: void
         description: ''
   - name: setEndArrowheadWidth(endArrowheadWidth)
-    uid: 'ExcelScript!ExcelScript.Line#setEndArrowheadWidth:member(1)'
+    uid: ExcelScript!ExcelScript.Line#setEndArrowheadWidth:member(1)
     package: ExcelScript!
     fullName: setEndArrowheadWidth(endArrowheadWidth)
     summary: Represents the width of the arrowhead at the end of the specified line.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -393,7 +440,7 @@ methods:
       parameters:
         - id: endArrowheadWidth
           description: ''
-          type: '<xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />'
+          type: <xref uid="ExcelScript!ExcelScript.ArrowheadWidth:enum" />
       return:
         type: void
         description: ''

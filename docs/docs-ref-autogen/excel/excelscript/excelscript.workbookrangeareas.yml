@@ -1,9 +1,11 @@
 ### YamlMime:TSType
 name: ExcelScript.WorkbookRangeAreas
-uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas:interface'
+uid: ExcelScript!ExcelScript.WorkbookRangeAreas:interface
 package: ExcelScript!
 fullName: ExcelScript.WorkbookRangeAreas
-summary: Represents a collection of one or more rectangular ranges in multiple worksheets.
+summary: >-
+  Represents a collection of one or more rectangular ranges in multiple
+  worksheets.
 remarks: |-
 
 
@@ -28,48 +30,54 @@ remarks: |-
     });
   }
   ```
+
 isPreview: false
 isDeprecated: false
 type: interface
 methods:
   - name: getAddresses()
-    uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas#getAddresses:member(1)'
+    uid: ExcelScript!ExcelScript.WorkbookRangeAreas#getAddresses:member(1)
     package: ExcelScript!
     fullName: getAddresses()
     summary: >-
-      Returns an array of addresses in A1-style. Address values contain the worksheet name for each rectangular block of
-      cells (e.g., "Sheet1!A1:B4, Sheet1!D1:D4"). Read-only.
+      Returns an array of addresses in A1-style. Address values contain the
+      worksheet name for each rectangular block of cells (e.g., "Sheet1!A1:B4,
+      Sheet1!D1:D4"). Read-only.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAddresses(): string[];'
       return:
-        type: 'string[]'
+        type: string[]
         description: ''
   - name: getAreas()
-    uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas#getAreas:member(1)'
+    uid: ExcelScript!ExcelScript.WorkbookRangeAreas#getAreas:member(1)
     package: ExcelScript!
     fullName: getAreas()
     summary: >-
-      Returns the `RangeAreasCollection` object. Each `RangeAreas` in the collection represent one or more rectangle
-      ranges in one worksheet.
+      Returns the `RangeAreasCollection` object. Each `RangeAreas` in the
+      collection represent one or more rectangle ranges in one worksheet.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getAreas(): RangeAreas[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />[]
         description: ''
   - name: getRangeAreasBySheet(key)
-    uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas#getRangeAreasBySheet:member(1)'
+    uid: ExcelScript!ExcelScript.WorkbookRangeAreas#getRangeAreasBySheet:member(1)
     package: ExcelScript!
     fullName: getRangeAreasBySheet(key)
     summary: >-
-      Returns the `RangeAreas` object based on worksheet name or ID in the collection. If the worksheet does not exist,
-      then this method returns `undefined`<!-- -->.
+      Returns the `RangeAreas` object based on worksheet name or ID in the
+      collection. If the worksheet does not exist, then this method returns
+      `undefined`<!-- -->.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
@@ -79,18 +87,19 @@ methods:
           description: The name or ID of the worksheet.
           type: string
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />'
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
         description: ''
   - name: getRanges()
-    uid: 'ExcelScript!ExcelScript.WorkbookRangeAreas#getRanges:member(1)'
+    uid: ExcelScript!ExcelScript.WorkbookRangeAreas#getRanges:member(1)
     package: ExcelScript!
     fullName: getRanges()
     summary: Returns ranges that comprise this object in a `RangeCollection` object.
     remarks: ''
+
     isPreview: false
     isDeprecated: false
     syntax:
       content: 'getRanges(): Range[];'
       return:
-        type: '<xref uid="ExcelScript!ExcelScript.Range:interface" />[]'
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />[]
         description: ''
