@@ -1001,6 +1001,8 @@ declare namespace ExcelScript {
         getRanges(address?: string): RangeAreas;
 
         /**
+         * The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
+         * If the entire worksheet is blank, then this method returns `undefined`.
          * @param valuesOnly Optional. Considers only cells with values as used cells.
          */
         getUsedRange(valuesOnly?: boolean): Range;
@@ -4967,7 +4969,8 @@ declare namespace ExcelScript {
         setSeparator(separator: string): void;
 
         /**
-         * Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the data point. If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See Excel.GeometricShapeType for more details. 
+         * Specifies if the data labels are shown as a callout with the tail anchor attached to the data point.
+         * If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout".
          */
         getShowAsStickyCallout(): boolean;
 
@@ -4992,12 +4995,12 @@ declare namespace ExcelScript {
         setShowCategoryName(showCategoryName: boolean): void;
 
         /**
-         * Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
+         * Specifies if leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
          */
         getShowLeaderLines(): boolean;
 
         /**
-         * Specifies a value that indicates whether leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
+         * Specifies if leader lines are displayed for the data labels. `true` if leader lines are shown; otherwise, `false`.
          */
         setShowLeaderLines(showLeaderLines: boolean): void;
 
@@ -5108,18 +5111,21 @@ declare namespace ExcelScript {
         setGeometricShapeType(geometricShapeType: GeometricShapeType): void;
 
         /**
-         * Returns the height, in points, of the chart data label. Value is `null` if the chart data label is not visible.
+         * Returns the height, in points, of the chart data label.
+         * Value is `null` if the chart data label is not visible.
          */
         getHeight(): number;
 
         /**
-         * Represents the horizontal alignment for chart data label. See `ExcelScript.ChartTextHorizontalAlignment` for details.
+         * Represents the horizontal alignment for chart data label.
+         * See `ExcelScript.ChartTextHorizontalAlignment` for details.
          * This property is valid only when `TextOrientation` of data label is -90, 90, or 180.
          */
         getHorizontalAlignment(): ChartTextHorizontalAlignment;
 
         /**
-         * Represents the horizontal alignment for chart data label. See `ExcelScript.ChartTextHorizontalAlignment` for details.
+         * Represents the horizontal alignment for chart data label.
+         * See `ExcelScript.ChartTextHorizontalAlignment` for details.
          * This property is valid only when `TextOrientation` of data label is -90, 90, or 180.
          */
         setHorizontalAlignment(
@@ -5147,22 +5153,24 @@ declare namespace ExcelScript {
         setLinkNumberFormat(linkNumberFormat: boolean): void;
 
         /**
-         * String value that represents the format code for data label.
+         * Specifies the format code for data label.
          */
         getNumberFormat(): string;
 
         /**
-         * String value that represents the format code for data label.
+         * Specifies the format code for data label.
          */
         setNumberFormat(numberFormat: string): void;
 
         /**
-         * Value that represents the position of the data label. See `ExcelScript.ChartDataLabelPosition` for details.
+         * Value that represents the position of the data label.
+         * See `ExcelScript.ChartDataLabelPosition` for details.
          */
         getPosition(): ChartDataLabelPosition;
 
         /**
-         * Value that represents the position of the data label. See `ExcelScript.ChartDataLabelPosition` for details.
+         * Value that represents the position of the data label.
+         * See `ExcelScript.ChartDataLabelPosition` for details.
          */
         setPosition(position: ChartDataLabelPosition): void;
 
@@ -5177,7 +5185,8 @@ declare namespace ExcelScript {
         setSeparator(separator: string): void;
 
         /**
-         * Gets a value that indicates whether the data labels are shown as a callout with the tail anchor attached to the data point. If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout". See Excel.GeometricShapeType for more details. 
+         * Specifies if the data label is shown as a callout with the tail anchor attached to the data point.
+         * If `true`, the callout is one of the following values: "AccentCallout1", "AccentCallout2", "BorderCallout1", "BorderCallout2", "WedgeRectCallout", "WedgeRRectCallout" or "WedgeEllipseCallout".
          */
         getShowAsStickyCallout(): boolean;
 
@@ -5252,12 +5261,14 @@ declare namespace ExcelScript {
         setText(text: string): void;
 
         /**
-         * Represents the angle to which the text is oriented for the chart data label. The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
+         * Represents the angle to which the text is oriented for the chart data label.
+         * The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
          */
         getTextOrientation(): number;
 
         /**
-         * Represents the angle to which the text is oriented for the chart data label. The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
+         * Represents the angle to which the text is oriented for the chart data label.
+         * The value should either be an integer from -90 to 90 or the integer 180 for vertically-oriented text.
          */
         setTextOrientation(textOrientation: number): void;
 
@@ -5272,13 +5283,15 @@ declare namespace ExcelScript {
         setTop(top: number): void;
 
         /**
-         * Represents the vertical alignment of chart data label. See `ExcelScript.ChartTextVerticalAlignment` for details.
+         * Represents the vertical alignment of chart data label.
+         * See `ExcelScript.ChartTextVerticalAlignment` for details.
          * This property is valid only when `TextOrientation` of data label is 0.
          */
         getVerticalAlignment(): ChartTextVerticalAlignment;
 
         /**
-         * Represents the vertical alignment of chart data label. See `ExcelScript.ChartTextVerticalAlignment` for details.
+         * Represents the vertical alignment of chart data label.
+         * See `ExcelScript.ChartTextVerticalAlignment` for details.
          * This property is valid only when `TextOrientation` of data label is 0.
          */
         setVerticalAlignment(
@@ -5286,7 +5299,8 @@ declare namespace ExcelScript {
         ): void;
 
         /**
-         * Returns the width, in points, of the chart data label. Value is `null` if the chart data label is not visible.
+         * Returns the width, in points, of the chart data label.
+         * Value is `null` if the chart data label is not visible.
          */
         getWidth(): number;
 
@@ -5340,22 +5354,26 @@ declare namespace ExcelScript {
      */
     interface ChartDataLabelAnchor {
         /**
-         * Represents the distance, in points, from the anchor to the left edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         * Specifies the distance, in points, from the anchor to the left edge of the chart data label.
+         * Note that when getting the value, it may differ slightly from the set value.
          */
         getLeft(): number;
 
         /**
-         * Represents the distance, in points, from the anchor to the left edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         * Specifies the distance, in points, from the anchor to the left edge of the chart data label.
+         * Note that when getting the value, it may differ slightly from the set value.
          */
         setLeft(left: number): void;
 
         /**
-         * Represents the distance, in points, from the anchor to the top edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         * Specifies the distance, in points, from the anchor to the top edge of the chart data label.
+         * Note that when getting the value, it may differ slightly from the set value.
          */
         getTop(): number;
 
         /**
-         * Represents the distance, in points, from the anchor to the top edge of the chart data label. Note that when getting the value, it may differ slightly from the set value.
+         * Specifies the distance, in points, from the anchor to the top edge of the chart data label.
+         * Note that when getting the value, it may differ slightly from the set value.
          */
         setTop(top: number): void;
     }
@@ -6968,7 +6986,8 @@ declare namespace ExcelScript {
         delete(): void;
 
         /**
-         * Returns the string representation of the data source for the PivotTable. This method currently supports string representations for table and range objects.
+         * Returns the string representation of the data source for the PivotTable.
+         * This method currently supports string representations for table and range objects.
          * Otherwise, it returns an empty string.
          */
         getDataSourceString(): string;
@@ -7179,12 +7198,14 @@ declare namespace ExcelScript {
         setFillEmptyCells(fillEmptyCells: boolean): void;
 
         /**
-         * This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this will be null.
+         * This property indicates the PivotLayoutType of all fields on the PivotTable.
+         * If fields have different states, this will be null.
          */
         getLayoutType(): PivotLayoutType;
 
         /**
-         * This property indicates the PivotLayoutType of all fields on the PivotTable. If fields have different states, this will be null.
+         * This property indicates the PivotLayoutType of all fields on the PivotTable.
+         * If fields have different states, this will be null.
          */
         setLayoutType(layoutType: PivotLayoutType): void;
 
@@ -7229,12 +7250,14 @@ declare namespace ExcelScript {
         setShowRowGrandTotals(showRowGrandTotals: boolean): void;
 
         /**
-         * This property indicates the `SubtotalLocationType` of all fields on the PivotTable. If fields have different states, this will be `null`.
+         * This property indicates the `SubtotalLocationType` of all fields on the PivotTable.
+         * If fields have different states, this will be `null`.
          */
         getSubtotalLocation(): SubtotalLocationType;
 
         /**
-         * This property indicates the `SubtotalLocationType` of all fields on the PivotTable. If fields have different states, this will be `null`.
+         * This property indicates the `SubtotalLocationType` of all fields on the PivotTable.
+         * If fields have different states, this will be `null`.
          */
         setSubtotalLocation(subtotalLocation: SubtotalLocationType): void;
 
@@ -9450,9 +9473,9 @@ declare namespace ExcelScript {
         getConnectionSiteCount(): number;
 
         /**
-         * Gets the display name of the shape. A newly created shape has a generated name
-         * that is localized and may not match its `name`. In this scenario, you can use
-         * this API to get the name that is displayed in the UI.
+         * Gets the display name of the shape.
+         * A newly created shape has a generated name that is localized and may not match its `name`.
+         * In this scenario, you can use this API to get the name that is displayed in the UI.
          */
         getDisplayName(): string;
 
@@ -10249,13 +10272,13 @@ declare namespace ExcelScript {
         setCaption(caption: string): void;
 
         /**
-         * Represents the height, in points, of the slicer.
+         * Specifies the height, in points, of the slicer.
          * Throws an `InvalidArgument` exception when set with a negative value or zero as an input.
          */
         getHeight(): number;
 
         /**
-         * Represents the height, in points, of the slicer.
+         * Specifies the height, in points, of the slicer.
          * Throws an `InvalidArgument` exception when set with a negative value or zero as an input.
          */
         setHeight(height: number): void;
@@ -10293,22 +10316,26 @@ declare namespace ExcelScript {
         setName(name: string): void;
 
         /**
-         * Represents the sort order of the items in the slicer. Possible values are: "DataSourceOrder", "Ascending", "Descending".
+         * Specifies the sort order of the items in the slicer.
+         * Possible values are: "DataSourceOrder", "Ascending", "Descending".
          */
         getSortBy(): SlicerSortType;
 
         /**
-         * Represents the sort order of the items in the slicer. Possible values are: "DataSourceOrder", "Ascending", "Descending".
+         * Specifies the sort order of the items in the slicer.
+         * Possible values are: "DataSourceOrder", "Ascending", "Descending".
          */
         setSortBy(sortBy: SlicerSortType): void;
 
         /**
-         * Constant value that represents the slicer style. Possible values are: "SlicerStyleLight1" through "SlicerStyleLight6", "TableStyleOther1" through "TableStyleOther2", "SlicerStyleDark1" through "SlicerStyleDark6". A custom user-defined style present in the workbook can also be specified.
+         * Constant value that represents the slicer style.
+         * Possible values are: "SlicerStyleLight1" through "SlicerStyleLight6", "TableStyleOther1" through "TableStyleOther2", "SlicerStyleDark1" through "SlicerStyleDark6". A custom user-defined style present in the workbook can also be specified.
          */
         getStyle(): string;
 
         /**
-         * Constant value that represents the slicer style. Possible values are: "SlicerStyleLight1" through "SlicerStyleLight6", "TableStyleOther1" through "TableStyleOther2", "SlicerStyleDark1" through "SlicerStyleDark6". A custom user-defined style present in the workbook can also be specified.
+         * Constant value that represents the slicer style.
+         * Possible values are: "SlicerStyleLight1" through "SlicerStyleLight6", "TableStyleOther1" through "TableStyleOther2", "SlicerStyleDark1" through "SlicerStyleDark6". A custom user-defined style present in the workbook can also be specified.
          */
         setStyle(style: string): void;
 
@@ -11915,7 +11942,6 @@ declare namespace ExcelScript {
          */
         bubbleSizes,
     }
-
     /**
      * Represents the type of cell control.
      */
@@ -11924,22 +11950,22 @@ declare namespace ExcelScript {
          * Type representing an unknown control.
          * This represents a control that was added in a future version of Excel, and the current version of Excel doesn't know how to display this control.
          */
-        unknown,
+        unknown = "Unknown",
 
         /**
          * Type representing an empty control.
          */
-        empty,
+        empty = "Empty",
 
         /**
          * Type representing a query that results in a mix of control results.
          */
-        mixed,
+        mixed = "Mixed",
 
         /**
          * Type representing a checkbox control.
          */
-        checkbox,
+        checkbox = "Checkbox",
     }
 
     /**
@@ -15192,8 +15218,22 @@ declare namespace ExcelScript {
 declare namespace Global {
     export namespace OfficeScript {
         /**
+         * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
+         * The API has a timeout limit of 30 seconds. This limit is rarely exceeded.
+         * Note: Timeout doesn't necessarily indicate that the API failed. The workbook copy may still be created, but after the timeout limit this API does not return a success or failure message.
+         * @throws ExternalApiTimeout The error thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
+         * @throws InvalidExtensionError The error thrown if the file name doesn't end with ".xlsx".
+         * @throws SaveCopyAsFileMayAlreadyExistError The error thrown if the file name of the copy already exists.
+         * @throws SaveCopyAsFileNotOnOneDriveError The error thrown if the document is not saved to OneDrive.
+         * @param filename The file name of the copied and saved file. The file name must end with ".xlsx".
+         * @beta
+         */
+        function saveCopyAs(filename: string): void;
+
+        /**
          * Return the text encoding of the document as a PDF.
          * If the document is empty, then the following error is shown: "We didn't find anything to print".
+         * Some actions made prior to using this API may not be captured in the PDF in Excel on the web.
          * @returns The content of the workbook as a string, in PDF format.
          * @beta
          */
