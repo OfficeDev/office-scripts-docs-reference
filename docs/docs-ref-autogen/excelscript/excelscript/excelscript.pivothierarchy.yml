@@ -1,0 +1,117 @@
+### YamlMime:TSType
+name: ExcelScript.PivotHierarchy
+uid: ExcelScript!ExcelScript.PivotHierarchy:interface
+package: ExcelScript!
+fullName: ExcelScript.PivotHierarchy
+summary: Represents the Excel PivotHierarchy.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+   * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Create a PivotTable based on a table in the current worksheet.
+    let sheet = workbook.getActiveWorksheet();
+    let table = sheet.getTables()[0];
+
+    // Add the PivotTable to a new worksheet.
+    let newSheet = workbook.addWorksheet("Pivot");
+    let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+    // Add fields to the PivotTable to show "Sales" per "Type".
+    pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+    pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getFields()
+    uid: ExcelScript!ExcelScript.PivotHierarchy#getFields:member(1)
+    package: ExcelScript!
+    fullName: getFields()
+    summary: Returns the PivotFields associated with the PivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFields(): PivotField[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotField:interface" />[]
+        description: ''
+  - name: getId()
+    uid: ExcelScript!ExcelScript.PivotHierarchy#getId:member(1)
+    package: ExcelScript!
+    fullName: getId()
+    summary: ID of the PivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getName()
+    uid: ExcelScript!ExcelScript.PivotHierarchy#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: Name of the PivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getPivotField(name)
+    uid: ExcelScript!ExcelScript.PivotHierarchy#getPivotField:member(1)
+    package: ExcelScript!
+    fullName: getPivotField(name)
+    summary: >-
+      Gets a PivotField by name. If the PivotField does not exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotField(name: string): PivotField | undefined;'
+      parameters:
+        - id: name
+          description: Name of the PivotField to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PivotField:interface" /> |
+          undefined
+        description: ''
+  - name: setName(name)
+    uid: ExcelScript!ExcelScript.PivotHierarchy#setName:member(1)
+    package: ExcelScript!
+    fullName: setName(name)
+    summary: Name of the PivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setName(name: string): void;'
+      parameters:
+        - id: name
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''

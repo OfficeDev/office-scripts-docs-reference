@@ -1,0 +1,786 @@
+### YamlMime:TSType
+name: ExcelScript.PivotTable
+uid: ExcelScript!ExcelScript.PivotTable:interface
+package: ExcelScript!
+fullName: ExcelScript.PivotTable
+summary: Represents an Excel PivotTable.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+   * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Create a PivotTable based on a table in the current worksheet.
+    let sheet = workbook.getActiveWorksheet();
+    let table = sheet.getTables()[0];
+
+    // Add the PivotTable to a new worksheet.
+    let newSheet = workbook.addWorksheet("Pivot");
+    let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+    // Add fields to the PivotTable to show "Sales" per "Type".
+    pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+    pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: addColumnHierarchy(pivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#addColumnHierarchy:member(1)
+    package: ExcelScript!
+    fullName: addColumnHierarchy(pivotHierarchy)
+    summary: >-
+      Adds the PivotHierarchy to the current axis. If the hierarchy is present
+      elsewhere on the row, column, or filter axis, it will be removed from that
+      location.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addColumnHierarchy(
+                    pivotHierarchy: PivotHierarchy
+                ): RowColumnPivotHierarchy;
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a row hierarchy to the PivotTable on the current worksheet.
+           * This assumes the source data has columns named 
+           * "Type", "Classification", and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable on the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let pivotTable = sheet.getPivotTables()[0];
+
+            // Add the field "Type" to the PivotTable as a row hierarchy.
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+
+            // Add the field "Classification" to the PivotTable as a column hierarchy.
+            pivotTable.addColumnHierarchy(pivotTable.getHierarchy("Classification"));
+
+            // Add the field "Sales" to the PivotTable as a data hierarchy.
+            // By default, this displays the sums of the values in "Sales" based on the "Type".
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
+  - name: addDataHierarchy(pivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#addDataHierarchy:member(1)
+    package: ExcelScript!
+    fullName: addDataHierarchy(pivotHierarchy)
+    summary: Adds the PivotHierarchy to the current axis.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addDataHierarchy(pivotHierarchy: PivotHierarchy): DataPivotHierarchy;'
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+           * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+
+            // Add the PivotTable to a new worksheet.
+            let newSheet = workbook.addWorksheet("Pivot");
+            let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
+  - name: addFilterHierarchy(pivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#addFilterHierarchy:member(1)
+    package: ExcelScript!
+    fullName: addFilterHierarchy(pivotHierarchy)
+    summary: >-
+      Adds the PivotHierarchy to the current axis. If the hierarchy is present
+      elsewhere on the row, column, or filter axis, it will be removed from that
+      location.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addFilterHierarchy(
+                    pivotHierarchy: PivotHierarchy
+                ): FilterPivotHierarchy;
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.FilterPivotHierarchy:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a manual filter to a PivotTable. 
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the first PivotTable in the workbook.
+            const pivot = workbook.getPivotTables()[0];
+
+            // Get the hierarchy to use as the filter.
+            const location = pivot.getHierarchy("Location");
+
+            // Use "Location" as the FilterHierarchy.
+            pivot.addFilterHierarchy(location);
+
+            // Select items for the filter.
+            // Note that hierarchies and fields have a 1:1 relationship in Excel,
+            // so `getFields()[0]` always gets the correct field.
+            location.getFields()[0].applyFilter({
+              manualFilter: {
+                selectedItems: ["Seattle", "Chicago"]
+              }
+            });
+          }
+          ```
+  - name: addRowHierarchy(pivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#addRowHierarchy:member(1)
+    package: ExcelScript!
+    fullName: addRowHierarchy(pivotHierarchy)
+    summary: >-
+      Adds the PivotHierarchy to the current axis. If the hierarchy is present
+      elsewhere on the row, column, or filter axis, it will be removed from that
+      location.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addRowHierarchy(
+                    pivotHierarchy: PivotHierarchy
+                ): RowColumnPivotHierarchy;
+      parameters:
+        - id: pivotHierarchy
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to a new worksheet.
+           * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+
+            // Add the PivotTable to a new worksheet.
+            let newSheet = workbook.addWorksheet("Pivot");
+            let pivotTable = newSheet.addPivotTable("My Pivot", table, "A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
+  - name: delete()
+    uid: ExcelScript!ExcelScript.PivotTable#delete:member(1)
+    package: ExcelScript!
+    fullName: delete()
+    summary: Deletes the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getAllowMultipleFiltersPerField()
+    uid: >-
+      ExcelScript!ExcelScript.PivotTable#getAllowMultipleFiltersPerField:member(1)
+    package: ExcelScript!
+    fullName: getAllowMultipleFiltersPerField()
+    summary: >-
+      Specifies if the PivotTable allows the application of multiple
+      PivotFilters on a given PivotField in the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAllowMultipleFiltersPerField(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getColumnHierarchies()
+    uid: ExcelScript!ExcelScript.PivotTable#getColumnHierarchies:member(1)
+    package: ExcelScript!
+    fullName: getColumnHierarchies()
+    summary: The Column Pivot Hierarchies of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnHierarchies(): RowColumnPivotHierarchy[];'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          />[]
+        description: ''
+  - name: getColumnHierarchy(name)
+    uid: ExcelScript!ExcelScript.PivotTable#getColumnHierarchy:member(1)
+    package: ExcelScript!
+    fullName: getColumnHierarchy(name)
+    summary: >-
+      Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy
+      does not exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnHierarchy(name: string): RowColumnPivotHierarchy | undefined;'
+      parameters:
+        - id: name
+          description: Name of the RowColumnPivotHierarchy to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          /> | undefined
+        description: ''
+  - name: getDataHierarchies()
+    uid: ExcelScript!ExcelScript.PivotTable#getDataHierarchies:member(1)
+    package: ExcelScript!
+    fullName: getDataHierarchies()
+    summary: The Data Pivot Hierarchies of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataHierarchies(): DataPivotHierarchy[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />[]
+        description: ''
+  - name: getDataHierarchy(name)
+    uid: ExcelScript!ExcelScript.PivotTable#getDataHierarchy:member(1)
+    package: ExcelScript!
+    fullName: getDataHierarchy(name)
+    summary: >-
+      Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not
+      exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataHierarchy(name: string): DataPivotHierarchy | undefined;'
+      parameters:
+        - id: name
+          description: Name of the DataPivotHierarchy to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" /> |
+          undefined
+        description: ''
+  - name: getDataSourceString()
+    uid: ExcelScript!ExcelScript.PivotTable#getDataSourceString:member(1)
+    package: ExcelScript!
+    fullName: getDataSourceString()
+    summary: >-
+      Returns the string representation of the data source for the PivotTable.
+      This method currently supports string representations for table and range
+      objects. Otherwise, it returns an empty string.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataSourceString(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getDataSourceType()
+    uid: ExcelScript!ExcelScript.PivotTable#getDataSourceType:member(1)
+    package: ExcelScript!
+    fullName: getDataSourceType()
+    summary: Gets the type of the data source for the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataSourceType(): DataSourceType;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataSourceType:enum" />
+        description: ''
+  - name: getEnableDataValueEditing()
+    uid: ExcelScript!ExcelScript.PivotTable#getEnableDataValueEditing:member(1)
+    package: ExcelScript!
+    fullName: getEnableDataValueEditing()
+    summary: >-
+      Specifies if the PivotTable allows values in the data body to be edited by
+      the user.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getEnableDataValueEditing(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getFilterHierarchies()
+    uid: ExcelScript!ExcelScript.PivotTable#getFilterHierarchies:member(1)
+    package: ExcelScript!
+    fullName: getFilterHierarchies()
+    summary: The Filter Pivot Hierarchies of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFilterHierarchies(): FilterPivotHierarchy[];'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.FilterPivotHierarchy:interface"
+          />[]
+        description: ''
+  - name: getFilterHierarchy(name)
+    uid: ExcelScript!ExcelScript.PivotTable#getFilterHierarchy:member(1)
+    package: ExcelScript!
+    fullName: getFilterHierarchy(name)
+    summary: >-
+      Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not
+      exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFilterHierarchy(name: string): FilterPivotHierarchy | undefined;'
+      parameters:
+        - id: name
+          description: Name of the FilterPivotHierarchy to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.FilterPivotHierarchy:interface" />
+          | undefined
+        description: ''
+  - name: getHierarchies()
+    uid: ExcelScript!ExcelScript.PivotTable#getHierarchies:member(1)
+    package: ExcelScript!
+    fullName: getHierarchies()
+    summary: The Pivot Hierarchies of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHierarchies(): PivotHierarchy[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" />[]
+        description: ''
+  - name: getHierarchy(name)
+    uid: ExcelScript!ExcelScript.PivotTable#getHierarchy:member(1)
+    package: ExcelScript!
+    fullName: getHierarchy(name)
+    summary: >-
+      Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, then
+      this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHierarchy(name: string): PivotHierarchy | undefined;'
+      parameters:
+        - id: name
+          description: Name of the PivotHierarchy to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PivotHierarchy:interface" /> |
+          undefined
+        description: ''
+  - name: getId()
+    uid: ExcelScript!ExcelScript.PivotTable#getId:member(1)
+    package: ExcelScript!
+    fullName: getId()
+    summary: ID of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getLayout()
+    uid: ExcelScript!ExcelScript.PivotTable#getLayout:member(1)
+    package: ExcelScript!
+    fullName: getLayout()
+    summary: >-
+      The PivotLayout describing the layout and visual structure of the
+      PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLayout(): PivotLayout;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotLayout:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the layout of the "Farms Sales" PivotTable to the "tabular"
+           * setting. This places the fields from the Rows area in separate columns.
+           */ 
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Sales".
+            const pivot = workbook.getPivotTable("Farm Sales");
+
+            // Get the PivotLayout object.
+            const layout = pivot.getLayout();
+
+            // Set the layout type to "tabular".
+            layout.setLayoutType(ExcelScript.PivotLayoutType.tabular);
+          }
+          ```
+  - name: getName()
+    uid: ExcelScript!ExcelScript.PivotTable#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: Name of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getRowHierarchies()
+    uid: ExcelScript!ExcelScript.PivotTable#getRowHierarchies:member(1)
+    package: ExcelScript!
+    fullName: getRowHierarchies()
+    summary: The Row Pivot Hierarchies of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowHierarchies(): RowColumnPivotHierarchy[];'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          />[]
+        description: ''
+  - name: getRowHierarchy(name)
+    uid: ExcelScript!ExcelScript.PivotTable#getRowHierarchy:member(1)
+    package: ExcelScript!
+    fullName: getRowHierarchy(name)
+    summary: >-
+      Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy
+      does not exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowHierarchy(name: string): RowColumnPivotHierarchy | undefined;'
+      parameters:
+        - id: name
+          description: Name of the RowColumnPivotHierarchy to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface"
+          /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sorts the rows of a PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get an existing PivotTable.
+            const pivotTable = workbook.getPivotTable("Farm Sales");
+
+            // Get the data hierarchy to use as the basis of the sort.
+            const valueFieldToSortOn = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+            // Get the row to sort.
+            const rowToSort = pivotTable.getRowHierarchy("Farm");
+
+            // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+            rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+          }
+          ```
+  - name: getUseCustomSortLists()
+    uid: ExcelScript!ExcelScript.PivotTable#getUseCustomSortLists:member(1)
+    package: ExcelScript!
+    fullName: getUseCustomSortLists()
+    summary: Specifies if the PivotTable uses custom lists when sorting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUseCustomSortLists(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getWorksheet()
+    uid: ExcelScript!ExcelScript.PivotTable#getWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getWorksheet()
+    summary: The worksheet containing the current PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWorksheet(): Worksheet;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: refresh()
+    uid: ExcelScript!ExcelScript.PivotTable#refresh:member(1)
+    package: ExcelScript!
+    fullName: refresh()
+    summary: Refreshes the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refresh(): void;'
+      return:
+        type: void
+        description: ''
+  - name: removeColumnHierarchy(rowColumnPivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#removeColumnHierarchy:member(1)
+    package: ExcelScript!
+    fullName: removeColumnHierarchy(rowColumnPivotHierarchy)
+    summary: Removes the PivotHierarchy from the current axis.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        removeColumnHierarchy(
+                    rowColumnPivotHierarchy: RowColumnPivotHierarchy
+                ): void;
+      parameters:
+        - id: rowColumnPivotHierarchy
+          description: ''
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface" />
+      return:
+        type: void
+        description: ''
+  - name: removeDataHierarchy(DataPivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#removeDataHierarchy:member(1)
+    package: ExcelScript!
+    fullName: removeDataHierarchy(DataPivotHierarchy)
+    summary: Removes the PivotHierarchy from the current axis.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'removeDataHierarchy(DataPivotHierarchy: DataPivotHierarchy): void;'
+      parameters:
+        - id: DataPivotHierarchy
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.DataPivotHierarchy:interface" />
+      return:
+        type: void
+        description: ''
+  - name: removeFilterHierarchy(filterPivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#removeFilterHierarchy:member(1)
+    package: ExcelScript!
+    fullName: removeFilterHierarchy(filterPivotHierarchy)
+    summary: Removes the PivotHierarchy from the current axis.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'removeFilterHierarchy(filterPivotHierarchy: FilterPivotHierarchy): void;'
+      parameters:
+        - id: filterPivotHierarchy
+          description: ''
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.FilterPivotHierarchy:interface"
+            />
+      return:
+        type: void
+        description: ''
+  - name: removeRowHierarchy(rowColumnPivotHierarchy)
+    uid: ExcelScript!ExcelScript.PivotTable#removeRowHierarchy:member(1)
+    package: ExcelScript!
+    fullName: removeRowHierarchy(rowColumnPivotHierarchy)
+    summary: Removes the PivotHierarchy from the current axis.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        removeRowHierarchy(
+                    rowColumnPivotHierarchy: RowColumnPivotHierarchy
+                ): void;
+      parameters:
+        - id: rowColumnPivotHierarchy
+          description: ''
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface" />
+      return:
+        type: void
+        description: ''
+  - name: setAllowMultipleFiltersPerField(allowMultipleFiltersPerField)
+    uid: >-
+      ExcelScript!ExcelScript.PivotTable#setAllowMultipleFiltersPerField:member(1)
+    package: ExcelScript!
+    fullName: setAllowMultipleFiltersPerField(allowMultipleFiltersPerField)
+    summary: >-
+      Specifies if the PivotTable allows the application of multiple
+      PivotFilters on a given PivotField in the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        setAllowMultipleFiltersPerField(
+                    allowMultipleFiltersPerField: boolean
+                ): void;
+      parameters:
+        - id: allowMultipleFiltersPerField
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setEnableDataValueEditing(enableDataValueEditing)
+    uid: ExcelScript!ExcelScript.PivotTable#setEnableDataValueEditing:member(1)
+    package: ExcelScript!
+    fullName: setEnableDataValueEditing(enableDataValueEditing)
+    summary: >-
+      Specifies if the PivotTable allows values in the data body to be edited by
+      the user.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setEnableDataValueEditing(enableDataValueEditing: boolean): void;'
+      parameters:
+        - id: enableDataValueEditing
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setName(name)
+    uid: ExcelScript!ExcelScript.PivotTable#setName:member(1)
+    package: ExcelScript!
+    fullName: setName(name)
+    summary: Name of the PivotTable.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setName(name: string): void;'
+      parameters:
+        - id: name
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setUseCustomSortLists(useCustomSortLists)
+    uid: ExcelScript!ExcelScript.PivotTable#setUseCustomSortLists:member(1)
+    package: ExcelScript!
+    fullName: setUseCustomSortLists(useCustomSortLists)
+    summary: Specifies if the PivotTable uses custom lists when sorting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setUseCustomSortLists(useCustomSortLists: boolean): void;'
+      parameters:
+        - id: useCustomSortLists
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''

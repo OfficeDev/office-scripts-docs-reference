@@ -27,11 +27,16 @@ npm run build
 node preprocessor.js
 popd
 
-pushd api-extractor-inputs-excel
+pushd api-extractor-inputs-excelscript
 ../node_modules/.bin/api-extractor run
 popd
 
-./node_modules/.bin/api-documenter yaml --input-folder ./json/excel --output-folder ./yaml/excel --office
+pushd api-extractor-inputs-officescript
+../node_modules/.bin/api-extractor run
+popd
+
+./node_modules/.bin/api-documenter yaml --input-folder ./json/excelscript --output-folder ./yaml/excelscript --office
+./node_modules/.bin/api-documenter yaml --input-folder ./json/officescript --output-folder ./yaml/officescript --office
 
 pushd scripts
 node postprocessor.js

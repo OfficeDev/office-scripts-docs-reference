@@ -1,0 +1,186 @@
+### YamlMime:TSType
+name: ExcelScript.DatetimeFormatInfo
+uid: ExcelScript!ExcelScript.DatetimeFormatInfo:interface
+package: ExcelScript!
+fullName: ExcelScript.DatetimeFormatInfo
+summary: >-
+  Defines the culturally appropriate format of displaying numbers. This is based
+  on current system culture settings.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the value of a cell to a date string for January 2, 2023.
+   * It writes the day or month first in the string based on system settings.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first cell in the current worksheet.
+    const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+    // Get the date format.
+    const cultureInfo : ExcelScript.CultureInfo = workbook.getApplication().getCultureInfo();
+    const systemDateTimeFormat : ExcelScript.DatetimeFormatInfo = cultureInfo.getDatetimeFormat();
+    const shortDatePattern : string = systemDateTimeFormat.getShortDatePattern();
+
+    // Determine if the date should start with the month or day.
+    if (shortDatePattern.startsWith("m")) {
+      cell.setValue("1/2/2023");
+    } else {
+      cell.setValue("2/1/2023");
+    }
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getDateSeparator()
+    uid: ExcelScript!ExcelScript.DatetimeFormatInfo#getDateSeparator:member(1)
+    package: ExcelScript!
+    fullName: getDateSeparator()
+    summary: >-
+      Gets the string used as the date separator. This is based on current
+      system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDateSeparator(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script writes the current date, month, and year.
+           * It uses the system's date separator character.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first cell in the current worksheet.
+            const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+            // Get the date separation string.
+            const cultureInfo = workbook.getApplication().getCultureInfo();
+            const systemDateTimeFormat = cultureInfo.getDatetimeFormat();
+            const separator = systemDateTimeFormat.getDateSeparator();
+
+            // Get the current date.
+            const currentDate = new Date(Date.now());
+
+            // Write the date using the system's separator character.
+            cell.setValue(`${currentDate.getMonth()}${separator}${currentDate.getDate()}${separator}${currentDate.getFullYear()}`);
+          }
+          ```
+  - name: getLongDatePattern()
+    uid: ExcelScript!ExcelScript.DatetimeFormatInfo#getLongDatePattern:member(1)
+    package: ExcelScript!
+    fullName: getLongDatePattern()
+    summary: >-
+      Gets the format string for a long date value. This is based on current
+      system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLongDatePattern(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script returns the system's long date pattern. 
+           * This could be used in a Power Automate flow to keep date formatting consistent.
+           */
+          function main(workbook: ExcelScript.Workbook) : string {
+              const cultureInfo = workbook.getApplication().getCultureInfo();
+              const dateTimeInfo =  cultureInfo.getDatetimeFormat();
+              
+              return dateTimeInfo.getLongDatePattern();
+          }
+          ```
+  - name: getLongTimePattern()
+    uid: ExcelScript!ExcelScript.DatetimeFormatInfo#getLongTimePattern:member(1)
+    package: ExcelScript!
+    fullName: getLongTimePattern()
+    summary: >-
+      Gets the format string for a long time value. This is based on current
+      system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLongTimePattern(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getShortDatePattern()
+    uid: ExcelScript!ExcelScript.DatetimeFormatInfo#getShortDatePattern:member(1)
+    package: ExcelScript!
+    fullName: getShortDatePattern()
+    summary: >-
+      Gets the format string for a short date value. This is based on current
+      system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShortDatePattern(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getTimeSeparator()
+    uid: ExcelScript!ExcelScript.DatetimeFormatInfo#getTimeSeparator:member(1)
+    package: ExcelScript!
+    fullName: getTimeSeparator()
+    summary: >-
+      Gets the string used as the time separator. This is based on current
+      system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTimeSeparator(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script writes the current hour, minute, and second.
+           * It uses the system's time separator character.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first cell in the current worksheet.
+            const cell = workbook.getActiveWorksheet().getCell(0, 0);
+
+            // Get the date separation string.
+            const cultureInfo = workbook.getApplication().getCultureInfo();
+            const systemDateTimeFormat = cultureInfo.getDatetimeFormat();
+            const separator = systemDateTimeFormat.getTimeSeparator();
+
+            // Get the current time.
+            const currentTime = new Date(Date.now());
+
+            // Write the date using the system's separator character.
+            cell.setValue(`${currentTime.getHours()}${separator}${currentTime.getMinutes()}${separator}${currentTime.getSeconds()}`);
+          }
+          ```

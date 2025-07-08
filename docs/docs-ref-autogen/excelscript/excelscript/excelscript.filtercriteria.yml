@@ -1,0 +1,172 @@
+### YamlMime:TSType
+name: ExcelScript.FilterCriteria
+uid: ExcelScript!ExcelScript.FilterCriteria:interface
+package: ExcelScript!
+fullName: ExcelScript.FilterCriteria
+summary: Represents the filtering criteria applied to a column.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: color
+    uid: ExcelScript!ExcelScript.FilterCriteria#color:member
+    package: ExcelScript!
+    fullName: color
+    summary: >-
+      The HTML color string used to filter cells. Used with `cellColor` and
+      `fontColor` filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'color?: string;'
+      return:
+        type: string
+  - name: criterion1
+    uid: ExcelScript!ExcelScript.FilterCriteria#criterion1:member
+    package: ExcelScript!
+    fullName: criterion1
+    summary: >-
+      The first criterion used to filter data. Used as an operator in the case
+      of `custom` filtering. For example "<!-- -->&gt;<!-- -->50" for numbers
+      greater than 50, or "=*s" for values ending in "s".
+
+
+      Used as a number in the case of top/bottom items/percents (e.g., "5" for
+      the top 5 items if `filterOn` is set to `topItems`<!-- -->).
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'criterion1?: string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates an autoFilter on the worksheet that filters out rows based on column values. 
+           * The autoFilter filters to only include rows that have a value in column C in the lowest 10 values 
+           * (of column C values).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const dataRange = currentSheet.getUsedRange();
+
+            // Add a filter that will only show the rows with the lowest 10 values in column C
+            // (index 2, assuming the used range spans from at least A:C).
+            const filterCriteria: ExcelScript.FilterCriteria = {
+              criterion1: "10",
+              filterOn: ExcelScript.FilterOn.bottomItems
+            };
+            currentSheet.getAutoFilter().apply(dataRange, 2, filterCriteria);
+          }
+          ```
+  - name: criterion2
+    uid: ExcelScript!ExcelScript.FilterCriteria#criterion2:member
+    package: ExcelScript!
+    fullName: criterion2
+    summary: >-
+      The second criterion used to filter data. Only used as an operator in the
+      case of `custom` filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'criterion2?: string;'
+      return:
+        type: string
+  - name: dynamicCriteria
+    uid: ExcelScript!ExcelScript.FilterCriteria#dynamicCriteria:member
+    package: ExcelScript!
+    fullName: dynamicCriteria
+    summary: >-
+      The dynamic criteria from the `ExcelScript.DynamicFilterCriteria` set to
+      apply on this column. Used with `dynamic` filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'dynamicCriteria?: DynamicFilterCriteria;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DynamicFilterCriteria:enum" />
+  - name: filterOn
+    uid: ExcelScript!ExcelScript.FilterCriteria#filterOn:member
+    package: ExcelScript!
+    fullName: filterOn
+    summary: >-
+      The property used by the filter to determine whether the values should
+      stay visible.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'filterOn: FilterOn;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.FilterOn:enum" />
+  - name: icon
+    uid: ExcelScript!ExcelScript.FilterCriteria#icon:member
+    package: ExcelScript!
+    fullName: icon
+    summary: The icon used to filter cells. Used with `icon` filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'icon?: Icon;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Icon:interface" />
+  - name: operator
+    uid: ExcelScript!ExcelScript.FilterCriteria#operator:member
+    package: ExcelScript!
+    fullName: operator
+    summary: >-
+      The operator used to combine criterion 1 and 2 when using `custom`
+      filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'operator?: FilterOperator;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.FilterOperator:enum" />
+  - name: subField
+    uid: ExcelScript!ExcelScript.FilterCriteria#subField:member
+    package: ExcelScript!
+    fullName: subField
+    summary: The property used by the filter to do a rich filter on rich values.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'subField?: string;'
+      return:
+        type: string
+  - name: values
+    uid: ExcelScript!ExcelScript.FilterCriteria#values:member
+    package: ExcelScript!
+    fullName: values
+    summary: The set of values to be used as part of `values` filtering.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'values?: Array<string | FilterDatetime>;'
+      return:
+        type: >-
+          Array&lt;string | <xref
+          uid="ExcelScript!ExcelScript.FilterDatetime:interface" />&gt;

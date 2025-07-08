@@ -1,0 +1,216 @@
+### YamlMime:TSType
+name: ExcelScript.DataValidationRule
+uid: ExcelScript!ExcelScript.DataValidationRule:interface
+package: ExcelScript!
+fullName: ExcelScript.DataValidationRule
+summary: >-
+  A data validation rule contains different types of data validation. You can
+  only use one of them at a time according the
+  `ExcelScript.DataValidationType`<!-- -->.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: custom
+    uid: ExcelScript!ExcelScript.DataValidationRule#custom:member
+    package: ExcelScript!
+    fullName: custom
+    summary: Custom data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'custom?: CustomDataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CustomDataValidation:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds data validation to a range.
+           * The validation prevents duplicate entries within that range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range "B2:B20".
+            const sheet = workbook.getActiveWorksheet();
+            const range = sheet.getRange("B2:B20");
+
+            // Set data validation on the range to prevent duplicate, non-blank entries.
+            const dataValidation = range.getDataValidation();
+            dataValidation.setIgnoreBlanks(true);
+            const duplicateRule : ExcelScript.CustomDataValidation = { 
+              formula: "=COUNTIF($B$2:$B$20, B2)=1"
+            };
+            dataValidation.setRule({
+              custom: duplicateRule
+            });
+          }
+          ```
+  - name: date
+    uid: ExcelScript!ExcelScript.DataValidationRule#date:member
+    package: ExcelScript!
+    fullName: date
+    summary: Date data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'date?: DateTimeDataValidation;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.DateTimeDataValidation:interface"
+          />
+  - name: decimal
+    uid: ExcelScript!ExcelScript.DataValidationRule#decimal:member
+    package: ExcelScript!
+    fullName: decimal
+    summary: Decimal data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'decimal?: BasicDataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.BasicDataValidation:interface" />
+  - name: list
+    uid: ExcelScript!ExcelScript.DataValidationRule#list:member
+    package: ExcelScript!
+    fullName: list
+    summary: List data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'list?: ListDataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ListDataValidation:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a dropdown selection list for a cell.
+           * It uses the existing values of the selected range as the choices for the list.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the values for data validation.
+              const selectedRange = workbook.getSelectedRange();
+              const rangeValues = selectedRange.getValues();
+
+              // Convert the values into a comma-delimited string.
+              let dataValidationListString = "";
+              rangeValues.forEach((rangeValueRow) => {
+                  rangeValueRow.forEach((value) => {
+                      dataValidationListString += value + ",";
+                  });
+              });
+
+              // Clear the old range.
+              selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+              // Apply the data validation to the first cell in the selected range.
+              const targetCell = selectedRange.getCell(0, 0);
+              const dataValidation = targetCell.getDataValidation();
+
+              // Set the content of the dropdown list.
+              let validationCriteria : ExcelScript.ListDataValidation = {
+                  inCellDropDown: true,
+                  source: dataValidationListString
+              };
+              let validationRule: ExcelScript.DataValidationRule = {
+                  list: validationCriteria
+              };
+              dataValidation.setRule(validationRule);
+          }
+          ```
+  - name: textLength
+    uid: ExcelScript!ExcelScript.DataValidationRule#textLength:member
+    package: ExcelScript!
+    fullName: textLength
+    summary: Text length data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'textLength?: BasicDataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.BasicDataValidation:interface" />
+  - name: time
+    uid: ExcelScript!ExcelScript.DataValidationRule#time:member
+    package: ExcelScript!
+    fullName: time
+    summary: Time data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'time?: DateTimeDataValidation;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.DateTimeDataValidation:interface"
+          />
+  - name: wholeNumber
+    uid: ExcelScript!ExcelScript.DataValidationRule#wholeNumber:member
+    package: ExcelScript!
+    fullName: wholeNumber
+    summary: Whole number data validation criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'wholeNumber?: BasicDataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.BasicDataValidation:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a data validation rule for the range B1:B5.
+           * All values in that range must be a positive number.
+           * Attempts to enter other values are blocked and an error message appears.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range B1:B5 in the active worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+            // Create a data validation rule to only allow positive numbers.
+            const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+              formula1: "0",
+              operator: ExcelScript.DataValidationOperator.greaterThan
+            };
+            const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+              wholeNumber: positiveNumberValidation
+            };
+
+            // Set the rule on the range.
+            const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+            rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+            // Create an alert to appear when data other than positive numbers are entered.
+            const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+              message: "Positive numbers only",
+              showAlert: true,
+              style: ExcelScript.DataValidationAlertStyle.stop,
+              title: "Invalid data"
+            };
+            rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+          }
+          ```

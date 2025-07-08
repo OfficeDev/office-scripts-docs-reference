@@ -1,0 +1,68 @@
+### YamlMime:TSType
+name: ExcelScript.ConditionalTopBottomRule
+uid: ExcelScript!ExcelScript.ConditionalTopBottomRule:interface
+package: ExcelScript!
+fullName: ExcelScript.ConditionalTopBottomRule
+summary: Represents the rule of the top/bottom conditional format.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample applies conditional formatting to the currently used range in the worksheet. 
+   * The conditional formatting is a pink fill for the 5 lowest values.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current worksheet.
+    let selectedSheet = workbook.getActiveWorksheet();
+
+    // Get the used range in the worksheet.
+    let range = selectedSheet.getUsedRange();
+
+    // Set the fill color to pink for the lowest 5 values in the range.
+    let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+    conditionalFormat.getTopBottom().getFormat().getFill().setColor("pink");
+    conditionalFormat.getTopBottom().setRule({
+      rank: 5, /* The numerical threshold. */
+      type: ExcelScript.ConditionalTopBottomCriterionType.bottomItems /* The type of the top/bottom condition. */
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: rank
+    uid: ExcelScript!ExcelScript.ConditionalTopBottomRule#rank:member
+    package: ExcelScript!
+    fullName: rank
+    summary: >-
+      The rank between 1 and 1000 for numeric ranks or 1 and 100 for percent
+      ranks.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'rank: number;'
+      return:
+        type: number
+  - name: type
+    uid: ExcelScript!ExcelScript.ConditionalTopBottomRule#type:member
+    package: ExcelScript!
+    fullName: type
+    summary: Format values based on the top or bottom rank.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'type: ConditionalTopBottomCriterionType;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.ConditionalTopBottomCriterionType:enum"
+          />
