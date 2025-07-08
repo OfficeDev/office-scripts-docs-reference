@@ -1,0 +1,305 @@
+### YamlMime:TSType
+name: ExcelScript.DataValidation
+uid: ExcelScript!ExcelScript.DataValidation:interface
+package: ExcelScript!
+fullName: ExcelScript.DataValidation
+summary: Represents the data validation applied to the current range.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: clear()
+    uid: ExcelScript!ExcelScript.DataValidation#clear:member(1)
+    package: ExcelScript!
+    fullName: clear()
+    summary: Clears the data validation from the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getErrorAlert()
+    uid: ExcelScript!ExcelScript.DataValidation#getErrorAlert:member(1)
+    package: ExcelScript!
+    fullName: getErrorAlert()
+    summary: Error alert when user enters invalid data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getErrorAlert(): DataValidationErrorAlert;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.DataValidationErrorAlert:interface"
+          />
+        description: ''
+  - name: getIgnoreBlanks()
+    uid: ExcelScript!ExcelScript.DataValidation#getIgnoreBlanks:member(1)
+    package: ExcelScript!
+    fullName: getIgnoreBlanks()
+    summary: >-
+      Specifies if data validation will be performed on blank cells. Default is
+      `true`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIgnoreBlanks(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getInvalidCells()
+    uid: ExcelScript!ExcelScript.DataValidation#getInvalidCells:member(1)
+    package: ExcelScript!
+    fullName: getInvalidCells()
+    summary: >-
+      Returns a `RangeAreas` object, comprising one or more rectangular ranges,
+      with invalid cell values. If all cell values are valid, this function will
+      return `null`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getInvalidCells(): RangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
+        description: ''
+  - name: getPrompt()
+    uid: ExcelScript!ExcelScript.DataValidation#getPrompt:member(1)
+    package: ExcelScript!
+    fullName: getPrompt()
+    summary: Prompt when users select a cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPrompt(): DataValidationPrompt;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataValidationPrompt:interface" />
+        description: ''
+  - name: getRule()
+    uid: ExcelScript!ExcelScript.DataValidation#getRule:member(1)
+    package: ExcelScript!
+    fullName: getRule()
+    summary: >-
+      Data validation rule that contains different type of data validation
+      criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRule(): DataValidationRule;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataValidationRule:interface" />
+        description: ''
+  - name: getType()
+    uid: ExcelScript!ExcelScript.DataValidation#getType:member(1)
+    package: ExcelScript!
+    fullName: getType()
+    summary: >-
+      Type of the data validation, see `ExcelScript.DataValidationType` for
+      details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getType(): DataValidationType;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataValidationType:enum" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample reads and logs the data validation type of the currently selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the currently selected range.
+            let range = workbook.getSelectedRange();
+
+            // Get the type (`DataValidationType`) of data validation applied to the range.
+            let validationType = range.getDataValidation().getType();
+
+            /*
+             * Log the data validation type.
+             * If the range has a single value, it logs that type.
+             * If the range doesn't have data validation applied, it logs "None".
+             * If the range has multiple different types of data validation, it logs "Inconsistent" or "MixedCriteria".
+             */
+            console.log(validationType.toString());
+          }
+          ```
+  - name: getValid()
+    uid: ExcelScript!ExcelScript.DataValidation#getValid:member(1)
+    package: ExcelScript!
+    fullName: getValid()
+    summary: >-
+      Represents if all cell values are valid according to the data validation
+      rules. Returns `true` if all cell values are valid, or `false` if all cell
+      values are invalid. Returns `null` if there are both valid and invalid
+      cell values within the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getValid(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: setErrorAlert(errorAlert)
+    uid: ExcelScript!ExcelScript.DataValidation#setErrorAlert:member(1)
+    package: ExcelScript!
+    fullName: setErrorAlert(errorAlert)
+    summary: Error alert when user enters invalid data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setErrorAlert(errorAlert: DataValidationErrorAlert): void;'
+      parameters:
+        - id: errorAlert
+          description: ''
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.DataValidationErrorAlert:interface" />
+      return:
+        type: void
+        description: ''
+  - name: setIgnoreBlanks(ignoreBlanks)
+    uid: ExcelScript!ExcelScript.DataValidation#setIgnoreBlanks:member(1)
+    package: ExcelScript!
+    fullName: setIgnoreBlanks(ignoreBlanks)
+    summary: >-
+      Specifies if data validation will be performed on blank cells. Default is
+      `true`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setIgnoreBlanks(ignoreBlanks: boolean): void;'
+      parameters:
+        - id: ignoreBlanks
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setPrompt(prompt)
+    uid: ExcelScript!ExcelScript.DataValidation#setPrompt:member(1)
+    package: ExcelScript!
+    fullName: setPrompt(prompt)
+    summary: Prompt when users select a cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setPrompt(prompt: DataValidationPrompt): void;'
+      parameters:
+        - id: prompt
+          description: ''
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.DataValidationPrompt:interface"
+            />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a text prompt that's shown in C2:C8 when a user enters the cell.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the data validation object for C2:C8 in the current worksheet.
+              let selectedSheet = workbook.getActiveWorksheet();
+              let dataValidation = selectedSheet.getRange("C2:C8").getDataValidation();
+
+              // Clear any previous validation to avoid conflicts.
+              dataValidation.clear();
+
+              // Create a prompt to remind users to only enter first names in this column.
+              dataValidation.setPrompt({ 
+                  showPrompt: true, 
+                  title: "First names only", 
+                  message: "Only enter the first name of the employee, not the full name." 
+              });
+          }    
+          ```
+  - name: setRule(rule)
+    uid: ExcelScript!ExcelScript.DataValidation#setRule:member(1)
+    package: ExcelScript!
+    fullName: setRule(rule)
+    summary: >-
+      Data validation rule that contains different type of data validation
+      criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRule(rule: DataValidationRule): void;'
+      parameters:
+        - id: rule
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.DataValidationRule:interface" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a data validation rule for the range B1:B5.
+           * All values in that range must be a positive number.
+           * Attempts to enter other values are blocked and an error message appears.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range B1:B5 in the active worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+            // Create a data validation rule to only allow positive numbers.
+            const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+              formula1: "0",
+              operator: ExcelScript.DataValidationOperator.greaterThan
+            };
+            const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+              wholeNumber: positiveNumberValidation
+            };
+
+            // Set the rule on the range.
+            const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+            rangeDataValidation.setRule(positiveNumberOnlyRule);
+
+            // Create an alert to appear when data other than positive numbers are entered.
+            const positiveNumberOnlyAlert: ExcelScript.DataValidationErrorAlert = {
+              message: "Positive numbers only",
+              showAlert: true,
+              style: ExcelScript.DataValidationAlertStyle.stop,
+              title: "Invalid data"
+            };
+            rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
+          }
+          ```

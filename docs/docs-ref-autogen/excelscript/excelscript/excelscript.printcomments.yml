@@ -1,0 +1,43 @@
+### YamlMime:TSEnum
+name: ExcelScript.PrintComments
+uid: ExcelScript!ExcelScript.PrintComments:enum
+package: ExcelScript!
+fullName: ExcelScript.PrintComments
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script makes the comments print at the end of the worksheet
+   * when the workbook is printed.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Access every worksheet in the workbook.
+    workbook.getWorksheets().forEach(worksheet => {
+      // Get the page layout for each sheet.
+      const layout = worksheet.getPageLayout();
+
+      // Change the comment printing settings to print them at the end of the sheet.
+      layout.setPrintComments(ExcelScript.PrintComments.endSheet);
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: endSheet
+    uid: ExcelScript!ExcelScript.PrintComments.endSheet:member
+    package: ExcelScript!
+    summary: Comments will be printed as end notes at the end of the worksheet.
+  - name: inPlace
+    uid: ExcelScript!ExcelScript.PrintComments.inPlace:member
+    package: ExcelScript!
+    summary: Comments will be printed where they were inserted in the worksheet.
+  - name: noComments
+    uid: ExcelScript!ExcelScript.PrintComments.noComments:member
+    package: ExcelScript!
+    summary: Comments will not be printed.

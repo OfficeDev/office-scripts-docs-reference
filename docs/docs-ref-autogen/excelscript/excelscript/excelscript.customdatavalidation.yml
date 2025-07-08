@@ -1,0 +1,52 @@
+### YamlMime:TSType
+name: ExcelScript.CustomDataValidation
+uid: ExcelScript!ExcelScript.CustomDataValidation:interface
+package: ExcelScript!
+fullName: ExcelScript.CustomDataValidation
+summary: Represents the custom data validation criteria.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds data validation to a range.
+   * The validation prevents duplicate entries within that range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range "B2:B20".
+    const sheet = workbook.getActiveWorksheet();
+    const range = sheet.getRange("B2:B20");
+
+    // Set data validation on the range to prevent duplicate, non-blank entries.
+    const dataValidation = range.getDataValidation();
+    dataValidation.setIgnoreBlanks(true);
+    const duplicateRule : ExcelScript.CustomDataValidation = { 
+      formula: "=COUNTIF($B$2:$B$20, B2)=1"
+    };
+    dataValidation.setRule({
+      custom: duplicateRule
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: formula
+    uid: ExcelScript!ExcelScript.CustomDataValidation#formula:member
+    package: ExcelScript!
+    fullName: formula
+    summary: >-
+      A custom data validation formula. This creates special input rules, such
+      as preventing duplicates, or limiting the total in a range of cells.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'formula: string;'
+      return:
+        type: string

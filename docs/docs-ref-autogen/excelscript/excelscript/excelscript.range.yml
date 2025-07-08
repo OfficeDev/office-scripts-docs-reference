@@ -1,0 +1,3319 @@
+### YamlMime:TSType
+name: ExcelScript.Range
+uid: ExcelScript!ExcelScript.Range:interface
+package: ExcelScript!
+fullName: ExcelScript.Range
+summary: >-
+  Range represents a set of one or more contiguous cells such as a cell, a row,
+  a column, or a block of cells.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script logs the address of the used range in the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current, active worksheet.
+    let currentWorksheet = workbook.getActiveWorksheet();
+
+    // Get the range containing all the cells with data or formatting.
+    let usedRange = currentWorksheet.getUsedRange();
+
+    // Log the range's address to the console.
+    console.log(usedRange.getAddress());
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: addConditionalFormat(type)
+    uid: ExcelScript!ExcelScript.Range#addConditionalFormat:member(1)
+    package: ExcelScript!
+    fullName: addConditionalFormat(type)
+    summary: Adds a new conditional format to the collection at the first/top priority.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addConditionalFormat(type: ConditionalFormatType): ConditionalFormat;'
+      parameters:
+        - id: type
+          description: >-
+            The type of conditional format being added. See
+            `ExcelScript.ConditionalFormatType` for details.
+          type: <xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample applies conditional formatting to the currently used range in the worksheet. 
+           * The conditional formatting is a green fill for the top 10% of values.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the used range in the worksheet.
+            let range = selectedSheet.getUsedRange();
+
+            // Set the fill color to green for the top 10% of values in the range.
+            let conditionalFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.topBottom)
+            conditionalFormat.getTopBottom().getFormat().getFill().setColor("green");
+            conditionalFormat.getTopBottom().setRule({
+              rank: 10, // The percentage threshold.
+              type: ExcelScript.ConditionalTopBottomCriterionType.topPercent // The type of the top/bottom condition.
+            });
+          }
+          ```
+  - name: autoFill(destinationRange, autoFillType)
+    uid: ExcelScript!ExcelScript.Range#autoFill:member(1)
+    package: ExcelScript!
+    fullName: autoFill(destinationRange, autoFillType)
+    summary: >-
+      Fills a range from the current range to the destination range using the
+      specified AutoFill logic. The destination range can be `null` or can
+      extend the source range either horizontally or vertically. Discontiguous
+      ranges are not supported.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        autoFill(
+                    destinationRange?: Range | string,
+                    autoFillType?: AutoFillType
+                ): void;
+      parameters:
+        - id: destinationRange
+          description: >-
+            The destination range to AutoFill. If the destination range is
+            `null`<!-- -->, data is filled out based on the surrounding cells
+            (which is the behavior when double-clicking the UI's range fill
+            handle).
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+        - id: autoFillType
+          description: >-
+            The type of AutoFill. Specifies how the destination range is to be
+            filled, based on the contents of the current range. Default is
+            "FillDefault".
+          type: <xref uid="ExcelScript!ExcelScript.AutoFillType:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the autofill feature to complete a table.
+           * See https://support.microsoft.com/office/74e31bdd-d993-45da-aa82-35a236c5b5db
+           * for examples of autofill scenarios.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current, active worksheet.
+            let currentWorksheet = workbook.getActiveWorksheet();
+
+            // Get the data range that shows the pattern.
+            let dataRange = currentWorksheet.getRange("C2:C3");
+
+            // Autofill the connected range. C2:C3 are filled in. C4:C14 are blank.
+            // This uses the default behavior to match a pattern with the table's contents.
+            dataRange.autoFill("C2:C14");
+          }
+          ```
+  - name: calculate()
+    uid: ExcelScript!ExcelScript.Range#calculate:member(1)
+    package: ExcelScript!
+    fullName: calculate()
+    summary: Calculates a range of cells on a worksheet.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'calculate(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script recalculates the used range of a specific worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Only recalculate if the calculation mode is not set to automatic.
+            if (workbook.getApplication().getCalculationMode() !== ExcelScript.CalculationMode.automatic) {
+              // Get the used range from a worksheet named "Monthly Report".
+              const sheet = workbook.getWorksheet("Monthly Report");
+              const range = sheet.getUsedRange();
+              console.log(`Calculating ${range.getAddress()}`);
+
+              // Force all the used cells in that worksheet to calculate.
+              sheet.getUsedRange().calculate();
+            }
+          }
+          ```
+  - name: clear(applyTo)
+    uid: ExcelScript!ExcelScript.Range#clear:member(1)
+    package: ExcelScript!
+    fullName: clear(applyTo)
+    summary: Clear range values and formatting, such as fill and border.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clear(applyTo?: ClearApplyTo): void;'
+      parameters:
+        - id: applyTo
+          description: >-
+            Optional. Determines the type of clear action. See
+            `ExcelScript.ClearApplyTo` for details.
+          type: <xref uid="ExcelScript!ExcelScript.ClearApplyTo:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes all the formatting from the selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected range.
+            let range = workbook.getSelectedRange();
+
+            // Clear all the formatting in that range.
+            range.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
+  - name: clearAllConditionalFormats()
+    uid: ExcelScript!ExcelScript.Range#clearAllConditionalFormats:member(1)
+    package: ExcelScript!
+    fullName: clearAllConditionalFormats()
+    summary: Clears all conditional formats active on the current specified range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clearAllConditionalFormats(): void;'
+      return:
+        type: void
+        description: ''
+  - name: clearOrResetContents()
+    uid: ExcelScript!ExcelScript.Range#clearOrResetContents:member(1)
+    package: ExcelScript!
+    fullName: clearOrResetContents()
+    summary: >-
+      Clears the values of the cells in the range, with special consideration
+      given to cells containing controls. If the range contains only blank
+      values and controls set to their default value, then the values and
+      control formatting are removed. Otherwise, this sets the cells with
+      controls to their default value and clears the values of the other cells
+      in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clearOrResetContents(): void;'
+      return:
+        type: void
+        description: ''
+  - name: convertDataTypeToText()
+    uid: ExcelScript!ExcelScript.Range#convertDataTypeToText:member(1)
+    package: ExcelScript!
+    fullName: convertDataTypeToText()
+    summary: Converts the range cells with data types into text.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'convertDataTypeToText(): void;'
+      return:
+        type: void
+        description: ''
+  - name: copyFrom(sourceRange, copyType, skipBlanks, transpose)
+    uid: ExcelScript!ExcelScript.Range#copyFrom:member(1)
+    package: ExcelScript!
+    fullName: copyFrom(sourceRange, copyType, skipBlanks, transpose)
+    summary: >-
+      Copies cell data or formatting from the source range or `RangeAreas` to
+      the current range. The destination range can be a different size than the
+      source range or `RangeAreas`<!-- -->. The destination is expanded
+      automatically if it's smaller than the source. Note: Like the copy
+      functionality in the Excel UI, if the destination range is an exact
+      multiple greater than the source range in either rows or columns, then the
+      source content is replicated multiple times. For example, a 2x2 range copy
+      into a 2x6 range will result in 3 copies of the original 2x2 range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        copyFrom(
+                    sourceRange: Range | RangeAreas | string,
+                    copyType?: RangeCopyType,
+                    skipBlanks?: boolean,
+                    transpose?: boolean
+                ): void;
+      parameters:
+        - id: sourceRange
+          description: >-
+            The source range or `RangeAreas` to copy from. When the source
+            `RangeAreas` has multiple ranges, their form must be able to be
+            created by removing full rows or columns from a rectangular range.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
+        - id: copyType
+          description: The type of cell data or formatting to copy over. Default is "All".
+          type: <xref uid="ExcelScript!ExcelScript.RangeCopyType:enum" />
+        - id: skipBlanks
+          description: True if to skip blank cells in the source range. Default is false.
+          type: boolean
+        - id: transpose
+          description: >-
+            True if to transpose the cells in the destination range. Default is
+            false.
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script copies a table from one worksheet to a new worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the worksheet named "TableTemplate".
+            let base = workbook.getWorksheet("TableTemplate");
+            
+            // Get the range to be copied based on the first table.
+            let tableRange = base.getTables()[0].getRange();
+
+            // Get the area in a new worksheet for the new table.
+            let newWorksheet = workbook.addWorksheet();
+            let newRange = newWorksheet.getRangeByIndexes(0,0, tableRange.getRowCount(), tableRange.getColumnCount());
+
+            // Copy the existing data into the new range.
+            newRange.copyFrom(tableRange);
+          }
+          ```
+  - name: delete(shift)
+    uid: ExcelScript!ExcelScript.Range#delete:member(1)
+    package: ExcelScript!
+    fullName: delete(shift)
+    summary: Deletes the cells associated with the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(shift: DeleteShiftDirection): void;'
+      parameters:
+        - id: shift
+          description: >-
+            Specifies which way to shift the cells. See
+            `ExcelScript.DeleteShiftDirection` for details.
+          type: <xref uid="ExcelScript!ExcelScript.DeleteShiftDirection:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample creates a sample range, then deletes
+           * "A1" using different DeleteShiftDirection values.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Add sample data to better visualize the delete changes.
+            const currentSheet = workbook.getActiveWorksheet();
+            currentSheet.getRange("A1:D4").setValues([
+              [1,2,3,4],
+              [5,6,7,8],
+              [9,10,11,12],
+              [13,14,15,16]]);
+
+            // Delete A1 and shift the cells from the right to fill the space.
+            // The value being deleted is 1.
+            currentSheet.getRange("A1").delete(ExcelScript.DeleteShiftDirection.left);
+
+            // Delete A1 and shift the cells from the bottom to fill the space.
+            // The value being deleted is 2.
+            currentSheet.getRange("A1").delete(ExcelScript.DeleteShiftDirection.up);
+
+            // Log the sample range. The values should be:
+            /*
+              5, 3, 4, "",
+              9, 6, 7, 8,
+              13, 10, 11, 12,
+              "", 14, 15, 16
+            */
+            console.log(currentSheet.getRange("A1:D4").getValues()); 
+          }
+          ```
+  - name: find(text, criteria)
+    uid: ExcelScript!ExcelScript.Range#find:member(1)
+    package: ExcelScript!
+    fullName: find(text, criteria)
+    summary: >-
+      Finds the given string based on the criteria specified. If the current
+      range is larger than a single cell, then the search will be limited to
+      that range, else the search will cover the entire sheet starting after
+      that cell. If there are no matches, then this method returns
+      `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'find(text: string, criteria: SearchCriteria): Range;'
+      parameters:
+        - id: text
+          description: The string to find.
+          type: string
+        - id: criteria
+          description: >-
+            Additional search criteria, including the search direction and
+            whether the search needs to match the entire cell or be
+            case-sensitive.
+          type: <xref uid="ExcelScript!ExcelScript.SearchCriteria:interface" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script searches through a table column and finds cells marked "no change". 
+           * Those cells have "no change" replaced with the value from the cell to the left.
+           * This script uses Range.find instead of Worksheet.findAll 
+           * to limit the search to a specific range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range of a table named "Orders".
+            let table = workbook.getTable("Orders");
+            let range = table.getColumnByName("March").getRange();
+
+            // Find all cells with the value "no change".
+            let cellToOverwrite = range.find("no change", { completeMatch: true });
+            while (cellToOverwrite) {
+              let cellToCopyFrom = cellToOverwrite.getOffsetRange(0,-1);
+              cellToOverwrite.setValue(cellToCopyFrom.getValue());
+              cellToOverwrite = range.find("no change", { completeMatch: true });
+            }
+          }
+          ```
+  - name: flashFill()
+    uid: ExcelScript!ExcelScript.Range#flashFill:member(1)
+    package: ExcelScript!
+    fullName: flashFill()
+    summary: >-
+      Does a Flash Fill to the current range. Flash Fill automatically fills
+      data when it senses a pattern, so the range must be a single column range
+      and have data around it in order to find a pattern.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'flashFill(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the Flash Fill feature to complete a table.
+           * See https://support.microsoft.com/office/3f9bcf1e-db93-4890-94a0-1578341f73f7
+           * for the example table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current, active worksheet.
+            let currentWorksheet = workbook.getActiveWorksheet();
+
+            // Get the data range with a pattern and cells to fill. C2 is filled in. C3:C6 are blank.
+            let dataRange = currentWorksheet.getRange("C2:C6");
+
+            // Flash fill the connected range. 
+            dataRange.flashFill();
+          }
+          ```
+  - name: getAbsoluteResizedRange(numRows, numColumns)
+    uid: ExcelScript!ExcelScript.Range#getAbsoluteResizedRange:member(1)
+    package: ExcelScript!
+    fullName: getAbsoluteResizedRange(numRows, numColumns)
+    summary: >-
+      Gets a `Range` object with the same top-left cell as the current `Range`
+      object, but with the specified numbers of rows and columns.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAbsoluteResizedRange(numRows: number, numColumns: number): Range;'
+      parameters:
+        - id: numRows
+          description: The number of rows of the new range size.
+          type: number
+        - id: numColumns
+          description: The number of columns of the new range size.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getAddress()
+    uid: ExcelScript!ExcelScript.Range#getAddress:member(1)
+    package: ExcelScript!
+    fullName: getAddress()
+    summary: >-
+      Specifies the range reference in A1-style. Address value contains the
+      sheet reference (e.g., "Sheet1!A1:B4").
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAddress(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the address of the used range in each worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Iterate over every worksheet in the workbook.
+            workbook.getWorksheets().forEach((sheet) => {
+              // Get the used range for a single worksheet.
+              let range = sheet.getUsedRange();
+
+              // Print the address of the used range to the console.
+              console.log(range.getAddress());
+            });
+          }
+          ```
+  - name: getAddressLocal()
+    uid: ExcelScript!ExcelScript.Range#getAddressLocal:member(1)
+    package: ExcelScript!
+    fullName: getAddressLocal()
+    summary: >-
+      Represents the range reference for the specified range in the language of
+      the user.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAddressLocal(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getBoundingRect(anotherRange)
+    uid: ExcelScript!ExcelScript.Range#getBoundingRect:member(1)
+    package: ExcelScript!
+    fullName: getBoundingRect(anotherRange)
+    summary: >-
+      Gets the smallest range object that encompasses the given ranges. For
+      example, the `GetBoundingRect` of "B2:C5" and "D10:E15" is "B2:E15".
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getBoundingRect(anotherRange: Range | string): Range;'
+      parameters:
+        - id: anotherRange
+          description: The range object, address, or range name.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gets the bounding range of two existing ranges and puts a border around it.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+
+            // Create two range objects for the sample.
+            let range1 = sheet.getRange("B2:C5");
+            let range2 = sheet.getRange("D10:E15");
+
+            // Get the rectangular range that fully includes both ranges.
+            let boundingRectangle = range1.getBoundingRect(range2);
+
+            // Add a border around the whole bounding range (B2:E15).
+            let format = boundingRectangle.getFormat();
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+          }
+          ```
+  - name: getCell(row, column)
+    uid: ExcelScript!ExcelScript.Range#getCell:member(1)
+    package: ExcelScript!
+    fullName: getCell(row, column)
+    summary: >-
+      Gets the range object containing the single cell based on row and column
+      numbers. The cell can be outside the bounds of its parent range, so long
+      as it stays within the worksheet grid. The returned cell is located
+      relative to the top left cell of the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCell(row: number, column: number): Range;'
+      parameters:
+        - id: row
+          description: Row number of the cell to be retrieved. Zero-indexed.
+          type: number
+        - id: column
+          description: Column number of the cell to be retrieved. Zero-indexed.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getCellCount()
+    uid: ExcelScript!ExcelScript.Range#getCellCount:member(1)
+    package: ExcelScript!
+    fullName: getCellCount()
+    summary: >-
+      Specifies the number of cells in the range. This API will return -1 if the
+      cell count exceeds 2^31-1 (2,147,483,647).
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCellCount(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getColumn(column)
+    uid: ExcelScript!ExcelScript.Range#getColumn:member(1)
+    package: ExcelScript!
+    fullName: getColumn(column)
+    summary: Gets a column contained in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumn(column: number): Range;'
+      parameters:
+        - id: column
+          description: Column number of the range to be retrieved. Zero-indexed.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getColumnCount()
+    uid: ExcelScript!ExcelScript.Range#getColumnCount:member(1)
+    package: ExcelScript!
+    fullName: getColumnCount()
+    summary: Specifies the total number of columns in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnCount(): number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
+  - name: getColumnHidden()
+    uid: ExcelScript!ExcelScript.Range#getColumnHidden:member(1)
+    package: ExcelScript!
+    fullName: getColumnHidden()
+    summary: >-
+      Represents if all columns in the current range are hidden. Value is `true`
+      when all columns in a range are hidden. Value is `false` when no columns
+      in the range are hidden. Value is `null` when some columns in a range are
+      hidden and other columns in the same range are not hidden.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnHidden(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getColumnIndex()
+    uid: ExcelScript!ExcelScript.Range#getColumnIndex:member(1)
+    package: ExcelScript!
+    fullName: getColumnIndex()
+    summary: Specifies the column number of the first cell in the range. Zero-indexed.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnIndex(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getColumnsAfter(count)
+    uid: ExcelScript!ExcelScript.Range#getColumnsAfter:member(1)
+    package: ExcelScript!
+    fullName: getColumnsAfter(count)
+    summary: >-
+      Gets a certain number of columns to the right of the current `Range`
+      object.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnsAfter(count?: number): Range;'
+      parameters:
+        - id: count
+          description: >-
+            Optional. The number of columns to include in the resulting range.
+            In general, use a positive number to create a range outside the
+            current range. You can also use a negative number to create a range
+            within the current range. The default value is 1.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getColumnsBefore(count)
+    uid: ExcelScript!ExcelScript.Range#getColumnsBefore:member(1)
+    package: ExcelScript!
+    fullName: getColumnsBefore(count)
+    summary: >-
+      Gets a certain number of columns to the left of the current `Range`
+      object.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnsBefore(count?: number): Range;'
+      parameters:
+        - id: count
+          description: >-
+            Optional. The number of columns to include in the resulting range.
+            In general, use a positive number to create a range outside the
+            current range. You can also use a negative number to create a range
+            within the current range. The default value is 1.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getConditionalFormat(id)
+    uid: ExcelScript!ExcelScript.Range#getConditionalFormat:member(1)
+    package: ExcelScript!
+    fullName: getConditionalFormat(id)
+    summary: >-
+      Returns a conditional format identified by its ID. If the conditional
+      format object does not exist, then this method returns `undefined`<!--
+      -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getConditionalFormat(id: string): ConditionalFormat | undefined;'
+      parameters:
+        - id: id
+          description: The ID of the conditional format.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" /> |
+          undefined
+        description: ''
+  - name: getConditionalFormats()
+    uid: ExcelScript!ExcelScript.Range#getConditionalFormats:member(1)
+    package: ExcelScript!
+    fullName: getConditionalFormats()
+    summary: The collection of `ConditionalFormats` that intersect the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getConditionalFormats(): ConditionalFormat[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ConditionalFormat:interface" />[]
+        description: ''
+  - name: getControl()
+    uid: ExcelScript!ExcelScript.Range#getControl:member(1)
+    package: ExcelScript!
+    fullName: getControl()
+    summary: >-
+      Accesses the cell control applied to this range. If the range has multiple
+      cell controls, this returns `EmptyCellControl`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getControl(): CellControl;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CellControl:type" />
+        description: ''
+  - name: getDataValidation()
+    uid: ExcelScript!ExcelScript.Range#getDataValidation:member(1)
+    package: ExcelScript!
+    fullName: getDataValidation()
+    summary: Returns a data validation object.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataValidation(): DataValidation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DataValidation:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a drop-down selection list for a cell. It uses the existing values of the selected range as the choices for the list.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the values for data validation.
+            let selectedRange = workbook.getSelectedRange();
+            let rangeValues = selectedRange.getValues();
+
+            // Convert the values into a comma-delimited string.
+            let dataValidationListString = "";
+            rangeValues.forEach((rangeValueRow) => {
+              rangeValueRow.forEach((value) => {
+                dataValidationListString += value + ",";
+              });
+            });
+
+            // Clear the old range.
+            selectedRange.clear(ExcelScript.ClearApplyTo.contents);
+
+            // Apply the data validation to the first cell in the selected range.
+            let targetCell = selectedRange.getCell(0,0);
+            let dataValidation = targetCell.getDataValidation();
+
+            // Set the content of the drop-down list.
+            dataValidation.setRule({
+                list: {
+                  inCellDropDown: true,
+                  source: dataValidationListString
+                }
+              });
+          }
+          ```
+  - name: getDependents()
+    uid: ExcelScript!ExcelScript.Range#getDependents:member(1)
+    package: ExcelScript!
+    fullName: getDependents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing
+      all the dependent cells of a specified range in the same worksheet or
+      across multiple worksheets. Note: This API returns an `ItemNotFound` error
+      if no dependents are found.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDependents(): WorkbookRangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />
+        description: ''
+  - name: getDirectDependents()
+    uid: ExcelScript!ExcelScript.Range#getDirectDependents:member(1)
+    package: ExcelScript!
+    fullName: getDirectDependents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing
+      all the direct dependent cells of a specified range in the same worksheet
+      or across multiple worksheets. Note: This API returns an `ItemNotFound`
+      error if no dependents are found.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDirectDependents(): WorkbookRangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />
+        description: ''
+  - name: getDirectPrecedents()
+    uid: ExcelScript!ExcelScript.Range#getDirectPrecedents:member(1)
+    package: ExcelScript!
+    fullName: getDirectPrecedents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing
+      all the direct precedent cells of a specified range in the same worksheet
+      or across multiple worksheets. Note: This API returns an `ItemNotFound`
+      error if no precedents are found.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDirectPrecedents(): WorkbookRangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script finds the direct precedents of the active cell.
+           * It changes the font and color of those precedent cells. 
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            const selected = workbook.getActiveCell();
+            
+            // Get the cells that are direct precedents of the current cell.
+            const precedents : ExcelScript.WorkbookRangeAreas = selected.getDirectPrecedents();
+
+            // Set the font to bold and the fill color to orange for all the precedent cells.
+            precedents.getRanges().forEach(range => {
+              range.getFormat().getFill().setColor("orange");
+              range.getFormat().getFont().setBold(true);
+            });
+          }
+          ```
+  - name: getEntireColumn()
+    uid: ExcelScript!ExcelScript.Range#getEntireColumn:member(1)
+    package: ExcelScript!
+    fullName: getEntireColumn()
+    summary: >-
+      Gets an object that represents the entire column of the range (for
+      example, if the current range represents cells "B4:E11", its
+      `getEntireColumn` is a range that represents columns "B:E").
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getEntireColumn(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getEntireRow()
+    uid: ExcelScript!ExcelScript.Range#getEntireRow:member(1)
+    package: ExcelScript!
+    fullName: getEntireRow()
+    summary: >-
+      Gets an object that represents the entire row of the range (for example,
+      if the current range represents cells "B4:E11", its `GetEntireRow` is a
+      range that represents rows "4:11").
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getEntireRow(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getExtendedRange(direction, activeCell)
+    uid: ExcelScript!ExcelScript.Range#getExtendedRange:member(1)
+    package: ExcelScript!
+    fullName: getExtendedRange(direction, activeCell)
+    summary: >-
+      Returns a range object that includes the current range and up to the edge
+      of the range, based on the provided direction. This matches the
+      <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Arrow key</kbd> behavior in the
+      Excel on Windows UI.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getExtendedRange(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: <xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the
+            top-left cell of the range. An error is thrown if the active cell is
+            not in this range.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script makes the font bold on all the contiguous cells between 
+           * A1 and the bottom of the used range of the first column.
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get every cell that's used between A1 and the end of the column.
+            // This recreates the Ctrl+Shift+Down arrow key behavior.
+            let firstCell = selectedSheet.getRange("A1");
+            let firstColumn = firstCell.getExtendedRange(ExcelScript.KeyboardDirection.down);
+
+            // Set the font to bold in that range.
+            firstColumn.getFormat().getFont().setBold(true);
+          }
+          ```
+  - name: getFormat()
+    uid: ExcelScript!ExcelScript.Range#getFormat:member(1)
+    package: ExcelScript!
+    fullName: getFormat()
+    summary: >-
+      Returns a format object, encapsulating the range's font, fill, borders,
+      alignment, and other properties.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormat(): RangeFormat;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeFormat:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gives the total row of a table a green color fill.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            let table = workbook.getTables()[0];
+
+            // Get the range for the total row of the table.
+            let totalRange = table.getTotalRowRange();
+
+            // Set the fill color to green.
+            totalRange.getFormat().getFill().setColor("green");
+          }
+          ```
+  - name: getFormula()
+    uid: ExcelScript!ExcelScript.Range#getFormula:member(1)
+    package: ExcelScript!
+    fullName: getFormula()
+    summary: >-
+      Represents the cell formula in A1-style notation. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0
+      and column index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormula(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /*
+           * This script sets a cell's formula, 
+           * then displays how Excel stores the cell's formula and value separately.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Set A1 to 2.
+            let a1 = selectedSheet.getRange("A1");
+            a1.setValue(2);
+
+            // Set B1 to the formula =(2*A1), which should equal 4.
+            let b1 = selectedSheet.getRange("B1")
+            b1.setFormula("=(2*A1)");
+
+            // Log the current results for `getFormula` and `getValue` at B1.
+            console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+          }
+          ```
+  - name: getFormulaLocal()
+    uid: ExcelScript!ExcelScript.Range#getFormulaLocal:member(1)
+    package: ExcelScript!
+    fullName: getFormulaLocal()
+    summary: >-
+      Represents the cell formula in A1-style notation, in the user's language
+      and number-formatting locale. For example, the English "=SUM(A1, 1.5)"
+      formula would become "=SUMME(A1; 1,5)" in German. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0
+      and column index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormulaLocal(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getFormulaR1C1()
+    uid: ExcelScript!ExcelScript.Range#getFormulaR1C1:member(1)
+    package: ExcelScript!
+    fullName: getFormulaR1C1()
+    summary: >-
+      Represents the cell formula in R1C1-style notation. If the range contains
+      multiple cells, the data from first cell (represented by row index of 0
+      and column index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormulaR1C1(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getFormulas()
+    uid: ExcelScript!ExcelScript.Range#getFormulas:member(1)
+    package: ExcelScript!
+    fullName: getFormulas()
+    summary: >-
+      Represents the formula in A1-style notation. If a cell has no formula, its
+      value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormulas(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getFormulasLocal()
+    uid: ExcelScript!ExcelScript.Range#getFormulasLocal:member(1)
+    package: ExcelScript!
+    fullName: getFormulasLocal()
+    summary: >-
+      Represents the formula in A1-style notation, in the user's language and
+      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
+      would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its
+      value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormulasLocal(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getFormulasR1C1()
+    uid: ExcelScript!ExcelScript.Range#getFormulasR1C1:member(1)
+    package: ExcelScript!
+    fullName: getFormulasR1C1()
+    summary: >-
+      Represents the formula in R1C1-style notation. If a cell has no formula,
+      its value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormulasR1C1(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getHasSpill()
+    uid: ExcelScript!ExcelScript.Range#getHasSpill:member(1)
+    package: ExcelScript!
+    fullName: getHasSpill()
+    summary: >-
+      Represents if all cells have a spill border. Returns `true` if all cells
+      have a spill border, or `false` if all cells do not have a spill border.
+      Returns `null` if there are cells both with and without spill borders
+      within the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHasSpill(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getHeight()
+    uid: ExcelScript!ExcelScript.Range#getHeight:member(1)
+    package: ExcelScript!
+    fullName: getHeight()
+    summary: >-
+      Returns the distance in points, for 100% zoom, from the top edge of the
+      range to the bottom edge of the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHeight(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getHidden()
+    uid: ExcelScript!ExcelScript.Range#getHidden:member(1)
+    package: ExcelScript!
+    fullName: getHidden()
+    summary: >-
+      Represents if all cells in the current range are hidden. Value is `true`
+      when all cells in a range are hidden. Value is `false` when no cells in
+      the range are hidden. Value is `null` when some cells in a range are
+      hidden and other cells in the same range are not hidden.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHidden(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getHyperlink()
+    uid: ExcelScript!ExcelScript.Range#getHyperlink:member(1)
+    package: ExcelScript!
+    fullName: getHyperlink()
+    summary: Represents the hyperlink for the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHyperlink(): RangeHyperlink;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeHyperlink:interface" />
+        description: >-
+
+
+          #### Examples
+
+
+          ```TypeScript
+
+          /**
+           * This sample clears all of the hyperlinks from the current worksheet
+           * and removes the usual hyperlink formatting.
+           */
+          function main(workbook: ExcelScript.Workbook, sheetName: string =
+          'Sheet1') {
+            // Get the active worksheet. 
+            let sheet = workbook.getWorksheet(sheetName);
+
+            // Get the used range to operate on.
+            // For large ranges (over 10000 entries), consider splitting the operation into batches for performance.
+            const targetRange = sheet.getUsedRange(true);
+            console.log(`Target Range to clear hyperlinks from: ${targetRange.getAddress()}`);
+
+            const rowCount = targetRange.getRowCount();
+            const colCount = targetRange.getColumnCount();
+            console.log(`Searching for hyperlinks in ${targetRange.getAddress()} which contains ${(rowCount * colCount)} cells`);
+
+            // Go through each individual cell looking for a hyperlink. 
+            // This allows us to limit the formatting changes to only the cells with hyperlink formatting.
+            let clearedCount = 0;
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < colCount; j++) {
+                const cell = targetRange.getCell(i, j);
+                const hyperlink = cell.getHyperlink();
+                if (hyperlink) {
+                  cell.clear(ExcelScript.ClearApplyTo.hyperlinks);
+                  cell.getFormat().getFont().setUnderline(ExcelScript.RangeUnderlineStyle.none);
+                  cell.getFormat().getFont().setColor('Black');
+                  clearedCount++;
+                }
+              }
+            }
+
+            console.log(`Done. Cleared hyperlinks from ${clearedCount} cells`);
+          }
+
+          ```
+  - name: getImage()
+    uid: ExcelScript!ExcelScript.Range#getImage:member(1)
+    package: ExcelScript!
+    fullName: getImage()
+    summary: Renders the range as a Base64-encoded PNG image.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getImage(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getIntersection(anotherRange)
+    uid: ExcelScript!ExcelScript.Range#getIntersection:member(1)
+    package: ExcelScript!
+    fullName: getIntersection(anotherRange)
+    summary: >-
+      Gets the range object that represents the rectangular intersection of the
+      given ranges. If no intersection is found, then this method returns
+      `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIntersection(anotherRange: Range | string): Range;'
+      parameters:
+        - id: anotherRange
+          description: >-
+            The range object or range address that will be used to determine the
+            intersection of ranges.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getIsEntireColumn()
+    uid: ExcelScript!ExcelScript.Range#getIsEntireColumn:member(1)
+    package: ExcelScript!
+    fullName: getIsEntireColumn()
+    summary: Represents if the current range is an entire column.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIsEntireColumn(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getIsEntireRow()
+    uid: ExcelScript!ExcelScript.Range#getIsEntireRow:member(1)
+    package: ExcelScript!
+    fullName: getIsEntireRow()
+    summary: Represents if the current range is an entire row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIsEntireRow(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getLastCell()
+    uid: ExcelScript!ExcelScript.Range#getLastCell:member(1)
+    package: ExcelScript!
+    fullName: getLastCell()
+    summary: >-
+      Gets the last cell within the range. For example, the last cell of "B2:D5"
+      is "D5".
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLastCell(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getLastColumn()
+    uid: ExcelScript!ExcelScript.Range#getLastColumn:member(1)
+    package: ExcelScript!
+    fullName: getLastColumn()
+    summary: >-
+      Gets the last column within the range. For example, the last column of
+      "B2:D5" is "D2:D5".
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLastColumn(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getLastRow()
+    uid: ExcelScript!ExcelScript.Range#getLastRow:member(1)
+    package: ExcelScript!
+    fullName: getLastRow()
+    summary: >-
+      Gets the last row within the range. For example, the last row of "B2:D5"
+      is "B5:D5".
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLastRow(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getLeft()
+    uid: ExcelScript!ExcelScript.Range#getLeft:member(1)
+    package: ExcelScript!
+    fullName: getLeft()
+    summary: >-
+      Returns the distance in points, for 100% zoom, from the left edge of the
+      worksheet to the left edge of the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLeft(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getLinkedDataTypeState()
+    uid: ExcelScript!ExcelScript.Range#getLinkedDataTypeState:member(1)
+    package: ExcelScript!
+    fullName: getLinkedDataTypeState()
+    summary: Represents the data type state of the cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedDataTypeState(): LinkedDataTypeState;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />
+        description: ''
+  - name: getLinkedDataTypeStates()
+    uid: ExcelScript!ExcelScript.Range#getLinkedDataTypeStates:member(1)
+    package: ExcelScript!
+    fullName: getLinkedDataTypeStates()
+    summary: Represents the data type state of each cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedDataTypeStates(): LinkedDataTypeState[][];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.LinkedDataTypeState:enum" />[][]
+        description: ''
+  - name: getMergedAreas()
+    uid: ExcelScript!ExcelScript.Range#getMergedAreas:member(1)
+    package: ExcelScript!
+    fullName: getMergedAreas()
+    summary: >-
+      Returns a `RangeAreas` object that represents the merged areas in this
+      range. Note that if the merged areas count in this range is more than 512,
+      then this method will fail to return the result. If the `RangeAreas`
+      object doesn't exist, then this function returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getMergedAreas(): RangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
+        description: ''
+  - name: getNumberFormat()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormat:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormat()
+    summary: >-
+      Represents cell Excel number format code for the given range. If the range
+      contains multiple cells, the data from first cell (represented by row
+      index of 0 and column index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormat(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getNumberFormatCategories()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormatCategories:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormatCategories()
+    summary: Represents the category of number format of each cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormatCategories(): NumberFormatCategory[][];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NumberFormatCategory:enum" />[][]
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script finds cells in a table column that are not formatted as currency
+           * and sets the fill color to red.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the "Cost" column from the "Expenses" table.
+            const table = workbook.getTable("Expenses");
+            const costColumn = table.getColumnByName("Cost");
+            const costColumnRange = costColumn.getRangeBetweenHeaderAndTotal();
+
+            // Get the number format categories for the column's range.
+            const numberFormatCategories = costColumnRange.getNumberFormatCategories();
+
+            // If any cell in the column doesn't have a currency format, make the cell red.
+            numberFormatCategories.forEach((category, index) =>{
+              if (category[0] != ExcelScript.NumberFormatCategory.currency) {
+                costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
+              }
+            }); 
+          }
+          ```
+  - name: getNumberFormatCategory()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormatCategory:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormatCategory()
+    summary: >-
+      Specifies the number format category of first cell in the range
+      (represented by row index of 0 and column index of 0).
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormatCategory(): NumberFormatCategory;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NumberFormatCategory:enum" />
+        description: ''
+  - name: getNumberFormatLocal()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormatLocal:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormatLocal()
+    summary: >-
+      Represents cell Excel number format code for the given range, based on the
+      language settings of the user.​ Excel does not perform any language or
+      format coercion when getting or setting the `numberFormatLocal` property.
+      Any returned text uses the locally-formatted strings based on the language
+      specified in the system settings. If the range contains multiple cells,
+      the data from first cell (represented by row index of 0 and column index
+      of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormatLocal(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getNumberFormats()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormats:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormats()
+    summary: Represents Excel's number format code for the given range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormats(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getNumberFormatsLocal()
+    uid: ExcelScript!ExcelScript.Range#getNumberFormatsLocal:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormatsLocal()
+    summary: >-
+      Represents Excel's number format code for the given range, based on the
+      language settings of the user. Excel does not perform any language or
+      format coercion when getting or setting the `numberFormatLocal` property.
+      Any returned text uses the locally-formatted strings based on the language
+      specified in the system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormatsLocal(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getOffsetRange(rowOffset, columnOffset)
+    uid: ExcelScript!ExcelScript.Range#getOffsetRange:member(1)
+    package: ExcelScript!
+    fullName: getOffsetRange(rowOffset, columnOffset)
+    summary: >-
+      Gets an object which represents a range that's offset from the specified
+      range. The dimension of the returned range will match this range. If the
+      resulting range is forced outside the bounds of the worksheet grid, an
+      error will be thrown.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getOffsetRange(rowOffset: number, columnOffset: number): Range;'
+      parameters:
+        - id: rowOffset
+          description: >-
+            The number of rows (positive, negative, or 0) by which the range is
+            to be offset. Positive values are offset downward, and negative
+            values are offset upward.
+          type: number
+        - id: columnOffset
+          description: >-
+            The number of columns (positive, negative, or 0) by which the range
+            is to be offset. Positive values are offset to the right, and
+            negative values are offset to the left.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gets adjacent cells using relative references.
+           * Note that if the active cell is on the top row, part of the script fails, 
+           * because it references the cell above the currently selected one.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the currently active cell in the workbook.
+            let activeCell = workbook.getActiveCell();
+            console.log(`The active cell's address is: ${activeCell.getAddress()}`);
+
+            // Get the cell to the right of the active cell and set its value and color.
+            let rightCell = activeCell.getOffsetRange(0,1);
+            rightCell.setValue("Right cell");
+            console.log(`The right cell's address is: ${rightCell.getAddress()}`);
+            rightCell.getFormat().getFont().setColor("Magenta");
+            rightCell.getFormat().getFill().setColor("Cyan");
+
+            // Get the cell to the above of the active cell and set its value and color.
+            // Note that this operation will fail if the active cell is in the top row.
+            let aboveCell = activeCell.getOffsetRange(-1, 0);
+            aboveCell.setValue("Above cell");
+            console.log(`The above cell's address is: ${aboveCell.getAddress()}`);
+            aboveCell.getFormat().getFont().setColor("White");
+            aboveCell.getFormat().getFill().setColor("Black");
+          }
+          ```
+  - name: getPivotTables(fullyContained)
+    uid: ExcelScript!ExcelScript.Range#getPivotTables:member(1)
+    package: ExcelScript!
+    fullName: getPivotTables(fullyContained)
+    summary: Gets a scoped collection of PivotTables that overlap with the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotTables(fullyContained?: boolean): PivotTable[];'
+      parameters:
+        - id: fullyContained
+          description: >-
+            If `true`<!-- -->, returns only PivotTables that are fully contained
+            within the range bounds. The default value is `false`<!-- -->.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]
+        description: ''
+  - name: getPrecedents()
+    uid: ExcelScript!ExcelScript.Range#getPrecedents:member(1)
+    package: ExcelScript!
+    fullName: getPrecedents()
+    summary: >-
+      Returns a `WorkbookRangeAreas` object that represents the range containing
+      all the precedent cells of a specified range in the same worksheet or
+      across multiple worksheets. Note: This API returns an `ItemNotFound` error
+      if no precedents are found.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPrecedents(): WorkbookRangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookRangeAreas:interface" />
+        description: ''
+  - name: getPredefinedCellStyle()
+    uid: ExcelScript!ExcelScript.Range#getPredefinedCellStyle:member(1)
+    package: ExcelScript!
+    fullName: getPredefinedCellStyle()
+    summary: >-
+      Represents the style of the current range. If the styles of the cells are
+      inconsistent, `null` will be returned. For custom styles, the style name
+      will be returned. For built-in styles, a string representing a value in
+      the `BuiltInStyle` enum will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPredefinedCellStyle(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getRangeEdge(direction, activeCell)
+    uid: ExcelScript!ExcelScript.Range#getRangeEdge:member(1)
+    package: ExcelScript!
+    fullName: getRangeEdge(direction, activeCell)
+    summary: >-
+      Returns a range object that is the edge cell of the data region that
+      corresponds to the provided direction. This matches the
+      <kbd>Ctrl</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getRangeEdge(
+                    direction: KeyboardDirection,
+                    activeCell?: Range | string
+                ): Range;
+      parameters:
+        - id: direction
+          description: The direction from the active cell.
+          type: <xref uid="ExcelScript!ExcelScript.KeyboardDirection:enum" />
+        - id: activeCell
+          description: >-
+            The active cell in this range. By default, the active cell is the
+            top-left cell of the range. An error is thrown if the active cell is
+            not in this range.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds the value "Total" after the end of the first column.
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the last used cell at the end of the column.
+            // This recreates the Ctrl+Down arrow key behavior.
+            let firstCell = selectedSheet.getRange("A1");
+            let firstColumn = selectedSheet.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down);
+            let cellAfter = firstColumn.getOffsetRange(1, 0);
+
+            // Set the value of the cell after the current end of the used column to "Total".
+            cellAfter.setValue("Total");
+          }
+          ```
+  - name: getResizedRange(deltaRows, deltaColumns)
+    uid: ExcelScript!ExcelScript.Range#getResizedRange:member(1)
+    package: ExcelScript!
+    fullName: getResizedRange(deltaRows, deltaColumns)
+    summary: >-
+      Gets a `Range` object similar to the current `Range` object, but with its
+      bottom-right corner expanded (or contracted) by some number of rows and
+      columns.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getResizedRange(deltaRows: number, deltaColumns: number): Range;'
+      parameters:
+        - id: deltaRows
+          description: >-
+            The number of rows by which to expand the bottom-right corner,
+            relative to the current range. Use a positive number to expand the
+            range, or a negative number to decrease it.
+          type: number
+        - id: deltaColumns
+          description: >-
+            The number of columns by which to expand the bottom-right corner,
+            relative to the current range. Use a positive number to expand the
+            range, or a negative number to decrease it.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script copies the formatting in the active cell to the neighboring cells.
+           * Note that this script only works when the active cell isn't on an edge of the worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            let activeCell = workbook.getActiveCell();
+
+            // Get the cell that's one row above and one column to the left of the active cell.
+            let cornerCell = activeCell.getOffsetRange(-1,-1);
+
+            // Get a range that includes all the cells surrounding the active cell.
+            let surroundingRange = cornerCell.getResizedRange(2, 2)
+
+            // Copy the formatting from the active cell to the new range.
+            surroundingRange.copyFrom(
+              activeCell, /* The source range. */
+              ExcelScript.RangeCopyType.formats /* What to copy. */
+            );
+          }
+          ```
+  - name: getRow(row)
+    uid: ExcelScript!ExcelScript.Range#getRow:member(1)
+    package: ExcelScript!
+    fullName: getRow(row)
+    summary: Gets a row contained in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRow(row: number): Range;'
+      parameters:
+        - id: row
+          description: Row number of the range to be retrieved. Zero-indexed.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getRowCount()
+    uid: ExcelScript!ExcelScript.Range#getRowCount:member(1)
+    package: ExcelScript!
+    fullName: getRowCount()
+    summary: Returns the total number of rows in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowCount(): number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample provides the count of negative numbers that are present
+           * in the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the working range.
+            let usedRange = workbook.getActiveWorksheet().getUsedRange();
+            let rowCount = usedRange.getRowCount();
+            let columnCount = usedRange.getColumnCount();
+
+            // Save the values locally to avoid repeatedly asking the workbook.
+            let usedRangeValues = usedRange.getValues();
+
+            // Start the negative number counter.
+            let negativeCount = 0;
+
+            // Iterate over the entire range looking for negative numbers.
+            for (let i = 0; i < rowCount; i++) {
+              for (let j = 0; j < columnCount; j++) {
+                if (usedRangeValues[i][j] < 0) {
+                  negativeCount++;
+                }
+              }
+            }
+
+            // Log the negative number count to the console.
+            console.log(negativeCount);
+          }
+          ```
+  - name: getRowHidden()
+    uid: ExcelScript!ExcelScript.Range#getRowHidden:member(1)
+    package: ExcelScript!
+    fullName: getRowHidden()
+    summary: >-
+      Represents if all rows in the current range are hidden. Value is `true`
+      when all rows in a range are hidden. Value is `false` when no rows in the
+      range are hidden. Value is `null` when some rows in a range are hidden and
+      other rows in the same range are not hidden.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowHidden(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getRowIndex()
+    uid: ExcelScript!ExcelScript.Range#getRowIndex:member(1)
+    package: ExcelScript!
+    fullName: getRowIndex()
+    summary: Returns the row number of the first cell in the range. Zero-indexed.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowIndex(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getRowsAbove(count)
+    uid: ExcelScript!ExcelScript.Range#getRowsAbove:member(1)
+    package: ExcelScript!
+    fullName: getRowsAbove(count)
+    summary: Gets a certain number of rows above the current `Range` object.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowsAbove(count?: number): Range;'
+      parameters:
+        - id: count
+          description: >-
+            Optional. The number of rows to include in the resulting range. In
+            general, use a positive number to create a range outside the current
+            range. You can also use a negative number to create a range within
+            the current range. The default value is 1.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getRowsBelow(count)
+    uid: ExcelScript!ExcelScript.Range#getRowsBelow:member(1)
+    package: ExcelScript!
+    fullName: getRowsBelow(count)
+    summary: Gets a certain number of rows below the current `Range` object.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowsBelow(count?: number): Range;'
+      parameters:
+        - id: count
+          description: >-
+            Optional. The number of rows to include in the resulting range. In
+            general, use a positive number to create a range outside the current
+            range. You can also use a negative number to create a range within
+            the current range. The default value is 1.
+          type: number
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getSavedAsArray()
+    uid: ExcelScript!ExcelScript.Range#getSavedAsArray:member(1)
+    package: ExcelScript!
+    fullName: getSavedAsArray()
+    summary: >-
+      Represents if all the cells would be saved as an array formula. Returns
+      `true` if all cells would be saved as an array formula, or `false` if all
+      cells would not be saved as an array formula. Returns `null` if some cells
+      would be saved as an array formula and some would not be.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSavedAsArray(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getSort()
+    uid: ExcelScript!ExcelScript.Range#getSort:member(1)
+    package: ExcelScript!
+    fullName: getSort()
+    summary: Represents the range sort of the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSort(): RangeSort;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeSort:interface" />
+        description: ''
+  - name: getSpecialCells(cellType, cellValueType)
+    uid: ExcelScript!ExcelScript.Range#getSpecialCells:member(1)
+    package: ExcelScript!
+    fullName: getSpecialCells(cellType, cellValueType)
+    summary: >-
+      Gets the `RangeAreas` object, comprising one or more ranges, that
+      represents all the cells that match the specified type and value. If no
+      special cells are found, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        getSpecialCells(
+                    cellType: SpecialCellType,
+                    cellValueType?: SpecialCellValueType
+                ): RangeAreas;
+      parameters:
+        - id: cellType
+          description: The type of cells to include.
+          type: <xref uid="ExcelScript!ExcelScript.SpecialCellType:enum" />
+        - id: cellValueType
+          description: >-
+            If `cellType` is either `constants` or `formulas`<!-- -->, this
+            argument is used to determine which types of cells to include in the
+            result. These values can be combined together to return more than
+            one type. The default is to select all constants or formulas, no
+            matter what the type.
+          type: <xref uid="ExcelScript!ExcelScript.SpecialCellValueType:enum" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample gets all the blank cells in the current worksheet's used range. It then highlights all those cells with a yellow background.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the current used range.
+              let range = workbook.getActiveWorksheet().getUsedRange();
+              
+              // Get all the blank cells.
+              let blankCells = range.getSpecialCells(ExcelScript.SpecialCellType.blanks);
+              // Highlight the blank cells with a yellow background.
+              blankCells.getFormat().getFill().setColor("yellow");
+          }
+          ```
+  - name: getSpillingToRange()
+    uid: ExcelScript!ExcelScript.Range#getSpillingToRange:member(1)
+    package: ExcelScript!
+    fullName: getSpillingToRange()
+    summary: >-
+      Gets the range object containing the spill range when called on an anchor
+      cell. If the range isn't an anchor cell or the spill range can't be found,
+      then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSpillingToRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getSpillParent()
+    uid: ExcelScript!ExcelScript.Range#getSpillParent:member(1)
+    package: ExcelScript!
+    fullName: getSpillParent()
+    summary: >-
+      Gets the range object containing the anchor cell for the cell getting
+      spilled into. If it's not a spilled cell, or more than one cell is given,
+      then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSpillParent(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getSurroundingRegion()
+    uid: ExcelScript!ExcelScript.Range#getSurroundingRegion:member(1)
+    package: ExcelScript!
+    fullName: getSurroundingRegion()
+    summary: >-
+      Returns a `Range` object that represents the surrounding region for the
+      top-left cell in this range. A surrounding region is a range bounded by
+      any combination of blank rows and blank columns relative to this range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSurroundingRegion(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getTables(fullyContained)
+    uid: ExcelScript!ExcelScript.Range#getTables:member(1)
+    package: ExcelScript!
+    fullName: getTables(fullyContained)
+    summary: Gets a scoped collection of tables that overlap with the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTables(fullyContained?: boolean): Table[];'
+      parameters:
+        - id: fullyContained
+          description: >-
+            If `true`<!-- -->, returns only tables that are fully contained
+            within the range bounds. The default value is `false`<!-- -->.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Table:interface" />[]
+        description: ''
+  - name: getText()
+    uid: ExcelScript!ExcelScript.Range#getText:member(1)
+    package: ExcelScript!
+    fullName: getText()
+    summary: >-
+      Represents Text value of the specified range. The Text value will not
+      depend on the cell width. The \# sign substitution that happens in Excel
+      UI will not affect the text value returned by the API. If the range
+      contains multiple cells, the data from first cell (represented by row
+      index of 0 and column index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getText(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getTexts()
+    uid: ExcelScript!ExcelScript.Range#getTexts:member(1)
+    package: ExcelScript!
+    fullName: getTexts()
+    summary: >-
+      Text values of the specified range. The text value will not depend on the
+      cell width. The number sign (\#) substitution that happens in the Excel UI
+      will not affect the text value returned by the API.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTexts(): string[][];'
+      return:
+        type: string[][]
+        description: ''
+  - name: getTop()
+    uid: ExcelScript!ExcelScript.Range#getTop:member(1)
+    package: ExcelScript!
+    fullName: getTop()
+    summary: >-
+      Returns the distance in points, for 100% zoom, from the top edge of the
+      worksheet to the top edge of the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTop(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getUsedRange(valuesOnly)
+    uid: ExcelScript!ExcelScript.Range#getUsedRange:member(1)
+    package: ExcelScript!
+    fullName: getUsedRange(valuesOnly)
+    summary: >-
+      Returns the used range of the given range object. If there are no used
+      cells within the range, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUsedRange(valuesOnly?: boolean): Range;'
+      parameters:
+        - id: valuesOnly
+          description: Considers only cells with values as used cells.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getValue()
+    uid: ExcelScript!ExcelScript.Range#getValue:member(1)
+    package: ExcelScript!
+    fullName: getValue()
+    summary: >-
+      Represents the raw value of the specified range. The data returned could
+      be of type string, number, or a boolean. Cell that contain an error will
+      return the error string. If the range contains multiple cells, the data
+      from first cell (represented by row index of 0 and column index of 0) will
+      be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getValue(): string | number | boolean;'
+      return:
+        type: string | number | boolean
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample reads the value of A1 and prints it to the console.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current worksheet.
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Get the value of cell A1.
+            let range = selectedSheet.getRange("A1");
+            
+            // Print the value of A1.
+            console.log(range.getValue());
+          }
+          ```
+  - name: getValues()
+    uid: ExcelScript!ExcelScript.Range#getValues:member(1)
+    package: ExcelScript!
+    fullName: getValues()
+    summary: >-
+      Represents the raw values of the specified range. The data returned could
+      be a string, number, or boolean. Cells that contain an error will return
+      the error string. If the returned value starts with a plus ("+"), minus
+      ("-"), or equal sign ("="), Excel interprets this value as a formula.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getValues(): (string | number | boolean)[][];'
+      return:
+        type: (string | number | boolean)[][]
+        description: ''
+  - name: getValueType()
+    uid: ExcelScript!ExcelScript.Range#getValueType:member(1)
+    package: ExcelScript!
+    fullName: getValueType()
+    summary: >-
+      Represents the type of data in the cell. If the range contains multiple
+      cells, the data from first cell (represented by row index of 0 and column
+      index of 0) will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getValueType(): RangeValueType;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeValueType:enum" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script formats rows in a worksheet based on the first value in that row. 
+           * If it's the boolean value TRUE, the row is bolded. 
+           * If it's FALSE, nothing is changed. 
+           * If the value type isn't a boolean, the row is italicized.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the used range in the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const usedRange = sheet.getUsedRange();
+
+            // Get the values in the first column.
+            const firstColumnValues = usedRange.getColumn(0).getValues();
+
+            // Look at the first cell in each row.
+            const rowCount = usedRange.getRowCount();
+            for (let i = 0; i < rowCount; i++) {
+              // Get the type of the first cell to make sure it's a boolean.
+              let firstValueType = usedRange.getCell(i, 0).getValueType();
+
+              // Set the bold or italic of the row as described earlier.
+              if (firstValueType === ExcelScript.RangeValueType.boolean) {
+                if (firstColumnValues[i][0] as boolean === true) {
+                  usedRange.getRow(i).getFormat().getFont().setBold(true);
+                } else {
+                  usedRange.getRow(i).getFormat().getFont().setBold(false);
+                }
+              } else {
+                usedRange.getRow(i).getFormat().getFont().setItalic(true);
+              }
+            }
+          }
+          ```
+  - name: getValueTypes()
+    uid: ExcelScript!ExcelScript.Range#getValueTypes:member(1)
+    package: ExcelScript!
+    fullName: getValueTypes()
+    summary: Specifies the type of data in each cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getValueTypes(): RangeValueType[][];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeValueType:enum" />[][]
+        description: ''
+  - name: getVisibleView()
+    uid: ExcelScript!ExcelScript.Range#getVisibleView:member(1)
+    package: ExcelScript!
+    fullName: getVisibleView()
+    summary: Represents the visible rows of the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getVisibleView(): RangeView;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeView:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script copies values and formatting from the 
+           * visible range of a table in Sheet1 into Sheet2.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the filtered data from Sheet1.
+            const currentSheet = workbook.getWorksheet("Sheet1");
+            const table = currentSheet.getTables()[0];
+            const visibleTableRange: ExcelScript.RangeView = table.getRange().getVisibleView();
+            const source = currentSheet.getRanges(visibleTableRange.getCellAddresses().toString());
+
+            // Copy the data into the other sheet.
+            const otherSheet = workbook.getWorksheet("Sheet2");
+            const otherRangeCorner = otherSheet.getRange("A1");
+            otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
+          }
+          ```
+  - name: getWidth()
+    uid: ExcelScript!ExcelScript.Range#getWidth:member(1)
+    package: ExcelScript!
+    fullName: getWidth()
+    summary: >-
+      Returns the distance in points, for 100% zoom, from the left edge of the
+      range to the right edge of the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWidth(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getWorksheet()
+    uid: ExcelScript!ExcelScript.Range#getWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getWorksheet()
+    summary: The worksheet containing the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWorksheet(): Worksheet;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: group(groupOption)
+    uid: ExcelScript!ExcelScript.Range#group:member(1)
+    package: ExcelScript!
+    fullName: group(groupOption)
+    summary: Groups columns and rows for an outline.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'group(groupOption: GroupOption): void;'
+      parameters:
+        - id: groupOption
+          description: >-
+            Specifies how the range can be grouped by rows or columns. An
+            `InvalidArgument` error is thrown when the group option differs from
+            the range's `isEntireRow` or `isEntireColumn` property (i.e.,
+            `range.isEntireRow` is true and `groupOption` is "ByColumns" or
+            `range.isEntireColumn` is true and `groupOption` is "ByRows").
+          type: <xref uid="ExcelScript!ExcelScript.GroupOption:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a two-level column-based outline on Sheet1.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Group columns A-F in the worksheet named Sheet1.
+            const sheet = workbook.getWorksheet("Sheet1");
+            const firstLevel = sheet.getRange("A:F");
+            firstLevel.group(ExcelScript.GroupOption.byColumns);
+            
+            // Create a second level to the outline by grouping subsections.
+            sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
+            sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
+          }
+          ```
+  - name: hideGroupDetails(groupOption)
+    uid: ExcelScript!ExcelScript.Range#hideGroupDetails:member(1)
+    package: ExcelScript!
+    fullName: hideGroupDetails(groupOption)
+    summary: Hides the details of the row or column group.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'hideGroupDetails(groupOption: GroupOption): void;'
+      parameters:
+        - id: groupOption
+          description: >-
+            Specifies whether to hide the details of grouped rows or grouped
+            columns.
+          type: <xref uid="ExcelScript!ExcelScript.GroupOption:enum" />
+      return:
+        type: void
+        description: ''
+  - name: insert(shift)
+    uid: ExcelScript!ExcelScript.Range#insert:member(1)
+    package: ExcelScript!
+    fullName: insert(shift)
+    summary: >-
+      Inserts a cell or a range of cells into the worksheet in place of this
+      range, and shifts the other cells to make space. Returns a new `Range`
+      object at the now blank space.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'insert(shift: InsertShiftDirection): Range;'
+      parameters:
+        - id: shift
+          description: >-
+            Specifies which way to shift the cells. See
+            `ExcelScript.InsertShiftDirection` for details.
+          type: <xref uid="ExcelScript!ExcelScript.InsertShiftDirection:enum" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts headers at the top of the worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            let currentSheet = workbook.getActiveWorksheet();
+
+            // Create headers for 3 columns.
+            let myHeaders = [["NAME", "ID", "ROLE"]];
+
+            // Add a blank first row and push existing data down a row.
+            let firstRow = currentSheet.getRange("1:1");
+            firstRow.insert(ExcelScript.InsertShiftDirection.down);
+
+            // Add the headers.
+            currentSheet.getRange("A1:C1").setValues(myHeaders);
+          }
+          ```
+  - name: merge(across)
+    uid: ExcelScript!ExcelScript.Range#merge:member(1)
+    package: ExcelScript!
+    fullName: merge(across)
+    summary: Merge the range cells into one region in the worksheet.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'merge(across?: boolean): void;'
+      parameters:
+        - id: across
+          description: >-
+            Optional. Set `true` to merge cells in each row of the specified
+            range as separate merged cells. The default value is `false`<!--
+            -->.
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script merges a group of cells into a single region.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+
+            // Merge cells A1 through A4.
+            const range = selectedSheet.getRange("A1:A4");
+            range.merge();
+          }
+          ```
+  - name: moveTo(destinationRange)
+    uid: ExcelScript!ExcelScript.Range#moveTo:member(1)
+    package: ExcelScript!
+    fullName: moveTo(destinationRange)
+    summary: >-
+      Moves cell values, formatting, and formulas from current range to the
+      destination range, replacing the old information in those cells. The
+      destination range will be expanded automatically if it is smaller than the
+      current range. Any cells in the destination range that are outside of the
+      original range's area are not changed.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'moveTo(destinationRange: Range | string): void;'
+      parameters:
+        - id: destinationRange
+          description: >-
+            destinationRange Specifies the range to where the information in
+            this range will be moved.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: void
+        description: ''
+  - name: removeDuplicates(columns, includesHeader)
+    uid: ExcelScript!ExcelScript.Range#removeDuplicates:member(1)
+    package: ExcelScript!
+    fullName: removeDuplicates(columns, includesHeader)
+    summary: Removes duplicate values from the range specified by the columns.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        removeDuplicates(
+                    columns: number[],
+                    includesHeader: boolean
+                ): RemoveDuplicatesResult;
+      parameters:
+        - id: columns
+          description: >-
+            The columns inside the range that may contain duplicates. At least
+            one column needs to be specified. Zero-indexed.
+          type: number[]
+        - id: includesHeader
+          description: True if the input data contains header. Default is false.
+          type: boolean
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.RemoveDuplicatesResult:interface"
+          />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes duplicate rows from a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the used range of the active worksheet.
+            const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+            // Remove any row that has a same value in the 0-indexed column as a previous row.
+            const removedResults = usedRange.removeDuplicates([0], true);
+
+            // Log the count of removed rows.
+            console.log(`Rows removed: ${removedResults.getRemoved()}.`);
+          }
+          ```
+  - name: replaceAll(text, replacement, criteria)
+    uid: ExcelScript!ExcelScript.Range#replaceAll:member(1)
+    package: ExcelScript!
+    fullName: replaceAll(text, replacement, criteria)
+    summary: >-
+      Finds and replaces the given string based on the criteria specified within
+      the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        replaceAll(
+                    text: string,
+                    replacement: string,
+                    criteria: ReplaceCriteria
+                ): number;
+      parameters:
+        - id: text
+          description: String to find.
+          type: string
+        - id: replacement
+          description: The string that replaces the original string.
+          type: string
+        - id: criteria
+          description: Additional replacement criteria.
+          type: <xref uid="ExcelScript!ExcelScript.ReplaceCriteria:interface" />
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script searches through a table column and replaces  
+           * cells marked "monthly special" with "parsnip".
+           * This script uses Range.replaceAll instead of Worksheet.replaceAll
+           * to limit the search to a specific range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range of a table named "Orders".
+            let table = workbook.getTable("Orders");
+            let range = table.getColumnByName("Vegetable").getRange();
+            
+            // Change the value of any cells with the value "monthly special".
+            range.replaceAll("monthly special", "parsnip", {completeMatch: true});
+          }
+          ```
+  - name: select()
+    uid: ExcelScript!ExcelScript.Range#select:member(1)
+    package: ExcelScript!
+    fullName: select()
+    summary: Selects the specified range in the Excel UI.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'select(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script selects the first row of a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const sheet = workbook.getActiveWorksheet()
+            const table = sheet.getTables()[0];
+
+            // Get the first data row in the table.
+            const row = table.getRangeBetweenHeaderAndTotal().getRow(0);
+
+            // Select the first data row.
+            row.select();
+          }
+          ```
+  - name: setColumnHidden(columnHidden)
+    uid: ExcelScript!ExcelScript.Range#setColumnHidden:member(1)
+    package: ExcelScript!
+    fullName: setColumnHidden(columnHidden)
+    summary: >-
+      Represents if all columns in the current range are hidden. Value is `true`
+      when all columns in a range are hidden. Value is `false` when no columns
+      in the range are hidden. Value is `null` when some columns in a range are
+      hidden and other columns in the same range are not hidden.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setColumnHidden(columnHidden: boolean): void;'
+      parameters:
+        - id: columnHidden
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setControl(control)
+    uid: ExcelScript!ExcelScript.Range#setControl:member(1)
+    package: ExcelScript!
+    fullName: setControl(control)
+    summary: >-
+      Accesses the cell control applied to this range. If the range has multiple
+      cell controls, this returns `EmptyCellControl`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setControl(control: CellControl): void;'
+      parameters:
+        - id: control
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.CellControl:type" />
+      return:
+        type: void
+        description: ''
+  - name: setDirty()
+    uid: ExcelScript!ExcelScript.Range#setDirty:member(1)
+    package: ExcelScript!
+    fullName: setDirty()
+    summary: Set a range to be recalculated when the next recalculation occurs.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setDirty(): void;'
+      return:
+        type: void
+        description: ''
+  - name: setFormula(formula)
+    uid: ExcelScript!ExcelScript.Range#setFormula:member(1)
+    package: ExcelScript!
+    fullName: setFormula(formula)
+    summary: >-
+      Sets the cell formula in A1-style notation. If the range contains multiple
+      cells, each cell in the given range will be updated with the input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormula(formula: string): void;'
+      parameters:
+        - id: formula
+          description: ''
+          type: string
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /*
+           * This script sets a cell's formula, 
+           * then displays how Excel stores the cell's formula and value separately.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            let selectedSheet = workbook.getActiveWorksheet();
+
+            // Set A1 to 2.
+            let a1 = selectedSheet.getRange("A1");
+            a1.setValue(2);
+
+            // Set B1 to the formula =(2*A1), which should equal 4.
+            let b1 = selectedSheet.getRange("B1")
+            b1.setFormula("=(2*A1)");
+
+            // Log the current results for `getFormula` and `getValue` at B1.
+            console.log(`B1 - Formula: ${b1.getFormula()} | Value: ${b1.getValue()}`);
+          }
+          ```
+  - name: setFormulaLocal(formulaLocal)
+    uid: ExcelScript!ExcelScript.Range#setFormulaLocal:member(1)
+    package: ExcelScript!
+    fullName: setFormulaLocal(formulaLocal)
+    summary: >-
+      Set the cell formula in A1-style notation, in the user's language and
+      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
+      would become "=SUMME(A1; 1,5)" in German. If the range contains multiple
+      cells, each cell in the given range will be updated with the input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormulaLocal(formulaLocal: string): void;'
+      parameters:
+        - id: formulaLocal
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setFormulaR1C1(formulaR1C1)
+    uid: ExcelScript!ExcelScript.Range#setFormulaR1C1:member(1)
+    package: ExcelScript!
+    fullName: setFormulaR1C1(formulaR1C1)
+    summary: >-
+      Sets the cell formula in R1C1-style notation. If the range contains
+      multiple cells, each cell in the given range will be updated with the
+      input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormulaR1C1(formulaR1C1: string): void;'
+      parameters:
+        - id: formulaR1C1
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setFormulas(formulas)
+    uid: ExcelScript!ExcelScript.Range#setFormulas:member(1)
+    package: ExcelScript!
+    fullName: setFormulas(formulas)
+    summary: >-
+      Represents the formula in A1-style notation. If a cell has no formula, its
+      value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormulas(formulas: string[][]): void;'
+      parameters:
+        - id: formulas
+          description: ''
+          type: string[][]
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the values of a range, then adds SUM formulas to calculate
+           * the totals for each row of that range. 
+           */
+          function main(workbook: ExcelScript.Workbook)
+          {
+            let currentSheet = workbook.getActiveWorksheet();
+
+            // Set the values of a range.
+            let values = [[1, 2, 4], [8, 16, 32], [64, 128, 256]];
+            let valueRange = currentSheet.getRange("A1:C3");
+            valueRange.setValues(values);
+
+            // Set the formulas of a range.
+            let formulas = [["=SUM(A1:C1)"], ["=SUM(A2:C2)"], ["=SUM(A3:C3)"]];
+            let formulaRange = currentSheet.getRange("D1:D3");
+            formulaRange.setFormulas(formulas);
+          }
+          ```
+  - name: setFormulasLocal(formulasLocal)
+    uid: ExcelScript!ExcelScript.Range#setFormulasLocal:member(1)
+    package: ExcelScript!
+    fullName: setFormulasLocal(formulasLocal)
+    summary: >-
+      Represents the formula in A1-style notation, in the user's language and
+      number-formatting locale. For example, the English "=SUM(A1, 1.5)" formula
+      would become "=SUMME(A1; 1,5)" in German. If a cell has no formula, its
+      value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormulasLocal(formulasLocal: string[][]): void;'
+      parameters:
+        - id: formulasLocal
+          description: ''
+          type: string[][]
+      return:
+        type: void
+        description: ''
+  - name: setFormulasR1C1(formulasR1C1)
+    uid: ExcelScript!ExcelScript.Range#setFormulasR1C1:member(1)
+    package: ExcelScript!
+    fullName: setFormulasR1C1(formulasR1C1)
+    summary: >-
+      Represents the formula in R1C1-style notation. If a cell has no formula,
+      its value is returned instead.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setFormulasR1C1(formulasR1C1: string[][]): void;'
+      parameters:
+        - id: formulasR1C1
+          description: ''
+          type: string[][]
+      return:
+        type: void
+        description: ''
+  - name: setHyperlink(hyperlink)
+    uid: ExcelScript!ExcelScript.Range#setHyperlink:member(1)
+    package: ExcelScript!
+    fullName: setHyperlink(hyperlink)
+    summary: Represents the hyperlink for the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setHyperlink(hyperlink: RangeHyperlink): void;'
+      parameters:
+        - id: hyperlink
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.RangeHyperlink:interface" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /** 
+           * This script inserts a hyperlink to the first cell of the last worksheet in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active cell.
+            let cell = workbook.getActiveCell();
+
+            // Get the last worksheet in the workbook.
+            // Note that this might be the current sheet if there's only one worksheet.
+            let lastSheet = workbook.getLastWorksheet();
+
+            // Get sheet name. 
+            let linkedSheetName = lastSheet.getName();
+            console.log(`Setting hyperlink of ${cell.getAddress()} to the ${linkedSheetName} sheet's A1 cell`);
+
+            // Set the text for the hyperlink.
+            let value = `Click to go to: ${linkedSheetName}`;
+
+            // Create the hyperlink using that cell's value.
+            cell.setHyperlink({
+              textToDisplay: value.toString(),
+              screenTip: `Navigate to ${linkedSheetName}`,
+              documentReference: `${linkedSheetName}!A1`
+            });
+          }
+          ```
+  - name: setNumberFormat(numberFormat)
+    uid: ExcelScript!ExcelScript.Range#setNumberFormat:member(1)
+    package: ExcelScript!
+    fullName: setNumberFormat(numberFormat)
+    summary: >-
+      Sets cell Excel number format code for the given range. If the range
+      contains multiple cells, each cell in the given range will be updated with
+      the input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setNumberFormat(numberFormat: string): void;'
+      parameters:
+        - id: numberFormat
+          description: ''
+          type: string
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the number format in column C to show the data as a percentage.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const  selectedSheet = workbook.getActiveWorksheet();
+            
+            // Set number format for column C to a percentage that rounds to the nearest percentage point.
+            selectedSheet.getRange("C:C").setNumberFormat("0%");
+          }
+          ```
+  - name: setNumberFormatLocal(numberFormatLocal)
+    uid: ExcelScript!ExcelScript.Range#setNumberFormatLocal:member(1)
+    package: ExcelScript!
+    fullName: setNumberFormatLocal(numberFormatLocal)
+    summary: >-
+      Sets cell Excel number format code for the given range, based on the
+      language settings of the user.​ Excel does not perform any language or
+      format coercion when getting or setting the `numberFormatLocal` property.
+      Any returned text uses the locally-formatted strings based on the language
+      specified in the system settings. If the range contains multiple cells,
+      each cell in the given range will be updated with the input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setNumberFormatLocal(numberFormatLocal: string): void;'
+      parameters:
+        - id: numberFormatLocal
+          description: ''
+          type: string
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the number format in column D to show the data as a percentage with a decimal.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const  selectedSheet = workbook.getActiveWorksheet();
+            
+            // Set number format for column D to a percentage that rounds to the nearest tenth of a percentage.
+            selectedSheet.getRange("D:D").setNumberFormatLocal("0.0%");
+          }
+          ```
+  - name: setNumberFormats(numberFormats)
+    uid: ExcelScript!ExcelScript.Range#setNumberFormats:member(1)
+    package: ExcelScript!
+    fullName: setNumberFormats(numberFormats)
+    summary: Represents Excel's number format code for the given range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setNumberFormats(numberFormats: string[][]): void;'
+      parameters:
+        - id: numberFormats
+          description: ''
+          type: string[][]
+      return:
+        type: void
+        description: ''
+  - name: setNumberFormatsLocal(numberFormatsLocal)
+    uid: ExcelScript!ExcelScript.Range#setNumberFormatsLocal:member(1)
+    package: ExcelScript!
+    fullName: setNumberFormatsLocal(numberFormatsLocal)
+    summary: >-
+      Represents Excel's number format code for the given range, based on the
+      language settings of the user. Excel does not perform any language or
+      format coercion when getting or setting the `numberFormatLocal` property.
+      Any returned text uses the locally-formatted strings based on the language
+      specified in the system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setNumberFormatsLocal(numberFormatsLocal: string[][]): void;'
+      parameters:
+        - id: numberFormatsLocal
+          description: ''
+          type: string[][]
+      return:
+        type: void
+        description: ''
+  - name: setPredefinedCellStyle(predefinedCellStyle)
+    uid: ExcelScript!ExcelScript.Range#setPredefinedCellStyle:member(1)
+    package: ExcelScript!
+    fullName: setPredefinedCellStyle(predefinedCellStyle)
+    summary: Represents the style of the current range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setPredefinedCellStyle(predefinedCellStyle: string): void;'
+      parameters:
+        - id: predefinedCellStyle
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setRowHidden(rowHidden)
+    uid: ExcelScript!ExcelScript.Range#setRowHidden:member(1)
+    package: ExcelScript!
+    fullName: setRowHidden(rowHidden)
+    summary: >-
+      Represents if all rows in the current range are hidden. Value is `true`
+      when all rows in a range are hidden. Value is `false` when no rows in the
+      range are hidden. Value is `null` when some rows in a range are hidden and
+      other rows in the same range are not hidden.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRowHidden(rowHidden: boolean): void;'
+      parameters:
+        - id: rowHidden
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setValue(value)
+    uid: ExcelScript!ExcelScript.Range#setValue:member(1)
+    package: ExcelScript!
+    fullName: setValue(value)
+    summary: >-
+      Sets the raw value of the specified range. The data being set could be of
+      type string, number, or a boolean. `null` value will be ignored (not set
+      or overwritten in Excel). If the range contains multiple cells, each cell
+      in the given range will be updated with the input data.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setValue(value: any): void;'
+      parameters:
+        - id: value
+          description: ''
+          type: any
+      return:
+        type: void
+        description: ''
+  - name: setValues(values)
+    uid: ExcelScript!ExcelScript.Range#setValues:member(1)
+    package: ExcelScript!
+    fullName: setValues(values)
+    summary: >-
+      Sets the raw values of the specified range. The data provided could be a
+      string, number, or boolean. If the provided value starts with a plus
+      ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a
+      formula.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setValues(values: (string | number | boolean)[][]): void;'
+      parameters:
+        - id: values
+          description: ''
+          type: (string | number | boolean)[][]
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample inserts some pre-loaded data into a range.
+           * It also shows how to get a range that fits the data.
+           */
+           function main(workbook: ExcelScript.Workbook) {
+             // Get the active cell.
+             let currentCell = workbook.getActiveCell();
+             
+             // Calculate the range needed to fit the given data.
+             let targetRange = currentCell.getResizedRange(DATA.length - 1, DATA[0].length - 1);
+
+             // Set range values to the data.
+             targetRange.setValues(DATA);
+
+             // Autofit the columns so the worksheet is readable. 
+             targetRange.getFormat().autofitColumns();
+           }
+
+           /* 
+            * This sample's data is in a static 2-dimensional array.
+            * You could also get the input from other ranges or sources.
+            * Note that each row must have the same number of columns to be valid. 
+            */
+           const DATA = [
+             ['Date', 'Salesperson', 'Product', 'Amount']
+             , ['3/2/2020', 'Anne', 'Pizza', '$1400']
+             , ['3/2/2020', 'Mariya', 'Pizza', '$1700']
+             , ['3/7/2020', 'Mark', 'Sandwiches', '$1010']
+             , ['3/24/2020', 'Anne', 'Pizza', '$750']
+             , ['3/28/2020', 'Mark', 'Salads', '$510']
+             , ['4/17/2020', 'Laura', 'Salads', '$900']
+             , ['4/17/2020', 'Mariya', 'Salads', '$1600']
+             , ['4/28/2020', 'Laura', 'Sandwiches', '$680']
+           ];
+          ```
+  - name: showCard()
+    uid: ExcelScript!ExcelScript.Range#showCard:member(1)
+    package: ExcelScript!
+    fullName: showCard()
+    summary: Displays the card for an active cell if it has rich value content.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'showCard(): void;'
+      return:
+        type: void
+        description: ''
+  - name: showGroupDetails(groupOption)
+    uid: ExcelScript!ExcelScript.Range#showGroupDetails:member(1)
+    package: ExcelScript!
+    fullName: showGroupDetails(groupOption)
+    summary: Shows the details of the row or column group.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'showGroupDetails(groupOption: GroupOption): void;'
+      parameters:
+        - id: groupOption
+          description: >-
+            Specifies whether to show the details of grouped rows or grouped
+            columns.
+          type: <xref uid="ExcelScript!ExcelScript.GroupOption:enum" />
+      return:
+        type: void
+        description: ''
+  - name: ungroup(groupOption)
+    uid: ExcelScript!ExcelScript.Range#ungroup:member(1)
+    package: ExcelScript!
+    fullName: ungroup(groupOption)
+    summary: Ungroups columns and rows for an outline.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'ungroup(groupOption: GroupOption): void;'
+      parameters:
+        - id: groupOption
+          description: Specifies how the range can be ungrouped by rows or columns.
+          type: <xref uid="ExcelScript!ExcelScript.GroupOption:enum" />
+      return:
+        type: void
+        description: ''
+  - name: unmerge()
+    uid: ExcelScript!ExcelScript.Range#unmerge:member(1)
+    package: ExcelScript!
+    fullName: unmerge()
+    summary: Unmerge the range cells into separate cells.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'unmerge(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script unmerges every used cell in the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the active worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+
+            // Separate all regions into single cells in the currently used range.
+            const range = selectedSheet.getUsedRange();
+            range.unmerge();
+          }
+          ```

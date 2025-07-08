@@ -1,0 +1,60 @@
+### YamlMime:TSType
+name: ExcelScript.RemoveDuplicatesResult
+uid: ExcelScript!ExcelScript.RemoveDuplicatesResult:interface
+package: ExcelScript!
+fullName: ExcelScript.RemoveDuplicatesResult
+summary: Represents the results from `Range.removeDuplicates`<!-- -->.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script removes duplicate rows from a range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range of the active worksheet.
+    const usedRange = workbook.getActiveWorksheet().getUsedRange();
+
+    // Remove any row that has a same value in the 0-indexed column as a previous row.
+    const removedResults: ExcelScript.RemoveDuplicatesResult = usedRange.removeDuplicates([0], true);
+
+    // Log the count of removed rows.
+    console.log(`Rows removed: ${removedResults.getRemoved()}.`);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getRemoved()
+    uid: ExcelScript!ExcelScript.RemoveDuplicatesResult#getRemoved:member(1)
+    package: ExcelScript!
+    fullName: getRemoved()
+    summary: Number of duplicated rows removed by the operation.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRemoved(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getUniqueRemaining()
+    uid: >-
+      ExcelScript!ExcelScript.RemoveDuplicatesResult#getUniqueRemaining:member(1)
+    package: ExcelScript!
+    fullName: getUniqueRemaining()
+    summary: Number of remaining unique rows present in the resulting range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUniqueRemaining(): number;'
+      return:
+        type: number
+        description: ''

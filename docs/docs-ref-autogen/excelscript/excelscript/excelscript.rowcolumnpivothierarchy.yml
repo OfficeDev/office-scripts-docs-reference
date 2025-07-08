@@ -1,0 +1,162 @@
+### YamlMime:TSType
+name: ExcelScript.RowColumnPivotHierarchy
+uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy:interface
+package: ExcelScript!
+fullName: ExcelScript.RowColumnPivotHierarchy
+summary: Represents the Excel RowColumnPivotHierarchy.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   *  This sample sorts the rows of a PivotTable.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get an existing PivotTable.
+    const pivotTable = workbook.getPivotTable("Farm Sales");
+
+    // Get the data hierarchy to use as the basis of the sort.
+    const valueFieldToSortOn: ExcelScript.DataPivotHierarchy = pivotTable.getDataHierarchy("Sum of Crates Sold Wholesale");
+
+    // Get the row to sort.
+    const rowToSort: ExcelScript.RowColumnPivotHierarchy = pivotTable.getRowHierarchy("Farm");
+
+    // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
+    rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getFields()
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#getFields:member(1)
+    package: ExcelScript!
+    fullName: getFields()
+    summary: Returns the PivotFields associated with the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFields(): PivotField[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotField:interface" />[]
+        description: ''
+  - name: getId()
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#getId:member(1)
+    package: ExcelScript!
+    fullName: getId()
+    summary: ID of the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getName()
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: Name of the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getPivotField(name)
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#getPivotField:member(1)
+    package: ExcelScript!
+    fullName: getPivotField(name)
+    summary: >-
+      Gets a PivotField by name. If the PivotField does not exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotField(name: string): PivotField | undefined;'
+      parameters:
+        - id: name
+          description: Name of the PivotField to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PivotField:interface" /> |
+          undefined
+        description: ''
+  - name: getPosition()
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#getPosition:member(1)
+    package: ExcelScript!
+    fullName: getPosition()
+    summary: Position of the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPosition(): number;'
+      return:
+        type: number
+        description: ''
+  - name: setName(name)
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#setName:member(1)
+    package: ExcelScript!
+    fullName: setName(name)
+    summary: Name of the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setName(name: string): void;'
+      parameters:
+        - id: name
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setPosition(position)
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#setPosition:member(1)
+    package: ExcelScript!
+    fullName: setPosition(position)
+    summary: Position of the RowColumnPivotHierarchy.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setPosition(position: number): void;'
+      parameters:
+        - id: position
+          description: ''
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: setToDefault()
+    uid: ExcelScript!ExcelScript.RowColumnPivotHierarchy#setToDefault:member(1)
+    package: ExcelScript!
+    fullName: setToDefault()
+    summary: Reset the RowColumnPivotHierarchy back to its default values.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setToDefault(): void;'
+      return:
+        type: void
+        description: ''

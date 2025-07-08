@@ -1,0 +1,1986 @@
+### YamlMime:TSType
+name: ExcelScript.Workbook
+uid: ExcelScript!ExcelScript.Workbook:interface
+package: ExcelScript!
+fullName: ExcelScript.Workbook
+summary: >-
+  Workbook is the top level object which contains related workbook objects such
+  as worksheets, tables, and ranges.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds a new worksheet to the workbook, then switches to it.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Add a new worksheet with the default name.
+    let worksheet = workbook.addWorksheet();
+
+    // Switch focus to the new worksheet.
+    worksheet.activate();
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: addBinding(range, bindingType, id)
+    uid: ExcelScript!ExcelScript.Workbook#addBinding:member(1)
+    package: ExcelScript!
+    fullName: addBinding(range, bindingType, id)
+    summary: Add a new binding to a particular Range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addBinding(
+                    range: Range | string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
+      parameters:
+        - id: range
+          description: >-
+            Range to bind the binding to. May be a `Range` object or a string.
+            If string, must contain the full address, including the sheet name
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+        - id: bindingType
+          description: Type of binding. See `ExcelScript.BindingType`<!-- -->.
+          type: <xref uid="ExcelScript!ExcelScript.BindingType:enum" />
+        - id: id
+          description: Name of the binding.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Binding:interface" />
+        description: ''
+  - name: addBindingFromNamedItem(name, bindingType, id)
+    uid: ExcelScript!ExcelScript.Workbook#addBindingFromNamedItem:member(1)
+    package: ExcelScript!
+    fullName: addBindingFromNamedItem(name, bindingType, id)
+    summary: >-
+      Add a new binding based on a named item in the workbook. If the named item
+      references to multiple areas, the `InvalidReference` error will be
+      returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addBindingFromNamedItem(
+                    name: string,
+                    bindingType: BindingType,
+                    id: string
+                ): Binding;
+      parameters:
+        - id: name
+          description: Name from which to create binding.
+          type: string
+        - id: bindingType
+          description: Type of binding. See `ExcelScript.BindingType`<!-- -->.
+          type: <xref uid="ExcelScript!ExcelScript.BindingType:enum" />
+        - id: id
+          description: Name of the binding.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Binding:interface" />
+        description: ''
+  - name: addBindingFromSelection(bindingType, id)
+    uid: ExcelScript!ExcelScript.Workbook#addBindingFromSelection:member(1)
+    package: ExcelScript!
+    fullName: addBindingFromSelection(bindingType, id)
+    summary: >-
+      Add a new binding based on the current selection. If the selection has
+      multiple areas, the `InvalidReference` error will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addBindingFromSelection(bindingType: BindingType, id: string): Binding;'
+      parameters:
+        - id: bindingType
+          description: Type of binding. See `ExcelScript.BindingType`<!-- -->.
+          type: <xref uid="ExcelScript!ExcelScript.BindingType:enum" />
+        - id: id
+          description: Name of the binding.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Binding:interface" />
+        description: ''
+  - name: addComment(cellAddress, content, contentType)
+    uid: ExcelScript!ExcelScript.Workbook#addComment:member(1)
+    package: ExcelScript!
+    fullName: addComment(cellAddress, content, contentType)
+    summary: >-
+      Creates a new comment with the given content on the given cell. An
+      `InvalidArgument` error is thrown if the provided range is larger than one
+      cell.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addComment(
+                    cellAddress: Range | string,
+                    content: CommentRichContent | string,
+                    contentType?: ContentType
+                ): Comment;
+      parameters:
+        - id: cellAddress
+          description: >-
+            The cell to which the comment is added. This can be a `Range` object
+            or a string. If it's a string, it must contain the full address,
+            including the sheet name. An `InvalidArgument` error is thrown if
+            the provided range is larger than one cell.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+        - id: content
+          description: >-
+            The comment's content. This can be either a string or
+            `CommentRichContent` object. Strings are used for plain text.
+            `CommentRichContent` objects allow for other comment features, such
+            as mentions.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.CommentRichContent:interface" />
+            | string
+        - id: contentType
+          description: >-
+            Optional. The type of content contained within the comment. The
+            default value is enum `ContentType.Plain`<!-- -->.
+          type: <xref uid="ExcelScript!ExcelScript.ContentType:enum" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Comment:interface" />
+        description: ''
+  - name: addCustomXmlPart(xml)
+    uid: ExcelScript!ExcelScript.Workbook#addCustomXmlPart:member(1)
+    package: ExcelScript!
+    fullName: addCustomXmlPart(xml)
+    summary: Adds a new custom XML part to the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addCustomXmlPart(xml: string): CustomXmlPart;'
+      parameters:
+        - id: xml
+          description: XML content. Must be a valid XML fragment.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />
+        description: ''
+  - name: addNamedItem(name, reference, comment)
+    uid: ExcelScript!ExcelScript.Workbook#addNamedItem:member(1)
+    package: ExcelScript!
+    fullName: addNamedItem(name, reference, comment)
+    summary: Adds a new name to the collection of the given scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addNamedItem(
+                    name: string,
+                    reference: Range | string,
+                    comment?: string
+                ): NamedItem;
+      parameters:
+        - id: name
+          description: The name of the named item.
+          type: string
+        - id: reference
+          description: The formula or the range that the name will refer to.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+        - id: comment
+          description: Optional. The comment associated with the named item.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NamedItem:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a named formula and uses it in another part of the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a named item for a formula.
+            // This formula is the sum of the cells F2:F21 on Sheet1.
+            const namedItem: ExcelScript.NamedItem = workbook.addNamedItem(
+              "GrandTotal", 
+              "=SUM(Sheet1!$F$2:$F$21)", 
+              "The sum of table sums."
+            );
+
+            // Add this named formula to a new sheet in the workbook.
+            const otherSheet = workbook.addWorksheet();
+            otherSheet.getRange("A1").setFormula(namedItem.getFormula());
+
+            // Switch to the new worksheet.
+            otherSheet.activate();
+          }
+          ```
+  - name: addNamedItemFormulaLocal(name, formula, comment)
+    uid: ExcelScript!ExcelScript.Workbook#addNamedItemFormulaLocal:member(1)
+    package: ExcelScript!
+    fullName: addNamedItemFormulaLocal(name, formula, comment)
+    summary: >-
+      Adds a new name to the collection of the given scope using the user's
+      locale for the formula.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addNamedItemFormulaLocal(
+                    name: string,
+                    formula: string,
+                    comment?: string
+                ): NamedItem;
+      parameters:
+        - id: name
+          description: The name of the named item.
+          type: string
+        - id: formula
+          description: The formula in the user's locale that the name will refer to.
+          type: string
+        - id: comment
+          description: Optional. The comment associated with the named item.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NamedItem:interface" />
+        description: ''
+  - name: addPivotTable(name, source, destination)
+    uid: ExcelScript!ExcelScript.Workbook#addPivotTable:member(1)
+    package: ExcelScript!
+    fullName: addPivotTable(name, source, destination)
+    summary: >-
+      Add a PivotTable based on the specified source data and insert it at the
+      top-left cell of the destination range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addPivotTable(
+                    name: string,
+                    source: Range | string | Table,
+                    destination: Range | string
+                ): PivotTable;
+      parameters:
+        - id: name
+          description: The name of the new PivotTable.
+          type: string
+        - id: source
+          description: >-
+            The source data for the new PivotTable, this can either be a range
+            (or string address including the worksheet name) or a table.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string |
+            <xref uid="ExcelScript!ExcelScript.Table:interface" />
+        - id: destination
+          description: >-
+            The cell in the upper-left corner of the PivotTable report's
+            destination range (the range on the worksheet where the resulting
+            report will be placed).
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a PivotTable from an existing table and adds it to an existing worksheet.
+           * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
+           * It also assumes there is a worksheet named "PivotSheet".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Create a PivotTable based on a table in the current worksheet.
+            let sheet = workbook.getActiveWorksheet();
+            let table = sheet.getTables()[0];
+            let pivotTable = workbook.addPivotTable("My Pivot", table, "PivotSheet!A1");
+
+            // Add fields to the PivotTable to show "Sales" per "Type".
+            pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
+            pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
+          }
+          ```
+  - name: addPivotTableStyle(name, makeUniqueName)
+    uid: ExcelScript!ExcelScript.Workbook#addPivotTableStyle:member(1)
+    package: ExcelScript!
+    fullName: addPivotTableStyle(name, makeUniqueName)
+    summary: Creates a blank `PivotTableStyle` with the specified name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addPivotTableStyle(
+                    name: string,
+                    makeUniqueName?: boolean
+                ): PivotTableStyle;
+      parameters:
+        - id: name
+          description: >-
+            The unique name for the new PivotTable style. Will throw an
+            `InvalidArgument` error if the name is already in use.
+          type: string
+        - id: makeUniqueName
+          description: >-
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
+            append numbers to the name in order to make it unique, if needed.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" />
+        description: ''
+  - name: addPredefinedCellStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#addPredefinedCellStyle:member(1)
+    package: ExcelScript!
+    fullName: addPredefinedCellStyle(name)
+    summary: Adds a new style to the collection.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addPredefinedCellStyle(name: string): void;'
+      parameters:
+        - id: name
+          description: Name of the style to be added.
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: addSlicer(slicerSource, sourceField, slicerDestination)
+    uid: ExcelScript!ExcelScript.Workbook#addSlicer:member(1)
+    package: ExcelScript!
+    fullName: addSlicer(slicerSource, sourceField, slicerDestination)
+    summary: Adds a new slicer to the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addSlicer(
+                    slicerSource: string | PivotTable | Table,
+                    sourceField: string | PivotField | number | TableColumn,
+                    slicerDestination?: string | Worksheet
+                ): Slicer;
+      parameters:
+        - id: slicerSource
+          description: >-
+            The data source that the new slicer will be based on. It can be a
+            `PivotTable` object, a `Table` object, or a string. When a
+            PivotTable object is passed, the data source is the source of the
+            `PivotTable` object. When a `Table` object is passed, the data
+            source is the `Table` object. When a string is passed, it is
+            interpreted as the name or ID of a PivotTable or table.
+          type: >-
+            string | <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />
+            | <xref uid="ExcelScript!ExcelScript.Table:interface" />
+        - id: sourceField
+          description: >-
+            The field in the data source to filter by. It can be a `PivotField`
+            object, a `TableColumn` object, the ID of a `PivotField` or the name
+            or ID of a `TableColumn`<!-- -->.
+          type: >-
+            string | <xref uid="ExcelScript!ExcelScript.PivotField:interface" />
+            | number | <xref uid="ExcelScript!ExcelScript.TableColumn:interface"
+            />
+        - id: slicerDestination
+          description: >-
+            Optional. The worksheet in which the new slicer will be created. It
+            can be a `Worksheet` object or the name or ID of a worksheet. This
+            parameter can be omitted if the slicer collection is retrieved from
+            a worksheet.
+          type: string | <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Slicer:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a slicer for an existing PivotTable.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the PivotTable named "Farm Pivot".
+            const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+            // Create the slicer. 
+            // Note that this assumes "Type" is already added as a hierarchy to the PivotTable.
+            const fruitSlicer: ExcelScript.Slicer = workbook.addSlicer(
+              farmPivot, /* The table or PivotTale to be sliced. */
+              farmPivot.getHierarchy("Type").getFields()[0] /* What source field to use as the slicer options. */
+            );
+
+            // Select the items to display.
+            fruitSlicer.selectItems(["Lemon", "Lime"]);
+
+            // Set the left margin of the slicer.
+            fruitSlicer.setLeft(400);
+          }
+          ```
+  - name: addSlicerStyle(name, makeUniqueName)
+    uid: ExcelScript!ExcelScript.Workbook#addSlicerStyle:member(1)
+    package: ExcelScript!
+    fullName: addSlicerStyle(name, makeUniqueName)
+    summary: Creates a blank slicer style with the specified name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addSlicerStyle(name: string, makeUniqueName?: boolean): SlicerStyle;'
+      parameters:
+        - id: name
+          description: >-
+            The unique name for the new slicer style. Will throw an
+            `InvalidArgument` exception if the name is already in use.
+          type: string
+        - id: makeUniqueName
+          description: >-
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
+            append numbers to the name in order to make it unique, if needed.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" />
+        description: ''
+  - name: addTable(address, hasHeaders)
+    uid: ExcelScript!ExcelScript.Workbook#addTable:member(1)
+    package: ExcelScript!
+    fullName: addTable(address, hasHeaders)
+    summary: >-
+      Creates a new table. The range object or source address determines the
+      worksheet under which the table will be added. If the table cannot be
+      added (e.g., because the address is invalid, or the table would overlap
+      with another table), an error will be thrown.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addTable(address: Range | string, hasHeaders: boolean): Table;'
+      parameters:
+        - id: address
+          description: >-
+            A `Range` object, or a string address or name of the range
+            representing the data source. If the address does not contain a
+            sheet name, the currently-active sheet is used.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+        - id: hasHeaders
+          description: >-
+            A boolean value that indicates whether the data being imported has
+            column labels. If the source does not contain headers (i.e., when
+            this property set to `false`<!-- -->), Excel will automatically
+            generate a header and shift the data down by one row.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Table:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample converts the information in the first worksheet
+           * into a table with headers.
+          */
+          function main(workbook: ExcelScript.Workbook) {
+            // This assumes there is one contiguous range in the first worksheet.
+            const dataRange = workbook.getFirstWorksheet().getUsedRange();
+            
+            // Add a table at the workbook level.
+            workbook.addTable(dataRange.getAddress(), true);
+          }
+          ```
+  - name: addTableStyle(name, makeUniqueName)
+    uid: ExcelScript!ExcelScript.Workbook#addTableStyle:member(1)
+    package: ExcelScript!
+    fullName: addTableStyle(name, makeUniqueName)
+    summary: Creates a blank `TableStyle` with the specified name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addTableStyle(name: string, makeUniqueName?: boolean): TableStyle;'
+      parameters:
+        - id: name
+          description: >-
+            The unique name for the new table style. Will throw an
+            `InvalidArgument` error if the name is already in use.
+          type: string
+        - id: makeUniqueName
+          description: >-
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
+            append numbers to the name in order to make it unique, if needed.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableStyle:interface" />
+        description: ''
+  - name: addTimelineStyle(name, makeUniqueName)
+    uid: ExcelScript!ExcelScript.Workbook#addTimelineStyle:member(1)
+    package: ExcelScript!
+    fullName: addTimelineStyle(name, makeUniqueName)
+    summary: Creates a blank `TimelineStyle` with the specified name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addTimelineStyle(name: string, makeUniqueName?: boolean): TimelineStyle;'
+      parameters:
+        - id: name
+          description: >-
+            The unique name for the new timeline style. Will throw an
+            `InvalidArgument` error if the name is already in use.
+          type: string
+        - id: makeUniqueName
+          description: >-
+            Optional. Defaults to `false`<!-- -->. If `true`<!-- -->, will
+            append numbers to the name in order to make it unique, if needed.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" />
+        description: ''
+  - name: addWorksheet(name)
+    uid: ExcelScript!ExcelScript.Workbook#addWorksheet:member(1)
+    package: ExcelScript!
+    fullName: addWorksheet(name)
+    summary: >-
+      Adds a new worksheet to the workbook. The worksheet will be added at the
+      end of existing worksheets. If you wish to activate the newly added
+      worksheet, call `.activate()` on it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addWorksheet(name?: string): Worksheet;'
+      parameters:
+        - id: name
+          description: >-
+            Optional. The name of the worksheet to be added. If specified, the
+            name should be unique. If not specified, Excel determines the name
+            of the new worksheet.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a new worksheet named "Data" to the workbook.
+           * If a worksheet with that name already exists, the script logs a note.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check if the "Data" worksheet already exists.
+            if (workbook.getWorksheet("Data")) {
+              console.log("The Data worksheet is already in the workbook.");
+            } else {
+              // Add a new worksheet.
+              let worksheet = workbook.addWorksheet("Data");
+            }
+          }
+          ```
+  - name: breakAllLinksToLinkedWorkbooks()
+    uid: ExcelScript!ExcelScript.Workbook#breakAllLinksToLinkedWorkbooks:member(1)
+    package: ExcelScript!
+    fullName: breakAllLinksToLinkedWorkbooks()
+    summary: >-
+      Breaks all the links to the linked workbooks. Once the links are broken,
+      any formulas referencing workbook links are removed entirely and replaced
+      with the most recently retrieved values.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'breakAllLinksToLinkedWorkbooks(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getActiveCell()
+    uid: ExcelScript!ExcelScript.Workbook#getActiveCell:member(1)
+    package: ExcelScript!
+    fullName: getActiveCell()
+    summary: Gets the currently active cell from the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getActiveCell(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the value of the current active cell. 
+           * If multiple cells are selected, the top-leftmost cell will be logged.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the current active cell in the workbook.
+            let cell = workbook.getActiveCell();
+            console.log(`The current cell's value is ${cell.getValue()}`);
+          }
+          ```
+  - name: getActiveChart()
+    uid: ExcelScript!ExcelScript.Workbook#getActiveChart:member(1)
+    package: ExcelScript!
+    fullName: getActiveChart()
+    summary: >-
+      Gets the currently active chart in the workbook. If there is no active
+      chart, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getActiveChart(): Chart;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Chart:interface" />
+        description: ''
+  - name: getActiveSlicer()
+    uid: ExcelScript!ExcelScript.Workbook#getActiveSlicer:member(1)
+    package: ExcelScript!
+    fullName: getActiveSlicer()
+    summary: >-
+      Gets the currently active slicer in the workbook. If there is no active
+      slicer, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getActiveSlicer(): Slicer;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Slicer:interface" />
+        description: ''
+  - name: getActiveWorksheet()
+    uid: ExcelScript!ExcelScript.Workbook#getActiveWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getActiveWorksheet()
+    summary: Gets the currently active worksheet in the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getActiveWorksheet(): Worksheet;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: getApplication()
+    uid: ExcelScript!ExcelScript.Workbook#getApplication:member(1)
+    package: ExcelScript!
+    fullName: getApplication()
+    summary: Represents the Excel application instance that contains this workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getApplication(): Application;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Application:interface" />
+        description: ''
+  - name: getAutoSave()
+    uid: ExcelScript!ExcelScript.Workbook#getAutoSave:member(1)
+    package: ExcelScript!
+    fullName: getAutoSave()
+    summary: Specifies if the workbook is in AutoSave mode.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAutoSave(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getBinding(id)
+    uid: ExcelScript!ExcelScript.Workbook#getBinding:member(1)
+    package: ExcelScript!
+    fullName: getBinding(id)
+    summary: >-
+      Gets a binding object by ID. If the binding object does not exist, then
+      this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getBinding(id: string): Binding | undefined;'
+      parameters:
+        - id: id
+          description: ID of the binding object to be retrieved.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Binding:interface" /> | undefined
+        description: ''
+  - name: getBindings()
+    uid: ExcelScript!ExcelScript.Workbook#getBindings:member(1)
+    package: ExcelScript!
+    fullName: getBindings()
+    summary: Represents a collection of bindings that are part of the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getBindings(): Binding[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Binding:interface" />[]
+        description: ''
+  - name: getCalculationEngineVersion()
+    uid: ExcelScript!ExcelScript.Workbook#getCalculationEngineVersion:member(1)
+    package: ExcelScript!
+    fullName: getCalculationEngineVersion()
+    summary: Returns a number about the version of Excel Calculation Engine.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCalculationEngineVersion(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getChartDataPointTrack()
+    uid: ExcelScript!ExcelScript.Workbook#getChartDataPointTrack:member(1)
+    package: ExcelScript!
+    fullName: getChartDataPointTrack()
+    summary: >-
+      True if all charts in the workbook are tracking the actual data points to
+      which they are attached. False if the charts track the index of the data
+      points.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getChartDataPointTrack(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getComment(commentId)
+    uid: ExcelScript!ExcelScript.Workbook#getComment:member(1)
+    package: ExcelScript!
+    fullName: getComment(commentId)
+    summary: >-
+      Gets a comment from the collection based on its ID. If the comment object
+      does not exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getComment(commentId: string): Comment | undefined;'
+      parameters:
+        - id: commentId
+          description: The identifier for the comment.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Comment:interface" /> | undefined
+        description: ''
+  - name: getCommentByCell(cellAddress)
+    uid: ExcelScript!ExcelScript.Workbook#getCommentByCell:member(1)
+    package: ExcelScript!
+    fullName: getCommentByCell(cellAddress)
+    summary: >-
+      Gets the comment from the specified cell. If there is no comment in the
+      cell, an error is thrown.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCommentByCell(cellAddress: Range | string): Comment;'
+      parameters:
+        - id: cellAddress
+          description: >-
+            The cell which the comment is on. This can be a `Range` object or a
+            string. If it's a string, it must contain the full address,
+            including the sheet name. An `InvalidArgument` error is thrown if
+            the provided range is larger than one cell.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Comment:interface" />
+        description: ''
+  - name: getCommentByReplyId(replyId)
+    uid: ExcelScript!ExcelScript.Workbook#getCommentByReplyId:member(1)
+    package: ExcelScript!
+    fullName: getCommentByReplyId(replyId)
+    summary: Gets the comment to which the given reply is connected.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCommentByReplyId(replyId: string): Comment;'
+      parameters:
+        - id: replyId
+          description: The identifier of comment reply.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Comment:interface" />
+        description: ''
+  - name: getComments()
+    uid: ExcelScript!ExcelScript.Workbook#getComments:member(1)
+    package: ExcelScript!
+    fullName: getComments()
+    summary: Represents a collection of comments associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getComments(): Comment[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Comment:interface" />[]
+        description: ''
+  - name: getCustomXmlPart(id)
+    uid: ExcelScript!ExcelScript.Workbook#getCustomXmlPart:member(1)
+    package: ExcelScript!
+    fullName: getCustomXmlPart(id)
+    summary: >-
+      Gets a custom XML part based on its ID. If the `CustomXmlPart` does not
+      exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCustomXmlPart(id: string): CustomXmlPart | undefined;'
+      parameters:
+        - id: id
+          description: ID of the object to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" /> |
+          undefined
+        description: ''
+  - name: getCustomXmlPartByNamespace(namespaceUri)
+    uid: ExcelScript!ExcelScript.Workbook#getCustomXmlPartByNamespace:member(1)
+    package: ExcelScript!
+    fullName: getCustomXmlPartByNamespace(namespaceUri)
+    summary: >-
+      Gets a new collection of custom XML parts whose namespaces match the given
+      namespace.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: true
+    customDeprecatedMessage: Use `getCustomXmlPartsByNamespace` instead.
+    syntax:
+      content: 'getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];'
+      parameters:
+        - id: namespaceUri
+          description: >-
+            This must be a fully qualified schema URI; for example,
+            "http://schemas.contoso.com/review/1.0".
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]
+        description: ''
+  - name: getCustomXmlParts()
+    uid: ExcelScript!ExcelScript.Workbook#getCustomXmlParts:member(1)
+    package: ExcelScript!
+    fullName: getCustomXmlParts()
+    summary: Represents the collection of custom XML parts contained by this workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCustomXmlParts(): CustomXmlPart[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]
+        description: ''
+  - name: getCustomXmlPartsByNamespace(namespaceUri)
+    uid: ExcelScript!ExcelScript.Workbook#getCustomXmlPartsByNamespace:member(1)
+    package: ExcelScript!
+    fullName: getCustomXmlPartsByNamespace(namespaceUri)
+    summary: >-
+      Gets a new collection of custom XML parts whose namespaces match the given
+      namespace.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];'
+      parameters:
+        - id: namespaceUri
+          description: >-
+            This must be a fully qualified schema URI; for example,
+            "http://schemas.contoso.com/review/1.0".
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CustomXmlPart:interface" />[]
+        description: ''
+  - name: getDefaultPivotTableStyle()
+    uid: ExcelScript!ExcelScript.Workbook#getDefaultPivotTableStyle:member(1)
+    package: ExcelScript!
+    fullName: getDefaultPivotTableStyle()
+    summary: Gets the default PivotTable style for the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDefaultPivotTableStyle(): PivotTableStyle;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" />
+        description: ''
+  - name: getDefaultSlicerStyle()
+    uid: ExcelScript!ExcelScript.Workbook#getDefaultSlicerStyle:member(1)
+    package: ExcelScript!
+    fullName: getDefaultSlicerStyle()
+    summary: Gets the default `SlicerStyle` for the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDefaultSlicerStyle(): SlicerStyle;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" />
+        description: ''
+  - name: getDefaultTableStyle()
+    uid: ExcelScript!ExcelScript.Workbook#getDefaultTableStyle:member(1)
+    package: ExcelScript!
+    fullName: getDefaultTableStyle()
+    summary: Gets the default table style for the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDefaultTableStyle(): TableStyle;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableStyle:interface" />
+        description: ''
+  - name: getDefaultTimelineStyle()
+    uid: ExcelScript!ExcelScript.Workbook#getDefaultTimelineStyle:member(1)
+    package: ExcelScript!
+    fullName: getDefaultTimelineStyle()
+    summary: Gets the default timeline style for the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDefaultTimelineStyle(): TimelineStyle;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" />
+        description: ''
+  - name: getFirstWorksheet(visibleOnly)
+    uid: ExcelScript!ExcelScript.Workbook#getFirstWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getFirstWorksheet(visibleOnly)
+    summary: Gets the first worksheet in the collection.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFirstWorksheet(visibleOnly?: boolean): Worksheet;'
+      parameters:
+        - id: visibleOnly
+          description: >-
+            Optional. If `true`<!-- -->, considers only visible worksheets,
+            skipping over any hidden ones.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: getIsDirty()
+    uid: ExcelScript!ExcelScript.Workbook#getIsDirty:member(1)
+    package: ExcelScript!
+    fullName: getIsDirty()
+    summary: >-
+      Specifies if changes have been made since the workbook was last saved. You
+      can set this property to `true` if you want to close a modified workbook
+      without either saving it or being prompted to save it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIsDirty(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getLastWorksheet(visibleOnly)
+    uid: ExcelScript!ExcelScript.Workbook#getLastWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getLastWorksheet(visibleOnly)
+    summary: Gets the last worksheet in the collection.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLastWorksheet(visibleOnly?: boolean): Worksheet;'
+      parameters:
+        - id: visibleOnly
+          description: >-
+            Optional. If `true`<!-- -->, considers only visible worksheets,
+            skipping over any hidden ones.
+          type: boolean
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: getLinkedWorkbookByUrl(key)
+    uid: ExcelScript!ExcelScript.Workbook#getLinkedWorkbookByUrl:member(1)
+    package: ExcelScript!
+    fullName: getLinkedWorkbookByUrl(key)
+    summary: >-
+      Gets information about a linked workbook by its URL. If the workbook does
+      not exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;'
+      parameters:
+        - id: key
+          description: The URL of the linked workbook.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.LinkedWorkbook:interface" /> |
+          undefined
+        description: ''
+  - name: getLinkedWorkbookRefreshMode()
+    uid: ExcelScript!ExcelScript.Workbook#getLinkedWorkbookRefreshMode:member(1)
+    package: ExcelScript!
+    fullName: getLinkedWorkbookRefreshMode()
+    summary: >-
+      Represents the update mode of the workbook links. The mode is same for all
+      of the workbook links present in the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbookRefreshMode(): WorkbookLinksRefreshMode;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script refreshes all the links to external workbooks, 
+           * if the linked workbook refresh mode is set to manual.
+           * To learn about linked workbooks, see https://support.microsoft.com/office/c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check the refresh mode.
+            if (workbook.getLinkedWorkbookRefreshMode() === ExcelScript.WorkbookLinksRefreshMode.manual) {
+              console.log("Refreshing workbook links");
+
+              // Trigger a refresh of linked workbook content.
+              workbook.refreshAllLinksToLinkedWorkbooks();
+            }
+          ```
+  - name: getLinkedWorkbooks()
+    uid: ExcelScript!ExcelScript.Workbook#getLinkedWorkbooks:member(1)
+    package: ExcelScript!
+    fullName: getLinkedWorkbooks()
+    summary: >-
+      Returns a collection of linked workbooks. In formulas, the workbook links
+      can be used to reference data (cell values and names) outside of the
+      current workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLinkedWorkbooks(): LinkedWorkbook[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.LinkedWorkbook:interface" />[]
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes all links to other workbooks.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get all the linked workbook references.
+              const externalWorkbooks: ExcelScript.LinkedWorkbook[] = workbook.getLinkedWorkbooks();
+              console.log(`There are ${externalWorkbooks.length} other workbooks linked to from this workbook.`);
+
+              // Remove all the links to those workbooks.
+              // This changes the value of cells with workbook links to "#CONNECT!".
+              externalWorkbooks.forEach((workbookLink) => {
+                  workbookLink.breakLinks();
+              });
+          }
+          ```
+  - name: getName()
+    uid: ExcelScript!ExcelScript.Workbook#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: Gets the workbook name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the name of the workbook without the ".xlsx" extension.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the workbook's name.
+            let name = workbook.getName();
+
+            // Remove the file extension.
+            name = name.substring(0, name.lastIndexOf(".xlsx"));
+
+            // Display the name in the console.
+            console.log(name);
+          }
+          ```
+  - name: getNamedItem(name)
+    uid: ExcelScript!ExcelScript.Workbook#getNamedItem:member(1)
+    package: ExcelScript!
+    fullName: getNamedItem(name)
+    summary: >-
+      Gets a `NamedItem` object using its name. If the object does not exist,
+      then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNamedItem(name: string): NamedItem | undefined;'
+      parameters:
+        - id: name
+          description: Nameditem name.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NamedItem:interface" /> | undefined
+        description: ''
+  - name: getNames()
+    uid: ExcelScript!ExcelScript.Workbook#getNames:member(1)
+    package: ExcelScript!
+    fullName: getNames()
+    summary: >-
+      Represents a collection of workbook-scoped named items (named ranges and
+      constants).
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNames(): NamedItem[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NamedItem:interface" />[]
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script looks for every named range with "Review" in the name 
+           * and marks the range with a yellow fill.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Look at every named item in the workbook.
+            workbook.getNames().forEach((namedItem) => {
+              // Find names containing "Review".
+              if (namedItem.getName().includes("Review")) {
+                // Only change the fill color if the named item is a range (not a formula).
+                let itemType: ExcelScript.NamedItemType = namedItem.getType();
+                if (itemType === ExcelScript.NamedItemType.range) {
+                  // Set the range's fill color to yellow.
+                  namedItem.getRange().getFormat().getFill().setColor("yellow");
+                }
+              }
+            });
+          }
+          ```
+  - name: getPivotTable(name)
+    uid: ExcelScript!ExcelScript.Workbook#getPivotTable:member(1)
+    package: ExcelScript!
+    fullName: getPivotTable(name)
+    summary: >-
+      Gets a PivotTable by name. If the PivotTable does not exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotTable(name: string): PivotTable | undefined;'
+      parameters:
+        - id: name
+          description: Name of the PivotTable to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PivotTable:interface" /> |
+          undefined
+        description: ''
+  - name: getPivotTables()
+    uid: ExcelScript!ExcelScript.Workbook#getPivotTables:member(1)
+    package: ExcelScript!
+    fullName: getPivotTables()
+    summary: Represents a collection of PivotTables associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotTables(): PivotTable[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTable:interface" />[]
+        description: ''
+  - name: getPivotTableStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#getPivotTableStyle:member(1)
+    package: ExcelScript!
+    fullName: getPivotTableStyle(name)
+    summary: >-
+      Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist,
+      then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotTableStyle(name: string): PivotTableStyle | undefined;'
+      parameters:
+        - id: name
+          description: Name of the PivotTable style to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> |
+          undefined
+        description: ''
+  - name: getPivotTableStyles()
+    uid: ExcelScript!ExcelScript.Workbook#getPivotTableStyles:member(1)
+    package: ExcelScript!
+    fullName: getPivotTableStyles()
+    summary: Represents a collection of PivotTableStyles associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPivotTableStyles(): PivotTableStyle[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" />[]
+        description: ''
+  - name: getPredefinedCellStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#getPredefinedCellStyle:member(1)
+    package: ExcelScript!
+    fullName: getPredefinedCellStyle(name)
+    summary: >-
+      Gets a style by name. If the style object does not exist, then this method
+      returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPredefinedCellStyle(name: string): PredefinedCellStyle | undefined;'
+      parameters:
+        - id: name
+          description: Name of the style to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.PredefinedCellStyle:interface" /> |
+          undefined
+        description: ''
+  - name: getPredefinedCellStyles()
+    uid: ExcelScript!ExcelScript.Workbook#getPredefinedCellStyles:member(1)
+    package: ExcelScript!
+    fullName: getPredefinedCellStyles()
+    summary: Represents a collection of styles associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPredefinedCellStyles(): PredefinedCellStyle[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PredefinedCellStyle:interface" />[]
+        description: ''
+  - name: getPreviouslySaved()
+    uid: ExcelScript!ExcelScript.Workbook#getPreviouslySaved:member(1)
+    package: ExcelScript!
+    fullName: getPreviouslySaved()
+    summary: Specifies if the workbook has ever been saved locally or online.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPreviouslySaved(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getProperties()
+    uid: ExcelScript!ExcelScript.Workbook#getProperties:member(1)
+    package: ExcelScript!
+    fullName: getProperties()
+    summary: Gets the workbook properties.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getProperties(): DocumentProperties;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DocumentProperties:interface" />
+        description: ''
+  - name: getProtection()
+    uid: ExcelScript!ExcelScript.Workbook#getProtection:member(1)
+    package: ExcelScript!
+    fullName: getProtection()
+    summary: Returns the protection object for a workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getProtection(): WorkbookProtection;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.WorkbookProtection:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script protects the workbook with a password, if it isn't already protected.
+           * The password is provided by the user through a prompt.
+           */
+          function main(workbook: ExcelScript.Workbook, password?: string) {
+            // Get the workbook-level protection object.
+            const protection = workbook.getProtection();
+
+            // Check if the workbook is already protected.
+            if (!protection.getProtected()) {
+                // Protect the workbook with the given password.
+                // If the optional password was omitted, 
+                // no password will be needed to unprotect the workbook.
+              protection.protect(password);
+            }
+          }
+          ```
+  - name: getQueries()
+    uid: ExcelScript!ExcelScript.Workbook#getQueries:member(1)
+    package: ExcelScript!
+    fullName: getQueries()
+    summary: Returns a collection of Power Query queries that are part of the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getQueries(): Query[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Query:interface" />[]
+        description: ''
+  - name: getQuery(key)
+    uid: ExcelScript!ExcelScript.Workbook#getQuery:member(1)
+    package: ExcelScript!
+    fullName: getQuery(key)
+    summary: Gets a query from the collection based on its name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getQuery(key: string): Query;'
+      parameters:
+        - id: key
+          description: The name of the query case-insensitive.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Query:interface" />
+        description: ''
+  - name: getReadOnly()
+    uid: ExcelScript!ExcelScript.Workbook#getReadOnly:member(1)
+    package: ExcelScript!
+    fullName: getReadOnly()
+    summary: Returns `true` if the workbook is open in read-only mode.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getReadOnly(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getSelectedRange()
+    uid: ExcelScript!ExcelScript.Workbook#getSelectedRange:member(1)
+    package: ExcelScript!
+    fullName: getSelectedRange()
+    summary: >-
+      Gets the currently selected single range from the workbook. If there are
+      multiple ranges selected, this method will throw an error.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSelectedRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getSelectedRanges()
+    uid: ExcelScript!ExcelScript.Workbook#getSelectedRanges:member(1)
+    package: ExcelScript!
+    fullName: getSelectedRanges()
+    summary: >-
+      Gets the currently selected one or more ranges from the workbook. Unlike
+      `getSelectedRange()`<!-- -->, this method returns a `RangeAreas` object
+      that represents all the selected ranges.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSelectedRanges(): RangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
+        description: ''
+  - name: getSlicer(key)
+    uid: ExcelScript!ExcelScript.Workbook#getSlicer:member(1)
+    package: ExcelScript!
+    fullName: getSlicer(key)
+    summary: >-
+      Gets a slicer using its name or ID. If the slicer doesn't exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSlicer(key: string): Slicer | undefined;'
+      parameters:
+        - id: key
+          description: Name or ID of the slicer to be retrieved.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Slicer:interface" /> | undefined
+        description: ''
+  - name: getSlicers()
+    uid: ExcelScript!ExcelScript.Workbook#getSlicers:member(1)
+    package: ExcelScript!
+    fullName: getSlicers()
+    summary: Represents a collection of slicers associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSlicers(): Slicer[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Slicer:interface" />[]
+        description: ''
+  - name: getSlicerStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#getSlicerStyle:member(1)
+    package: ExcelScript!
+    fullName: getSlicerStyle(name)
+    summary: >-
+      Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSlicerStyle(name: string): SlicerStyle | undefined;'
+      parameters:
+        - id: name
+          description: Name of the slicer style to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> |
+          undefined
+        description: ''
+  - name: getSlicerStyles()
+    uid: ExcelScript!ExcelScript.Workbook#getSlicerStyles:member(1)
+    package: ExcelScript!
+    fullName: getSlicerStyles()
+    summary: Represents a collection of SlicerStyles associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSlicerStyles(): SlicerStyle[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" />[]
+        description: ''
+  - name: getTable(key)
+    uid: ExcelScript!ExcelScript.Workbook#getTable:member(1)
+    package: ExcelScript!
+    fullName: getTable(key)
+    summary: >-
+      Gets a table by name or ID. If the table doesn't exist, then this method
+      returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTable(key: string): Table | undefined;'
+      parameters:
+        - id: key
+          description: Name or ID of the table to be retrieved.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Table:interface" /> | undefined
+        description: ''
+  - name: getTables()
+    uid: ExcelScript!ExcelScript.Workbook#getTables:member(1)
+    package: ExcelScript!
+    fullName: getTables()
+    summary: Represents a collection of tables associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTables(): Table[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Table:interface" />[]
+        description: ''
+  - name: getTableStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#getTableStyle:member(1)
+    package: ExcelScript!
+    fullName: getTableStyle(name)
+    summary: >-
+      Gets a `TableStyle` by name. If the table style does not exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTableStyle(name: string): TableStyle | undefined;'
+      parameters:
+        - id: name
+          description: Name of the table style to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TableStyle:interface" /> |
+          undefined
+        description: ''
+  - name: getTableStyles()
+    uid: ExcelScript!ExcelScript.Workbook#getTableStyles:member(1)
+    package: ExcelScript!
+    fullName: getTableStyles()
+    summary: Represents a collection of TableStyles associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTableStyles(): TableStyle[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableStyle:interface" />[]
+        description: ''
+  - name: getTimelineStyle(name)
+    uid: ExcelScript!ExcelScript.Workbook#getTimelineStyle:member(1)
+    package: ExcelScript!
+    fullName: getTimelineStyle(name)
+    summary: >-
+      Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then
+      this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTimelineStyle(name: string): TimelineStyle | undefined;'
+      parameters:
+        - id: name
+          description: Name of the timeline style to be retrieved.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> |
+          undefined
+        description: ''
+  - name: getTimelineStyles()
+    uid: ExcelScript!ExcelScript.Workbook#getTimelineStyles:member(1)
+    package: ExcelScript!
+    fullName: getTimelineStyles()
+    summary: Represents a collection of TimelineStyles associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTimelineStyles(): TimelineStyle[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" />[]
+        description: ''
+  - name: getUsePrecisionAsDisplayed()
+    uid: ExcelScript!ExcelScript.Workbook#getUsePrecisionAsDisplayed:member(1)
+    package: ExcelScript!
+    fullName: getUsePrecisionAsDisplayed()
+    summary: >-
+      True if calculations in this workbook will be done using only the
+      precision of the numbers as they're displayed. Data will permanently lose
+      accuracy when switching this property from `false` to `true`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUsePrecisionAsDisplayed(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getWorksheet(key)
+    uid: ExcelScript!ExcelScript.Workbook#getWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getWorksheet(key)
+    summary: >-
+      Gets a worksheet object using its name or ID. If the worksheet does not
+      exist, then this method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWorksheet(key: string): Worksheet | undefined;'
+      parameters:
+        - id: key
+          description: The name or ID of the worksheet.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script switches the active view to a worksheet named "Data", if it exists.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Check if the "Data" worksheet exists.
+            let dataWorksheet = workbook.getWorksheet("Data");
+            if (dataWorksheet) {
+              // Switch to the "Data" worksheet.
+              dataWorksheet.activate();
+            } else {
+              console.log(`No worksheet named "Data" in this workbook.`);
+            }
+          }
+          ```
+  - name: getWorksheets()
+    uid: ExcelScript!ExcelScript.Workbook#getWorksheets:member(1)
+    package: ExcelScript!
+    fullName: getWorksheets()
+    summary: Represents a collection of worksheets associated with the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWorksheets(): Worksheet[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />[]
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script logs the names of all the worksheets in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the worksheets in the workbook. 
+            let sheets = workbook.getWorksheets();
+
+            // Get a list of all the worksheet names.
+            let names = sheets.map ((sheet) => sheet.getName());
+
+            // Write in the console all the worksheet names and the total count.
+            console.log(names);
+            console.log(`Total worksheets inside of this workbook: ${sheets.length}`);
+          }
+          ```
+  - name: refreshAllDataConnections()
+    uid: ExcelScript!ExcelScript.Workbook#refreshAllDataConnections:member(1)
+    package: ExcelScript!
+    fullName: refreshAllDataConnections()
+    summary: Refreshes all the Data Connections.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refreshAllDataConnections(): void;'
+      return:
+        type: void
+        description: ''
+  - name: refreshAllLinksToLinkedWorkbooks()
+    uid: >-
+      ExcelScript!ExcelScript.Workbook#refreshAllLinksToLinkedWorkbooks:member(1)
+    package: ExcelScript!
+    fullName: refreshAllLinksToLinkedWorkbooks()
+    summary: Makes a request to refresh all the workbook links.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refreshAllLinksToLinkedWorkbooks(): void;'
+      return:
+        type: void
+        description: ''
+  - name: refreshAllPivotTables()
+    uid: ExcelScript!ExcelScript.Workbook#refreshAllPivotTables:member(1)
+    package: ExcelScript!
+    fullName: refreshAllPivotTables()
+    summary: Refreshes all the pivot tables in the collection.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'refreshAllPivotTables(): void;'
+      return:
+        type: void
+        description: ''
+  - name: setChartDataPointTrack(chartDataPointTrack)
+    uid: ExcelScript!ExcelScript.Workbook#setChartDataPointTrack:member(1)
+    package: ExcelScript!
+    fullName: setChartDataPointTrack(chartDataPointTrack)
+    summary: >-
+      True if all charts in the workbook are tracking the actual data points to
+      which they are attached. False if the charts track the index of the data
+      points.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setChartDataPointTrack(chartDataPointTrack: boolean): void;'
+      parameters:
+        - id: chartDataPointTrack
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setDefaultPivotTableStyle(newDefaultStyle)
+    uid: ExcelScript!ExcelScript.Workbook#setDefaultPivotTableStyle:member(1)
+    package: ExcelScript!
+    fullName: setDefaultPivotTableStyle(newDefaultStyle)
+    summary: Sets the default PivotTable style for use in the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        setDefaultPivotTableStyle(
+                    newDefaultStyle: PivotTableStyle | string
+                ): void;
+      parameters:
+        - id: newDefaultStyle
+          description: >-
+            The `PivotTableStyle` object, or name of the `PivotTableStyle`
+            object, that should be the new default.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.PivotTableStyle:interface" /> |
+            string
+      return:
+        type: void
+        description: ''
+  - name: setDefaultSlicerStyle(newDefaultStyle)
+    uid: ExcelScript!ExcelScript.Workbook#setDefaultSlicerStyle:member(1)
+    package: ExcelScript!
+    fullName: setDefaultSlicerStyle(newDefaultStyle)
+    summary: Sets the default slicer style for use in the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setDefaultSlicerStyle(newDefaultStyle: SlicerStyle | string): void;'
+      parameters:
+        - id: newDefaultStyle
+          description: >-
+            The `SlicerStyle` object, or name of the `SlicerStyle` object, that
+            should be the new default.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.SlicerStyle:interface" /> |
+            string
+      return:
+        type: void
+        description: ''
+  - name: setDefaultTableStyle(newDefaultStyle)
+    uid: ExcelScript!ExcelScript.Workbook#setDefaultTableStyle:member(1)
+    package: ExcelScript!
+    fullName: setDefaultTableStyle(newDefaultStyle)
+    summary: Sets the default table style for use in the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setDefaultTableStyle(newDefaultStyle: TableStyle | string): void;'
+      parameters:
+        - id: newDefaultStyle
+          description: >-
+            The `TableStyle` object, or name of the `TableStyle` object, that
+            should be the new default.
+          type: <xref uid="ExcelScript!ExcelScript.TableStyle:interface" /> | string
+      return:
+        type: void
+        description: ''
+  - name: setDefaultTimelineStyle(newDefaultStyle)
+    uid: ExcelScript!ExcelScript.Workbook#setDefaultTimelineStyle:member(1)
+    package: ExcelScript!
+    fullName: setDefaultTimelineStyle(newDefaultStyle)
+    summary: Sets the default timeline style for use in the parent object's scope.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setDefaultTimelineStyle(newDefaultStyle: TimelineStyle | string): void;'
+      parameters:
+        - id: newDefaultStyle
+          description: >-
+            The `TimelineStyle` object, or name of the `TimelineStyle` object,
+            that should be the new default.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.TimelineStyle:interface" /> |
+            string
+      return:
+        type: void
+        description: ''
+  - name: setIsDirty(isDirty)
+    uid: ExcelScript!ExcelScript.Workbook#setIsDirty:member(1)
+    package: ExcelScript!
+    fullName: setIsDirty(isDirty)
+    summary: >-
+      Specifies if changes have been made since the workbook was last saved. You
+      can set this property to `true` if you want to close a modified workbook
+      without either saving it or being prompted to save it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setIsDirty(isDirty: boolean): void;'
+      parameters:
+        - id: isDirty
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setLinkedWorkbookRefreshMode(linkedWorkbookRefreshMode)
+    uid: ExcelScript!ExcelScript.Workbook#setLinkedWorkbookRefreshMode:member(1)
+    package: ExcelScript!
+    fullName: setLinkedWorkbookRefreshMode(linkedWorkbookRefreshMode)
+    summary: >-
+      Represents the update mode of the workbook links. The mode is same for all
+      of the workbook links present in the workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        setLinkedWorkbookRefreshMode(
+                    linkedWorkbookRefreshMode: WorkbookLinksRefreshMode
+                ): void;
+      parameters:
+        - id: linkedWorkbookRefreshMode
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum" />
+      return:
+        type: void
+        description: ''
+  - name: setUsePrecisionAsDisplayed(usePrecisionAsDisplayed)
+    uid: ExcelScript!ExcelScript.Workbook#setUsePrecisionAsDisplayed:member(1)
+    package: ExcelScript!
+    fullName: setUsePrecisionAsDisplayed(usePrecisionAsDisplayed)
+    summary: >-
+      True if calculations in this workbook will be done using only the
+      precision of the numbers as they're displayed. Data will permanently lose
+      accuracy when switching this property from `false` to `true`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setUsePrecisionAsDisplayed(usePrecisionAsDisplayed: boolean): void;'
+      parameters:
+        - id: usePrecisionAsDisplayed
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''

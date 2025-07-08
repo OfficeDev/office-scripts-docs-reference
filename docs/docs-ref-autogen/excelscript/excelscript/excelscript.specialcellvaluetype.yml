@@ -1,0 +1,93 @@
+### YamlMime:TSEnum
+name: ExcelScript.SpecialCellValueType
+uid: ExcelScript!ExcelScript.SpecialCellValueType:enum
+package: ExcelScript!
+fullName: ExcelScript.SpecialCellValueType
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds and bolds the text of cells containing strings (not numbers or formulas).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range on the current sheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeAreas object for each cell with only text.
+    const textCells = usedRange.getSpecialCells(
+      ExcelScript.SpecialCellType.constants, 
+      ExcelScript.SpecialCellValueType.text);
+
+    // Bold the text of those cells.
+    textCells.getFormat().getFont().setBold(true);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: all
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.all:member
+    package: ExcelScript!
+    summary: Cells that have errors, boolean, numeric, or string values.
+  - name: errors
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errors:member
+    package: ExcelScript!
+    summary: Cells that have errors.
+  - name: errorsLogical
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsLogical:member
+    package: ExcelScript!
+    summary: Cells that have errors or boolean values.
+  - name: errorsLogicalNumber
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsLogicalNumber:member
+    package: ExcelScript!
+    summary: Cells that have errors, boolean, or numeric values.
+  - name: errorsLogicalText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsLogicalText:member
+    package: ExcelScript!
+    summary: Cells that have errors, boolean, or string values.
+  - name: errorsNumbers
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsNumbers:member
+    package: ExcelScript!
+    summary: Cells that have errors or numeric values.
+  - name: errorsNumberText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsNumberText:member
+    package: ExcelScript!
+    summary: Cells that have errors, numeric, or string values.
+  - name: errorsText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.errorsText:member
+    package: ExcelScript!
+    summary: Cells that have errors or string values.
+  - name: logical
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.logical:member
+    package: ExcelScript!
+    summary: Cells that have a boolean value.
+  - name: logicalNumbers
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.logicalNumbers:member
+    package: ExcelScript!
+    summary: Cells that have a boolean or numeric value.
+  - name: logicalNumbersText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.logicalNumbersText:member
+    package: ExcelScript!
+    summary: Cells that have a boolean, numeric, or string value.
+  - name: logicalText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.logicalText:member
+    package: ExcelScript!
+    summary: Cells that have a boolean or string value.
+  - name: numbers
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.numbers:member
+    package: ExcelScript!
+    summary: Cells that have a numeric value.
+  - name: numbersText
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.numbersText:member
+    package: ExcelScript!
+    summary: Cells that have a numeric or string value.
+  - name: text
+    uid: ExcelScript!ExcelScript.SpecialCellValueType.text:member
+    package: ExcelScript!
+    summary: Cells that have a string value.
