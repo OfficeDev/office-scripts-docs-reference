@@ -137,27 +137,21 @@ tryCatch(async () => {
     });
 
     // Remove the example field from the YAML as the OPS schema does not support it.
-    fsx.readdirSync(docsDestination)
-        .filter(topLevel => topLevel.indexOf(".") < 0)
-        .forEach(topLevel => { // contents of docs-ref-autogen
-            let hostFolder = docsDestination + '/' + topLevel;
-            fsx.readdirSync(hostFolder).forEach((subfilename) => {
-                if (subfilename.indexOf(".") < 0) { 
-                    // contents of docs-ref-autogen/<host>
-                    let scriptFolder = hostFolder + '/' + subfilename;
-                    fsx.readdirSync(scriptFolder)
-                        .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
-                        .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
-                        let fileName = scriptFolder + '/' + interfaceYml;
-                        const ymlFile = fsx.readFileSync(fileName, "utf8");
-                        fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile)); 
-                    });
-                } else if (subfilename.indexOf("toc") < 0 && subfilename.indexOf(".yml") > 0) {
-                    let fileName =  hostFolder + '/' + subfilename;
-                    const ymlFile = fsx.readFileSync(fileName, "utf8");
-                    fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile));
-                }
-        });
+    fsx.readdirSync(docsDestination).forEach(topLevel => { // contents of docs-ref-autogen
+        let fileName = docsDestination + '/' + topLevel;
+        if (fileName.indexOf(".") < 0) {
+            // contents of docs-ref-autogen/<host>
+            fsx.readdirSync(fileName)
+                .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
+                .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
+                let subFileName = fileName + '/' + interfaceYml;
+                const ymlFile = fsx.readFileSync(subFileName, "utf8");
+                fsx.writeFileSync(subFileName, cleanUpYmlFile(ymlFile)); 
+            });
+        } else if (fileName.indexOf("toc") < 0 && fileName.indexOf(".yml") > 0) {
+            const ymlFile = fsx.readFileSync(fileName, "utf8");
+            fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile));
+        }
     });
 
     // Fix all the TOC files.
@@ -193,7 +187,7 @@ function fixToc(tocPath: string): Toc {
     }];
     newToc.items[0].items = [{
         "name": "API reference overview",
-        "href": "overview.md"
+        "href": "../overview.md"
     }] as any;
 
     // Create a folder for enums.

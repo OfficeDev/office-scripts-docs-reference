@@ -4,34 +4,37 @@ name: OfficeScript
 type: package
 summary: ''
 interfaces:
-  - 'OfficeScript!OfficeScript.EmailAttachment:interface'
-  - 'OfficeScript!OfficeScript.MailProperties:interface'
+  - OfficeScript!OfficeScript.EmailAttachment:interface
+  - OfficeScript!OfficeScript.MailProperties:interface
 enums:
-  - 'OfficeScript!OfficeScript.EmailContentType:enum'
-  - 'OfficeScript!OfficeScript.EmailImportance:enum'
+  - OfficeScript!OfficeScript.EmailContentType:enum
+  - OfficeScript!OfficeScript.EmailImportance:enum
 functions:
   - name: OfficeScript.convertToPdf()
-    uid: 'OfficeScript!OfficeScript.convertToPdf:function(1)'
+    uid: OfficeScript!OfficeScript.convertToPdf:function(1)
     package: OfficeScript!
     summary: >-
-      Return the text encoding of the document as a PDF. If the document is empty, then the following error is shown:
-      "We didn't find anything to print". Some actions made prior to using this API may not be captured in the PDF in
-      Excel on the web.
+      Return the text encoding of the document as a PDF. If the document is
+      empty, then the following error is shown: "We didn't find anything to
+      print". Some actions made prior to using this API may not be captured in
+      the PDF in Excel on the web.
     remarks: ''
-    example: []
+
     isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function convertToPdf(): string;'
       return:
         type: string
-        description: 'The content of the workbook as a string, in PDF format.'
+        description: The content of the workbook as a string, in PDF format.
   - name: "OfficeScript.downloadFile({\r\n        name,\r\n        content,\r\n    })"
-    uid: 'OfficeScript!OfficeScript.downloadFile:function(1)'
+    uid: OfficeScript!OfficeScript.downloadFile:function(1)
     package: OfficeScript!
-    summary: Downloads a specified file to the default download location specified by the local machine.
+    summary: >-
+      Downloads a specified file to the default download location specified by
+      the local machine.
     remarks: ''
-    example: []
+
     isPreview: true
     isDeprecated: false
     syntax:
@@ -55,11 +58,11 @@ functions:
         type: void
         description: ''
   - name: OfficeScript.Metadata.getScriptName()
-    uid: 'OfficeScript!OfficeScript.Metadata.getScriptName:function(1)'
+    uid: OfficeScript!OfficeScript.Metadata.getScriptName:function(1)
     package: OfficeScript!
     summary: Get the current executing scripts name.
     remarks: ''
-    example: []
+
     isPreview: true
     isDeprecated: false
     syntax:
@@ -68,34 +71,39 @@ functions:
         type: string
         description: ''
   - name: OfficeScript.saveCopyAs(filename)
-    uid: 'OfficeScript!OfficeScript.saveCopyAs:function(1)'
+    uid: OfficeScript!OfficeScript.saveCopyAs:function(1)
     package: OfficeScript!
     summary: >-
-      Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified
-      file name. The API has a timeout limit of 30 seconds. This limit is rarely exceeded. Note: Timeout doesn't
-      necessarily indicate that the API failed. The workbook copy may still be created, but after the timeout limit this
-      API does not return a success or failure message.
+      Saves a copy of the current workbook in OneDrive, in the same directory as
+      the original file, with the specified file name. The API has a timeout
+      limit of 30 seconds. This limit is rarely exceeded. Note: Timeout doesn't
+      necessarily indicate that the API failed. The workbook copy may still be
+      created, but after the timeout limit this API does not return a success or
+      failure message.
     remarks: ''
-    example: []
+
     isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function saveCopyAs(filename: string): void;'
       parameters:
         - id: filename
-          description: The file name of the copied and saved file. The file name must end with ".xlsx".
+          description: >-
+            The file name of the copied and saved file. The file name must end
+            with ".xlsx".
           type: string
       return:
         type: void
         description: ''
   - name: OfficeScript.sendMail(mailProperties)
-    uid: 'OfficeScript!OfficeScript.sendMail:function(1)'
+    uid: OfficeScript!OfficeScript.sendMail:function(1)
     package: OfficeScript!
     summary: >-
-      Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email. If
-      the request body includes content, this method returns 400 Bad request.
+      Send an email with an Office Script. Use `MailProperties` to specify the
+      content and recipients of the email. If the request body includes content,
+      this method returns 400 Bad request.
     remarks: ''
-    example: []
+
     isPreview: true
     isDeprecated: false
     syntax:
@@ -103,7 +111,7 @@ functions:
       parameters:
         - id: mailProperties
           description: ''
-          type: '<xref uid="OfficeScript!OfficeScript.MailProperties:interface" />'
+          type: <xref uid="OfficeScript!OfficeScript.MailProperties:interface" />
       return:
         type: void
         description: ''
