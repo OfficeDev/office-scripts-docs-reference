@@ -35,8 +35,7 @@ pushd api-extractor-inputs-officescript
 ../node_modules/.bin/api-extractor run
 popd
 
-./node_modules/.bin/api-documenter yaml --input-folder ./json/excelscript --output-folder ./yaml/excelscript --office
-./node_modules/.bin/api-documenter yaml --input-folder ./json/officescript --output-folder ./yaml/officescript --office
+./node_modules/.bin/api-documenter yaml --input-folder ./json --output-folder ./yaml --office
 
 pushd scripts
 node postprocessor.js

@@ -5,7 +5,6 @@ import * as fsx from 'fs-extra';
 import * as jsyaml from "js-yaml";
 import * as path from "path";
 import * as os from "os";
-import { off } from 'process';
 
 const EOL = os.EOL;
 
@@ -117,12 +116,15 @@ tryCatch(async () => {
 
     console.log(`Deleting old docs at: ${docsDestination}`);
     // Delete everything except the 'overview' files.
-    fsx.readdirSync(docsDestination).forEach(folder => {
-        fsx.readdirSync(docsDestination + '/' + folder).forEach(filename => {
-            if (!filename.includes("../overview.md")) {
-                fsx.removeSync(docsDestination + '/' + folder + '/' + filename);
-            }});
-        });
+    fsx.readdirSync(docsDestination).forEach(topLevel => {
+        if (topLevel.indexOf(".") >= 0) {
+            fsx.removeSync(docsDestination + '/' + topLevel);
+        } else {
+            fsx.readdirSync(docsDestination + '/' + topLevel).forEach(filename => {  
+                fsx.removeSync(docsDestination + '/' + topLevel + '/' + filename);
+            });
+        }
+    });
 
     console.log(`Copying docs output files to: ${docsDestination}`);
     // Copy docs output to the /docs/docs-ref-autogen folder.
@@ -160,13 +162,10 @@ tryCatch(async () => {
 
     // Fix all the TOC files.
     console.log("Writing TOC for Office Scripts");
-    let packages = ["excelscript", "officescript"];
-    packages.forEach((packageName) => {
-        let versionPath = path.resolve(`${docsDestination}/${packageName}`);
-        let tocPath = versionPath + "/toc.yml";
-        let latestToc = fixToc(tocPath, `../api-extractor-inputs-${packageName}/${packageName}.d.ts`);
-        fsx.writeFileSync(tocPath, jsyaml.dump(latestToc));
-    });
+    let tocPath = path.resolve(docsDestination) + "/toc.yml";
+    let latestToc = fixToc(tocPath);
+    fsx.writeFileSync(tocPath, jsyaml.dump(latestToc));
+
 
     console.log("\nPostprocessor script complete!\n");
     process.exit(0);
@@ -181,7 +180,7 @@ async function tryCatch(call: () => Promise<void>) {
     }
 }
 
-function fixToc(tocPath: string, sourceDtsPath: string): Toc {
+function fixToc(tocPath: string): Toc {
     console.log(`Updating the structure of the TOC file: ${tocPath}`);
 
     let origToc = (jsyaml.load(fsx.readFileSync(tocPath).toString()) as Toc);
@@ -198,20 +197,20 @@ function fixToc(tocPath: string, sourceDtsPath: string): Toc {
     }] as any;
 
     // Create a folder for enums.
-    let excelEnumFilter = generateEnumList(fsx.readFileSync(sourceDtsPath).toString());
     origToc.items.forEach((rootItem) => {
         rootItem.items.forEach((packageItem) => {
+            let enumFilter = generateEnumList(fsx.readFileSync(`../api-extractor-inputs-${packageItem.name}/${packageItem.name}.d.ts`).toString());
             membersToMove.items = packageItem.items;
 
             let enumList = membersToMove.items.filter(item => {
-                return excelEnumFilter.indexOf(item.name) >= 0;
+                return enumFilter.indexOf(item.name) >= 0;
             });
             let primaryList = membersToMove.items.filter(item => {
-                return excelEnumFilter.indexOf(item.name) < 0;
+                return enumFilter.indexOf(item.name) < 0;
             });
 
-            let excelEnumRoot = {"name": "Enums", "uid": "", "items": enumList};
-            primaryList.unshift(excelEnumRoot);
+            let enumRoot = {"name": "Enums", "uid": "", "items": enumList};
+            primaryList.unshift(enumRoot);
             newToc.items[0].items.push({
                 "name": packageItem.name,
                 "uid": packageItem.uid,
