@@ -332,7 +332,8 @@ functions:
     summary: >-
       Return the text encoding of the document as a PDF. If the document is
       empty, then the following error is shown: "We didn't find anything to
-      print".
+      print". Some actions made prior to using this API may not be captured in
+      the PDF in Excel on the web.
     remarks: ''
 
     isPreview: true
@@ -342,7 +343,11 @@ functions:
       return:
         type: string
         description: The content of the workbook as a string, in PDF format.
-  - name: "Global.OfficeScript.downloadFile({\r\n            name,\r\n            content,\r\n        })"
+  - name: |-
+      Global.OfficeScript.downloadFile({
+                  name,
+                  content,
+              })
     uid: ExcelScript!Global.OfficeScript.downloadFile:function(1)
     package: ExcelScript!
     summary: >-
@@ -362,7 +367,11 @@ functions:
                     content: string;
                 }): void;
       parameters:
-        - id: "{\r\n            name,\r\n            content,\r\n        }"
+        - id: |-
+            {
+                        name,
+                        content,
+                    }
           description: ''
           type: |-
             {
@@ -384,6 +393,31 @@ functions:
       content: 'export function getScriptName(): string;'
       return:
         type: string
+        description: ''
+  - name: Global.OfficeScript.saveCopyAs(filename)
+    uid: ExcelScript!Global.OfficeScript.saveCopyAs:function(1)
+    package: ExcelScript!
+    summary: >-
+      Saves a copy of the current workbook in OneDrive, in the same directory as
+      the original file, with the specified file name. The API has a timeout
+      limit of 30 seconds. This limit is rarely exceeded. Note: Timeout doesn't
+      necessarily indicate that the API failed. The workbook copy may still be
+      created, but after the timeout limit this API does not return a success or
+      failure message.
+    remarks: ''
+
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: 'export function saveCopyAs(filename: string): void;'
+      parameters:
+        - id: filename
+          description: >-
+            The file name of the copied and saved file. The file name must end
+            with ".xlsx".
+          type: string
+      return:
+        type: void
         description: ''
   - name: Global.OfficeScript.sendMail(mailProperties)
     uid: ExcelScript!Global.OfficeScript.sendMail:function(1)
