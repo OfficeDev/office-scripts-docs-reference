@@ -5,6 +5,7 @@ import * as fsx from 'fs-extra';
 import * as jsyaml from "js-yaml";
 import * as path from "path";
 import * as os from "os";
+import { off } from 'process';
 
 const EOL = os.EOL;
 
@@ -118,7 +119,7 @@ tryCatch(async () => {
     // Delete everything except the 'overview' files.
     fsx.readdirSync(docsDestination).forEach(folder => {
         fsx.readdirSync(docsDestination + '/' + folder).forEach(filename => {
-            if (!filename.includes("overview.md")) {
+            if (!filename.includes("../overview.md")) {
                 fsx.removeSync(docsDestination + '/' + folder + '/' + filename);
             }});
         });
@@ -157,12 +158,15 @@ tryCatch(async () => {
         });
     });
 
-    // Fix all the TOC file.
+    // Fix all the TOC files.
     console.log("Writing TOC for Office Scripts");
-    let versionPath = path.resolve(`${docsDestination}/excelscript`);
-    let tocPath = versionPath + "/toc.yml";
-    let latestToc = fixToc(tocPath, "../api-extractor-inputs-excelscript/excelscript.d.ts");
-    fsx.writeFileSync(tocPath, jsyaml.dump(latestToc));
+    let packages = ["excelscript", "officescript"];
+    packages.forEach((packageName) => {
+        let versionPath = path.resolve(`${docsDestination}/${packageName}`);
+        let tocPath = versionPath + "/toc.yml";
+        let latestToc = fixToc(tocPath, `../api-extractor-inputs-${packageName}/${packageName}.d.ts`);
+        fsx.writeFileSync(tocPath, jsyaml.dump(latestToc));
+    });
 
     console.log("\nPostprocessor script complete!\n");
     process.exit(0);
