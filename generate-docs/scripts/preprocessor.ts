@@ -34,7 +34,7 @@ tryCatch(async () => {
     const snippetsSourcePath = path.resolve("../../docs/sample-scripts");
     console.log("\nReading from files: " + snippetsSourcePath);
 
-    readySnippets(`${snippetsSourcePath}/excelscript.yaml`, "../json/snippets.yaml");
+    readySnippets(`${snippetsSourcePath}/samples.yaml`, "../json/snippets.yaml");
 
     console.log("\nPreprocessor script complete!");
     process.exit(0);

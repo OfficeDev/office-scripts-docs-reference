@@ -7052,3 +7052,21 @@
       // Set the fill color to red.
       noCells.getFormat().getFill().setColor("red");
     }
+'OfficeScript.convertToPdf:function(1)':
+  - |-  
+    /**
+     * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        // Create the PDF.
+        const pdfObject = OfficeScript.convertToPdf();
+        const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+        // Email the PDF.
+        OfficeScript.sendMail({
+            to: "name@email.com", // Enter your recipient email address here.
+            subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+            content: "Here's the Monthly Sales Report", // This is the content within your email.
+            attachments: [pdfFile]
+        })    
+    }
