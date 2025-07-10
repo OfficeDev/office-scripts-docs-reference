@@ -117,9 +117,9 @@ tryCatch(async () => {
     console.log(`Deleting old docs at: ${docsDestination}`);
     // Delete everything except the 'overview' files.
     fsx.readdirSync(docsDestination).forEach(topLevel => {
-        if (topLevel.indexOf(".") >= 0) {
+        if (topLevel.indexOf(".yml") >= 0) {
             fsx.removeSync(docsDestination + '/' + topLevel);
-        } else {
+        } else if (topLevel.indexOf(".") < 0) {
             fsx.readdirSync(docsDestination + '/' + topLevel).forEach(filename => {  
                 fsx.removeSync(docsDestination + '/' + topLevel + '/' + filename);
             });
