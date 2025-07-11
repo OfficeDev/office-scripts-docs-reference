@@ -1,0 +1,1064 @@
+### YamlMime:TSType
+name: ExcelScript.Table
+uid: ExcelScript!ExcelScript.Table:interface
+package: ExcelScript!
+fullName: ExcelScript.Table
+summary: Represents an Excel table.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a table from the current sheet's used range.
+   * It then adds a total row to the table with the SUM of the last column.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+      // Get the used range of the current worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getUsedRange();
+
+      // Create a table that has headers from that range.
+      const table = sheet.addTable(range, true);
+
+      // Have the table display the SUM for the last column.
+      table.setShowTotals(true);
+      const lastColumn = table.getColumn(table.getColumns().length);
+      lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: addColumn(index, values, name)
+    uid: ExcelScript!ExcelScript.Table#addColumn:member(1)
+    package: ExcelScript!
+    fullName: addColumn(index, values, name)
+    summary: Adds a new column to the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        addColumn(
+                    index?: number,
+                    values?: (boolean | string | number)[],
+                    name?: string
+                ): TableColumn;
+      parameters:
+        - id: index
+          description: >-
+            Optional. Specifies the relative position of the new column. If null
+            or -1, the addition happens at the end. Columns with a higher index
+            will be shifted to the side. Zero-indexed.
+          type: number
+        - id: values
+          description: >-
+            Optional. A 1-dimensional array of unformatted values of the table
+            column.
+          type: (boolean | string | number)[]
+        - id: name
+          description: >-
+            Optional. Specifies the name of the new column. If null, the default
+            name will be used.
+          type: string
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableColumn:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a new column to a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            const table = workbook.getTables()[0];
+
+            // Append an empty column to the table with the header "Total". 
+            table.addColumn(-1, null, "Total");
+          }
+          ```
+  - name: addRow(index, values)
+    uid: ExcelScript!ExcelScript.Table#addRow:member(1)
+    package: ExcelScript!
+    fullName: addRow(index, values)
+    summary: Adds one row to the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addRow(index?: number, values?: (boolean | string | number)[]): void;'
+      parameters:
+        - id: index
+          description: >-
+            Optional. Specifies the relative position of the new row. If null or
+            -1, the addition happens at the end. Any rows below the inserted row
+            are shifted downwards. Zero-indexed.
+          type: number
+        - id: values
+          description: >-
+            Optional. A 1-dimensional array of unformatted values of the table
+            row.
+          type: (boolean | string | number)[]
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a row to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Initialize the data to be added as a table row.
+              // Note that length of the array must match the number of columns in the table.
+              let rowData = ["Carrots", "Vegetable", 750];
+
+              // Add a row to the end of the table.
+              table.addRow(-1, rowData);
+          }
+          ```
+  - name: addRows(index, values)
+    uid: ExcelScript!ExcelScript.Table#addRows:member(1)
+    package: ExcelScript!
+    fullName: addRows(index, values)
+    summary: Adds one or more rows to the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'addRows(index?: number, values?: (boolean | string | number)[][]): void;'
+      parameters:
+        - id: index
+          description: >-
+            Optional. Specifies the relative position of the new row. If null or
+            -1, the addition happens at the end. Any rows below the inserted row
+            are shifted downwards. Zero-indexed.
+          type: number
+        - id: values
+          description: >-
+            Optional. A 2-dimensional array of unformatted values of the table
+            row.
+          type: (boolean | string | number)[][]
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds multiple rows to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Initialize the data to be added as table rows.
+              // Note that length of the array must match the number of columns in the table.
+              let rowData = [["Apples", "Fruit", 5000],
+                            ["Celery", "Vegetable", 600],
+                            ["Onions", "Vegetable", 1500]];
+
+              // Add the rows to the end of the table.
+              table.addRows(-1, rowData);
+          }
+          ```
+  - name: clearFilters()
+    uid: ExcelScript!ExcelScript.Table#clearFilters:member(1)
+    package: ExcelScript!
+    fullName: clearFilters()
+    summary: Clears all the filters currently applied on the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clearFilters(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script clears the filters from all tables in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get all the tables in the workbook.
+              const tables = workbook.getTables();
+
+              // Remove any active filters from each table.
+              tables.forEach((table) => {
+                table.clearFilters();
+              });
+          }
+          ```
+  - name: convertToRange()
+    uid: ExcelScript!ExcelScript.Table#convertToRange:member(1)
+    package: ExcelScript!
+    fullName: convertToRange()
+    summary: Converts the table into a normal range of cells. All data is preserved.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'convertToRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script converts a table to a range and removes the formatting.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Convert the table to a range.
+              const formerTable = table.convertToRange();
+
+              // Remove the formatting from the table
+              formerTable.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
+  - name: delete()
+    uid: ExcelScript!ExcelScript.Table#delete:member(1)
+    package: ExcelScript!
+    fullName: delete()
+    summary: Deletes the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script deletes a table. 
+           * This removes all associated data and formatting.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Inventory".
+              const table = workbook.getTable("Inventory");
+
+              // Delete the table.
+              table.delete();
+          }
+          ```
+  - name: deleteRowsAt(index, count)
+    uid: ExcelScript!ExcelScript.Table#deleteRowsAt:member(1)
+    package: ExcelScript!
+    fullName: deleteRowsAt(index, count)
+    summary: Delete a specified number of rows at a given index.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'deleteRowsAt(index: number, count?: number): void;'
+      parameters:
+        - id: index
+          description: >-
+            The index value of the row to be deleted. Caution: the index of the
+            row may have moved from the time you determined the value to use for
+            removal.
+          type: number
+        - id: count
+          description: >-
+            Number of rows to delete. By default, a single row will be deleted.
+            Note: Deleting more than 1000 rows at the same time could result in
+            a Power Automate timeout.
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: getAutoFilter()
+    uid: ExcelScript!ExcelScript.Table#getAutoFilter:member(1)
+    package: ExcelScript!
+    fullName: getAutoFilter()
+    summary: Represents the `AutoFilter` object of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAutoFilter(): AutoFilter;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.AutoFilter:interface" />
+        description: ''
+  - name: getColumn(key)
+    uid: ExcelScript!ExcelScript.Table#getColumn:member(1)
+    package: ExcelScript!
+    fullName: getColumn(key)
+    summary: >-
+      Gets a column object by name or ID. If the column doesn't exist, then this
+      method returns `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumn(key: number | string): TableColumn | undefined;'
+      parameters:
+        - id: key
+          description: Column name or ID.
+          type: number | string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
+          undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adjusts the indentation of a specific table column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the current worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+            const table = selectedSheet.getTables()[0];
+
+            // Get the data range of the second column.
+            const secondColumn = table.getColumn(2);
+            const data = secondColumn.getRangeBetweenHeaderAndTotal();
+
+            // Add an indentation of 1 character space to the data range.
+            data.getFormat().adjustIndent(1);
+          }
+          ```
+  - name: getColumnById(key)
+    uid: ExcelScript!ExcelScript.Table#getColumnById:member(1)
+    package: ExcelScript!
+    fullName: getColumnById(key)
+    summary: >-
+      Gets a column object by ID. If the column does not exist, will return
+      undefined.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnById(key: number): TableColumn | undefined;'
+      parameters:
+        - id: key
+          description: Column ID.
+          type: number
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
+          undefined
+        description: ''
+  - name: getColumnByName(key)
+    uid: ExcelScript!ExcelScript.Table#getColumnByName:member(1)
+    package: ExcelScript!
+    fullName: getColumnByName(key)
+    summary: >-
+      Gets a column object by Name. If the column does not exist, will return
+      undefined.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnByName(key: string): TableColumn | undefined;'
+      parameters:
+        - id: key
+          description: Column Name.
+          type: string
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TableColumn:interface" /> |
+          undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes a specific column from a table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "Inventory".
+              const table = workbook.getTable("Inventory");
+
+              // If it exists, remove the column named "Category".
+              let categoryColumn = table.getColumnByName("Category");
+              if (categoryColumn) {
+                  categoryColumn.delete();
+              }
+          }
+          ```
+  - name: getColumns()
+    uid: ExcelScript!ExcelScript.Table#getColumns:member(1)
+    package: ExcelScript!
+    fullName: getColumns()
+    summary: Represents a collection of all the columns in the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumns(): TableColumn[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableColumn:interface" />[]
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a new column to a table.
+           * It then sets the formulas in the new column to be the product
+           * of the values in the two preceding columns.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            const table = workbook.getTables()[0];
+
+            // Append an empty column to the table with the header "Total". 
+            const totalColumn = table.addColumn(-1, null, "Total");
+
+            // Get the names of the two preceding columns.
+            const productColumnName1 = table.getColumns()[totalColumn.getIndex() - 1].getName();
+            const productColumnName2 = table.getColumns()[totalColumn.getIndex() - 2].getName();
+            
+            // Set the formulas in the "Total" column to be the product of the two preceding columns.
+            totalColumn.getRangeBetweenHeaderAndTotal().setFormula(
+              `=[@[${productColumnName1}]]*[@[${productColumnName2}]]`
+            );
+          }
+          ```
+  - name: getHeaderRowRange()
+    uid: ExcelScript!ExcelScript.Table#getHeaderRowRange:member(1)
+    package: ExcelScript!
+    fullName: getHeaderRowRange()
+    summary: Gets the range object associated with the header row of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHeaderRowRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script centers the text in a table's header row cells.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Get the header range.
+            const headerRange = table.getHeaderRowRange();
+
+            // Set the horizontal text alignment to `center`.
+            headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+          }
+          ```
+  - name: getHighlightFirstColumn()
+    uid: ExcelScript!ExcelScript.Table#getHighlightFirstColumn:member(1)
+    package: ExcelScript!
+    fullName: getHighlightFirstColumn()
+    summary: Specifies if the first column contains special formatting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHighlightFirstColumn(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getHighlightLastColumn()
+    uid: ExcelScript!ExcelScript.Table#getHighlightLastColumn:member(1)
+    package: ExcelScript!
+    fullName: getHighlightLastColumn()
+    summary: Specifies if the last column contains special formatting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHighlightLastColumn(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getId()
+    uid: ExcelScript!ExcelScript.Table#getId:member(1)
+    package: ExcelScript!
+    fullName: getId()
+    summary: >-
+      Returns a value that uniquely identifies the table in a given workbook.
+      The value of the identifier remains the same even when the table is
+      renamed.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getLegacyId()
+    uid: ExcelScript!ExcelScript.Table#getLegacyId:member(1)
+    package: ExcelScript!
+    fullName: getLegacyId()
+    summary: Returns a numeric ID.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getLegacyId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getName()
+    uid: ExcelScript!ExcelScript.Table#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: Name of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getPredefinedTableStyle()
+    uid: ExcelScript!ExcelScript.Table#getPredefinedTableStyle:member(1)
+    package: ExcelScript!
+    fullName: getPredefinedTableStyle()
+    summary: >-
+      Constant value that represents the table style. Possible values are:
+      "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
+      through "TableStyleMedium28", "TableStyleDark1" through
+      "TableStyleDark11". A custom user-defined style present in the workbook
+      can also be specified.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPredefinedTableStyle(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getRange()
+    uid: ExcelScript!ExcelScript.Table#getRange:member(1)
+    package: ExcelScript!
+    fullName: getRange()
+    summary: Gets the range object associated with the entire table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script removes any extra formatting that's been applied to a table. 
+           * This leaves only the base table style effects.
+           * Any formatting outside of the table will be left as is.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            let worksheet = workbook.getActiveWorksheet();
+            let table = worksheet.getTables()[0];
+
+            // Get the range used by the table.
+            let range = table.getRange();
+
+            // Clear all the formatting that is not applied by the table and the table style.
+            range.clear(ExcelScript.ClearApplyTo.formats);
+          }
+          ```
+  - name: getRangeBetweenHeaderAndTotal()
+    uid: ExcelScript!ExcelScript.Table#getRangeBetweenHeaderAndTotal:member(1)
+    package: ExcelScript!
+    fullName: getRangeBetweenHeaderAndTotal()
+    summary: Gets the range object associated with the data body of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRangeBetweenHeaderAndTotal(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getRowCount()
+    uid: ExcelScript!ExcelScript.Table#getRowCount:member(1)
+    package: ExcelScript!
+    fullName: getRowCount()
+    summary: Gets the number of rows in the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowCount(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getShowBandedColumns()
+    uid: ExcelScript!ExcelScript.Table#getShowBandedColumns:member(1)
+    package: ExcelScript!
+    fullName: getShowBandedColumns()
+    summary: >-
+      Specifies if the columns show banded formatting in which odd columns are
+      highlighted differently from even ones, to make reading the table easier.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowBandedColumns(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getShowBandedRows()
+    uid: ExcelScript!ExcelScript.Table#getShowBandedRows:member(1)
+    package: ExcelScript!
+    fullName: getShowBandedRows()
+    summary: >-
+      Specifies if the rows show banded formatting in which odd rows are
+      highlighted differently from even ones, to make reading the table easier.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowBandedRows(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getShowFilterButton()
+    uid: ExcelScript!ExcelScript.Table#getShowFilterButton:member(1)
+    package: ExcelScript!
+    fullName: getShowFilterButton()
+    summary: >-
+      Specifies if the filter buttons are visible at the top of each column
+      header. Setting this is only allowed if the table contains a header row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowFilterButton(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getShowHeaders()
+    uid: ExcelScript!ExcelScript.Table#getShowHeaders:member(1)
+    package: ExcelScript!
+    fullName: getShowHeaders()
+    summary: >-
+      Specifies if the header row is visible. This value can be set to show or
+      remove the header row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowHeaders(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getShowTotals()
+    uid: ExcelScript!ExcelScript.Table#getShowTotals:member(1)
+    package: ExcelScript!
+    fullName: getShowTotals()
+    summary: >-
+      Specifies if the total row is visible. This value can be set to show or
+      remove the total row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShowTotals(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getSort()
+    uid: ExcelScript!ExcelScript.Table#getSort:member(1)
+    package: ExcelScript!
+    fullName: getSort()
+    summary: Represents the sorting for the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSort(): TableSort;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.TableSort:interface" />
+        description: ''
+  - name: getTotalRowRange()
+    uid: ExcelScript!ExcelScript.Table#getTotalRowRange:member(1)
+    package: ExcelScript!
+    fullName: getTotalRowRange()
+    summary: Gets the range object associated with the totals row of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTotalRowRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getWorksheet()
+    uid: ExcelScript!ExcelScript.Table#getWorksheet:member(1)
+    package: ExcelScript!
+    fullName: getWorksheet()
+    summary: The worksheet containing the current table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWorksheet(): Worksheet;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Worksheet:interface" />
+        description: ''
+  - name: reapplyFilters()
+    uid: ExcelScript!ExcelScript.Table#reapplyFilters:member(1)
+    package: ExcelScript!
+    fullName: reapplyFilters()
+    summary: Reapplies all the filters currently on the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'reapplyFilters(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script reapplies the filters on every table in the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the tables.
+            const tables = workbook.getTables();
+
+            // Iterate over every table.
+            tables.forEach((table) => {
+              // Reapply the filters to account for new table entries.
+              table.reapplyFilters();
+            });
+          }
+          ```
+  - name: resize(newRange)
+    uid: ExcelScript!ExcelScript.Table#resize:member(1)
+    package: ExcelScript!
+    fullName: resize(newRange)
+    summary: >-
+      Resize the table to the new range. The new range must overlap with the
+      original table range and the headers (or the top of the table) must be in
+      the same row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'resize(newRange: Range | string): void;'
+      parameters:
+        - id: newRange
+          description: >-
+            The range object or range address that will be used to determine the
+            new size of the table.
+          type: <xref uid="ExcelScript!ExcelScript.Range:interface" /> | string
+      return:
+        type: void
+        description: ''
+  - name: setHighlightFirstColumn(highlightFirstColumn)
+    uid: ExcelScript!ExcelScript.Table#setHighlightFirstColumn:member(1)
+    package: ExcelScript!
+    fullName: setHighlightFirstColumn(highlightFirstColumn)
+    summary: Specifies if the first column contains special formatting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setHighlightFirstColumn(highlightFirstColumn: boolean): void;'
+      parameters:
+        - id: highlightFirstColumn
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setHighlightLastColumn(highlightLastColumn)
+    uid: ExcelScript!ExcelScript.Table#setHighlightLastColumn:member(1)
+    package: ExcelScript!
+    fullName: setHighlightLastColumn(highlightLastColumn)
+    summary: Specifies if the last column contains special formatting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setHighlightLastColumn(highlightLastColumn: boolean): void;'
+      parameters:
+        - id: highlightLastColumn
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setName(name)
+    uid: ExcelScript!ExcelScript.Table#setName:member(1)
+    package: ExcelScript!
+    fullName: setName(name)
+    summary: Name of the table.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setName(name: string): void;'
+      parameters:
+        - id: name
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setPredefinedTableStyle(predefinedTableStyle)
+    uid: ExcelScript!ExcelScript.Table#setPredefinedTableStyle:member(1)
+    package: ExcelScript!
+    fullName: setPredefinedTableStyle(predefinedTableStyle)
+    summary: >-
+      Constant value that represents the table style. Possible values are:
+      "TableStyleLight1" through "TableStyleLight21", "TableStyleMedium1"
+      through "TableStyleMedium28", "TableStyleDark1" through
+      "TableStyleDark11". A custom user-defined style present in the workbook
+      can also be specified.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setPredefinedTableStyle(predefinedTableStyle: string): void;'
+      parameters:
+        - id: predefinedTableStyle
+          description: ''
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: setShowBandedColumns(showBandedColumns)
+    uid: ExcelScript!ExcelScript.Table#setShowBandedColumns:member(1)
+    package: ExcelScript!
+    fullName: setShowBandedColumns(showBandedColumns)
+    summary: >-
+      Specifies if the columns show banded formatting in which odd columns are
+      highlighted differently from even ones, to make reading the table easier.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowBandedColumns(showBandedColumns: boolean): void;'
+      parameters:
+        - id: showBandedColumns
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setShowBandedRows(showBandedRows)
+    uid: ExcelScript!ExcelScript.Table#setShowBandedRows:member(1)
+    package: ExcelScript!
+    fullName: setShowBandedRows(showBandedRows)
+    summary: >-
+      Specifies if the rows show banded formatting in which odd rows are
+      highlighted differently from even ones, to make reading the table easier.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowBandedRows(showBandedRows: boolean): void;'
+      parameters:
+        - id: showBandedRows
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets all the tables in the workbook to have banded rows. 
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get all the tables.
+            const tables = workbook.getTables();
+
+            // For each table, set the banded row formatting to true.
+            tables.forEach((table) => {
+              table.setShowBandedRows(true);
+            });
+          }
+          ```
+  - name: setShowFilterButton(showFilterButton)
+    uid: ExcelScript!ExcelScript.Table#setShowFilterButton:member(1)
+    package: ExcelScript!
+    fullName: setShowFilterButton(showFilterButton)
+    summary: >-
+      Specifies if the filter buttons are visible at the top of each column
+      header. Setting this is only allowed if the table contains a header row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowFilterButton(showFilterButton: boolean): void;'
+      parameters:
+        - id: showFilterButton
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setShowHeaders(showHeaders)
+    uid: ExcelScript!ExcelScript.Table#setShowHeaders:member(1)
+    package: ExcelScript!
+    fullName: setShowHeaders(showHeaders)
+    summary: >-
+      Specifies if the header row is visible. This value can be set to show or
+      remove the header row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowHeaders(showHeaders: boolean): void;'
+      parameters:
+        - id: showHeaders
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script makes a table's headers not visible in the grid.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the table named "CoverageTable".
+              const coverageTable = workbook.getTable("CoverageTable");
+
+              // Make the header row not visible.
+              coverageTable.setShowHeaders(false);
+          }
+          ```
+  - name: setShowTotals(showTotals)
+    uid: ExcelScript!ExcelScript.Table#setShowTotals:member(1)
+    package: ExcelScript!
+    fullName: setShowTotals(showTotals)
+    summary: >-
+      Specifies if the total row is visible. This value can be set to show or
+      remove the total row.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShowTotals(showTotals: boolean): void;'
+      parameters:
+        - id: showTotals
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds the Total Row to an existing table.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the first table in the current worksheet.
+              const selectedSheet = workbook.getActiveWorksheet();
+              const table = selectedSheet.getTables()[0];
+
+              // Set the Total Row to show.
+              table.setShowTotals(true);
+          }
+          ```

@@ -1,0 +1,73 @@
+### YamlMime:TSType
+name: ExcelScript.RangeSort
+uid: ExcelScript!ExcelScript.RangeSort:interface
+package: ExcelScript!
+fullName: ExcelScript.RangeSort
+summary: Manages sorting operations on `Range` objects.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: apply(fields, matchCase, hasHeaders, orientation, method)
+    uid: ExcelScript!ExcelScript.RangeSort#apply:member(1)
+    package: ExcelScript!
+    fullName: apply(fields, matchCase, hasHeaders, orientation, method)
+    summary: Perform a sort operation.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        apply(
+                    fields: SortField[],
+                    matchCase?: boolean,
+                    hasHeaders?: boolean,
+                    orientation?: SortOrientation,
+                    method?: SortMethod
+                ): void;
+      parameters:
+        - id: fields
+          description: The list of conditions to sort on.
+          type: <xref uid="ExcelScript!ExcelScript.SortField:interface" />[]
+        - id: matchCase
+          description: Optional. Whether to have the casing impact string ordering.
+          type: boolean
+        - id: hasHeaders
+          description: Optional. Whether the range has a header.
+          type: boolean
+        - id: orientation
+          description: Optional. Whether the operation is sorting rows or columns.
+          type: <xref uid="ExcelScript!ExcelScript.SortOrientation:enum" />
+        - id: method
+          description: Optional. The ordering method used for Chinese characters.
+          type: <xref uid="ExcelScript!ExcelScript.SortMethod:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sorts the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the used range of the current worksheet.
+              const activeRange = workbook.getActiveWorksheet().getUsedRange();
+
+              // Sort the rows in ascending order based on the last column.
+              activeRange.getSort().apply(
+                  [{
+                      ascending: true,
+                      key: activeRange.getColumnCount() - 1
+                  }],
+                  false, /* Don't match case. */
+                  true,  /* Treat the first row as a header row. */
+                  ExcelScript.SortOrientation.rows
+              );
+          }
+          ```
