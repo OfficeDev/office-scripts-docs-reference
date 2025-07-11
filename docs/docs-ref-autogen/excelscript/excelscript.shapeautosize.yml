@@ -1,0 +1,49 @@
+### YamlMime:TSEnum
+name: ExcelScript.ShapeAutoSize
+uid: ExcelScript!ExcelScript.ShapeAutoSize:enum
+package: ExcelScript!
+fullName: ExcelScript.ShapeAutoSize
+summary: Determines the type of automatic sizing allowed.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a star shape with the value from cell A1.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the value of A1 from the worksheet named Sheet1.
+    const sheet = workbook.getWorksheet("Sheet1");
+    const value = sheet.getRange("A1").getValue();
+
+    // Create a Shape object that looks like a 5-pointed star.
+    const star = sheet.addGeometricShape(ExcelScript.GeometricShapeType.star5);
+
+    // Set the text of star and make sure the shape fits the text.
+    const textFrame = star.getTextFrame();
+    textFrame.getTextRange().setText(value.toString());
+    textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: autoSizeMixed
+    uid: ExcelScript!ExcelScript.ShapeAutoSize.autoSizeMixed:member
+    package: ExcelScript!
+    summary: A combination of automatic sizing schemes are used.
+  - name: autoSizeNone
+    uid: ExcelScript!ExcelScript.ShapeAutoSize.autoSizeNone:member
+    package: ExcelScript!
+    summary: No autosizing.
+  - name: autoSizeShapeToFitText
+    uid: ExcelScript!ExcelScript.ShapeAutoSize.autoSizeShapeToFitText:member
+    package: ExcelScript!
+    summary: The shape is adjusted to fit the text.
+  - name: autoSizeTextToFitShape
+    uid: ExcelScript!ExcelScript.ShapeAutoSize.autoSizeTextToFitShape:member
+    package: ExcelScript!
+    summary: The text is adjusted to fit the shape.

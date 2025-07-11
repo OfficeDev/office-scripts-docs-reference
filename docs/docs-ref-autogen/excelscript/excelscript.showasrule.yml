@@ -1,0 +1,91 @@
+### YamlMime:TSType
+name: ExcelScript.ShowAsRule
+uid: ExcelScript!ExcelScript.ShowAsRule:interface
+package: ExcelScript!
+fullName: ExcelScript.ShowAsRule
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * The script changes the display for "Crates Sold at Farm".
+   * The field shows each value's difference
+   * from the value of the "Lemon" in the same row.
+   * If the row has no value for "Lemon", the field shows "#N/A".
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable named "Farm Pivot".
+    const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+    // Get the data hierarchy "Sum of Crates Sold at Farm".
+    const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+    // Get the row hierarchy "Type".
+    const typeField = farmPivot.getRowHierarchy("Type").getFields()[0];
+
+    // Change the data hierarchy to show each value as the difference
+    // from the value of the "Lemon" in that row.
+    const rule: ExcelScript.ShowAsRule = {
+      calculation: ExcelScript.ShowAsCalculation.differenceFrom,
+      baseField: typeField,
+      baseItem: typeField.getPivotItem("Lemon")
+    }
+    farmSales.setShowAs(rule);
+
+    // Set the name of the field to match the new behavior.
+    farmSales.setName("Difference from Lemons of Crates Sold at Farm");
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: baseField
+    uid: ExcelScript!ExcelScript.ShowAsRule#baseField:member
+    package: ExcelScript!
+    fullName: baseField
+    summary: >-
+      The PivotField to base the `ShowAs` calculation on, if applicable
+      according to the `ShowAsCalculation` type, else `null`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'baseField?: PivotField;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotField:interface" />
+  - name: baseItem
+    uid: ExcelScript!ExcelScript.ShowAsRule#baseItem:member
+    package: ExcelScript!
+    fullName: baseItem
+    summary: >-
+      The item to base the `ShowAs` calculation on, if applicable according to
+      the `ShowAsCalculation` type, else `null`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'baseItem?: PivotItem;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.PivotItem:interface" />
+  - name: calculation
+    uid: ExcelScript!ExcelScript.ShowAsRule#calculation:member
+    package: ExcelScript!
+    fullName: calculation
+    summary: >-
+      The `ShowAs` calculation to use for the PivotField. See
+      `ExcelScript.ShowAsCalculation` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'calculation: ShowAsCalculation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ShowAsCalculation:enum" />

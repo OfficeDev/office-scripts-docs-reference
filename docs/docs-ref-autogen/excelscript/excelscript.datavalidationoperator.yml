@@ -1,0 +1,71 @@
+### YamlMime:TSEnum
+name: ExcelScript.DataValidationOperator
+uid: ExcelScript!ExcelScript.DataValidationOperator:enum
+package: ExcelScript!
+fullName: ExcelScript.DataValidationOperator
+summary: Represents the data validation operator enum.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script creates a data validation rule for the range B1:B5.
+   * All values in that range must be a positive number.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range B1:B5 in the active worksheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const positiveNumberOnlyCells = currentSheet.getRange("B1:B5");
+
+    // Create a data validation rule to only allow positive numbers.
+    const positiveNumberValidation: ExcelScript.BasicDataValidation = {
+      formula1: "0",
+      operator: ExcelScript.DataValidationOperator.greaterThan
+    };
+    const positiveNumberOnlyRule: ExcelScript.DataValidationRule = {
+      wholeNumber: positiveNumberValidation
+    };
+
+    // Set the rule on the range.
+    const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
+    rangeDataValidation.setRule(positiveNumberOnlyRule);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: between
+    uid: ExcelScript!ExcelScript.DataValidationOperator.between:member
+    package: ExcelScript!
+    summary: ''
+  - name: equalTo
+    uid: ExcelScript!ExcelScript.DataValidationOperator.equalTo:member
+    package: ExcelScript!
+    summary: ''
+  - name: greaterThan
+    uid: ExcelScript!ExcelScript.DataValidationOperator.greaterThan:member
+    package: ExcelScript!
+    summary: ''
+  - name: greaterThanOrEqualTo
+    uid: ExcelScript!ExcelScript.DataValidationOperator.greaterThanOrEqualTo:member
+    package: ExcelScript!
+    summary: ''
+  - name: lessThan
+    uid: ExcelScript!ExcelScript.DataValidationOperator.lessThan:member
+    package: ExcelScript!
+    summary: ''
+  - name: lessThanOrEqualTo
+    uid: ExcelScript!ExcelScript.DataValidationOperator.lessThanOrEqualTo:member
+    package: ExcelScript!
+    summary: ''
+  - name: notBetween
+    uid: ExcelScript!ExcelScript.DataValidationOperator.notBetween:member
+    package: ExcelScript!
+    summary: ''
+  - name: notEqualTo
+    uid: ExcelScript!ExcelScript.DataValidationOperator.notEqualTo:member
+    package: ExcelScript!
+    summary: ''

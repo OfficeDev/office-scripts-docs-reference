@@ -1,0 +1,892 @@
+### YamlMime:TSType
+name: ExcelScript.RangeFormat
+uid: ExcelScript!ExcelScript.RangeFormat:interface
+package: ExcelScript!
+fullName: ExcelScript.RangeFormat
+summary: >-
+  A format object encapsulating the range's font, fill, borders, alignment, and
+  other properties.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies some simple formatting to the top row of the used range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the top row of the used range in the current worksheet.
+    const selectedSheet = workbook.getActiveWorksheet();
+    const topRow = selectedSheet.getUsedRange().getRow(0);
+
+    // For the top row, set the fill to black, the font color to white, and the font to be bold.
+    const format: ExcelScript.RangeFormat = topRow.getFormat();
+    format.getFill().setColor("black");
+    format.getFont().setColor("white");
+    format.getFont().setBold(true);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: adjustIndent(amount)
+    uid: ExcelScript!ExcelScript.RangeFormat#adjustIndent:member(1)
+    package: ExcelScript!
+    fullName: adjustIndent(amount)
+    summary: >-
+      Adjusts the indentation of the range formatting. The indent value ranges
+      from 0 to 250 and is measured in characters.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'adjustIndent(amount: number): void;'
+      parameters:
+        - id: amount
+          description: >-
+            The number of character spaces by which the current indent is
+            adjusted. This value should be between -250 and 250. **Note**:
+            If the amount would raise the indent level above 250, the indent
+            level stays with 250. Similarly, if the amount would lower the
+            indent level below 0, the indent level stays 0.
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adjusts the indentation of a specific table column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the current worksheet.
+            const selectedSheet = workbook.getActiveWorksheet();
+            const table = selectedSheet.getTables()[0];
+
+            // Get the data range of the second column.
+            const secondColumn = table.getColumn(2);
+            const data = secondColumn.getRangeBetweenHeaderAndTotal();
+
+            // Add an indentation of 1 character space to the data range.
+            data.getFormat().adjustIndent(1);
+          }
+          ```
+  - name: autofitColumns()
+    uid: ExcelScript!ExcelScript.RangeFormat#autofitColumns:member(1)
+    package: ExcelScript!
+    fullName: autofitColumns()
+    summary: >-
+      Changes the width of the columns of the current range to achieve the best
+      fit, based on the current data in the columns.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'autofitColumns(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a new table from existing data and autofits the columns.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Create the table.
+            const table = currentSheet.addTable(usedRange, true);
+
+            // Format the table columns.
+            table.getRange().getFormat().autofitColumns();
+          }
+          ```
+  - name: autofitRows()
+    uid: ExcelScript!ExcelScript.RangeFormat#autofitRows:member(1)
+    package: ExcelScript!
+    fullName: autofitRows()
+    summary: >-
+      Changes the height of the rows of the current range to achieve the best
+      fit, based on the current data in the columns.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'autofitRows(): void;'
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates a new table from existing data and autofits the rows.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // Create the table.
+            const table = currentSheet.addTable(usedRange, true);
+
+            // Format the table rows.
+            table.getRange().getFormat().autofitRows();
+          }
+          ```
+  - name: getAutoIndent()
+    uid: ExcelScript!ExcelScript.RangeFormat#getAutoIndent:member(1)
+    package: ExcelScript!
+    fullName: getAutoIndent()
+    summary: >-
+      Specifies if text is automatically indented when text alignment is set to
+      equal distribution.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getAutoIndent(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getBorders()
+    uid: ExcelScript!ExcelScript.RangeFormat#getBorders:member(1)
+    package: ExcelScript!
+    fullName: getBorders()
+    summary: Collection of border objects that apply to the overall range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getBorders(): RangeBorder[];'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeBorder:interface" />[]
+        description: ''
+  - name: getColumnWidth()
+    uid: ExcelScript!ExcelScript.RangeFormat#getColumnWidth:member(1)
+    package: ExcelScript!
+    fullName: getColumnWidth()
+    summary: >-
+      Specifies the width of all columns within the range. If the column widths
+      are not uniform, `null` will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColumnWidth(): number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script doubles the column width for every column in the active worksheet's used range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // To optimize performance, get all the current row heights before setting them.
+            let currentWidths = Array<number>(usedRange.getColumnCount());
+            for (let column = 0; column < currentWidths.length; column++) {
+              currentWidths[column] = usedRange.getColumn(column).getFormat().getColumnWidth();
+            }
+
+            // Set the new column widths.
+            for (let column = 0; column < currentWidths.length; column++) {
+              usedRange.getFormat().setColumnWidth(currentWidths[column] * 2);
+            }
+          ```
+  - name: getFill()
+    uid: ExcelScript!ExcelScript.RangeFormat#getFill:member(1)
+    package: ExcelScript!
+    fullName: getFill()
+    summary: Returns the fill object defined on the overall range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFill(): RangeFill;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeFill:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gives the total row of a table a green color fill.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table in the workbook.
+            let table = workbook.getTables()[0];
+
+            // Get the range for the total row of the table.
+            let totalRange = table.getTotalRowRange();
+
+            // Set the fill color to green.
+            totalRange.getFormat().getFill().setColor("green");
+          }
+          ```
+  - name: getFont()
+    uid: ExcelScript!ExcelScript.RangeFormat#getFont:member(1)
+    package: ExcelScript!
+    fullName: getFont()
+    summary: Returns the font object defined on the overall range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFont(): RangeFont;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeFont:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script bolds the text of cell A1.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get A1 on the current worksheet.
+            const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+            // Bold the font for that cell
+            cell.getFormat().getFont().setBold(true);
+          }
+          ```
+  - name: getHorizontalAlignment()
+    uid: ExcelScript!ExcelScript.RangeFormat#getHorizontalAlignment:member(1)
+    package: ExcelScript!
+    fullName: getHorizontalAlignment()
+    summary: >-
+      Represents the horizontal alignment for the specified object. See
+      `ExcelScript.HorizontalAlignment` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getHorizontalAlignment(): HorizontalAlignment;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.HorizontalAlignment:enum" />
+        description: ''
+  - name: getIndentLevel()
+    uid: ExcelScript!ExcelScript.RangeFormat#getIndentLevel:member(1)
+    package: ExcelScript!
+    fullName: getIndentLevel()
+    summary: An integer from 0 to 250 that indicates the indent level.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIndentLevel(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getProtection()
+    uid: ExcelScript!ExcelScript.RangeFormat#getProtection:member(1)
+    package: ExcelScript!
+    fullName: getProtection()
+    summary: Returns the format protection object for a range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getProtection(): FormatProtection;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.FormatProtection:interface" />
+        description: ''
+  - name: getRangeBorder(index)
+    uid: ExcelScript!ExcelScript.RangeFormat#getRangeBorder:member(1)
+    package: ExcelScript!
+    fullName: getRangeBorder(index)
+    summary: Gets a border object using its name.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRangeBorder(index: BorderIndex): RangeBorder;'
+      parameters:
+        - id: index
+          description: >-
+            Index value of the border object to be retrieved. See
+            `ExcelScript.BorderIndex` for details.
+          type: <xref uid="ExcelScript!ExcelScript.BorderIndex:enum" />
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeBorder:interface" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds a border around the outside of a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get a range from the current worksheet.
+            let range = workbook.getActiveWorksheet().getRange("B2:E15");
+
+            // Add a border around the whole bounding range.
+            let format = range.getFormat();
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.continuous); // Top border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.continuous); // Bottom border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeLeft).setStyle(ExcelScript.BorderLineStyle.continuous); // Left border
+            format.getRangeBorder(ExcelScript.BorderIndex.edgeRight).setStyle(ExcelScript.BorderLineStyle.continuous); // Right border
+          }
+          ```
+  - name: getRangeBorderTintAndShade()
+    uid: ExcelScript!ExcelScript.RangeFormat#getRangeBorderTintAndShade:member(1)
+    package: ExcelScript!
+    fullName: getRangeBorderTintAndShade()
+    summary: >-
+      Specifies a double that lightens or darkens a color for range borders. The
+      value is between -1 (darkest) and 1 (brightest), with 0 for the original
+      color. A `null` value indicates that the entire border collection doesn't
+      have a uniform `tintAndShade` setting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRangeBorderTintAndShade(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getReadingOrder()
+    uid: ExcelScript!ExcelScript.RangeFormat#getReadingOrder:member(1)
+    package: ExcelScript!
+    fullName: getReadingOrder()
+    summary: The reading order for the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getReadingOrder(): ReadingOrder;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ReadingOrder:enum" />
+        description: ''
+  - name: getRowHeight()
+    uid: ExcelScript!ExcelScript.RangeFormat#getRowHeight:member(1)
+    package: ExcelScript!
+    fullName: getRowHeight()
+    summary: >-
+      The height of all rows in the range. If the row heights are not uniform,
+      `null` will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRowHeight(): number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script doubles the row height for every row in the active worksheet's used range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+            const usedRange = currentSheet.getUsedRange();
+
+            // To optimize performance, get all the current row heights before setting them.
+            let currentHeights = Array<number>(usedRange.getRowCount());
+            for (let row = 0; row < currentHeights.length; row++) {
+              currentHeights[row] = usedRange.getRow(row).getFormat().getRowHeight();
+            }
+
+            // Set the new row heights.
+            for (let row = 0; row < currentHeights.length; row++) {
+              usedRange.getFormat().setRowHeight(currentHeights[row] * 2);
+            }
+          }
+          ```
+  - name: getShrinkToFit()
+    uid: ExcelScript!ExcelScript.RangeFormat#getShrinkToFit:member(1)
+    package: ExcelScript!
+    fullName: getShrinkToFit()
+    summary: >-
+      Specifies if text automatically shrinks to fit in the available column
+      width.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getShrinkToFit(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getTextOrientation()
+    uid: ExcelScript!ExcelScript.RangeFormat#getTextOrientation:member(1)
+    package: ExcelScript!
+    fullName: getTextOrientation()
+    summary: >-
+      The text orientation of all the cells within the range. The text
+      orientation should be an integer either from -90 to 90, or 180 for
+      vertically-oriented text. If the orientation within a range are not
+      uniform, then `null` will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTextOrientation(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getUseStandardHeight()
+    uid: ExcelScript!ExcelScript.RangeFormat#getUseStandardHeight:member(1)
+    package: ExcelScript!
+    fullName: getUseStandardHeight()
+    summary: >-
+      Determines if the row height of the `Range` object equals the standard
+      height of the sheet. Returns `true` if the row height of the `Range`
+      object equals the standard height of the sheet. Returns `null` if the
+      range contains more than one row and the rows aren't all the same height.
+      Returns `false` otherwise.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUseStandardHeight(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getUseStandardWidth()
+    uid: ExcelScript!ExcelScript.RangeFormat#getUseStandardWidth:member(1)
+    package: ExcelScript!
+    fullName: getUseStandardWidth()
+    summary: >-
+      Specifies if the column width of the `Range` object equals the standard
+      width of the sheet. Returns `true` if the column width of the `Range`
+      object equals the standard width of the sheet. Returns `null` if the range
+      contains more than one column and the columns aren't all the same height.
+      Returns `false` otherwise.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUseStandardWidth(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getVerticalAlignment()
+    uid: ExcelScript!ExcelScript.RangeFormat#getVerticalAlignment:member(1)
+    package: ExcelScript!
+    fullName: getVerticalAlignment()
+    summary: >-
+      Represents the vertical alignment for the specified object. See
+      `ExcelScript.VerticalAlignment` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getVerticalAlignment(): VerticalAlignment;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.VerticalAlignment:enum" />
+        description: ''
+  - name: getWrapText()
+    uid: ExcelScript!ExcelScript.RangeFormat#getWrapText:member(1)
+    package: ExcelScript!
+    fullName: getWrapText()
+    summary: >-
+      Specifies if Excel wraps the text in the object. A `null` value indicates
+      that the entire range doesn't have a uniform wrap setting
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getWrapText(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: setAutoIndent(autoIndent)
+    uid: ExcelScript!ExcelScript.RangeFormat#setAutoIndent:member(1)
+    package: ExcelScript!
+    fullName: setAutoIndent(autoIndent)
+    summary: >-
+      Specifies if text is automatically indented when text alignment is set to
+      equal distribution.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setAutoIndent(autoIndent: boolean): void;'
+      parameters:
+        - id: autoIndent
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setColumnWidth(columnWidth)
+    uid: ExcelScript!ExcelScript.RangeFormat#setColumnWidth:member(1)
+    package: ExcelScript!
+    fullName: setColumnWidth(columnWidth)
+    summary: Specifies the width of all columns within the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setColumnWidth(columnWidth: number): void;'
+      parameters:
+        - id: columnWidth
+          description: ''
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts a new column and sets that column's width to 100 pixels wide.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+
+            // Insert a new column between the current B and C columns.
+            const bcRange = currentSheet.getRange("C:C");
+            const newColumn = bcRange.insert(ExcelScript.InsertShiftDirection.right);
+            
+            // Set the column width of the new column to 100 pixels.
+            newColumn.getFormat().setColumnWidth(100);
+          }
+          ```
+  - name: setHorizontalAlignment(horizontalAlignment)
+    uid: ExcelScript!ExcelScript.RangeFormat#setHorizontalAlignment:member(1)
+    package: ExcelScript!
+    fullName: setHorizontalAlignment(horizontalAlignment)
+    summary: >-
+      Represents the horizontal alignment for the specified object. See
+      `ExcelScript.HorizontalAlignment` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setHorizontalAlignment(horizontalAlignment: HorizontalAlignment): void;'
+      parameters:
+        - id: horizontalAlignment
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.HorizontalAlignment:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script centers the text in a table's header row cells.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Get the header range.
+            const headerRange = table.getHeaderRowRange();
+
+            // Set the horizontal text alignment to `center`.
+            headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+          }
+          ```
+  - name: setIndentLevel(indentLevel)
+    uid: ExcelScript!ExcelScript.RangeFormat#setIndentLevel:member(1)
+    package: ExcelScript!
+    fullName: setIndentLevel(indentLevel)
+    summary: An integer from 0 to 250 that indicates the indent level.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setIndentLevel(indentLevel: number): void;'
+      parameters:
+        - id: indentLevel
+          description: ''
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: setRangeBorderTintAndShade(rangeBorderTintAndShade)
+    uid: ExcelScript!ExcelScript.RangeFormat#setRangeBorderTintAndShade:member(1)
+    package: ExcelScript!
+    fullName: setRangeBorderTintAndShade(rangeBorderTintAndShade)
+    summary: >-
+      Specifies a double that lightens or darkens a color for range borders. The
+      value is between -1 (darkest) and 1 (brightest), with 0 for the original
+      color. A `null` value indicates that the entire border collection doesn't
+      have a uniform `tintAndShade` setting.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRangeBorderTintAndShade(rangeBorderTintAndShade: number): void;'
+      parameters:
+        - id: rangeBorderTintAndShade
+          description: ''
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: setReadingOrder(readingOrder)
+    uid: ExcelScript!ExcelScript.RangeFormat#setReadingOrder:member(1)
+    package: ExcelScript!
+    fullName: setReadingOrder(readingOrder)
+    summary: The reading order for the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setReadingOrder(readingOrder: ReadingOrder): void;'
+      parameters:
+        - id: readingOrder
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.ReadingOrder:enum" />
+      return:
+        type: void
+        description: ''
+  - name: setRowHeight(rowHeight)
+    uid: ExcelScript!ExcelScript.RangeFormat#setRowHeight:member(1)
+    package: ExcelScript!
+    fullName: setRowHeight(rowHeight)
+    summary: Specifies the height of all rows in the range.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRowHeight(rowHeight: number): void;'
+      parameters:
+        - id: rowHeight
+          description: ''
+          type: number
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script inserts a new row and sets that row's width to 100 pixels tall.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            const currentSheet = workbook.getActiveWorksheet();
+
+            // Insert a new row between the current 2 and 3 rows.
+            const bcRange = currentSheet.getRange("3:3");
+            const newRow = bcRange.insert(ExcelScript.InsertShiftDirection.down);
+            
+            // Set the row height of the new row to 100 pixels.
+            newRow.getFormat().setRowHeight(100);
+          }
+          ```
+  - name: setShrinkToFit(shrinkToFit)
+    uid: ExcelScript!ExcelScript.RangeFormat#setShrinkToFit:member(1)
+    package: ExcelScript!
+    fullName: setShrinkToFit(shrinkToFit)
+    summary: >-
+      Specifies if text automatically shrinks to fit in the available column
+      width.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setShrinkToFit(shrinkToFit: boolean): void;'
+      parameters:
+        - id: shrinkToFit
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setTextOrientation(textOrientation)
+    uid: ExcelScript!ExcelScript.RangeFormat#setTextOrientation:member(1)
+    package: ExcelScript!
+    fullName: setTextOrientation(textOrientation)
+    summary: >-
+      The text orientation of all the cells within the range. The text
+      orientation should be an integer either from -90 to 90, or 180 for
+      vertically-oriented text. If the orientation within a range are not
+      uniform, then `null` will be returned.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setTextOrientation(textOrientation: number): void;'
+      parameters:
+        - id: textOrientation
+          description: ''
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: setUseStandardHeight(useStandardHeight)
+    uid: ExcelScript!ExcelScript.RangeFormat#setUseStandardHeight:member(1)
+    package: ExcelScript!
+    fullName: setUseStandardHeight(useStandardHeight)
+    summary: >-
+      Determines if the row height of the `Range` object equals the standard
+      height of the sheet. Note: This property is only intended to be set to
+      `true`<!-- -->. Setting it to `false` has no effect.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setUseStandardHeight(useStandardHeight: boolean): void;'
+      parameters:
+        - id: useStandardHeight
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setUseStandardWidth(useStandardWidth)
+    uid: ExcelScript!ExcelScript.RangeFormat#setUseStandardWidth:member(1)
+    package: ExcelScript!
+    fullName: setUseStandardWidth(useStandardWidth)
+    summary: >-
+      Specifies if the column width of the `Range` object equals the standard
+      width of the sheet. Note: This property is only intended to be set to
+      `true`<!-- -->. Setting it to `false` has no effect.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setUseStandardWidth(useStandardWidth: boolean): void;'
+      parameters:
+        - id: useStandardWidth
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''
+  - name: setVerticalAlignment(verticalAlignment)
+    uid: ExcelScript!ExcelScript.RangeFormat#setVerticalAlignment:member(1)
+    package: ExcelScript!
+    fullName: setVerticalAlignment(verticalAlignment)
+    summary: >-
+      Represents the vertical alignment for the specified object. See
+      `ExcelScript.VerticalAlignment` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setVerticalAlignment(verticalAlignment: VerticalAlignment): void;'
+      parameters:
+        - id: verticalAlignment
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.VerticalAlignment:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sets the vertical alignment formatting to "top"
+           * for every cell in the row.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get row 1 for the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const firstRow = sheet.getRange("1:1");
+
+            // Set the vertical alignment formatting on the row.
+            firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
+          }
+          ```
+  - name: setWrapText(wrapText)
+    uid: ExcelScript!ExcelScript.RangeFormat#setWrapText:member(1)
+    package: ExcelScript!
+    fullName: setWrapText(wrapText)
+    summary: >-
+      Specifies if Excel wraps the text in the object. A `null` value indicates
+      that the entire range doesn't have a uniform wrap setting
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setWrapText(wrapText: boolean): void;'
+      parameters:
+        - id: wrapText
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script turns on the text wrapping for a column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the E column in current worksheet.
+            const column = workbook.getActiveWorksheet().getRange("E:E");
+
+            // Set wrap text to true for the column.
+            column.getFormat().setWrapText(true);
+          }
+          ```
