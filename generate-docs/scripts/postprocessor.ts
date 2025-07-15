@@ -137,13 +137,13 @@ tryCatch(async () => {
     });
 
     // Remove the example field from the YAML as the OPS schema does not support it.
-    fsx.readdirSync(docsDestination).forEach(topLevel => { // contents of docs-ref-autogen
+    fsx.readdirSync(docsDestination).forEach(topLevel => { // Contents of docs-ref-autogen.
         let fileName = docsDestination + '/' + topLevel;
         if (fileName.indexOf(".") < 0) {
-            // contents of docs-ref-autogen/<host>
+            // Contents of docs-ref-autogen/<host>.
             fsx.readdirSync(fileName)
                 .filter(interfaceYml => interfaceYml.indexOf(".yml") >= 0)
-                .forEach(interfaceYml => { // contents of docs-ref-autogen/<host>/<host>script
+                .forEach(interfaceYml => { // Contents of docs-ref-autogen/<host>/<host>script.
                 let subFileName = fileName + '/' + interfaceYml;
                 const ymlFile = fsx.readFileSync(subFileName, "utf8");
                 fsx.writeFileSync(subFileName, cleanUpYmlFile(ymlFile)); 
