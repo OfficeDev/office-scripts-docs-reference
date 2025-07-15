@@ -7,18 +7,23 @@ import * as jsyaml from "js-yaml";
 tryCatch(async () => {
     console.log("\nStarting preprocessor script...");
 
-    const localDtsPath = "../script-inputs/excelscript.d.ts";
+    const localDtsPath = "../script-inputs/office-scripts-docs.d.ts";
 
-    let dts = cleanUpDts(localDtsPath);
+    // Read the combined file and split it into two sections
+    console.log(`\nReading combined file from ${path.resolve(localDtsPath)}`);
+    let combinedContent = fsx.readFileSync(localDtsPath).toString();
 
+    // Split the content into ExcelScript and OfficeScript sections
+    const { excelScriptContent, officeScriptContent } = splitCombinedContent(combinedContent);
+
+    // Process ExcelScript section
+    let dts = cleanUpDtsContent(excelScriptContent);
     console.log("\ncreate file: excelscript.d.ts (default)");
     fsx.writeFileSync('../api-extractor-inputs-excelscript/excelscript.d.ts', dts);
 
-    // Process office.d.ts
-    const localOfficeDtsPath = "../script-inputs/officescript.d.ts";
-    let officeDts = cleanUpDts(localOfficeDtsPath);
-
-    console.log("\ncreate file: office.d.ts");
+    // Process OfficeScript section
+    let officeDts = cleanUpDtsContent(officeScriptContent);
+    console.log("\ncreate file: officescript.d.ts");
     fsx.writeFileSync('../api-extractor-inputs-officescript/officescript.d.ts', officeDts);
 
     // ----
@@ -40,12 +45,48 @@ tryCatch(async () => {
     process.exit(0);
 });
 
-function cleanUpDts(localDtsPath: string): string {
-    console.log(`\nReading from ${path.resolve(localDtsPath)}`);
-    let definitions = fsx.readFileSync(localDtsPath).toString();
+function splitCombinedContent(combinedContent: string): { excelScriptContent: string, officeScriptContent: string } {
+    const beginExcelScript = "Begin ExcelScript namespace";
+    const beginOfficeScript = "Begin OfficeScript namespace";
+    
+    const excelScriptStart = combinedContent.indexOf(beginExcelScript);
+    const officeScriptStart = combinedContent.indexOf(beginOfficeScript);
+    
+    if (excelScriptStart === -1) {
+        throw new Error("Could not find 'Begin ExcelScript namespace' comment block");
+    }
+    
+    if (officeScriptStart === -1) {
+        throw new Error("Could not find 'Begin OfficeScript namespace' comment block");
+    }
+    
+    // Find the end of the ExcelScript comment block and start of actual content
+    const excelScriptCommentEnd = combinedContent.indexOf('////////////////////////////////////////////////////////////////', excelScriptStart + beginExcelScript.length);
+    const excelScriptContentStart = excelScriptCommentEnd !== -1 ? 
+        combinedContent.indexOf('\n', excelScriptCommentEnd) + 1 : 
+        combinedContent.indexOf('\n', excelScriptStart + beginExcelScript.length) + 1;
+    
+    // Find the start of the OfficeScript comment block
+    const officeScriptCommentStart = combinedContent.lastIndexOf('////////////////////////////////////////////////////////////////', officeScriptStart);
+    
+    // Extract ExcelScript content (from after ExcelScript comment block until before OfficeScript comment block)
+    const excelScriptContent = combinedContent.substring(excelScriptContentStart, officeScriptCommentStart).trim();
+    
+    // Find the end of the OfficeScript comment block and start of actual content
+    const officeScriptCommentEnd = combinedContent.indexOf('////////////////////////////////////////////////////////////////', officeScriptStart + beginOfficeScript.length);
+    const officeScriptContentStart = officeScriptCommentEnd !== -1 ? 
+        combinedContent.indexOf('\n', officeScriptCommentEnd) + 1 : 
+        combinedContent.indexOf('\n', officeScriptStart + beginOfficeScript.length) + 1;
+    
+    // Extract OfficeScript content (from after OfficeScript comment block to end of file)
+    const officeScriptContent = combinedContent.substring(officeScriptContentStart).trim();
+    
+    return { excelScriptContent, officeScriptContent };
+}
 
-    console.log("\nFixing issues with d.ts file...");
-    return applyRegularExpressions(definitions);
+function cleanUpDtsContent(content: string): string {
+    console.log("\nFixing issues with d.ts content...");
+    return applyRegularExpressions(content);
 }
 
 // ----

@@ -1855,19 +1855,19 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDirectDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
 
@@ -1882,7 +1882,7 @@ export declare namespace ExcelScript {
         getEntireRow(): Range;
 
         /**
-         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
+         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
          * @param direction - The direction from the active cell.
          * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -1937,12 +1937,12 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getPrecedents(): WorkbookRangeAreas;
 
         /**
-         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
+         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
          * @param direction - The direction from the active cell.
          * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -7668,12 +7668,12 @@ export declare namespace ExcelScript {
         getKey(): string;
 
         /**
-         * Specifies the value of the custom property.
+         * Gets or sets the value of the custom property.
          */
         getValue(): string;
 
         /**
-         * Specifies the value of the custom property.
+         * Gets or sets the value of the custom property.
          */
         setValue(value: string): void;
 
@@ -9227,22 +9227,22 @@ export declare namespace ExcelScript {
         setState(state: HeaderFooterState): void;
 
         /**
-         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         getUseSheetMargins(): boolean;
 
         /**
-         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         setUseSheetMargins(useSheetMargins: boolean): void;
 
         /**
-         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         getUseSheetScale(): boolean;
 
         /**
-         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         setUseSheetScale(useSheetScale: boolean): void;
     }
@@ -10442,13 +10442,13 @@ export declare namespace ExcelScript {
      */
     export interface NamedSheetView {
         /**
-         * Specifies the name of the sheet view.
+         * Gets or sets the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         getName(): string;
 
         /**
-         * Specifies the name of the sheet view.
+         * Gets or sets the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         setName(name: string): void;
@@ -15214,4 +15214,3 @@ export declare namespace ExcelScript {
         | MixedCellControl
         | CheckboxCellControl;
 }
-
