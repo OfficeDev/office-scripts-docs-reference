@@ -1,4 +1,8 @@
-export declare namespace ExcelScript {
+////////////////////////////////////////////////////////////////
+//////////////////// Begin ExcelScript namespace ////////////////////
+////////////////////////////////////////////////////////////////
+
+declare namespace ExcelScript {
     //
     // Class
     //
@@ -7,7 +11,7 @@ export declare namespace ExcelScript {
      * Represents an `AllowEditRange` object found in a worksheet. This object works with worksheet protection properties.
      * When worksheet protection is enabled, an `AllowEditRange` object can be used to allow editing of a specific range, while maintaining protection on the rest of the worksheet.
      */
-    export interface AllowEditRange {
+    interface AllowEditRange {
         /**
          * Specifies the range associated with the object.
          */
@@ -51,7 +55,7 @@ export declare namespace ExcelScript {
          * If worksheet protection cannot be paused, this method throws an `UnsupportedOperation` error and fails to pause protection for the object.
          * If the password is incorrect, then this method throws a `BadPassword` error and fails to pause protection for the object.
          * If a password is supplied but the object does not require a password, the inputted password will be ignored and the operation will succeed.
-         * @param password - The password associated with the `AllowEditRange` object.
+         * @param password The password associated with the `AllowEditRange` object.
          */
         pauseProtection(password?: string): void;
 
@@ -60,7 +64,7 @@ export declare namespace ExcelScript {
          * Setting the password string as empty ("") or `null` will remove password protection from the object.
          * Worksheet protection must be disabled or paused for this method to work properly.
          * If worksheet protection is enabled and not paused, then this method throws an `AccessDenied` error and the set operation fails.
-         * @param password - The password associated with the `AllowEditRange` object.
+         * @param password The password associated with the `AllowEditRange` object.
          */
         setPassword(password?: string): void;
     }
@@ -68,7 +72,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a Power Query query.
      */
-    export interface Query {
+    interface Query {
         /**
          * Gets the query error message from when the query was last refreshed.
          */
@@ -107,7 +111,7 @@ export declare namespace ExcelScript {
      * If a workbook has links pointing to data in another workbook, the second workbook is linked to the first workbook.
      * In this scenario, the second workbook is called the "linked workbook".
      */
-    export interface LinkedWorkbook {
+    interface LinkedWorkbook {
         /**
          * The original URL pointing to the linked workbook. It is unique across all linked workbooks in the collection.
          */
@@ -129,7 +133,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel application that manages the workbook.
      */
-    export interface Application {
+    interface Application {
         /**
          * Returns the Excel calculation engine version used for the last full recalculation.
          */
@@ -180,7 +184,7 @@ export declare namespace ExcelScript {
 
         /**
          * Recalculate all currently opened workbooks in Excel.
-         * @param calculationType - Specifies the calculation type to use. See `ExcelScript.CalculationType` for details.
+         * @param calculationType Specifies the calculation type to use. See `ExcelScript.CalculationType` for details.
          */
         calculate(calculationType: CalculationType): void;
     }
@@ -188,7 +192,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the iterative calculation settings.
      */
-    export interface IterativeCalculation {
+    interface IterativeCalculation {
         /**
          * True if Excel will use iteration to resolve circular references.
          */
@@ -223,7 +227,7 @@ export declare namespace ExcelScript {
     /**
      * Workbook is the top level object which contains related workbook objects such as worksheets, tables, and ranges.
      */
-    export interface Workbook {
+    interface Workbook {
         /**
          * Represents the Excel application instance that contains this workbook.
          */
@@ -332,9 +336,9 @@ export declare namespace ExcelScript {
 
         /**
          * Add a new binding to a particular Range.
-         * @param range - Range to bind the binding to. May be a `Range` object or a string. If string, must contain the full address, including the sheet name
-         * @param bindingType - Type of binding. See `ExcelScript.BindingType`.
-         * @param id - Name of the binding.
+         * @param range Range to bind the binding to. May be a `Range` object or a string. If string, must contain the full address, including the sheet name
+         * @param bindingType Type of binding. See `ExcelScript.BindingType`.
+         * @param id Name of the binding.
          */
         addBinding(
             range: Range | string,
@@ -345,9 +349,9 @@ export declare namespace ExcelScript {
         /**
          * Add a new binding based on a named item in the workbook.
          * If the named item references to multiple areas, the `InvalidReference` error will be returned.
-         * @param name - Name from which to create binding.
-         * @param bindingType - Type of binding. See `ExcelScript.BindingType`.
-         * @param id - Name of the binding.
+         * @param name Name from which to create binding.
+         * @param bindingType Type of binding. See `ExcelScript.BindingType`.
+         * @param id Name of the binding.
          */
         addBindingFromNamedItem(
             name: string,
@@ -358,14 +362,14 @@ export declare namespace ExcelScript {
         /**
          * Add a new binding based on the current selection.
          * If the selection has multiple areas, the `InvalidReference` error will be returned.
-         * @param bindingType - Type of binding. See `ExcelScript.BindingType`.
-         * @param id - Name of the binding.
+         * @param bindingType Type of binding. See `ExcelScript.BindingType`.
+         * @param id Name of the binding.
          */
         addBindingFromSelection(bindingType: BindingType, id: string): Binding;
 
         /**
          * Gets a binding object by ID. If the binding object does not exist, then this method returns `undefined`.
-         * @param id - ID of the binding object to be retrieved.
+         * @param id ID of the binding object to be retrieved.
          */
         getBinding(id: string): Binding | undefined;
 
@@ -376,9 +380,9 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
-         * @param cellAddress - The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
-         * @param content - The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
-         * @param contentType - Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
+         * @param cellAddress The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
+         * @param content The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
+         * @param contentType Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
          */
         addComment(
             cellAddress: Range | string,
@@ -388,20 +392,20 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the comment from the specified cell. If there is no comment in the cell, an error is thrown.
-         * @param cellAddress - The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
+         * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
         getCommentByCell(cellAddress: Range | string): Comment;
 
         /**
          * Gets the comment to which the given reply is connected.
-         * @param replyId - The identifier of comment reply.
+         * @param replyId The identifier of comment reply.
          */
         getCommentByReplyId(replyId: string): Comment;
 
         /**
          * Gets a comment from the collection based on its ID.
          * If the comment object does not exist, then this method returns `undefined`.
-         * @param commentId - The identifier for the comment.
+         * @param commentId The identifier for the comment.
          */
         getComment(commentId: string): Comment | undefined;
 
@@ -412,20 +416,20 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new custom XML part to the workbook.
-         * @param xml - XML content. Must be a valid XML fragment.
+         * @param xml XML content. Must be a valid XML fragment.
          */
         addCustomXmlPart(xml: string): CustomXmlPart;
 
         /**
          * Gets a new collection of custom XML parts whose namespaces match the given namespace.
-         * @param namespaceUri - This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
+         * @param namespaceUri This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
          */
         getCustomXmlPartsByNamespace(namespaceUri: string): CustomXmlPart[];
 
         /**
          * Gets a custom XML part based on its ID.
          * If the `CustomXmlPart` does not exist, then this method returns `undefined`.
-         * @param id - ID of the object to be retrieved.
+         * @param id ID of the object to be retrieved.
          */
         getCustomXmlPart(id: string): CustomXmlPart | undefined;
 
@@ -453,7 +457,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets information about a linked workbook by its URL. If the workbook does not exist, then this method returns `undefined`.
-         * @param key - The URL of the linked workbook.
+         * @param key The URL of the linked workbook.
          */
         getLinkedWorkbookByUrl(key: string): LinkedWorkbook | undefined;
 
@@ -469,9 +473,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new name to the collection of the given scope.
-         * @param name - The name of the named item.
-         * @param reference - The formula or the range that the name will refer to.
-         * @param comment - Optional. The comment associated with the named item.
+         * @param name The name of the named item.
+         * @param reference The formula or the range that the name will refer to.
+         * @param comment Optional. The comment associated with the named item.
          */
         addNamedItem(
             name: string,
@@ -481,9 +485,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new name to the collection of the given scope using the user's locale for the formula.
-         * @param name - The name of the named item.
-         * @param formula - The formula in the user's locale that the name will refer to.
-         * @param comment - Optional. The comment associated with the named item.
+         * @param name The name of the named item.
+         * @param formula The formula in the user's locale that the name will refer to.
+         * @param comment Optional. The comment associated with the named item.
          */
         addNamedItemFormulaLocal(
             name: string,
@@ -493,7 +497,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `NamedItem` object using its name. If the object does not exist, then this method returns `undefined`.
-         * @param name - Nameditem name.
+         * @param name Nameditem name.
          */
         getNamedItem(name: string): NamedItem | undefined;
 
@@ -504,8 +508,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a blank `PivotTableStyle` with the specified name.
-         * @param name - The unique name for the new PivotTable style. Will throw an `InvalidArgument` error if the name is already in use.
-         * @param makeUniqueName - Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
+         * @param name The unique name for the new PivotTable style. Will throw an `InvalidArgument` error if the name is already in use.
+         * @param makeUniqueName Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
          */
         addPivotTableStyle(
             name: string,
@@ -519,13 +523,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `PivotTableStyle` by name. If the `PivotTableStyle` does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotTable style to be retrieved.
+         * @param name Name of the PivotTable style to be retrieved.
          */
         getPivotTableStyle(name: string): PivotTableStyle | undefined;
 
         /**
          * Sets the default PivotTable style for use in the parent object's scope.
-         * @param newDefaultStyle - The `PivotTableStyle` object, or name of the `PivotTableStyle` object, that should be the new default.
+         * @param newDefaultStyle The `PivotTableStyle` object, or name of the `PivotTableStyle` object, that should be the new default.
          */
         setDefaultPivotTableStyle(
             newDefaultStyle: PivotTableStyle | string
@@ -538,9 +542,9 @@ export declare namespace ExcelScript {
 
         /**
          * Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
-         * @param name - The name of the new PivotTable.
-         * @param source - The source data for the new PivotTable, this can either be a range (or string address including the worksheet name) or a table.
-         * @param destination - The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet where the resulting report will be placed).
+         * @param name The name of the new PivotTable.
+         * @param source The source data for the new PivotTable, this can either be a range (or string address including the worksheet name) or a table.
+         * @param destination The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet where the resulting report will be placed).
          */
         addPivotTable(
             name: string,
@@ -550,7 +554,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotTable by name. If the PivotTable does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotTable to be retrieved.
+         * @param name Name of the PivotTable to be retrieved.
          */
         getPivotTable(name: string): PivotTable | undefined;
 
@@ -566,7 +570,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a query from the collection based on its name.
-         * @param key - The name of the query case-insensitive.
+         * @param key The name of the query case-insensitive.
          */
         getQuery(key: string): Query;
 
@@ -577,8 +581,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a blank slicer style with the specified name.
-         * @param name - The unique name for the new slicer style. Will throw an `InvalidArgument` exception if the name is already in use.
-         * @param makeUniqueName - Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
+         * @param name The unique name for the new slicer style. Will throw an `InvalidArgument` exception if the name is already in use.
+         * @param makeUniqueName Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
          */
         addSlicerStyle(name: string, makeUniqueName?: boolean): SlicerStyle;
 
@@ -589,13 +593,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `SlicerStyle` by name. If the slicer style doesn't exist, then this method returns `undefined`.
-         * @param name - Name of the slicer style to be retrieved.
+         * @param name Name of the slicer style to be retrieved.
          */
         getSlicerStyle(name: string): SlicerStyle | undefined;
 
         /**
          * Sets the default slicer style for use in the parent object's scope.
-         * @param newDefaultStyle - The `SlicerStyle` object, or name of the `SlicerStyle` object, that should be the new default.
+         * @param newDefaultStyle The `SlicerStyle` object, or name of the `SlicerStyle` object, that should be the new default.
          */
         setDefaultSlicerStyle(newDefaultStyle: SlicerStyle | string): void;
 
@@ -606,9 +610,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new slicer to the workbook.
-         * @param slicerSource - The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is interpreted as the name or ID of a PivotTable or table.
-         * @param sourceField - The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID of a `PivotField` or the name or ID of a `TableColumn`.
-         * @param slicerDestination - Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
+         * @param slicerSource The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is interpreted as the name or ID of a PivotTable or table.
+         * @param sourceField The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID of a `PivotField` or the name or ID of a `TableColumn`.
+         * @param slicerDestination Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
          */
         addSlicer(
             slicerSource: string | PivotTable | Table,
@@ -618,7 +622,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a slicer using its name or ID. If the slicer doesn't exist, then this method returns `undefined`.
-         * @param key - Name or ID of the slicer to be retrieved.
+         * @param key Name or ID of the slicer to be retrieved.
          */
         getSlicer(key: string): Slicer | undefined;
 
@@ -629,14 +633,14 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new style to the collection.
-         * @param name - Name of the style to be added.
+         * @param name Name of the style to be added.
          */
         addPredefinedCellStyle(name: string): void;
 
         /**
          * Gets a style by name.
          * If the style object does not exist, then this method returns `undefined`.
-         * @param name - Name of the style to be retrieved.
+         * @param name Name of the style to be retrieved.
          */
         getPredefinedCellStyle(name: string): PredefinedCellStyle | undefined;
 
@@ -647,8 +651,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a blank `TableStyle` with the specified name.
-         * @param name - The unique name for the new table style. Will throw an `InvalidArgument` error if the name is already in use.
-         * @param makeUniqueName - Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
+         * @param name The unique name for the new table style. Will throw an `InvalidArgument` error if the name is already in use.
+         * @param makeUniqueName Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
          */
         addTableStyle(name: string, makeUniqueName?: boolean): TableStyle;
 
@@ -659,13 +663,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `TableStyle` by name. If the table style does not exist, then this method returns `undefined`.
-         * @param name - Name of the table style to be retrieved.
+         * @param name Name of the table style to be retrieved.
          */
         getTableStyle(name: string): TableStyle | undefined;
 
         /**
          * Sets the default table style for use in the parent object's scope.
-         * @param newDefaultStyle - The `TableStyle` object, or name of the `TableStyle` object, that should be the new default.
+         * @param newDefaultStyle The `TableStyle` object, or name of the `TableStyle` object, that should be the new default.
          */
         setDefaultTableStyle(newDefaultStyle: TableStyle | string): void;
 
@@ -676,14 +680,14 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new table. The range object or source address determines the worksheet under which the table will be added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another table), an error will be thrown.
-         * @param address - A `Range` object, or a string address or name of the range representing the data source. If the address does not contain a sheet name, the currently-active sheet is used.
-         * @param hasHeaders - A boolean value that indicates whether the data being imported has column labels. If the source does not contain headers (i.e., when this property set to `false`), Excel will automatically generate a header and shift the data down by one row.
+         * @param address A `Range` object, or a string address or name of the range representing the data source. If the address does not contain a sheet name, the currently-active sheet is used.
+         * @param hasHeaders A boolean value that indicates whether the data being imported has column labels. If the source does not contain headers (i.e., when this property set to `false`), Excel will automatically generate a header and shift the data down by one row.
          */
         addTable(address: Range | string, hasHeaders: boolean): Table;
 
         /**
          * Gets a table by name or ID. If the table doesn't exist, then this method returns `undefined`.
-         * @param key - Name or ID of the table to be retrieved.
+         * @param key Name or ID of the table to be retrieved.
          */
         getTable(key: string): Table | undefined;
 
@@ -694,8 +698,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a blank `TimelineStyle` with the specified name.
-         * @param name - The unique name for the new timeline style. Will throw an `InvalidArgument` error if the name is already in use.
-         * @param makeUniqueName - Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
+         * @param name The unique name for the new timeline style. Will throw an `InvalidArgument` error if the name is already in use.
+         * @param makeUniqueName Optional. Defaults to `false`. If `true`, will append numbers to the name in order to make it unique, if needed.
          */
         addTimelineStyle(name: string, makeUniqueName?: boolean): TimelineStyle;
 
@@ -706,13 +710,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `TimelineStyle` by name. If the timeline style doesn't exist, then this method returns `undefined`.
-         * @param name - Name of the timeline style to be retrieved.
+         * @param name Name of the timeline style to be retrieved.
          */
         getTimelineStyle(name: string): TimelineStyle | undefined;
 
         /**
          * Sets the default timeline style for use in the parent object's scope.
-         * @param newDefaultStyle - The `TimelineStyle` object, or name of the `TimelineStyle` object, that should be the new default.
+         * @param newDefaultStyle The `TimelineStyle` object, or name of the `TimelineStyle` object, that should be the new default.
          */
         setDefaultTimelineStyle(newDefaultStyle: TimelineStyle | string): void;
 
@@ -723,7 +727,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish to activate the newly added worksheet, call `.activate()` on it.
-         * @param name - Optional. The name of the worksheet to be added. If specified, the name should be unique. If not specified, Excel determines the name of the new worksheet.
+         * @param name Optional. The name of the worksheet to be added. If specified, the name should be unique. If not specified, Excel determines the name of the new worksheet.
          */
         addWorksheet(name?: string): Worksheet;
 
@@ -734,19 +738,19 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the first worksheet in the collection.
-         * @param visibleOnly - Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
+         * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getFirstWorksheet(visibleOnly?: boolean): Worksheet;
 
         /**
          * Gets a worksheet object using its name or ID. If the worksheet does not exist, then this method returns `undefined`.
-         * @param key - The name or ID of the worksheet.
+         * @param key The name or ID of the worksheet.
          */
         getWorksheet(key: string): Worksheet | undefined;
 
         /**
          * Gets the last worksheet in the collection.
-         * @param visibleOnly - Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
+         * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getLastWorksheet(visibleOnly?: boolean): Worksheet;
 
@@ -757,7 +761,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a new collection of custom XML parts whose namespaces match the given namespace.
-         * @param namespaceUri - This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
+         * @param namespaceUri This must be a fully qualified schema URI; for example, "http://schemas.contoso.com/review/1.0".
          * @deprecated Use `getCustomXmlPartsByNamespace` instead.
          */
         getCustomXmlPartByNamespace(namespaceUri: string): CustomXmlPart[];
@@ -766,7 +770,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the protection of a workbook object.
      */
-    export interface WorkbookProtection {
+    interface WorkbookProtection {
         /**
          * Specifies if the workbook is protected.
          */
@@ -774,13 +778,13 @@ export declare namespace ExcelScript {
 
         /**
          * Protects the workbook. Fails if the workbook has been protected.
-         * @param password - Workbook protection password.
+         * @param password Workbook protection password.
          */
         protect(password?: string): void;
 
         /**
          * Unprotects the workbook.
-         * @param password - Workbook protection password.
+         * @param password Workbook protection password.
          */
         unprotect(password?: string): void;
     }
@@ -788,7 +792,7 @@ export declare namespace ExcelScript {
     /**
      * An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc.
      */
-    export interface Worksheet {
+    interface Worksheet {
         /**
          * Represents the `AutoFilter` object of the worksheet.
          */
@@ -929,14 +933,14 @@ export declare namespace ExcelScript {
 
         /**
          * Calculates all cells on a worksheet.
-         * @param markAllDirty - True, to mark all as dirty.
+         * @param markAllDirty True, to mark all as dirty.
          */
         calculate(markAllDirty: boolean): void;
 
         /**
          * Copies a worksheet and places it at the specified position.
-         * @param positionType - The location in the workbook to place the newly created worksheet. The default value is "None", which inserts the worksheet at the beginning of the worksheet.
-         * @param relativeTo - The existing worksheet which determines the newly created worksheet's position. This is only needed if `positionType` is "Before" or "After".
+         * @param positionType The location in the workbook to place the newly created worksheet. The default value is "None", which inserts the worksheet at the beginning of the worksheet.
+         * @param relativeTo The existing worksheet which determines the newly created worksheet's position. This is only needed if `positionType` is "Before" or "After".
          */
         copy(
             positionType?: WorksheetPositionType,
@@ -950,42 +954,42 @@ export declare namespace ExcelScript {
 
         /**
          * Finds all occurrences of the given string based on the criteria specified and returns them as a `RangeAreas` object, comprising one or more rectangular ranges.
-         * @param text - The string to find.
-         * @param criteria - Additional search criteria, including whether the search needs to match the entire cell or be case-sensitive.
+         * @param text The string to find.
+         * @param criteria Additional search criteria, including whether the search needs to match the entire cell or be case-sensitive.
          */
         findAll(text: string, criteria: WorksheetSearchCriteria): RangeAreas;
 
         /**
          * Gets the `Range` object containing the single cell based on row and column numbers. The cell can be outside the bounds of its parent range, so long as it stays within the worksheet grid.
-         * @param row - The row number of the cell to be retrieved. Zero-indexed.
-         * @param column - The column number of the cell to be retrieved. Zero-indexed.
+         * @param row The row number of the cell to be retrieved. Zero-indexed.
+         * @param column The column number of the cell to be retrieved. Zero-indexed.
          */
         getCell(row: number, column: number): Range;
 
         /**
          * Gets the worksheet that follows this one. If there are no worksheets following this one, then this method returns `undefined`.
-         * @param visibleOnly - Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
+         * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getNext(visibleOnly?: boolean): Worksheet;
 
         /**
          * Gets the worksheet that precedes this one. If there are no previous worksheets, then this method returns `undefined`.
-         * @param visibleOnly - Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
+         * @param visibleOnly Optional. If `true`, considers only visible worksheets, skipping over any hidden ones.
          */
         getPrevious(visibleOnly?: boolean): Worksheet;
 
         /**
          * Gets the `Range` object, representing a single rectangular block of cells, specified by the address or name.
-         * @param address - Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified, the entire worksheet range is returned. The `address` has a limit of 8192 characters. If the address exceeds the character limit, this method returns an `InvalidArgument` error.
+         * @param address Optional. The string representing the address or name of the range. For example, "A1:B2". If not specified, the entire worksheet range is returned. The `address` has a limit of 8192 characters. If the address exceeds the character limit, this method returns an `InvalidArgument` error.
          */
         getRange(address?: string): Range;
 
         /**
          * Gets the `Range` object beginning at a particular row index and column index, and spanning a certain number of rows and columns.
-         * @param startRow - Start row (zero-indexed).
-         * @param startColumn - Start column (zero-indexed).
-         * @param rowCount - Number of rows to include in the range.
-         * @param columnCount - Number of columns to include in the range.
+         * @param startRow Start row (zero-indexed).
+         * @param startColumn Start column (zero-indexed).
+         * @param rowCount Number of rows to include in the range.
+         * @param columnCount Number of columns to include in the range.
          */
         getRangeByIndexes(
             startRow: number,
@@ -996,22 +1000,22 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the `RangeAreas` object, representing one or more blocks of rectangular ranges, specified by the address or name.
-         * @param address - Optional. A string containing the comma-separated or semicolon-separated addresses or names of the individual ranges. For example, "A1:B2, A5:B5" or "A1:B2; A5:B5". If not specified, a `RangeAreas` object for the entire worksheet is returned.
+         * @param address Optional. A string containing the comma-separated or semicolon-separated addresses or names of the individual ranges. For example, "A1:B2, A5:B5" or "A1:B2; A5:B5". If not specified, a `RangeAreas` object for the entire worksheet is returned.
          */
         getRanges(address?: string): RangeAreas;
 
         /**
          * The used range is the smallest range that encompasses any cells that have a value or formatting assigned to them.
          * If the entire worksheet is blank, then this method returns `undefined`.
-         * @param valuesOnly - Optional. Considers only cells with values as used cells.
+         * @param valuesOnly Optional. Considers only cells with values as used cells.
          */
         getUsedRange(valuesOnly?: boolean): Range;
 
         /**
          * Finds and replaces the given string based on the criteria specified within the current worksheet.
-         * @param text - String to find.
-         * @param replacement - The string that replaces the original string.
-         * @param criteria - Additional replacement criteria.
+         * @param text String to find.
+         * @param replacement The string that replaces the original string.
+         * @param criteria Additional replacement criteria.
          */
         replaceAll(
             text: string,
@@ -1025,8 +1029,8 @@ export declare namespace ExcelScript {
          * The `rowLevels` and `columnLevels` parameters specify how many levels of the outline will be displayed.
          * The acceptable argument range is between 0 and 8.
          * A value of 0 does not change the current display. A value greater than the current number of levels displays all the levels.
-         * @param rowLevels - The number of row levels of an outline to display.
-         * @param columnLevels - The number of column levels of an outline to display.
+         * @param rowLevels The number of row levels of an outline to display.
+         * @param columnLevels The number of column levels of an outline to display.
          */
         showOutlineLevels(rowLevels: number, columnLevels: number): void;
 
@@ -1037,9 +1041,9 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new chart.
-         * @param type - Represents the type of a chart. See `ExcelScript.ChartType` for details.
-         * @param sourceData - The `Range` object corresponding to the source data.
-         * @param seriesBy - Optional. Specifies the way columns or rows are used as data series on the chart. See `ExcelScript.ChartSeriesBy` for details.
+         * @param type Represents the type of a chart. See `ExcelScript.ChartType` for details.
+         * @param sourceData The `Range` object corresponding to the source data.
+         * @param seriesBy Optional. Specifies the way columns or rows are used as data series on the chart. See `ExcelScript.ChartSeriesBy` for details.
          */
         addChart(
             type: ChartType,
@@ -1049,7 +1053,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a chart using its name. If there are multiple charts with the same name, the first one will be returned. If the chart doesn't exist, then this method returns `undefined`.
-         * @param name - Name of the chart to be retrieved.
+         * @param name Name of the chart to be retrieved.
          */
         getChart(name: string): Chart | undefined;
 
@@ -1060,9 +1064,9 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new comment with the given content on the given cell. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
-         * @param cellAddress - The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
-         * @param content - The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
-         * @param contentType - Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
+         * @param cellAddress The cell to which the comment is added. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
+         * @param content The comment's content. This can be either a string or `CommentRichContent` object. Strings are used for plain text. `CommentRichContent` objects allow for other comment features, such as mentions.
+         * @param contentType Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
          */
         addComment(
             cellAddress: Range | string,
@@ -1072,20 +1076,20 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the comment from the specified cell. If there is no comment in the cell, an error is thrown.
-         * @param cellAddress - The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
+         * @param cellAddress The cell which the comment is on. This can be a `Range` object or a string. If it's a string, it must contain the full address, including the sheet name. An `InvalidArgument` error is thrown if the provided range is larger than one cell.
          */
         getCommentByCell(cellAddress: Range | string): Comment;
 
         /**
          * Gets the comment to which the given reply is connected.
-         * @param replyId - The identifier of comment reply.
+         * @param replyId The identifier of comment reply.
          */
         getCommentByReplyId(replyId: string): Comment;
 
         /**
          * Gets a comment from the collection based on its ID.
          * If the comment object does not exist, then this method returns `undefined`.
-         * @param commentId - The identifier for the comment.
+         * @param commentId The identifier for the comment.
          */
         getComment(commentId: string): Comment | undefined;
 
@@ -1096,8 +1100,8 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new custom property that maps to the provided key. This overwrites existing custom properties with that key.
-         * @param key - The key that identifies the custom property object. It is case-insensitive.The key is limited to 255 characters (larger values will cause an `InvalidArgument` error to be thrown.)
-         * @param value - The value of this custom property.
+         * @param key The key that identifies the custom property object. It is case-insensitive.The key is limited to 255 characters (larger values will cause an `InvalidArgument` error to be thrown.)
+         * @param value The value of this custom property.
          */
         addWorksheetCustomProperty(
             key: string,
@@ -1106,7 +1110,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this method returns `undefined`.
-         * @param key - The key that identifies the custom property object. It is case-insensitive.
+         * @param key The key that identifies the custom property object. It is case-insensitive.
          */
         getWorksheetCustomProperty(
             key: string
@@ -1119,7 +1123,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a page break before the top-left cell of the range specified.
-         * @param pageBreakRange - The range immediately after the page break to be added.
+         * @param pageBreakRange The range immediately after the page break to be added.
          */
         addHorizontalPageBreak(pageBreakRange: Range | string): PageBreak;
 
@@ -1135,7 +1139,7 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new sheet view with the given name.
-         * @param name - The name of the sheet view to be created.
+         * @param name The name of the sheet view to be created.
          * Throws an error when the provided name already exists, is empty, or is a name reserved by the worksheet.
          */
         addNamedSheetView(name: string): NamedSheetView;
@@ -1160,7 +1164,7 @@ export declare namespace ExcelScript {
         /**
          * Gets a sheet view using its name.
          * If the sheet view object does not exist, then this method returns an object with its `isNullObject` property set to `true`.
-         * @param key - The case-sensitive name of the sheet view.
+         * @param key The case-sensitive name of the sheet view.
          * Use the empty string ("") to get the temporary sheet view, if the temporary view exists.
          */
         getNamedSheetView(key: string): NamedSheetView | undefined;
@@ -1172,9 +1176,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new name to the collection of the given scope.
-         * @param name - The name of the named item.
-         * @param reference - The formula or the range that the name will refer to.
-         * @param comment - Optional. The comment associated with the named item.
+         * @param name The name of the named item.
+         * @param reference The formula or the range that the name will refer to.
+         * @param comment Optional. The comment associated with the named item.
          */
         addNamedItem(
             name: string,
@@ -1184,9 +1188,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new name to the collection of the given scope using the user's locale for the formula.
-         * @param name - The name of the named item.
-         * @param formula - The formula in the user's locale that the name will refer to.
-         * @param comment - Optional. The comment associated with the named item.
+         * @param name The name of the named item.
+         * @param formula The formula in the user's locale that the name will refer to.
+         * @param comment Optional. The comment associated with the named item.
          */
         addNamedItemFormulaLocal(
             name: string,
@@ -1196,7 +1200,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `NamedItem` object using its name. If the object does not exist, then this method returns `undefined`.
-         * @param name - Nameditem name.
+         * @param name Nameditem name.
          */
         getNamedItem(name: string): NamedItem | undefined;
 
@@ -1207,9 +1211,9 @@ export declare namespace ExcelScript {
 
         /**
          * Add a PivotTable based on the specified source data and insert it at the top-left cell of the destination range.
-         * @param name - The name of the new PivotTable.
-         * @param source - The source data for the new PivotTable, this can either be a range (or string address including the worksheet name) or a table.
-         * @param destination - The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet where the resulting report will be placed).
+         * @param name The name of the new PivotTable.
+         * @param source The source data for the new PivotTable, this can either be a range (or string address including the worksheet name) or a table.
+         * @param destination The cell in the upper-left corner of the PivotTable report's destination range (the range on the worksheet where the resulting report will be placed).
          */
         addPivotTable(
             name: string,
@@ -1219,7 +1223,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotTable by name. If the PivotTable does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotTable to be retrieved.
+         * @param name Name of the PivotTable to be retrieved.
          */
         getPivotTable(name: string): PivotTable | undefined;
 
@@ -1235,29 +1239,29 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a geometric shape to the worksheet. Returns a `Shape` object that represents the new shape.
-         * @param geometricShapeType - Represents the type of the geometric shape. See `ExcelScript.GeometricShapeType` for details.
+         * @param geometricShapeType Represents the type of the geometric shape. See `ExcelScript.GeometricShapeType` for details.
          */
         addGeometricShape(geometricShapeType: GeometricShapeType): Shape;
 
         /**
          * Groups a subset of shapes in this collection's worksheet. Returns a `Shape` object that represents the new group of shapes.
-         * @param values - An array of shape IDs or shape objects.
+         * @param values An array of shape IDs or shape objects.
          */
         addGroup(values: Array<string | Shape>): Shape;
 
         /**
          * Creates an image from a Base64-encoded string and adds it to the worksheet. Returns the `Shape` object that represents the new image.
-         * @param base64ImageString - A Base64-encoded string representing an image in either JPEG or PNG format.
+         * @param base64ImageString A Base64-encoded string representing an image in either JPEG or PNG format.
          */
         addImage(base64ImageString: string): Shape;
 
         /**
          * Adds a line to worksheet. Returns a `Shape` object that represents the new line.
-         * @param startLeft - The distance, in points, from the start of the line to the left side of the worksheet.
-         * @param startTop - The distance, in points, from the start of the line to the top of the worksheet.
-         * @param endLeft - The distance, in points, from the end of the line to the left of the worksheet.
-         * @param endTop - The distance, in points, from the end of the line to the top of the worksheet.
-         * @param connectorType - Represents the connector type. See `ExcelScript.ConnectorType` for details.
+         * @param startLeft The distance, in points, from the start of the line to the left side of the worksheet.
+         * @param startTop The distance, in points, from the start of the line to the top of the worksheet.
+         * @param endLeft The distance, in points, from the end of the line to the left of the worksheet.
+         * @param endTop The distance, in points, from the end of the line to the top of the worksheet.
+         * @param connectorType Represents the connector type. See `ExcelScript.ConnectorType` for details.
          */
         addLine(
             startLeft: number,
@@ -1269,14 +1273,14 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a text box to the worksheet with the provided text as the content. Returns a `Shape` object that represents the new text box.
-         * @param text - Represents the text that will be shown in the created text box.
+         * @param text Represents the text that will be shown in the created text box.
          */
         addTextBox(text?: string): Shape;
 
         /**
          * Gets a shape using its name or ID.
          * If the shape object does not exist, then this method returns `undefined`.
-         * @param key - The name or ID of the shape to be retrieved.
+         * @param key The name or ID of the shape to be retrieved.
          */
         getShape(key: string): Shape | undefined;
 
@@ -1287,9 +1291,9 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new slicer to the workbook.
-         * @param slicerSource - The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is interpreted as the name or ID of a PivotTable or table.
-         * @param sourceField - The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID of a `PivotField` or the name or ID of a `TableColumn`.
-         * @param slicerDestination - Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
+         * @param slicerSource The data source that the new slicer will be based on. It can be a `PivotTable` object, a `Table` object, or a string. When a PivotTable object is passed, the data source is the source of the `PivotTable` object. When a `Table` object is passed, the data source is the `Table` object. When a string is passed, it is interpreted as the name or ID of a PivotTable or table.
+         * @param sourceField The field in the data source to filter by. It can be a `PivotField` object, a `TableColumn` object, the ID of a `PivotField` or the name or ID of a `TableColumn`.
+         * @param slicerDestination Optional. The worksheet in which the new slicer will be created. It can be a `Worksheet` object or the name or ID of a worksheet. This parameter can be omitted if the slicer collection is retrieved from a worksheet.
          */
         addSlicer(
             slicerSource: string | PivotTable | Table,
@@ -1299,7 +1303,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a slicer using its name or ID. If the slicer doesn't exist, then this method returns `undefined`.
-         * @param key - Name or ID of the slicer to be retrieved.
+         * @param key Name or ID of the slicer to be retrieved.
          */
         getSlicer(key: string): Slicer | undefined;
 
@@ -1310,14 +1314,14 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new table. The range object or source address determines the worksheet under which the table will be added. If the table cannot be added (e.g., because the address is invalid, or the table would overlap with another table), an error will be thrown.
-         * @param address - A `Range` object, or a string address or name of the range representing the data source. If the address does not contain a sheet name, the currently-active sheet is used.
-         * @param hasHeaders - A boolean value that indicates whether the data being imported has column labels. If the source does not contain headers (i.e., when this property set to `false`), Excel will automatically generate a header and shift the data down by one row.
+         * @param address A `Range` object, or a string address or name of the range representing the data source. If the address does not contain a sheet name, the currently-active sheet is used.
+         * @param hasHeaders A boolean value that indicates whether the data being imported has column labels. If the source does not contain headers (i.e., when this property set to `false`), Excel will automatically generate a header and shift the data down by one row.
          */
         addTable(address: Range | string, hasHeaders: boolean): Table;
 
         /**
          * Gets a table by name or ID. If the table doesn't exist, then this method returns `undefined`.
-         * @param key - Name or ID of the table to be retrieved.
+         * @param key Name or ID of the table to be retrieved.
          */
         getTable(key: string): Table | undefined;
 
@@ -1328,7 +1332,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a page break before the top-left cell of the range specified.
-         * @param pageBreakRange - The range immediately after the page break to be added.
+         * @param pageBreakRange The range immediately after the page break to be added.
          */
         addVerticalPageBreak(pageBreakRange: Range | string): PageBreak;
 
@@ -1341,7 +1345,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the protection of a worksheet object.
      */
-    export interface WorksheetProtection {
+    interface WorksheetProtection {
         /**
          * Specifies if protection can be paused for this worksheet.
          */
@@ -1377,7 +1381,7 @@ export declare namespace ExcelScript {
          * Specifies if the password can be used to unlock worksheet protection.
          * This method doesn't change the worksheet protection state.
          * If a password is entered but no password is required to unlock worksheet protection, this method will return false.
-         * @param password - The password to check against the protected worksheet.
+         * @param password The password to check against the protected worksheet.
          */
         checkPassword(password?: string): boolean;
 
@@ -1386,14 +1390,14 @@ export declare namespace ExcelScript {
          * This method does nothing if worksheet protection isn't enabled or is already paused.
          * If the password is incorrect, then this method throws an `InvalidArgument` error and fails to pause protection.
          * This method does not change the protection state if worksheet protection is not enabled or already paused.
-         * @param password - The password associated with the protected worksheet.
+         * @param password The password associated with the protected worksheet.
          */
         pauseProtection(password?: string): void;
 
         /**
          * Protects a worksheet. Fails if the worksheet has already been protected.
-         * @param options - Optional. Sheet protection options.
-         * @param password - Optional. Sheet protection password.
+         * @param options Optional. Sheet protection options.
+         * @param password Optional. Sheet protection password.
          */
         protect(options?: WorksheetProtectionOptions, password?: string): void;
 
@@ -1409,13 +1413,13 @@ export declare namespace ExcelScript {
          * Worksheet protection must be enabled and paused for this method to work properly.
          * If worksheet protection is disabled, this method throws an `InvalidOperation` error and fails to change the password.
          * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to change the password.
-         * @param password - The password associated with the `WorksheetProtection` object.
+         * @param password The password associated with the `WorksheetProtection` object.
          */
         setPassword(password?: string): void;
 
         /**
          * Unprotects a worksheet.
-         * @param password - Sheet protection password.
+         * @param password Sheet protection password.
          */
         unprotect(password?: string): void;
 
@@ -1423,7 +1427,7 @@ export declare namespace ExcelScript {
          * Change the worksheet protection options associated with the `WorksheetProtection` object.
          * Worksheet protection must be disabled or paused for this method to work properly.
          * If worksheet protection is enabled and not paused, this method throws an `AccessDenied` error and fails to change the worksheet protection options.
-         * @param options - The options interface associated with the `WorksheetProtection` object.
+         * @param options The options interface associated with the `WorksheetProtection` object.
          */
         updateOptions(options: WorksheetProtectionOptions): void;
 
@@ -1437,9 +1441,9 @@ export declare namespace ExcelScript {
          * Adds an `AllowEditRange` object to the worksheet.
          * Worksheet protection must be disabled or paused for this method to work properly.
          * If worksheet protection is enabled and not paused, then this method throws an `AccessDenied` error and the add operation fails.
-         * @param title - The title string of the `AllowEditRange` object to be added.
-         * @param rangeAddress - The range address of the `AllowEditRange` object to be added.
-         * @param options - Additional options to be added to the `AllowEditRange` object, such as the password.
+         * @param title The title string of the `AllowEditRange` object to be added.
+         * @param rangeAddress The range address of the `AllowEditRange` object to be added.
+         * @param options Additional options to be added to the `AllowEditRange` object, such as the password.
          */
         addAllowEditRange(
             title: string,
@@ -1449,7 +1453,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the `AllowEditRange` object by its title.
-         * @param key - The title of the `AllowEditRange`.
+         * @param key The title of the `AllowEditRange`.
          */
         getAllowEditRange(key: string): AllowEditRange | undefined;
 
@@ -1458,28 +1462,28 @@ export declare namespace ExcelScript {
          * This method does nothing if worksheet protection isn't enabled or is paused.
          * If worksheet protection cannot be paused, this method throws an `UnsupportedOperation` error and fails to pause protection for the range.
          * If the password does not match any `AllowEditRange` objects in the collection, then this method throws a `BadPassword` error and fails to pause protection for any range in the collection.
-         * @param password - The password to pause protection on the `AllowEditRange` objects.
+         * @param password The password to pause protection on the `AllowEditRange` objects.
          */
         pauseProtectionForAllAllowEditRanges(password: string): void;
     }
 
-    export interface WorksheetFreezePanes {
+    interface WorksheetFreezePanes {
         /**
          * Sets the frozen cells in the active worksheet view.
          * The range provided corresponds to cells that will be frozen in the top- and left-most pane.
-         * @param frozenRange - A range that represents the cells to be frozen, or `null` to remove all frozen panes.
+         * @param frozenRange A range that represents the cells to be frozen, or `null` to remove all frozen panes.
          */
         freezeAt(frozenRange: Range | string): void;
 
         /**
          * Freeze the first column or columns of the worksheet in place.
-         * @param count - Optional number of columns to freeze, or zero to unfreeze all columns
+         * @param count Optional number of columns to freeze, or zero to unfreeze all columns
          */
         freezeColumns(count?: number): void;
 
         /**
          * Freeze the top row or rows of the worksheet in place.
-         * @param count - Optional number of rows to freeze, or zero to unfreeze all rows
+         * @param count Optional number of rows to freeze, or zero to unfreeze all rows
          */
         freezeRows(count?: number): void;
 
@@ -1499,7 +1503,7 @@ export declare namespace ExcelScript {
     /**
      * Range represents a set of one or more contiguous cells such as a cell, a row, a column, or a block of cells.
      */
-    export interface Range {
+    interface Range {
         /**
          * Specifies the range reference in A1-style. Address value contains the sheet reference (e.g., "Sheet1!A1:B4").
          */
@@ -1749,8 +1753,8 @@ export declare namespace ExcelScript {
          * The destination range can be `null` or can extend the source range either horizontally or vertically.
          * Discontiguous ranges are not supported.
          *
-         * @param destinationRange - The destination range to AutoFill. If the destination range is `null`, data is filled out based on the surrounding cells (which is the behavior when double-clicking the UI's range fill handle).
-         * @param autoFillType - The type of AutoFill. Specifies how the destination range is to be filled, based on the contents of the current range. Default is "FillDefault".
+         * @param destinationRange The destination range to AutoFill. If the destination range is `null`, data is filled out based on the surrounding cells (which is the behavior when double-clicking the UI's range fill handle).
+         * @param autoFillType The type of AutoFill. Specifies how the destination range is to be filled, based on the contents of the current range. Default is "FillDefault".
          */
         autoFill(
             destinationRange?: Range | string,
@@ -1764,7 +1768,7 @@ export declare namespace ExcelScript {
 
         /**
          * Clear range values and formatting, such as fill and border.
-         * @param applyTo - Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details.
+         * @param applyTo Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details.
          */
         clear(applyTo?: ClearApplyTo): void;
 
@@ -1783,10 +1787,10 @@ export declare namespace ExcelScript {
         /**
          * Copies cell data or formatting from the source range or `RangeAreas` to the current range. The destination range can be a different size than the source range or `RangeAreas`. The destination is expanded automatically if it's smaller than the source.
          * Note: Like the copy functionality in the Excel UI, if the destination range is an exact multiple greater than the source range in either rows or columns, then the source content is replicated multiple times. For example, a 2x2 range copy into a 2x6 range will result in 3 copies of the original 2x2 range.
-         * @param sourceRange - The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form must be able to be created by removing full rows or columns from a rectangular range.
-         * @param copyType - The type of cell data or formatting to copy over. Default is "All".
-         * @param skipBlanks - True if to skip blank cells in the source range. Default is false.
-         * @param transpose - True if to transpose the cells in the destination range. Default is false.
+         * @param sourceRange The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form must be able to be created by removing full rows or columns from a rectangular range.
+         * @param copyType The type of cell data or formatting to copy over. Default is "All".
+         * @param skipBlanks True if to skip blank cells in the source range. Default is false.
+         * @param transpose True if to transpose the cells in the destination range. Default is false.
          */
         copyFrom(
             sourceRange: Range | RangeAreas | string,
@@ -1797,7 +1801,7 @@ export declare namespace ExcelScript {
 
         /**
          * Deletes the cells associated with the range.
-         * @param shift - Specifies which way to shift the cells. See `ExcelScript.DeleteShiftDirection` for details.
+         * @param shift Specifies which way to shift the cells. See `ExcelScript.DeleteShiftDirection` for details.
          */
         delete(shift: DeleteShiftDirection): void;
 
@@ -1805,8 +1809,8 @@ export declare namespace ExcelScript {
          * Finds the given string based on the criteria specified.
          * If the current range is larger than a single cell, then the search will be limited to that range, else the search will cover the entire sheet starting after that cell.
          * If there are no matches, then this method returns `undefined`.
-         * @param text - The string to find.
-         * @param criteria - Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case-sensitive.
+         * @param text The string to find.
+         * @param criteria Additional search criteria, including the search direction and whether the search needs to match the entire cell or be case-sensitive.
          */
         find(text: string, criteria: SearchCriteria): Range;
 
@@ -1817,57 +1821,57 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `Range` object with the same top-left cell as the current `Range` object, but with the specified numbers of rows and columns.
-         * @param numRows - The number of rows of the new range size.
-         * @param numColumns - The number of columns of the new range size.
+         * @param numRows The number of rows of the new range size.
+         * @param numColumns The number of columns of the new range size.
          */
         getAbsoluteResizedRange(numRows: number, numColumns: number): Range;
 
         /**
          * Gets the smallest range object that encompasses the given ranges. For example, the `GetBoundingRect` of "B2:C5" and "D10:E15" is "B2:E15".
-         * @param anotherRange - The range object, address, or range name.
+         * @param anotherRange The range object, address, or range name.
          */
         getBoundingRect(anotherRange: Range | string): Range;
 
         /**
          * Gets the range object containing the single cell based on row and column numbers. The cell can be outside the bounds of its parent range, so long as it stays within the worksheet grid. The returned cell is located relative to the top left cell of the range.
-         * @param row - Row number of the cell to be retrieved. Zero-indexed.
-         * @param column - Column number of the cell to be retrieved. Zero-indexed.
+         * @param row Row number of the cell to be retrieved. Zero-indexed.
+         * @param column Column number of the cell to be retrieved. Zero-indexed.
          */
         getCell(row: number, column: number): Range;
 
         /**
          * Gets a column contained in the range.
-         * @param column - Column number of the range to be retrieved. Zero-indexed.
+         * @param column Column number of the range to be retrieved. Zero-indexed.
          */
         getColumn(column: number): Range;
 
         /**
          * Gets a certain number of columns to the right of the current `Range` object.
-         * @param count - Optional. The number of columns to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+         * @param count Optional. The number of columns to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
          */
         getColumnsAfter(count?: number): Range;
 
         /**
          * Gets a certain number of columns to the left of the current `Range` object.
-         * @param count - Optional. The number of columns to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+         * @param count Optional. The number of columns to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
          */
         getColumnsBefore(count?: number): Range;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDirectDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
 
@@ -1883,8 +1887,8 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
-         * @param direction - The direction from the active cell.
-         * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
+         * @param direction The direction from the active cell.
+         * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
         getExtendedRange(
             direction: KeyboardDirection,
@@ -1898,7 +1902,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the range object that represents the rectangular intersection of the given ranges. If no intersection is found, then this method returns `undefined`.
-         * @param anotherRange - The range object or range address that will be used to determine the intersection of ranges.
+         * @param anotherRange The range object or range address that will be used to determine the intersection of ranges.
          */
         getIntersection(anotherRange: Range | string): Range;
 
@@ -1924,27 +1928,27 @@ export declare namespace ExcelScript {
 
         /**
          * Gets an object which represents a range that's offset from the specified range. The dimension of the returned range will match this range. If the resulting range is forced outside the bounds of the worksheet grid, an error will be thrown.
-         * @param rowOffset - The number of rows (positive, negative, or 0) by which the range is to be offset. Positive values are offset downward, and negative values are offset upward.
-         * @param columnOffset - The number of columns (positive, negative, or 0) by which the range is to be offset. Positive values are offset to the right, and negative values are offset to the left.
+         * @param rowOffset The number of rows (positive, negative, or 0) by which the range is to be offset. Positive values are offset downward, and negative values are offset upward.
+         * @param columnOffset The number of columns (positive, negative, or 0) by which the range is to be offset. Positive values are offset to the right, and negative values are offset to the left.
          */
         getOffsetRange(rowOffset: number, columnOffset: number): Range;
 
         /**
          * Gets a scoped collection of PivotTables that overlap with the range.
-         * @param fullyContained - If `true`, returns only PivotTables that are fully contained within the range bounds. The default value is `false`.
+         * @param fullyContained If `true`, returns only PivotTables that are fully contained within the range bounds. The default value is `false`.
          */
         getPivotTables(fullyContained?: boolean): PivotTable[];
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getPrecedents(): WorkbookRangeAreas;
 
         /**
          * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
-         * @param direction - The direction from the active cell.
-         * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
+         * @param direction The direction from the active cell.
+         * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
         getRangeEdge(
             direction: KeyboardDirection,
@@ -1953,34 +1957,34 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a `Range` object similar to the current `Range` object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns.
-         * @param deltaRows - The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
-         * @param deltaColumns - The number of columns by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
+         * @param deltaRows The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
+         * @param deltaColumns The number of columns by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
          */
         getResizedRange(deltaRows: number, deltaColumns: number): Range;
 
         /**
          * Gets a row contained in the range.
-         * @param row - Row number of the range to be retrieved. Zero-indexed.
+         * @param row Row number of the range to be retrieved. Zero-indexed.
          */
         getRow(row: number): Range;
 
         /**
          * Gets a certain number of rows above the current `Range` object.
-         * @param count - Optional. The number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+         * @param count Optional. The number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
          */
         getRowsAbove(count?: number): Range;
 
         /**
          * Gets a certain number of rows below the current `Range` object.
-         * @param count - Optional. The number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+         * @param count Optional. The number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
          */
         getRowsBelow(count?: number): Range;
 
         /**
          * Gets the `RangeAreas` object, comprising one or more ranges, that represents all the cells that match the specified type and value.
          * If no special cells are found, then this method returns `undefined`.
-         * @param cellType - The type of cells to include.
-         * @param cellValueType - If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
+         * @param cellType The type of cells to include.
+         * @param cellValueType If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCells(
             cellType: SpecialCellType,
@@ -2006,13 +2010,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a scoped collection of tables that overlap with the range.
-         * @param fullyContained - If `true`, returns only tables that are fully contained within the range bounds. The default value is `false`.
+         * @param fullyContained If `true`, returns only tables that are fully contained within the range bounds. The default value is `false`.
          */
         getTables(fullyContained?: boolean): Table[];
 
         /**
          * Returns the used range of the given range object. If there are no used cells within the range, then this method returns `undefined`.
-         * @param valuesOnly - Considers only cells with values as used cells.
+         * @param valuesOnly Considers only cells with values as used cells.
          */
         getUsedRange(valuesOnly?: boolean): Range;
 
@@ -2023,7 +2027,7 @@ export declare namespace ExcelScript {
 
         /**
          * Groups columns and rows for an outline.
-         * @param groupOption - Specifies how the range can be grouped by rows or columns.
+         * @param groupOption Specifies how the range can be grouped by rows or columns.
          * An `InvalidArgument` error is thrown when the group option differs from the range's
          * `isEntireRow` or `isEntireColumn` property (i.e., `range.isEntireRow` is true and `groupOption` is "ByColumns"
          * or `range.isEntireColumn` is true and `groupOption` is "ByRows").
@@ -2032,33 +2036,33 @@ export declare namespace ExcelScript {
 
         /**
          * Hides the details of the row or column group.
-         * @param groupOption - Specifies whether to hide the details of grouped rows or grouped columns.
+         * @param groupOption Specifies whether to hide the details of grouped rows or grouped columns.
          */
         hideGroupDetails(groupOption: GroupOption): void;
 
         /**
          * Inserts a cell or a range of cells into the worksheet in place of this range, and shifts the other cells to make space. Returns a new `Range` object at the now blank space.
-         * @param shift - Specifies which way to shift the cells. See `ExcelScript.InsertShiftDirection` for details.
+         * @param shift Specifies which way to shift the cells. See `ExcelScript.InsertShiftDirection` for details.
          */
         insert(shift: InsertShiftDirection): Range;
 
         /**
          * Merge the range cells into one region in the worksheet.
-         * @param across - Optional. Set `true` to merge cells in each row of the specified range as separate merged cells. The default value is `false`.
+         * @param across Optional. Set `true` to merge cells in each row of the specified range as separate merged cells. The default value is `false`.
          */
         merge(across?: boolean): void;
 
         /**
          * Moves cell values, formatting, and formulas from current range to the destination range, replacing the old information in those cells.
          * The destination range will be expanded automatically if it is smaller than the current range. Any cells in the destination range that are outside of the original range's area are not changed.
-         * @param destinationRange - destinationRange Specifies the range to where the information in this range will be moved.
+         * @param destinationRange destinationRange Specifies the range to where the information in this range will be moved.
          */
         moveTo(destinationRange: Range | string): void;
 
         /**
          * Removes duplicate values from the range specified by the columns.
-         * @param columns - The columns inside the range that may contain duplicates. At least one column needs to be specified. Zero-indexed.
-         * @param includesHeader - True if the input data contains header. Default is false.
+         * @param columns The columns inside the range that may contain duplicates. At least one column needs to be specified. Zero-indexed.
+         * @param includesHeader True if the input data contains header. Default is false.
          */
         removeDuplicates(
             columns: number[],
@@ -2067,9 +2071,9 @@ export declare namespace ExcelScript {
 
         /**
          * Finds and replaces the given string based on the criteria specified within the current range.
-         * @param text - String to find.
-         * @param replacement - The string that replaces the original string.
-         * @param criteria - Additional replacement criteria.
+         * @param text String to find.
+         * @param replacement The string that replaces the original string.
+         * @param criteria Additional replacement criteria.
          */
         replaceAll(
             text: string,
@@ -2094,13 +2098,13 @@ export declare namespace ExcelScript {
 
         /**
          * Shows the details of the row or column group.
-         * @param groupOption - Specifies whether to show the details of grouped rows or grouped columns.
+         * @param groupOption Specifies whether to show the details of grouped rows or grouped columns.
          */
         showGroupDetails(groupOption: GroupOption): void;
 
         /**
          * Ungroups columns and rows for an outline.
-         * @param groupOption - Specifies how the range can be ungrouped by rows or columns.
+         * @param groupOption Specifies how the range can be ungrouped by rows or columns.
          */
         ungroup(groupOption: GroupOption): void;
 
@@ -2116,7 +2120,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new conditional format to the collection at the first/top priority.
-         * @param type - The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
+         * @param type The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
          */
         addConditionalFormat(type: ConditionalFormatType): ConditionalFormat;
 
@@ -2128,7 +2132,7 @@ export declare namespace ExcelScript {
         /**
          * Returns a conditional format identified by its ID.
          * If the conditional format object does not exist, then this method returns `undefined`.
-         * @param id - The ID of the conditional format.
+         * @param id The ID of the conditional format.
          */
         getConditionalFormat(id: string): ConditionalFormat | undefined;
 
@@ -2235,7 +2239,7 @@ export declare namespace ExcelScript {
     /**
      * `RangeAreas` represents a collection of one or more rectangular ranges in the same worksheet.
      */
-    export interface RangeAreas {
+    interface RangeAreas {
         /**
          * Returns the `RangeAreas` reference in A1-style. Address value will contain the worksheet name for each rectangular block of cells (e.g., "Sheet1!A1:B4, Sheet1!D1:D4").
          */
@@ -2302,7 +2306,7 @@ export declare namespace ExcelScript {
 
         /**
          * Clears values, format, fill, border, and other properties on each of the areas that comprise this `RangeAreas` object.
-         * @param applyTo - Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details. Default is "All".
+         * @param applyTo Optional. Determines the type of clear action. See `ExcelScript.ClearApplyTo` for details. Default is "All".
          */
         clear(applyTo?: ClearApplyTo): void;
 
@@ -2321,10 +2325,10 @@ export declare namespace ExcelScript {
         /**
          * Copies cell data or formatting from the source range or `RangeAreas` to the current `RangeAreas`.
          * The destination `RangeAreas` can be a different size than the source range or `RangeAreas`. The destination will be expanded automatically if it is smaller than the source.
-         * @param sourceRange - The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form must able to be created by removing full rows or columns from a rectangular range.
-         * @param copyType - The type of cell data or formatting to copy over. Default is "All".
-         * @param skipBlanks - True if to skip blank cells in the source range or `RangeAreas`. Default is false.
-         * @param transpose - True if to transpose the cells in the destination `RangeAreas`. Default is false.
+         * @param sourceRange The source range or `RangeAreas` to copy from. When the source `RangeAreas` has multiple ranges, their form must able to be created by removing full rows or columns from a rectangular range.
+         * @param copyType The type of cell data or formatting to copy over. Default is "All".
+         * @param skipBlanks True if to skip blank cells in the source range or `RangeAreas`. Default is false.
+         * @param transpose True if to transpose the cells in the destination `RangeAreas`. Default is false.
          */
         copyFrom(
             sourceRange: Range | RangeAreas | string,
@@ -2345,14 +2349,14 @@ export declare namespace ExcelScript {
 
         /**
          * Returns the `RangeAreas` object that represents the intersection of the given ranges or `RangeAreas`. If no intersection is found, then this method returns `undefined`.
-         * @param anotherRange - The range, `RangeAreas` object, or address that will be used to determine the intersection.
+         * @param anotherRange The range, `RangeAreas` object, or address that will be used to determine the intersection.
          */
         getIntersection(anotherRange: Range | RangeAreas | string): RangeAreas;
 
         /**
          * Returns a `RangeAreas` object that is shifted by the specific row and column offset. The dimension of the returned `RangeAreas` will match the original object. If the resulting `RangeAreas` is forced outside the bounds of the worksheet grid, an error will be thrown.
-         * @param rowOffset - The number of rows (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values are offset downward, and negative values are offset upward.
-         * @param columnOffset - The number of columns (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values are offset to the right, and negative values are offset to the left.
+         * @param rowOffset The number of rows (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values are offset downward, and negative values are offset upward.
+         * @param columnOffset The number of columns (positive, negative, or 0) by which the `RangeAreas` is to be offset. Positive values are offset to the right, and negative values are offset to the left.
          */
         getOffsetRangeAreas(
             rowOffset: number,
@@ -2361,8 +2365,8 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `RangeAreas` object that represents all the cells that match the specified type and value. If no special cells are found that match the criteria, then this method returns `undefined`.
-         * @param cellType - The type of cells to include.
-         * @param cellValueType - If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
+         * @param cellType The type of cells to include.
+         * @param cellValueType If `cellType` is either `constants` or `formulas`, this argument is used to determine which types of cells to include in the result. These values can be combined together to return more than one type. The default is to select all constants or formulas, no matter what the type.
          */
         getSpecialCells(
             cellType: SpecialCellType,
@@ -2371,14 +2375,14 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a scoped collection of tables that overlap with any range in this `RangeAreas` object.
-         * @param fullyContained - If `true`, returns only tables that are fully contained within the range bounds. Default is `false`.
+         * @param fullyContained If `true`, returns only tables that are fully contained within the range bounds. Default is `false`.
          */
         getTables(fullyContained?: boolean): Table[];
 
         /**
          * Returns the used `RangeAreas` that comprises all the used areas of individual rectangular ranges in the `RangeAreas` object.
          * If there are no used cells within the `RangeAreas`, then this method returns `undefined`.
-         * @param valuesOnly - Whether to only consider cells with values as used cells.
+         * @param valuesOnly Whether to only consider cells with values as used cells.
          */
         getUsedRangeAreas(valuesOnly?: boolean): RangeAreas;
 
@@ -2399,7 +2403,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new conditional format to the collection at the first/top priority.
-         * @param type - The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
+         * @param type The type of conditional format being added. See `ExcelScript.ConditionalFormatType` for details.
          */
         addConditionalFormat(type: ConditionalFormatType): ConditionalFormat;
 
@@ -2411,7 +2415,7 @@ export declare namespace ExcelScript {
         /**
          * Returns a conditional format identified by its ID.
          * If the conditional format object does not exist, then this method returns `undefined`.
-         * @param id - The ID of the conditional format.
+         * @param id The ID of the conditional format.
          */
         getConditionalFormat(id: string): ConditionalFormat | undefined;
     }
@@ -2419,7 +2423,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a collection of one or more rectangular ranges in multiple worksheets.
      */
-    export interface WorkbookRangeAreas {
+    interface WorkbookRangeAreas {
         /**
          * Returns an array of addresses in A1-style. Address values contain the worksheet name for each rectangular block of cells (e.g., "Sheet1!A1:B4, Sheet1!D1:D4"). Read-only.
          */
@@ -2427,7 +2431,7 @@ export declare namespace ExcelScript {
 
         /**
          * Returns the `RangeAreas` object based on worksheet name or ID in the collection. If the worksheet does not exist, then this method returns `undefined`.
-         * @param key - The name or ID of the worksheet.
+         * @param key The name or ID of the worksheet.
          */
         getRangeAreasBySheet(key: string): RangeAreas;
 
@@ -2445,7 +2449,7 @@ export declare namespace ExcelScript {
     /**
      * RangeView represents a set of visible cells of the parent range.
      */
-    export interface RangeView {
+    interface RangeView {
         /**
          * Represents the cell addresses of the `RangeView`.
          */
@@ -2540,7 +2544,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a defined name for a range of cells or value. Names can be primitive named objects (as seen in the type below), range object, or a reference to a range. This object can be used to obtain range object associated with names.
      */
-    export interface NamedItem {
+    interface NamedItem {
         /**
          * Returns an object containing values and types of the named item.
          */
@@ -2616,7 +2620,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an object containing values and types of a named item.
      */
-    export interface NamedItemArrayValues {
+    interface NamedItemArrayValues {
         /**
          * Represents the types for each item in the named item array
          */
@@ -2631,7 +2635,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an Office.js binding that is defined in the workbook.
      */
-    export interface Binding {
+    interface Binding {
         /**
          * Represents the binding identifier.
          */
@@ -2666,7 +2670,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an Excel table.
      */
-    export interface Table {
+    interface Table {
         /**
          * Represents the `AutoFilter` object of the table.
          */
@@ -2826,7 +2830,7 @@ export declare namespace ExcelScript {
 
         /**
          * Resize the table to the new range. The new range must overlap with the original table range and the headers (or the top of the table) must be in the same row.
-         * @param newRange - The range object or range address that will be used to determine the new size of the table.
+         * @param newRange The range object or range address that will be used to determine the new size of the table.
          */
         resize(newRange: Range | string): void;
 
@@ -2837,29 +2841,29 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a column object by name or ID. If the column doesn't exist, then this method returns `undefined`.
-         * @param key - Column name or ID.
+         * @param key Column name or ID.
          */
         getColumn(key: number | string): TableColumn | undefined;
 
         /**
          * Adds one row to the table.
-         * @param index - Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end. Any rows below the inserted row are shifted downwards. Zero-indexed.
-         * @param values - Optional. A 1-dimensional array of unformatted values of the table row.
+         * @param index Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end. Any rows below the inserted row are shifted downwards. Zero-indexed.
+         * @param values Optional. A 1-dimensional array of unformatted values of the table row.
          */
         addRow(index?: number, values?: (boolean | string | number)[]): void;
 
         /**
          * Adds one or more rows to the table.
-         * @param index - Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end. Any rows below the inserted row are shifted downwards. Zero-indexed.
-         * @param values - Optional. A 2-dimensional array of unformatted values of the table row.
+         * @param index Optional. Specifies the relative position of the new row. If null or -1, the addition happens at the end. Any rows below the inserted row are shifted downwards. Zero-indexed.
+         * @param values Optional. A 2-dimensional array of unformatted values of the table row.
          */
         addRows(index?: number, values?: (boolean | string | number)[][]): void;
 
         /**
          * Adds a new column to the table.
-         * @param index - Optional. Specifies the relative position of the new column. If null or -1, the addition happens at the end. Columns with a higher index will be shifted to the side. Zero-indexed.
-         * @param values - Optional. A 1-dimensional array of unformatted values of the table column.
-         * @param name - Optional. Specifies the name of the new column. If null, the default name will be used.
+         * @param index Optional. Specifies the relative position of the new column. If null or -1, the addition happens at the end. Columns with a higher index will be shifted to the side. Zero-indexed.
+         * @param values Optional. A 1-dimensional array of unformatted values of the table column.
+         * @param name Optional. Specifies the name of the new column. If null, the default name will be used.
          */
         addColumn(
             index?: number,
@@ -2869,20 +2873,20 @@ export declare namespace ExcelScript {
 
         /**
          * Delete a specified number of rows at a given index.
-         * @param index - The index value of the row to be deleted. Caution: the index of the row may have moved from the time you determined the value to use for removal.
-         * @param count - Number of rows to delete. By default, a single row will be deleted. Note: Deleting more than 1000 rows at the same time could result in a Power Automate timeout.
+         * @param index The index value of the row to be deleted. Caution: the index of the row may have moved from the time you determined the value to use for removal.
+         * @param count Number of rows to delete. By default, a single row will be deleted. Note: Deleting more than 1000 rows at the same time could result in a Power Automate timeout.
          */
         deleteRowsAt(index: number, count?: number): void;
 
         /**
          * Gets a column object by ID. If the column does not exist, will return undefined.
-         * @param key - Column ID.
+         * @param key Column ID.
          */
         getColumnById(key: number): TableColumn | undefined;
 
         /**
          * Gets a column object by Name. If the column does not exist, will return undefined.
-         * @param key - Column Name.
+         * @param key Column Name.
          */
         getColumnByName(key: string): TableColumn | undefined;
 
@@ -2895,7 +2899,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a column in a table.
      */
-    export interface TableColumn {
+    interface TableColumn {
         /**
          * Retrieves the filter applied to the column.
          */
@@ -2950,7 +2954,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the data validation applied to the current range.
      */
-    export interface DataValidation {
+    interface DataValidation {
         /**
          * Error alert when user enters invalid data.
          */
@@ -3017,7 +3021,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the results from `Range.removeDuplicates`.
      */
-    export interface RemoveDuplicatesResult {
+    interface RemoveDuplicatesResult {
         /**
          * Number of duplicated rows removed by the operation.
          */
@@ -3032,7 +3036,7 @@ export declare namespace ExcelScript {
     /**
      * A format object encapsulating the range's font, fill, borders, alignment, and other properties.
      */
-    export interface RangeFormat {
+    interface RangeFormat {
         /**
          * Specifies if text is automatically indented when text alignment is set to equal distribution.
          */
@@ -3182,7 +3186,7 @@ export declare namespace ExcelScript {
 
         /**
          * Adjusts the indentation of the range formatting. The indent value ranges from 0 to 250 and is measured in characters.
-         * @param amount - The number of character spaces by which the current indent is adjusted. This value should be between -250 and 250.
+         * @param amount The number of character spaces by which the current indent is adjusted. This value should be between -250 and 250.
          * **Note**: If the amount would raise the indent level above 250, the indent level stays with 250.
          * Similarly, if the amount would lower the indent level below 0, the indent level stays 0.
          */
@@ -3217,7 +3221,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a border object using its name.
-         * @param index - Index value of the border object to be retrieved. See `ExcelScript.BorderIndex` for details.
+         * @param index Index value of the border object to be retrieved. See `ExcelScript.BorderIndex` for details.
          */
         getRangeBorder(index: BorderIndex): RangeBorder;
     }
@@ -3225,7 +3229,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the format protection of a range object.
      */
-    export interface FormatProtection {
+    interface FormatProtection {
         /**
          * Specifies if Excel hides the formula for the cells in the range. A `null` value indicates that the entire range doesn't have a uniform formula hidden setting.
          */
@@ -3250,7 +3254,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the background of a range object.
      */
-    export interface RangeFill {
+    interface RangeFill {
         /**
          * HTML color code representing the color of the background, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange")
          */
@@ -3316,7 +3320,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the border of an object.
      */
-    export interface RangeBorder {
+    interface RangeBorder {
         /**
          * HTML color code representing the color of the border line, in the form #RRGGBB (e.g., "FFA500"), or as a named HTML color (e.g., "orange").
          */
@@ -3368,7 +3372,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the font attributes (font name, font size, color, etc.) for an object.
      */
-    export interface RangeFont {
+    interface RangeFont {
         /**
          * Represents the bold status of the font.
          */
@@ -3487,7 +3491,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a chart object in a workbook.
      */
-    export interface Chart {
+    interface Chart {
         /**
          * Represents chart axes.
          */
@@ -3695,9 +3699,9 @@ export declare namespace ExcelScript {
         /**
          * Renders the chart as a Base64-encoded image by scaling the chart to fit the specified dimensions.
          * The aspect ratio is preserved as part of the resizing.
-         * @param height - Optional. The desired height of the resulting image.
-         * @param width - Optional. The desired width of the resulting image.
-         * @param fittingMode - Optional. The method used to scale the chart to the specified dimensions (if both height and width are set).
+         * @param height Optional. The desired height of the resulting image.
+         * @param width Optional. The desired width of the resulting image.
+         * @param fittingMode Optional. The method used to scale the chart to the specified dimensions (if both height and width are set).
          */
         getImage(
             width?: number,
@@ -3707,15 +3711,15 @@ export declare namespace ExcelScript {
 
         /**
          * Resets the source data for the chart.
-         * @param sourceData - The range object corresponding to the source data.
-         * @param seriesBy - Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto (default), Rows, and Columns. See `ExcelScript.ChartSeriesBy` for details.
+         * @param sourceData The range object corresponding to the source data.
+         * @param seriesBy Specifies the way columns or rows are used as data series on the chart. Can be one of the following: Auto (default), Rows, and Columns. See `ExcelScript.ChartSeriesBy` for details.
          */
         setData(sourceData: Range, seriesBy?: ChartSeriesBy): void;
 
         /**
          * Positions the chart relative to cells on the worksheet.
-         * @param startCell - The start cell. This is where the chart will be moved to. The start cell is the top-left or top-right cell, depending on the user's right-to-left display settings.
-         * @param endCell - Optional. The end cell. If specified, the chart's width and height will be set to fully cover up this cell/range.
+         * @param startCell The start cell. This is where the chart will be moved to. The start cell is the top-left or top-right cell, depending on the user's right-to-left display settings.
+         * @param endCell Optional. The end cell. If specified, the chart's width and height will be set to fully cover up this cell/range.
          */
         setPosition(startCell: Range | string, endCell?: Range | string): void;
 
@@ -3726,8 +3730,8 @@ export declare namespace ExcelScript {
 
         /**
          * Add a new series to the collection. The new added series is not visible until values, x-axis values, or bubble sizes for it are set (depending on chart type).
-         * @param name - Optional. Name of the series.
-         * @param index - Optional. Index value of the series to be added. Zero-indexed.
+         * @param name Optional. Name of the series.
+         * @param index Optional. Index value of the series to be added. Zero-indexed.
          */
         addChartSeries(name?: string, index?: number): ChartSeries;
     }
@@ -3735,7 +3739,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the options for the pivot chart.
      */
-    export interface ChartPivotOptions {
+    interface ChartPivotOptions {
         /**
          * Specifies whether to display the axis field buttons on a PivotChart. The `showAxisFieldButtons` property corresponds to the "Show Axis Field Buttons" command on the "Field Buttons" drop-down list of the "Analyze" tab, which is available when a PivotChart is selected.
          */
@@ -3782,7 +3786,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for the overall chart area.
      */
-    export interface ChartAreaFormat {
+    interface ChartAreaFormat {
         /**
          * Represents the border format of chart area, which includes color, linestyle, and weight.
          */
@@ -3822,7 +3826,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a series in a chart.
      */
-    export interface ChartSeries {
+    interface ChartSeries {
         /**
          * Specifies the group for the specified series.
          */
@@ -4249,13 +4253,13 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the string representation of the data source of the chart series. The string representation could be information such as a cell address.
-         * @param dimension - The dimension of the axis where the data is from.
+         * @param dimension The dimension of the axis where the data is from.
          */
         getDimensionDataSourceString(dimension: ChartSeriesDimension): string;
 
         /**
          * Gets the data source type of the chart series.
-         * @param dimension - The dimension of the axis where the data is from.
+         * @param dimension The dimension of the axis where the data is from.
          */
         getDimensionDataSourceType(
             dimension: ChartSeriesDimension
@@ -4263,25 +4267,25 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the values from a single dimension of the chart series. These could be either category values or data values, depending on the dimension specified and how the data is mapped for the chart series.
-         * @param dimension - The dimension of the axis where the data is from.
+         * @param dimension The dimension of the axis where the data is from.
          */
         getDimensionValues(dimension: ChartSeriesDimension): string[];
 
         /**
          * Sets the bubble sizes for a chart series. Only works for bubble charts.
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData The `Range` object corresponding to the source data.
          */
         setBubbleSizes(sourceData: Range): void;
 
         /**
          * Sets the values for a chart series. For scatter charts, it refers to y-axis values.
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData The `Range` object corresponding to the source data.
          */
         setValues(sourceData: Range): void;
 
         /**
          * Sets the values of the x-axis for a chart series.
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData The `Range` object corresponding to the source data.
          */
         setXAxisValues(sourceData: Range): void;
 
@@ -4297,13 +4301,13 @@ export declare namespace ExcelScript {
 
         /**
          * Adds a new trendline to trendline collection.
-         * @param type - Specifies the trendline type. The default value is "Linear". See `ExcelScript.ChartTrendline` for details.
+         * @param type Specifies the trendline type. The default value is "Linear". See `ExcelScript.ChartTrendline` for details.
          */
         addChartTrendline(type?: ChartTrendlineType): ChartTrendline;
 
         /**
          * Gets a trendline object by index, which is the insertion order in the items array.
-         * @param index - Represents the insertion order in the items array.
+         * @param index Represents the insertion order in the items array.
          */
         getChartTrendline(index: number): ChartTrendline;
     }
@@ -4311,7 +4315,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for the chart series
      */
-    export interface ChartSeriesFormat {
+    interface ChartSeriesFormat {
         /**
          * Represents the fill format of a chart series, which includes background formatting information.
          */
@@ -4326,7 +4330,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a point of a series in a chart.
      */
-    export interface ChartPoint {
+    interface ChartPoint {
         /**
          * Returns the data label of a chart point.
          */
@@ -4398,7 +4402,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the formatting object for chart points.
      */
-    export interface ChartPointFormat {
+    interface ChartPointFormat {
         /**
          * Represents the border format of a chart data point, which includes color, style, and weight information.
          */
@@ -4413,7 +4417,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the chart axes.
      */
-    export interface ChartAxes {
+    interface ChartAxes {
         /**
          * Represents the category axis in a chart.
          */
@@ -4431,8 +4435,8 @@ export declare namespace ExcelScript {
 
         /**
          * Returns the specific axis identified by type and group.
-         * @param type - Specifies the axis type. See `ExcelScript.ChartAxisType` for details.
-         * @param group - Optional. Specifies the axis group. See `ExcelScript.ChartAxisGroup` for details.
+         * @param type Specifies the axis type. See `ExcelScript.ChartAxisType` for details.
+         * @param group Optional. Specifies the axis group. See `ExcelScript.ChartAxisGroup` for details.
          */
         getChartAxis(type: ChartAxisType, group?: ChartAxisGroup): ChartAxis;
     }
@@ -4440,7 +4444,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a single axis in a chart.
      */
-    export interface ChartAxis {
+    interface ChartAxis {
         /**
          * Specifies the alignment for the specified axis tick label. See `ExcelScript.ChartTextHorizontalAlignment` for detail.
          */
@@ -4775,19 +4779,19 @@ export declare namespace ExcelScript {
 
         /**
          * Sets all the category names for the specified axis.
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData The `Range` object corresponding to the source data.
          */
         setCategoryNames(sourceData: Range): void;
 
         /**
          * Sets the axis display unit to a custom value.
-         * @param value - Custom value of the display unit.
+         * @param value Custom value of the display unit.
          */
         setCustomDisplayUnit(value: number): void;
 
         /**
          * Sets the specified axis position where the other axis crosses.
-         * @param value - Custom value of the crossing point.
+         * @param value Custom value of the crossing point.
          */
         setPositionAt(value: number): void;
     }
@@ -4795,7 +4799,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for the chart axis.
      */
-    export interface ChartAxisFormat {
+    interface ChartAxisFormat {
         /**
          * Specifies chart fill formatting.
          */
@@ -4815,7 +4819,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the title of a chart axis.
      */
-    export interface ChartAxisTitle {
+    interface ChartAxisTitle {
         /**
          * Specifies the formatting of the chart axis title.
          */
@@ -4853,7 +4857,7 @@ export declare namespace ExcelScript {
 
         /**
          * A string value that represents the formula of chart axis title using A1-style notation.
-         * @param formula - A string that represents the formula to set.
+         * @param formula A string that represents the formula to set.
          */
         setFormula(formula: string): void;
     }
@@ -4861,7 +4865,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the chart axis title formatting.
      */
-    export interface ChartAxisTitleFormat {
+    interface ChartAxisTitleFormat {
         /**
          * Specifies the chart axis title's border format, which includes color, linestyle, and weight.
          */
@@ -4881,7 +4885,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a collection of all the data labels on a chart point.
      */
-    export interface ChartDataLabels {
+    interface ChartDataLabels {
         /**
          * Specifies if data labels automatically generate appropriate text based on context.
          */
@@ -5072,7 +5076,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the data label of a chart point.
      */
-    export interface ChartDataLabel {
+    interface ChartDataLabel {
         /**
          * Specifies if the data label automatically generates appropriate text based on context.
          */
@@ -5306,8 +5310,8 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a substring of the data label. The line break character '\n' counts as one character.
-         * @param start - The zero-based starting character position of a substring in the data label.
-         * @param length - Optional. The number of characters in the substring. If length is omitted, all the characters from start to the end of the data label are retrieved.
+         * @param start The zero-based starting character position of a substring in the data label.
+         * @param length Optional. The number of characters in the substring. If length is omitted, all the characters from start to the end of the data label are retrieved.
          */
         getSubstring(start: number, length?: number): ChartFormatString;
 
@@ -5318,13 +5322,13 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the height of the data label in points.
-         * @param height - The height of the data label in points.
+         * @param height The height of the data label in points.
          */
         setHeight(height: number): void;
 
         /**
          * Sets the width of the data label in points.
-         * @param width - The width of the data label in points.
+         * @param width The width of the data label in points.
          */
         setWidth(width: number): void;
     }
@@ -5332,7 +5336,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for the chart data labels.
      */
-    export interface ChartDataLabelFormat {
+    interface ChartDataLabelFormat {
         /**
          * Represents the border format, which includes color, linestyle, and weight.
          */
@@ -5352,7 +5356,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the chart data label anchor.
      */
-    export interface ChartDataLabelAnchor {
+    interface ChartDataLabelAnchor {
         /**
          * Specifies the distance, in points, from the anchor to the left edge of the chart data label.
          * Note that when getting the value, it may differ slightly from the set value.
@@ -5381,7 +5385,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the data table object of a chart.
      */
-    export interface ChartDataTable {
+    interface ChartDataTable {
         /**
          * Represents the format of a chart data table, which includes fill, font, and border format.
          */
@@ -5441,7 +5445,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the format of a chart data table.
      */
-    export interface ChartDataTableFormat {
+    interface ChartDataTableFormat {
         /**
          * Represents the border format of chart data table, which includes color, line style, and weight.
          */
@@ -5461,7 +5465,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the attributes for a chart's error bars.
      */
-    export interface ChartErrorBars {
+    interface ChartErrorBars {
         /**
          * Specifies if error bars have an end style cap.
          */
@@ -5511,7 +5515,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for chart error bars.
      */
-    export interface ChartErrorBarsFormat {
+    interface ChartErrorBarsFormat {
         /**
          * Represents the chart line formatting.
          */
@@ -5521,7 +5525,7 @@ export declare namespace ExcelScript {
     /**
      * Represents major or minor gridlines on a chart axis.
      */
-    export interface ChartGridlines {
+    interface ChartGridlines {
         /**
          * Represents the formatting of chart gridlines.
          */
@@ -5541,7 +5545,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for chart gridlines.
      */
-    export interface ChartGridlinesFormat {
+    interface ChartGridlinesFormat {
         /**
          * Represents chart line formatting.
          */
@@ -5551,7 +5555,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the legend in a chart.
      */
-    export interface ChartLegend {
+    interface ChartLegend {
         /**
          * Represents the formatting of a chart legend, which includes fill and font formatting.
          */
@@ -5646,7 +5650,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the legend entry in `legendEntryCollection`.
      */
-    export interface ChartLegendEntry {
+    interface ChartLegendEntry {
         /**
          * Specifies the height of the legend entry on the chart legend.
          */
@@ -5686,7 +5690,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties of a chart legend.
      */
-    export interface ChartLegendFormat {
+    interface ChartLegendFormat {
         /**
          * Represents the border format, which includes color, linestyle, and weight.
          */
@@ -5706,7 +5710,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the properties for a region map chart.
      */
-    export interface ChartMapOptions {
+    interface ChartMapOptions {
         /**
          * Specifies the series map labels strategy of a region map chart.
          */
@@ -5741,7 +5745,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a chart title object of a chart.
      */
-    export interface ChartTitle {
+    interface ChartTitle {
         /**
          * Represents the formatting of a chart title, which includes fill and font formatting.
          */
@@ -5863,14 +5867,14 @@ export declare namespace ExcelScript {
 
         /**
          * Get the substring of a chart title. Line break '\n' counts one character.
-         * @param start - Start position of substring to be retrieved. Zero-indexed.
-         * @param length - Length of the substring to be retrieved.
+         * @param start Start position of substring to be retrieved. Zero-indexed.
+         * @param length Length of the substring to be retrieved.
          */
         getSubstring(start: number, length: number): ChartFormatString;
 
         /**
          * Sets a string value that represents the formula of chart title using A1-style notation.
-         * @param formula - A string that represents the formula to set.
+         * @param formula A string that represents the formula to set.
          */
         setFormula(formula: string): void;
     }
@@ -5878,7 +5882,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the substring in chart related objects that contain text, like a `ChartTitle` object or `ChartAxisTitle` object.
      */
-    export interface ChartFormatString {
+    interface ChartFormatString {
         /**
          * Represents the font attributes, such as font name, font size, and color of a chart characters object.
          */
@@ -5888,7 +5892,7 @@ export declare namespace ExcelScript {
     /**
      * Provides access to the formatting options for a chart title.
      */
-    export interface ChartTitleFormat {
+    interface ChartTitleFormat {
         /**
          * Represents the border format of chart title, which includes color, linestyle, and weight.
          */
@@ -5908,7 +5912,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the fill formatting for a chart element.
      */
-    export interface ChartFill {
+    interface ChartFill {
         /**
          * Clears the fill color of a chart element.
          */
@@ -5921,7 +5925,7 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the fill formatting of a chart element to a uniform color.
-         * @param color - HTML color code representing the color of the background, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
+         * @param color HTML color code representing the color of the background, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setSolidColor(color: string): void;
     }
@@ -5929,7 +5933,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the border formatting of a chart element.
      */
-    export interface ChartBorder {
+    interface ChartBorder {
         /**
          * HTML color code representing the color of borders in the chart.
          */
@@ -5969,7 +5973,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the bin options for histogram charts and pareto charts.
      */
-    export interface ChartBinOptions {
+    interface ChartBinOptions {
         /**
          * Specifies if bin overflow is enabled in a histogram chart or pareto chart.
          */
@@ -6044,7 +6048,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the properties of a box and whisker chart.
      */
-    export interface ChartBoxwhiskerOptions {
+    interface ChartBoxwhiskerOptions {
         /**
          * Specifies if the quartile calculation type of a box and whisker chart.
          */
@@ -6101,7 +6105,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the formatting options for line elements.
      */
-    export interface ChartLineFormat {
+    interface ChartLineFormat {
         /**
          * HTML color code representing the color of lines in the chart.
          */
@@ -6141,7 +6145,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the font attributes (such as font name, font size, and color) for a chart object.
      */
-    export interface ChartFont {
+    interface ChartFont {
         /**
          * Represents the bold status of font.
          */
@@ -6206,7 +6210,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the attributes for a chart trendline object.
      */
-    export interface ChartTrendline {
+    interface ChartTrendline {
         /**
          * Represents the number of periods that the trendline extends backward.
          */
@@ -6316,7 +6320,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the format properties for the chart trendline.
      */
-    export interface ChartTrendlineFormat {
+    interface ChartTrendlineFormat {
         /**
          * Represents chart line formatting.
          */
@@ -6326,7 +6330,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the attributes for a chart trendline label object.
      */
-    export interface ChartTrendlineLabel {
+    interface ChartTrendlineLabel {
         /**
          * Specifies if the trendline label automatically generates appropriate text based on context.
          */
@@ -6454,7 +6458,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for the chart trendline label.
      */
-    export interface ChartTrendlineLabelFormat {
+    interface ChartTrendlineLabelFormat {
         /**
          * Specifies the border format, which includes color, linestyle, and weight.
          */
@@ -6474,7 +6478,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the attributes for a chart plot area.
      */
-    export interface ChartPlotArea {
+    interface ChartPlotArea {
         /**
          * Specifies the formatting of a chart plot area.
          */
@@ -6574,7 +6578,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the format properties for a chart plot area.
      */
-    export interface ChartPlotAreaFormat {
+    interface ChartPlotAreaFormat {
         /**
          * Specifies the border attributes of a chart plot area.
          */
@@ -6589,7 +6593,7 @@ export declare namespace ExcelScript {
     /**
      * Gets an object that represents the formatting of chart leader lines.
      */
-    export interface ChartLeaderLines {
+    interface ChartLeaderLines {
         /**
          * Represents the formatting of leader lines of data labels in a series.
          */
@@ -6599,7 +6603,7 @@ export declare namespace ExcelScript {
     /**
      * Encapsulates the format properties for leader lines.
      */
-    export interface ChartLeaderLinesFormat {
+    interface ChartLeaderLinesFormat {
         /**
          * Gets an object that represents the line formatting of chart leader lines.
          */
@@ -6609,14 +6613,14 @@ export declare namespace ExcelScript {
     /**
      * Manages sorting operations on `Range` objects.
      */
-    export interface RangeSort {
+    interface RangeSort {
         /**
          * Perform a sort operation.
-         * @param fields - The list of conditions to sort on.
-         * @param matchCase - Optional. Whether to have the casing impact string ordering.
-         * @param hasHeaders - Optional. Whether the range has a header.
-         * @param orientation - Optional. Whether the operation is sorting rows or columns.
-         * @param method - Optional. The ordering method used for Chinese characters.
+         * @param fields The list of conditions to sort on.
+         * @param matchCase Optional. Whether to have the casing impact string ordering.
+         * @param hasHeaders Optional. Whether the range has a header.
+         * @param orientation Optional. Whether the operation is sorting rows or columns.
+         * @param method Optional. The ordering method used for Chinese characters.
          */
         apply(
             fields: SortField[],
@@ -6630,7 +6634,7 @@ export declare namespace ExcelScript {
     /**
      * Manages sorting operations on `Table` objects.
      */
-    export interface TableSort {
+    interface TableSort {
         /**
          * Specifies the current conditions used to last sort the table.
          */
@@ -6648,9 +6652,9 @@ export declare namespace ExcelScript {
 
         /**
          * Perform a sort operation.
-         * @param fields - The list of conditions to sort on.
-         * @param matchCase - Optional. Whether to have the casing impact string ordering.
-         * @param method - Optional. The ordering method used for Chinese characters.
+         * @param fields The list of conditions to sort on.
+         * @param matchCase Optional. Whether to have the casing impact string ordering.
+         * @param method Optional. The ordering method used for Chinese characters.
          */
         apply(
             fields: SortField[],
@@ -6672,7 +6676,7 @@ export declare namespace ExcelScript {
     /**
      * Manages the filtering of a table's column.
      */
-    export interface Filter {
+    interface Filter {
         /**
          * The currently applied filter on the given column.
          */
@@ -6680,33 +6684,33 @@ export declare namespace ExcelScript {
 
         /**
          * Apply the given filter criteria on the given column.
-         * @param criteria - The criteria to apply.
+         * @param criteria The criteria to apply.
          */
         apply(criteria: FilterCriteria): void;
 
         /**
          * Apply a "Bottom Item" filter to the column for the given number of elements.
-         * @param count - The number of elements from the bottom to show.
+         * @param count The number of elements from the bottom to show.
          */
         applyBottomItemsFilter(count: number): void;
 
         /**
          * Apply a "Bottom Percent" filter to the column for the given percentage of elements.
-         * @param percent - The percentage of elements from the bottom to show.
+         * @param percent The percentage of elements from the bottom to show.
          */
         applyBottomPercentFilter(percent: number): void;
 
         /**
          * Apply a "Cell Color" filter to the column for the given color.
-         * @param color - The background color of the cells to show.
+         * @param color The background color of the cells to show.
          */
         applyCellColorFilter(color: string): void;
 
         /**
          * Apply an "Icon" filter to the column for the given criteria strings.
-         * @param criteria1 - The first criteria string.
-         * @param criteria2 - Optional. The second criteria string.
-         * @param oper - Optional. The operator that describes how the two criteria are joined.
+         * @param criteria1 The first criteria string.
+         * @param criteria2 Optional. The second criteria string.
+         * @param oper Optional. The operator that describes how the two criteria are joined.
          */
         applyCustomFilter(
             criteria1: string,
@@ -6716,37 +6720,37 @@ export declare namespace ExcelScript {
 
         /**
          * Apply a "Dynamic" filter to the column.
-         * @param criteria - The dynamic criteria to apply.
+         * @param criteria The dynamic criteria to apply.
          */
         applyDynamicFilter(criteria: DynamicFilterCriteria): void;
 
         /**
          * Apply a "Font Color" filter to the column for the given color.
-         * @param color - The font color of the cells to show.
+         * @param color The font color of the cells to show.
          */
         applyFontColorFilter(color: string): void;
 
         /**
          * Apply an "Icon" filter to the column for the given icon.
-         * @param icon - The icons of the cells to show.
+         * @param icon The icons of the cells to show.
          */
         applyIconFilter(icon: Icon): void;
 
         /**
          * Apply a "Top Item" filter to the column for the given number of elements.
-         * @param count - The number of elements from the top to show.
+         * @param count The number of elements from the top to show.
          */
         applyTopItemsFilter(count: number): void;
 
         /**
          * Apply a "Top Percent" filter to the column for the given percentage of elements.
-         * @param percent - The percentage of elements from the top to show.
+         * @param percent The percentage of elements from the top to show.
          */
         applyTopPercentFilter(percent: number): void;
 
         /**
          * Apply a "Values" filter to the column for the given values.
-         * @param values - The list of values to show. This must be an array of strings or an array of `ExcelScript.FilterDateTime` objects.
+         * @param values The list of values to show. This must be an array of strings or an array of `ExcelScript.FilterDateTime` objects.
          */
         applyValuesFilter(values: Array<string | FilterDatetime>): void;
 
@@ -6760,7 +6764,7 @@ export declare namespace ExcelScript {
      * Represents the `AutoFilter` object.
      * AutoFilter turns the values in Excel column into specific filters based on the cell contents.
      */
-    export interface AutoFilter {
+    interface AutoFilter {
         /**
          * An array that holds all the filter criteria in the autofiltered range.
          */
@@ -6778,9 +6782,9 @@ export declare namespace ExcelScript {
 
         /**
          * Applies the AutoFilter to a range. This filters the column if column index and filter criteria are specified.
-         * @param range - The range on which the AutoFilter will apply.
-         * @param columnIndex - The zero-based column index to which the AutoFilter is applied.
-         * @param criteria - The filter criteria.
+         * @param range The range on which the AutoFilter will apply.
+         * @param columnIndex The zero-based column index to which the AutoFilter is applied.
+         * @param criteria The filter criteria.
          */
         apply(
             range: Range | string,
@@ -6790,7 +6794,7 @@ export declare namespace ExcelScript {
 
         /**
          * Clears the column filter criteria of the AutoFilter.
-         * @param columnIndex - The zero-based column index, which represents which column filter needs to be cleared.
+         * @param columnIndex The zero-based column index, which represents which column filter needs to be cleared.
          * If the index value is not supported (for example, if the value is a negative number, or if the value is greater than the number of available columns in the range),
          * then an `InvalidArgument` error will be thrown.
          */
@@ -6821,7 +6825,7 @@ export declare namespace ExcelScript {
     /**
      * Provides information based on current system culture settings. This includes the culture names, number formatting, and other culturally dependent settings.
      */
-    export interface CultureInfo {
+    interface CultureInfo {
         /**
          * Defines the culturally appropriate format of displaying date and time. This is based on current system culture settings.
          */
@@ -6841,7 +6845,7 @@ export declare namespace ExcelScript {
     /**
      * Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
      */
-    export interface NumberFormatInfo {
+    interface NumberFormatInfo {
         /**
          * Gets the currency symbol for currency values. This is based on current system settings.
          */
@@ -6861,7 +6865,7 @@ export declare namespace ExcelScript {
     /**
      * Defines the culturally appropriate format of displaying numbers. This is based on current system culture settings.
      */
-    export interface DatetimeFormatInfo {
+    interface DatetimeFormatInfo {
         /**
          * Gets the string used as the date separator. This is based on current system settings.
          */
@@ -6891,7 +6895,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a custom XML part object in a workbook.
      */
-    export interface CustomXmlPart {
+    interface CustomXmlPart {
         /**
          * The custom XML part's ID.
          */
@@ -6914,7 +6918,7 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the custom XML part's full XML content.
-         * @param xml - XML content for the part.
+         * @param xml XML content for the part.
          */
         setXml(xml: string): void;
     }
@@ -6922,7 +6926,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an Excel PivotTable.
      */
-    export interface PivotTable {
+    interface PivotTable {
         /**
          * Specifies if the PivotTable allows the application of multiple PivotFilters on a given PivotField in the table.
          */
@@ -7017,7 +7021,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this method returns `undefined`.
-         * @param name - Name of the RowColumnPivotHierarchy to be retrieved.
+         * @param name Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getColumnHierarchy(name: string): RowColumnPivotHierarchy | undefined;
 
@@ -7040,7 +7044,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a DataPivotHierarchy by name. If the DataPivotHierarchy does not exist, then this method returns `undefined`.
-         * @param name - Name of the DataPivotHierarchy to be retrieved.
+         * @param name Name of the DataPivotHierarchy to be retrieved.
          */
         getDataHierarchy(name: string): DataPivotHierarchy | undefined;
 
@@ -7064,7 +7068,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a FilterPivotHierarchy by name. If the FilterPivotHierarchy does not exist, then this method returns `undefined`.
-         * @param name - Name of the FilterPivotHierarchy to be retrieved.
+         * @param name Name of the FilterPivotHierarchy to be retrieved.
          */
         getFilterHierarchy(name: string): FilterPivotHierarchy | undefined;
 
@@ -7080,7 +7084,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotHierarchy by name. If the PivotHierarchy does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotHierarchy to be retrieved.
+         * @param name Name of the PivotHierarchy to be retrieved.
          */
         getHierarchy(name: string): PivotHierarchy | undefined;
 
@@ -7099,7 +7103,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a RowColumnPivotHierarchy by name. If the RowColumnPivotHierarchy does not exist, then this method returns `undefined`.
-         * @param name - Name of the RowColumnPivotHierarchy to be retrieved.
+         * @param name Name of the RowColumnPivotHierarchy to be retrieved.
          */
         getRowHierarchy(name: string): RowColumnPivotHierarchy | undefined;
 
@@ -7114,7 +7118,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the visual layout of the PivotTable.
      */
-    export interface PivotLayout {
+    interface PivotLayout {
         /**
          * The alt text description of the PivotTable.
          *
@@ -7264,7 +7268,7 @@ export declare namespace ExcelScript {
         /**
          * Sets whether or not to display a blank line after each item. This is set at the global level for the PivotTable and applied to individual PivotFields.
          * This function overwrites the setting for all fields in the PivotTable to the value of `display` parameter.
-         * @param display - True turns on the blank-line display setting. False turns it off.
+         * @param display True turns on the blank-line display setting. False turns it off.
          */
         displayBlankLineAfterEachItem(display: boolean): void;
 
@@ -7280,7 +7284,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets the DataHierarchy that is used to calculate the value in a specified range within the PivotTable.
-         * @param cell - A single cell within the PivotTable data body.
+         * @param cell A single cell within the PivotTable data body.
          */
         getDataHierarchy(cell: Range | string): DataPivotHierarchy;
 
@@ -7301,14 +7305,14 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the "repeat all item labels" setting across all fields in the PivotTable.
-         * @param repeatLabels - True turns on the label-repetition display setting. False turns it off.
+         * @param repeatLabels True turns on the label-repetition display setting. False turns it off.
          */
         repeatAllItemLabels(repeatLabels: boolean): void;
 
         /**
          * Sets the PivotTable to automatically sort using the specified cell to automatically select all necessary criteria and context. This behaves identically to applying an autosort from the UI.
-         * @param cell - A single cell to use get the criteria from for applying the autosort.
-         * @param sortBy - The direction of the sort.
+         * @param cell A single cell to use get the criteria from for applying the autosort.
+         * @param sortBy The direction of the sort.
          */
         setAutoSortOnCell(cell: Range | string, sortBy: SortBy): void;
     }
@@ -7316,7 +7320,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel PivotHierarchy.
      */
-    export interface PivotHierarchy {
+    interface PivotHierarchy {
         /**
          * ID of the PivotHierarchy.
          */
@@ -7339,7 +7343,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotField to be retrieved.
+         * @param name Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
     }
@@ -7347,7 +7351,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel RowColumnPivotHierarchy.
      */
-    export interface RowColumnPivotHierarchy {
+    interface RowColumnPivotHierarchy {
         /**
          * ID of the RowColumnPivotHierarchy.
          */
@@ -7385,7 +7389,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotField to be retrieved.
+         * @param name Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
     }
@@ -7393,7 +7397,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel FilterPivotHierarchy.
      */
-    export interface FilterPivotHierarchy {
+    interface FilterPivotHierarchy {
         /**
          * Determines whether to allow multiple filter items.
          */
@@ -7441,7 +7445,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotField by name. If the PivotField does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotField to be retrieved.
+         * @param name Name of the PivotField to be retrieved.
          */
         getPivotField(name: string): PivotField | undefined;
     }
@@ -7449,7 +7453,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel DataPivotHierarchy.
      */
-    export interface DataPivotHierarchy {
+    interface DataPivotHierarchy {
         /**
          * Returns the PivotFields associated with the DataPivotHierarchy.
          */
@@ -7519,7 +7523,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel PivotField.
      */
-    export interface PivotField {
+    interface PivotField {
         /**
          * ID of the PivotField.
          */
@@ -7558,7 +7562,7 @@ export declare namespace ExcelScript {
         /**
          * Sets one or more of the field's current PivotFilters and applies them to the field.
          * If the provided filters are invalid or cannot be applied, an exception is thrown.
-         * @param filter - A configured specific PivotFilter, or a PivotFilters interface containing multiple configured filters.
+         * @param filter A configured specific PivotFilter, or a PivotFilters interface containing multiple configured filters.
          */
         applyFilter(filter: PivotFilters): void;
 
@@ -7569,7 +7573,7 @@ export declare namespace ExcelScript {
 
         /**
          * Clears all existing criteria from the field's filter of the given type (if one is currently applied).
-         * @param filterType - The type of filter on the field of which to clear all criteria.
+         * @param filterType The type of filter on the field of which to clear all criteria.
          */
         clearFilter(filterType: PivotFilterType): void;
 
@@ -7580,22 +7584,22 @@ export declare namespace ExcelScript {
 
         /**
          * Checks if there are any applied filters on the field.
-         * @param filterType - The filter type to check. If no type is provided, this method will check if any filter is applied.
+         * @param filterType The filter type to check. If no type is provided, this method will check if any filter is applied.
          */
         isFiltered(filterType?: PivotFilterType): boolean;
 
         /**
          * Sorts the PivotField. If a DataPivotHierarchy is specified, then sort will be applied based on it, if not sort will be based on the PivotField itself.
-         * @param sortBy - Specifies if the sorting is done in ascending or descending order.
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
          */
         sortByLabels(sortBy: SortBy): void;
 
         /**
          * Sorts the PivotField by specified values in a given scope. The scope defines which specific values will be used to sort when
          * there are multiple values from the same DataPivotHierarchy.
-         * @param sortBy - Specifies if the sorting is done in ascending or descending order.
-         * @param valuesHierarchy - Specifies the values hierarchy on the data axis to be used for sorting.
-         * @param pivotItemScope - The items that should be used for the scope of the sorting. These will be the
+         * @param sortBy Specifies if the sorting is done in ascending or descending order.
+         * @param valuesHierarchy Specifies the values hierarchy on the data axis to be used for sorting.
+         * @param pivotItemScope The items that should be used for the scope of the sorting. These will be the
          * items that make up the row or column that you want to sort on. If a string is used instead of a PivotItem,
          * the string represents the ID of the PivotItem. If there are no items other than data hierarchy on the axis
          * you want to sort on, this can be empty.
@@ -7613,7 +7617,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a PivotItem by name. If the PivotItem does not exist, then this method returns `undefined`.
-         * @param name - Name of the PivotItem to be retrieved.
+         * @param name Name of the PivotItem to be retrieved.
          */
         getPivotItem(name: string): PivotItem | undefined;
     }
@@ -7621,7 +7625,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the Excel PivotItem.
      */
-    export interface PivotItem {
+    interface PivotItem {
         /**
          * ID of the PivotItem.
          */
@@ -7661,7 +7665,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a worksheet-level custom property.
      */
-    export interface WorksheetCustomProperty {
+    interface WorksheetCustomProperty {
         /**
          * Gets the key of the custom property. Custom property keys are case-insensitive. The key is limited to 255 characters (larger values will cause an `InvalidArgument` error to be thrown.)
          */
@@ -7686,7 +7690,7 @@ export declare namespace ExcelScript {
     /**
      * Represents workbook properties.
      */
-    export interface DocumentProperties {
+    interface DocumentProperties {
         /**
          * The author of the workbook.
          */
@@ -7794,8 +7798,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a new or sets an existing custom property.
-         * @param key - Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
-         * @param value - Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
+         * @param key Required. The custom property's key, which is case-insensitive. The key is limited to 255 characters outside of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
+         * @param value Required. The custom property's value. The value is limited to 255 characters outside of Excel on the web (larger values are automatically trimmed to 255 characters on other platforms).
          */
         addCustomProperty(key: string, value: any): CustomProperty;
 
@@ -7806,7 +7810,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a custom property object by its key, which is case-insensitive. If the custom property doesn't exist, then this method returns `undefined`.
-         * @param key - Required. The key that identifies the custom property object.
+         * @param key Required. The key that identifies the custom property object.
          */
         getCustomProperty(key: string): CustomProperty | undefined;
     }
@@ -7814,7 +7818,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a custom property.
      */
-    export interface CustomProperty {
+    interface CustomProperty {
         /**
          * The key of the custom property. The key is limited to 255 characters outside of Excel on the web (larger keys are automatically trimmed to 255 characters on other platforms).
          */
@@ -7844,7 +7848,7 @@ export declare namespace ExcelScript {
     /**
      * An object encapsulating a conditional format's range, format, rule, and other properties.
      */
-    export interface ConditionalFormat {
+    interface ConditionalFormat {
         /**
          * Returns the cell value conditional format properties if the current conditional format is a `CellValue` type.
          */
@@ -7929,7 +7933,7 @@ export declare namespace ExcelScript {
 
         /**
          * Change the conditional format rule type to cell value.
-         * @param properties - The properties to set for the cell value conditional format rule.
+         * @param properties The properties to set for the cell value conditional format rule.
          */
         changeRuleToCellValue(properties: ConditionalCellValueRule): void;
 
@@ -7940,7 +7944,7 @@ export declare namespace ExcelScript {
 
         /**
          * Change the conditional format rule type to text comparison.
-         * @param properties - The properties to set for the text comparison conditional format rule.
+         * @param properties The properties to set for the text comparison conditional format rule.
          */
         changeRuleToContainsText(
             properties: ConditionalTextComparisonRule
@@ -7948,7 +7952,7 @@ export declare namespace ExcelScript {
 
         /**
          * Change the conditional format rule type to custom.
-         * @param formula - The formula to set for the custom conditional format rule.
+         * @param formula The formula to set for the custom conditional format rule.
          */
         changeRuleToCustom(formula: string): void;
 
@@ -7964,7 +7968,7 @@ export declare namespace ExcelScript {
 
         /**
          * Change the conditional format rule type to preset criteria.
-         * @param properties - The properties to set for the preset criteria conditional format rule.
+         * @param properties The properties to set for the preset criteria conditional format rule.
          */
         changeRuleToPresetCriteria(
             properties: ConditionalPresetCriteriaRule
@@ -7972,7 +7976,7 @@ export declare namespace ExcelScript {
 
         /**
          * Change the conditional format rule type to top/bottom.
-         * @param properties - The properties to set for the top/bottom conditional format rule.
+         * @param properties The properties to set for the top/bottom conditional format rule.
          */
         changeRuleToTopBottom(properties: ConditionalTopBottomRule): void;
 
@@ -7993,7 +7997,7 @@ export declare namespace ExcelScript {
 
         /**
          * Set the ranges that the conditional format rule is applied to.
-         * @param ranges - Collection of one or more ranges for this rule to be applied to.
+         * @param ranges Collection of one or more ranges for this rule to be applied to.
          */
         setRanges(ranges: Range | RangeAreas | string): void;
     }
@@ -8001,7 +8005,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an Excel conditional data bar type.
      */
-    export interface DataBarConditionalFormat {
+    interface DataBarConditionalFormat {
         /**
          * HTML color code representing the color of the Axis line, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * Value is "" (an empty string) if no axis is present or set.
@@ -8082,7 +8086,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a conditional format for the positive side of the data bar.
      */
-    export interface ConditionalDataBarPositiveFormat {
+    interface ConditionalDataBarPositiveFormat {
         /**
          * HTML color code representing the color of the border line, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * Value is "" (an empty string) if no border is present or set.
@@ -8119,7 +8123,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a conditional format for the negative side of the data bar.
      */
-    export interface ConditionalDataBarNegativeFormat {
+    interface ConditionalDataBarNegativeFormat {
         /**
          * HTML color code representing the color of the border line, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          * Value is "" (an empty string) if no border is present or set.
@@ -8166,7 +8170,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a custom conditional format type.
      */
-    export interface CustomConditionalFormat {
+    interface CustomConditionalFormat {
         /**
          * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
          */
@@ -8181,7 +8185,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a rule, for all traditional rule/format pairings.
      */
-    export interface ConditionalFormatRule {
+    interface ConditionalFormatRule {
         /**
          * The formula, if required, on which to evaluate the conditional format rule.
          */
@@ -8206,7 +8210,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an icon set criteria for conditional formatting.
      */
-    export interface IconSetConditionalFormat {
+    interface IconSetConditionalFormat {
         /**
          * An array of criteria and icon sets for the rules and potential custom icons for conditional icons. Note that for the first criterion only the custom icon can be modified, while type, formula, and operator will be ignored when set.
          */
@@ -8251,7 +8255,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the color scale criteria for conditional formatting.
      */
-    export interface ColorScaleConditionalFormat {
+    interface ColorScaleConditionalFormat {
         /**
          * The criteria of the color scale. Midpoint is optional when using a two point color scale.
          */
@@ -8271,7 +8275,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a top/bottom conditional format.
      */
-    export interface TopBottomConditionalFormat {
+    interface TopBottomConditionalFormat {
         /**
          * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
@@ -8291,7 +8295,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the preset criteria conditional format such as above average, below average, unique values, contains blank, nonblank, error, and noerror.
      */
-    export interface PresetCriteriaConditionalFormat {
+    interface PresetCriteriaConditionalFormat {
         /**
          * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
          */
@@ -8311,7 +8315,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a specific text conditional format.
      */
-    export interface TextConditionalFormat {
+    interface TextConditionalFormat {
         /**
          * Returns a format object, encapsulating the conditional format's font, fill, borders, and other properties.
          */
@@ -8331,7 +8335,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a cell value conditional format.
      */
-    export interface CellValueConditionalFormat {
+    interface CellValueConditionalFormat {
         /**
          * Returns a format object, encapsulating the conditional formats font, fill, borders, and other properties.
          */
@@ -8351,7 +8355,7 @@ export declare namespace ExcelScript {
     /**
      * A format object encapsulating the conditional formats range's font, fill, borders, and other properties.
      */
-    export interface ConditionalRangeFormat {
+    interface ConditionalRangeFormat {
         /**
          * Returns the fill object defined on the overall conditional format range.
          */
@@ -8406,7 +8410,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a border object using its name.
-         * @param index - Index value of the border object to be retrieved. See `ExcelScript.ConditionalRangeBorderIndex` for details.
+         * @param index Index value of the border object to be retrieved. See `ExcelScript.ConditionalRangeBorderIndex` for details.
          */
         getConditionalRangeBorder(
             index: ConditionalRangeBorderIndex
@@ -8416,7 +8420,7 @@ export declare namespace ExcelScript {
     /**
      * This object represents the font attributes (font style, color, etc.) for an object.
      */
-    export interface ConditionalRangeFont {
+    interface ConditionalRangeFont {
         /**
          * Specifies if the font is bold.
          */
@@ -8476,7 +8480,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the background of a conditional range object.
      */
-    export interface ConditionalRangeFill {
+    interface ConditionalRangeFill {
         /**
          * HTML color code representing the color of the fill, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
@@ -8496,7 +8500,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the border of an object.
      */
-    export interface ConditionalRangeBorder {
+    interface ConditionalRangeBorder {
         /**
          * HTML color code representing the color of the border line, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
@@ -8526,7 +8530,7 @@ export declare namespace ExcelScript {
     /**
      * An object encapsulating a style's format and other properties.
      */
-    export interface PredefinedCellStyle {
+    interface PredefinedCellStyle {
         /**
          * Specifies if text is automatically indented when the text alignment in a cell is set to equal distribution.
          */
@@ -8751,7 +8755,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a border object using its name.
-         * @param index - Index value of the border object to be retrieved. See `ExcelScript.BorderIndex` for details.
+         * @param index Index value of the border object to be retrieved. See `ExcelScript.BorderIndex` for details.
          */
         getRangeBorder(index: BorderIndex): RangeBorder;
     }
@@ -8759,7 +8763,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a table style, which defines the style elements by region of the table.
      */
-    export interface TableStyle {
+    interface TableStyle {
         /**
          * Specifies the name of the table style.
          */
@@ -8789,7 +8793,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a PivotTable style, which defines style elements by PivotTable region.
      */
-    export interface PivotTableStyle {
+    interface PivotTableStyle {
         /**
          * Specifies the name of the PivotTable style.
          */
@@ -8819,7 +8823,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a slicer style, which defines style elements by region of the slicer.
      */
-    export interface SlicerStyle {
+    interface SlicerStyle {
         /**
          * Specifies the name of the slicer style.
          */
@@ -8849,7 +8853,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a `TimelineStyle`, which defines style elements by region in the timeline.
      */
-    export interface TimelineStyle {
+    interface TimelineStyle {
         /**
          * Specifies the name of the timeline style.
          */
@@ -8879,7 +8883,7 @@ export declare namespace ExcelScript {
     /**
      * Represents layout and print settings that are not dependent on any printer-specific implementation. These settings include margins, orientation, page numbering, title rows, and print area.
      */
-    export interface PageLayout {
+    interface PageLayout {
         /**
          * The worksheet's black and white print option.
          */
@@ -9094,14 +9098,14 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the worksheet's print area.
-         * @param printArea - The range or ranges of the content to print.
+         * @param printArea The range or ranges of the content to print.
          */
         setPrintArea(printArea: Range | RangeAreas | string): void;
 
         /**
          * Sets the worksheet's page margins with units.
-         * @param unit - Measurement unit for the margins provided.
-         * @param marginOptions - Margin values to set. Margins not provided remain unchanged.
+         * @param unit Measurement unit for the margins provided.
+         * @param marginOptions Margin values to set. Margins not provided remain unchanged.
          */
         setPrintMargins(
             unit: PrintMarginUnit,
@@ -9110,18 +9114,18 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the columns that contain the cells to be repeated at the left of each page of the worksheet for printing.
-         * @param printTitleColumns - The columns to be repeated to the left of each page. The range must span the entire column to be valid.
+         * @param printTitleColumns The columns to be repeated to the left of each page. The range must span the entire column to be valid.
          */
         setPrintTitleColumns(printTitleColumns: Range | string): void;
 
         /**
          * Sets the rows that contain the cells to be repeated at the top of each page of the worksheet for printing.
-         * @param printTitleRows - The rows to be repeated at the top of each page. The range must span the entire row to be valid.
+         * @param printTitleRows The rows to be repeated at the top of each page. The range must span the entire row to be valid.
          */
         setPrintTitleRows(printTitleRows: Range | string): void;
     }
 
-    export interface HeaderFooter {
+    interface HeaderFooter {
         /**
          * The center footer of the worksheet.
          * To apply font formatting or insert a variable value, use format codes specified here: https://msdn.microsoft.com/library/bb225426.aspx.
@@ -9195,7 +9199,7 @@ export declare namespace ExcelScript {
         setRightHeader(rightHeader: string): void;
     }
 
-    export interface HeaderFooterGroup {
+    interface HeaderFooterGroup {
         /**
          * The general header/footer, used for all pages unless even/odd or first page is specified.
          */
@@ -9247,7 +9251,7 @@ export declare namespace ExcelScript {
         setUseSheetScale(useSheetScale: boolean): void;
     }
 
-    export interface PageBreak {
+    interface PageBreak {
         /**
          * Specifies the column index for the page break.
          */
@@ -9272,7 +9276,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a comment in the workbook.
      */
-    export interface Comment {
+    interface Comment {
         /**
          * Gets the email of the comment's author.
          */
@@ -9340,7 +9344,7 @@ export declare namespace ExcelScript {
 
         /**
          * Updates the comment content with a specially formatted string and a list of mentions.
-         * @param contentWithMentions - The content for the comment. This contains a specially formatted string and a list of mentions that will be parsed into the string when displayed by Excel.
+         * @param contentWithMentions The content for the comment. This contains a specially formatted string and a list of mentions that will be parsed into the string when displayed by Excel.
          */
         updateMentions(contentWithMentions: CommentRichContent): void;
 
@@ -9351,8 +9355,8 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a comment reply for a comment.
-         * @param content - The comment's content. This can be either a string or a `CommentRichContent` object (e.g., for comments with mentions).
-         * @param contentType - Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
+         * @param content The comment's content. This can be either a string or a `CommentRichContent` object (e.g., for comments with mentions).
+         * @param contentType Optional. The type of content contained within the comment. The default value is enum `ContentType.Plain`.
          */
         addCommentReply(
             content: CommentRichContent | string,
@@ -9362,7 +9366,7 @@ export declare namespace ExcelScript {
         /**
          * Returns a comment reply identified by its ID.
          * If the comment reply object does not exist, then this method returns `undefined`.
-         * @param commentReplyId - The identifier for the comment reply.
+         * @param commentReplyId The identifier for the comment reply.
          */
         getCommentReply(commentReplyId: string): CommentReply | undefined;
     }
@@ -9370,7 +9374,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a comment reply in the workbook.
      */
-    export interface CommentReply {
+    interface CommentReply {
         /**
          * Gets the email of the comment reply's author.
          */
@@ -9438,7 +9442,7 @@ export declare namespace ExcelScript {
 
         /**
          * Updates the comment content with a specially formatted string and a list of mentions.
-         * @param contentWithMentions - The content for the comment. This contains a specially formatted string and a list of mentions that will be parsed into the string when displayed by Excel.
+         * @param contentWithMentions The content for the comment. This contains a specially formatted string and a list of mentions that will be parsed into the string when displayed by Excel.
          */
         updateMentions(contentWithMentions: CommentRichContent): void;
     }
@@ -9446,7 +9450,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a generic shape object in the worksheet. A shape could be a geometric shape, a line, a group of shapes, etc.
      */
-    export interface Shape {
+    interface Shape {
         /**
          * Specifies the alternative description text for a `Shape` object.
          */
@@ -9650,7 +9654,7 @@ export declare namespace ExcelScript {
         /**
          * Copies and pastes a `Shape` object.
          * The pasted shape is copied to the same pixel location as this shape.
-         * @param destinationSheet - The sheet to which the shape object will be pasted. The default value is the copied shape's worksheet.
+         * @param destinationSheet The sheet to which the shape object will be pasted. The default value is the copied shape's worksheet.
          */
         copyTo(destinationSheet?: Worksheet | string): Shape;
 
@@ -9661,34 +9665,34 @@ export declare namespace ExcelScript {
 
         /**
          * Converts the shape to an image and returns the image as a Base64-encoded string. The DPI is 96. The only supported formats are `ExcelScript.PictureFormat.BMP`, `ExcelScript.PictureFormat.PNG`, `ExcelScript.PictureFormat.JPEG`, and `ExcelScript.PictureFormat.GIF`.
-         * @param format - Specifies the format of the image.
+         * @param format Specifies the format of the image.
          */
         getImageAsBase64(format: PictureFormat): string;
 
         /**
          * Moves the shape horizontally by the specified number of points.
-         * @param increment - The increment, in points, the shape will be horizontally moved. A positive value moves the shape to the right and a negative value moves it to the left. If the sheet is right-to-left oriented, this is reversed: positive values will move the shape to the left and negative values will move it to the right.
+         * @param increment The increment, in points, the shape will be horizontally moved. A positive value moves the shape to the right and a negative value moves it to the left. If the sheet is right-to-left oriented, this is reversed: positive values will move the shape to the left and negative values will move it to the right.
          */
         incrementLeft(increment: number): void;
 
         /**
          * Rotates the shape clockwise around the z-axis by the specified number of degrees.
          * Use the `rotation` property to set the absolute rotation of the shape.
-         * @param increment - How many degrees the shape will be rotated. A positive value rotates the shape clockwise and a negative value rotates it counterclockwise.
+         * @param increment How many degrees the shape will be rotated. A positive value rotates the shape clockwise and a negative value rotates it counterclockwise.
          */
         incrementRotation(increment: number): void;
 
         /**
          * Moves the shape vertically by the specified number of points.
-         * @param increment - The increment, in points, the shape will be vertically moved. A positive value moves the shape down and a negative value moves it up.
+         * @param increment The increment, in points, the shape will be vertically moved. A positive value moves the shape down and a negative value moves it up.
          */
         incrementTop(increment: number): void;
 
         /**
          * Scales the height of the shape by a specified factor. For images, you can indicate whether you want to scale the shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their current height.
-         * @param scaleFactor - Specifies the ratio between the height of the shape after you resize it and the current or original height.
-         * @param scaleType - Specifies whether the shape is scaled relative to its original or current size. The original size scaling option only works for images.
-         * @param scaleFrom - Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it represents the shape's upper left corner retains its position.
+         * @param scaleFactor Specifies the ratio between the height of the shape after you resize it and the current or original height.
+         * @param scaleType Specifies whether the shape is scaled relative to its original or current size. The original size scaling option only works for images.
+         * @param scaleFrom Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it represents the shape's upper left corner retains its position.
          */
         scaleHeight(
             scaleFactor: number,
@@ -9698,9 +9702,9 @@ export declare namespace ExcelScript {
 
         /**
          * Scales the width of the shape by a specified factor. For images, you can indicate whether you want to scale the shape relative to the original or the current size. Shapes other than pictures are always scaled relative to their current width.
-         * @param scaleFactor - Specifies the ratio between the width of the shape after you resize it and the current or original width.
-         * @param scaleType - Specifies whether the shape is scaled relative to its original or current size. The original size scaling option only works for images.
-         * @param scaleFrom - Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it represents the shape's upper left corner retains its position.
+         * @param scaleFactor Specifies the ratio between the width of the shape after you resize it and the current or original width.
+         * @param scaleType Specifies whether the shape is scaled relative to its original or current size. The original size scaling option only works for images.
+         * @param scaleFrom Optional. Specifies which part of the shape retains its position when the shape is scaled. If omitted, it represents the shape's upper left corner retains its position.
          */
         scaleWidth(
             scaleFactor: number,
@@ -9710,13 +9714,13 @@ export declare namespace ExcelScript {
 
         /**
          * Moves the specified shape up or down the collection's z-order, which shifts it in front of or behind other shapes.
-         * @param position - Where to move the shape in the z-order stack relative to the other shapes. See `ExcelScript.ShapeZOrder` for details.
+         * @param position Where to move the shape in the z-order stack relative to the other shapes. See `ExcelScript.ShapeZOrder` for details.
          */
         setZOrder(position: ShapeZOrder): void;
 
         /**
          * Converts the shape to an image and returns the image as a base64-encoded string. The DPI is 96. The only supported formats are `ExcelScript.PictureFormat.BMP`, `ExcelScript.PictureFormat.PNG`, `ExcelScript.PictureFormat.JPEG`, and `ExcelScript.PictureFormat.GIF`.
-         * @param format - Specifies the format of the image.
+         * @param format Specifies the format of the image.
          * @deprecated Use `getImageAsBase64` instead.
          */
         getAsImage(format: PictureFormat): string;
@@ -9725,7 +9729,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a geometric shape inside a worksheet. A geometric shape can be a rectangle, block arrow, equation symbol, flowchart item, star, banner, callout, or any other basic shape in Excel.
      */
-    export interface GeometricShape {
+    interface GeometricShape {
         /**
          * Returns the shape identifier.
          */
@@ -9735,7 +9739,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an image in the worksheet. To get the corresponding `Shape` object, use `Image.getShape`.
      */
-    export interface Image {
+    interface Image {
         /**
          * Specifies the shape identifier for the image object.
          */
@@ -9755,7 +9759,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a shape group inside a worksheet. To get the corresponding `Shape` object, use `ShapeGroup.shape`.
      */
-    export interface ShapeGroup {
+    interface ShapeGroup {
         /**
          * Specifies the shape identifier.
          */
@@ -9779,7 +9783,7 @@ export declare namespace ExcelScript {
         /**
          * Gets a shape using its name or ID.
          * If the shape object does not exist, then this method returns `undefined`.
-         * @param key - The name or ID of the shape to be retrieved.
+         * @param key The name or ID of the shape to be retrieved.
          */
         getShape(key: string): Shape | undefined;
     }
@@ -9787,7 +9791,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a line inside a worksheet. To get the corresponding `Shape` object, use `Line.shape`.
      */
-    export interface Line {
+    interface Line {
         /**
          * Represents the length of the arrowhead at the beginning of the specified line.
          */
@@ -9900,15 +9904,15 @@ export declare namespace ExcelScript {
 
         /**
          * Attaches the beginning of the specified connector to a specified shape.
-         * @param shape - The shape to connect.
-         * @param connectionSite - The connection site on the shape to which the beginning of the connector is attached. Must be an integer between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
+         * @param shape The shape to connect.
+         * @param connectionSite The connection site on the shape to which the beginning of the connector is attached. Must be an integer between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
          */
         connectBeginShape(shape: Shape, connectionSite: number): void;
 
         /**
          * Attaches the end of the specified connector to a specified shape.
-         * @param shape - The shape to connect.
-         * @param connectionSite - The connection site on the shape to which the end of the connector is attached. Must be an integer between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
+         * @param shape The shape to connect.
+         * @param connectionSite The connection site on the shape to which the end of the connector is attached. Must be an integer between 0 (inclusive) and the connection-site count of the specified shape (exclusive).
          */
         connectEndShape(shape: Shape, connectionSite: number): void;
 
@@ -9926,7 +9930,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the fill formatting of a shape object.
      */
-    export interface ShapeFill {
+    interface ShapeFill {
         /**
          * Represents the shape fill foreground color in HTML color format, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange")
          */
@@ -9959,7 +9963,7 @@ export declare namespace ExcelScript {
 
         /**
          * Sets the fill formatting of the shape to a uniform color. This changes the fill type to "Solid".
-         * @param color - A string that represents the fill color in HTML color format, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
+         * @param color A string that represents the fill color in HTML color format, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
         setSolidColor(color: string): void;
     }
@@ -9967,7 +9971,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the line formatting for the shape object. For images and geometric shapes, line formatting represents the border of the shape.
      */
-    export interface ShapeLineFormat {
+    interface ShapeLineFormat {
         /**
          * Represents the line color in HTML color format, in the form #RRGGBB (e.g., "FFA500") or as a named HTML color (e.g., "orange").
          */
@@ -10032,7 +10036,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the text frame of a shape object.
      */
-    export interface TextFrame {
+    interface TextFrame {
         /**
          * The automatic sizing settings for the text frame. A text frame can be set to automatically fit the text to the text frame, to automatically fit the text frame to the text, or not perform any automatic sizing.
          */
@@ -10168,7 +10172,7 @@ export declare namespace ExcelScript {
     /**
      * Contains the text that is attached to a shape, in addition to properties and methods for manipulating the text.
      */
-    export interface TextRange {
+    interface TextRange {
         /**
          * Returns a `ShapeFont` object that represents the font attributes for the text range.
          */
@@ -10186,8 +10190,8 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a TextRange object for the substring in the given range.
-         * @param start - The zero-based index of the first character to get from the text range.
-         * @param length - Optional. The number of characters to be returned in the new text range. If length is omitted, all the characters from start to the end of the text range's last paragraph will be returned.
+         * @param start The zero-based index of the first character to get from the text range.
+         * @param length Optional. The number of characters to be returned in the new text range. If length is omitted, all the characters from start to the end of the text range's last paragraph will be returned.
          */
         getSubstring(start: number, length?: number): TextRange;
     }
@@ -10195,7 +10199,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the font attributes, such as font name, font size, and color, for a shape's `TextRange` object.
      */
-    export interface ShapeFont {
+    interface ShapeFont {
         /**
          * Represents the bold status of font. Returns `null` if the `TextRange` includes both bold and non-bold text fragments.
          */
@@ -10260,7 +10264,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a `Slicer` object in the workbook.
      */
-    export interface Slicer {
+    interface Slicer {
         /**
          * Represents the caption of the slicer.
          */
@@ -10386,7 +10390,7 @@ export declare namespace ExcelScript {
         /**
          * Selects slicer items based on their keys. The previous selections are cleared.
          * All items will be selected by default if the array is empty.
-         * @param items - Optional. The specified slicer item names to be selected.
+         * @param items Optional. The specified slicer item names to be selected.
          */
         selectItems(items?: string[]): void;
 
@@ -10397,7 +10401,7 @@ export declare namespace ExcelScript {
 
         /**
          * Gets a slicer item using its key or name. If the slicer item doesn't exist, then this method returns `undefined`.
-         * @param key - Key or name of the slicer to be retrieved.
+         * @param key Key or name of the slicer to be retrieved.
          */
         getSlicerItem(key: string): SlicerItem | undefined;
     }
@@ -10405,7 +10409,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a slicer item in a slicer.
      */
-    export interface SlicerItem {
+    interface SlicerItem {
         /**
          * Value is `true` if the slicer item has data.
          */
@@ -10440,7 +10444,7 @@ export declare namespace ExcelScript {
      * Represents a named sheet view of a worksheet. A sheet view stores the sort and filter rules for a particular worksheet.
      * Every sheet view (even a temporary sheet view) has a unique, worksheet-scoped name that is used to access the view.
      */
-    export interface NamedSheetView {
+    interface NamedSheetView {
         /**
          * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
@@ -10465,7 +10469,7 @@ export declare namespace ExcelScript {
 
         /**
          * Creates a copy of this sheet view.
-         * @param name - The name of the duplicated sheet view. If no name is provided, one will be generated.
+         * @param name The name of the duplicated sheet view. If no name is provided, one will be generated.
          */
         duplicate(name?: string): NamedSheetView;
     }
@@ -10477,7 +10481,7 @@ export declare namespace ExcelScript {
     /**
      * The interface used to construct optional fields of the `AllowEditRange` object.
      */
-    export interface AllowEditRangeOptions {
+    interface AllowEditRangeOptions {
         /**
          * The password associated with the `AllowEditRange`.
          */
@@ -10488,7 +10492,7 @@ export declare namespace ExcelScript {
      * Configurable template for a date filter to apply to a PivotField.
      * The `condition` defines what criteria need to be set in order for the filter to operate.
      */
-    export interface PivotDateFilter {
+    interface PivotDateFilter {
         /**
          * The comparator is the static value to which other values are compared. The type of comparison is defined by the condition.
          */
@@ -10523,7 +10527,7 @@ export declare namespace ExcelScript {
     /**
      * An interface representing all PivotFilters currently applied to a given PivotField.
      */
-    export interface PivotFilters {
+    interface PivotFilters {
         /**
          * The PivotField's currently applied date filter. This property is `null` if no value filter is applied.
          */
@@ -10549,7 +10553,7 @@ export declare namespace ExcelScript {
      * Configurable template for a label filter to apply to a PivotField.
      * The `condition` defines what criteria need to be set in order for the filter to operate.
      */
-    export interface PivotLabelFilter {
+    interface PivotLabelFilter {
         /**
          * The comparator is the static value to which other values are compared. The type of comparison is defined by the condition.
          * Note: A numeric string is treated as a number when being compared against other numeric strings.
@@ -10588,7 +10592,7 @@ export declare namespace ExcelScript {
      * Configurable template for a manual filter to apply to a PivotField.
      * The `condition` defines what criteria need to be set in order for the filter to operate.
      */
-    export interface PivotManualFilter {
+    interface PivotManualFilter {
         /**
          * A list of selected items to manually filter. These must be existing and valid items from the chosen field.
          */
@@ -10599,7 +10603,7 @@ export declare namespace ExcelScript {
      * Configurable template for a value filter to apply to a PivotField.
      * The `condition` defines what criteria need to be set in order for the filter to operate.
      */
-    export interface PivotValueFilter {
+    interface PivotValueFilter {
         /**
          * The comparator is the static value to which other values are compared. The type of comparison is defined by the condition.
          * For example, if comparator is "50" and condition is "greaterThan", all item values that are not greater than 50 will be removed by the filter.
@@ -10645,7 +10649,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the options in sheet protection.
      */
-    export interface WorksheetProtectionOptions {
+    interface WorksheetProtectionOptions {
         /**
          * Represents the worksheet protection option allowing use of the AutoFilter feature.
          */
@@ -10720,7 +10724,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the necessary strings to get/set a hyperlink (XHL) object.
      */
-    export interface RangeHyperlink {
+    interface RangeHyperlink {
         /**
          * Represents the URL target for the hyperlink.
          */
@@ -10745,7 +10749,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the search criteria to be used.
      */
-    export interface SearchCriteria {
+    interface SearchCriteria {
         /**
          * Specifies if the match needs to be complete or partial.
          * A complete match matches the entire contents of the cell. A partial match matches a substring within the content of the cell (e.g., `cat` partially matches `caterpillar` and `scatter`).
@@ -10767,7 +10771,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the worksheet search criteria to be used.
      */
-    export interface WorksheetSearchCriteria {
+    interface WorksheetSearchCriteria {
         /**
          * Specifies if the match needs to be complete or partial.
          * A complete match matches the entire contents of the cell. A partial match matches a substring within the content of the cell (e.g., `cat` partially matches `caterpillar` and `scatter`).
@@ -10784,7 +10788,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the replace criteria to be used.
      */
-    export interface ReplaceCriteria {
+    interface ReplaceCriteria {
         /**
          * Specifies if the match needs to be complete or partial.
          * A complete match matches the entire contents of the cell. A partial match matches a substring within the content of the cell (e.g., `cat` partially matches `caterpillar` and `scatter`).
@@ -10801,7 +10805,7 @@ export declare namespace ExcelScript {
     /**
      * A data validation rule contains different types of data validation. You can only use one of them at a time according the `ExcelScript.DataValidationType`.
      */
-    export interface DataValidationRule {
+    interface DataValidationRule {
         /**
          * Custom data validation criteria.
          */
@@ -10841,7 +10845,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the basic type data validation criteria.
      */
-    export interface BasicDataValidation {
+    interface BasicDataValidation {
         /**
          * Specifies the right-hand operand when the operator property is set to a binary operator such as GreaterThan (the left-hand operand is the value the user tries to enter in the cell). With the ternary operators Between and NotBetween, specifies the lower bound operand.
          * For example, setting formula1 to 10 and operator to GreaterThan means that valid data for the range must be greater than 10.
@@ -10866,7 +10870,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the date data validation criteria.
      */
-    export interface DateTimeDataValidation {
+    interface DateTimeDataValidation {
         /**
          * Specifies the right-hand operand when the operator property is set to a binary operator such as GreaterThan (the left-hand operand is the value the user tries to enter in the cell). With the ternary operators Between and NotBetween, specifies the lower bound operand.
          * When setting the value, it can be passed in as a Date, a Range object, or a string formula (where the string is either a stringified date/time in ISO8601 format, a cell reference like "=A1", or a formula like "=MIN(A1, B1)").
@@ -10890,7 +10894,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the List data validation criteria.
      */
-    export interface ListDataValidation {
+    interface ListDataValidation {
         /**
          * Specifies whether to display the list in a cell drop-down. The default is `true`.
          */
@@ -10906,7 +10910,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the custom data validation criteria.
      */
-    export interface CustomDataValidation {
+    interface CustomDataValidation {
         /**
          * A custom data validation formula. This creates special input rules, such as preventing duplicates, or limiting the total in a range of cells.
          */
@@ -10916,7 +10920,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the error alert properties for the data validation.
      */
-    export interface DataValidationErrorAlert {
+    interface DataValidationErrorAlert {
         /**
          * Represents the error alert message.
          */
@@ -10941,7 +10945,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the user prompt properties for the data validation.
      */
-    export interface DataValidationPrompt {
+    interface DataValidationPrompt {
         /**
          * Specifies the message of the prompt.
          */
@@ -10961,7 +10965,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a condition in a sorting operation.
      */
-    export interface SortField {
+    interface SortField {
         /**
          * Specifies if the sorting is done in an ascending fashion.
          */
@@ -11001,7 +11005,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the filtering criteria applied to a column.
      */
-    export interface FilterCriteria {
+    interface FilterCriteria {
         /**
          * The HTML color string used to filter cells. Used with `cellColor` and `fontColor` filtering.
          */
@@ -11054,7 +11058,7 @@ export declare namespace ExcelScript {
     /**
      * Represents how to filter a date when filtering on values.
      */
-    export interface FilterDatetime {
+    interface FilterDatetime {
         /**
          * The date in ISO8601 format used to filter data.
          */
@@ -11069,7 +11073,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a cell icon.
      */
-    export interface Icon {
+    interface Icon {
         /**
          * Specifies the index of the icon in the given set.
          */
@@ -11081,7 +11085,7 @@ export declare namespace ExcelScript {
         set: IconSet;
     }
 
-    export interface ShowAsRule {
+    interface ShowAsRule {
         /**
          * The PivotField to base the `ShowAs` calculation on, if applicable according to the `ShowAsCalculation` type, else `null`.
          */
@@ -11101,7 +11105,7 @@ export declare namespace ExcelScript {
     /**
      * Subtotals for the Pivot Field.
      */
-    export interface Subtotals {
+    interface Subtotals {
         /**
          * If `Automatic` is set to `true`, then all other values will be ignored when setting the `Subtotals`.
          */
@@ -11166,7 +11170,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a rule-type for a data bar.
      */
-    export interface ConditionalDataBarRule {
+    interface ConditionalDataBarRule {
         /**
          * The formula, if required, on which to evaluate the data bar rule.
          */
@@ -11181,7 +11185,7 @@ export declare namespace ExcelScript {
     /**
      * Represents an icon criterion which contains a type, value, an operator, and an optional custom icon, if not using an icon set.
      */
-    export interface ConditionalIconCriterion {
+    interface ConditionalIconCriterion {
         /**
          * The custom icon for the current criterion, if different from the default icon set, else `null` will be returned.
          */
@@ -11206,7 +11210,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the criteria of the color scale.
      */
-    export interface ConditionalColorScaleCriteria {
+    interface ConditionalColorScaleCriteria {
         /**
          * The maximum point of the color scale criterion.
          */
@@ -11226,7 +11230,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a color scale criterion which contains a type, value, and a color.
      */
-    export interface ConditionalColorScaleCriterion {
+    interface ConditionalColorScaleCriterion {
         /**
          * HTML color code representation of the color scale color (e.g., #FF0000 represents Red).
          */
@@ -11246,7 +11250,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the rule of the top/bottom conditional format.
      */
-    export interface ConditionalTopBottomRule {
+    interface ConditionalTopBottomRule {
         /**
          * The rank between 1 and 1000 for numeric ranks or 1 and 100 for percent ranks.
          */
@@ -11261,7 +11265,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the preset criteria conditional format rule.
      */
-    export interface ConditionalPresetCriteriaRule {
+    interface ConditionalPresetCriteriaRule {
         /**
          * The criterion of the conditional format.
          */
@@ -11271,7 +11275,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a cell value conditional format rule.
      */
-    export interface ConditionalTextComparisonRule {
+    interface ConditionalTextComparisonRule {
         /**
          * The operator of the text conditional format.
          */
@@ -11286,7 +11290,7 @@ export declare namespace ExcelScript {
     /**
      * Represents a cell value conditional format rule.
      */
-    export interface ConditionalCellValueRule {
+    interface ConditionalCellValueRule {
         /**
          * The formula, if required, on which to evaluate the conditional format rule.
          */
@@ -11306,7 +11310,7 @@ export declare namespace ExcelScript {
     /**
      * Represents page zoom properties.
      */
-    export interface PageLayoutZoomOptions {
+    interface PageLayoutZoomOptions {
         /**
          * Number of pages to fit horizontally. This value can be `null` if percentage scale is used.
          */
@@ -11326,7 +11330,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the options in page layout margins.
      */
-    export interface PageLayoutMarginOptions {
+    interface PageLayoutMarginOptions {
         /**
          * Specifies the page layout bottom margin in the unit specified to use for printing.
          */
@@ -11361,7 +11365,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the entity that is mentioned in comments.
      */
-    export interface CommentMention {
+    interface CommentMention {
         /**
          * The email address of the entity that is mentioned in a comment.
          */
@@ -11381,7 +11385,7 @@ export declare namespace ExcelScript {
     /**
      * Represents the content contained within a comment or comment reply. Rich content incudes the text string and any other objects contained within the comment body, such as mentions.
      */
-    export interface CommentRichContent {
+    interface CommentRichContent {
         /**
          * An array containing all the entities (e.g., people) mentioned within the comment.
          */
@@ -15178,7 +15182,7 @@ export declare namespace ExcelScript {
      * Represents an unknown cell control.
      * This represents a control that was added in a future version of Excel, and the current version of Excel doesn't know how to display this control.
      */
-    export interface UnknownCellControl {
+    interface UnknownCellControl {
         type: CellControlType.unknown;
     }
 
@@ -15186,7 +15190,7 @@ export declare namespace ExcelScript {
      * Represents an empty cell control.
      * This represents the state where a cell does not have a control.
      */
-    export interface EmptyCellControl {
+    interface EmptyCellControl {
         type: CellControlType.empty;
     }
 
@@ -15194,14 +15198,14 @@ export declare namespace ExcelScript {
      * Represents the result of a query that resulted in multiple cell controls.
      * If the result has multiple controls, then they can't be represented as a single result.
      */
-    export interface MixedCellControl {
+    interface MixedCellControl {
         type: CellControlType.mixed;
     }
 
     /**
      * Represents a checkbox. This is a cell control that allows a user to toggle the boolean value in a cell.
      */
-    export interface CheckboxCellControl {
+    interface CheckboxCellControl {
         type: CellControlType.checkbox;
     }
 
@@ -15215,3 +15219,179 @@ export declare namespace ExcelScript {
         | CheckboxCellControl;
 }
 
+////////////////////////////////////////////////////////////////
+//////////////////// Begin OfficeScript namespace ////////////////////
+////////////////////////////////////////////////////////////////
+
+declare namespace OfficeScript {
+    /**
+     * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
+     * The API has a timeout limit of 30 seconds. This limit is rarely exceeded.
+     * Note: Timeout doesn't necessarily indicate that the API failed. The workbook copy may still be created, but after the timeout limit this API does not return a success or failure message.
+     * @throws ExternalApiTimeout The error thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
+     * @throws InvalidExtensionError The error thrown if the file name doesn't end with ".xlsx".
+     * @throws SaveCopyAsFileMayAlreadyExistError The error thrown if the file name of the copy already exists.
+     * @throws SaveCopyAsFileNotOnOneDriveError The error thrown if the document is not saved to OneDrive.
+     * @param filename The file name of the copied and saved file. The file name must end with ".xlsx".
+     * @beta
+     */
+    function saveCopyAs(filename: string): void;
+
+    /**
+     * Return the text encoding of the document as a PDF.
+     * If the document is empty, then the following error is shown: "We didn't find anything to print".
+     * Some actions made prior to using this API may not be captured in the PDF in Excel on the web.
+     * @returns The content of the workbook as a string, in PDF format.
+     * @beta
+     */
+    function convertToPdf(): string;
+
+    /**
+     * Downloads a specified file to the default download location specified by the local machine.
+     * @param name The name of the file once downloaded. The file extension determines the type of the file. Supported extensions are ".txt" and ".pdf". Default is ".txt".
+     * @param content - The content of the file.
+     * @beta
+     */
+    function downloadFile({
+        name,
+        content,
+    }: {
+        name: string;
+        content: string;
+    }): void;
+
+    /**
+     * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
+     * If the request body includes content, this method returns 400 Bad request.
+     * @param message The properties that define the content and recipients of the email.
+     * @beta
+     */
+    function sendMail(mailProperties: MailProperties): void;
+
+    /**
+     * The type of the content. Possible values are text or HTML.
+     * @beta
+     */
+    enum EmailContentType {
+        /**
+         * The email message body is in HTML format.
+         * @beta
+         */
+        html = "html",
+
+        /**
+         * The email message body is in plain text format.
+         * @beta
+         */
+        text = "text",
+    }
+
+    /**
+     * The importance value of the email. Corresponds to "high", "normal", and "low" importance values available in the Outlook UI.
+     * @beta
+     */
+    enum EmailImportance {
+        /**
+         * Email is marked as low importance.
+         * @beta
+         */
+        low = "low",
+
+        /**
+         * Email does not have any importance specified.
+         * @beta
+         */
+        normal = "normal",
+
+        /**
+         * Email is marked as high importance.
+         * @beta
+         */
+        high = "high",
+    }
+
+    /**
+     * The attachment to send with the email.
+     * A value must be specified for at least one of the `to`, `cc`, or `bcc` parameters.
+     * If no recipient is specified, the following error is shown: "The message has no recipient. Please enter a value for at least one of the "to", "cc", or "bcc" parameters."
+     * @beta
+     */
+    export interface EmailAttachment {
+        /**
+         * The text that is displayed below the icon representing the attachment. This string doesn't need to match the file name.
+         * @beta
+         */
+        name: string;
+        /**
+         * The contents of the file.
+         * @beta
+         */
+        content: string;
+    }
+
+    /**
+     * The properties of the email to be sent.
+     * @beta
+     */
+    export interface MailProperties {
+        /**
+         * The subject of the email. Optional.
+         * @beta
+         */
+        subject?: string;
+
+        /**
+         * The content of the email. Optional.
+         * @beta
+         */
+        content?: string;
+
+        /**
+         * The type of the content in the email. Possible values are text or HTML. Optional.
+         * @beta
+         */
+        contentType?: EmailContentType;
+
+        /**
+         * The importance of the email. The possible values are `low`, `normal`, and `high`. Default value is `normal`. Optional.
+         * @beta
+         */
+        importance?: EmailImportance;
+
+        /**
+         * The direct recipient or recipients of the email. Optional.
+         * @beta
+         */
+        to?: string | string[];
+
+        /**
+         * The carbon copy (CC) recipient or recipients of the email. Optional.
+         * @beta
+         */
+        cc?: string | string[];
+
+        /**
+         * The blind carbon copy (BCC) recipient or recipients of the email. Optional.
+         * @beta
+         */
+        bcc?: string | string[];
+
+        /**
+         * A file (such as a text file or Excel workbook) attached to a message. Optional.
+         * @beta
+         */
+        attachments?: EmailAttachment | EmailAttachment[];
+    }
+
+    /**
+     * Metadata about the script.
+     * @beta
+     */
+    namespace Metadata {
+        /**
+         * Get the name of the currently running script.
+         * @beta
+         */
+        function getScriptName(): string;
+    }
+}
