@@ -50,11 +50,13 @@ export declare namespace OfficeScript {
     enum EmailContentType {
         /**
          * The email message body is in HTML format.
+         * @beta
          */
         html = "html",
 
         /**
          * The email message body is in plain text format.
+         * @beta
          */
         text = "text",
     }
@@ -66,16 +68,19 @@ export declare namespace OfficeScript {
     enum EmailImportance {
         /**
          * Email is marked as low importance.
+         * @beta
          */
         low = "low",
 
         /**
          * Email does not have any importance specified.
+         * @beta
          */
         normal = "normal",
 
         /**
          * Email is marked as high importance.
+         * @beta
          */
         high = "high",
     }
@@ -89,10 +94,12 @@ export declare namespace OfficeScript {
     export interface EmailAttachment {
         /**
          * The text that is displayed below the icon representing the attachment. This string doesn't need to match the file name.
+         * @beta
          */
         name: string;
         /**
          * The contents of the file.
+         * @beta
          */
         content: string;
     }
@@ -104,41 +111,49 @@ export declare namespace OfficeScript {
     export interface MailProperties {
         /**
          * The subject of the email. Optional.
+         * @beta
          */
         subject?: string;
 
         /**
          * The content of the email. Optional.
+         * @beta
          */
         content?: string;
 
         /**
          * The type of the content in the email. Possible values are text or HTML. Optional.
+         * @beta
          */
         contentType?: EmailContentType;
 
         /**
          * The importance of the email. The possible values are `low`, `normal`, and `high`. Default value is `normal`. Optional.
+         * @beta
          */
         importance?: EmailImportance;
 
         /**
          * The direct recipient or recipients of the email. Optional.
+         * @beta
          */
         to?: string | string[];
 
         /**
          * The carbon copy (CC) recipient or recipients of the email. Optional.
+         * @beta
          */
         cc?: string | string[];
 
         /**
          * The blind carbon copy (BCC) recipient or recipients of the email. Optional.
+         * @beta
          */
         bcc?: string | string[];
 
         /**
          * A file (such as a text file or Excel workbook) attached to a message. Optional.
+         * @beta
          */
         attachments?: EmailAttachment | EmailAttachment[];
     }
@@ -149,7 +164,8 @@ export declare namespace OfficeScript {
      */
     export namespace Metadata {
         /**
-         * Get the current executing scripts name.
+         * Get the name of the currently running script.
+         * @beta
          */
         export function getScriptName(): string;
     }
