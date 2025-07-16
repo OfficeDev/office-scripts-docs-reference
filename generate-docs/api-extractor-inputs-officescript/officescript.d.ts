@@ -8,14 +8,16 @@ export declare namespace OfficeScript {
      * @throws SaveCopyAsFileMayAlreadyExistError The error thrown if the file name of the copy already exists.
      * @throws SaveCopyAsFileNotOnOneDriveError The error thrown if the document is not saved to OneDrive.
      * @param filename - The file name of the copied and saved file. The file name must end with ".xlsx".
+     * @beta
      */
     export function saveCopyAs(filename: string): void;
 
     /**
      * Return the text encoding of the document as a PDF.
      * If the document is empty, then the following error is shown: "We didn't find anything to print".
-     * Some actions made prior to using this API may not be captured in the PDF on web.
+     * Some actions made prior to using this API may not be captured in the PDF in Excel on the web.
      * @returns The content of the workbook as a string, in PDF format.
+     * @beta
      */
     export function convertToPdf(): string;
 
@@ -23,6 +25,7 @@ export declare namespace OfficeScript {
      * Downloads a specified file to the default download location specified by the local machine.
      * @param name - The name of the file once downloaded. The file extension determines the type of the file. Supported extensions are ".txt" and ".pdf". Default is ".txt".
      * @param content - The content of the file.
+     * @beta
      */
     export function downloadFile({
         name,
@@ -36,11 +39,13 @@ export declare namespace OfficeScript {
      * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
      * If the request body includes content, this method returns 400 Bad request.
      * @param message - The properties that define the content and recipients of the email.
+     * @beta
      */
     export function sendMail(mailProperties: MailProperties): void;
 
     /**
      * The type of the content. Possible values are text or HTML.
+     * @beta
      */
     enum EmailContentType {
         /**
@@ -56,6 +61,7 @@ export declare namespace OfficeScript {
 
     /**
      * The importance value of the email. Corresponds to "high", "normal", and "low" importance values available in the Outlook UI.
+     * @beta
      */
     enum EmailImportance {
         /**
@@ -78,6 +84,7 @@ export declare namespace OfficeScript {
      * The attachment to send with the email.
      * A value must be specified for at least one of the `to`, `cc`, or `bcc` parameters.
      * If no recipient is specified, the following error is shown: "The message has no recipient. Please enter a value for at least one of the "to", "cc", or "bcc" parameters."
+     * @beta
      */
     export interface EmailAttachment {
         /**
@@ -92,6 +99,7 @@ export declare namespace OfficeScript {
 
     /**
      * The properties of the email to be sent.
+     * @beta
      */
     export interface MailProperties {
         /**
@@ -137,6 +145,7 @@ export declare namespace OfficeScript {
 
     /**
      * Metadata about the script.
+     * @beta
      */
     export namespace Metadata {
         /**

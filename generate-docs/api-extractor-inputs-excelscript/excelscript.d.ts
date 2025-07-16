@@ -1882,7 +1882,7 @@ export declare namespace ExcelScript {
         getEntireRow(): Range;
 
         /**
-         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
+         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
          * @param direction - The direction from the active cell.
          * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -1942,7 +1942,7 @@ export declare namespace ExcelScript {
         getPrecedents(): WorkbookRangeAreas;
 
         /**
-         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
+         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
          * @param direction - The direction from the active cell.
          * @param activeCell - The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -7668,12 +7668,12 @@ export declare namespace ExcelScript {
         getKey(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         getValue(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         setValue(value: string): void;
 
@@ -9227,22 +9227,22 @@ export declare namespace ExcelScript {
         setState(state: HeaderFooterState): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         getUseSheetMargins(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         setUseSheetMargins(useSheetMargins: boolean): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         getUseSheetScale(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         setUseSheetScale(useSheetScale: boolean): void;
     }
@@ -10442,13 +10442,13 @@ export declare namespace ExcelScript {
      */
     export interface NamedSheetView {
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         getName(): string;
 
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         setName(name: string): void;

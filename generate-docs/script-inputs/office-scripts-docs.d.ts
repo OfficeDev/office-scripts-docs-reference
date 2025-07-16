@@ -1886,7 +1886,7 @@ declare namespace ExcelScript {
         getEntireRow(): Range;
 
         /**
-         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the Ctrl+Shift+Arrow key behavior in the Excel on Windows UI.
+         * Returns a range object that includes the current range and up to the edge of the range, based on the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
          * @param direction The direction from the active cell.
          * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -1946,7 +1946,7 @@ declare namespace ExcelScript {
         getPrecedents(): WorkbookRangeAreas;
 
         /**
-         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the Ctrl+Arrow key behavior in the Excel on Windows UI.
+         * Returns a range object that is the edge cell of the data region that corresponds to the provided direction. This matches the <kbd>Ctrl</kbd>+<kbd>Arrow key</kbd> behavior in the Excel on Windows UI.
          * @param direction The direction from the active cell.
          * @param activeCell The active cell in this range. By default, the active cell is the top-left cell of the range. An error is thrown if the active cell is not in this range.
          */
@@ -7672,12 +7672,12 @@ declare namespace ExcelScript {
         getKey(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         getValue(): string;
 
         /**
-         * Gets or sets the value of the custom property.
+         * Specifies the value of the custom property.
          */
         setValue(value: string): void;
 
@@ -9231,22 +9231,22 @@ declare namespace ExcelScript {
         setState(state: HeaderFooterState): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         getUseSheetMargins(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers are aligned with the page margins set in the page layout options for the worksheet.
          */
         setUseSheetMargins(useSheetMargins: boolean): void;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         getUseSheetScale(): boolean;
 
         /**
-         * Gets or sets a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
+         * Specifies a flag indicating if headers/footers should be scaled by the page percentage scale set in the page layout options for the worksheet.
          */
         setUseSheetScale(useSheetScale: boolean): void;
     }
@@ -10446,13 +10446,13 @@ declare namespace ExcelScript {
      */
     interface NamedSheetView {
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         getName(): string;
 
         /**
-         * Gets or sets the name of the sheet view.
+         * Specifies the name of the sheet view.
          * The temporary sheet view name is the empty string ("").  Naming the view by using the name property causes the sheet view to be saved.
          */
         setName(name: string): void;
@@ -15233,14 +15233,16 @@ declare namespace OfficeScript {
      * @throws SaveCopyAsFileMayAlreadyExistError The error thrown if the file name of the copy already exists.
      * @throws SaveCopyAsFileNotOnOneDriveError The error thrown if the document is not saved to OneDrive.
      * @param filename The file name of the copied and saved file. The file name must end with ".xlsx".
+     * @beta
      */
     function saveCopyAs(filename: string): void;
 
     /**
      * Return the text encoding of the document as a PDF.
      * If the document is empty, then the following error is shown: "We didn't find anything to print".
-     * Some actions made prior to using this API may not be captured in the PDF on web.
+     * Some actions made prior to using this API may not be captured in the PDF in Excel on the web.
      * @returns The content of the workbook as a string, in PDF format.
+     * @beta
      */
     function convertToPdf(): string;
 
@@ -15248,6 +15250,7 @@ declare namespace OfficeScript {
      * Downloads a specified file to the default download location specified by the local machine.
      * @param name The name of the file once downloaded. The file extension determines the type of the file. Supported extensions are ".txt" and ".pdf". Default is ".txt".
      * @param content - The content of the file.
+     * @beta
      */
     function downloadFile({
         name,
@@ -15261,11 +15264,13 @@ declare namespace OfficeScript {
      * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
      * If the request body includes content, this method returns 400 Bad request.
      * @param message The properties that define the content and recipients of the email.
+     * @beta
      */
     function sendMail(mailProperties: MailProperties): void;
 
     /**
      * The type of the content. Possible values are text or HTML.
+     * @beta
      */
     enum EmailContentType {
         /**
@@ -15281,6 +15286,7 @@ declare namespace OfficeScript {
 
     /**
      * The importance value of the email. Corresponds to "high", "normal", and "low" importance values available in the Outlook UI.
+     * @beta
      */
     enum EmailImportance {
         /**
@@ -15303,6 +15309,7 @@ declare namespace OfficeScript {
      * The attachment to send with the email.
      * A value must be specified for at least one of the `to`, `cc`, or `bcc` parameters.
      * If no recipient is specified, the following error is shown: "The message has no recipient. Please enter a value for at least one of the "to", "cc", or "bcc" parameters."
+     * @beta
      */
     export interface EmailAttachment {
         /**
@@ -15317,6 +15324,7 @@ declare namespace OfficeScript {
 
     /**
      * The properties of the email to be sent.
+     * @beta
      */
     export interface MailProperties {
         /**
@@ -15362,6 +15370,7 @@ declare namespace OfficeScript {
 
     /**
      * Metadata about the script.
+     * @beta
      */
     namespace Metadata {
         /**

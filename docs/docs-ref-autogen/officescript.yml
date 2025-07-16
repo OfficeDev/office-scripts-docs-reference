@@ -17,10 +17,10 @@ functions:
       Return the text encoding of the document as a PDF. If the document is
       empty, then the following error is shown: "We didn't find anything to
       print". Some actions made prior to using this API may not be captured in
-      the PDF on web.
+      the PDF in Excel on the web.
     remarks: ''
 
-    isPreview: false
+    isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function convertToPdf(): string;'
@@ -49,7 +49,11 @@ functions:
               })    
           }
           ```
-  - name: "OfficeScript.downloadFile({\r\n        name,\r\n        content,\r\n    })"
+  - name: |-
+      OfficeScript.downloadFile({
+              name,
+              content,
+          })
     uid: OfficeScript!OfficeScript.downloadFile:function(1)
     package: OfficeScript!
     summary: >-
@@ -57,7 +61,7 @@ functions:
       the local machine.
     remarks: ''
 
-    isPreview: false
+    isPreview: true
     isDeprecated: false
     syntax:
       content: |-
@@ -69,7 +73,11 @@ functions:
                 content: string;
             }): void;
       parameters:
-        - id: "{\r\n        name,\r\n        content,\r\n    }"
+        - id: |-
+            {
+                    name,
+                    content,
+                }
           description: ''
           type: |-
             {
@@ -85,7 +93,7 @@ functions:
     summary: Get the current executing scripts name.
     remarks: ''
 
-    isPreview: false
+    isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function getScriptName(): string;'
@@ -104,7 +112,7 @@ functions:
       failure message.
     remarks: ''
 
-    isPreview: false
+    isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function saveCopyAs(filename: string): void;'
@@ -126,7 +134,7 @@ functions:
       this method returns 400 Bad request.
     remarks: ''
 
-    isPreview: false
+    isPreview: true
     isDeprecated: false
     syntax:
       content: 'export function sendMail(mailProperties: MailProperties): void;'
