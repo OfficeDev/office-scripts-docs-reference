@@ -1855,19 +1855,19 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct dependent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no dependents are found.
+         * Throws an `ItemNotFound` error if no dependents are found.
          */
         getDirectDependents(): WorkbookRangeAreas;
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the direct precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getDirectPrecedents(): WorkbookRangeAreas;
 
@@ -1937,7 +1937,7 @@ export declare namespace ExcelScript {
 
         /**
          * Returns a `WorkbookRangeAreas` object that represents the range containing all the precedent cells of a specified range in the same worksheet or across multiple worksheets.
-         * Note: This API returns an `ItemNotFound` error if no precedents are found.
+         * Throws an `ItemNotFound` error if no precedents are found.
          */
         getPrecedents(): WorkbookRangeAreas;
 
@@ -15214,4 +15214,3 @@ export declare namespace ExcelScript {
         | MixedCellControl
         | CheckboxCellControl;
 }
-

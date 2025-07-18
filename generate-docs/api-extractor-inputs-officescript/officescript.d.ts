@@ -1,4 +1,4 @@
-export namespace OfficeScript {
+export declare namespace OfficeScript {
     /**
      * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
      * The API has a timeout limit of 30 seconds. This limit is rarely exceeded.
@@ -164,7 +164,7 @@ export namespace OfficeScript {
      */
     export namespace Metadata {
         /**
-         * Get the current executing scripts name.
+         * Get the name of the currently running script.
          * @beta
          */
         export function getScriptName(): string;

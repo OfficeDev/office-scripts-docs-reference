@@ -49,7 +49,11 @@ functions:
               })    
           }
           ```
-  - name: "OfficeScript.downloadFile({\r\n        name,\r\n        content,\r\n    })"
+  - name: |-
+      OfficeScript.downloadFile({
+              name,
+              content,
+          })
     uid: OfficeScript!OfficeScript.downloadFile:function(1)
     package: OfficeScript!
     summary: >-
@@ -69,7 +73,11 @@ functions:
                 content: string;
             }): void;
       parameters:
-        - id: "{\r\n        name,\r\n        content,\r\n    }"
+        - id: |-
+            {
+                    name,
+                    content,
+                }
           description: ''
           type: |-
             {
@@ -82,7 +90,7 @@ functions:
   - name: OfficeScript.Metadata.getScriptName()
     uid: OfficeScript!OfficeScript.Metadata.getScriptName:function(1)
     package: OfficeScript!
-    summary: Get the current executing scripts name.
+    summary: Get the name of the currently running script.
     remarks: ''
 
     isPreview: true
