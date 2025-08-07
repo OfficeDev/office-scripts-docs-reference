@@ -3,10 +3,14 @@ export declare namespace OfficeScript {
      * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
      * The API has a timeout limit of 30 seconds. This limit is rarely exceeded.
      * Note: Timeout doesn't necessarily indicate that the API failed. The workbook copy may still be created, but after the timeout limit this API does not return a success or failure message.
-     * @throws ExternalApiTimeout The error thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
-     * @throws InvalidExtensionError The error thrown if the file name doesn't end with ".xlsx".
-     * @throws SaveCopyAsFileMayAlreadyExistError The error thrown if the file name of the copy already exists.
-     * @throws SaveCopyAsFileNotOnOneDriveError The error thrown if the document is not saved to OneDrive.
+     
+     * **Throws**:  `ExternalApiTimeout` The error thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
+     
+     * **Throws**:  `InvalidExtensionError` The error thrown if the file name doesn't end with ".xlsx".
+     
+     * **Throws**:  `SaveCopyAsFileMayAlreadyExistError` The error thrown if the file name of the copy already exists.
+     
+     * **Throws**:  `SaveCopyAsFileNotOnOneDriveError` The error thrown if the document is not saved to OneDrive.
      * @param filename - The file name of the copied and saved file. The file name must end with ".xlsx".
      * @beta
      */

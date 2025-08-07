@@ -102,6 +102,22 @@ functions:
       necessarily indicate that the API failed. The workbook copy may still be
       created, but after the timeout limit this API does not return a success or
       failure message.
+
+
+      **Throws**: `ExternalAPITimeout` The error thrown if the API reaches
+      the timeout limit of 30 seconds. Note that the copy may still be created.
+
+
+      **Throws**: `InvalidExtensionError` The error thrown if the file name
+      doesn't end with ".xlsx".
+
+
+      **Throws**: `SaveCopyAsFileMayAlreadyExistError` The error thrown if
+      the file name of the copy already exists.
+
+
+      **Throws**: `SaveCopyAsFileNotOnOneDriveError` The error thrown if the
+      document is not saved to OneDrive.
     remarks: ''
 
     isPreview: true
