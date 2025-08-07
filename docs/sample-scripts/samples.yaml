@@ -934,6 +934,48 @@
       format.getFill().setColor("yellow");
       format.getFont().setItalic(true);
     }
+'ExcelScript.ConditionalDataBarNegativeFormat:interface':
+  - |-
+    /**
+     * This script applies data bar conditional formatting to a range.
+     * It sets the data bar colors to be green when positive and red when negative.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the "Sales" data column range in a table named "SalesTable".
+        const table = workbook.getTable("SalesTable");
+        const salesRange = table.getColumnByName("Sales").getRangeBetweenHeaderAndTotal();
+
+        // Add data bar conditional formatting to the range.
+        const cf = salesRange.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+
+        // Have the bar show green when positive and red when negative. 
+        const dataBarConditionalFormat = cf.getDataBar();
+        const positiveFormat: ExcelScript.ConditionalDataBarPositiveFormat = dataBarConditionalFormat.getPositiveFormat();
+        positiveFormat .setFillColor("green");
+        const negativeFormat: ExcelScript.ConditionalDataBarNegativeFormat = dataBarConditionalFormat.getNegativeFormat();
+        negativeFormat.setFillColor("red");
+    }
+'ExcelScript.ConditionalDataBarPositiveFormat:interface':
+  - |-
+    /**
+     * This script applies data bar conditional formatting to a range.
+     * It sets the data bar colors to be green when positive and red when negative.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the "Sales" data column range in a table named "SalesTable".
+        const table = workbook.getTable("SalesTable");
+        const salesRange = table.getColumnByName("Sales").getRangeBetweenHeaderAndTotal();
+
+        // Add data bar conditional formatting to the range.
+        const cf = salesRange.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+
+        // Have the bar show green when positive and red when negative. 
+        const dataBarConditionalFormat = cf.getDataBar();
+        const positiveFormat: ExcelScript.ConditionalDataBarPositiveFormat = dataBarConditionalFormat.getPositiveFormat();
+        positiveFormat .setFillColor("green");
+        const negativeFormat: ExcelScript.ConditionalDataBarNegativeFormat = dataBarConditionalFormat.getNegativeFormat();
+        negativeFormat.setFillColor("red");
+    }
 'ExcelScript.ConditionalDataBarRule:interface':
   - |-
     /**
