@@ -16,7 +16,7 @@ The following table provides a concise summary of the APIs, while the subsequent
 
 | Feature area | Description | Relevant objects |
 |:--- |:--- |:--- |
-| Save and email a PDF | Save a worksheet as a PDF and email it to yourself or your team. For a sample, see [Save a worksheet and email it as a PDF](/office/dev/scripts/resources/samples/save-as-pdf-email-as-pdf) | [EmailAttachment](/javascript/api/office-scripts/officescript/officescript.emailattachment), [MailProperties](/javascript/api/office-scripts/officescript/officescript.mailproperties) |
+| Save and email a PDF | Save a worksheet as a PDF and email it to yourself or your team. For a sample, see [Save a worksheet and email it as a PDF](/office/dev/scripts/resources/samples/save-as-pdf-email-as-pdf). | [EmailAttachment](/javascript/api/office-scripts/officescript/officescript.emailattachment), [MailProperties](/javascript/api/office-scripts/officescript/officescript.mailproperties) |
 
 ## API list
 
