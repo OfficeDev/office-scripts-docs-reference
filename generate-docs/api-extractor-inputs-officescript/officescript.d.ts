@@ -1,7 +1,7 @@
 export declare namespace OfficeScript {
     /**
      * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      * @param filename - The file name of the copied and saved file. The file name must end with ".xlsx".
      
      * **Throws**:  `InvalidExtensionError` The error thrown if the file name doesn't end with ".xlsx".
@@ -19,7 +19,7 @@ export declare namespace OfficeScript {
     /**
      * Converts the document to a PDF and returns the text encoding of it.
      * Note: Recent changes made to the workbook in Excel on the web, through Office Scripts or the Excel UI, may not be captured in the PDF.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      * @returns The content of the workbook as a string, in PDF format.
      
      * **Throws**:  `ConvertToPdfEmptyWorkbook` The error thrown if the document is empty.
@@ -32,7 +32,7 @@ export declare namespace OfficeScript {
 
     /**
      * Downloads a specified file to the default download location specified by the local machine.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      * @param fileProperties - The file to download.
      
      * **Throws**:  `DownloadFileNameMissing` The error thrown if the name is empty.
@@ -47,25 +47,25 @@ export declare namespace OfficeScript {
 
     /**
      * The file to download.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     export interface FileProperties {
         /**
          * The name of the file once downloaded. The file extension determines the type of the file. Supported extensions are ".txt" and ".pdf". Default is ".txt".
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         name: string;
 
         /**
          * The content of the file.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         content: string;
     }
 
     /**
      * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      * @param message - The properties that define the content and recipients of the email.
      
      * **Throws**:  `SendMailErrorMaxCalls` The error thrown if the maximum number of API calls is exceeded. The limit is 100 API calls.
@@ -82,42 +82,42 @@ export declare namespace OfficeScript {
 
     /**
      * The type of the content. Possible values are text or HTML.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     enum EmailContentType {
         /**
          * The email message body is in HTML format.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         html = "html",
 
         /**
          * The email message body is in plain text format.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         text = "text",
     }
 
     /**
      * The importance value of the email. Corresponds to "high", "normal", and "low" importance values available in the Outlook UI.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     enum EmailImportance {
         /**
          * Email is marked as low importance.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         low = "low",
 
         /**
          * Email does not have any importance specified.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         normal = "normal",
 
         /**
          * Email is marked as high importance.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         high = "high",
     }
@@ -126,83 +126,83 @@ export declare namespace OfficeScript {
      * The attachment to send with the email.
      * A value must be specified for at least one of the `to`, `cc`, or `bcc` parameters.
      * If no recipient is specified, the following error is shown: "The message has no recipient. Please enter a value for at least one of the "to", "cc", or "bcc" parameters."
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     export interface EmailAttachment {
         /**
          * The text that is displayed below the icon representing the attachment. This string doesn't need to match the file name.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         name: string;
         /**
          * The contents of the file.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         content: string;
     }
 
     /**
      * The properties of the email to be sent.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     export interface MailProperties {
         /**
          * The subject of the email. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         subject?: string;
 
         /**
          * The content of the email. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         content?: string;
 
         /**
          * The type of the content in the email. Possible values are text or HTML. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         contentType?: EmailContentType;
 
         /**
          * The importance of the email. The possible values are `low`, `normal`, and `high`. Default value is `normal`. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         importance?: EmailImportance;
 
         /**
          * The direct recipient or recipients of the email. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         to?: string | string[];
 
         /**
          * The carbon copy (CC) recipient or recipients of the email. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         cc?: string | string[];
 
         /**
          * The blind carbon copy (BCC) recipient or recipients of the email. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         bcc?: string | string[];
 
         /**
          * A file (such as a text file or Excel workbook) attached to a message. Optional.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         attachments?: EmailAttachment | EmailAttachment[];
     }
 
     /**
      * Metadata about the script.
-     * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+     * @beta
      */
     export namespace Metadata {
         /**
          * Get the name of the currently running script.
-         * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
+         * @beta
          */
         export function getScriptName(): string;
     }

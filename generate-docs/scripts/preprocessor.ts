@@ -119,7 +119,10 @@ function applyRegularExpressions (definitionsIn) {
         .replace(/^(\s*)(module)(\s+)/gm, `$1export $2$3`)
         .replace(/^(\s*)(function)(\s+)/gm, `$1export $2$3`)
         .replace(/(\s*)(@param)(\s+)(\w+)(\s+)([^\-])/g, `$1$2$3$4$5- $6`)
-        .replace(/(\s*)\*(\s*)(@throws)(\s+)(\w+)(.*)/g, `$1$1*$2**Throws**: $4\`$5\`$6`);
+        .replace(/(\s*)\*(\s*)(@throws)(\s+)(\w+)(.*)/g, `$1$1*$2**Throws**: $4\`$5\`$6`)
+        // Truncate any explanatory text after an @beta tag to keep only the tag itself.
+        // Example: "* @beta This API is in preview..." -> "* @beta"
+        .replace(/^(\s*\*\s*@beta)(?:\b.*)?$/gm, `$1`);
 }
 
 function readySnippets(snippetsSourceFile: string, snippetDestinationFile: string) {
