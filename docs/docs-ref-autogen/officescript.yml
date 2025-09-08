@@ -5,6 +5,7 @@ type: package
 summary: ''
 interfaces:
   - OfficeScript!OfficeScript.EmailAttachment:interface
+  - OfficeScript!OfficeScript.FileProperties:interface
   - OfficeScript!OfficeScript.MailProperties:interface
 enums:
   - OfficeScript!OfficeScript.EmailContentType:enum
@@ -14,10 +15,11 @@ functions:
     uid: OfficeScript!OfficeScript.convertToPdf:function(1)
     package: OfficeScript!
     summary: >-
-      Return the text encoding of the document as a PDF. If the document is
-      empty, then the following error is shown: "We didn't find anything to
-      print". Some actions made prior to using this API may not be captured in
-      the PDF in Excel on the web.
+      Converts the document to a PDF and returns the text encoding of it. Note:
+      Recent changes made to the workbook in Excel on the web, through Office
+      Scripts or the Excel UI, may not be captured in the PDF. This API is in
+      preview and may change based on feedback. Do not use this API in a
+      production environment.
     remarks: ''
 
     isPreview: true
@@ -26,12 +28,27 @@ functions:
       content: 'export function convertToPdf(): string;'
       return:
         type: string
-        description: |-
+        description: >-
           The content of the workbook as a string, in PDF format.
+
+
+          **Throws**: `ConvertToPdfEmptyWorkbook` The error thrown if the
+          document is empty.
+
+
+          **Throws**: `ConvertToPdfProtectedWorkbook` The error thrown if
+          the document is protected.
+
+
+          **Throws**: `ExternalApiTimeout` The error thrown if the API
+          reaches the timeout limit of 30 seconds.
+
 
           #### Examples
 
+
           ```TypeScript
+
           /**
            * This script saves a worksheet as a PDF and emails that PDF to a recipient.
            */
@@ -48,41 +65,52 @@ functions:
                   attachments: [pdfFile]
               })    
           }
+
           ```
-  - name: "OfficeScript.downloadFile({\r\n        name,\r\n        content,\r\n    })"
+  - name: OfficeScript.downloadFile(fileProperties)
     uid: OfficeScript!OfficeScript.downloadFile:function(1)
     package: OfficeScript!
     summary: >-
       Downloads a specified file to the default download location specified by
-      the local machine.
+      the local machine. This API is in preview and may change based on
+      feedback. Do not use this API in a production environment.
     remarks: ''
 
     isPreview: true
     isDeprecated: false
     syntax:
-      content: |-
-        export function downloadFile({
-                name,
-                content,
-            }: {
-                name: string;
-                content: string;
-            }): void;
+      content: 'export function downloadFile(fileProperties: FileProperties): void;'
       parameters:
-        - id: "{\r\n        name,\r\n        content,\r\n    }"
-          description: ''
-          type: |-
-            {
-                    name: string;
-                    content: string;
-                }
+        - id: fileProperties
+          description: >-
+            The file to download.
+
+
+            **Throws**: `DownloadFileNameMissing` The error thrown if the
+            name is empty.
+
+
+            **Throws**: `DownloadFileContentMissing` The error thrown if the
+            content is empty.
+
+
+            **Throws**: `DownloadFileInvalidExtension` The error thrown if
+            the file name extension is not ".txt" or ".pdf".
+
+
+            **Throws**: `ExternalApiTimeout` The error thrown if the API
+            reaches the timeout limit of 30 seconds.
+          type: <xref uid="OfficeScript!OfficeScript.FileProperties:interface" />
       return:
         type: void
         description: ''
   - name: OfficeScript.Metadata.getScriptName()
     uid: OfficeScript!OfficeScript.Metadata.getScriptName:function(1)
     package: OfficeScript!
-    summary: Get the name of the currently running script.
+    summary: >-
+      Get the name of the currently running script. This API is in preview and
+      may change based on feedback. Do not use this API in a production
+      environment.
     remarks: ''
 
     isPreview: true
@@ -97,27 +125,9 @@ functions:
     package: OfficeScript!
     summary: >-
       Saves a copy of the current workbook in OneDrive, in the same directory as
-      the original file, with the specified file name. The API has a timeout
-      limit of 30 seconds. This limit is rarely exceeded. Note: Timeout doesn't
-      necessarily indicate that the API failed. The workbook copy may still be
-      created, but after the timeout limit this API does not return a success or
-      failure message.
-
-
-      **Throws**: `ExternalAPITimeout` The error thrown if the API reaches
-      the timeout limit of 30 seconds. Note that the copy may still be created.
-
-
-      **Throws**: `InvalidExtensionError` The error thrown if the file name
-      doesn't end with ".xlsx".
-
-
-      **Throws**: `SaveCopyAsFileMayAlreadyExistError` The error thrown if
-      the file name of the copy already exists.
-
-
-      **Throws**: `SaveCopyAsFileNotOnOneDriveError` The error thrown if the
-      document is not saved to OneDrive.
+      the original file, with the specified file name. This API is in preview
+      and may change based on feedback. Do not use this API in a production
+      environment.
     remarks: ''
 
     isPreview: true
@@ -129,6 +139,27 @@ functions:
           description: >-
             The file name of the copied and saved file. The file name must end
             with ".xlsx".
+
+
+            **Throws**: `InvalidExtensionError` The error thrown if the file
+            name doesn't end with ".xlsx".
+
+
+            **Throws**: `SaveCopyAsFileMayAlreadyExistError` The error
+            thrown if the file name of the copy already exists.
+
+
+            **Throws**: `SaveCopyAsErrorInvalidCharacters` The error thrown
+            if the file name contains invalid characters.
+
+
+            **Throws**: `SaveCopyAsFileNotOnOneDriveError` The error thrown
+            if the document is not saved to OneDrive.
+
+
+            **Throws**: `ExternalApiTimeout` The error thrown if the API
+            reaches the timeout limit of 30 seconds. Note that the copy may
+            still be created.
           type: string
       return:
         type: void
@@ -138,8 +169,8 @@ functions:
     package: OfficeScript!
     summary: >-
       Send an email with an Office Script. Use `MailProperties` to specify the
-      content and recipients of the email. If the request body includes content,
-      this method returns 400 Bad request.
+      content and recipients of the email. This API is in preview and may change
+      based on feedback. Do not use this API in a production environment.
     remarks: ''
 
     isPreview: true
