@@ -1,0 +1,20 @@
+{
+  "linkConfigs": [
+    {
+      "name": "Office Scripts",
+      "pathPattern": "office-scripts",
+      "description": "Special URL pattern for Office Scripts",
+      "globalFunctionTemplate": "/{basePath}#officescript-officescript-{fieldName}-function(1)",
+      "classTemplate": "/{basePath}/officescript.{className}",
+      "classMemberTemplate": "/{basePath}/officescript.{className}#officescript-officescript-{className}-{fieldName}{suffix}"
+    },
+    {
+      "name": "Standard Office Applications", 
+      "pathPattern": ".*",
+      "description": "Standard URL pattern for Excel, Word, PowerPoint, Outlook",
+      "globalFunctionTemplate": "/{basePath}#{hostName}-{fileName}-{fieldName}-function(1)",
+      "classTemplate": "/{basePath}.{className}",
+      "classMemberTemplate": "/{basePath}.{className}#{hostName}-{fileName}-{className}-{fieldName}{suffix}"
+    }
+  ]
+}

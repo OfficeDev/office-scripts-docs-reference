@@ -34,8 +34,8 @@ popd
 ./node_modules/.bin/version-remover api-extractor-inputs-officescript/officescript.d.ts api-extractor-inputs-officescript-release/officescript.d.ts "@beta"
 
 # Generate what's new reports comparing preview vs release
-./node_modules/.bin/whats-new api-extractor-inputs-excelscript/excelscript.d.ts api-extractor-inputs-excelscript-release/excelscript.d.ts ../docs/includes/excelscript-whats-new javascript/api/office-scripts/excelscript/excelscript.
-./node_modules/.bin/whats-new api-extractor-inputs-officescript/officescript.d.ts api-extractor-inputs-officescript-release/officescript.d.ts ../docs/includes/officescript-whats-new javascript/api/office-scripts/officescript/officescript.
+./node_modules/.bin/whats-new api-extractor-inputs-excelscript/excelscript.d.ts api-extractor-inputs-excelscript-release/excelscript.d.ts ../docs/includes/excelscript-whats-new javascript/api/office-scripts/excelscript/excelscript. office-scripts-link-config.json
+./node_modules/.bin/whats-new api-extractor-inputs-officescript/officescript.d.ts api-extractor-inputs-officescript-release/officescript.d.ts ../docs/includes/officescript-whats-new javascript/api/office-scripts/officescript/officescript. office-scripts-link-config.json
 
 pushd api-extractor-inputs-excelscript
 ../node_modules/.bin/api-extractor run
