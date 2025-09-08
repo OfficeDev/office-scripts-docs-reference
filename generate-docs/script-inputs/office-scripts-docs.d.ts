@@ -15238,7 +15238,7 @@ declare namespace OfficeScript {
 
     /**
      * Converts the document to a PDF and returns the text encoding of it.
-     * Some actions made prior to using this API may not be captured in the PDF in Excel on the web.
+     * Note: Recent changes made to the workbook in Excel on the web, through Office Scripts or the Excel UI, may not be captured in the PDF.
      * @beta This API is in preview and may change based on feedback. Do not use this API in a production environment.
      * @returns The content of the workbook as a string, in PDF format.
      * @throws ConvertToPdfEmptyWorkbook The error thrown if the document is empty.
