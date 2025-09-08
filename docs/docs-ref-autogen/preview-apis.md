@@ -22,7 +22,9 @@ The following table provides a concise summary of the APIs, while the subsequent
 
 The following table lists the Office Scripts APIs currently in preview.
 
-[!INCLUDE[API table](../includes/preview-apis.md)]
+[!INCLUDE[API table](../includes/officescript-whats-new.md)]
+
+[!INCLUDE[API table](../includes/excelscript-whats-new.md)]
 
 ## See also
 
