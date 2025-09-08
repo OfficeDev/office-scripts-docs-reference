@@ -1,0 +1,18 @@
+export declare namespace OfficeScript {
+    
+
+    
+
+        
+
+    
+
+    
+
+    
+
+    
+
+            
+    }
+}
