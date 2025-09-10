@@ -111,7 +111,7 @@ interface ApiYaml {
 tryCatch(async () => {
     console.log("\nStarting postprocessor script...");
 
-    const docsSource = path.resolve("../yaml");
+    const docsSource = path.resolve("../yaml/yaml-preview");
     const docsDestination = path.resolve("../../docs/docs-ref-autogen");
 
     console.log(`Deleting old docs at: ${docsDestination}`);
@@ -188,6 +188,9 @@ function fixToc(tocPath: string): Toc {
     newToc.items[0].items = [{
         "name": "API reference overview",
         "href": "overview.md"
+    },{
+        "name": "Preview APIs",
+        "href": "preview-apis.md"
     }] as any;
 
     // Create a folder for enums.
