@@ -1,12 +1,14 @@
 | Class | Fields | Description |
 |:---|:---|:---|
-|*global*|[convertToPdf()](/javascript/api/office-scripts/officescript#officescript-officescript-converttopdf-function(1))|Return the text encoding of the document as a PDF.|
-||[downloadFile({ name, content, }: { name: string content: string })](/javascript/api/office-scripts/officescript#officescript-officescript-downloadfile-function(1))|Downloads a specified file to the default download location specified by the local machine.|
+|*global*|[convertToPdf()](/javascript/api/office-scripts/officescript#officescript-officescript-converttopdf-function(1))|Converts the document to a PDF and returns the text encoding of it.|
+||[downloadFile(fileProperties: FileProperties)](/javascript/api/office-scripts/officescript#officescript-officescript-downloadfile-function(1))|Downloads a specified file to the default download location specified by the local machine.|
 ||[getScriptName()](/javascript/api/office-scripts/officescript#officescript-officescript-getscriptname-function(1))|Get the name of the currently running script.|
 ||[saveCopyAs(filename: string)](/javascript/api/office-scripts/officescript#officescript-officescript-savecopyas-function(1))|Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.|
 ||[sendMail(mailProperties: MailProperties)](/javascript/api/office-scripts/officescript#officescript-officescript-sendmail-function(1))|Send an email with an Office Script.|
 |[EmailAttachment](/javascript/api/office-scripts/officescript/officescript.emailattachment)|[content](/javascript/api/office-scripts/officescript/officescript.emailattachment#officescript-officescript-emailattachment-content-member)|The contents of the file.|
 ||[name](/javascript/api/office-scripts/officescript/officescript.emailattachment#officescript-officescript-emailattachment-name-member)|The text that is displayed below the icon representing the attachment.|
+|[FileProperties](/javascript/api/office-scripts/officescript/officescript.fileproperties)|[content](/javascript/api/office-scripts/officescript/officescript.fileproperties#officescript-officescript-fileproperties-content-member)|The content of the file.|
+||[name](/javascript/api/office-scripts/officescript/officescript.fileproperties#officescript-officescript-fileproperties-name-member)|The name of the file once downloaded.|
 |[MailProperties](/javascript/api/office-scripts/officescript/officescript.mailproperties)|[attachments](/javascript/api/office-scripts/officescript/officescript.mailproperties#officescript-officescript-mailproperties-attachments-member)|A file (such as a text file or Excel workbook) attached to a message.|
 ||[bcc](/javascript/api/office-scripts/officescript/officescript.mailproperties#officescript-officescript-mailproperties-bcc-member)|The blind carbon copy (BCC) recipient or recipients of the email.|
 ||[cc](/javascript/api/office-scripts/officescript/officescript.mailproperties#officescript-officescript-mailproperties-cc-member)|The carbon copy (CC) recipient or recipients of the email.|
