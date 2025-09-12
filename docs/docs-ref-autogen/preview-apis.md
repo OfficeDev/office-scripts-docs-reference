@@ -20,7 +20,7 @@ The following table provides a concise summary of the APIs, while the subsequent
 
 ## API list
 
-Offie Scripts APIs use two namespaces, `OfficeScript` and `ExcelScript`. Currently, the only preview APIs are in the `OfficeScript` namespace. The following section lists those APIs.
+Office Scripts APIs use two namespaces, `OfficeScript` and `ExcelScript`. Currently, the only preview APIs are in the `OfficeScript` namespace. The following section lists those APIs.
 
 ### OfficeScript namespace
 
