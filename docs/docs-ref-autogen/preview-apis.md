@@ -2,7 +2,7 @@
 title: Office Scripts preview APIs
 description: Details about upcoming Office Scripts APIs.
 ms.topic: whats-new
-ms.date: 09/08/2025
+ms.date: 09/12/2025
 ---
 
 # Office Scripts preview APIs
@@ -20,7 +20,11 @@ The following table provides a concise summary of the APIs, while the subsequent
 
 ## API list
 
-The following table lists the Office Scripts APIs currently in preview.
+The following section lists the Office Scripts APIs currently in preview.
+
+### OfficeScript namespace
+
+Offie Scripts APIs use two namespaces, `OfficeScript` and `ExcelScript`. Currently, the only preview APIs are in the `OfficeScript` namespace.
 
 [!INCLUDE[API table](../includes/officescript-preview.md)]
 
