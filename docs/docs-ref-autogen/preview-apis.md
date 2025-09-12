@@ -12,7 +12,7 @@ New Office Scripts APIs are first introduced in "preview", and then later releas
 > [!IMPORTANT]
 > Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents.
 
-The following table provides a concise summary of the APIs, while the subsequent [API list](#api-list) table gives a detailed list.
+The following table provides a concise summary of the APIs, while the subsequent [API list](#api-list) section gives a detailed list.
 
 | Feature area | Description | Relevant objects |
 |:--- |:--- |:--- |
@@ -20,11 +20,9 @@ The following table provides a concise summary of the APIs, while the subsequent
 
 ## API list
 
-The following section describes the Office Scripts APIs currently in preview.
+Offie Scripts APIs use two namespaces, `OfficeScript` and `ExcelScript`. Currently, the only preview APIs are in the `OfficeScript` namespace. The following section lists those APIs.
 
 ### OfficeScript namespace
-
-Offie Scripts APIs use two namespaces, `OfficeScript` and `ExcelScript`. Currently, the only preview APIs are in the `OfficeScript` namespace. The following table lists those APIs.
 
 [!INCLUDE[API table](../includes/officescript-preview.md)]
 
