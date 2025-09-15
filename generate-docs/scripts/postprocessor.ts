@@ -241,6 +241,6 @@ function cleanUpYmlFile(ymlFile: string): string {
     
     let cleanYml = schemaComment + jsyaml.dump(apiYaml);
     return cleanYml.replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
-                   .replace(/description: \\\*\n/gm, "description: ''") // Remove descriptions that are just "\*".
+                   .replace(/description: \\\*[\r\n]/gm, "description: ''") // Remove descriptions that are just "\*".
                    .replace(/\\\*/gm, "*"); // Fix asterisk protection.
 }
