@@ -4,9 +4,6 @@ import { generateEnumList } from './util';
 import * as fsx from 'fs-extra';
 import * as jsyaml from "js-yaml";
 import * as path from "path";
-import * as os from "os";
-
-const EOL = os.EOL;
 
 interface Toc {
     items: [
@@ -226,7 +223,7 @@ function cleanUpYmlFile(ymlFile: string): string {
 
     // Add links for type aliases.
     if (apiYaml.uid.endsWith(":type")) {
-        let remarks = `${EOL}${EOL}Learn more about the types in this type alias through the following links. ${EOL}${EOL}`
+        let remarks = `\n\nLearn more about the types in this type alias through the following links. \n\n`
         apiYaml.syntax.substring(apiYaml.syntax.indexOf('=')).match(/[\w]+/g).forEach((match, matchIndex, matches) => {
             remarks += `[ExcelScript.${match}](/javascript/api/office-scripts/excelscript/excelscript.${match.toLowerCase()})`;
             if (matchIndex < matches.length - 1) {
@@ -236,7 +233,7 @@ function cleanUpYmlFile(ymlFile: string): string {
 
         let exampleIndex = apiYaml.remarks.indexOf("#### Examples");
         if (exampleIndex > 0) {
-            apiYaml.remarks = `${apiYaml.remarks.substring(0, exampleIndex)}${remarks}${EOL}${EOL}${apiYaml.remarks.substring(exampleIndex)}`;
+            apiYaml.remarks = `${apiYaml.remarks.substring(0, exampleIndex)}${remarks}\n\n${apiYaml.remarks.substring(exampleIndex)}`;
         } else {
             apiYaml.remarks += remarks;
         }
@@ -244,6 +241,6 @@ function cleanUpYmlFile(ymlFile: string): string {
     
     let cleanYml = schemaComment + jsyaml.dump(apiYaml);
     return cleanYml.replace(/^\s*example: \[\]\s*$/gm, "") // Remove example field from yml as the OPS schema does not support it.
-                   .replace(/description: \\\*[\r\n]/gm, "description: ''") // Remove descriptions that are just "\*".
+                   .replace(/description: \\\*\n/gm, "description: ''") // Remove descriptions that are just "\*".
                    .replace(/\\\*/gm, "*"); // Fix asterisk protection.
 }
