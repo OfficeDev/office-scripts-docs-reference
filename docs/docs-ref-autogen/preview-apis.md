@@ -14,7 +14,9 @@ New Office Scripts APIs are first introduced in "preview", and then later releas
 
 ## API list
 
-The following table lists the Office Scripts APIs currently in preview.
+Office Scripts APIs use two namespaces: `OfficeScript` for APIs that are not connected to an Excel workbook, and `ExcelScript` for APIs that work with Excel workbooks. Currently, the only preview APIs are in the `OfficeScript` namespace. The following section lists those APIs.
+
+### OfficeScript namespace
 
 <!-- [!INCLUDE[API table](../includes/officescript-preview.md)] -->
 
