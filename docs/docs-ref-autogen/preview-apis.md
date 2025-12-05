@@ -15,7 +15,7 @@ New Office Scripts APIs are first introduced in "preview", and then later releas
 ## API list
 
 <!-- [!INCLUDE[API table](../includes/officescript-preview.md)] -->
-
+<!-- [!INCLUDE[API table](../includes/excelscript-preview.md)] -->
 > [!NOTE]
 > There are currently no APIs in preview.
 
