@@ -4,7 +4,30 @@ uid: ExcelScript!ExcelScript.ChartDataLabels:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartDataLabels
 summary: Represents a collection of all the data labels on a chart point.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample configures data labels on a chart series.
+   * This assumes the active worksheet has a pie chart.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the active worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Configure the data labels.
+    const series = chart.getSeries()[0];
+    const dataLabels = series.getDataLabels();
+    dataLabels.setShowPercentage(true);
+    dataLabels.setShowSeriesName(false);
+    dataLabels.setShowCategoryName(false);
+    dataLabels.setShowValue(false);
+  }
+  ```
 
 isPreview: false
 isDeprecated: false
@@ -429,7 +452,26 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.ChartDataLabelPosition:enum" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the position of data labels.
+           * This assumes the active worksheet has a chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the data label position to best fit.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setPosition(ExcelScript.ChartDataLabelPosition.bestFit);
+          }
+          ```
   - name: setSeparator(separator)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setSeparator:member(1)
     package: ExcelScript!
@@ -483,7 +525,26 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample shows category names in data labels.
+           * This assumes the active worksheet has a chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Show category names in the data labels.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setShowCategoryName(true);
+          }
+          ```
   - name: setShowLeaderLines(showLeaderLines)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setShowLeaderLines:member(1)
     package: ExcelScript!
@@ -503,7 +564,26 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample enables leader lines for data labels.
+           * This assumes the active worksheet has a chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Enable leader lines.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setShowLeaderLines(true);
+          }
+          ```
   - name: setShowLegendKey(showLegendKey)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setShowLegendKey:member(1)
     package: ExcelScript!
@@ -539,7 +619,26 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample shows percentages in data labels.
+           * This assumes the active worksheet has a pie chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Show percentages in the data labels.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setShowPercentage(true);
+          }
+          ```
   - name: setShowSeriesName(showSeriesName)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setShowSeriesName:member(1)
     package: ExcelScript!
@@ -557,7 +656,26 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample controls series name visibility in data labels.
+           * This assumes the active worksheet has a chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Hide the series name in data labels.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setShowSeriesName(false);
+          }
+          ```
   - name: setShowValue(showValue)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setShowValue:member(1)
     package: ExcelScript!
@@ -575,7 +693,26 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample shows values in data labels.
+           * This assumes the active worksheet has a chart with data labels enabled.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Show values in the data labels.
+            const series = chart.getSeries()[0];
+            series.getDataLabels().setShowValue(true);
+          }
+          ```
   - name: setTextOrientation(textOrientation)
     uid: ExcelScript!ExcelScript.ChartDataLabels#setTextOrientation:member(1)
     package: ExcelScript!

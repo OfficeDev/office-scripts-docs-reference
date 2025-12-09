@@ -4,7 +4,27 @@ uid: ExcelScript!ExcelScript.ChartTitle:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartTitle
 summary: Represents a chart title object of a chart.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample accesses and customizes the chart title.
+   * This assumes the active worksheet has a chart.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the active worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Customize the title.
+    const title = chart.getTitle();
+    title.setText("Quarterly Sales by Product");
+    title.setVisible(true);
+  }
+  ```
 
 isPreview: false
 isDeprecated: false
@@ -376,7 +396,25 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the chart title text.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the chart title.
+            chart.getTitle().setText("Quarterly Sales by Product");
+          }
+          ```
   - name: setTextOrientation(textOrientation)
     uid: ExcelScript!ExcelScript.ChartTitle#setTextOrientation:member(1)
     package: ExcelScript!

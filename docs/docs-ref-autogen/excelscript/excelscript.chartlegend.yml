@@ -4,7 +4,27 @@ uid: ExcelScript!ExcelScript.ChartLegend:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartLegend
 summary: Represents the legend in a chart.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample configures the chart legend.
+   * This assumes the active worksheet has a chart.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the active worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Configure the legend.
+    const legend = chart.getLegend();
+    legend.setPosition(ExcelScript.ChartLegendPosition.bottom);
+    legend.setVisible(true);
+  }
+  ```
 
 isPreview: false
 isDeprecated: false
@@ -241,7 +261,25 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.ChartLegendPosition:enum" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the legend position on a chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Position the legend on the right side.
+            chart.getLegend().setPosition(ExcelScript.ChartLegendPosition.right);
+          }
+          ```
   - name: setShowShadow(showShadow)
     uid: ExcelScript!ExcelScript.ChartLegend#setShowShadow:member(1)
     package: ExcelScript!
@@ -295,7 +333,25 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample hides the chart legend.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Hide the legend.
+            chart.getLegend().setVisible(false);
+          }
+          ```
   - name: setWidth(width)
     uid: ExcelScript!ExcelScript.ChartLegend#setWidth:member(1)
     package: ExcelScript!

@@ -536,6 +536,48 @@
         series.setOverlap(25);
       });
     }
+'ExcelScript.Chart#getTitle:member(1)':
+  - |-
+    /**
+     * This sample sets the title text for an existing chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the chart title.
+      chart.getTitle().setText("Quarterly Sales by Product");
+    }
+'ExcelScript.Chart#setHeight:member(1)':
+  - |-
+    /**
+     * This sample sets the height of an existing chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the chart height to 300 points.
+      chart.setHeight(300);
+    }
+'ExcelScript.Chart#setLeft:member(1)':
+  - |-
+    /**
+     * This sample sets the left position of an existing chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the left position to 50 points from the left edge.
+      chart.setLeft(50);
+    }
 'ExcelScript.Chart#setName:member(1)':
   - |-
     /**
@@ -590,6 +632,294 @@
       // Place the chart over the range "F1:L13".
       chart.setPosition("F1", "L13");
     }
+'ExcelScript.Chart#setTop:member(1)':
+  - |-
+    /**
+     * This sample sets the top position of an existing chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the top position to 100 points from the top edge.
+      chart.setTop(100);
+    }
+'ExcelScript.Chart#setWidth:member(1)':
+  - |-
+    /**
+     * This sample sets the width of an existing chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the chart width to 500 points.
+      chart.setWidth(500);
+    }
+'ExcelScript.ChartAxes:interface':
+  - |-
+    /**
+     * This sample gets the chart axes and customizes them.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Access and customize the axes.
+      const axes = chart.getAxes();
+      axes.getValueAxis().setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+      axes.getCategoryAxis().setVisible(true);
+    }
+'ExcelScript.ChartAxes#getCategoryAxis:member(1)':
+  - |-
+    /**
+     * This sample gets and customizes the category axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Get and customize the category axis.
+      const categoryAxis = chart.getAxes().getCategoryAxis();
+      categoryAxis.setTickLabelPosition(ExcelScript.ChartAxisTickLabelPosition.low);
+    }
+'ExcelScript.ChartAxes#getValueAxis:member(1)':
+  - |-
+    /**
+     * This sample gets and customizes the value axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Get and customize the value axis.
+      const valueAxis = chart.getAxes().getValueAxis();
+      valueAxis.setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+      valueAxis.setMinimum(40000);
+      valueAxis.setMaximum(60000);
+    }
+'ExcelScript.ChartAxis:interface':
+  - |-
+    /**
+     * This sample customizes the value axis of a chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Customize the value axis.
+      const valueAxis = chart.getAxes().getValueAxis();
+      valueAxis.setMinimum(40000);
+      valueAxis.setMaximum(60000);
+      valueAxis.setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+    }
+'ExcelScript.ChartAxis#getMajorGridlines:member(1)':
+  - |-
+    /**
+     * This sample customizes the gridline color on a chart's value axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the gridline color to gray.
+      chart.getAxes().getValueAxis().getMajorGridlines().getFormat().getLine().setColor("gray");
+    }
+'ExcelScript.ChartAxis#setDisplayUnit:member(1)':
+  - |-
+    /**
+     * This sample sets the display unit of the value axis to thousands.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the value axis to display in thousands.
+      chart.getAxes().getValueAxis().setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+    }
+'ExcelScript.ChartAxis#setMaximum:member(1)':
+  - |-
+    /**
+     * This sample sets the maximum value on the value axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the maximum value to 10.
+      chart.getAxes().getValueAxis().setMaximum(10);
+    }
+'ExcelScript.ChartAxis#setMinimum:member(1)':
+  - |-
+    /**
+     * This sample sets the minimum value on the value axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the minimum value to 145.
+      chart.getAxes().getValueAxis().setMinimum(145);
+    }
+'ExcelScript.ChartAxis#setReversePlotOrder:member(1)':
+  - |-
+    /**
+     * This sample reverses the plot order of the category axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the category axis to reverse the plot order.
+      chart.getAxes().getCategoryAxis().setReversePlotOrder(true);
+    }
+'ExcelScript.ChartAxis#setTickLabelPosition:member(1)':
+  - |-
+    /**
+     * This sample sets the tick label position on the category axis.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the tick label position to low.
+      chart.getAxes().getCategoryAxis().setTickLabelPosition(
+        ExcelScript.ChartAxisTickLabelPosition.low
+      );
+    }
+'ExcelScript.ChartDataLabels:interface':
+  - |-
+    /**
+     * This sample configures data labels on a chart series.
+     * This assumes the active worksheet has a pie chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Configure the data labels.
+      const series = chart.getSeries()[0];
+      const dataLabels = series.getDataLabels();
+      dataLabels.setShowPercentage(true);
+      dataLabels.setShowSeriesName(false);
+      dataLabels.setShowCategoryName(false);
+      dataLabels.setShowValue(false);
+    }
+'ExcelScript.ChartDataLabels#setPosition:member(1)':
+  - |-
+    /**
+     * This sample sets the position of data labels.
+     * This assumes the active worksheet has a chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the data label position to best fit.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setPosition(ExcelScript.ChartDataLabelPosition.bestFit);
+    }
+'ExcelScript.ChartDataLabels#setShowCategoryName:member(1)':
+  - |-
+    /**
+     * This sample shows category names in data labels.
+     * This assumes the active worksheet has a chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Show category names in the data labels.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setShowCategoryName(true);
+    }
+'ExcelScript.ChartDataLabels#setShowLeaderLines:member(1)':
+  - |-
+    /**
+     * This sample enables leader lines for data labels.
+     * This assumes the active worksheet has a chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Enable leader lines.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setShowLeaderLines(true);
+    }
+'ExcelScript.ChartDataLabels#setShowPercentage:member(1)':
+  - |-
+    /**
+     * This sample shows percentages in data labels.
+     * This assumes the active worksheet has a pie chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Show percentages in the data labels.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setShowPercentage(true);
+    }
+'ExcelScript.ChartDataLabels#setShowSeriesName:member(1)':
+  - |-
+    /**
+     * This sample controls series name visibility in data labels.
+     * This assumes the active worksheet has a chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Hide the series name in data labels.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setShowSeriesName(false);
+    }
+'ExcelScript.ChartDataLabels#setShowValue:member(1)':
+  - |-
+    /**
+     * This sample shows values in data labels.
+     * This assumes the active worksheet has a chart with data labels enabled.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Show values in the data labels.
+      const series = chart.getSeries()[0];
+      series.getDataLabels().setShowValue(true);
+    }
 'ExcelScript.ChartErrorBarsType:enum':
   - |-
     /**
@@ -609,6 +939,80 @@
         series.getYErrorBars().setType(ExcelScript.ChartErrorBarsType.stError);
         series.getYErrorBars().setVisible(true);
       });
+    }
+'ExcelScript.ChartFill:interface':
+  - |-
+    /**
+     * This sample sets the fill color of a chart series.
+     * This assumes the active worksheet has a stock chart (e.g., Volume-High-Low-Close).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the fill color for the first series (volume).
+      const volumeSeries = chart.getSeries()[0];
+      volumeSeries.getFormat().getFill().setSolidColor("#B0C4DE");
+    }
+'ExcelScript.ChartFill#setSolidColor:member(1)':
+  - |-
+    /**
+     * This sample sets a solid fill color for a chart series.
+     * This assumes the active worksheet has a stock chart (e.g., Volume-Open-High-Low-Close).
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the fill color to light steel blue for the first series.
+      const volumeSeries = chart.getSeries()[0];
+      volumeSeries.getFormat().getFill().setSolidColor("#B0C4DE");
+    }
+'ExcelScript.ChartLegend:interface':
+  - |-
+    /**
+     * This sample configures the chart legend.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Configure the legend.
+      const legend = chart.getLegend();
+      legend.setPosition(ExcelScript.ChartLegendPosition.bottom);
+      legend.setVisible(true);
+    }
+'ExcelScript.ChartLegend#setPosition:member(1)':
+  - |-
+    /**
+     * This sample sets the legend position on a chart.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Position the legend on the right side.
+      chart.getLegend().setPosition(ExcelScript.ChartLegendPosition.right);
+    }
+'ExcelScript.ChartLegend#setVisible:member(1)':
+  - |-
+    /**
+     * This sample hides the chart legend.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Hide the legend.
+      chart.getLegend().setVisible(false);
     }
 'ExcelScript.ChartPlotBy:enum':
   - |-
@@ -660,6 +1064,78 @@
       secondSeries.setXAxisValues(headerRange);
       secondSeries.setValues(secondSeriesRange);
     }
+'ExcelScript.ChartSeries#delete:member(1)':
+  - |-
+    /**
+     * This sample creates a bubble chart and manually adds each series.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      
+      // Add sample data.
+      const data = [
+        ["Product", "Price ($)", "Quality Score", "Market Share"],
+        ["Keyboards", 85, 88, 25],
+        ["Mice", 120, 80, 20]
+      ];
+      const dataRange = sheet.getRange("A1:D3");
+      dataRange.setValues(data);
+      
+      // Create bubble chart - start with headers to create empty chart.
+      const chart = sheet.addChart(
+        ExcelScript.ChartType.bubble,
+        sheet.getRange("B1:D1")
+      );
+      chart.setPosition("A5");
+      chart.getTitle().setText("Product Analysis");
+      
+      // Remove any default series that were created.
+      while (chart.getSeries().length > 0) {
+        chart.getSeries()[0].delete();
+      }
+      
+      // Add each product as its own series.
+      for (let i = 2; i <= 3; i++) {
+        const productName = sheet.getRange(`A${i}`).getValue() as string;
+        const newSeries = chart.addChartSeries(productName);
+        newSeries.setXAxisValues(sheet.getRange(`B${i}:B${i}`));
+        newSeries.setValues(sheet.getRange(`C${i}:C${i}`));
+        newSeries.setBubbleSizes(sheet.getRange(`D${i}:D${i}`));
+      }
+    }
+'ExcelScript.ChartSeries#getDataLabels:member(1)':
+  - |-
+    /**
+     * This sample accesses and configures data labels for a series.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Configure data labels via series.
+      const series = chart.getSeries()[0];
+      const dataLabels = series.getDataLabels();
+      dataLabels.setShowPercentage(true);
+      dataLabels.setShowValue(false);
+    }
+'ExcelScript.ChartSeries#getFormat:member(1)':
+  - |-
+    /**
+     * This sample gets the series format to customize appearance.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Customize the series color.
+      const series = chart.getSeries()[0];
+      const format = series.getFormat();
+      format.getFill().setSolidColor("#B0C4DE");
+    }
 'ExcelScript.ChartSeries#getName:member(1)':
   - |-
     /**
@@ -698,6 +1174,105 @@
         series.getYErrorBars().setVisible(true);
       });
     }
+'ExcelScript.ChartSeries#setBubbleSizes:member(1)':
+  - |-
+    /**
+     * This sample sets bubble sizes for a bubble chart series.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      
+      // Add sample data.
+      const data = [
+        ["Product", "Price ($)", "Quality Score", "Market Share"],
+        ["Product A", 85, 88, 25]
+      ];
+      const dataRange = sheet.getRange("A1:D2");
+      dataRange.setValues(data);
+      
+      // Create bubble chart.
+      const chart = sheet.addChart(
+        ExcelScript.ChartType.bubble,
+        sheet.getRange("B1:D1")
+      );
+      chart.setPosition("A4");
+      
+      // Remove default series.
+      while (chart.getSeries().length > 0) {
+        chart.getSeries()[0].delete();
+      }
+      
+      // Add series with bubble sizes.
+      const newSeries = chart.addChartSeries("Product A");
+      newSeries.setXAxisValues(sheet.getRange("B2:B2"));
+      newSeries.setValues(sheet.getRange("C2:C2"));
+      newSeries.setBubbleSizes(sheet.getRange("D2:D2"));
+    }
+'ExcelScript.ChartSeries#setHasDataLabels:member(1)':
+  - |-
+    /**
+     * This sample enables data labels on a chart series.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Enable data labels on the series.
+      const series = chart.getSeries()[0];
+      series.setHasDataLabels(true);
+    }
+'ExcelScript.ChartSeries#setMarkerSize:member(1)':
+  - |-
+    /**
+     * This sample sets the marker size for a line chart series.
+     * This assumes the active worksheet has a line chart with markers.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the marker size for all series.
+      const series = chart.getSeries();
+      series.forEach((s) => {
+        s.setMarkerSize(8);
+      });
+    }
+'ExcelScript.ChartSeries#setMarkerStyle:member(1)':
+  - |-
+    /**
+     * This sample sets the marker style for a line chart series.
+     * This assumes the active worksheet has a line chart with markers.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the marker style to circle.
+      const series = chart.getSeries()[0];
+      series.setMarkerStyle(ExcelScript.ChartMarkerStyle.circle);
+    }
+'ExcelScript.ChartSeries#setName:member(1)':
+  - |-
+    /**
+     * This sample sets the name of chart series.
+     * This assumes the active worksheet has a chart with at least 4 series.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set names for all series.
+      const seriesCollection = chart.getSeries();
+      seriesCollection[0].setName("Solar");
+      seriesCollection[1].setName("Wind");
+      seriesCollection[2].setName("Hydro");
+      seriesCollection[3].setName("Geothermal");
+    }
 'ExcelScript.ChartSeries#setOverlap:member(1)':
   - |-
     /**
@@ -733,6 +1308,52 @@
             table.getRange(),
             ExcelScript.ChartSeriesBy.columns
         );   
+    }
+'ExcelScript.ChartSeriesFormat:interface':
+  - |-
+    /**
+     * This sample gets the series format to customize fill and line properties.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Get series format and customize the fill color.
+      const series = chart.getSeries()[0];
+      const seriesFormat = series.getFormat();
+      seriesFormat.getFill().setSolidColor("#B0C4DE");
+    }
+'ExcelScript.ChartTitle:interface':
+  - |-
+    /**
+     * This sample accesses and customizes the chart title.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Customize the title.
+      const title = chart.getTitle();
+      title.setText("Quarterly Sales by Product");
+      title.setVisible(true);
+    }
+'ExcelScript.ChartTitle#setText:member(1)':
+  - |-
+    /**
+     * This sample sets the chart title text.
+     * This assumes the active worksheet has a chart.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the first chart on the active worksheet.
+      const sheet = workbook.getActiveWorksheet();
+      const chart = sheet.getCharts()[0];
+      
+      // Set the chart title.
+      chart.getTitle().setText("Quarterly Sales by Product");
     }
 'ExcelScript.ChartType:enum':
   - |-

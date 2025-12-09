@@ -526,7 +526,25 @@ methods:
       content: 'getTitle(): ChartTitle;'
       return:
         type: <xref uid="ExcelScript!ExcelScript.ChartTitle:interface" />
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the title text for an existing chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the chart title.
+            chart.getTitle().setText("Quarterly Sales by Product");
+          }
+          ```
   - name: getTop()
     uid: ExcelScript!ExcelScript.Chart#getTop:member(1)
     package: ExcelScript!
@@ -668,7 +686,25 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the height of an existing chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the chart height to 300 points.
+            chart.setHeight(300);
+          }
+          ```
   - name: setLeft(left)
     uid: ExcelScript!ExcelScript.Chart#setLeft:member(1)
     package: ExcelScript!
@@ -688,7 +724,25 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the left position of an existing chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the left position to 50 points from the left edge.
+            chart.setLeft(50);
+          }
+          ```
   - name: setName(name)
     uid: ExcelScript!ExcelScript.Chart#setName:member(1)
     package: ExcelScript!
@@ -934,7 +988,25 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the top position of an existing chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the top position to 100 points from the top edge.
+            chart.setTop(100);
+          }
+          ```
   - name: setWidth(width)
     uid: ExcelScript!ExcelScript.Chart#setWidth:member(1)
     package: ExcelScript!
@@ -952,4 +1024,22 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the width of an existing chart.
+           * This assumes the active worksheet has a chart.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the chart width to 500 points.
+            chart.setWidth(500);
+          }
+          ```
