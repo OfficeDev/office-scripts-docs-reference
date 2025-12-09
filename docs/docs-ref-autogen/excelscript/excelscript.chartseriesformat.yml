@@ -4,7 +4,28 @@ uid: ExcelScript!ExcelScript.ChartSeriesFormat:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartSeriesFormat
 summary: Encapsulates the format properties for the chart series
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample gets the series format to customize fill and line properties.
+   * This sample assumes there's a chart on the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Get series format and customize.
+    const volumeSeries = chart.getSeries()[0];
+    const seriesFormat: ExcelScript.ChartSeriesFormat = volumeSeries.getFormat();
+    const seriesFill: ExcelScript.ChartFill = seriesFormat.getFill();
+    seriesFill.setSolidColor("#B0C4DE");
+  }
+  ```
 
 isPreview: false
 isDeprecated: false

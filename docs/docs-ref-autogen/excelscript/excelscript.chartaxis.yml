@@ -4,7 +4,28 @@ uid: ExcelScript!ExcelScript.ChartAxis:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartAxis
 summary: Represents a single axis in a chart.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample customizes the value axis of a chart.
+   * This sample assumes there's a chart on the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Customize the value axis.
+    const valueAxis: ExcelScript.ChartAxis = chart.getAxes().getValueAxis();
+    valueAxis.setMinimum(40000);
+    valueAxis.setMaximum(60000);
+    valueAxis.setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+  }
+  ```
 
 isPreview: false
 isDeprecated: false
@@ -209,7 +230,25 @@ methods:
       content: 'getMajorGridlines(): ChartGridlines;'
       return:
         type: <xref uid="ExcelScript!ExcelScript.ChartGridlines:interface" />
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample customizes the gridline color on a chart's value axis.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Customize gridline color.
+            chart.getAxes().getValueAxis().getMajorGridlines().getFormat().getLine().setColor("gray");
+          }
+          ```
   - name: getMajorTickMark()
     uid: ExcelScript!ExcelScript.ChartAxis#getMajorTickMark:member(1)
     package: ExcelScript!
@@ -715,7 +754,25 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.ChartAxisDisplayUnit:enum" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the display unit of the value axis to thousands.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the value axis to display in thousands.
+            chart.getAxes().getValueAxis().setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
+          }
+          ```
   - name: setIsBetweenCategories(isBetweenCategories)
     uid: ExcelScript!ExcelScript.ChartAxis#setIsBetweenCategories:member(1)
     package: ExcelScript!
@@ -847,7 +904,25 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the maximum value on the value axis.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the maximum value on the value axis.
+            chart.getAxes().getValueAxis().setMaximum(10);
+          }
+          ```
   - name: setMinimum(minimum)
     uid: ExcelScript!ExcelScript.ChartAxis#setMinimum:member(1)
     package: ExcelScript!
@@ -865,7 +940,25 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the minimum value on the value axis.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the minimum value on the value axis.
+            chart.getAxes().getValueAxis().setMinimum(145);
+          }
+          ```
   - name: setMinorTickMark(minorTickMark)
     uid: ExcelScript!ExcelScript.ChartAxis#setMinorTickMark:member(1)
     package: ExcelScript!
@@ -1036,7 +1129,25 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets whether to reverse the plot order of the category axis.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Don't reverse the plot order.
+            chart.getAxes().getCategoryAxis().setReversePlotOrder(false);
+          }
+          ```
   - name: setScaleType(scaleType)
     uid: ExcelScript!ExcelScript.ChartAxis#setScaleType:member(1)
     package: ExcelScript!
@@ -1120,7 +1231,27 @@ methods:
             />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the tick label position on the category axis.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set tick label position to low.
+            chart.getAxes().getCategoryAxis().setTickLabelPosition(
+              ExcelScript.ChartAxisTickLabelPosition.low
+            );
+          }
+          ```
   - name: setTickLabelSpacing(tickLabelSpacing)
     uid: ExcelScript!ExcelScript.ChartAxis#setTickLabelSpacing:member(1)
     package: ExcelScript!

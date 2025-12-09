@@ -76,7 +76,27 @@ methods:
       content: 'delete(): void;'
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample deletes a chart series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Remove any default series that were created.
+            while (chart.getSeries().length > 0) {
+              chart.getSeries()[0].delete();
+            }
+          }
+          ```
   - name: getAxisGroup()
     uid: ExcelScript!ExcelScript.ChartSeries#getAxisGroup:member(1)
     package: ExcelScript!
@@ -187,7 +207,29 @@ methods:
       content: 'getDataLabels(): ChartDataLabels;'
       return:
         type: <xref uid="ExcelScript!ExcelScript.ChartDataLabels:interface" />
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample accesses and configures data labels for a series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Configure data labels via series.
+            const series = chart.getSeries()[0];
+            series.setHasDataLabels(true);
+            const dataLabels = series.getDataLabels();
+            dataLabels.setShowPercentage(true);
+            dataLabels.setShowValue(false);
+          }
+          ```
   - name: getDimensionDataSourceString(dimension)
     uid: ExcelScript!ExcelScript.ChartSeries#getDimensionDataSourceString:member(1)
     package: ExcelScript!
@@ -330,7 +372,27 @@ methods:
       content: 'getFormat(): ChartSeriesFormat;'
       return:
         type: <xref uid="ExcelScript!ExcelScript.ChartSeriesFormat:interface" />
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample gets the series format to customize appearance.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Customize volume series color.
+            const volumeSeries = chart.getSeries()[0];
+            const format = volumeSeries.getFormat();
+            format.getFill().setSolidColor("#B0C4DE");
+          }
+          ```
   - name: getGapWidth()
     uid: ExcelScript!ExcelScript.ChartSeries#getGapWidth:member(1)
     package: ExcelScript!
@@ -950,7 +1012,28 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets bubble sizes for a bubble chart series.
+           * This sample assumes there's a bubble chart on the current worksheet with data including bubble sizes.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Add series with bubble sizes.
+            const newSeries = chart.addChartSeries("Product A");
+            newSeries.setXAxisValues(sheet.getRange("B2:B2"));
+            newSeries.setValues(sheet.getRange("C2:C2"));
+            newSeries.setBubbleSizes(sheet.getRange("D2:D2"));
+          }
+          ```
   - name: setChartType(chartType)
     uid: ExcelScript!ExcelScript.ChartSeries#setChartType:member(1)
     package: ExcelScript!
@@ -1279,7 +1362,27 @@ methods:
           type: boolean
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample enables data labels on a chart series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Enable data labels.
+            const series = chart.getSeries()[0];
+            series.setHasDataLabels(true);
+            series.getDataLabels().setShowPercentage(true);
+          }
+          ```
   - name: setInvertColor(invertColor)
     uid: ExcelScript!ExcelScript.ChartSeries#setInvertColor:member(1)
     package: ExcelScript!
@@ -1374,7 +1477,28 @@ methods:
           type: number
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the marker size for a line chart series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Customize marker size.
+            const series = chart.getSeries();
+            series.forEach((s) => {
+              s.setMarkerSize(8);
+            });
+          }
+          ```
   - name: setMarkerStyle(markerStyle)
     uid: ExcelScript!ExcelScript.ChartSeries#setMarkerStyle:member(1)
     package: ExcelScript!
@@ -1394,7 +1518,26 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.ChartMarkerStyle:enum" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the marker style for a line chart series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set marker style to circle.
+            const series = chart.getSeries()[0];
+            series.setMarkerStyle(ExcelScript.ChartMarkerStyle.circle);
+          }
+          ```
   - name: setName(name)
     uid: ExcelScript!ExcelScript.ChartSeries#setName:member(1)
     package: ExcelScript!
@@ -1414,7 +1557,29 @@ methods:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets the name of chart series.
+           * This sample assumes there's a chart on the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Label the series with energy source names.
+            const seriesCollection = chart.getSeries();
+            seriesCollection[0].setName("Solar");
+            seriesCollection[1].setName("Wind");
+            seriesCollection[2].setName("Hydro");
+            seriesCollection[3].setName("Geothermal");
+          }
+          ```
   - name: setOverlap(overlap)
     uid: ExcelScript!ExcelScript.ChartSeries#setOverlap:member(1)
     package: ExcelScript!

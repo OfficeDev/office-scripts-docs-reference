@@ -4,7 +4,27 @@ uid: ExcelScript!ExcelScript.ChartFill:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartFill
 summary: Represents the fill formatting for a chart element.
-remarks: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample sets the fill color of a chart series.
+   * This sample assumes there's a chart on the current worksheet.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Set the fill color for the first series.
+    const series = chart.getSeries()[0];
+    const seriesFill: ExcelScript.ChartFill = series.getFormat().getFill();
+    seriesFill.setSolidColor("#B0C4DE");
+  }
+  ```
 
 isPreview: false
 isDeprecated: false
