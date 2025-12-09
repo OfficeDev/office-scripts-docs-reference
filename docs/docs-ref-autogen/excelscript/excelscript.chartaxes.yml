@@ -12,15 +12,15 @@ remarks: |-
   ```TypeScript
   /**
    * This sample gets the chart axes and customizes them.
-   * This sample assumes there's a chart on the current worksheet.
+   * This assumes the active worksheet has a chart.
    */
   function main(workbook: ExcelScript.Workbook) {
-    // Get the first chart on the current worksheet.
+    // Get the first chart on the active worksheet.
     const sheet = workbook.getActiveWorksheet();
     const chart = sheet.getCharts()[0];
     
-    // Access and customize axes.
-    const axes: ExcelScript.ChartAxes = chart.getAxes();
+    // Access and customize the axes.
+    const axes = chart.getAxes();
     axes.getValueAxis().setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
     axes.getCategoryAxis().setVisible(true);
   }
@@ -51,14 +51,14 @@ methods:
           ```TypeScript
           /**
            * This sample gets and customizes the category axis.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Customize category axis.
+            // Get and customize the category axis.
             const categoryAxis = chart.getAxes().getCategoryAxis();
             categoryAxis.setTickLabelPosition(ExcelScript.ChartAxisTickLabelPosition.low);
           }
@@ -123,14 +123,14 @@ methods:
           ```TypeScript
           /**
            * This sample gets and customizes the value axis.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Customize value axis.
+            // Get and customize the value axis.
             const valueAxis = chart.getAxes().getValueAxis();
             valueAxis.setDisplayUnit(ExcelScript.ChartAxisDisplayUnit.thousands);
             valueAxis.setMinimum(40000);

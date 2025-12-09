@@ -83,17 +83,40 @@ methods:
 
           ```TypeScript
           /**
-           * This sample deletes a chart series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This sample creates a bubble chart and manually adds each series.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
             const sheet = workbook.getActiveWorksheet();
-            const chart = sheet.getCharts()[0];
+            
+            // Add sample data.
+            const data = [
+              ["Product", "Price ($)", "Quality Score", "Market Share"],
+              ["Keyboards", 85, 88, 25],
+              ["Mice", 120, 80, 20]
+            ];
+            const dataRange = sheet.getRange("A1:D3");
+            dataRange.setValues(data);
+            
+            // Create bubble chart - start with headers to create empty chart.
+            const chart = sheet.addChart(
+              ExcelScript.ChartType.bubble,
+              sheet.getRange("B1:D1")
+            );
+            chart.setPosition("A5");
+            chart.getTitle().setText("Product Analysis");
             
             // Remove any default series that were created.
             while (chart.getSeries().length > 0) {
               chart.getSeries()[0].delete();
+            }
+            
+            // Add each product as its own series.
+            for (let i = 2; i <= 3; i++) {
+              const productName = sheet.getRange(`A${i}`).getValue() as string;
+              const newSeries = chart.addChartSeries(productName);
+              newSeries.setXAxisValues(sheet.getRange(`B${i}:B${i}`));
+              newSeries.setValues(sheet.getRange(`C${i}:C${i}`));
+              newSeries.setBubbleSizes(sheet.getRange(`D${i}:D${i}`));
             }
           }
           ```
@@ -215,16 +238,15 @@ methods:
           ```TypeScript
           /**
            * This sample accesses and configures data labels for a series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
             // Configure data labels via series.
             const series = chart.getSeries()[0];
-            series.setHasDataLabels(true);
             const dataLabels = series.getDataLabels();
             dataLabels.setShowPercentage(true);
             dataLabels.setShowValue(false);
@@ -380,16 +402,16 @@ methods:
           ```TypeScript
           /**
            * This sample gets the series format to customize appearance.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Customize volume series color.
-            const volumeSeries = chart.getSeries()[0];
-            const format = volumeSeries.getFormat();
+            // Customize the series color.
+            const series = chart.getSeries()[0];
+            const format = series.getFormat();
             format.getFill().setSolidColor("#B0C4DE");
           }
           ```
@@ -1020,12 +1042,29 @@ methods:
           ```TypeScript
           /**
            * This sample sets bubble sizes for a bubble chart series.
-           * This sample assumes there's a bubble chart on the current worksheet with data including bubble sizes.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
             const sheet = workbook.getActiveWorksheet();
-            const chart = sheet.getCharts()[0];
+            
+            // Add sample data.
+            const data = [
+              ["Product", "Price ($)", "Quality Score", "Market Share"],
+              ["Product A", 85, 88, 25]
+            ];
+            const dataRange = sheet.getRange("A1:D2");
+            dataRange.setValues(data);
+            
+            // Create bubble chart.
+            const chart = sheet.addChart(
+              ExcelScript.ChartType.bubble,
+              sheet.getRange("B1:D1")
+            );
+            chart.setPosition("A4");
+            
+            // Remove default series.
+            while (chart.getSeries().length > 0) {
+              chart.getSeries()[0].delete();
+            }
             
             // Add series with bubble sizes.
             const newSeries = chart.addChartSeries("Product A");
@@ -1370,17 +1409,16 @@ methods:
           ```TypeScript
           /**
            * This sample enables data labels on a chart series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Enable data labels.
+            // Enable data labels on the series.
             const series = chart.getSeries()[0];
             series.setHasDataLabels(true);
-            series.getDataLabels().setShowPercentage(true);
           }
           ```
   - name: setInvertColor(invertColor)
@@ -1485,14 +1523,14 @@ methods:
           ```TypeScript
           /**
            * This sample sets the marker size for a line chart series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a line chart with markers.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Customize marker size.
+            // Set the marker size for all series.
             const series = chart.getSeries();
             series.forEach((s) => {
               s.setMarkerSize(8);
@@ -1526,14 +1564,14 @@ methods:
           ```TypeScript
           /**
            * This sample sets the marker style for a line chart series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a line chart with markers.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Set marker style to circle.
+            // Set the marker style to circle.
             const series = chart.getSeries()[0];
             series.setMarkerStyle(ExcelScript.ChartMarkerStyle.circle);
           }
@@ -1565,14 +1603,14 @@ methods:
           ```TypeScript
           /**
            * This sample sets the name of chart series.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart with multiple series.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Label the series with energy source names.
+            // Set names for all series.
             const seriesCollection = chart.getSeries();
             seriesCollection[0].setName("Solar");
             seriesCollection[1].setName("Wind");

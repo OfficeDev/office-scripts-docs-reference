@@ -12,15 +12,15 @@ remarks: |-
   ```TypeScript
   /**
    * This sample configures the chart legend.
-   * This sample assumes there's a chart on the current worksheet.
+   * This assumes the active worksheet has a chart.
    */
   function main(workbook: ExcelScript.Workbook) {
-    // Get the first chart on the current worksheet.
+    // Get the first chart on the active worksheet.
     const sheet = workbook.getActiveWorksheet();
     const chart = sheet.getCharts()[0];
     
-    // Configure legend.
-    const legend: ExcelScript.ChartLegend = chart.getLegend();
+    // Configure the legend.
+    const legend = chart.getLegend();
     legend.setPosition(ExcelScript.ChartLegendPosition.bottom);
     legend.setVisible(true);
   }
@@ -269,14 +269,14 @@ methods:
           ```TypeScript
           /**
            * This sample sets the legend position on a chart.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
-            // Position legend on the right.
+            // Position the legend on the right side.
             chart.getLegend().setPosition(ExcelScript.ChartLegendPosition.right);
           }
           ```
@@ -341,10 +341,10 @@ methods:
           ```TypeScript
           /**
            * This sample hides the chart legend.
-           * This sample assumes there's a chart on the current worksheet.
+           * This assumes the active worksheet has a chart.
            */
           function main(workbook: ExcelScript.Workbook) {
-            // Get the first chart on the current worksheet.
+            // Get the first chart on the active worksheet.
             const sheet = workbook.getActiveWorksheet();
             const chart = sheet.getCharts()[0];
             
