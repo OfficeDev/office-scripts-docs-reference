@@ -2,7 +2,7 @@
 title: Office Scripts API reference 
 description: An overview of the Office Scripts JavaScript APIs.
 ms.topic: overview
-ms.date: 10/01/2022
+ms.date: 12/04/2025
 ---
 
 # Office Scripts API reference
@@ -11,6 +11,10 @@ The Office Scripts API lets you automate common tasks in Excel. Use this referen
 
 > [!NOTE]
 > If you're looking for the JavaScript APIs for developing Office Add-ins, visit the [Office Add-ins JavaScript API reference](/javascript/api/overview?view=excel-js-preview&preserve-view=true).
+
+## Namespaces
+
+Office Scripts APIs use two namespaces: [OfficeScript](/javascript/api/office-scripts/officescript) for APIs that are not connected to an Excel workbook, and [ExcelScript](/javascript/api/office-scripts/excelscript) for APIs that work with Excel workbooks.
 
 ## Common classes
 
