@@ -1,123 +1,93 @@
 export declare namespace OfficeScript {
     /**
      * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
-     * @beta
+     * This API must be called before other APIs.
      * @param filename - The file name of the copied and saved file. The file name must end with ".xlsx".
-     
-     * **Throws**:  `InvalidExtensionError` The error thrown if the file name doesn't end with ".xlsx".
-     
-     * **Throws**:  `SaveCopyAsFileMayAlreadyExistError` The error thrown if the file name of the copy already exists.
-     
-     * **Throws**:  `SaveCopyAsErrorInvalidCharacters` The error thrown if the file name contains invalid characters.
-     
-     * **Throws**:  `SaveCopyAsFileNotOnOneDriveError` The error thrown if the document is not saved to OneDrive.
-     
-     * **Throws**:  `ExternalApiTimeout` The error thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
+     * @throws `SaveCopyAsInvalidExtension` Thrown if the file name doesn't end with ".xlsx".
+     * @throws `SaveCopyAsMustBeCalledFirst` Thrown if this method is called after other APIs.
+     * @throws `SaveCopyAsFileMayAlreadyExist` Thrown if the file name of the copy already exists.
+     * @throws `SaveCopyAsInvalidCharacters` Thrown if the file name contains invalid characters.
+     * @throws `SaveCopyAsFileNotOnOneDrive` Thrown if the document is not saved to OneDrive.
+     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
      */
     export function saveCopyAs(filename: string): void;
 
     /**
      * Converts the document to a PDF and returns the text encoding of it.
-     * Note: Recent changes made to the workbook in Excel on the web, through Office Scripts or the Excel UI, may not be captured in the PDF.
-     * @beta
      * @returns The content of the workbook as a string, in PDF format.
-     
-     * **Throws**:  `ConvertToPdfEmptyWorkbook` The error thrown if the document is empty.
-     
-     * **Throws**:  `ConvertToPdfProtectedWorkbook` The error thrown if the document is protected.
-     
-     * **Throws**:  `ExternalApiTimeout` The error thrown if the API reaches the timeout limit of 30 seconds.
+     * @throws `ConvertToPdfEmptyWorkbook` Thrown if the document is empty.
+     * @throws `ConvertToPdfProtectedWorkbook` Thrown if the document is protected.
+     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
     export function convertToPdf(): string;
 
     /**
      * Downloads a specified file to the default download location specified by the local machine.
-     * @beta
      * @param fileProperties - The file to download.
-     
-     * **Throws**:  `DownloadFileNameMissing` The error thrown if the name is empty.
-     
-     * **Throws**:  `DownloadFileContentMissing` The error thrown if the content is empty.
-     
-     * **Throws**:  `DownloadFileInvalidExtension` The error thrown if the file name extension is not ".txt" or ".pdf".
-     
-     * **Throws**:  `ExternalApiTimeout` The error thrown if the API reaches the timeout limit of 30 seconds.
+     * @throws `DownloadFileNameMissing` Thrown if the name is empty.
+     * @throws `DownloadFileContentMissing` Thrown if the content is empty.
+     * @throws `DownloadFileInvalidExtension` Thrown if the file name extension is not ".txt" or ".pdf".
+     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
-    export function downloadFile(fileProperties: FileProperties): void;
+    export function downloadFile(fileProperties: DownloadFileProperties): void;
 
     /**
      * The file to download.
-     * @beta
      */
-    export interface FileProperties {
+    export interface DownloadFileProperties {
         /**
          * The name of the file once downloaded. The file extension determines the type of the file. Supported extensions are ".txt" and ".pdf". Default is ".txt".
-         * @beta
          */
         name: string;
 
         /**
          * The content of the file.
-         * @beta
          */
         content: string;
     }
 
     /**
      * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
-     * @beta
      * @param message - The properties that define the content and recipients of the email.
-     
-     * **Throws**:  `SendMailErrorMaxCalls` The error thrown if the maximum number of API calls is exceeded. The limit is 100 API calls.
-     
-     * **Throws**:  `SendMailNoRecipient` The error thrown if no recipient is specified.
-     
-     * **Throws**:  `SendMailInvalidEmail` The error thrown if an invalid email address is provided.
-     
-     * **Throws**:  `SendMailExtensionNotSupported` The error thrown if the attachment name extension is not ".txt" or ".pdf".
-     
-     * **Throws**:  `ExternalApiTimeout` The error thrown if the API reaches the timeout limit of 30 seconds.
+     * @throws `SendMailMaxCalls` Thrown if the maximum number of API calls is exceeded. The limit is 100 API calls.
+     * @throws `SendMailNoRecipient` Thrown if no recipient is specified.
+     * @throws `SendMailInvalidEmail` Thrown if an invalid email address is provided.
+     * @throws `SendMailExtensionNotSupported` Thrown if the attachment name extension is not ".txt" or ".pdf".
+     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
     export function sendMail(mailProperties: MailProperties): void;
 
     /**
      * The type of the content. Possible values are text or HTML.
-     * @beta
      */
     enum EmailContentType {
         /**
          * The email message body is in HTML format.
-         * @beta
          */
         html = "html",
 
         /**
          * The email message body is in plain text format.
-         * @beta
          */
         text = "text",
     }
 
     /**
      * The importance value of the email. Corresponds to "high", "normal", and "low" importance values available in the Outlook UI.
-     * @beta
      */
     enum EmailImportance {
         /**
          * Email is marked as low importance.
-         * @beta
          */
         low = "low",
 
         /**
          * Email does not have any importance specified.
-         * @beta
          */
         normal = "normal",
 
         /**
          * Email is marked as high importance.
-         * @beta
          */
         high = "high",
     }
@@ -126,83 +96,69 @@ export declare namespace OfficeScript {
      * The attachment to send with the email.
      * A value must be specified for at least one of the `to`, `cc`, or `bcc` parameters.
      * If no recipient is specified, the following error is shown: "The message has no recipient. Please enter a value for at least one of the "to", "cc", or "bcc" parameters."
-     * @beta
      */
     export interface EmailAttachment {
         /**
          * The text that is displayed below the icon representing the attachment. This string doesn't need to match the file name.
-         * @beta
          */
         name: string;
         /**
          * The contents of the file.
-         * @beta
          */
         content: string;
     }
 
     /**
      * The properties of the email to be sent.
-     * @beta
      */
     export interface MailProperties {
         /**
          * The subject of the email. Optional.
-         * @beta
          */
         subject?: string;
 
         /**
          * The content of the email. Optional.
-         * @beta
          */
         content?: string;
 
         /**
          * The type of the content in the email. Possible values are text or HTML. Optional.
-         * @beta
          */
         contentType?: EmailContentType;
 
         /**
          * The importance of the email. The possible values are `low`, `normal`, and `high`. Default value is `normal`. Optional.
-         * @beta
          */
         importance?: EmailImportance;
 
         /**
          * The direct recipient or recipients of the email. Optional.
-         * @beta
          */
         to?: string | string[];
 
         /**
          * The carbon copy (CC) recipient or recipients of the email. Optional.
-         * @beta
          */
         cc?: string | string[];
 
         /**
          * The blind carbon copy (BCC) recipient or recipients of the email. Optional.
-         * @beta
          */
         bcc?: string | string[];
 
         /**
          * A file (such as a text file or Excel workbook) attached to a message. Optional.
-         * @beta
          */
         attachments?: EmailAttachment | EmailAttachment[];
     }
 
     /**
      * Metadata about the script.
-     * @beta
      */
     export namespace Metadata {
         /**
          * Get the name of the currently running script.
-         * @beta
          */
         export function getScriptName(): string;
     }
