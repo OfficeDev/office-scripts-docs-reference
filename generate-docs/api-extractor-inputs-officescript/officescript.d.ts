@@ -3,31 +3,44 @@ export declare namespace OfficeScript {
      * Saves a copy of the current workbook in OneDrive, in the same directory as the original file, with the specified file name.
      * This API must be called before other APIs.
      * @param filename - The file name of the copied and saved file. The file name must end with ".xlsx".
-     * @throws `SaveCopyAsInvalidExtension` Thrown if the file name doesn't end with ".xlsx".
-     * @throws `SaveCopyAsMustBeCalledFirst` Thrown if this method is called after other APIs.
-     * @throws `SaveCopyAsFileMayAlreadyExist` Thrown if the file name of the copy already exists.
-     * @throws `SaveCopyAsInvalidCharacters` Thrown if the file name contains invalid characters.
-     * @throws `SaveCopyAsFileNotOnOneDrive` Thrown if the document is not saved to OneDrive.
-     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
+     
+     * **Throws**:  `SaveCopyAsInvalidExtension` Thrown if the file name doesn't end with ".xlsx".
+     
+     * **Throws**:  `SaveCopyAsMustBeCalledFirst` Thrown if this method is called after other APIs.
+     
+     * **Throws**:  `SaveCopyAsFileMayAlreadyExist` Thrown if the file name of the copy already exists.
+     
+     * **Throws**:  `SaveCopyAsInvalidCharacters` Thrown if the file name contains invalid characters.
+     
+     * **Throws**:  `SaveCopyAsFileNotOnOneDrive` Thrown if the document is not saved to OneDrive.
+     
+     * **Throws**:  `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds. Note that the copy may still be created.
      */
     export function saveCopyAs(filename: string): void;
 
     /**
      * Converts the document to a PDF and returns the text encoding of it.
      * @returns The content of the workbook as a string, in PDF format.
-     * @throws `ConvertToPdfEmptyWorkbook` Thrown if the document is empty.
-     * @throws `ConvertToPdfProtectedWorkbook` Thrown if the document is protected.
-     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
+     
+     * **Throws**:  `ConvertToPdfEmptyWorkbook` Thrown if the document is empty.
+     
+     * **Throws**:  `ConvertToPdfProtectedWorkbook` Thrown if the document is protected.
+     
+     * **Throws**:  `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
     export function convertToPdf(): string;
 
     /**
      * Downloads a specified file to the default download location specified by the local machine.
      * @param fileProperties - The file to download.
-     * @throws `DownloadFileNameMissing` Thrown if the name is empty.
-     * @throws `DownloadFileContentMissing` Thrown if the content is empty.
-     * @throws `DownloadFileInvalidExtension` Thrown if the file name extension is not ".txt" or ".pdf".
-     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
+     
+     * **Throws**:  `DownloadFileNameMissing` Thrown if the name is empty.
+     
+     * **Throws**:  `DownloadFileContentMissing` Thrown if the content is empty.
+     
+     * **Throws**:  `DownloadFileInvalidExtension` Thrown if the file name extension is not ".txt" or ".pdf".
+     
+     * **Throws**:  `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
     export function downloadFile(fileProperties: DownloadFileProperties): void;
 
@@ -49,11 +62,16 @@ export declare namespace OfficeScript {
     /**
      * Send an email with an Office Script. Use `MailProperties` to specify the content and recipients of the email.
      * @param message - The properties that define the content and recipients of the email.
-     * @throws `SendMailMaxCalls` Thrown if the maximum number of API calls is exceeded. The limit is 100 API calls.
-     * @throws `SendMailNoRecipient` Thrown if no recipient is specified.
-     * @throws `SendMailInvalidEmail` Thrown if an invalid email address is provided.
-     * @throws `SendMailExtensionNotSupported` Thrown if the attachment name extension is not ".txt" or ".pdf".
-     * @throws `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
+     
+     * **Throws**:  `SendMailMaxCalls` Thrown if the maximum number of API calls is exceeded. The limit is 100 API calls.
+     
+     * **Throws**:  `SendMailNoRecipient` Thrown if no recipient is specified.
+     
+     * **Throws**:  `SendMailInvalidEmail` Thrown if an invalid email address is provided.
+     
+     * **Throws**:  `SendMailExtensionNotSupported` Thrown if the attachment name extension is not ".txt" or ".pdf".
+     
+     * **Throws**:  `ExternalApiTimeout` Thrown if the API reaches the timeout limit of 30 seconds.
      */
     export function sendMail(mailProperties: MailProperties): void;
 

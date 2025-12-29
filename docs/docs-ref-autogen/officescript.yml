@@ -23,12 +23,27 @@ functions:
       content: 'export function convertToPdf(): string;'
       return:
         type: string
-        description: |-
+        description: >-
           The content of the workbook as a string, in PDF format.
+
+
+          **Throws**: `ConvertToPdfEmptyWorkbook` Thrown if the document is
+          empty.
+
+
+          **Throws**: `ConvertToPdfProtectedWorkbook` Thrown if the document
+          is protected.
+
+
+          **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+          timeout limit of 30 seconds.
+
 
           #### Examples
 
+
           ```TypeScript
+
           /**
            * This script saves a worksheet as a PDF and emails that PDF to a recipient.
            */
@@ -45,6 +60,7 @@ functions:
                   attachments: [pdfFile]
               })    
           }
+
           ```
   - name: OfficeScript.downloadFile(fileProperties)
     uid: OfficeScript!OfficeScript.downloadFile:function(1)
@@ -62,7 +78,24 @@ functions:
         void;
       parameters:
         - id: fileProperties
-          description: The file to download.
+          description: >-
+            The file to download.
+
+
+            **Throws**: `DownloadFileNameMissing` Thrown if the name is
+            empty.
+
+
+            **Throws**: `DownloadFileContentMissing` Thrown if the content
+            is empty.
+
+
+            **Throws**: `DownloadFileInvalidExtension` Thrown if the file
+            name extension is not ".txt" or ".pdf".
+
+
+            **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+            timeout limit of 30 seconds.
           type: >-
             <xref
             uid="OfficeScript!OfficeScript.DownloadFileProperties:interface" />
@@ -100,6 +133,31 @@ functions:
           description: >-
             The file name of the copied and saved file. The file name must end
             with ".xlsx".
+
+
+            **Throws**: `SaveCopyAsInvalidExtension` Thrown if the file name
+            doesn't end with ".xlsx".
+
+
+            **Throws**: `SaveCopyAsMustBeCalledFirst` Thrown if this method
+            is called after other APIs.
+
+
+            **Throws**: `SaveCopyAsFileMayAlreadyExist` Thrown if the file
+            name of the copy already exists.
+
+
+            **Throws**: `SaveCopyAsInvalidCharacters` Thrown if the file
+            name contains invalid characters.
+
+
+            **Throws**: `SaveCopyAsFileNotOnOneDrive` Thrown if the document
+            is not saved to OneDrive.
+
+
+            **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+            timeout limit of 30 seconds. Note that the copy may still be
+            created.
           type: string
       return:
         type: void
