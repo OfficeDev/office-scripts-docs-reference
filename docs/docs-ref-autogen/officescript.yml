@@ -4,8 +4,8 @@ name: OfficeScript
 type: package
 summary: ''
 interfaces:
+  - OfficeScript!OfficeScript.DownloadFileProperties:interface
   - OfficeScript!OfficeScript.EmailAttachment:interface
-  - OfficeScript!OfficeScript.FileProperties:interface
   - OfficeScript!OfficeScript.MailProperties:interface
 enums:
   - OfficeScript!OfficeScript.EmailContentType:enum
@@ -14,13 +14,10 @@ functions:
   - name: OfficeScript.convertToPdf()
     uid: OfficeScript!OfficeScript.convertToPdf:function(1)
     package: OfficeScript!
-    summary: >-
-      Converts the document to a PDF and returns the text encoding of it. Note:
-      Recent changes made to the workbook in Excel on the web, through Office
-      Scripts or the Excel UI, may not be captured in the PDF.
+    summary: Converts the document to a PDF and returns the text encoding of it.
     remarks: ''
 
-    isPreview: true
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'export function convertToPdf(): string;'
@@ -30,16 +27,16 @@ functions:
           The content of the workbook as a string, in PDF format.
 
 
-          **Throws**: `ConvertToPdfEmptyWorkbook` The error thrown if the
-          document is empty.
+          **Throws**: `ConvertToPdfEmptyWorkbook` Thrown if the document is
+          empty.
 
 
-          **Throws**: `ConvertToPdfProtectedWorkbook` The error thrown if
-          the document is protected.
+          **Throws**: `ConvertToPdfProtectedWorkbook` Thrown if the document
+          is protected.
 
 
-          **Throws**: `ExternalApiTimeout` The error thrown if the API
-          reaches the timeout limit of 30 seconds.
+          **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+          timeout limit of 30 seconds.
 
 
           #### Examples
@@ -73,31 +70,35 @@ functions:
       the local machine.
     remarks: ''
 
-    isPreview: true
+    isPreview: false
     isDeprecated: false
     syntax:
-      content: 'export function downloadFile(fileProperties: FileProperties): void;'
+      content: >-
+        export function downloadFile(fileProperties: DownloadFileProperties):
+        void;
       parameters:
         - id: fileProperties
           description: >-
             The file to download.
 
 
-            **Throws**: `DownloadFileNameMissing` The error thrown if the
-            name is empty.
+            **Throws**: `DownloadFileNameMissing` Thrown if the name is
+            empty.
 
 
-            **Throws**: `DownloadFileContentMissing` The error thrown if the
-            content is empty.
+            **Throws**: `DownloadFileContentMissing` Thrown if the content
+            is empty.
 
 
-            **Throws**: `DownloadFileInvalidExtension` The error thrown if
-            the file name extension is not ".txt" or ".pdf".
+            **Throws**: `DownloadFileInvalidExtension` Thrown if the file
+            name extension is not ".txt" or ".pdf".
 
 
-            **Throws**: `ExternalApiTimeout` The error thrown if the API
-            reaches the timeout limit of 30 seconds.
-          type: <xref uid="OfficeScript!OfficeScript.FileProperties:interface" />
+            **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+            timeout limit of 30 seconds.
+          type: >-
+            <xref
+            uid="OfficeScript!OfficeScript.DownloadFileProperties:interface" />
       return:
         type: void
         description: ''
@@ -107,7 +108,7 @@ functions:
     summary: Get the name of the currently running script.
     remarks: ''
 
-    isPreview: true
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'export function getScriptName(): string;'
@@ -119,10 +120,11 @@ functions:
     package: OfficeScript!
     summary: >-
       Saves a copy of the current workbook in OneDrive, in the same directory as
-      the original file, with the specified file name.
+      the original file, with the specified file name. This API must be called
+      before other APIs.
     remarks: ''
 
-    isPreview: true
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'export function saveCopyAs(filename: string): void;'
@@ -133,25 +135,29 @@ functions:
             with ".xlsx".
 
 
-            **Throws**: `InvalidExtensionError` The error thrown if the file
-            name doesn't end with ".xlsx".
+            **Throws**: `SaveCopyAsInvalidExtension` Thrown if the file name
+            doesn't end with ".xlsx".
 
 
-            **Throws**: `SaveCopyAsFileMayAlreadyExistError` The error
-            thrown if the file name of the copy already exists.
+            **Throws**: `SaveCopyAsMustBeCalledFirst` Thrown if this method
+            is called after other APIs.
 
 
-            **Throws**: `SaveCopyAsErrorInvalidCharacters` The error thrown
-            if the file name contains invalid characters.
+            **Throws**: `SaveCopyAsFileMayAlreadyExist` Thrown if the file
+            name of the copy already exists.
 
 
-            **Throws**: `SaveCopyAsFileNotOnOneDriveError` The error thrown
-            if the document is not saved to OneDrive.
+            **Throws**: `SaveCopyAsInvalidCharacters` Thrown if the file
+            name contains invalid characters.
 
 
-            **Throws**: `ExternalApiTimeout` The error thrown if the API
-            reaches the timeout limit of 30 seconds. Note that the copy may
-            still be created.
+            **Throws**: `SaveCopyAsFileNotOnOneDrive` Thrown if the document
+            is not saved to OneDrive.
+
+
+            **Throws**: `ExternalApiTimeout` Thrown if the API reaches the
+            timeout limit of 30 seconds. Note that the copy may still be
+            created.
           type: string
       return:
         type: void
@@ -164,7 +170,7 @@ functions:
       content and recipients of the email.
     remarks: ''
 
-    isPreview: true
+    isPreview: false
     isDeprecated: false
     syntax:
       content: 'export function sendMail(mailProperties: MailProperties): void;'
