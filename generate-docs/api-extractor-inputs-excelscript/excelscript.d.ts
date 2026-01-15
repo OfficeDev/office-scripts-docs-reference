@@ -12822,10 +12822,19 @@ export declare namespace ExcelScript {
     }
 
     enum ChartDisplayBlanksAs {
+        /**
+         * Blank cells are not plotted.
+         */
         notPlotted,
 
+        /**
+         * Blank cells are plotted as zero.
+         */
         zero,
 
+        /**
+         * Values are interpolated into the chart.
+         */
         interplotted,
     }
 
