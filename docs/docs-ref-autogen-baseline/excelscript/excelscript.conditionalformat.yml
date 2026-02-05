@@ -1,0 +1,735 @@
+### YamlMime:TSType
+name: ExcelScript.ConditionalFormat
+uid: ExcelScript!ExcelScript.ConditionalFormat:interface
+package: ExcelScript!
+fullName: ExcelScript.ConditionalFormat
+summary: >-
+  An object encapsulating a conditional format's range, format, rule, and other
+  properties.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: changeRuleToCellValue(properties)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToCellValue:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToCellValue(properties)
+    summary: Change the conditional format rule type to cell value.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToCellValue(properties: ConditionalCellValueRule): void;'
+      parameters:
+        - id: properties
+          description: The properties to set for the cell value conditional format rule.
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalCellValueRule:interface" />
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToColorScale()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToColorScale:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToColorScale()
+    summary: Change the conditional format rule type to color scale.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToColorScale(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToContainsText(properties)
+    uid: >-
+      ExcelScript!ExcelScript.ConditionalFormat#changeRuleToContainsText:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToContainsText(properties)
+    summary: Change the conditional format rule type to text comparison.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        changeRuleToContainsText(
+                    properties: ConditionalTextComparisonRule
+                ): void;
+      parameters:
+        - id: properties
+          description: >-
+            The properties to set for the text comparison conditional format
+            rule.
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalTextComparisonRule:interface"
+            />
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToCustom(formula)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToCustom:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToCustom(formula)
+    summary: Change the conditional format rule type to custom.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToCustom(formula: string): void;'
+      parameters:
+        - id: formula
+          description: The formula to set for the custom conditional format rule.
+          type: string
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToDataBar()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToDataBar:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToDataBar()
+    summary: Change the conditional format rule type to data bar.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToDataBar(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToIconSet()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToIconSet:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToIconSet()
+    summary: Change the conditional format rule type to icon set.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToIconSet(): void;'
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToPresetCriteria(properties)
+    uid: >-
+      ExcelScript!ExcelScript.ConditionalFormat#changeRuleToPresetCriteria:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToPresetCriteria(properties)
+    summary: Change the conditional format rule type to preset criteria.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: |-
+        changeRuleToPresetCriteria(
+                    properties: ConditionalPresetCriteriaRule
+                ): void;
+      parameters:
+        - id: properties
+          description: >-
+            The properties to set for the preset criteria conditional format
+            rule.
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalPresetCriteriaRule:interface"
+            />
+      return:
+        type: void
+        description: ''
+  - name: changeRuleToTopBottom(properties)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#changeRuleToTopBottom:member(1)
+    package: ExcelScript!
+    fullName: changeRuleToTopBottom(properties)
+    summary: Change the conditional format rule type to top/bottom.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'changeRuleToTopBottom(properties: ConditionalTopBottomRule): void;'
+      parameters:
+        - id: properties
+          description: The properties to set for the top/bottom conditional format rule.
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalTopBottomRule:interface" />
+      return:
+        type: void
+        description: ''
+  - name: delete()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#delete:member(1)
+    package: ExcelScript!
+    fullName: delete()
+    summary: Deletes this conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'delete(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getCellValue()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getCellValue:member(1)
+    package: ExcelScript!
+    fullName: getCellValue()
+    summary: >-
+      Returns the cell value conditional format properties if the current
+      conditional format is a `CellValue` type.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCellValue(): CellValueConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.CellValueConditionalFormat:interface" />
+          | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies conditional formatting to a range.
+           * That formatting is conditional upon the cell's numerical value.
+           * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range to format.
+            const sheet = workbook.getActiveWorksheet();
+            const ratingColumn = sheet.getRange("D2:D20");
+
+            // Add cell value conditional formatting.
+            const cellValueConditionalFormatting =
+              ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+            
+            // Create the condition, in this case when the cell value is between 50 and 75.
+            let rule: ExcelScript.ConditionalCellValueRule = {
+              formula1: "50",
+              formula2: "75",
+              operator: ExcelScript.ConditionalCellValueOperator.between
+            };
+            cellValueConditionalFormatting.setRule(rule);
+
+            // Set the format to apply when the condition is met.
+            let format = cellValueConditionalFormatting.getFormat();
+            format.getFill().setColor("yellow");
+            format.getFont().setItalic(true);
+
+          }
+          ```
+  - name: getColorScale()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getColorScale:member(1)
+    package: ExcelScript!
+    fullName: getColorScale()
+    summary: >-
+      Returns the color scale conditional format properties if the current
+      conditional format is a `ColorScale` type.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getColorScale(): ColorScaleConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.ColorScaleConditionalFormat:interface" />
+          | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a red, white, and blue color scale to the selected range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected range.
+            let selectedRange = workbook.getSelectedRange();
+
+            // Create a new conditional formatting object by adding one to the range.
+            let conditionalFormatting = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.colorScale);
+
+            // Set the colors for the three parts of the scale: minimum, midpoint, and maximum.
+            conditionalFormatting.getColorScale().setCriteria({
+              minimum: {
+                color:"#F8696B", /* A pale red. */
+                type:ExcelScript.ConditionalFormatColorCriterionType.lowestValue
+              },
+              midpoint: {
+                color: "#FCFCFF", /* Slightly off-white. */
+                formula:'=50',type:ExcelScript.ConditionalFormatColorCriterionType.percentile
+              },
+              maximum: {
+                color: "#5A8AC6", /* A pale blue. */
+                type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
+              }
+            });
+          }
+          ```
+  - name: getCustom()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getCustom:member(1)
+    package: ExcelScript!
+    fullName: getCustom()
+    summary: >-
+      Returns the custom conditional format properties if the current
+      conditional format is a custom type.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCustom(): CustomConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.CustomConditionalFormat:interface"
+          /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a custom conditional formatting to the selected range.
+           * A light-green fill is applied to a cell if the value is larger than the value in the row's previous column.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected cells.
+            let selectedRange = workbook.getSelectedRange();
+
+            // Apply a rule for positive change from the previous column.
+            let positiveChange = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+            positiveChange.getCustom().getFormat().getFill().setColor("lightgreen");
+            positiveChange.getCustom().getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+          }
+          ```
+  - name: getDataBar()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getDataBar:member(1)
+    package: ExcelScript!
+    fullName: getDataBar()
+    summary: >-
+      Returns the data bar properties if the current conditional format is a
+      data bar.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDataBar(): DataBarConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.DataBarConditionalFormat:interface"
+          /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script creates data bar conditional formatting on the selected range.
+           * The scale of the data bar goes from 0 to 1000.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the selected range.
+            const selected = workbook.getSelectedRange();
+            
+            // Create new conditional formatting on the range.
+            const format = selected.addConditionalFormat(ExcelScript.ConditionalFormatType.dataBar);
+            const dataBarFormat = format.getDataBar();
+
+            // Set the lower bound of the data bar formatting to be 0.
+            const lowerBound: ExcelScript.ConditionalDataBarRule = {
+              type: ExcelScript.ConditionalFormatRuleType.number,
+              formula: "0"
+            };
+            dataBarFormat.setLowerBoundRule(lowerBound);
+
+            // Set the upper bound of the data bar formatting to be 1000.
+            const upperBound: ExcelScript.ConditionalDataBarRule = {
+              type: ExcelScript.ConditionalFormatRuleType.number,
+              formula: "1000"
+            };
+            dataBarFormat.setUpperBoundRule(upperBound);
+          }
+          ```
+  - name: getIconSet()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getIconSet:member(1)
+    package: ExcelScript!
+    fullName: getIconSet()
+    summary: >-
+      Returns the icon set conditional format properties if the current
+      conditional format is an `IconSet` type.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIconSet(): IconSetConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.IconSetConditionalFormat:interface"
+          /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies icon set conditional formatting to a range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range "A1:A5" on the current worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const range = sheet.getRange("A1:A5");
+
+            // Create icon set conditional formatting on the range.
+            const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+            // Use the "3 Traffic Lights (Unrimmed)" set.
+            conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+            // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+            conditionalFormatting.getIconSet().setCriteria([
+              {
+                formula:'=0',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+                type:ExcelScript.ConditionalFormatIconRuleType.percent
+              },
+              {
+                formula:'=33',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+                type:ExcelScript.ConditionalFormatIconRuleType.percent},
+              {
+                formula:'=67',operator:ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+                type:ExcelScript.ConditionalFormatIconRuleType.percent
+              }]);
+          }
+          ```
+  - name: getId()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getId:member(1)
+    package: ExcelScript!
+    fullName: getId()
+    summary: >-
+      The priority of the conditional format in the current
+      `ConditionalFormatCollection`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getId(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getPreset()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getPreset:member(1)
+    package: ExcelScript!
+    fullName: getPreset()
+    summary: >-
+      Returns the preset criteria conditional format. See
+      `ExcelScript.PresetCriteriaConditionalFormat` for more details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPreset(): PresetCriteriaConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface"
+          /> | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies a conditional format that uses a preset criterion.
+           * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+           * (of anything else in row 1).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range for row 1.
+            const sheet = workbook.getActiveWorksheet();
+            const formattedRange = sheet.getRange("1:1");
+
+            // Add new conditional formatting to that range.
+            const conditionalFormat = formattedRange.addConditionalFormat(
+              ExcelScript.ConditionalFormatType.presetCriteria);
+
+            // Set the conditional formatting to apply a green fill.
+            const presetFormat = conditionalFormat.getPreset();
+            presetFormat.getFormat().getFill().setColor("green");
+
+            // Set a rule to apply the conditional format when values are duplicated in the range.
+            const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+              criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+            };
+            presetFormat.setRule(duplicateRule);
+          }
+          ```
+  - name: getPriority()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getPriority:member(1)
+    package: ExcelScript!
+    fullName: getPriority()
+    summary: >-
+      The priority (or index) within the conditional format collection that this
+      conditional format currently exists in. Changing this also changes other
+      conditional formats' priorities, to allow for a contiguous priority order.
+      Use a negative priority to begin from the back. Priorities greater than
+      the bounds will get and set to the maximum (or minimum if negative)
+      priority. Also note that if you change the priority, you have to re-fetch
+      a new copy of the object at that new priority location if you want to make
+      further changes to it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getPriority(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getRange()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getRange:member(1)
+    package: ExcelScript!
+    fullName: getRange()
+    summary: >-
+      Returns the range to which the conditional format is applied. If the
+      conditional format is applied to multiple ranges, then this method returns
+      `undefined`<!-- -->.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRange(): Range;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Range:interface" />
+        description: ''
+  - name: getRanges()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getRanges:member(1)
+    package: ExcelScript!
+    fullName: getRanges()
+    summary: >-
+      Returns the `RangeAreas`<!-- -->, comprising one or more rectangular
+      ranges, to which the conditional format is applied.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRanges(): RangeAreas;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.RangeAreas:interface" />
+        description: ''
+  - name: getStopIfTrue()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getStopIfTrue:member(1)
+    package: ExcelScript!
+    fullName: getStopIfTrue()
+    summary: >-
+      If the conditions of this conditional format are met, no lower-priority
+      formats shall take effect on that cell. Value is `null` on data bars, icon
+      sets, and color scales as there's no concept of `StopIfTrue` for these.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getStopIfTrue(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: getTextComparison()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getTextComparison:member(1)
+    package: ExcelScript!
+    fullName: getTextComparison()
+    summary: >-
+      Returns the specific text conditional format properties if the current
+      conditional format is a text type. For example, to format cells matching
+      the word "Text".
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTextComparison(): TextConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.TextConditionalFormat:interface" />
+          | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script adds conditional formatting to the first column in the worksheet.
+           * This formatting gives the cells a green fill if they have text starting with "Excel".
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first column in the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const firstColumn = currentSheet.getRange("A:A");
+
+            // Add conditional formatting based on the text in the cells.
+            const textConditionFormat = 
+              firstColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.containsText).getTextComparison();
+
+            // Set the conditional format to provide a green fill.
+            textConditionFormat.getFormat().getFill().setColor("green");
+
+            // Apply the condition rule that the text begins with "Excel".
+            const textRule: ExcelScript.ConditionalTextComparisonRule = {
+              operator: ExcelScript.ConditionalTextOperator.beginsWith,
+              text: "Excel"
+            };
+            textConditionFormat.setRule(textRule);
+          }
+          ```
+  - name: getTopBottom()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getTopBottom:member(1)
+    package: ExcelScript!
+    fullName: getTopBottom()
+    summary: >-
+      Returns the top/bottom conditional format properties if the current
+      conditional format is a `TopBottom` type. For example, to format the top
+      10% or bottom 10 items.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getTopBottom(): TopBottomConditionalFormat | undefined;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.TopBottomConditionalFormat:interface" />
+          | undefined
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script applies top/bottom conditional formatting to a range.
+           * The top 2 values in the range will have the cell fill color changed to green.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range to format.
+            const sheet = workbook.getWorksheet("TopBottom");
+            const dataRange = sheet.getRange("B2:D5");
+
+            // Set the fill color to green for the top 2 values in the range.
+            const topBottomFormat = dataRange.addConditionalFormat(
+              ExcelScript.ConditionalFormatType.topBottom).getTopBottom();
+            topBottomFormat.getFormat().getFill().setColor("green");
+            topBottomFormat.setRule({
+              rank: 2, /* The numeric threshold. */
+              type: ExcelScript.ConditionalTopBottomCriterionType.topItems /* The type of the top/bottom condition. */
+            });
+          }
+          ```
+  - name: getType()
+    uid: ExcelScript!ExcelScript.ConditionalFormat#getType:member(1)
+    package: ExcelScript!
+    fullName: getType()
+    summary: A type of conditional format. Only one can be set at a time.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getType(): ConditionalFormatType;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ConditionalFormatType:enum" />
+        description: ''
+  - name: setPriority(priority)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#setPriority:member(1)
+    package: ExcelScript!
+    fullName: setPriority(priority)
+    summary: >-
+      The priority (or index) within the conditional format collection that this
+      conditional format currently exists in. Changing this also changes other
+      conditional formats' priorities, to allow for a contiguous priority order.
+      Use a negative priority to begin from the back. Priorities greater than
+      the bounds will get and set to the maximum (or minimum if negative)
+      priority. Also note that if you change the priority, you have to re-fetch
+      a new copy of the object at that new priority location if you want to make
+      further changes to it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setPriority(priority: number): void;'
+      parameters:
+        - id: priority
+          description: ''
+          type: number
+      return:
+        type: void
+        description: ''
+  - name: setRanges(ranges)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#setRanges:member(1)
+    package: ExcelScript!
+    fullName: setRanges(ranges)
+    summary: Set the ranges that the conditional format rule is applied to.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRanges(ranges: Range | RangeAreas | string): void;'
+      parameters:
+        - id: ranges
+          description: Collection of one or more ranges for this rule to be applied to.
+          type: >-
+            <xref uid="ExcelScript!ExcelScript.Range:interface" /> | <xref
+            uid="ExcelScript!ExcelScript.RangeAreas:interface" /> | string
+      return:
+        type: void
+        description: ''
+  - name: setStopIfTrue(stopIfTrue)
+    uid: ExcelScript!ExcelScript.ConditionalFormat#setStopIfTrue:member(1)
+    package: ExcelScript!
+    fullName: setStopIfTrue(stopIfTrue)
+    summary: >-
+      If the conditions of this conditional format are met, no lower-priority
+      formats shall take effect on that cell. Value is `null` on data bars, icon
+      sets, and color scales as there's no concept of `StopIfTrue` for these.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setStopIfTrue(stopIfTrue: boolean): void;'
+      parameters:
+        - id: stopIfTrue
+          description: ''
+          type: boolean
+      return:
+        type: void
+        description: ''

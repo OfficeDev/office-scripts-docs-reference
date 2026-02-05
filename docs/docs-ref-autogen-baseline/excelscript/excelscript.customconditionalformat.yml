@@ -1,0 +1,76 @@
+### YamlMime:TSType
+name: ExcelScript.CustomConditionalFormat
+uid: ExcelScript!ExcelScript.CustomConditionalFormat:interface
+package: ExcelScript!
+fullName: ExcelScript.CustomConditionalFormat
+summary: Represents a custom conditional format type.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a custom three-color conditional formatting to the selected range.
+   * The three colors represent positive, negative, or no changes from the values in the previous column.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the selected cells.
+    let selectedRange = workbook.getSelectedRange();
+
+    // Apply a rule for positive change from the previous column.
+    let positiveChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+    let positiveCustom: ExcelScript.CustomConditionalFormat = positiveChange.getCustom();
+    positiveCustom.getFormat().getFill().setColor("lightgreen");
+    positiveCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+
+    // Apply a rule for negative change from the previous column.
+    let negativeChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+    let negativeCustom: ExcelScript.CustomConditionalFormat = negativeChange.getCustom();
+    negativeCustom.getFormat().getFill().setColor("pink");
+    negativeCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}<${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+
+    // Apply a rule for no change from the previous column.
+    let sameChange: ExcelScript.ConditionalFormat = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+    let sameCustom: ExcelScript.CustomConditionalFormat = sameChange.getCustom();
+    sameCustom.getFormat().getFill().setColor("lightyellow");
+    sameCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getFormat()
+    uid: ExcelScript!ExcelScript.CustomConditionalFormat#getFormat:member(1)
+    package: ExcelScript!
+    fullName: getFormat()
+    summary: >-
+      Returns a format object, encapsulating the conditional formats font, fill,
+      borders, and other properties.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormat(): ConditionalRangeFormat;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ConditionalRangeFormat:interface"
+          />
+        description: ''
+  - name: getRule()
+    uid: ExcelScript!ExcelScript.CustomConditionalFormat#getRule:member(1)
+    package: ExcelScript!
+    fullName: getRule()
+    summary: Specifies the `Rule` object on this conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRule(): ConditionalFormatRule;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.ConditionalFormatRule:interface" />
+        description: ''

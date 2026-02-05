@@ -1,0 +1,41 @@
+### YamlMime:TSEnum
+name: ExcelScript.WorkbookLinksRefreshMode
+uid: ExcelScript!ExcelScript.WorkbookLinksRefreshMode:enum
+package: ExcelScript!
+fullName: ExcelScript.WorkbookLinksRefreshMode
+summary: Represents the refresh mode of the workbook links.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script refreshes all the links to external workbooks, 
+   * if the linked workbook refresh mode is set to manual.
+   * To learn about linked workbooks, see https://support.microsoft.com/office/c98d1803-dd75-4668-ac6a-d7cca2a9b95f.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Check the refresh mode.
+    if (workbook.getLinkedWorkbookRefreshMode() === ExcelScript.WorkbookLinksRefreshMode.manual) {
+      console.log("Refreshing workbook links");
+
+      // Trigger a refresh of linked workbook content.
+      workbook.refreshAllLinksToLinkedWorkbooks();
+    }
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: automatic
+    uid: ExcelScript!ExcelScript.WorkbookLinksRefreshMode.automatic:member
+    package: ExcelScript!
+    summary: >-
+      The workbook links are updated at a set interval determined by the Excel
+      application.
+  - name: manual
+    uid: ExcelScript!ExcelScript.WorkbookLinksRefreshMode.manual:member
+    package: ExcelScript!
+    summary: The workbook links are updated manually.

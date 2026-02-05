@@ -1,0 +1,92 @@
+### YamlMime:TSEnum
+name: ExcelScript.AutoFillType
+uid: ExcelScript!ExcelScript.AutoFillType:enum
+package: ExcelScript!
+fullName: ExcelScript.AutoFillType
+summary: The behavior types when AutoFill is used on a range in the workbook.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script uses the autofill feature to complete a table with days of the month.
+   * See https://support.microsoft.com/office/74e31bdd-d993-45da-aa82-35a236c5b5db
+   * for examples of autofill scenarios.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current, active worksheet.
+    let currentWorksheet = workbook.getActiveWorksheet();
+
+    // Get the data range that shows the pattern.
+    let dataRange = currentWorksheet.getRange("C2:C3");
+
+    // Autofill the connected range. C2:C3 are filled in with dates. C4:C54 are blank.
+    dataRange.autoFill("C2:C54", ExcelScript.AutoFillType.fillDays);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: fillCopy
+    uid: ExcelScript!ExcelScript.AutoFillType.fillCopy:member
+    package: ExcelScript!
+    summary: Populates the adjacent cells with data based on the selected data.
+  - name: fillDays
+    uid: ExcelScript!ExcelScript.AutoFillType.fillDays:member
+    package: ExcelScript!
+    summary: >-
+      A version of "FillSeries" for dates that bases the pattern on either the
+      day of the month or the day of the week, depending on the context.
+  - name: fillDefault
+    uid: ExcelScript!ExcelScript.AutoFillType.fillDefault:member
+    package: ExcelScript!
+    summary: >-
+      Populates the adjacent cells based on the surrounding data (the standard
+      AutoFill behavior).
+  - name: fillFormats
+    uid: ExcelScript!ExcelScript.AutoFillType.fillFormats:member
+    package: ExcelScript!
+    summary: Populates the adjacent cells with the selected formats.
+  - name: fillMonths
+    uid: ExcelScript!ExcelScript.AutoFillType.fillMonths:member
+    package: ExcelScript!
+    summary: A version of "FillSeries" for dates that bases the pattern on the month.
+  - name: fillSeries
+    uid: ExcelScript!ExcelScript.AutoFillType.fillSeries:member
+    package: ExcelScript!
+    summary: >-
+      Populates the adjacent cells with data that follows a pattern in the
+      copied cells.
+  - name: fillValues
+    uid: ExcelScript!ExcelScript.AutoFillType.fillValues:member
+    package: ExcelScript!
+    summary: Populates the adjacent cells with the selected values.
+  - name: fillWeekdays
+    uid: ExcelScript!ExcelScript.AutoFillType.fillWeekdays:member
+    package: ExcelScript!
+    summary: >-
+      A version of "FillSeries" for dates that bases the pattern on the day of
+      the week and only includes weekdays.
+  - name: fillYears
+    uid: ExcelScript!ExcelScript.AutoFillType.fillYears:member
+    package: ExcelScript!
+    summary: A version of "FillSeries" for dates that bases the pattern on the year.
+  - name: flashFill
+    uid: ExcelScript!ExcelScript.AutoFillType.flashFill:member
+    package: ExcelScript!
+    summary: Populates the adjacent cells by using Excel's Flash Fill feature.
+  - name: growthTrend
+    uid: ExcelScript!ExcelScript.AutoFillType.growthTrend:member
+    package: ExcelScript!
+    summary: >-
+      A version of "FillSeries" for numbers that fills out the values in the
+      adjacent cells according to a growth trend model.
+  - name: linearTrend
+    uid: ExcelScript!ExcelScript.AutoFillType.linearTrend:member
+    package: ExcelScript!
+    summary: >-
+      A version of "FillSeries" for numbers that fills out the values in the
+      adjacent cells according to a linear trend model.

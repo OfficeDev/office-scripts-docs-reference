@@ -1,0 +1,88 @@
+### YamlMime:TSType
+name: ExcelScript.CultureInfo
+uid: ExcelScript!ExcelScript.CultureInfo:interface
+package: ExcelScript!
+fullName: ExcelScript.CultureInfo
+summary: >-
+  Provides information based on current system culture settings. This includes
+  the culture names, number formatting, and other culturally dependent settings.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the value of a cell to a date string for January 2, 2023.
+   * It writes the day or month first in the string based on system settings.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first cell in the current worksheet.
+    const cell = workbook.getActiveWorksheet().getCell(0,0);
+
+    // Get the date format.
+    const cultureInfo : ExcelScript.CultureInfo = workbook.getApplication().getCultureInfo();
+    const systemDateTimeFormat : ExcelScript.DatetimeFormatInfo = cultureInfo.getDatetimeFormat();
+    const shortDatePattern : string = systemDateTimeFormat.getShortDatePattern();
+
+    // Determine if the date should start with the month or day.
+    if (shortDatePattern.startsWith("m")) {
+      cell.setValue("1/2/2023");
+    } else {
+      cell.setValue("2/1/2023");
+    }
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getDatetimeFormat()
+    uid: ExcelScript!ExcelScript.CultureInfo#getDatetimeFormat:member(1)
+    package: ExcelScript!
+    fullName: getDatetimeFormat()
+    summary: >-
+      Defines the culturally appropriate format of displaying date and time.
+      This is based on current system culture settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDatetimeFormat(): DatetimeFormatInfo;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.DatetimeFormatInfo:interface" />
+        description: ''
+  - name: getName()
+    uid: ExcelScript!ExcelScript.CultureInfo#getName:member(1)
+    package: ExcelScript!
+    fullName: getName()
+    summary: >-
+      Gets the culture name in the format languagecode2-country/regioncode2
+      (e.g., "zh-cn" or "en-us"). This is based on current system settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getName(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getNumberFormat()
+    uid: ExcelScript!ExcelScript.CultureInfo#getNumberFormat:member(1)
+    package: ExcelScript!
+    fullName: getNumberFormat()
+    summary: >-
+      Defines the culturally appropriate format of displaying numbers. This is
+      based on current system culture settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getNumberFormat(): NumberFormatInfo;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.NumberFormatInfo:interface" />
+        description: ''

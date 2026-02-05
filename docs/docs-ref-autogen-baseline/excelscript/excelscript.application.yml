@@ -1,0 +1,236 @@
+### YamlMime:TSType
+name: ExcelScript.Application
+uid: ExcelScript!ExcelScript.Application:interface
+package: ExcelScript!
+fullName: ExcelScript.Application
+summary: Represents the Excel application that manages the workbook.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: calculate(calculationType)
+    uid: ExcelScript!ExcelScript.Application#calculate:member(1)
+    package: ExcelScript!
+    fullName: calculate(calculationType)
+    summary: Recalculate all currently opened workbooks in Excel.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'calculate(calculationType: CalculationType): void;'
+      parameters:
+        - id: calculationType
+          description: >-
+            Specifies the calculation type to use. See
+            `ExcelScript.CalculationType` for details.
+          type: <xref uid="ExcelScript!ExcelScript.CalculationType:enum" />
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script fully recalculates the entire workbook.
+           * This code is useful when automatic recalculation is turned off
+           * but later parts of the script rely on updated values.
+           */
+          function main(workbook: ExcelScript.Workbook, workbookURL: string) {
+            const application = workbook.getApplication();
+            application.calculate(ExcelScript.CalculationType.fullRebuild);
+          }
+          ```
+  - name: getCalculationEngineVersion()
+    uid: ExcelScript!ExcelScript.Application#getCalculationEngineVersion:member(1)
+    package: ExcelScript!
+    fullName: getCalculationEngineVersion()
+    summary: >-
+      Returns the Excel calculation engine version used for the last full
+      recalculation.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCalculationEngineVersion(): number;'
+      return:
+        type: number
+        description: ''
+  - name: getCalculationMode()
+    uid: ExcelScript!ExcelScript.Application#getCalculationMode:member(1)
+    package: ExcelScript!
+    fullName: getCalculationMode()
+    summary: >-
+      Returns the calculation mode used in the workbook, as defined by the
+      constants in `ExcelScript.CalculationMode`<!-- -->. Possible values are:
+      `Automatic`<!-- -->, where Excel controls recalculation;
+      `AutomaticExceptTables`<!-- -->, where Excel controls recalculation but
+      ignores changes in tables; `Manual`<!-- -->, where calculation is done
+      when the user requests it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCalculationMode(): CalculationMode;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CalculationMode:enum" />
+        description: ''
+  - name: getCalculationState()
+    uid: ExcelScript!ExcelScript.Application#getCalculationState:member(1)
+    package: ExcelScript!
+    fullName: getCalculationState()
+    summary: >-
+      Returns the calculation state of the application. See
+      `ExcelScript.CalculationState` for details.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCalculationState(): CalculationState;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CalculationState:enum" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script uses the fill color of the first cell to indicate the current
+           * calculation state of the workbook.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first cell in the first worksheet.
+            const cell = workbook.getWorksheets()[0].getCell(0,0);
+
+            // Get that cell's fill object.
+            const cellFill = cell.getFormat().getFill();
+
+            // Set the cell fill based on the calculation state.
+            const calcState = workbook.getApplication().getCalculationState();
+            switch (calcState) {
+              case ExcelScript.CalculationState.pending:
+                cellFill.setColor("Red");
+                break;
+              case ExcelScript.CalculationState.calculating:
+                cellFill.setColor("Yellow");
+                break;
+              case ExcelScript.CalculationState.done:
+                cellFill.setColor("Green");
+                break;
+            }
+          }
+          ```
+  - name: getCultureInfo()
+    uid: ExcelScript!ExcelScript.Application#getCultureInfo:member(1)
+    package: ExcelScript!
+    fullName: getCultureInfo()
+    summary: >-
+      Provides information based on current system culture settings. This
+      includes the culture names, number formatting, and other culturally
+      dependent settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getCultureInfo(): CultureInfo;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.CultureInfo:interface" />
+        description: ''
+  - name: getDecimalSeparator()
+    uid: ExcelScript!ExcelScript.Application#getDecimalSeparator:member(1)
+    package: ExcelScript!
+    fullName: getDecimalSeparator()
+    summary: >-
+      Gets the string used as the decimal separator for numeric values. This is
+      based on the local Excel settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getDecimalSeparator(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getIterativeCalculation()
+    uid: ExcelScript!ExcelScript.Application#getIterativeCalculation:member(1)
+    package: ExcelScript!
+    fullName: getIterativeCalculation()
+    summary: >-
+      Returns the iterative calculation settings. In Excel on Windows and Mac,
+      the settings will apply to the Excel Application. In Excel on the web and
+      other platforms, the settings will apply to the active workbook.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getIterativeCalculation(): IterativeCalculation;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.IterativeCalculation:interface" />
+        description: ''
+  - name: getThousandsSeparator()
+    uid: ExcelScript!ExcelScript.Application#getThousandsSeparator:member(1)
+    package: ExcelScript!
+    fullName: getThousandsSeparator()
+    summary: >-
+      Gets the string used to separate groups of digits to the left of the
+      decimal for numeric values. This is based on the local Excel settings.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getThousandsSeparator(): string;'
+      return:
+        type: string
+        description: ''
+  - name: getUseSystemSeparators()
+    uid: ExcelScript!ExcelScript.Application#getUseSystemSeparators:member(1)
+    package: ExcelScript!
+    fullName: getUseSystemSeparators()
+    summary: >-
+      Specifies if the system separators of Excel are enabled. System separators
+      include the decimal separator and thousands separator.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getUseSystemSeparators(): boolean;'
+      return:
+        type: boolean
+        description: ''
+  - name: setCalculationMode(calculationMode)
+    uid: ExcelScript!ExcelScript.Application#setCalculationMode:member(1)
+    package: ExcelScript!
+    fullName: setCalculationMode(calculationMode)
+    summary: >-
+      Returns the calculation mode used in the workbook, as defined by the
+      constants in `ExcelScript.CalculationMode`<!-- -->. Possible values are:
+      `Automatic`<!-- -->, where Excel controls recalculation;
+      `AutomaticExceptTables`<!-- -->, where Excel controls recalculation but
+      ignores changes in tables; `Manual`<!-- -->, where calculation is done
+      when the user requests it.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setCalculationMode(calculationMode: CalculationMode): void;'
+      parameters:
+        - id: calculationMode
+          description: ''
+          type: <xref uid="ExcelScript!ExcelScript.CalculationMode:enum" />
+      return:
+        type: void
+        description: ''

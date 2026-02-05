@@ -1,0 +1,63 @@
+### YamlMime:TSEnum
+name: ExcelScript.NamedItemType
+uid: ExcelScript!ExcelScript.NamedItemType:enum
+package: ExcelScript!
+fullName: ExcelScript.NamedItemType
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script looks for every named range with "Review" in the name 
+   * and marks the range with a yellow fill.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Look at every named item in the workbook.
+    workbook.getNames().forEach((namedItem) => {
+      // Find names containing "Review".
+      if (namedItem.getName().includes("Review")) {
+        // Only change the fill color if the named item is a range (not a formula).
+        let itemType: ExcelScript.NamedItemType = namedItem.getType();
+        if (itemType === ExcelScript.NamedItemType.range) {
+          // Set the range's fill color to yellow.
+          namedItem.getRange().getFormat().getFill().setColor("yellow");
+        }
+      }
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: array
+    uid: ExcelScript!ExcelScript.NamedItemType.array:member
+    package: ExcelScript!
+    summary: ''
+  - name: boolean
+    uid: ExcelScript!ExcelScript.NamedItemType.boolean:member
+    package: ExcelScript!
+    summary: ''
+  - name: double
+    uid: ExcelScript!ExcelScript.NamedItemType.double:member
+    package: ExcelScript!
+    summary: ''
+  - name: error
+    uid: ExcelScript!ExcelScript.NamedItemType.error:member
+    package: ExcelScript!
+    summary: ''
+  - name: integer
+    uid: ExcelScript!ExcelScript.NamedItemType.integer:member
+    package: ExcelScript!
+    summary: ''
+  - name: range
+    uid: ExcelScript!ExcelScript.NamedItemType.range:member
+    package: ExcelScript!
+    summary: ''
+  - name: string
+    uid: ExcelScript!ExcelScript.NamedItemType.string:member
+    package: ExcelScript!
+    summary: ''

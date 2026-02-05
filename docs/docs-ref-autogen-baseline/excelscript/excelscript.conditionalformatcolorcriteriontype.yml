@@ -1,0 +1,74 @@
+### YamlMime:TSEnum
+name: ExcelScript.ConditionalFormatColorCriterionType
+uid: ExcelScript!ExcelScript.ConditionalFormatColorCriterionType:enum
+package: ExcelScript!
+fullName: ExcelScript.ConditionalFormatColorCriterionType
+summary: Represents the types of color criterion for conditional formatting.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a red, white, and blue color scale to the selected range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the selected range.
+    let selectedRange = workbook.getSelectedRange();
+
+    // Create a new conditional formatting object by adding one to the range.
+    let conditionalFormatting = selectedRange.addConditionalFormat(ExcelScript.ConditionalFormatType.colorScale);
+
+    // Set the colors for the three parts of the scale: minimum, midpoint, and maximum.
+    conditionalFormatting.getColorScale().setCriteria({
+      minimum: {
+        color:"#F8696B", /* A pale red. */
+        type:ExcelScript.ConditionalFormatColorCriterionType.lowestValue
+      },
+      midpoint: {
+        color: "#FCFCFF", /* Slightly off-white. */
+        formula:'=50',type:ExcelScript.ConditionalFormatColorCriterionType.percentile
+      },
+      maximum: {
+        color: "#5A8AC6", /* A pale blue. */
+        type:ExcelScript.ConditionalFormatColorCriterionType.highestValue
+      }
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: formula
+    uid: ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.formula:member
+    package: ExcelScript!
+    summary: ''
+  - name: highestValue
+    uid: >-
+      ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.highestValue:member
+    package: ExcelScript!
+    summary: ''
+  - name: invalid
+    uid: ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.invalid:member
+    package: ExcelScript!
+    summary: ''
+  - name: lowestValue
+    uid: >-
+      ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.lowestValue:member
+    package: ExcelScript!
+    summary: ''
+  - name: number
+    uid: ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.number:member
+    package: ExcelScript!
+    summary: ''
+  - name: percent
+    uid: ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.percent:member
+    package: ExcelScript!
+    summary: ''
+  - name: percentile
+    uid: >-
+      ExcelScript!ExcelScript.ConditionalFormatColorCriterionType.percentile:member
+    package: ExcelScript!
+    summary: ''

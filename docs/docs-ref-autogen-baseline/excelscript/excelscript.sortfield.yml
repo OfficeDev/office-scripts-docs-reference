@@ -1,0 +1,193 @@
+### YamlMime:TSType
+name: ExcelScript.SortField
+uid: ExcelScript!ExcelScript.SortField:interface
+package: ExcelScript!
+fullName: ExcelScript.SortField
+summary: Represents a condition in a sorting operation.
+remarks: ''
+
+isPreview: false
+isDeprecated: false
+type: interface
+properties:
+  - name: ascending
+    uid: ExcelScript!ExcelScript.SortField#ascending:member
+    package: ExcelScript!
+    fullName: ascending
+    summary: Specifies if the sorting is done in an ascending fashion.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'ascending?: boolean;'
+      return:
+        type: boolean
+  - name: color
+    uid: ExcelScript!ExcelScript.SortField#color:member
+    package: ExcelScript!
+    fullName: color
+    summary: >-
+      Specifies the color that is the target of the condition if the sorting is
+      on font or cell color.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'color?: string;'
+      return:
+        type: string
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sorts a range based on the color of the cells.
+           * It brings all red cells to the top of the range.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the range (A1:D8) to sort from the current worksheet.
+            const worksheet = workbook.getActiveWorksheet();
+            const rangeToSort = worksheet.getRange("A1:D8");
+
+            // Create a SortField for color sorting.
+            // This sorts the rows based on the fill color of each row's cell in the first column.
+            let colorSort: ExcelScript.SortField = {
+              ascending: true,
+              color: "FF0000", /* red */
+              key: 0,
+              sortOn: ExcelScript.SortOn.cellColor
+            };
+
+            // Apply the SortField to the range.
+            rangeToSort.getSort().apply([colorSort]);
+          }
+          ```
+  - name: dataOption
+    uid: ExcelScript!ExcelScript.SortField#dataOption:member
+    package: ExcelScript!
+    fullName: dataOption
+    summary: Represents additional sorting options for this field.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'dataOption?: SortDataOption;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.SortDataOption:enum" />
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sorts a table based on the values in column 1.
+           * If the text of a column-1 value can be treated as a number, 
+           * it will be sorted in numerical order, rather than Unicode order
+           * (so 123 will come before 12.3).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first table on the current worksheet.
+            const currentSheet = workbook.getActiveWorksheet();
+            const table = currentSheet.getTables()[0];
+
+            // Create the sorting parameters.
+            const countSortField: ExcelScript.SortField = {
+              key: 1,
+              ascending: true,
+              dataOption: ExcelScript.SortDataOption.textAsNumber
+            };
+
+            // Apply the sort to the table.
+            const sort = table.getSort();
+            sort.apply([countSortField]);
+          }
+          ```
+  - name: icon
+    uid: ExcelScript!ExcelScript.SortField#icon:member
+    package: ExcelScript!
+    fullName: icon
+    summary: >-
+      Specifies the icon that is the target of the condition, if the sorting is
+      on the cell's icon.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'icon?: Icon;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.Icon:interface" />
+  - name: key
+    uid: ExcelScript!ExcelScript.SortField#key:member
+    package: ExcelScript!
+    fullName: key
+    summary: >-
+      Specifies the column (or row, depending on the sort orientation) that the
+      condition is on. Represented as an offset from the first column (or row).
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'key: number;'
+      return:
+        type: number
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script sorts the used range of the current worksheet.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+              // Get the used range of the current worksheet.
+              const activeRange = workbook.getActiveWorksheet().getUsedRange();
+
+              // Sort the rows in ascending order based on the last column.
+              activeRange.getSort().apply(
+                  [{
+                      ascending: true,
+                      key: activeRange.getColumnCount() - 1
+                  }],
+                  false, /* Don't match case. */
+                  true,  /* Treat the first row as a header rows. */
+                  ExcelScript.SortOrientation.rows
+              );
+          }
+          ```
+  - name: sortOn
+    uid: ExcelScript!ExcelScript.SortField#sortOn:member
+    package: ExcelScript!
+    fullName: sortOn
+    summary: Specifies the type of sorting of this condition.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'sortOn?: SortOn;'
+      return:
+        type: <xref uid="ExcelScript!ExcelScript.SortOn:enum" />
+  - name: subField
+    uid: ExcelScript!ExcelScript.SortField#subField:member
+    package: ExcelScript!
+    fullName: subField
+    summary: >-
+      Specifies the subfield that is the target property name of a rich value to
+      sort on.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'subField?: string;'
+      return:
+        type: string

@@ -1,0 +1,101 @@
+### YamlMime:TSEnum
+name: ExcelScript.ShowAsCalculation
+uid: ExcelScript!ExcelScript.ShowAsCalculation:enum
+package: ExcelScript!
+fullName: ExcelScript.ShowAsCalculation
+summary: The ShowAs calculation function for the DataPivotField.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * The script changes the display for "Crates Sold at Farm".
+   * It shows the percentage of the grand total, 
+   * instead of the default sum.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the PivotTable named "Farm Pivot".
+    const farmPivot = workbook.getPivotTable("Farm Pivot");
+
+    // Get the data hierarchy "Sum of Crates Sold at Farm".
+    const farmSales = farmPivot.getDataHierarchy("Sum of Crates Sold at Farm");
+
+    // Show the data as a percentage of the grand total.
+    farmSales.setShowAs({
+      calculation: ExcelScript.ShowAsCalculation.percentOfGrandTotal
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: differenceFrom
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.differenceFrom:member
+    package: ExcelScript!
+    summary: Difference from the specified Base field and Base item.
+  - name: index
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.index:member
+    package: ExcelScript!
+    summary: >-
+      Calculates the values as follows: ((value in cell) x (Grand Total of Grand
+      Totals)) / ((Grand Row Total) x (Grand Column Total))
+  - name: none
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.none:member
+    package: ExcelScript!
+    summary: No calculation is applied.
+  - name: percentDifferenceFrom
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentDifferenceFrom:member
+    package: ExcelScript!
+    summary: Difference from the specified Base field and Base item.
+  - name: percentOf
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOf:member
+    package: ExcelScript!
+    summary: Percent of the specified Base field and Base item.
+  - name: percentOfColumnTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOfColumnTotal:member
+    package: ExcelScript!
+    summary: Percent of the column total.
+  - name: percentOfGrandTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOfGrandTotal:member
+    package: ExcelScript!
+    summary: Percent of the grand total.
+  - name: percentOfParentColumnTotal
+    uid: >-
+      ExcelScript!ExcelScript.ShowAsCalculation.percentOfParentColumnTotal:member
+    package: ExcelScript!
+    summary: Percent of the column total for the specified Base field.
+  - name: percentOfParentRowTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOfParentRowTotal:member
+    package: ExcelScript!
+    summary: Percent of the row total for the specified Base field.
+  - name: percentOfParentTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOfParentTotal:member
+    package: ExcelScript!
+    summary: Percent of the grand total for the specified Base field.
+  - name: percentOfRowTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentOfRowTotal:member
+    package: ExcelScript!
+    summary: Percent of the row total.
+  - name: percentRunningTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.percentRunningTotal:member
+    package: ExcelScript!
+    summary: Percent running total of the specified Base field.
+  - name: rankAscending
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.rankAscending:member
+    package: ExcelScript!
+    summary: Ascending rank of the specified Base field.
+  - name: rankDecending
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.rankDecending:member
+    package: ExcelScript!
+    summary: Descending rank of the specified Base field.
+  - name: runningTotal
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.runningTotal:member
+    package: ExcelScript!
+    summary: Running total of the specified Base field.
+  - name: unknown
+    uid: ExcelScript!ExcelScript.ShowAsCalculation.unknown:member
+    package: ExcelScript!
+    summary: Calculation is unknown or unsupported.

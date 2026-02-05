@@ -1,0 +1,99 @@
+### YamlMime:TSType
+name: ExcelScript.CellValueConditionalFormat
+uid: ExcelScript!ExcelScript.CellValueConditionalFormat:interface
+package: ExcelScript!
+fullName: ExcelScript.CellValueConditionalFormat
+summary: Represents a cell value conditional format.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies conditional formatting to a range.
+   * That formatting is conditional upon the cell's numerical value.
+   * Any value between 50 and 75 will have the cell fill color changed and the font made italic.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range to format.
+    const sheet = workbook.getActiveWorksheet();
+    const ratingColumn = sheet.getRange("D2:D20");
+
+    // Add cell value conditional formatting.
+    const cellValueConditionalFormatting : ExcelScript.CellValueConditionalFormat 
+      = ratingColumn.addConditionalFormat(ExcelScript.ConditionalFormatType.cellValue).getCellValue();
+    
+    // Create the condition, in this case when the cell value is between 50 and 75.
+    let rule: ExcelScript.ConditionalCellValueRule = {
+      formula1: "50",
+      formula2: "75",
+      operator: ExcelScript.ConditionalCellValueOperator.between
+    };
+    cellValueConditionalFormatting.setRule(rule);
+
+    // Set the format to apply when the condition is met.
+    let format = cellValueConditionalFormatting.getFormat();
+    format.getFill().setColor("yellow");
+    format.getFont().setItalic(true);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getFormat()
+    uid: ExcelScript!ExcelScript.CellValueConditionalFormat#getFormat:member(1)
+    package: ExcelScript!
+    fullName: getFormat()
+    summary: >-
+      Returns a format object, encapsulating the conditional formats font, fill,
+      borders, and other properties.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormat(): ConditionalRangeFormat;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ConditionalRangeFormat:interface"
+          />
+        description: ''
+  - name: getRule()
+    uid: ExcelScript!ExcelScript.CellValueConditionalFormat#getRule:member(1)
+    package: ExcelScript!
+    fullName: getRule()
+    summary: Specifies the rule object on this conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRule(): ConditionalCellValueRule;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ConditionalCellValueRule:interface"
+          />
+        description: ''
+  - name: setRule(rule)
+    uid: ExcelScript!ExcelScript.CellValueConditionalFormat#setRule:member(1)
+    package: ExcelScript!
+    fullName: setRule(rule)
+    summary: Specifies the rule object on this conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRule(rule: ConditionalCellValueRule): void;'
+      parameters:
+        - id: rule
+          description: ''
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalCellValueRule:interface" />
+      return:
+        type: void
+        description: ''

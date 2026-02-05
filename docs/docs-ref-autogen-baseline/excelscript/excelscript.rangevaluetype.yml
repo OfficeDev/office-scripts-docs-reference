@@ -1,0 +1,81 @@
+### YamlMime:TSEnum
+name: ExcelScript.RangeValueType
+uid: ExcelScript!ExcelScript.RangeValueType:enum
+package: ExcelScript!
+fullName: ExcelScript.RangeValueType
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script formats rows in a worksheet based on the first value in that row. 
+   * If it's the boolean value TRUE, the row is bolded. 
+   * If it's FALSE, nothing is changed. 
+   * If the value type isn't a boolean, the row is italicized.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range in the active worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const usedRange = sheet.getUsedRange();
+
+    // Get the values in the first column.
+    const firstColumnValues = usedRange.getColumn(0).getValues();
+
+    // Look at the first cell in each row.
+    const rowCount = usedRange.getRowCount();
+    for (let i = 0; i < rowCount; i++) {
+      // Get the type of the first cell to make sure it's a boolean.
+      let firstValueType = usedRange.getCell(i, 0).getValueType();
+
+      // Set the bold or italic of the row as described earlier.
+      if (firstValueType === ExcelScript.RangeValueType.boolean) {
+        if (firstColumnValues[i][0] as boolean === true) {
+          usedRange.getRow(i).getFormat().getFont().setBold(true);
+        } else {
+          usedRange.getRow(i).getFormat().getFont().setBold(false);
+        }
+      } else {
+        usedRange.getRow(i).getFormat().getFont().setItalic(true);
+      }
+    }
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: boolean
+    uid: ExcelScript!ExcelScript.RangeValueType.boolean:member
+    package: ExcelScript!
+    summary: ''
+  - name: double
+    uid: ExcelScript!ExcelScript.RangeValueType.double:member
+    package: ExcelScript!
+    summary: ''
+  - name: empty
+    uid: ExcelScript!ExcelScript.RangeValueType.empty:member
+    package: ExcelScript!
+    summary: ''
+  - name: error
+    uid: ExcelScript!ExcelScript.RangeValueType.error:member
+    package: ExcelScript!
+    summary: ''
+  - name: integer
+    uid: ExcelScript!ExcelScript.RangeValueType.integer:member
+    package: ExcelScript!
+    summary: ''
+  - name: richValue
+    uid: ExcelScript!ExcelScript.RangeValueType.richValue:member
+    package: ExcelScript!
+    summary: ''
+  - name: string
+    uid: ExcelScript!ExcelScript.RangeValueType.string:member
+    package: ExcelScript!
+    summary: ''
+  - name: unknown
+    uid: ExcelScript!ExcelScript.RangeValueType.unknown:member
+    package: ExcelScript!
+    summary: ''

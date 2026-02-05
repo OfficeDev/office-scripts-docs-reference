@@ -1,0 +1,63 @@
+### YamlMime:TSEnum
+name: ExcelScript.HorizontalAlignment
+uid: ExcelScript!ExcelScript.HorizontalAlignment:enum
+package: ExcelScript!
+fullName: ExcelScript.HorizontalAlignment
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script centers the text in a table's header row cells.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first table on the current worksheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const table = currentSheet.getTables()[0];
+
+    // Get the header range.
+    const headerRange = table.getHeaderRowRange();
+
+    // Set the horizontal text alignment to `center`.
+    headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: center
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.center:member
+    package: ExcelScript!
+    summary: ''
+  - name: centerAcrossSelection
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.centerAcrossSelection:member
+    package: ExcelScript!
+    summary: ''
+  - name: distributed
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.distributed:member
+    package: ExcelScript!
+    summary: ''
+  - name: fill
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.fill:member
+    package: ExcelScript!
+    summary: ''
+  - name: general
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.general:member
+    package: ExcelScript!
+    summary: ''
+  - name: justify
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.justify:member
+    package: ExcelScript!
+    summary: ''
+  - name: left
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.left:member
+    package: ExcelScript!
+    summary: ''
+  - name: right
+    uid: ExcelScript!ExcelScript.HorizontalAlignment.right:member
+    package: ExcelScript!
+    summary: ''

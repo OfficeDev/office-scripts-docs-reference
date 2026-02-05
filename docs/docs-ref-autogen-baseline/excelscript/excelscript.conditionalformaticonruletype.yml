@@ -1,0 +1,67 @@
+### YamlMime:TSEnum
+name: ExcelScript.ConditionalFormatIconRuleType
+uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType:enum
+package: ExcelScript!
+fullName: ExcelScript.ConditionalFormatIconRuleType
+summary: Represents the types of icon conditional format.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies icon set conditional formatting to a range.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range "A1:A5" on the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const range = sheet.getRange("A1:A5");
+
+    // Create icon set conditional formatting on the range.
+    const conditionalFormatting = range.addConditionalFormat(ExcelScript.ConditionalFormatType.iconSet);
+
+    // Use the "3 Traffic Lights (Unrimmed)" set.
+    conditionalFormatting.getIconSet().setStyle(ExcelScript.IconSet.threeTrafficLights1);
+
+    // Set the criteria to use a different icon for the bottom, middle, and top thirds of the values in the range.
+    const criteria: ExcelScript.ConditionalIconCriterion[] = [
+      {
+        formula: '=0', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type: ExcelScript.ConditionalFormatIconRuleType.percent
+      },
+      {
+        formula: '=33', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type: ExcelScript.ConditionalFormatIconRuleType.percent
+      },
+      {
+        formula: '=67', operator: ExcelScript.ConditionalIconCriterionOperator.greaterThanOrEqual,
+        type: ExcelScript.ConditionalFormatIconRuleType.percent
+      }];
+    conditionalFormatting.getIconSet().setCriteria(criteria);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: formula
+    uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType.formula:member
+    package: ExcelScript!
+    summary: ''
+  - name: invalid
+    uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType.invalid:member
+    package: ExcelScript!
+    summary: ''
+  - name: number
+    uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType.number:member
+    package: ExcelScript!
+    summary: ''
+  - name: percent
+    uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType.percent:member
+    package: ExcelScript!
+    summary: ''
+  - name: percentile
+    uid: ExcelScript!ExcelScript.ConditionalFormatIconRuleType.percentile:member
+    package: ExcelScript!
+    summary: ''

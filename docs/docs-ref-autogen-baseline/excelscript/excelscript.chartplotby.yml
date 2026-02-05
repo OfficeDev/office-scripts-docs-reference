@@ -1,0 +1,44 @@
+### YamlMime:TSEnum
+name: ExcelScript.ChartPlotBy
+uid: ExcelScript!ExcelScript.ChartPlotBy:enum
+package: ExcelScript!
+fullName: ExcelScript.ChartPlotBy
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample performs the "Switch Row/Column" action on a chart named "ColumnClusteredChart".
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current worksheet.
+    let selectedSheet = workbook.getActiveWorksheet();
+
+    // Get an existing chart named "ColumnClusteredChart".
+    let columnClusteredChart = selectedSheet.getChart("ColumnClusteredChart");
+    
+    // Switch the row and column for the chart's data source.
+    if (columnClusteredChart.getPlotBy() === ExcelScript.ChartPlotBy.columns) {
+      // If the chart is grouped by columns, switch it to rows.
+      columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.rows);
+    } else {
+      // If the chart is grouped by rows, switch it to columns.
+      columnClusteredChart.setPlotBy(ExcelScript.ChartPlotBy.columns);
+    }
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: columns
+    uid: ExcelScript!ExcelScript.ChartPlotBy.columns:member
+    package: ExcelScript!
+    summary: ''
+  - name: rows
+    uid: ExcelScript!ExcelScript.ChartPlotBy.rows:member
+    package: ExcelScript!
+    summary: ''

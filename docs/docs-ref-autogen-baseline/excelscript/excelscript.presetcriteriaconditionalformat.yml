@@ -1,0 +1,101 @@
+### YamlMime:TSType
+name: ExcelScript.PresetCriteriaConditionalFormat
+uid: ExcelScript!ExcelScript.PresetCriteriaConditionalFormat:interface
+package: ExcelScript!
+fullName: ExcelScript.PresetCriteriaConditionalFormat
+summary: >-
+  Represents the preset criteria conditional format such as above average, below
+  average, unique values, contains blank, nonblank, error, and noerror.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script applies a conditional format that uses a preset criterion.
+   * Any cell in row 1 will have the color fill set to green if it is a duplicate value
+   * (of anything else in row 1).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the range for row 1.
+    const sheet = workbook.getActiveWorksheet();
+    const formattedRange = sheet.getRange("1:1");
+
+    // Add new conditional formatting to that range.
+    const conditionalFormat = formattedRange.addConditionalFormat(
+      ExcelScript.ConditionalFormatType.presetCriteria);
+
+    // Set the conditional formatting to apply a green fill.
+    const presetFormat: ExcelScript.PresetCriteriaConditionalFormat = conditionalFormat.getPreset();
+    presetFormat.getFormat().getFill().setColor("green");
+
+    // Set a rule to apply the conditional format when values are duplicated in the range.
+    const duplicateRule: ExcelScript.ConditionalPresetCriteriaRule = {
+      criterion: ExcelScript.ConditionalFormatPresetCriterion.duplicateValues
+    };
+    presetFormat.setRule(duplicateRule);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: getFormat()
+    uid: >-
+      ExcelScript!ExcelScript.PresetCriteriaConditionalFormat#getFormat:member(1)
+    package: ExcelScript!
+    fullName: getFormat()
+    summary: >-
+      Returns a format object, encapsulating the conditional formats font, fill,
+      borders, and other properties.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getFormat(): ConditionalRangeFormat;'
+      return:
+        type: >-
+          <xref uid="ExcelScript!ExcelScript.ConditionalRangeFormat:interface"
+          />
+        description: ''
+  - name: getRule()
+    uid: ExcelScript!ExcelScript.PresetCriteriaConditionalFormat#getRule:member(1)
+    package: ExcelScript!
+    fullName: getRule()
+    summary: The rule of the conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getRule(): ConditionalPresetCriteriaRule;'
+      return:
+        type: >-
+          <xref
+          uid="ExcelScript!ExcelScript.ConditionalPresetCriteriaRule:interface"
+          />
+        description: ''
+  - name: setRule(rule)
+    uid: ExcelScript!ExcelScript.PresetCriteriaConditionalFormat#setRule:member(1)
+    package: ExcelScript!
+    fullName: setRule(rule)
+    summary: The rule of the conditional format.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setRule(rule: ConditionalPresetCriteriaRule): void;'
+      parameters:
+        - id: rule
+          description: ''
+          type: >-
+            <xref
+            uid="ExcelScript!ExcelScript.ConditionalPresetCriteriaRule:interface"
+            />
+      return:
+        type: void
+        description: ''

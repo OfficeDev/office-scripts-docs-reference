@@ -1,0 +1,53 @@
+### YamlMime:TSEnum
+name: ExcelScript.ArrowheadWidth
+uid: ExcelScript!ExcelScript.ArrowheadWidth:enum
+package: ExcelScript!
+fullName: ExcelScript.ArrowheadWidth
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script adds a line that goes from cell B2 to cell F4 on the current worksheet.
+   */ 
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the current worksheet.
+    const sheet = workbook.getActiveWorksheet();
+
+    // Get the ranges for the two cells.
+    const b2Range = sheet.getRange("B2");
+    const f4Range = sheet.getRange("F4");
+
+    // Add a straight line that connects the top-left corners of both cells.
+    const newShape = sheet.addLine(
+      b2Range.getLeft(),
+      b2Range.getTop(),
+      f4Range.getLeft(),
+      f4Range.getTop(),
+      ExcelScript.ConnectorType.straight);
+
+    // Add a wide, triangular arrowhead to the end of the line, such that it points at F4.
+    const line = newShape.getLine();
+    line.setEndArrowheadStyle(ExcelScript.ArrowheadStyle.triangle);
+    line.setEndArrowheadWidth(ExcelScript.ArrowheadWidth.wide);
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: medium
+    uid: ExcelScript!ExcelScript.ArrowheadWidth.medium:member
+    package: ExcelScript!
+    summary: ''
+  - name: narrow
+    uid: ExcelScript!ExcelScript.ArrowheadWidth.narrow:member
+    package: ExcelScript!
+    summary: ''
+  - name: wide
+    uid: ExcelScript!ExcelScript.ArrowheadWidth.wide:member
+    package: ExcelScript!
+    summary: ''

@@ -1,0 +1,49 @@
+### YamlMime:TSEnum
+name: ExcelScript.ImageFittingMode
+uid: ExcelScript!ExcelScript.ImageFittingMode:enum
+package: ExcelScript!
+fullName: ExcelScript.ImageFittingMode
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script returns an image of the first chart in the first worksheet.
+   * That image is 600x400 pixels and the chart will be 
+   * stretched to fill those dimensions.
+   * The returned image can be used in a Power Automate flow.
+   */
+  function main(workbook: ExcelScript.Workbook): string {
+    // Get the first chart in the first worksheet.
+    const firstSheet = workbook.getFirstWorksheet();
+    const firstChart = firstSheet.getCharts()[0];
+
+    // Get an image of the chart as a base64-encoded string.
+    const base64String = firstChart.getImage(
+      600, /* Width */
+      400, /* Height */
+      ExcelScript.ImageFittingMode.fill /* Fill to match the dimensions. */
+    );
+
+    return base64String;
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: fill
+    uid: ExcelScript!ExcelScript.ImageFittingMode.fill:member
+    package: ExcelScript!
+    summary: ''
+  - name: fit
+    uid: ExcelScript!ExcelScript.ImageFittingMode.fit:member
+    package: ExcelScript!
+    summary: ''
+  - name: fitAndCenter
+    uid: ExcelScript!ExcelScript.ImageFittingMode.fitAndCenter:member
+    package: ExcelScript!
+    summary: ''

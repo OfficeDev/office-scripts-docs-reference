@@ -1,0 +1,99 @@
+### YamlMime:TSType
+name: ExcelScript.ChartFill
+uid: ExcelScript!ExcelScript.ChartFill:interface
+package: ExcelScript!
+fullName: ExcelScript.ChartFill
+summary: Represents the fill formatting for a chart element.
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This sample sets the fill color of a chart series.
+   * This assumes the active worksheet has a stock chart (e.g., Volume-High-Low-Close).
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the first chart on the active worksheet.
+    const sheet = workbook.getActiveWorksheet();
+    const chart = sheet.getCharts()[0];
+    
+    // Set the fill color for the first series (volume).
+    const volumeSeries = chart.getSeries()[0];
+    volumeSeries.getFormat().getFill().setSolidColor("#B0C4DE");
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+type: interface
+methods:
+  - name: clear()
+    uid: ExcelScript!ExcelScript.ChartFill#clear:member(1)
+    package: ExcelScript!
+    fullName: clear()
+    summary: Clears the fill color of a chart element.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'clear(): void;'
+      return:
+        type: void
+        description: ''
+  - name: getSolidColor()
+    uid: ExcelScript!ExcelScript.ChartFill#getSolidColor:member(1)
+    package: ExcelScript!
+    fullName: getSolidColor()
+    summary: Gets the uniform color fill formatting of a chart element.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'getSolidColor(): string;'
+      return:
+        type: string
+        description: ''
+  - name: setSolidColor(color)
+    uid: ExcelScript!ExcelScript.ChartFill#setSolidColor:member(1)
+    package: ExcelScript!
+    fullName: setSolidColor(color)
+    summary: Sets the fill formatting of a chart element to a uniform color.
+    remarks: ''
+
+    isPreview: false
+    isDeprecated: false
+    syntax:
+      content: 'setSolidColor(color: string): void;'
+      parameters:
+        - id: color
+          description: >-
+            HTML color code representing the color of the background, in the
+            form \#RRGGBB (e.g., "FFA500") or as a named HTML color (e.g.,
+            "orange").
+          type: string
+      return:
+        type: void
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This sample sets a solid fill color for a chart series.
+           * This assumes the active worksheet has a stock chart (e.g., Volume-Open-High-Low-Close).
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the first chart on the active worksheet.
+            const sheet = workbook.getActiveWorksheet();
+            const chart = sheet.getCharts()[0];
+            
+            // Set the fill color to light steel blue for the first series.
+            const volumeSeries = chart.getSeries()[0];
+            volumeSeries.getFormat().getFill().setSolidColor("#B0C4DE");
+          }
+          ```

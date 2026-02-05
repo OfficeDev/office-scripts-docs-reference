@@ -1,0 +1,65 @@
+### YamlMime:TSEnum
+name: ExcelScript.SpecialCellType
+uid: ExcelScript!ExcelScript.SpecialCellType:enum
+package: ExcelScript!
+fullName: ExcelScript.SpecialCellType
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script finds and highlights all the cells in the current worksheet that contain a formula.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Get the used range on the current sheet.
+    const currentSheet = workbook.getActiveWorksheet();
+    const usedRange = currentSheet.getUsedRange();
+
+    // Get the RangeAreas object for each cell with a formula.
+    const formulaCells = usedRange.getSpecialCells(ExcelScript.SpecialCellType.formulas);
+
+    // Add a light blue background to the cells containing formulas.
+    formulaCells.getFormat().getFill().setColor("#ADD8E6");
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: blanks
+    uid: ExcelScript!ExcelScript.SpecialCellType.blanks:member
+    package: ExcelScript!
+    summary: Cells with no content.
+  - name: conditionalFormats
+    uid: ExcelScript!ExcelScript.SpecialCellType.conditionalFormats:member
+    package: ExcelScript!
+    summary: All cells with conditional formats.
+  - name: constants
+    uid: ExcelScript!ExcelScript.SpecialCellType.constants:member
+    package: ExcelScript!
+    summary: Cells containing constants.
+  - name: dataValidations
+    uid: ExcelScript!ExcelScript.SpecialCellType.dataValidations:member
+    package: ExcelScript!
+    summary: Cells with validation criteria.
+  - name: formulas
+    uid: ExcelScript!ExcelScript.SpecialCellType.formulas:member
+    package: ExcelScript!
+    summary: Cells containing formulas.
+  - name: sameConditionalFormat
+    uid: ExcelScript!ExcelScript.SpecialCellType.sameConditionalFormat:member
+    package: ExcelScript!
+    summary: Cells with the same conditional format as the first cell in the range.
+  - name: sameDataValidation
+    uid: ExcelScript!ExcelScript.SpecialCellType.sameDataValidation:member
+    package: ExcelScript!
+    summary: >-
+      Cells with the same data validation criteria as the first cell in the
+      range.
+  - name: visible
+    uid: ExcelScript!ExcelScript.SpecialCellType.visible:member
+    package: ExcelScript!
+    summary: Cells that are visible.

@@ -1,0 +1,37 @@
+### YamlMime:TSEnum
+name: ExcelScript.PageOrientation
+uid: ExcelScript!ExcelScript.PageOrientation:enum
+package: ExcelScript!
+fullName: ExcelScript.PageOrientation
+summary: ''
+remarks: |-
+
+
+  #### Examples
+
+  ```TypeScript
+  /**
+   * This script sets the printing orientation for the entire workbook.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    // Go to each worksheet so the print settings are consistent.
+    workbook.getWorksheets().forEach((sheet) => {
+      const pageLayout = sheet.getPageLayout();
+
+      // Print every page with a landscape orientation.
+      pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
+    });
+  }
+  ```
+
+isPreview: false
+isDeprecated: false
+fields:
+  - name: landscape
+    uid: ExcelScript!ExcelScript.PageOrientation.landscape:member
+    package: ExcelScript!
+    summary: ''
+  - name: portrait
+    uid: ExcelScript!ExcelScript.PageOrientation.portrait:member
+    package: ExcelScript!
+    summary: ''
