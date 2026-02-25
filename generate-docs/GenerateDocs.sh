@@ -53,8 +53,8 @@ pushd api-extractor-inputs-officescript-release
 ../node_modules/.bin/api-extractor run
 popd
 
-./node_modules/.bin/api-documenter yaml --input-folder ./json/json-preview --output-folder ./yaml/yaml-preview --office
-./node_modules/.bin/api-documenter yaml --input-folder ./json/json-release --output-folder ./yaml/yaml-release --office
+./node_modules/.bin/api-documenter yaml --input-folder ./json/json-preview --output-folder ./yaml/yaml-preview
+./node_modules/.bin/api-documenter yaml --input-folder ./json/json-release --output-folder ./yaml/yaml-release
 
 pushd scripts
 node postprocessor.js
