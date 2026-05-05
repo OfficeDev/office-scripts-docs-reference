@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.SearchCriteria:interface
 package: ExcelScript!
 fullName: ExcelScript.SearchCriteria
 summary: Represents the search criteria to be used.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [find](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-find-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script searches for the next instance of the text "TK" on the current worksheet.
    * It then selects that cell and removes "TK" and all formatting from the cell.
@@ -31,6 +42,7 @@ remarks: |-
     // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
     tkCell.clear(ExcelScript.ClearApplyTo.all);
   }
+
   ```
 
 isPreview: false

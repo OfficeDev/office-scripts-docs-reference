@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.CalculationMode:enum
 package: ExcelScript!
 fullName: ExcelScript.CalculationMode
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Application](/javascript/api/office-scripts/excelscript/excelscript.application):
+  [getCalculationMode](/javascript/api/office-scripts/excelscript/excelscript.application#excelscript-excelscript-application-getcalculationmode-member(1)),
+  [setCalculationMode](/javascript/api/office-scripts/excelscript/excelscript.application#excelscript-excelscript-application-setcalculationmode-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script recalculates the used range of a specific worksheet.
    */
@@ -25,6 +37,7 @@ remarks: |-
       sheet.getUsedRange().calculate();
     }
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.SearchDirection:enum
 package: ExcelScript!
 fullName: ExcelScript.SearchDirection
 summary: Specifies the search direction.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.SearchCriteria](/javascript/api/office-scripts/excelscript/excelscript.searchcriteria):
+  [searchDirection](/javascript/api/office-scripts/excelscript/excelscript.searchcriteria#excelscript-excelscript-searchcriteria-searchdirection-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script searches for the next instance of the text "TK" on the current worksheet.
    * It then selects that cell and removes "TK" and all formatting from the cell.
@@ -31,6 +42,7 @@ remarks: |-
     // Remove the "TK" text value from the cell, as well as any formatting that may have been added.
     tkCell.clear(ExcelScript.ClearApplyTo.all);
   }
+
   ```
 
 isPreview: false

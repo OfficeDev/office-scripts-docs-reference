@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.ConditionalTopBottomRule:interface
 package: ExcelScript!
 fullName: ExcelScript.ConditionalTopBottomRule
 summary: Represents the rule of the top/bottom conditional format.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.ConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat):
+  [changeRuleToTopBottom](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-changeruletotopbottom-member(1))
+
+  -
+  [ExcelScript.TopBottomConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.topbottomconditionalformat):
+  [getRule](/javascript/api/office-scripts/excelscript/excelscript.topbottomconditionalformat#excelscript-excelscript-topbottomconditionalformat-getrule-member(1)),
+  [setRule](/javascript/api/office-scripts/excelscript/excelscript.topbottomconditionalformat#excelscript-excelscript-topbottomconditionalformat-setrule-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample applies conditional formatting to the currently used range in the worksheet. 
    * The conditional formatting is a pink fill for the 5 lowest values.
@@ -29,6 +45,7 @@ remarks: |-
       type: ExcelScript.ConditionalTopBottomCriterionType.bottomItems /* The type of the top/bottom condition. */
     });
   }
+
   ```
 
 isPreview: false

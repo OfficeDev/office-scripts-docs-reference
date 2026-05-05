@@ -4,12 +4,27 @@ uid: ExcelScript!ExcelScript.DynamicFilterCriteria:enum
 package: ExcelScript!
 fullName: ExcelScript.DynamicFilterCriteria
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Filter](/javascript/api/office-scripts/excelscript/excelscript.filter):
+  [applyDynamicFilter](/javascript/api/office-scripts/excelscript/excelscript.filter#excelscript-excelscript-filter-applydynamicfilter-member(1))
+
+  -
+  [ExcelScript.FilterCriteria](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria):
+  [dynamicCriteria](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria#excelscript-excelscript-filtercriteria-dynamiccriteria-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies a filter to a table that filters it 
    * to only show rows with dates from the previous month.
@@ -25,6 +40,7 @@ remarks: |-
     // `lastMonth` will only show rows with a date from the previous month.
     dateColumn.getFilter().applyDynamicFilter(ExcelScript.DynamicFilterCriteria.lastMonth);
   }
+
   ```
 
 isPreview: false

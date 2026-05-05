@@ -6,16 +6,28 @@ fullName: ExcelScript.InsertShiftDirection
 summary: >-
   Determines the direction in which existing cells will be shifted to
   accommodate what is being inserted.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [insert](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-insert-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script inserts headers at the top of the worksheet.
    */
   function main(workbook: ExcelScript.Workbook)
+
   {
     let currentSheet = workbook.getActiveWorksheet();
 
@@ -29,6 +41,7 @@ remarks: |-
     // Add the headers.
     currentSheet.getRange("A1:C1").setValues(myHeaders);
   }
+
   ```
 
 isPreview: false

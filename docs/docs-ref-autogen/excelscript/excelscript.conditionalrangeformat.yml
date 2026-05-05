@@ -6,12 +6,39 @@ fullName: ExcelScript.ConditionalRangeFormat
 summary: >-
   A format object encapsulating the conditional formats range's font, fill,
   borders, and other properties.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.CellValueConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.cellvalueconditionalformat):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.cellvalueconditionalformat#excelscript-excelscript-cellvalueconditionalformat-getformat-member(1))
+
+  -
+  [ExcelScript.CustomConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.customconditionalformat):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.customconditionalformat#excelscript-excelscript-customconditionalformat-getformat-member(1))
+
+  -
+  [ExcelScript.PresetCriteriaConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.presetcriteriaconditionalformat):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.presetcriteriaconditionalformat#excelscript-excelscript-presetcriteriaconditionalformat-getformat-member(1))
+
+  -
+  [ExcelScript.TextConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.textconditionalformat):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.textconditionalformat#excelscript-excelscript-textconditionalformat-getformat-member(1))
+
+  -
+  [ExcelScript.TopBottomConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.topbottomconditionalformat):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.topbottomconditionalformat#excelscript-excelscript-topbottomconditionalformat-getformat-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies cell value conditional formatting to a range.
    * Any value less than 60 will have the cell's fill color changed and the font made italic.
@@ -36,6 +63,7 @@ remarks: |-
     format.getFill().setColor("yellow");
     format.getFont().setItalic(true);
   }
+
   ```
 
 isPreview: false

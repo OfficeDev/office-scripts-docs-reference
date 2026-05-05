@@ -6,12 +6,27 @@ fullName: ExcelScript.AutoFilter
 summary: >-
   Represents the `AutoFilter` object. AutoFilter turns the values in Excel
   column into specific filters based on the cell contents.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Table](/javascript/api/office-scripts/excelscript/excelscript.table):
+  [getAutoFilter](/javascript/api/office-scripts/excelscript/excelscript.table#excelscript-excelscript-table-getautofilter-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [getAutoFilter](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getautofilter-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates an autoFilter on the worksheet that filters out rows based on column values. 
    * The autoFilter filters to only include rows that have a value in column C in the lowest 10 values 
@@ -30,6 +45,7 @@ remarks: |-
       filterOn: ExcelScript.FilterOn.bottomItems
     });
   }
+
   ```
 
 isPreview: false

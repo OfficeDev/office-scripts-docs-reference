@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.PrintOrder:enum
 package: ExcelScript!
 fullName: ExcelScript.PrintOrder
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PageLayout](/javascript/api/office-scripts/excelscript/excelscript.pagelayout):
+  [getPrintOrder](/javascript/api/office-scripts/excelscript/excelscript.pagelayout#excelscript-excelscript-pagelayout-getprintorder-member(1)),
+  [setPrintOrder](/javascript/api/office-scripts/excelscript/excelscript.pagelayout#excelscript-excelscript-pagelayout-setprintorder-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sets the print order for every worksheet in the workbook.
    * The order of printed content will go over (e.g., left-to-right) 
@@ -25,6 +37,7 @@ remarks: |-
       layout.setPrintOrder(ExcelScript.PrintOrder.overThenDown);
     });
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.ChartSeries:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartSeries
 summary: Represents a series in a chart.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Chart](/javascript/api/office-scripts/excelscript/excelscript.chart):
+  [addChartSeries](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-addchartseries-member(1)),
+  [getSeries](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-getseries-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample produces a line chart with two series.
    * The chart assumes data in A1:E5 that looks like this:
@@ -37,6 +49,7 @@ remarks: |-
     secondSeries.setXAxisValues(headerRange);
     secondSeries.setValues(secondSeriesRange);
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.RangeHyperlink:interface
 package: ExcelScript!
 fullName: ExcelScript.RangeHyperlink
 summary: Represents the necessary strings to get/set a hyperlink (XHL) object.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getHyperlink](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-gethyperlink-member(1)),
+  [setHyperlink](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-sethyperlink-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script puts a link to a webpage in a cell.
    */
@@ -28,6 +40,7 @@ remarks: |-
     cell.setHyperlink(sampleHyperlink);
     cell.getFormat().autofitColumns();
   }
+
   ```
 
 isPreview: false

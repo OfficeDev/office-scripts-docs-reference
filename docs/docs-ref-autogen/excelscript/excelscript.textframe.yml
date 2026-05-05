@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.TextFrame:interface
 package: ExcelScript!
 fullName: ExcelScript.TextFrame
 summary: Represents the text frame of a shape object.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Shape](/javascript/api/office-scripts/excelscript/excelscript.shape):
+  [getTextFrame](/javascript/api/office-scripts/excelscript/excelscript.shape#excelscript-excelscript-shape-gettextframe-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a star shape with the value from cell A1.
    */
@@ -26,6 +37,7 @@ remarks: |-
     textFrame.getTextRange().setText(value.toString());
     textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
   }
+
   ```
 
 isPreview: false

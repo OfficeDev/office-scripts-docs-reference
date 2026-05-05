@@ -8,12 +8,33 @@ summary: >-
   primitive named objects (as seen in the type below), range object, or a
   reference to a range. This object can be used to obtain range object
   associated with names.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [addNamedItem](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addnameditem-member(1)),
+  [addNamedItemFormulaLocal](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addnameditemformulalocal-member(1)),
+  [getNamedItem](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getnameditem-member(1)),
+  [getNames](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getnames-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addNamedItem](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addnameditem-member(1)),
+  [addNamedItemFormulaLocal](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addnameditemformulalocal-member(1)),
+  [getNamedItem](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getnameditem-member(1)),
+  [getNames](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getnames-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a named formula and uses it in another part of the workbook.
    */
@@ -33,6 +54,7 @@ remarks: |-
     // Switch to the new worksheet.
     otherSheet.activate();
   }
+
   ```
 
 isPreview: false

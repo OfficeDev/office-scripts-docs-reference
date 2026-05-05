@@ -4,12 +4,34 @@ uid: ExcelScript!ExcelScript.DataPivotHierarchy:interface
 package: ExcelScript!
 fullName: ExcelScript.DataPivotHierarchy
 summary: Represents the Excel DataPivotHierarchy.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PivotField](/javascript/api/office-scripts/excelscript/excelscript.pivotfield):
+  [sortByValues](/javascript/api/office-scripts/excelscript/excelscript.pivotfield#excelscript-excelscript-pivotfield-sortbyvalues-member(1))
+
+  -
+  [ExcelScript.PivotLayout](/javascript/api/office-scripts/excelscript/excelscript.pivotlayout):
+  [getDataHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivotlayout#excelscript-excelscript-pivotlayout-getdatahierarchy-member(1))
+
+  -
+  [ExcelScript.PivotTable](/javascript/api/office-scripts/excelscript/excelscript.pivottable):
+  [addDataHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-adddatahierarchy-member(1)),
+  [getDataHierarchies](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-getdatahierarchies-member(1)),
+  [getDataHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-getdatahierarchy-member(1)),
+  [removeDataHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-removedatahierarchy-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    *  This sample sorts the rows of a PivotTable.
    */
@@ -26,6 +48,7 @@ remarks: |-
     // Sort the "Farm" row's only field by the values in "Sum of Crates Sold Wholesale".
     rowToSort.getFields()[0].sortByValues(ExcelScript.SortBy.descending, valueFieldToSortOn);
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.PivotHierarchy:interface
 package: ExcelScript!
 fullName: ExcelScript.PivotHierarchy
 summary: Represents the Excel PivotHierarchy.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PivotTable](/javascript/api/office-scripts/excelscript/excelscript.pivottable):
+  [addColumnHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-addcolumnhierarchy-member(1)),
+  [addDataHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-adddatahierarchy-member(1)),
+  [addFilterHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-addfilterhierarchy-member(1)),
+  [addRowHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-addrowhierarchy-member(1)),
+  [getHierarchies](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-gethierarchies-member(1)),
+  [getHierarchy](/javascript/api/office-scripts/excelscript/excelscript.pivottable#excelscript-excelscript-pivottable-gethierarchy-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a PivotTable from an existing table and adds it to a new worksheet.
    * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
@@ -27,6 +43,7 @@ remarks: |-
     pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
     pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
   }
+
   ```
 
 isPreview: false

@@ -6,12 +6,53 @@ fullName: ExcelScript.RangeAreas
 summary: >-
   `RangeAreas` represents a collection of one or more rectangular ranges in the
   same worksheet.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.ConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat):
+  [getRanges](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-getranges-member(1)),
+  [setRanges](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-setranges-member(1))
+
+  -
+  [ExcelScript.DataValidation](/javascript/api/office-scripts/excelscript/excelscript.datavalidation):
+  [getInvalidCells](/javascript/api/office-scripts/excelscript/excelscript.datavalidation#excelscript-excelscript-datavalidation-getinvalidcells-member(1))
+
+  -
+  [ExcelScript.PageLayout](/javascript/api/office-scripts/excelscript/excelscript.pagelayout):
+  [getPrintArea](/javascript/api/office-scripts/excelscript/excelscript.pagelayout#excelscript-excelscript-pagelayout-getprintarea-member(1)),
+  [setPrintArea](/javascript/api/office-scripts/excelscript/excelscript.pagelayout#excelscript-excelscript-pagelayout-setprintarea-member(1))
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [copyFrom](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-copyfrom-member(1)),
+  [getMergedAreas](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getmergedareas-member(1)),
+  [getSpecialCells](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getspecialcells-member(1))
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [getSelectedRanges](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getselectedranges-member(1))
+
+  -
+  [ExcelScript.WorkbookRangeAreas](/javascript/api/office-scripts/excelscript/excelscript.workbookrangeareas):
+  [getAreas](/javascript/api/office-scripts/excelscript/excelscript.workbookrangeareas#excelscript-excelscript-workbookrangeareas-getareas-member(1)),
+  [getRangeAreasBySheet](/javascript/api/office-scripts/excelscript/excelscript.workbookrangeareas#excelscript-excelscript-workbookrangeareas-getrangeareasbysheet-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [findAll](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-findall-member(1)),
+  [getRanges](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getranges-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script clears all the cells in the current worksheet that are displaying errors.
    */
@@ -28,6 +69,7 @@ remarks: |-
       errorCells.clear();
     }
   }
+
   ```
 
 isPreview: false

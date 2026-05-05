@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.Placement:enum
 package: ExcelScript!
 fullName: ExcelScript.Placement
 summary: Specifies the way that an object is attached to its underlying cells.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Shape](/javascript/api/office-scripts/excelscript/excelscript.shape):
+  [getPlacement](/javascript/api/office-scripts/excelscript/excelscript.shape#excelscript-excelscript-shape-getplacement-member(1)),
+  [setPlacement](/javascript/api/office-scripts/excelscript/excelscript.shape#excelscript-excelscript-shape-setplacement-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a diamond shape at cell C3.
    * The shape moves and resizes as the grid underneath it changes.
@@ -30,6 +42,7 @@ remarks: |-
     // Set the placement of the shape so that it resizes and moves with the grid.
     diamond.setPlacement(ExcelScript.Placement.twoCell);
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.ConditionalCellValueRule:interface
 package: ExcelScript!
 fullName: ExcelScript.ConditionalCellValueRule
 summary: Represents a cell value conditional format rule.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.CellValueConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.cellvalueconditionalformat):
+  [getRule](/javascript/api/office-scripts/excelscript/excelscript.cellvalueconditionalformat#excelscript-excelscript-cellvalueconditionalformat-getrule-member(1)),
+  [setRule](/javascript/api/office-scripts/excelscript/excelscript.cellvalueconditionalformat#excelscript-excelscript-cellvalueconditionalformat-setrule-member(1))
+
+  -
+  [ExcelScript.ConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat):
+  [changeRuleToCellValue](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-changeruletocellvalue-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies conditional formatting to a range.
    * That formatting is conditional upon the cell's numerical value.
@@ -37,6 +53,7 @@ remarks: |-
     format.getFill().setColor("yellow");
     format.getFont().setItalic(true);
   }
+
   ```
 
 isPreview: false
