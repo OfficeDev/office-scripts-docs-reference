@@ -504,6 +504,12 @@ function convertUidToUrl(uid: string): string {
         anchor = `#${anchorBase}${overloadSuffix}`;
     }
 
+    // Namespace-level members (e.g., OfficeScript.downloadFile) have classPath === packageName.
+    // Their page is /javascript/api/office-scripts/<pkg>, not /.../<pkg>/<pkg>.
+    if (classPathLower === packageName) {
+        return `/javascript/api/office-scripts/${packageName}${anchor}`;
+    }
+
     return `/javascript/api/office-scripts/${packageName}/${classPathLower}${anchor}`;
 }
 
@@ -579,7 +585,14 @@ function generateUsedBySection(references: UsedByReference[]): string {
                 const uidParts = ref.uid.split('!');
                 if (uidParts.length === 2) {
                     const pkgName = uidParts[0].toLowerCase();
-                    classUrl = `/javascript/api/office-scripts/${pkgName}/${className.toLowerCase()}`;
+                    const classNameLower = className.toLowerCase();
+                    // Namespace-level class (e.g., "OfficeScript") has classNameLower === pkgName.
+                    // Its page is /javascript/api/office-scripts/<pkg>, not /.../<pkg>/<pkg>.
+                    if (classNameLower === pkgName) {
+                        classUrl = `/javascript/api/office-scripts/${pkgName}`;
+                    } else {
+                        classUrl = `/javascript/api/office-scripts/${pkgName}/${classNameLower}`;
+                    }
                 }
             }
         }
