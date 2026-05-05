@@ -4,16 +4,32 @@ uid: ExcelScript!ExcelScript.RangeFill:interface
 package: ExcelScript!
 fullName: ExcelScript.RangeFill
 summary: Represents the background of a range object.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PredefinedCellStyle](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle#excelscript-excelscript-predefinedcellstyle-getfill-member(1))
+
+  -
+  [ExcelScript.RangeFormat](/javascript/api/office-scripts/excelscript/excelscript.rangeformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.rangeformat#excelscript-excelscript-rangeformat-getfill-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sets the fill color of the used range to green.
    */
   function main(workbook: ExcelScript.Workbook)
+
   {
     // Get the used range of the current worksheet.
     let currentSheet = workbook.getActiveWorksheet();
@@ -25,6 +41,7 @@ remarks: |-
     // Set the fill color to green.
     fill.setColor("green");
   }
+
   ```
 
 isPreview: false

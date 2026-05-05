@@ -4,12 +4,26 @@ uid: ExcelScript!ExcelScript.ArrowheadStyle:enum
 package: ExcelScript!
 fullName: ExcelScript.ArrowheadStyle
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Line](/javascript/api/office-scripts/excelscript/excelscript.line):
+  [getBeginArrowheadStyle](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getbeginarrowheadstyle-member(1)),
+  [getEndArrowheadStyle](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getendarrowheadstyle-member(1)),
+  [setBeginArrowheadStyle](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-setbeginarrowheadstyle-member(1)),
+  [setEndArrowheadStyle](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-setendarrowheadstyle-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds a line that goes from cell B2 to cell F4 on the current worksheet.
    */ 
@@ -33,6 +47,7 @@ remarks: |-
     const line = newShape.getLine();
     line.setEndArrowheadStyle(ExcelScript.ArrowheadStyle.open);
   }
+
   ```
 
 isPreview: false

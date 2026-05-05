@@ -109,6 +109,38 @@ interface SnippetMap {
     [key: string]: string[];
 }
 
+interface UsedByReference {
+    uid: string;          // Full canonical reference UID of the using member
+    name: string;         // Display name (e.g., "ExcelScript.Workbook.getWorksheet")
+    memberType: string;   // "property", "method", etc.
+    packageName: string;  // Package name (e.g., "ExcelScript")
+    contextText: string;  // Human-readable context (e.g., "property type")
+}
+
+interface UsedByIndex {
+    [typeUID: string]: UsedByReference[];
+}
+
+interface ApiJsonToken {
+    kind: string;
+    text?: string;
+    canonicalReference?: string;
+}
+
+interface ApiJsonMember {
+    kind: string;
+    canonicalReference?: string;
+    name?: string;
+    excerptTokens?: ApiJsonToken[];
+    members?: ApiJsonMember[];
+    returnTypeTokenRange?: { startIndex: number; endIndex: number };
+    propertyTypeTokenRange?: { startIndex: number; endIndex: number };
+    parameters?: Array<{
+        parameterName: string;
+        parameterTypeTokenRange: { startIndex: number; endIndex: number };
+    }>;
+}
+
 /**
  * Loads snippets from the snippets.yaml file
  * @param snippetsPath - Absolute path to snippets.yaml file
@@ -282,6 +314,336 @@ function processYamlItem(
     }
 }
 
+// ---- Used By Index Building ----
+
+/**
+ * Builds a reverse index mapping type UIDs to the members that use them.
+ * Reads the API JSON files produced by api-extractor for each namespace.
+ */
+function buildUsedByIndex(): UsedByIndex {
+    const index: UsedByIndex = {};
+    const jsonFiles = [
+        path.resolve("../json/json-preview/ExcelScript.api.json"),
+        path.resolve("../json/json-preview/OfficeScript.api.json")
+    ];
+
+    for (const jsonPath of jsonFiles) {
+        if (!fsx.existsSync(jsonPath)) {
+            console.warn(`  Warning: JSON file not found: ${jsonPath}`);
+            continue;
+        }
+        try {
+            const apiJson: ApiJsonMember = JSON.parse(fsx.readFileSync(jsonPath, 'utf-8'));
+            const packageName = path.basename(jsonPath, '.api.json');
+            analyzeMembers(apiJson, index, packageName);
+        } catch (error) {
+            console.warn(`  Warning: Failed to process ${jsonPath}: ${error}`);
+        }
+    }
+
+    return index;
+}
+
+/**
+ * Recursively analyzes all members in an API JSON structure.
+ */
+function analyzeMembers(container: ApiJsonMember, index: UsedByIndex, packageName: string): void {
+    if (!container || !container.members) {
+        return;
+    }
+
+    for (const member of container.members) {
+        if (!member.canonicalReference) {
+            continue;
+        }
+        analyzeMemberTypeReferences(member, index, packageName);
+        analyzeMembers(member, index, packageName);
+    }
+}
+
+/**
+ * Analyzes a single member for type references in property types,
+ * method return types, and method parameter types.
+ */
+function analyzeMemberTypeReferences(member: ApiJsonMember, index: UsedByIndex, packageName: string): void {
+    if (!member.excerptTokens || !member.canonicalReference) {
+        return;
+    }
+
+    if (member.kind === 'PropertySignature' || member.kind === 'Property') {
+        const range = member.propertyTypeTokenRange;
+        const tokens = range
+            ? member.excerptTokens.slice(range.startIndex, range.endIndex)
+            : member.excerptTokens;
+        analyzeExcerptTokens(tokens, member.canonicalReference, 'property type', index, packageName);
+    }
+
+    if (member.kind === 'MethodSignature' || member.kind === 'Method' || member.kind === 'Function') {
+        if (member.returnTypeTokenRange) {
+            const returnTokens = member.excerptTokens.slice(
+                member.returnTypeTokenRange.startIndex,
+                member.returnTypeTokenRange.endIndex
+            );
+            analyzeExcerptTokens(returnTokens, member.canonicalReference, 'return type', index, packageName);
+        }
+
+        if (member.parameters) {
+            for (const param of member.parameters) {
+                const paramTokens = member.excerptTokens.slice(
+                    param.parameterTypeTokenRange.startIndex,
+                    param.parameterTypeTokenRange.endIndex
+                );
+                analyzeExcerptTokens(paramTokens, member.canonicalReference, 'parameter type', index, packageName);
+            }
+        }
+    }
+}
+
+/**
+ * Scans excerpt tokens for Reference tokens and adds entries to the index.
+ */
+function analyzeExcerptTokens(
+    tokens: ApiJsonToken[],
+    usingMemberUID: string,
+    contextText: string,
+    index: UsedByIndex,
+    packageName: string
+): void {
+    for (const token of tokens) {
+        if (token.kind === 'Reference' && token.canonicalReference) {
+            // Skip built-in types (e.g., Promise, Array) which start with '!'
+            if (token.canonicalReference.startsWith('!')) {
+                continue;
+            }
+
+            if (!index[token.canonicalReference]) {
+                index[token.canonicalReference] = [];
+            }
+
+            index[token.canonicalReference].push({
+                uid: usingMemberUID,
+                name: formatDisplayName(usingMemberUID),
+                memberType: getMemberType(usingMemberUID),
+                packageName: packageName,
+                contextText: contextText
+            });
+        }
+    }
+}
+
+/**
+ * Converts a canonical reference UID to a human-readable display name.
+ * E.g., "ExcelScript!ExcelScript.Workbook#getWorksheet:member(1)" -> "ExcelScript.Workbook.getWorksheet"
+ */
+function formatDisplayName(uid: string): string {
+    const withoutPackage = uid.replace(/^[^!]+!/, '');
+    return withoutPackage.replace(/#/g, '.').replace(/:[a-z]+(\(\d+\))?$/, '');
+}
+
+/**
+ * Determines the member type from a UID string.
+ */
+function getMemberType(uid: string): string {
+    if (uid.includes(':member')) { return 'property'; }
+    if (uid.includes(':method')) { return 'method'; }
+    if (uid.includes(':function')) { return 'function'; }
+    if (uid.includes(':interface')) { return 'interface'; }
+    if (uid.includes(':class')) { return 'class'; }
+    if (uid.includes(':enum')) { return 'enum'; }
+    if (uid.includes(':type')) { return 'type'; }
+    return 'member';
+}
+
+/**
+ * Converts a canonical reference UID to a documentation URL for office-scripts.
+ * E.g., "ExcelScript!ExcelScript.Workbook#getWorksheet:member(1)"
+ *    -> "/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getworksheet-member(1)"
+ */
+function convertUidToUrl(uid: string): string {
+    const overloadMatch = uid.match(/\((\d+)\)$/);
+    const overloadSuffix = overloadMatch ? `(${overloadMatch[1]})` : '';
+    const cleanUid = uid.replace(/\(\d+\)$/, '');
+
+    const parts = cleanUid.split('!');
+    if (parts.length !== 2) {
+        return '';
+    }
+
+    const packageName = parts[0].toLowerCase(); // "excelscript" or "officescript"
+    const reference = parts[1];
+
+    let classPath: string;
+    let memberPart: string;
+
+    const hashIndex = reference.indexOf('#');
+    if (hashIndex > 0) {
+        classPath = reference.substring(0, hashIndex);
+        memberPart = reference.substring(hashIndex + 1);
+    } else {
+        const colonIndex = reference.indexOf(':');
+        if (colonIndex > 0) {
+            const beforeColon = reference.substring(0, colonIndex);
+            const lastDotIndex = beforeColon.lastIndexOf('.');
+            if (lastDotIndex > 0) {
+                classPath = reference.substring(0, lastDotIndex);
+                memberPart = reference.substring(lastDotIndex + 1);
+            } else {
+                classPath = reference;
+                memberPart = '';
+            }
+        } else {
+            classPath = reference;
+            memberPart = '';
+        }
+    }
+
+    const classPathLower = classPath.toLowerCase();
+    let anchor = '';
+    if (memberPart) {
+        const anchorBase = `${packageName}-${classPath.replace(/\./g, '-')}-${memberPart.replace(/:/g, '-')}`.toLowerCase();
+        anchor = `#${anchorBase}${overloadSuffix}`;
+    }
+
+    return `/javascript/api/office-scripts/${packageName}/${classPathLower}${anchor}`;
+}
+
+/**
+ * Deduplicates method overloads, keeping only the first overload entry.
+ */
+function deduplicateMethodOverloads(references: UsedByReference[]): UsedByReference[] {
+    const seen = new Set<string>();
+    const result: UsedByReference[] = [];
+
+    for (const ref of references) {
+        const baseUID = ref.uid.replace(/\(\d+\)$/, '');
+        if (!seen.has(baseUID)) {
+            seen.add(baseUID);
+            result.push(ref);
+        }
+    }
+
+    return result;
+}
+
+/**
+ * Groups references by their containing class name.
+ * E.g., "ExcelScript.Workbook.getWorksheet" -> class is "ExcelScript.Workbook"
+ */
+function groupByContainingClass(references: UsedByReference[]): Record<string, UsedByReference[]> {
+    const grouped: Record<string, UsedByReference[]> = {};
+
+    for (const ref of references) {
+        const lastDotIndex = ref.name.lastIndexOf('.');
+        const className = lastDotIndex > 0 ? ref.name.substring(0, lastDotIndex) : ref.name;
+
+        if (!grouped[className]) {
+            grouped[className] = [];
+        }
+        grouped[className].push(ref);
+    }
+
+    return grouped;
+}
+
+/**
+ * Generates the markdown for the "Used by" section.
+ * Groups references by containing class with inline linked member lists.
+ */
+function generateUsedBySection(references: UsedByReference[]): string {
+    if (references.length === 0) {
+        return '';
+    }
+
+    const lines: string[] = ['\n\n#### Used by\n'];
+    const groupedByClass = groupByContainingClass(references);
+    const classNames = Object.keys(groupedByClass).sort();
+
+    for (const className of classNames) {
+        const members = groupedByClass[className];
+
+        members.sort((a, b) => {
+            const memberA = a.name.substring(className.length + 1);
+            const memberB = b.name.substring(className.length + 1);
+            return memberA.localeCompare(memberB);
+        });
+
+        const memberLinks: string[] = [];
+        let classUrl = '';
+
+        for (const ref of members) {
+            const url = convertUidToUrl(ref.uid);
+            const memberName = ref.name.substring(className.length + 1);
+            memberLinks.push(`[${memberName}](${url})`);
+
+            if (!classUrl) {
+                const uidParts = ref.uid.split('!');
+                if (uidParts.length === 2) {
+                    const pkgName = uidParts[0].toLowerCase();
+                    classUrl = `/javascript/api/office-scripts/${pkgName}/${className.toLowerCase()}`;
+                }
+            }
+        }
+
+        const classLink = classUrl ? `[${className}](${classUrl})` : className;
+        lines.push(`- ${classLink}: ${memberLinks.join(', ')}`);
+    }
+
+    return lines.join('\n');
+}
+
+/**
+ * Injects a "Used by" section into a YAML item's remarks if the item's UID
+ * appears in the usedByIndex. Filters out self-references.
+ */
+function injectUsedBySection(item: any, usedByIndex: UsedByIndex): boolean {
+    if (!item.uid) {
+        return false;
+    }
+
+    const references = usedByIndex[item.uid];
+    if (!references || references.length === 0) {
+        return false;
+    }
+
+    if (!item.remarks) {
+        item.remarks = '';
+    }
+
+    // Remove any existing "Used by" section before injecting a fresh one
+    if (item.remarks.includes('#### Used by')) {
+        item.remarks = item.remarks.replace(/\n*#### Used by\n[\s\S]*?(?=\n####|\n*$)/g, '');
+    }
+
+    // Extract class name from current item's UID and filter out self-references
+    let filteredReferences = references;
+    const uidParts = item.uid.split('!');
+    if (uidParts.length === 2) {
+        const currentClassName = uidParts[1].split(':')[0].split('#')[0];
+        filteredReferences = references.filter(ref => {
+            const lastDotIndex = ref.name.lastIndexOf('.');
+            const refClassName = lastDotIndex > 0 ? ref.name.substring(0, lastDotIndex) : ref.name;
+            return refClassName !== currentClassName;
+        });
+    }
+
+    if (filteredReferences.length === 0) {
+        return true;
+    }
+
+    const deduplicated = deduplicateMethodOverloads(filteredReferences);
+    const usedBySection = generateUsedBySection(deduplicated);
+
+    if (item.remarks.includes('#### Examples')) {
+        item.remarks = item.remarks.replace('#### Examples', usedBySection + '\n#### Examples');
+    } else if (item.remarks.trim()) {
+        item.remarks += usedBySection;
+    } else {
+        item.remarks = usedBySection.substring(2); // Remove leading \n\n
+    }
+
+    return true;
+}
+
 tryCatch(async () => {
     console.log("\nStarting postprocessor script...");
 
@@ -291,6 +653,11 @@ tryCatch(async () => {
     // Load snippets from json-preview directory
     const snippetsPath = path.resolve("../json/json-preview/snippets.yaml");
     const { snippetsAll, snippetsTracking } = loadSnippets(snippetsPath);
+
+    // Build the "Used By" reverse index from API JSON files
+    console.log("\nBuilding 'Used by' index...");
+    const usedByIndex = buildUsedByIndex();
+    console.log(`Built 'Used by' index with ${Object.keys(usedByIndex).length} referenced types.`);
 
     console.log(`Deleting old docs at: ${docsDestination}`);
     // Delete everything except the 'overview' files.
@@ -325,11 +692,11 @@ tryCatch(async () => {
                 .forEach(interfaceYml => { // Contents of docs-ref-autogen/<host>/<host>script.
                 let subFileName = fileName + '/' + interfaceYml;
                 const ymlFile = fsx.readFileSync(subFileName, "utf8");
-                fsx.writeFileSync(subFileName, cleanUpYmlFile(ymlFile, snippetsAll, snippetsTracking));
+                fsx.writeFileSync(subFileName, cleanUpYmlFile(ymlFile, snippetsAll, snippetsTracking, usedByIndex));
             });
         } else if (fileName.indexOf("toc") < 0 && fileName.indexOf(".yml") > 0) {
             const ymlFile = fsx.readFileSync(fileName, "utf8");
-            fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile, snippetsAll, snippetsTracking));
+            fsx.writeFileSync(fileName, cleanUpYmlFile(ymlFile, snippetsAll, snippetsTracking, usedByIndex));
         }
     });
 
@@ -414,13 +781,24 @@ function fixToc(tocPath: string): Toc {
 function cleanUpYmlFile(
     ymlFile: string,
     snippetsAll: SnippetMap,
-    snippetsTracking: SnippetMap
+    snippetsTracking: SnippetMap,
+    usedByIndex: UsedByIndex
 ): string {
     const schemaComment = ymlFile.substring(0, ymlFile.indexOf("\n") + 1);
     const apiYaml: ApiYaml = jsyaml.load(ymlFile) as ApiYaml;
 
     // Process the entire YAML tree for examples and API set links
     processYamlItem(apiYaml, snippetsAll, snippetsTracking);
+
+    // Inject "Used by" sections into the top-level item and its members.
+    // Enum fields are excluded because OPS doesn't support remarks on enum fields.
+    injectUsedBySection(apiYaml, usedByIndex);
+    if (apiYaml.properties) {
+        apiYaml.properties.forEach(prop => injectUsedBySection(prop, usedByIndex));
+    }
+    if (apiYaml.methods) {
+        apiYaml.methods.forEach(method => injectUsedBySection(method, usedByIndex));
+    }
 
     // Add links for type aliases.
     if (apiYaml.uid.endsWith(":type")) {

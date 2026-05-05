@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.SortMethod:enum
 package: ExcelScript!
 fullName: ExcelScript.SortMethod
 summary: Represents the ordering method to be used when sorting Chinese characters.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.RangeSort](/javascript/api/office-scripts/excelscript/excelscript.rangesort):
+  [apply](/javascript/api/office-scripts/excelscript/excelscript.rangesort#excelscript-excelscript-rangesort-apply-member(1))
+
+  -
+  [ExcelScript.TableSort](/javascript/api/office-scripts/excelscript/excelscript.tablesort):
+  [apply](/javascript/api/office-scripts/excelscript/excelscript.tablesort#excelscript-excelscript-tablesort-apply-member(1)),
+  [getMethod](/javascript/api/office-scripts/excelscript/excelscript.tablesort#excelscript-excelscript-tablesort-getmethod-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sorts a range using the values in the first column.
    */
@@ -34,6 +50,7 @@ remarks: |-
       ExcelScript.SortMethod.pinYin /* Use phonetic sorting for Chinese characters. */
       );
   }
+
   ```
 
 isPreview: false

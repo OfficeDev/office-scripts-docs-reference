@@ -4,12 +4,36 @@ uid: ExcelScript!ExcelScript.ContentType:enum
 package: ExcelScript!
 fullName: ExcelScript.ContentType
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Comment](/javascript/api/office-scripts/excelscript/excelscript.comment):
+  [addCommentReply](/javascript/api/office-scripts/excelscript/excelscript.comment#excelscript-excelscript-comment-addcommentreply-member(1)),
+  [getContentType](/javascript/api/office-scripts/excelscript/excelscript.comment#excelscript-excelscript-comment-getcontenttype-member(1))
+
+  -
+  [ExcelScript.CommentReply](/javascript/api/office-scripts/excelscript/excelscript.commentreply):
+  [getContentType](/javascript/api/office-scripts/excelscript/excelscript.commentreply#excelscript-excelscript-commentreply-getcontenttype-member(1))
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [addComment](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addcomment-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addComment](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addcomment-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample creates a comment that mentions a specific person.
    * That person will get a notification and link to the workbook.
@@ -45,6 +69,7 @@ remarks: |-
     // Add the comment.
     currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
   }
+
   ```
 
 isPreview: false

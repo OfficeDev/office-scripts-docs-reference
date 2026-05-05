@@ -4,12 +4,27 @@ uid: ExcelScript!ExcelScript.ClearApplyTo:enum
 package: ExcelScript!
 fullName: ExcelScript.ClearApplyTo
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [clear](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-clear-member(1))
+
+  -
+  [ExcelScript.RangeAreas](/javascript/api/office-scripts/excelscript/excelscript.rangeareas):
+  [clear](/javascript/api/office-scripts/excelscript/excelscript.rangeareas#excelscript-excelscript-rangeareas-clear-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script removes any extra formatting that's been applied to a table. 
    * This leaves only the base table style effects.
@@ -26,6 +41,7 @@ remarks: |-
     // Clear all the formatting that is not applied by the table and the table style.
     range.clear(ExcelScript.ClearApplyTo.formats);
   }
+
   ```
 
 isPreview: false

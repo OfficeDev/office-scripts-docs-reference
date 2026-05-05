@@ -4,12 +4,33 @@ uid: ExcelScript!ExcelScript.ChartType:enum
 package: ExcelScript!
 fullName: ExcelScript.ChartType
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Chart](/javascript/api/office-scripts/excelscript/excelscript.chart):
+  [getChartType](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-getcharttype-member(1)),
+  [setChartType](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-setcharttype-member(1))
+
+  -
+  [ExcelScript.ChartSeries](/javascript/api/office-scripts/excelscript/excelscript.chartseries):
+  [getChartType](/javascript/api/office-scripts/excelscript/excelscript.chartseries#excelscript-excelscript-chartseries-getcharttype-member(1)),
+  [setChartType](/javascript/api/office-scripts/excelscript/excelscript.chartseries#excelscript-excelscript-chartseries-setcharttype-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addChart](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addchart-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample creates a column-clustered chart based on the current worksheet's data.
    */
@@ -26,6 +47,7 @@ remarks: |-
     // Name the chart for easy access in other scripts.
     chart.setName("ColumnChart");
   }
+
   ```
 
 isPreview: false

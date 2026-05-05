@@ -4,12 +4,29 @@ uid: ExcelScript!ExcelScript.HorizontalAlignment:enum
 package: ExcelScript!
 fullName: ExcelScript.HorizontalAlignment
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PredefinedCellStyle](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle):
+  [getHorizontalAlignment](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle#excelscript-excelscript-predefinedcellstyle-gethorizontalalignment-member(1)),
+  [setHorizontalAlignment](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle#excelscript-excelscript-predefinedcellstyle-sethorizontalalignment-member(1))
+
+  -
+  [ExcelScript.RangeFormat](/javascript/api/office-scripts/excelscript/excelscript.rangeformat):
+  [getHorizontalAlignment](/javascript/api/office-scripts/excelscript/excelscript.rangeformat#excelscript-excelscript-rangeformat-gethorizontalalignment-member(1)),
+  [setHorizontalAlignment](/javascript/api/office-scripts/excelscript/excelscript.rangeformat#excelscript-excelscript-rangeformat-sethorizontalalignment-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script centers the text in a table's header row cells.
    */
@@ -24,6 +41,7 @@ remarks: |-
     // Set the horizontal text alignment to `center`.
     headerRange.getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.center);
   }
+
   ```
 
 isPreview: false

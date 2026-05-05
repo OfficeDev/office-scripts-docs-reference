@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.Filter:interface
 package: ExcelScript!
 fullName: ExcelScript.Filter
 summary: Manages the filtering of a table's column.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.TableColumn](/javascript/api/office-scripts/excelscript/excelscript.tablecolumn):
+  [getFilter](/javascript/api/office-scripts/excelscript/excelscript.tablecolumn#excelscript-excelscript-tablecolumn-getfilter-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds a table filter to only show the top 10% of values 
    * belonging to a particular column.
@@ -24,6 +35,7 @@ remarks: |-
       // Apply a filter to only show the rows with the top 10% of values in this column.
       pageViewFilter.applyTopPercentFilter(10);
   }
+
   ```
 
 isPreview: false

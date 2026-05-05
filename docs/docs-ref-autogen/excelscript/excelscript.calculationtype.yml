@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.CalculationType:enum
 package: ExcelScript!
 fullName: ExcelScript.CalculationType
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Application](/javascript/api/office-scripts/excelscript/excelscript.application):
+  [calculate](/javascript/api/office-scripts/excelscript/excelscript.application#excelscript-excelscript-application-calculate-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script fully recalculates the entire workbook.
    * This code is useful when automatic recalculation is turned off
@@ -19,6 +30,7 @@ remarks: |-
     const application = workbook.getApplication();
     application.calculate(ExcelScript.CalculationType.fullRebuild);
   }
+
   ```
 
 isPreview: false

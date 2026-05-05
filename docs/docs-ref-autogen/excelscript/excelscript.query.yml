@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.Query:interface
 package: ExcelScript!
 fullName: ExcelScript.Query
 summary: Represents a Power Query query.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [getQueries](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getqueries-member(1)),
+  [getQuery](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getquery-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script logs information about all the Power Query queries in the workbook.
    */
@@ -22,6 +34,7 @@ remarks: |-
       console.log(`Query ${query.getName()} - last refreshed ${query.getRefreshDate()}`);
     });
   }
+
   ```
 
 isPreview: false

@@ -7,12 +7,23 @@ summary: >-
   Represents layout and print settings that are not dependent on any
   printer-specific implementation. These settings include margins, orientation,
   page numbering, title rows, and print area.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [getPageLayout](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getpagelayout-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sets some basic page layout settings for printing.
    */
@@ -31,6 +42,7 @@ remarks: |-
       pageLayout.setOrientation(ExcelScript.PageOrientation.landscape);
     });
   }
+
   ```
 
 isPreview: false

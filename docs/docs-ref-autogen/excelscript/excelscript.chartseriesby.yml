@@ -8,12 +8,27 @@ summary: >-
   the "auto" option will inspect the source data shape to automatically guess
   whether the data is by rows or columns. In Excel on the web, "auto" will
   simply default to "columns".
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Chart](/javascript/api/office-scripts/excelscript/excelscript.chart):
+  [setData](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-setdata-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addChart](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addchart-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a clustered-column chart using an existing table.
    */
@@ -29,6 +44,7 @@ remarks: |-
           ExcelScript.ChartSeriesBy.columns
       );   
   }
+
   ```
 
 isPreview: false

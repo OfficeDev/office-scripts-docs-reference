@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.AggregationFunction:enum
 package: ExcelScript!
 fullName: ExcelScript.AggregationFunction
 summary: Aggregation function for the `DataPivotHierarchy`<!-- -->.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.DataPivotHierarchy](/javascript/api/office-scripts/excelscript/excelscript.datapivothierarchy):
+  [getSummarizeBy](/javascript/api/office-scripts/excelscript/excelscript.datapivothierarchy#excelscript-excelscript-datapivothierarchy-getsummarizeby-member(1)),
+  [setSummarizeBy](/javascript/api/office-scripts/excelscript/excelscript.datapivothierarchy#excelscript-excelscript-datapivothierarchy-setsummarizeby-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script changes how the data in a PivotTable is aggregated.
    */
@@ -21,6 +33,7 @@ remarks: |-
     const dataHierarchy = pivotTable.getDataHierarchies()[0];
     dataHierarchy.setSummarizeBy(ExcelScript.AggregationFunction.average);
   }
+
   ```
 
 isPreview: false

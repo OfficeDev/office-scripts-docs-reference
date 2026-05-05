@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.ConditionalDataBarNegativeFormat:interface
 package: ExcelScript!
 fullName: ExcelScript.ConditionalDataBarNegativeFormat
 summary: Represents a conditional format for the negative side of the data bar.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.DataBarConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.databarconditionalformat):
+  [getNegativeFormat](/javascript/api/office-scripts/excelscript/excelscript.databarconditionalformat#excelscript-excelscript-databarconditionalformat-getnegativeformat-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies data bar conditional formatting to a range.
    * It sets the data bar colors to be green when positive and red when negative.
@@ -29,6 +40,7 @@ remarks: |-
       const negativeFormat: ExcelScript.ConditionalDataBarNegativeFormat = dataBarConditionalFormat.getNegativeFormat();
       negativeFormat.setFillColor("red");
   }
+
   ```
 
 isPreview: false

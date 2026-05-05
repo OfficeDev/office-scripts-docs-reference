@@ -4,12 +4,32 @@ uid: ExcelScript!ExcelScript.Slicer:interface
 package: ExcelScript!
 fullName: ExcelScript.Slicer
 summary: Represents a `Slicer` object in the workbook.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addslicer-member(1)),
+  [getActiveSlicer](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getactiveslicer-member(1)),
+  [getSlicer](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getslicer-member(1)),
+  [getSlicers](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getslicers-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addslicer-member(1)),
+  [getSlicer](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getslicer-member(1)),
+  [getSlicers](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getslicers-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds a slicer for an existing PivotTable.
    */
@@ -30,6 +50,7 @@ remarks: |-
     // Set the left margin of the slicer.
     fruitSlicer.setLeft(400);
   }
+
   ```
 
 isPreview: false

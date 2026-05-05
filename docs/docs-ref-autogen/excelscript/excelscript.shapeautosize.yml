@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.ShapeAutoSize:enum
 package: ExcelScript!
 fullName: ExcelScript.ShapeAutoSize
 summary: Determines the type of automatic sizing allowed.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.TextFrame](/javascript/api/office-scripts/excelscript/excelscript.textframe):
+  [getAutoSizeSetting](/javascript/api/office-scripts/excelscript/excelscript.textframe#excelscript-excelscript-textframe-getautosizesetting-member(1)),
+  [setAutoSizeSetting](/javascript/api/office-scripts/excelscript/excelscript.textframe#excelscript-excelscript-textframe-setautosizesetting-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a star shape with the value from cell A1.
    */
@@ -26,6 +38,7 @@ remarks: |-
     textFrame.getTextRange().setText(value.toString());
     textFrame.setAutoSizeSetting(ExcelScript.ShapeAutoSize.autoSizeShapeToFitText);
   }
+
   ```
 
 isPreview: false
