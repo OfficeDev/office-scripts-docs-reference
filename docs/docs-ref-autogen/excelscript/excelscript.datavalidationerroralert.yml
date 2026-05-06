@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.DataValidationErrorAlert:interface
 package: ExcelScript!
 fullName: ExcelScript.DataValidationErrorAlert
 summary: Represents the error alert properties for the data validation.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.DataValidation](/javascript/api/office-scripts/excelscript/excelscript.datavalidation):
+  [getErrorAlert](/javascript/api/office-scripts/excelscript/excelscript.datavalidation#excelscript-excelscript-datavalidation-geterroralert-member(1)),
+  [setErrorAlert](/javascript/api/office-scripts/excelscript/excelscript.datavalidation#excelscript-excelscript-datavalidation-seterroralert-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a data validation rule for the range B1:B5.
    * All values in that range must be a positive number.
@@ -42,6 +54,7 @@ remarks: |-
     };
     rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
   }
+
   ```
 
 isPreview: false

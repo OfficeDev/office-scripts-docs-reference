@@ -4,12 +4,27 @@ uid: ExcelScript!ExcelScript.DataValidationOperator:enum
 package: ExcelScript!
 fullName: ExcelScript.DataValidationOperator
 summary: Represents the data validation operator enum.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.BasicDataValidation](/javascript/api/office-scripts/excelscript/excelscript.basicdatavalidation):
+  [operator](/javascript/api/office-scripts/excelscript/excelscript.basicdatavalidation#excelscript-excelscript-basicdatavalidation-operator-member)
+
+  -
+  [ExcelScript.DateTimeDataValidation](/javascript/api/office-scripts/excelscript/excelscript.datetimedatavalidation):
+  [operator](/javascript/api/office-scripts/excelscript/excelscript.datetimedatavalidation#excelscript-excelscript-datetimedatavalidation-operator-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a data validation rule for the range B1:B5.
    * All values in that range must be a positive number.
@@ -32,6 +47,7 @@ remarks: |-
     const rangeDataValidation = positiveNumberOnlyCells.getDataValidation();
     rangeDataValidation.setRule(positiveNumberOnlyRule);
   }
+
   ```
 
 isPreview: false

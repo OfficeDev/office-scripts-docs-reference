@@ -7,16 +7,28 @@ summary: >-
   Configurable template for a manual filter to apply to a PivotField. The
   `condition` defines what criteria need to be set in order for the filter to
   operate.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PivotFilters](/javascript/api/office-scripts/excelscript/excelscript.pivotfilters):
+  [manualFilter](/javascript/api/office-scripts/excelscript/excelscript.pivotfilters#excelscript-excelscript-pivotfilters-manualfilter-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds a manual filter to a PivotTable. 
    */
   function main(workbook: ExcelScript.Workbook)
+
   {
     // Get the first PivotTable in the workbook.
     const pivot = workbook.getPivotTables()[0];
@@ -38,6 +50,7 @@ remarks: |-
       manualFilter: cityFilter
     });
   }
+
   ```
 
 isPreview: false

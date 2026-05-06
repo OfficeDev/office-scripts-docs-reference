@@ -4,12 +4,31 @@ uid: ExcelScript!ExcelScript.CommentMention:interface
 package: ExcelScript!
 fullName: ExcelScript.CommentMention
 summary: Represents the entity that is mentioned in comments.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Comment](/javascript/api/office-scripts/excelscript/excelscript.comment):
+  [getMentions](/javascript/api/office-scripts/excelscript/excelscript.comment#excelscript-excelscript-comment-getmentions-member(1))
+
+  -
+  [ExcelScript.CommentReply](/javascript/api/office-scripts/excelscript/excelscript.commentreply):
+  [getMentions](/javascript/api/office-scripts/excelscript/excelscript.commentreply#excelscript-excelscript-commentreply-getmentions-member(1))
+
+  -
+  [ExcelScript.CommentRichContent](/javascript/api/office-scripts/excelscript/excelscript.commentrichcontent):
+  [mentions](/javascript/api/office-scripts/excelscript/excelscript.commentrichcontent#excelscript-excelscript-commentrichcontent-mentions-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample creates a comment that mentions a specific person.
    * That person will get a notification and link to the workbook.
@@ -45,6 +64,7 @@ remarks: |-
     // Add the comment.
     currentSheet.addComment(cell, content, ExcelScript.ContentType.mention);
   }
+
   ```
 
 isPreview: false

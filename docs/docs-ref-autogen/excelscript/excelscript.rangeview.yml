@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.RangeView:interface
 package: ExcelScript!
 fullName: ExcelScript.RangeView
 summary: RangeView represents a set of visible cells of the parent range.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getVisibleView](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getvisibleview-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script copies values and formatting from the 
    * visible range of a table in Sheet1 into Sheet2.
@@ -26,6 +37,7 @@ remarks: |-
     const otherRangeCorner = otherSheet.getRange("A1");
     otherRangeCorner.copyFrom(source, ExcelScript.RangeCopyType.all);
   }
+
   ```
 
 isPreview: false

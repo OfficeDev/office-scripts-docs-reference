@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.PivotFilterType:enum
 package: ExcelScript!
 fullName: ExcelScript.PivotFilterType
 summary: A simple enum that represents a type of filter for a PivotField.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PivotField](/javascript/api/office-scripts/excelscript/excelscript.pivotfield):
+  [clearFilter](/javascript/api/office-scripts/excelscript/excelscript.pivotfield#excelscript-excelscript-pivotfield-clearfilter-member(1)),
+  [isFiltered](/javascript/api/office-scripts/excelscript/excelscript.pivotfield#excelscript-excelscript-pivotfield-isfiltered-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script gets the "Type" field from the "Farms Sales" PivotTable 
    * and clears the value filter from it.
@@ -24,6 +36,7 @@ remarks: |-
     // Clear the value filter (if there is one) from the field.
     typeField.clearFilter(ExcelScript.PivotFilterType.value);
   }
+
   ```
 
 isPreview: false

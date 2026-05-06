@@ -4,12 +4,63 @@ uid: ExcelScript!ExcelScript.ChartFill:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartFill
 summary: Represents the fill formatting for a chart element.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.ChartAreaFormat](/javascript/api/office-scripts/excelscript/excelscript.chartareaformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartareaformat#excelscript-excelscript-chartareaformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartAxisFormat](/javascript/api/office-scripts/excelscript/excelscript.chartaxisformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartaxisformat#excelscript-excelscript-chartaxisformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartAxisTitleFormat](/javascript/api/office-scripts/excelscript/excelscript.chartaxistitleformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartaxistitleformat#excelscript-excelscript-chartaxistitleformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartDataLabelFormat](/javascript/api/office-scripts/excelscript/excelscript.chartdatalabelformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartdatalabelformat#excelscript-excelscript-chartdatalabelformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartDataTableFormat](/javascript/api/office-scripts/excelscript/excelscript.chartdatatableformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartdatatableformat#excelscript-excelscript-chartdatatableformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartLegendFormat](/javascript/api/office-scripts/excelscript/excelscript.chartlegendformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartlegendformat#excelscript-excelscript-chartlegendformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartPlotAreaFormat](/javascript/api/office-scripts/excelscript/excelscript.chartplotareaformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartplotareaformat#excelscript-excelscript-chartplotareaformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartPointFormat](/javascript/api/office-scripts/excelscript/excelscript.chartpointformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartpointformat#excelscript-excelscript-chartpointformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartSeriesFormat](/javascript/api/office-scripts/excelscript/excelscript.chartseriesformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.chartseriesformat#excelscript-excelscript-chartseriesformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartTitleFormat](/javascript/api/office-scripts/excelscript/excelscript.charttitleformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.charttitleformat#excelscript-excelscript-charttitleformat-getfill-member(1))
+
+  -
+  [ExcelScript.ChartTrendlineLabelFormat](/javascript/api/office-scripts/excelscript/excelscript.charttrendlinelabelformat):
+  [getFill](/javascript/api/office-scripts/excelscript/excelscript.charttrendlinelabelformat#excelscript-excelscript-charttrendlinelabelformat-getfill-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample sets the fill color of a chart series.
    * This assumes the active worksheet has a stock chart (e.g., Volume-High-Low-Close).
@@ -23,6 +74,7 @@ remarks: |-
     const volumeSeries = chart.getSeries()[0];
     volumeSeries.getFormat().getFill().setSolidColor("#B0C4DE");
   }
+
   ```
 
 isPreview: false

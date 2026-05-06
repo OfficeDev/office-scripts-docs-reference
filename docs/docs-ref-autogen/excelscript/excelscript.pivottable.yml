@@ -4,12 +4,37 @@ uid: ExcelScript!ExcelScript.PivotTable:interface
 package: ExcelScript!
 fullName: ExcelScript.PivotTable
 summary: Represents an Excel PivotTable.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getPivotTables](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getpivottables-member(1))
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [addPivotTable](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addpivottable-member(1)),
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addslicer-member(1)),
+  [getPivotTable](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getpivottable-member(1)),
+  [getPivotTables](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-getpivottables-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addPivotTable](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addpivottable-member(1)),
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addslicer-member(1)),
+  [getPivotTable](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getpivottable-member(1)),
+  [getPivotTables](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getpivottables-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a PivotTable from an existing table and adds it to a new worksheet.
    * This script assumes there is a table in the current worksheet with columns named "Type" and "Sales".
@@ -27,6 +52,7 @@ remarks: |-
     pivotTable.addRowHierarchy(pivotTable.getHierarchy("Type"));
     pivotTable.addDataHierarchy(pivotTable.getHierarchy("Sales"));
   }
+
   ```
 
 isPreview: false

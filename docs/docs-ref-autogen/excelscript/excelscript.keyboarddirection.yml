@@ -4,17 +4,30 @@ uid: ExcelScript!ExcelScript.KeyboardDirection:enum
 package: ExcelScript!
 fullName: ExcelScript.KeyboardDirection
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getExtendedRange](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getextendedrange-member(1)),
+  [getRangeEdge](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getrangeedge-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script makes the font bold on all the contiguous cells between 
    * A1 and the bottom of the used range of the first column.
    */
   function main(workbook: ExcelScript.Workbook)
+
   {
     // Get the current worksheet.
     let selectedSheet = workbook.getActiveWorksheet();
@@ -27,6 +40,7 @@ remarks: |-
     // Set the font to bold in that range.
     firstColumn.getFormat().getFont().setBold(true);
   }
+
   ```
 
 isPreview: false

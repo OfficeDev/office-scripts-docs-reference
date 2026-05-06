@@ -4,12 +4,47 @@ uid: ExcelScript!ExcelScript.Table:interface
 package: ExcelScript!
 fullName: ExcelScript.Table
 summary: Represents an Excel table.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Binding](/javascript/api/office-scripts/excelscript/excelscript.binding):
+  [getTable](/javascript/api/office-scripts/excelscript/excelscript.binding#excelscript-excelscript-binding-gettable-member(1))
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getTables](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-gettables-member(1))
+
+  -
+  [ExcelScript.RangeAreas](/javascript/api/office-scripts/excelscript/excelscript.rangeareas):
+  [getTables](/javascript/api/office-scripts/excelscript/excelscript.rangeareas#excelscript-excelscript-rangeareas-gettables-member(1))
+
+  -
+  [ExcelScript.Workbook](/javascript/api/office-scripts/excelscript/excelscript.workbook):
+  [addPivotTable](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addpivottable-member(1)),
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addslicer-member(1)),
+  [addTable](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-addtable-member(1)),
+  [getTable](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-gettable-member(1)),
+  [getTables](/javascript/api/office-scripts/excelscript/excelscript.workbook#excelscript-excelscript-workbook-gettables-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addPivotTable](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addpivottable-member(1)),
+  [addSlicer](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addslicer-member(1)),
+  [addTable](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addtable-member(1)),
+  [getTable](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-gettable-member(1)),
+  [getTables](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-gettables-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a table from the current sheet's used range.
    * It then adds a total row to the table with the SUM of the last column.
@@ -27,6 +62,7 @@ remarks: |-
       const lastColumn = table.getColumn(table.getColumns().length);
       lastColumn.getTotalRowRange().setFormula(`=SUBTOTAL(109,[${lastColumn.getName()}])`);
   }
+
   ```
 
 isPreview: false

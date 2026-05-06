@@ -6,12 +6,47 @@ fullName: ExcelScript.Shape
 summary: >-
   Represents a generic shape object in the worksheet. A shape could be a
   geometric shape, a line, a group of shapes, etc.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Image](/javascript/api/office-scripts/excelscript/excelscript.image):
+  [getShape](/javascript/api/office-scripts/excelscript/excelscript.image#excelscript-excelscript-image-getshape-member(1))
+
+  -
+  [ExcelScript.Line](/javascript/api/office-scripts/excelscript/excelscript.line):
+  [connectBeginShape](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-connectbeginshape-member(1)),
+  [connectEndShape](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-connectendshape-member(1)),
+  [getBeginConnectedShape](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getbeginconnectedshape-member(1)),
+  [getEndConnectedShape](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getendconnectedshape-member(1)),
+  [getShape](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getshape-member(1))
+
+  -
+  [ExcelScript.ShapeGroup](/javascript/api/office-scripts/excelscript/excelscript.shapegroup):
+  [getGroupShape](/javascript/api/office-scripts/excelscript/excelscript.shapegroup#excelscript-excelscript-shapegroup-getgroupshape-member(1)),
+  [getShape](/javascript/api/office-scripts/excelscript/excelscript.shapegroup#excelscript-excelscript-shapegroup-getshape-member(1)),
+  [getShapes](/javascript/api/office-scripts/excelscript/excelscript.shapegroup#excelscript-excelscript-shapegroup-getshapes-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addGeometricShape](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addgeometricshape-member(1)),
+  [addGroup](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addgroup-member(1)),
+  [addImage](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addimage-member(1)),
+  [addLine](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addline-member(1)),
+  [addTextBox](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addtextbox-member(1)),
+  [getShape](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getshape-member(1)),
+  [getShapes](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getshapes-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a hexagon shape on the current worksheet.
    */
@@ -28,6 +63,7 @@ remarks: |-
     hexagon.setLeft(100);
     hexagon.setTop(100);
   }
+
   ```
 
 isPreview: false

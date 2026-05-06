@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.ConnectorType:enum
 package: ExcelScript!
 fullName: ExcelScript.ConnectorType
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Line](/javascript/api/office-scripts/excelscript/excelscript.line):
+  [getConnectorType](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-getconnectortype-member(1)),
+  [setConnectorType](/javascript/api/office-scripts/excelscript/excelscript.line#excelscript-excelscript-line-setconnectortype-member(1))
+
+  -
+  [ExcelScript.Worksheet](/javascript/api/office-scripts/excelscript/excelscript.worksheet):
+  [addLine](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addline-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds a line that goes from cell B2 to cell F4 on the current worksheet.
    */ 
@@ -29,6 +45,7 @@ remarks: |-
       f4Range.getTop(),
       ExcelScript.ConnectorType.straight);
   }
+
   ```
 
 isPreview: false

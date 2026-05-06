@@ -4,12 +4,27 @@ uid: ExcelScript!ExcelScript.ChartDataLabels:interface
 package: ExcelScript!
 fullName: ExcelScript.ChartDataLabels
 summary: Represents a collection of all the data labels on a chart point.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Chart](/javascript/api/office-scripts/excelscript/excelscript.chart):
+  [getDataLabels](/javascript/api/office-scripts/excelscript/excelscript.chart#excelscript-excelscript-chart-getdatalabels-member(1))
+
+  -
+  [ExcelScript.ChartSeries](/javascript/api/office-scripts/excelscript/excelscript.chartseries):
+  [getDataLabels](/javascript/api/office-scripts/excelscript/excelscript.chartseries#excelscript-excelscript-chartseries-getdatalabels-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This sample configures data labels on a chart series.
    * This assumes the active worksheet has a pie chart.
@@ -27,6 +42,7 @@ remarks: |-
     dataLabels.setShowCategoryName(false);
     dataLabels.setShowValue(false);
   }
+
   ```
 
 isPreview: false

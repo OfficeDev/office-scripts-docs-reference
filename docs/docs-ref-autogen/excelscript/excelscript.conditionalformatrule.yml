@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.ConditionalFormatRule:interface
 package: ExcelScript!
 fullName: ExcelScript.ConditionalFormatRule
 summary: Represents a rule, for all traditional rule/format pairings.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.CustomConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.customconditionalformat):
+  [getRule](/javascript/api/office-scripts/excelscript/excelscript.customconditionalformat#excelscript-excelscript-customconditionalformat-getrule-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies a custom conditional formatting to the selected range.
    * A light-green fill is applied to a cell if the value is larger than the value in the row's previous column.
@@ -29,6 +40,7 @@ remarks: |-
     let positiveRule: ExcelScript.ConditionalFormatRule = positiveCustom.getRule();
     positiveRule.setFormula(`=${selectedRange.getCell(0, 0).getAddress()}>${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
   }
+
   ```
 
 isPreview: false

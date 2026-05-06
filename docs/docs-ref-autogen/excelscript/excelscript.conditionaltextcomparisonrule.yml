@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.ConditionalTextComparisonRule:interface
 package: ExcelScript!
 fullName: ExcelScript.ConditionalTextComparisonRule
 summary: Represents a cell value conditional format rule.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.ConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat):
+  [changeRuleToContainsText](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-changeruletocontainstext-member(1))
+
+  -
+  [ExcelScript.TextConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.textconditionalformat):
+  [getRule](/javascript/api/office-scripts/excelscript/excelscript.textconditionalformat#excelscript-excelscript-textconditionalformat-getrule-member(1)),
+  [setRule](/javascript/api/office-scripts/excelscript/excelscript.textconditionalformat#excelscript-excelscript-textconditionalformat-setrule-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script adds conditional formatting to the first column in the worksheet.
    * This formatting gives the cells a green fill if they have text starting with "Excel".
@@ -33,6 +49,7 @@ remarks: |-
     };
     textConditionFormat.setRule(textRule);
   }
+
   ```
 
 isPreview: false

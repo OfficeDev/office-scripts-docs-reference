@@ -6,12 +6,26 @@ fullName: ExcelScript.WorkbookRangeAreas
 summary: >-
   Represents a collection of one or more rectangular ranges in multiple
   worksheets.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Range](/javascript/api/office-scripts/excelscript/excelscript.range):
+  [getDependents](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getdependents-member(1)),
+  [getDirectDependents](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getdirectdependents-member(1)),
+  [getDirectPrecedents](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getdirectprecedents-member(1)),
+  [getPrecedents](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-getprecedents-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script finds the direct precedents of the active cell.
    * It changes the font and color of those precedent cells. 
@@ -29,6 +43,7 @@ remarks: |-
       range.getFormat().getFont().setBold(true);
     });
   }
+
   ```
 
 isPreview: false

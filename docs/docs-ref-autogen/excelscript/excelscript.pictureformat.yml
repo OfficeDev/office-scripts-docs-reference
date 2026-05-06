@@ -4,12 +4,28 @@ uid: ExcelScript!ExcelScript.PictureFormat:enum
 package: ExcelScript!
 fullName: ExcelScript.PictureFormat
 summary: The format of the image.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Image](/javascript/api/office-scripts/excelscript/excelscript.image):
+  [getFormat](/javascript/api/office-scripts/excelscript/excelscript.image#excelscript-excelscript-image-getformat-member(1))
+
+  -
+  [ExcelScript.Shape](/javascript/api/office-scripts/excelscript/excelscript.shape):
+  [getAsImage](/javascript/api/office-scripts/excelscript/excelscript.shape#excelscript-excelscript-shape-getasimage-member(1)),
+  [getImageAsBase64](/javascript/api/office-scripts/excelscript/excelscript.shape#excelscript-excelscript-shape-getimageasbase64-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a star shape with the value from cell A1.
    * It then returns the image as a base64-encoded string. 
@@ -31,6 +47,7 @@ remarks: |-
     // Return the shape as a PNG image represented by a base64-encoded string.
     return star.getAsImage(ExcelScript.PictureFormat.png);
   }
+
   ```
 
 isPreview: false

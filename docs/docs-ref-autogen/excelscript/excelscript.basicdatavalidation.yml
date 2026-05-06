@@ -4,12 +4,25 @@ uid: ExcelScript!ExcelScript.BasicDataValidation:interface
 package: ExcelScript!
 fullName: ExcelScript.BasicDataValidation
 summary: Represents the basic type data validation criteria.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.DataValidationRule](/javascript/api/office-scripts/excelscript/excelscript.datavalidationrule):
+  [decimal](/javascript/api/office-scripts/excelscript/excelscript.datavalidationrule#excelscript-excelscript-datavalidationrule-decimal-member),
+  [textLength](/javascript/api/office-scripts/excelscript/excelscript.datavalidationrule#excelscript-excelscript-datavalidationrule-textlength-member),
+  [wholeNumber](/javascript/api/office-scripts/excelscript/excelscript.datavalidationrule#excelscript-excelscript-datavalidationrule-wholenumber-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script creates a data validation rule for the range B1:B5.
    * All values in that range must be a positive number.
@@ -42,6 +55,7 @@ remarks: |-
     };
     rangeDataValidation.setErrorAlert(positiveNumberOnlyAlert);
   }
+
   ```
 
 isPreview: false

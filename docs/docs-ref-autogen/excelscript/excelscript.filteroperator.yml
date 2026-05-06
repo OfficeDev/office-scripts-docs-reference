@@ -4,12 +4,27 @@ uid: ExcelScript!ExcelScript.FilterOperator:enum
 package: ExcelScript!
 fullName: ExcelScript.FilterOperator
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Filter](/javascript/api/office-scripts/excelscript/excelscript.filter):
+  [applyCustomFilter](/javascript/api/office-scripts/excelscript/excelscript.filter#excelscript-excelscript-filter-applycustomfilter-member(1))
+
+  -
+  [ExcelScript.FilterCriteria](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria):
+  [operator](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria#excelscript-excelscript-filtercriteria-operator-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * The script filters rows from a table based on a numerical range.
    */
@@ -22,6 +37,7 @@ remarks: |-
     // greater than 0 and less than or equal to 60.
     table.getColumnByName("Exam Score").getFilter().applyCustomFilter(">0", "<=60", ExcelScript.FilterOperator.and);
   }
+
   ```
 
 isPreview: false

@@ -4,16 +4,28 @@ uid: ExcelScript!ExcelScript.DocumentPropertyType:enum
 package: ExcelScript!
 fullName: ExcelScript.DocumentPropertyType
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.CustomProperty](/javascript/api/office-scripts/excelscript/excelscript.customproperty):
+  [getType](/javascript/api/office-scripts/excelscript/excelscript.customproperty#excelscript-excelscript-customproperty-gettype-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script uses a custom property to set the value and formatting of a cell.
    * If the value of "Routing Number" is not set or is not a number, the cell will be red.
   */
+
   function main(workbook: ExcelScript.Workbook) {
     // Get the first cell from Sheet1.
     const cell = workbook.getWorksheet("Sheet1").getCell(0,0);
@@ -32,6 +44,7 @@ remarks: |-
       cell.setValue(routingNumber.getValue());
     }
   }
+
   ```
 
 isPreview: false

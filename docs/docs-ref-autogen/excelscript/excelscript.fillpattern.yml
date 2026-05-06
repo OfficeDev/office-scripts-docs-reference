@@ -4,12 +4,24 @@ uid: ExcelScript!ExcelScript.FillPattern:enum
 package: ExcelScript!
 fullName: ExcelScript.FillPattern
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.RangeFill](/javascript/api/office-scripts/excelscript/excelscript.rangefill):
+  [getPattern](/javascript/api/office-scripts/excelscript/excelscript.rangefill#excelscript-excelscript-rangefill-getpattern-member(1)),
+  [setPattern](/javascript/api/office-scripts/excelscript/excelscript.rangefill#excelscript-excelscript-rangefill-setpattern-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sets a black-checkered fill on the selected range.
    */
@@ -18,6 +30,7 @@ remarks: |-
     selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
     selected.getFormat().getFill().setPatternColor("black");
   }
+
   ```
 
 isPreview: false

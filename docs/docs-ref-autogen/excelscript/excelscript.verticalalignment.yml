@@ -4,12 +4,29 @@ uid: ExcelScript!ExcelScript.VerticalAlignment:enum
 package: ExcelScript!
 fullName: ExcelScript.VerticalAlignment
 summary: ''
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PredefinedCellStyle](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle):
+  [getVerticalAlignment](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle#excelscript-excelscript-predefinedcellstyle-getverticalalignment-member(1)),
+  [setVerticalAlignment](/javascript/api/office-scripts/excelscript/excelscript.predefinedcellstyle#excelscript-excelscript-predefinedcellstyle-setverticalalignment-member(1))
+
+  -
+  [ExcelScript.RangeFormat](/javascript/api/office-scripts/excelscript/excelscript.rangeformat):
+  [getVerticalAlignment](/javascript/api/office-scripts/excelscript/excelscript.rangeformat#excelscript-excelscript-rangeformat-getverticalalignment-member(1)),
+  [setVerticalAlignment](/javascript/api/office-scripts/excelscript/excelscript.rangeformat#excelscript-excelscript-rangeformat-setverticalalignment-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script sets the vertical alignment formatting to "top"
    * for every cell in the row.
@@ -22,6 +39,7 @@ remarks: |-
     // Set the vertical alignment formatting on the row.
     firstRow.getFormat().setVerticalAlignment(ExcelScript.VerticalAlignment.top);
   }
+
   ```
 
 isPreview: false

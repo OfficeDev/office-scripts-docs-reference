@@ -8,12 +8,23 @@ summary: >-
   applied. Used to configure the type of PivotFilter that is applied to the
   field. `PivotFilter.criteria.exclusive` can be set to `true` to invert many of
   these conditions.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.PivotLabelFilter](/javascript/api/office-scripts/excelscript/excelscript.pivotlabelfilter):
+  [condition](/javascript/api/office-scripts/excelscript/excelscript.pivotlabelfilter#excelscript-excelscript-pivotlabelfilter-condition-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script filters items that start with "L" from the "Type" field
    * of the "Farm Sales" PivotTable.
@@ -35,6 +46,7 @@ remarks: |-
     // Apply the label filter to the field.
     field.applyFilter({ labelFilter: filter });
   }
+
   ```
 
 isPreview: false

@@ -4,12 +4,33 @@ uid: ExcelScript!ExcelScript.FilterDatetime:interface
 package: ExcelScript!
 fullName: ExcelScript.FilterDatetime
 summary: Represents how to filter a date when filtering on values.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.Filter](/javascript/api/office-scripts/excelscript/excelscript.filter):
+  [applyValuesFilter](/javascript/api/office-scripts/excelscript/excelscript.filter#excelscript-excelscript-filter-applyvaluesfilter-member(1))
+
+  -
+  [ExcelScript.FilterCriteria](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria):
+  [values](/javascript/api/office-scripts/excelscript/excelscript.filtercriteria#excelscript-excelscript-filtercriteria-values-member)
+
+  -
+  [ExcelScript.PivotDateFilter](/javascript/api/office-scripts/excelscript/excelscript.pivotdatefilter):
+  [comparator](/javascript/api/office-scripts/excelscript/excelscript.pivotdatefilter#excelscript-excelscript-pivotdatefilter-comparator-member),
+  [lowerBound](/javascript/api/office-scripts/excelscript/excelscript.pivotdatefilter#excelscript-excelscript-pivotdatefilter-lowerbound-member),
+  [upperBound](/javascript/api/office-scripts/excelscript/excelscript.pivotdatefilter#excelscript-excelscript-pivotdatefilter-upperbound-member)
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies a filter to a PivotTable that filters it
    * to only show rows from between June 20th, 2022 and July 10th, 2022.
@@ -40,6 +61,7 @@ remarks: |-
       }
     });
   }
+
   ```
 
 isPreview: false

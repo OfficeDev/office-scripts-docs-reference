@@ -4,12 +4,23 @@ uid: ExcelScript!ExcelScript.CustomConditionalFormat:interface
 package: ExcelScript!
 fullName: ExcelScript.CustomConditionalFormat
 summary: Represents a custom conditional format type.
-remarks: |-
+remarks: >-
 
+
+
+
+  #### Used by
+
+
+  -
+  [ExcelScript.ConditionalFormat](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat):
+  [getCustom](/javascript/api/office-scripts/excelscript/excelscript.conditionalformat#excelscript-excelscript-conditionalformat-getcustom-member(1))
 
   #### Examples
 
+
   ```TypeScript
+
   /**
    * This script applies a custom three-color conditional formatting to the selected range.
    * The three colors represent positive, negative, or no changes from the values in the previous column.
@@ -36,6 +47,7 @@ remarks: |-
     sameCustom.getFormat().getFill().setColor("lightyellow");
     sameCustom.getRule().setFormula(`=${selectedRange.getCell(0, 0).getAddress()}=${selectedRange.getOffsetRange(0, -1).getCell(0, 0).getAddress()}`);
   }
+
   ```
 
 isPreview: false
