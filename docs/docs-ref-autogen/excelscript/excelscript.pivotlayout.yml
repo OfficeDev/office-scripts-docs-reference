@@ -484,7 +484,29 @@ methods:
           type: <xref uid="ExcelScript!ExcelScript.SortBy:enum" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+          * This script shows how to use setAutoSortOnCell to automatically sort
+          * a PivotTable's row labels based on values in a specific data column.
+          */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the "Farm Pivot" PivotTable.
+            const pivotTable = workbook.getPivotTable("Farm Pivot");
+            const sheet = pivotTable.getWorksheet();
+
+            // Get the PivotTable's layout object.
+            const layout = pivotTable.getLayout();
+
+            // Pick a cell in the PivotTable's data area to sort by.
+            const sortCell1 = sheet.getRange("N6");
+            layout.setAutoSortOnCell(sortCell1, ExcelScript.SortBy.descending);
+          }
+          ```
   - name: setEmptyCellText(emptyCellText)
     uid: ExcelScript!ExcelScript.PivotLayout#setEmptyCellText:member(1)
     package: ExcelScript!
