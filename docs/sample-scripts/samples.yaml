@@ -7821,6 +7821,15 @@
             attachments: [pdfFile]
         })    
     }
+'OfficeScript.Metadata.getScriptName:function(1)':
+  - |-  
+    /**
+     * This script gets the name of the current script and prints it to the console.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the name of the currently running script.
+      const scriptName = OfficeScript.Metadata.getScriptName();
+      console.log("The currently running script is: " + scriptName);
 'OfficeScript.downloadFile:function(1)':
   - |-  
     /**
