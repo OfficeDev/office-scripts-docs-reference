@@ -416,6 +416,32 @@
       const application = workbook.getApplication();
       application.calculate(ExcelScript.CalculationType.fullRebuild);
     }
+'ExcelScript.CellControl:type':
+  - |-
+    /**
+     * This script creates a task list and displays the completion values as checkboxes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const taskRange = sheet.getRange("A1:B4");
+
+      // Add tasks and their completion values.
+      taskRange.setValues([
+        ["Task", "Complete"],
+        ["Review data", true],
+        ["Update chart", false],
+        ["Send report", false]
+      ]);
+
+      // Display the Boolean values in the Complete column as checkboxes.
+      const checkboxRange = sheet.getRange("B2:B4");
+      const checkboxControl: ExcelScript.CellControl = {
+        type: ExcelScript.CellControlType.checkbox
+      };
+      checkboxRange.setControl(checkboxControl);
+
+      taskRange.getFormat().autofitColumns();
+    }
 'ExcelScript.CellValueConditionalFormat:interface':
   - |-
     /**
@@ -1372,6 +1398,32 @@
 
       // Name the chart for easy access in other scripts.
       chart.setName("ColumnChart");
+    }
+'ExcelScript.CheckboxCellControl:interface':
+  - |-
+    /**
+     * This script creates a task list and displays the completion values as checkboxes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const taskRange = sheet.getRange("A1:B4");
+
+      // Add tasks and their completion values.
+      taskRange.setValues([
+        ["Task", "Complete"],
+        ["Review data", true],
+        ["Update chart", false],
+        ["Send report", false]
+      ]);
+
+      // Display the Boolean values in the Complete column as checkboxes.
+      const checkboxRange = sheet.getRange("B2:B4");
+      const checkboxControl: ExcelScript.CellControl = {
+        type: ExcelScript.CellControlType.checkbox
+      };
+      checkboxRange.setControl(checkboxControl);
+
+      taskRange.getFormat().autofitColumns();
     }
 'ExcelScript.ClearApplyTo:enum':
   - |-
