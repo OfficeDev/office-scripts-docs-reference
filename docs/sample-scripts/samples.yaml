@@ -422,7 +422,7 @@
      * This script creates a task list and displays the completion values as checkboxes.
      */
     function main(workbook: ExcelScript.Workbook) {
-      const sheet = workbook.getActiveWorksheet();
+      const sheet = workbook.addWorksheet();
       const taskRange = sheet.getRange("A1:B4");
 
       // Add tasks and their completion values.
@@ -1405,7 +1405,7 @@
      * This script creates a task list and displays the completion values as checkboxes.
      */
     function main(workbook: ExcelScript.Workbook) {
-      const sheet = workbook.getActiveWorksheet();
+      const sheet = workbook.addWorksheet();
       const taskRange = sheet.getRange("A1:B4");
 
       // Add tasks and their completion values.
