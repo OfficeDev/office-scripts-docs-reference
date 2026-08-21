@@ -7798,7 +7798,7 @@
     function main(workbook: ExcelScript.Workbook) {    
         // Create the PDF.
         const pdfObject = OfficeScript.convertToPdf();
-        const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+        const pdfFile: OfficeScript.DownloadFileProperties = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
 
         // Download the PDF.
         OfficeScript.downloadFile(pdfFile);
