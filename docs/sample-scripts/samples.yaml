@@ -7769,3 +7769,34 @@
             attachments: [pdfFile]
         })    
     }
+'OfficeScript.Metadata.getScriptName:function(1)':
+  - |-  
+    /*
+    * This script will take a selected range of a sheet and freeze the selection.
+    * This script does not affect pre-existing data in the workbook.
+    */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the currently selected sheet.
+      const selectedSheet = workbook.getActiveWorksheet();
+
+      // Get the current selected range.
+      const selectedRange = workbook.getSelectedRange();
+
+      // If no cells are selected, end the script.
+      if (selectedRange === null) {
+        console.log(`No cells in worksheet selected.`);
+        return;
+      }
+
+      // Log the address of the selected range
+      console.log(
+        `Selected range for the worksheet: ${selectedRange.getAddress()}`
+      );
+
+      // Freeze the selected range.
+      selectedSheet.getFreezePanes().freezeAt(selectedRange);
+
+      // Get the name of the currently running script.
+      const scriptName = OfficeScript.Metadata.getScriptName();
+      console.log("The currently running script is: "+scriptName);
+    }
