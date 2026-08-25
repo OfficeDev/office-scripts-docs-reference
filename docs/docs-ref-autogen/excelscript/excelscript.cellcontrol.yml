@@ -5,6 +5,10 @@ package: ExcelScript!
 fullName: ExcelScript.CellControl
 summary: Represents an interactable control inside of a cell.
 remarks: >-
+
+
+
+
   #### Used by
 
 
@@ -14,6 +18,7 @@ remarks: >-
   [setControl](/javascript/api/office-scripts/excelscript/excelscript.range#excelscript-excelscript-range-setcontrol-member(1))
 
 
+
   Learn more about the types in this type alias through the following links. 
 
 
@@ -21,6 +26,39 @@ remarks: >-
   [ExcelScript.EmptyCellControl](/javascript/api/office-scripts/excelscript/excelscript.emptycellcontrol),
   [ExcelScript.MixedCellControl](/javascript/api/office-scripts/excelscript/excelscript.mixedcellcontrol),
   [ExcelScript.CheckboxCellControl](/javascript/api/office-scripts/excelscript/excelscript.checkboxcellcontrol)
+
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script creates a task list and displays the completion values as checkboxes.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const sheet = workbook.addWorksheet();
+    const taskRange = sheet.getRange("A1:B4");
+
+    // Add tasks and their completion values.
+    taskRange.setValues([
+      ["Task", "Complete"],
+      ["Review data", true],
+      ["Update chart", false],
+      ["Send report", false]
+    ]);
+
+    // Display the Boolean values in the Complete column as checkboxes.
+    const checkboxRange = sheet.getRange("B2:B4");
+    const checkboxControl: ExcelScript.CellControl = {
+      type: ExcelScript.CellControlType.checkbox
+    };
+    checkboxRange.setControl(checkboxControl);
+
+    taskRange.getFormat().autofitColumns();
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false
