@@ -101,7 +101,32 @@ functions:
             uid="OfficeScript!OfficeScript.DownloadFileProperties:interface" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+           */
+          function main(workbook: ExcelScript.Workbook) {    
+              // Create the PDF.
+              const pdfObject = OfficeScript.convertToPdf();
+              const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+              // Download the PDF.
+              OfficeScript.downloadFile(pdfFile);
+
+              // Email the PDF.
+              OfficeScript.sendMail({
+                  to: "name@email.com", // Enter your recipient email address here.
+                  subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+                  content: "Here's the Monthly Sales Report", // This is the content within your email.
+                  attachments: [pdfFile]
+              })    
+          }
+          ```
   - name: OfficeScript.Metadata.getScriptName()
     uid: OfficeScript!OfficeScript.Metadata.getScriptName:function(1)
     package: OfficeScript!
@@ -114,7 +139,20 @@ functions:
       content: 'export function getScriptName(): string;'
       return:
         type: string
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script gets the name of the current script and prints it to the console.
+           */
+          function main(workbook: ExcelScript.Workbook) {
+            // Get the name of the currently running script.
+            const scriptName = OfficeScript.Metadata.getScriptName();
+            console.log("The currently running script is: " + scriptName);
+          ```
   - name: OfficeScript.saveCopyAs(filename)
     uid: OfficeScript!OfficeScript.saveCopyAs:function(1)
     package: OfficeScript!
@@ -161,7 +199,19 @@ functions:
           type: string
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script saves a copy of the current workbook to the user's OneDrive.
+           */
+          function main(workbook: ExcelScript.Workbook) {    
+              OfficeScript.saveCopyAs("CopyOfBook2.xlsx"); 
+          }
+          ```
   - name: OfficeScript.sendMail(mailProperties)
     uid: OfficeScript!OfficeScript.sendMail:function(1)
     package: OfficeScript!
@@ -180,4 +230,26 @@ functions:
           type: <xref uid="OfficeScript!OfficeScript.MailProperties:interface" />
       return:
         type: void
-        description: ''
+        description: |-
+
+
+          #### Examples
+
+          ```TypeScript
+          /**
+           * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+           */
+          function main(workbook: ExcelScript.Workbook) {    
+              // Create the PDF.
+              const pdfObject = OfficeScript.convertToPdf();
+              const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+              // Email the PDF.
+              OfficeScript.sendMail({
+                  to: "name@email.com", // Enter your recipient email address here.
+                  subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+                  content: "Here's the Monthly Sales Report", // This is the content within your email.
+                  attachments: [pdfFile]
+              })
+           }
+          ```

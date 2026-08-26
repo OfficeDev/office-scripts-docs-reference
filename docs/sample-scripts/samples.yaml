@@ -416,6 +416,32 @@
       const application = workbook.getApplication();
       application.calculate(ExcelScript.CalculationType.fullRebuild);
     }
+'ExcelScript.CellControl:type':
+  - |-
+    /**
+     * This script creates a task list and displays the completion values as checkboxes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const taskRange = sheet.getRange("A1:B4");
+
+      // Add tasks and their completion values.
+      taskRange.setValues([
+        ["Task", "Complete"],
+        ["Review data", true],
+        ["Update chart", false],
+        ["Send report", false]
+      ]);
+
+      // Display the Boolean values in the Complete column as checkboxes.
+      const checkboxRange = sheet.getRange("B2:B4");
+      const checkboxControl: ExcelScript.CellControl = {
+        type: ExcelScript.CellControlType.checkbox
+      };
+      checkboxRange.setControl(checkboxControl);
+
+      taskRange.getFormat().autofitColumns();
+    }
 'ExcelScript.CellValueConditionalFormat:interface':
   - |-
     /**
@@ -1372,6 +1398,32 @@
 
       // Name the chart for easy access in other scripts.
       chart.setName("ColumnChart");
+    }
+'ExcelScript.CheckboxCellControl:interface':
+  - |-
+    /**
+     * This script creates a task list and displays the completion values as checkboxes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const taskRange = sheet.getRange("A1:B4");
+
+      // Add tasks and their completion values.
+      taskRange.setValues([
+        ["Task", "Complete"],
+        ["Review data", true],
+        ["Update chart", false],
+        ["Send report", false]
+      ]);
+
+      // Display the Boolean values in the Complete column as checkboxes.
+      const checkboxRange = sheet.getRange("B2:B4");
+      const checkboxControl: ExcelScript.CellControl = {
+        type: ExcelScript.CellControlType.checkbox
+      };
+      checkboxRange.setControl(checkboxControl);
+
+      taskRange.getFormat().autofitColumns();
     }
 'ExcelScript.ClearApplyTo:enum':
   - |-
@@ -7769,3 +7821,98 @@
             attachments: [pdfFile]
         })    
     }
+'OfficeScript.Metadata.getScriptName:function(1)':
+  - |-  
+    /**
+     * This script gets the name of the current script and prints it to the console.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      // Get the name of the currently running script.
+      const scriptName = OfficeScript.Metadata.getScriptName();
+      console.log("The currently running script is: " + scriptName);
+'OfficeScript.downloadFile:function(1)':
+  - |-  
+    /**
+     * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        // Create the PDF.
+        const pdfObject = OfficeScript.convertToPdf();
+        const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+        // Download the PDF.
+        OfficeScript.downloadFile(pdfFile);
+
+        // Email the PDF.
+        OfficeScript.sendMail({
+            to: "name@email.com", // Enter your recipient email address here.
+            subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+            content: "Here's the Monthly Sales Report", // This is the content within your email.
+            attachments: [pdfFile]
+        })    
+    }
+'OfficeScript.DownloadFileProperties:interface':
+  - |-  
+    /**
+     * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        // Create the PDF.
+        const pdfObject = OfficeScript.convertToPdf();
+        const pdfFile: OfficeScript.DownloadFileProperties = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+        // Download the PDF.
+        OfficeScript.downloadFile(pdfFile);
+
+        // Email the PDF.
+        OfficeScript.sendMail({
+            to: "name@email.com", // Enter your recipient email address here.
+            subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+            content: "Here's the Monthly Sales Report", // This is the content within your email.
+            attachments: [pdfFile]
+        })    
+    }
+'OfficeScript.EmailAttachment:interface':
+  - |-  
+    /**
+     * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        // Create the PDF.
+        const pdfObject = OfficeScript.convertToPdf();
+        const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+        // Email the PDF.
+        OfficeScript.sendMail({
+            to: "name@email.com", // Enter your recipient email address here.
+            subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+            content: "Here's the Monthly Sales Report", // This is the content within your email.
+            attachments: [pdfFile]
+        })    
+    }
+'OfficeScript.saveCopyAs:function(1)':
+  - |-  
+    /**
+     * This script saves a copy of the current workbook to the user's OneDrive.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        OfficeScript.saveCopyAs("CopyOfBook2.xlsx"); 
+    }
+'OfficeScript.sendMail:function(1)':
+  - |-  
+    /**
+     * This script saves a worksheet as a PDF and emails that PDF to a recipient.
+     */
+    function main(workbook: ExcelScript.Workbook) {    
+        // Create the PDF.
+        const pdfObject = OfficeScript.convertToPdf();
+        const pdfFile = { name: "report.pdf", content: pdfObject }; // Enter your desired PDF name here.
+
+        // Email the PDF.
+        OfficeScript.sendMail({
+            to: "name@email.com", // Enter your recipient email address here.
+            subject: "[Demo] Monthly Sales Report", // This is the subject of your email.
+            content: "Here's the Monthly Sales Report", // This is the content within your email.
+            attachments: [pdfFile]
+        })
+     }
