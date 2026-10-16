@@ -1381,6 +1381,23 @@
       // Set the chart title.
       chart.getTitle().setText("Quarterly Sales by Product");
     }
+'ExcelScript.ChartTrendlineFormat:interface':
+  - |-
+    /**
+     * This script adds a linear trendline and customizes its line formatting.
+     * This assumes the active worksheet has a chart that supports trendlines.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const chart = workbook.getActiveWorksheet().getCharts()[0];
+      const series = chart.getSeries()[0];
+      const trendline = series.addChartTrendline(ExcelScript.ChartTrendlineType.linear);
+
+      const format: ExcelScript.ChartTrendlineFormat = trendline.getFormat();
+      const line = format.getLine();
+      line.setColor("#FF0000");
+      line.setLineStyle(ExcelScript.ChartLineStyle.dash);
+      line.setWeight(2);
+    }
 'ExcelScript.ChartType:enum':
   - |-
     /**
