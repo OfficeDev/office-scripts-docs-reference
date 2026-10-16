@@ -3342,6 +3342,27 @@
       headerFooter.setCenterFooter("Page &P of &N");
       headerFooter.setRightFooter("&D");
     }
+'ExcelScript.HeaderFooterGroup:interface':
+  - |-
+    /**
+     * This script gives the first printed page a different header and footer
+     * from the remaining pages.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const headersFooters: ExcelScript.HeaderFooterGroup = worksheet.getPageLayout().getHeadersFooters();
+      headersFooters.setState(ExcelScript.HeaderFooterState.firstAndDefault);
+      headersFooters.setUseSheetMargins(true);
+      headersFooters.setUseSheetScale(true);
+
+      const firstPage = headersFooters.getFirstPage();
+      firstPage.setCenterHeader("Monthly Sales Report");
+      firstPage.setCenterFooter("Confidential");
+
+      const remainingPages = headersFooters.getDefaultForAllPages();
+      remainingPages.setCenterHeader(worksheet.getName());
+      remainingPages.setCenterFooter("Page &P of &N");
+    }
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
