@@ -5482,6 +5482,26 @@
       selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
       selected.getFormat().getFill().setPatternColor("black");
     }
+'ExcelScript.FormatProtection:interface':
+  - |-
+    /**
+     * This script locks a cell and hides its formula, then protects the worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const formulaCell = worksheet.getRange("B2");
+      formulaCell.setFormula("=1+1");
+
+      const protection = formulaCell.getFormat().getProtection();
+      protection.setLocked(true);
+      protection.setFormulaHidden(true);
+
+      const isLocked = protection.getLocked();
+      const isFormulaHidden = protection.getFormulaHidden();
+
+      worksheet.getProtection().protect();
+      console.log(`Locked: ${isLocked}; formula hidden: ${isFormulaHidden}`);
+    }
 'ExcelScript.RangeFormat:interface':
   - |-
     /**
