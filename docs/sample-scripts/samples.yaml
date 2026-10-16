@@ -3307,6 +3307,24 @@
       sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
       sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
     }
+'ExcelScript.HeaderFooter:interface':
+  - |-
+    /**
+     * This script customizes the headers and footers of the active worksheet's printed pages.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const headersFooters = worksheet.getPageLayout().getHeadersFooters();
+      const headerFooter: ExcelScript.HeaderFooter = headersFooters.getDefaultForAllPages();
+
+      headerFooter.setLeftHeader("Contoso");
+      headerFooter.setCenterHeader("Monthly Sales Report");
+      headerFooter.setRightHeader(worksheet.getName());
+
+      headerFooter.setLeftFooter("Confidential");
+      headerFooter.setCenterFooter("Page &P of &N");
+      headerFooter.setRightFooter("&D");
+    }
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
