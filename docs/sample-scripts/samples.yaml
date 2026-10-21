@@ -1381,6 +1381,23 @@
       // Set the chart title.
       chart.getTitle().setText("Quarterly Sales by Product");
     }
+'ExcelScript.ChartTrendlineFormat:interface':
+  - |-
+    /**
+     * This script adds a linear trendline and customizes its line formatting.
+     * This sample assumes that the active worksheet has a chart that supports trendlines.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const chart = workbook.getActiveWorksheet().getCharts()[0];
+      const series = chart.getSeries()[0];
+      const trendline = series.addChartTrendline(ExcelScript.ChartTrendlineType.linear);
+
+      const format: ExcelScript.ChartTrendlineFormat = trendline.getFormat();
+      const line = format.getLine();
+      line.setColor("#FF0000");
+      line.setLineStyle(ExcelScript.ChartLineStyle.dash);
+      line.setWeight(2);
+    }
 'ExcelScript.ChartType:enum':
   - |-
     /**
@@ -3307,6 +3324,45 @@
       sheet.getRange("A:B").group(ExcelScript.GroupOption.byColumns);
       sheet.getRange("D:E").group(ExcelScript.GroupOption.byColumns);
     }
+'ExcelScript.HeaderFooter:interface':
+  - |-
+    /**
+     * This script customizes the headers and footers of the active worksheet's printed pages.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const headersFooters = worksheet.getPageLayout().getHeadersFooters();
+      const headerFooter: ExcelScript.HeaderFooter = headersFooters.getDefaultForAllPages();
+
+      headerFooter.setLeftHeader("Contoso");
+      headerFooter.setCenterHeader("Monthly Sales Report");
+      headerFooter.setRightHeader(worksheet.getName());
+
+      headerFooter.setLeftFooter("Confidential");
+      headerFooter.setCenterFooter("Page &P of &N");
+      headerFooter.setRightFooter("&D");
+    }
+'ExcelScript.HeaderFooterGroup:interface':
+  - |-
+    /**
+     * This script gives the first printed page a different header and footer
+     * from the remaining pages.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const headersFooters: ExcelScript.HeaderFooterGroup = worksheet.getPageLayout().getHeadersFooters();
+      headersFooters.setState(ExcelScript.HeaderFooterState.firstAndDefault);
+      headersFooters.setUseSheetMargins(true);
+      headersFooters.setUseSheetScale(true);
+
+      const firstPage = headersFooters.getFirstPage();
+      firstPage.setCenterHeader("Monthly Sales Report");
+      firstPage.setCenterFooter("Confidential");
+
+      const remainingPages = headersFooters.getDefaultForAllPages();
+      remainingPages.setCenterHeader(worksheet.getName());
+      remainingPages.setCenterFooter("Page &P of &N");
+    }
 'ExcelScript.HorizontalAlignment:enum':
   - |-
     /**
@@ -3622,6 +3678,21 @@
           costColumnRange.getCell(index, 0).getFormat().getFill().setColor("red");
         }
       }); 
+    }
+'ExcelScript.PageBreak:interface':
+  - |-
+    /**
+     * This script adds page breaks before row 21 and column F for printing.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+
+      const horizontalBreak: ExcelScript.PageBreak = worksheet.addHorizontalPageBreak("A21");
+      const verticalBreak: ExcelScript.PageBreak = worksheet.addVerticalPageBreak("F1");
+
+      console.log(`Horizontal page break before ${horizontalBreak.getCellAfterBreak().getAddress()}`);
+      console.log(`Horizontal page break row index: ${horizontalBreak.getRowIndex()}`);
+      console.log(`Vertical page break column index: ${verticalBreak.getColumnIndex()}`);
     }
 'ExcelScript.PageLayout:interface':
   - |-
@@ -5481,6 +5552,26 @@
       const selected = workbook.getSelectedRange();
       selected.getFormat().getFill().setPattern(ExcelScript.FillPattern.checker);
       selected.getFormat().getFill().setPatternColor("black");
+    }
+'ExcelScript.FormatProtection:interface':
+  - |-
+    /**
+     * This script locks a cell and hides its formula, then protects the worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveWorksheet();
+      const formulaCell = worksheet.getRange("B2");
+      formulaCell.setFormula("=1+1");
+
+      const protection = formulaCell.getFormat().getProtection();
+      protection.setLocked(true);
+      protection.setFormulaHidden(true);
+
+      const isLocked = protection.getLocked();
+      const isFormulaHidden = protection.getFormulaHidden();
+
+      worksheet.getProtection().protect();
+      console.log(`Locked: ${isLocked}; formula hidden: ${isFormulaHidden}`);
     }
 'ExcelScript.RangeFormat:interface':
   - |-
@@ -7889,6 +7980,44 @@
             content: "Here's the Monthly Sales Report", // This is the content within your email.
             attachments: [pdfFile]
         })    
+    }
+'OfficeScript.EmailContentType:enum':
+  - |-
+    /**
+     * This script sends an email with HTML content.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const mailProperties: OfficeScript.MailProperties = {
+        to: "name@email.com",
+        subject: "Monthly Sales Report",
+        content: "<p>Here's the <strong>Monthly Sales Report</strong>.</p>",
+        contentType: OfficeScript.EmailContentType.html
+      };
+
+      OfficeScript.sendMail(mailProperties);
+    }
+'OfficeScript.MailProperties:interface':
+  - |-
+    /**
+     * This script sends an email using a MailProperties object.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const pdfFile: OfficeScript.EmailAttachment = {
+        name: "report.pdf",
+        content: OfficeScript.convertToPdf()
+      };
+      const mailProperties: OfficeScript.MailProperties = {
+        to: "name@email.com",
+        cc: ["manager@email.com"],
+        bcc: ["finance@email.com"],
+        subject: "Monthly Sales Report",
+        content: "The monthly sales report is ready.",
+        contentType: OfficeScript.EmailContentType.text,
+        importance: OfficeScript.EmailImportance.high,
+        attachments: [pdfFile]
+      };
+
+      OfficeScript.sendMail(mailProperties);
     }
 'OfficeScript.saveCopyAs:function(1)':
   - |-  
