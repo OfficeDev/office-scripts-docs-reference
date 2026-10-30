@@ -5353,6 +5353,885 @@
       const range = selectedSheet.getUsedRange();
       range.unmerge();
     }
+'ExcelScript.Range#clearAllConditionalFormats:member(1)':
+  - |-
+    /**
+     * This script removes conditional formatting without clearing values or other formatting.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:D20");
+      range.clearAllConditionalFormats();
+    }
+'ExcelScript.Range#clearOrResetContents:member(1)':
+  - |-
+    /**
+     * This script resets checked checkboxes without removing their controls.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:B4");
+      range.setValues([[true], [true], [true]]);
+      range.setControl({ type: ExcelScript.CellControlType.checkbox });
+      range.clearOrResetContents();
+    }
+'ExcelScript.Range#convertDataTypeToText:member(1)':
+  - |-
+    /**
+     * This script replaces linked data types, such as stocks or geography, with text.
+     * Select the cells containing linked data types before running the script.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      range.convertDataTypeToText();
+    }
+'ExcelScript.Range#getAbsoluteResizedRange:member(1)':
+  - |-
+    /**
+     * This script creates a five-row, three-column range starting at B2.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveWorksheet().getRange("B2");
+      const range = cell.getAbsoluteResizedRange(5, 3);
+      range.getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getAddressLocal:member(1)':
+  - |-
+    /**
+     * This script prints the selected range's address in the user's language.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      console.log(`Local address: ${range.getAddressLocal()}`);
+    }
+'ExcelScript.Range#getCell:member(1)':
+  - |-
+    /**
+     * This script writes to C3 using a cell position relative to B2.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      const cell = range.getCell(1, 1);
+      cell.setValue("Second row, second column");
+    }
+'ExcelScript.Range#getCellCount:member(1)':
+  - |-
+    /**
+     * This script counts the cells in the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const count = workbook.getSelectedRange().getCellCount();
+      if (count === -1) {
+        console.log("The range contains more than 2,147,483,647 cells.");
+      } else {
+        console.log(`Cell count: ${count}`);
+      }
+    }
+'ExcelScript.Range#getColumn:member(1)':
+  - |-
+    /**
+     * This script highlights the second column within B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      const column = range.getColumn(1);
+      column.getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getColumnHidden:member(1)':
+  - |-
+    /**
+     * This script checks whether the selected range's columns are hidden.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const hidden = workbook.getSelectedRange().getColumnHidden();
+      if (hidden === null) {
+        console.log("Some columns are hidden and others are visible.");
+      } else {
+        console.log(`All columns hidden: ${hidden}`);
+      }
+    }
+'ExcelScript.Range#getColumnIndex:member(1)':
+  - |-
+    /**
+     * This script prints the zero-based index of a range's first column.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("C2:E5");
+      console.log(`First column index: ${range.getColumnIndex()}`);
+    }
+'ExcelScript.Range#getColumnsAfter:member(1)':
+  - |-
+    /**
+     * This script highlights the two columns immediately to the right of B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getColumnsAfter(2).getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getColumnsBefore:member(1)':
+  - |-
+    /**
+     * This script highlights the two columns immediately to the left of D2:F5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("D2:F5");
+      range.getColumnsBefore(2).getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getConditionalFormat:member(1)':
+  - |-
+    /**
+     * This script retrieves a conditional format by its ID and sets its fill color.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:A10");
+      const addedFormat = range.addConditionalFormat(ExcelScript.ConditionalFormatType.custom);
+      const customFormat = addedFormat.getCustom();
+      if (!customFormat) {
+        throw new Error("The custom conditional format could not be created.");
+      }
+      customFormat.getRule().setFormula("=A1>100");
+
+      const conditionalFormat = range.getConditionalFormat(addedFormat.getId());
+      const retrievedCustomFormat = conditionalFormat?.getCustom();
+      if (retrievedCustomFormat) {
+        retrievedCustomFormat.getFormat().getFill().setColor("yellow");
+      } else {
+        console.log("The conditional format was not found.");
+      }
+    }
+'ExcelScript.Range#getConditionalFormats:member(1)':
+  - |-
+    /**
+     * This script lists the conditional formats that intersect the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formats = workbook.getSelectedRange().getConditionalFormats();
+      console.log(`Conditional format count: ${formats.length}`);
+      formats.forEach(format => {
+        console.log(`ID: ${format.getId()}; type: ${format.getType()}`);
+      });
+    }
+'ExcelScript.Range#getControl:member(1)':
+  - |-
+    /**
+     * This script creates a checkbox and reads its control type.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveWorksheet().getRange("B2");
+      cell.setValue(false);
+      cell.setControl({ type: ExcelScript.CellControlType.checkbox });
+      const control = cell.getControl();
+      console.log(`Control type: ${control.type}`);
+    }
+'ExcelScript.Range#getDependents:member(1)':
+  - |-
+    /**
+     * This script highlights direct and indirect dependents of A1 on a new worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      sheet.getRange("A1").setValue(10);
+      sheet.getRange("B1").setFormula("=A1*2");
+      sheet.getRange("C1").setFormula("=B1+5");
+
+      const dependents = sheet.getRange("A1").getDependents();
+      dependents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("yellow");
+      });
+    }
+'ExcelScript.Range#getDirectDependents:member(1)':
+  - |-
+    /**
+     * This script highlights only the cells whose formulas directly reference A1.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      sheet.getRange("A1").setValue(10);
+      sheet.getRange("B1").setFormula("=A1*2");
+      sheet.getRange("C1").setFormula("=B1+5");
+
+      const dependents = sheet.getRange("A1").getDirectDependents();
+      dependents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("yellow");
+      });
+    }
+'ExcelScript.Range#getEntireColumn:member(1)':
+  - |-
+    /**
+     * This script autofits every column that intersects B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getEntireColumn().getFormat().autofitColumns();
+    }
+'ExcelScript.Range#getEntireRow:member(1)':
+  - |-
+    /**
+     * This script autofits every row that intersects B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getEntireRow().getFormat().autofitRows();
+    }
+'ExcelScript.Range#getFormulaLocal:member(1)':
+  - |-
+    /**
+     * This script reads a formula in the user's language and number-formatting locale.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveWorksheet().getRange("B1");
+      cell.setFormula("=SUM(1,1.5)");
+      console.log(`Local formula: ${cell.getFormulaLocal()}`);
+    }
+'ExcelScript.Range#getFormulaR1C1:member(1)':
+  - |-
+    /**
+     * This script reads a formula using row and column offsets.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A1:A2").setValues([[10], [20]]);
+      const cell = sheet.getRange("B1");
+      cell.setFormula("=SUM(A1:A2)");
+      console.log(`R1C1 formula: ${cell.getFormulaR1C1()}`);
+    }
+'ExcelScript.Range#getFormulas:member(1)':
+  - |-
+    /**
+     * This script prints the formulas or values in each row of the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formulas = workbook.getSelectedRange().getFormulas();
+      formulas.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getFormulasLocal:member(1)':
+  - |-
+    /**
+     * This script prints formulas in the user's language and number-formatting locale.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formulas = workbook.getSelectedRange().getFormulasLocal();
+      formulas.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getFormulasR1C1:member(1)':
+  - |-
+    /**
+     * This script prints the selected range's formulas in R1C1 notation.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formulas = workbook.getSelectedRange().getFormulasR1C1();
+      formulas.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getHasSpill:member(1)':
+  - |-
+    /**
+     * This script checks whether every cell in a dynamic array's output has a spill border.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      sheet.getRange("A1").setFormula("=SEQUENCE(3,2)");
+      sheet.getRange("A1").calculate();
+      console.log(`All cells have a spill border: ${sheet.getRange("A1:B3").getHasSpill()}`);
+    }
+'ExcelScript.Range#getHeight:member(1)':
+  - |-
+    /**
+     * This script prints the selected range's height in points at 100% zoom.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      console.log(`Height in points: ${range.getHeight()}`);
+    }
+'ExcelScript.Range#getHidden:member(1)':
+  - |-
+    /**
+     * This script checks whether the selected range's cells are hidden.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const hidden = workbook.getSelectedRange().getHidden();
+      if (hidden === null) {
+        console.log("The range contains both hidden and visible cells.");
+      } else {
+        console.log(`All cells hidden: ${hidden}`);
+      }
+    }
+'ExcelScript.Range#getImage:member(1)':
+  - |-
+    /**
+     * This script copies a range's appearance to an image on a new worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:D10");
+      const image = range.getImage();
+      const imageSheet = workbook.addWorksheet();
+      imageSheet.addImage(image);
+    }
+'ExcelScript.Range#getIntersection:member(1)':
+  - |-
+    /**
+     * This script highlights the cells shared by two ranges.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:C5");
+      const intersection = range.getIntersection("B3:D7");
+      if (intersection) {
+        intersection.getFormat().getFill().setColor("yellow");
+      } else {
+        console.log("The ranges do not intersect.");
+      }
+    }
+'ExcelScript.Range#getIsEntireColumn:member(1)':
+  - |-
+    /**
+     * This script checks whether the selection spans entire columns.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      console.log(`Selection contains entire columns: ${range.getIsEntireColumn()}`);
+    }
+'ExcelScript.Range#getIsEntireRow:member(1)':
+  - |-
+    /**
+     * This script checks whether the selection spans entire rows.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      console.log(`Selection contains entire rows: ${range.getIsEntireRow()}`);
+    }
+'ExcelScript.Range#getLastCell:member(1)':
+  - |-
+    /**
+     * This script highlights the bottom-right cell of B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getLastCell().getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getLastColumn:member(1)':
+  - |-
+    /**
+     * This script highlights the last column within B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getLastColumn().getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getLastRow:member(1)':
+  - |-
+    /**
+     * This script makes the last row within B2:D5 bold.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getLastRow().getFormat().getFont().setBold(true);
+    }
+'ExcelScript.Range#getLeft:member(1)':
+  - |-
+    /**
+     * This script aligns a shape with the left edge of a range.
+     * The active worksheet must contain at least one shape.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("B2:D5");
+      sheet.getShapes()[0].setLeft(range.getLeft());
+    }
+'ExcelScript.Range#getLinkedDataTypeState:member(1)':
+  - |-
+    /**
+     * This script prints the active cell's linked data type state.
+     * Select a cell containing a stock or geography data type to inspect its state.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveCell();
+      console.log(`Linked data type state: ${cell.getLinkedDataTypeState()}`);
+    }
+'ExcelScript.Range#getLinkedDataTypeStates:member(1)':
+  - |-
+    /**
+     * This script prints the linked data type state of every selected cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const states = workbook.getSelectedRange().getLinkedDataTypeStates();
+      states.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getMergedAreas:member(1)':
+  - |-
+    /**
+     * This script lists merged areas within the selected range.
+     * Select a range containing no more than 512 merged areas.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const mergedAreas = workbook.getSelectedRange().getMergedAreas();
+      if (mergedAreas) {
+        mergedAreas.getAreas().forEach(area => console.log(area.getAddress()));
+      } else {
+        console.log("The selection contains no merged areas.");
+      }
+    }
+'ExcelScript.Range#getNumberFormat:member(1)':
+  - |-
+    /**
+     * This script prints the active cell's number format code.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveCell();
+      console.log(`Number format: ${cell.getNumberFormat()}`);
+    }
+'ExcelScript.Range#getNumberFormatCategory:member(1)':
+  - |-
+    /**
+     * This script prints the category of the active cell's number format.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveCell();
+      console.log(`Number format category: ${cell.getNumberFormatCategory()}`);
+    }
+'ExcelScript.Range#getNumberFormatLocal:member(1)':
+  - |-
+    /**
+     * This script prints the active cell's number format in the user's locale.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveCell();
+      console.log(`Local number format: ${cell.getNumberFormatLocal()}`);
+    }
+'ExcelScript.Range#getNumberFormats:member(1)':
+  - |-
+    /**
+     * This script prints the number format codes for every selected cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formats = workbook.getSelectedRange().getNumberFormats();
+      formats.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getNumberFormatsLocal:member(1)':
+  - |-
+    /**
+     * This script prints the selected cells' number formats in the user's locale.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const formats = workbook.getSelectedRange().getNumberFormatsLocal();
+      formats.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getPivotTables:member(1)':
+  - |-
+    /**
+     * This script lists PivotTables that overlap a range on the active worksheet.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:Z100");
+      const pivotTables = range.getPivotTables(false);
+      console.log(`Overlapping PivotTables: ${pivotTables.length}`);
+      pivotTables.forEach(pivotTable => console.log(pivotTable.getName()));
+    }
+'ExcelScript.Range#getPrecedents:member(1)':
+  - |-
+    /**
+     * This script highlights direct and indirect precedents of a formula.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      sheet.getRange("A1").setValue(10);
+      sheet.getRange("B1").setFormula("=A1*2");
+      sheet.getRange("C1").setFormula("=B1+5");
+
+      const precedents = sheet.getRange("C1").getPrecedents();
+      precedents.getRanges().forEach(range => {
+        range.getFormat().getFill().setColor("yellow");
+      });
+    }
+'ExcelScript.Range#getPredefinedCellStyle:member(1)':
+  - |-
+    /**
+     * This script prints the active cell's built-in or custom style name.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveCell();
+      console.log(`Cell style: ${cell.getPredefinedCellStyle()}`);
+    }
+'ExcelScript.Range#getRow:member(1)':
+  - |-
+    /**
+     * This script makes the first row within B2:D5 bold.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getRow(0).getFormat().getFont().setBold(true);
+    }
+'ExcelScript.Range#getRowHidden:member(1)':
+  - |-
+    /**
+     * This script checks whether the selected range's rows are hidden.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const hidden = workbook.getSelectedRange().getRowHidden();
+      if (hidden === null) {
+        console.log("Some rows are hidden and others are visible.");
+      } else {
+        console.log(`All rows hidden: ${hidden}`);
+      }
+    }
+'ExcelScript.Range#getRowIndex:member(1)':
+  - |-
+    /**
+     * This script prints the zero-based index of a range's first row.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B3:D5");
+      console.log(`First row index: ${range.getRowIndex()}`);
+    }
+'ExcelScript.Range#getRowsAbove:member(1)':
+  - |-
+    /**
+     * This script highlights the two rows immediately above B4:D6.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B4:D6");
+      range.getRowsAbove(2).getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getRowsBelow:member(1)':
+  - |-
+    /**
+     * This script highlights the two rows immediately below B2:D5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:D5");
+      range.getRowsBelow(2).getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getSavedAsArray:member(1)':
+  - |-
+    /**
+     * This script checks whether a dynamic array formula would be saved as an array formula.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const cell = sheet.getRange("A1");
+      cell.setFormula("=SEQUENCE(3,1)");
+      cell.calculate();
+      console.log(`Saved as an array formula: ${cell.getSavedAsArray()}`);
+    }
+'ExcelScript.Range#getSort:member(1)':
+  - |-
+    /**
+     * This script sorts a new list by its second column in descending order.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const range = sheet.getRange("A1:B4");
+      range.setValues([
+        ["Product", "Sales"],
+        ["Frames", 5000],
+        ["Saddles", 400],
+        ["Brakes", 1200]
+      ]);
+      range.getSort().apply([{ key: 1, ascending: false }], false, true);
+    }
+'ExcelScript.Range#getSpillingToRange:member(1)':
+  - |-
+    /**
+     * This script highlights the output range of a dynamic array formula.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const anchor = sheet.getRange("A1");
+      anchor.setFormula("=SEQUENCE(3,2)");
+      anchor.calculate();
+
+      const spillRange = anchor.getSpillingToRange();
+      if (spillRange) {
+        spillRange.getFormat().getFill().setColor("yellow");
+      } else {
+        console.log("The formula has no spill range.");
+      }
+    }
+'ExcelScript.Range#getSpillParent:member(1)':
+  - |-
+    /**
+     * This script finds the formula cell that supplies a spilled value.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      sheet.getRange("A1").setFormula("=SEQUENCE(3,2)");
+      sheet.getRange("A1").calculate();
+
+      const parent = sheet.getRange("B2").getSpillParent();
+      if (parent) {
+        console.log(`Spill formula: ${parent.getFormula()}`);
+      } else {
+        console.log("The cell is not part of a spill range.");
+      }
+    }
+'ExcelScript.Range#getSurroundingRegion:member(1)':
+  - |-
+    /**
+     * This script highlights the region around the active cell bounded by blank rows and columns.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const region = workbook.getActiveCell().getSurroundingRegion();
+      region.getFormat().getFill().setColor("yellow");
+    }
+'ExcelScript.Range#getTables:member(1)':
+  - |-
+    /**
+     * This script lists the tables fully contained within a range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:Z100");
+      const tables = range.getTables(true);
+      console.log(`Fully contained tables: ${tables.length}`);
+      tables.forEach(table => console.log(table.getName()));
+    }
+'ExcelScript.Range#getText:member(1)':
+  - |-
+    /**
+     * This script reads the formatted text of a percentage cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const cell = workbook.getActiveWorksheet().getRange("B2");
+      cell.setValue(0.25);
+      cell.setNumberFormat("0%");
+      console.log(`Formatted text: ${cell.getText()}`);
+    }
+'ExcelScript.Range#getTexts:member(1)':
+  - |-
+    /**
+     * This script prints the formatted text of each selected cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const texts = workbook.getSelectedRange().getTexts();
+      texts.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getTop:member(1)':
+  - |-
+    /**
+     * This script aligns a shape with the top edge of a range.
+     * The active worksheet must contain at least one shape.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      const range = sheet.getRange("B2:D5");
+      sheet.getShapes()[0].setTop(range.getTop());
+    }
+'ExcelScript.Range#getUsedRange:member(1)':
+  - |-
+    /**
+     * This script highlights the used cells within A1:D20, ignoring formatting-only cells.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:D20");
+      const usedRange = range.getUsedRange(true);
+      if (usedRange) {
+        usedRange.getFormat().getFill().setColor("yellow");
+      } else {
+        console.log("The range contains no values.");
+      }
+    }
+'ExcelScript.Range#getValues:member(1)':
+  - |-
+    /**
+     * This script prints the raw values in each row of the selected range.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const values = workbook.getSelectedRange().getValues();
+      values.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getValueTypes:member(1)':
+  - |-
+    /**
+     * This script prints the value type of every selected cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const types = workbook.getSelectedRange().getValueTypes();
+      types.forEach(row => console.log(row));
+    }
+'ExcelScript.Range#getWidth:member(1)':
+  - |-
+    /**
+     * This script prints the selected range's width in points at 100% zoom.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getSelectedRange();
+      console.log(`Width in points: ${range.getWidth()}`);
+    }
+'ExcelScript.Range#getWorksheet:member(1)':
+  - |-
+    /**
+     * This script prints the name of the worksheet containing the active cell.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const worksheet = workbook.getActiveCell().getWorksheet();
+      console.log(`Worksheet: ${worksheet.getName()}`);
+    }
+'ExcelScript.Range#hideGroupDetails:member(1)':
+  - |-
+    /**
+     * This script groups rows 2 through 5 on a new worksheet and collapses the group.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const rows = sheet.getRange("2:5");
+      rows.group(ExcelScript.GroupOption.byRows);
+      rows.hideGroupDetails(ExcelScript.GroupOption.byRows);
+    }
+'ExcelScript.Range#moveTo:member(1)':
+  - |-
+    /**
+     * This script moves values, formulas, and formatting from A1:B5 to D1:E5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A1:B5").moveTo("D1");
+    }
+'ExcelScript.Range#setColumnHidden:member(1)':
+  - |-
+    /**
+     * This script hides columns C and D.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const columns = workbook.getActiveWorksheet().getRange("C:D");
+      columns.setColumnHidden(true);
+    }
+'ExcelScript.Range#setControl:member(1)':
+  - |-
+    /**
+     * This script displays Boolean values as checkboxes.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:B4");
+      range.setValues([[true], [false], [false]]);
+      range.setControl({ type: ExcelScript.CellControlType.checkbox });
+    }
+'ExcelScript.Range#setDirty:member(1)':
+  - |-
+    /**
+     * This script marks formulas for recalculation and then recalculates the workbook.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:B10");
+      range.setDirty();
+      workbook.getApplication().calculate(ExcelScript.CalculationType.recalculate);
+    }
+'ExcelScript.Range#setFormulaLocal:member(1)':
+  - |-
+    /**
+     * This script sets a formula supplied in the user's language and number-formatting locale.
+     * For example, enter =SUM(A1,1.5) in English or =SUMME(A1;1,5) in German.
+     */
+    function main(workbook: ExcelScript.Workbook, localFormula: string) {
+      workbook.getActiveWorksheet().getRange("B1").setFormulaLocal(localFormula);
+    }
+'ExcelScript.Range#setFormulaR1C1:member(1)':
+  - |-
+    /**
+     * This script doubles the value to the left of each cell in B2:B4.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A2:A4").setValues([[10], [20], [30]]);
+      sheet.getRange("B2:B4").setFormulaR1C1("=RC[-1]*2");
+    }
+'ExcelScript.Range#setFormulasLocal:member(1)':
+  - |-
+    /**
+     * This script copies formulas using the user's language and number-formatting locale.
+     * The source range A1:B2 should contain the formulas to copy.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      const formulas = sheet.getRange("A1:B2").getFormulasLocal();
+      sheet.getRange("D1:E2").setFormulasLocal(formulas);
+    }
+'ExcelScript.Range#setFormulasR1C1:member(1)':
+  - |-
+    /**
+     * This script writes relative-reference formulas to two rows.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A2:A3").setValues([[10], [20]]);
+      sheet.getRange("B2:C3").setFormulasR1C1([
+        ["=RC[-1]*2", "=RC[-2]*3"],
+        ["=RC[-1]*2", "=RC[-2]*3"]
+      ]);
+    }
+'ExcelScript.Range#setNumberFormats:member(1)':
+  - |-
+    /**
+     * This script applies different number formats to two adjacent cells.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:B1");
+      range.setValues([[1234.5, 0.25]]);
+      range.setNumberFormats([["#,##0.00", "0%"]]);
+    }
+'ExcelScript.Range#setNumberFormatsLocal:member(1)':
+  - |-
+    /**
+     * This script copies locale-specific number formats without changing values.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.getActiveWorksheet();
+      const formats = sheet.getRange("A1:B2").getNumberFormatsLocal();
+      sheet.getRange("D1:E2").setNumberFormatsLocal(formats);
+    }
+'ExcelScript.Range#setPredefinedCellStyle:member(1)':
+  - |-
+    /**
+     * This script applies the built-in Heading 1 style to a header row.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("A1:D1");
+      range.setPredefinedCellStyle(ExcelScript.BuiltInStyle.heading1.toString());
+    }
+'ExcelScript.Range#setRowHidden:member(1)':
+  - |-
+    /**
+     * This script hides rows 2 through 5.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const rows = workbook.getActiveWorksheet().getRange("2:5");
+      rows.setRowHidden(true);
+    }
+'ExcelScript.Range#setValue:member(1)':
+  - |-
+    /**
+     * This script fills every cell in a range with the same value.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const range = workbook.getActiveWorksheet().getRange("B2:B5");
+      range.setValue("Pending");
+    }
+'ExcelScript.Range#showCard:member(1)':
+  - |-
+    /**
+     * This script displays the active cell's linked data type card.
+     * Select a cell containing rich value content, such as a stock or geography data type.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      workbook.getActiveCell().showCard();
+    }
+'ExcelScript.Range#showGroupDetails:member(1)':
+  - |-
+    /**
+     * This script expands a collapsed group of rows.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const rows = sheet.getRange("2:5");
+      rows.group(ExcelScript.GroupOption.byRows);
+      rows.hideGroupDetails(ExcelScript.GroupOption.byRows);
+      rows.showGroupDetails(ExcelScript.GroupOption.byRows);
+    }
+'ExcelScript.Range#ungroup:member(1)':
+  - |-
+    /**
+     * This script creates a column group and then removes its outline grouping.
+     */
+    function main(workbook: ExcelScript.Workbook) {
+      const sheet = workbook.addWorksheet();
+      const columns = sheet.getRange("B:D");
+      columns.group(ExcelScript.GroupOption.byColumns);
+      columns.ungroup(ExcelScript.GroupOption.byColumns);
+    }
 'ExcelScript.RangeAreas:interface':
   - |- 
     /**
