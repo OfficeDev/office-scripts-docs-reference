@@ -5,6 +5,10 @@ package: ExcelScript!
 fullName: ExcelScript.HeaderFooter
 summary: ''
 remarks: >-
+
+
+
+
   #### Used by
 
 
@@ -14,6 +18,30 @@ remarks: >-
   [getEvenPages](/javascript/api/office-scripts/excelscript/excelscript.headerfootergroup#excelscript-excelscript-headerfootergroup-getevenpages-member(1)),
   [getFirstPage](/javascript/api/office-scripts/excelscript/excelscript.headerfootergroup#excelscript-excelscript-headerfootergroup-getfirstpage-member(1)),
   [getOddPages](/javascript/api/office-scripts/excelscript/excelscript.headerfootergroup#excelscript-excelscript-headerfootergroup-getoddpages-member(1))
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script customizes the headers and footers of the active worksheet's printed pages.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const worksheet = workbook.getActiveWorksheet();
+    const headersFooters = worksheet.getPageLayout().getHeadersFooters();
+    const headerFooter: ExcelScript.HeaderFooter = headersFooters.getDefaultForAllPages();
+
+    headerFooter.setLeftHeader("Contoso");
+    headerFooter.setCenterHeader("Monthly Sales Report");
+    headerFooter.setRightHeader(worksheet.getName());
+
+    headerFooter.setLeftFooter("Confidential");
+    headerFooter.setCenterFooter("Page &P of &N");
+    headerFooter.setRightFooter("&D");
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false

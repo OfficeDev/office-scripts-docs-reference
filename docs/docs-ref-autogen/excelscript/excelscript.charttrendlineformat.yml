@@ -5,12 +5,39 @@ package: ExcelScript!
 fullName: ExcelScript.ChartTrendlineFormat
 summary: Represents the format properties for the chart trendline.
 remarks: >-
+
+
+
+
   #### Used by
 
 
   -
   [ExcelScript.ChartTrendline](/javascript/api/office-scripts/excelscript/excelscript.charttrendline):
   [getFormat](/javascript/api/office-scripts/excelscript/excelscript.charttrendline#excelscript-excelscript-charttrendline-getformat-member(1))
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script adds a linear trendline and customizes its line formatting.
+   * This sample assumes that the active worksheet has a chart that supports trendlines.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const chart = workbook.getActiveWorksheet().getCharts()[0];
+    const series = chart.getSeries()[0];
+    const trendline = series.addChartTrendline(ExcelScript.ChartTrendlineType.linear);
+
+    const format: ExcelScript.ChartTrendlineFormat = trendline.getFormat();
+    const line = format.getLine();
+    line.setColor("#FF0000");
+    line.setLineStyle(ExcelScript.ChartLineStyle.dash);
+    line.setWeight(2);
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false

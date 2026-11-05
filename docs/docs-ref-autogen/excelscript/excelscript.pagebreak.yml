@@ -5,6 +5,10 @@ package: ExcelScript!
 fullName: ExcelScript.PageBreak
 summary: ''
 remarks: >-
+
+
+
+
   #### Used by
 
 
@@ -14,6 +18,27 @@ remarks: >-
   [addVerticalPageBreak](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-addverticalpagebreak-member(1)),
   [getHorizontalPageBreaks](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-gethorizontalpagebreaks-member(1)),
   [getVerticalPageBreaks](/javascript/api/office-scripts/excelscript/excelscript.worksheet#excelscript-excelscript-worksheet-getverticalpagebreaks-member(1))
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script adds page breaks before row 21 and column F for printing.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const worksheet = workbook.getActiveWorksheet();
+
+    const horizontalBreak: ExcelScript.PageBreak = worksheet.addHorizontalPageBreak("A21");
+    const verticalBreak: ExcelScript.PageBreak = worksheet.addVerticalPageBreak("F1");
+
+    console.log(`Horizontal page break before ${horizontalBreak.getCellAfterBreak().getAddress()}`);
+    console.log(`Horizontal page break row index: ${horizontalBreak.getRowIndex()}`);
+    console.log(`Vertical page break column index: ${verticalBreak.getColumnIndex()}`);
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false

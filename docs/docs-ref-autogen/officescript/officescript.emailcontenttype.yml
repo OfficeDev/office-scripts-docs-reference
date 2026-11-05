@@ -5,12 +5,37 @@ package: OfficeScript!
 fullName: OfficeScript.EmailContentType
 summary: The type of the content. Possible values are text or HTML.
 remarks: >-
+
+
+
+
   #### Used by
 
 
   -
   [OfficeScript.MailProperties](/javascript/api/office-scripts/officescript/officescript.mailproperties):
   [contentType](/javascript/api/office-scripts/officescript/officescript.mailproperties#officescript-officescript-mailproperties-contenttype-member)
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script sends an email with HTML content.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const mailProperties: OfficeScript.MailProperties = {
+      to: "name@email.com",
+      subject: "Monthly Sales Report",
+      content: "<p>Here's the <strong>Monthly Sales Report</strong>.</p>",
+      contentType: OfficeScript.EmailContentType.html
+    };
+
+    OfficeScript.sendMail(mailProperties);
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false
