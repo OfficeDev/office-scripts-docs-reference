@@ -5,11 +5,44 @@ package: OfficeScript!
 fullName: OfficeScript.MailProperties
 summary: The properties of the email to be sent.
 remarks: >-
+
+
+
+
   #### Used by
 
 
   - [OfficeScript](/javascript/api/office-scripts/officescript):
   [sendMail](/javascript/api/office-scripts/officescript#officescript-officescript-sendmail-function(1))
+
+  #### Examples
+
+
+  ```TypeScript
+
+  /**
+   * This script sends an email using a MailProperties object.
+   */
+  function main(workbook: ExcelScript.Workbook) {
+    const pdfFile: OfficeScript.EmailAttachment = {
+      name: "report.pdf",
+      content: OfficeScript.convertToPdf()
+    };
+    const mailProperties: OfficeScript.MailProperties = {
+      to: "name@email.com",
+      cc: ["manager@email.com"],
+      bcc: ["finance@email.com"],
+      subject: "Monthly Sales Report",
+      content: "The monthly sales report is ready.",
+      contentType: OfficeScript.EmailContentType.text,
+      importance: OfficeScript.EmailImportance.high,
+      attachments: [pdfFile]
+    };
+
+    OfficeScript.sendMail(mailProperties);
+  }
+
+  ```
 
 isPreview: false
 isDeprecated: false
